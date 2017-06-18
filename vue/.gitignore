@@ -1,4 +1,4 @@
-**/.build/
-/www/asset
-bower_components
+
+www/asset
 node_modules
+package-lock.json

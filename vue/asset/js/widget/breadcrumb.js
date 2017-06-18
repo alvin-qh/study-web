@@ -1,5 +1,10 @@
-const template = `
-<div class="row"> 
+'use strict';
+
+import Vue from "vue";
+import _ from "lodash";
+import $ from "jquery";
+
+const template = `<div class="row"> 
     <ol class="breadcrumb"> 
         <li v-for="item in previous"><a v-bind:href="item.href">{{item.name}}</a></li> 
         <li class="active">{{title}}</li> 
@@ -18,7 +23,7 @@ Vue.component('breadcrumb', {
 			type: Array,
 			require: true,
 			validator(vals) {
-				if (!Array.isArray(vals)) {
+				if (!_.isArray(vals)) {
 					return false;
 				}
 

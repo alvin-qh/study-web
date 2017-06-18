@@ -1,7 +1,9 @@
 'use strict';
 
-const template = `
-<div v-bind:class="['alert', 'alert-' + type]" role="alert">
+import Vue from "vue";
+import $ from "jquery";
+
+const template = `<div v-bind:class="['alert', 'alert-' + type]" role="alert">
     <button v-if="closeable === 'true'" type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
@@ -19,7 +21,7 @@ const alert = Vue.extend({
 			default: 'false'
 		}
 	},
-	mounted: function () {
+	mounted() {
 		const $alert = $(this.$el);
 		const self = this;
 		$alert.alert()
@@ -30,4 +32,4 @@ const alert = Vue.extend({
 	}
 });
 
-module.exports = alert;
+export default alert;

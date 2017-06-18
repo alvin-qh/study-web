@@ -1,7 +1,9 @@
 'use strict';
 
-const template = `
-<div v-bind:class="['panel', 'panel-' + type]">
+import Vue from "vue";
+import $ from "jquery";
+
+const template = `<div v-bind:class="['panel', 'panel-' + type]">
     <div v-if="title" class="panel-heading">
         <h4 class="panel-title">
             <a v-if="isCollapse"
@@ -37,12 +39,12 @@ Vue.component('panel', {
 	computed: {
 		isCollapse: {
 			get() {
-				return this.collapsible === 'true' || this.collapsible === true;
+				return this.collapsible === true || this.collapsible === 'true';
 			}
 		},
 		isExpand: {
 			get() {
-				return this.expand === 'true' || this.expand === true;
+				return this.expand === true || this.expand === 'true';
 			}
 		}
 	},
@@ -55,7 +57,7 @@ Vue.component('panel', {
 
 			$(this.$el).find('.panel-heading a')
 				.off('click')
-				.on('click', (e) => {
+				.on('click', () => {
 					if ($others.length > 0) {
 						$others.each((n, other) => $(other).collapse('hide'));
 					}

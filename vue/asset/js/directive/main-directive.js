@@ -1,7 +1,12 @@
 'use strict';
 
-require('../common/breadcrumb');
-require('../common/bootstrap-notify');
+import Vue from "vue";
+import $ from "jquery";
+
+import "../widget/breadcrumb";
+import "bootstrap-growl";
+
+import "../../css/directive/directive.less";
 
 new Vue({
 	el: '#breadcrumb'
@@ -18,7 +23,6 @@ const p1 = new Vue({
 		setInterval(() => this.titleIndex = this.titleIndex > 1 ? 0 : this.titleIndex + 1, 5000);
 	}
 });
-
 
 const p2 = new Vue({
 	el: '#p2',
@@ -66,25 +70,6 @@ const p2 = new Vue({
 	},
 	computed: {
 		groupedItems: {
-			// get: function () {
-			// 	const result = [];
-			// 	let lastOne = null;
-			// 	for (let item of this.items) {
-			// 		if (lastOne) {
-			// 			if (lastOne.item === item) {
-			// 				lastOne.count++;
-			// 			} else {
-			// 				result.push(lastOne);
-			// 				lastOne = null;
-			// 			}
-			// 		}
-			// 		lastOne = lastOne || {item: item, count: 1};
-			// 	}
-			// 	if (lastOne) {
-			// 		result.push(lastOne);
-			// 	}
-			// 	return result;
-			// }
 			get() {
 				const result = {};
 				for (let item of this.items) {

@@ -1,18 +1,23 @@
-require('../common/breadcrumb');
-require('../common/bootstrap-notify');
+'use strict';
 
-const alter = require('../common/alert');
-require('../common/panel');
-require('../common/panel-group');
-const select = require('../common/select.vue');
+import Vue from "vue";
+import $ from "jquery";
 
-let app = new Vue({
+import alter from "../widget/alert";
+
+import "bootstrap-growl";
+
+import "../widget/breadcrumb";
+import "../widget/panel";
+import "../widget/panel-group";
+
+import "../../css/tag/tag.less";
+
+const app = new Vue({
 	el: '#app',
 	components: {
-		alert: alter,
-		select: select
+		alert: alter
 	},
-	data: {},
 	methods: {
 		notify(text) {
 			$.notify({
