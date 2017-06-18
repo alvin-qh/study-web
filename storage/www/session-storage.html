@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Session Storage</title>
+    <link rel="stylesheet" type="text/css" href="asset/css/common.css">
+</head>
+<body>
+<div>
+    <div id="support">
+        <span></span>
+    </div>
+
+    <form id="form" class="form" method="post">
+        <div class="form-field">
+            <label>
+                <span>姓名: </span>
+                <input name="name" type="text">
+            </label>
+        </div>
+        <div class="form-field">
+            <span>性别:</span>
+            <label>
+                <input name="gender" type="radio" value="M" checked>
+                <span>男</span>
+            </label>
+            <label class="m-l-md">
+                <input name="gender" type="radio" value="F">
+                <span>女</span>
+            </label>
+        </div>
+        <div class="form-field">
+            <label>
+                <span>生日: </span>
+                <input name="birthday" type="date">
+            </label>
+        </div>
+        <div class="form-field">
+            <label>
+                <span>电话: </span>
+                <input name="telephone" type="text">
+            </label>
+        </div>
+
+        <div class="form-field">
+            <button type="submit" class="m-l-md">保存</button>
+            <button type="reset" class="m-l-md">清除</button>
+        </div>
+    </form>
+
+    <div>
+        <iframe frameborder="none"
+                width="1000"
+                height="400"
+                src="storage-state.html?type=sessionStorage"></iframe>
+    </div>
+</div>
+<script src="asset/js/session-storage.js"></script>
+</body>
+</html>

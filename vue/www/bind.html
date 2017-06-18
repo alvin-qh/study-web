@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bind</title>
+
+    <link href="asset/css/vendor.css" rel="stylesheet" type="text/css">
+    <link href="asset/css/common.css" rel="stylesheet" type="text/css">
+    <link href="asset/css/bind.css" rel="stylesheet" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="asset/js/ie-support.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="app" class="container-fluid">
+    <breadcrumb v-bind:previous="[{name:'Home', href:'index.html'}]"></breadcrumb>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title"><h4>Data bind</h4></div>
+        </div>
+        <div class="panel-body">
+            <div class="form row">
+                <div class="form-group clearfix">
+                    <div class="col-md-4">
+                        <input type="text"
+                               class="form-control"
+                               placeholder="Please input something"
+                               v-model="text">
+                    </div>
+                </div>
+
+                <div class="clearfix">
+                    <div class="col-md-4">
+                        <label class="control-label">Data bind:</label>
+                        <div class="alert gray-bordered">{{text || '&nbsp;'}}</div>
+                    </div>
+                </div>
+
+                <div class="form-group clearfix">
+                    <div class="col-md-4">
+                        <label class="control-label">Computed bind:</label>
+                        <input type="text"
+                               class="form-control"
+                               v-model="textInverse"
+                               placeholder="Please input something inverse">
+                    </div>
+                </div>
+
+                <div class="clearfix">
+                    <div class="col-md-4">
+                        <label class="control-label">Not refresh computed: </label>
+                        <div class="alert gray-bordered">{{noRefresh || '&nbsp;'}}</div>
+                    </div>
+                </div>
+
+                <div class="clearfix">
+                    <div class="col-md-4">
+                        <label class="control-label">Refresh computed: </label>
+                        <div class="alert gray-bordered">{{refresh || '&nbsp;'}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div v-bind:class="['panel', 'panel-' + panelColor]">
+        <div class="panel-heading">
+            <div class="panel-title"><h4>Class bind and Watched</h4></div>
+        </div>
+        <div class="panel-body">
+            <div class="form row">
+                <div class="form-group clearfix">
+                    <div class="col-md-4">
+                        <label>
+                            <input type="radio" v-model="color" value="info">
+                            <i class="color-box info"></i>
+                        </label>
+
+                        <label>
+                            <input type="radio" v-model="color" value="warning">
+                            <i class="color-box warning"></i>
+                        </label>
+
+                        <label>
+                            <input type="radio" v-model="color" value="danger">
+                            <i class="color-box danger"></i>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="clearfix">
+                    <div class="col-md-2">
+                        <div v-bind:class="['alert', 'alert-' + color]">&nbsp;</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="asset/js/vendor.js"></script>
+<script src="asset/js/common.js"></script>
+<script src="asset/js/bind.js"></script>
+</body>
+</html>

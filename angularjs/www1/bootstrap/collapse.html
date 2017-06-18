@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html ng-app="collapseApp">
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Collapse</title>
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/dist/css/bootstrap-theme.min.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../lib/html5shiv/dist/html5shiv.min.js"></script>
+    <script src="../lib/respond/dest/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+<body role="document">
+<div class="container" role="main" ng-controller="CollapseController">
+    <div class="row">
+        <div class="container-fluid">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="panel-title">Collapse</div>
+                </div>
+                <div class="panel-body">
+                    <div>
+                        <button class="btn btn-primary" ng-click="collapseClick()">Collapse</button>
+                    </div>
+                    <div style="margin-top: 10px">
+                        <div uib-collapse="isCollapsed">
+                            <div class="well well-lg">Some content</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../lib/angular/angular.min.js"></script>
+<script src="../lib/angular-animate/angular-animate.min.js"></script>
+<script src="../lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="asset/js/collapse.js"></script>
+
+</body>
+</html>

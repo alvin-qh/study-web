@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html ng-app="buttonApp">
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Button</title>
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/dist/css/bootstrap-theme.min.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../lib/html5shiv/dist/html5shiv.min.js"></script>
+    <script src="../lib/respond/dest/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="container" ng-controller="ButtonController">
+    <div class="row">
+        <div class="container-fluid">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="panel-title">Button</div>
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <h4>Single toggle</h4>
+                            <pre>{{singleModel || 0}}</pre>
+
+                            <button class="btn btn-primary" ng-model="singleModel"
+                                    uib-btn-checkbox
+                                    btn-checkbox-true="1"
+                                    btn-checkbox-false="0">Left
+                            </button>
+
+                            <label style="margin-left: 20px">
+                                <input type="checkbox" ng-model="uncheckable"> Uncheckable
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-sm-5">
+                            <h4>Checkbox Button</h4>
+                            <pre>{{checkModel || '&nbsp;'}}</pre>
+                            <pre>Results: {{checkResults}}</pre>
+                            <div class="btn-group">
+                                <button class="btn btn-primary" ng-model="checkModel.left" uib-btn-checkbox>
+                                    Left
+                                </button>
+                                <button class="btn btn-primary" ng-model="checkModel.middle" uib-btn-checkbox>
+                                    Middle
+                                </button>
+                                <button class="btn btn-primary" ng-model="checkModel.right" uib-btn-checkbox>
+                                    Right
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row" style="margin-top: 20px">
+                        <div class="col-sm-5">
+                            <h4>Radio Button</h4>
+                            <pre>{{radioModel || '&nbsp;'}}</pre>
+                            <div class="btn-group">
+                                <button class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'left'">
+                                    Left
+                                </button>
+                                <button class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'middle'">
+                                    Middle
+                                </button>
+                                <button class="btn btn-primary" ng-model="radioModel" uib-btn-radio="'right'">
+                                    Right
+                                </button>
+                            </div>
+
+                            <div class="btn-group">
+                                <button class="btn btn-success" ng-model="radioModel" uib-btn-radio="'left'">
+                                    Left
+                                </button>
+                                <button class="btn btn-success" ng-model="radioModel" uib-btn-radio="'middle'">
+                                    Middle
+                                </button>
+                                <button class="btn btn-success" ng-model="radioModel" uib-btn-radio="'right'">
+                                    Right
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="alert.html">
+    <div class="alert" style="background-color:#01a628;color:white" role="alert">
+        <div ng-transclude></div>
+    </div>
+</script>
+
+<script src="../lib/angular/angular.min.js"></script>
+<script src="../lib/angular-animate/angular-animate.min.js"></script>
+<script src="../lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="asset/js/button.js"></script>
+
+</body>
+</html>

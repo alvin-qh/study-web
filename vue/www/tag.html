@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tags</title>
+
+    <link href="asset/css/vendor.css" rel="stylesheet" type="text/css">
+    <link href="asset/css/bind.css" rel="stylesheet" type="text/css">
+
+    <!--[if lt IE 9]>
+    <script src="asset/js/ie-support.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div id="app" class="container-fluid">
+    <breadcrumb v-bind:previous="[{name:'Home', href:'index.html'}]"></breadcrumb>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <h4>Simple Tag</h4>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="clearfix">
+                <alert class="col-md-4" type="danger" closeable="true"
+                       v-on:close="alertClose('close')"
+                       v-on:closed="alertClose('closed')">
+                    Hello
+                </alert>
+            </div>
+
+            <div class="row clearfix">
+                <div class="clearfix">
+                    <div class="col-md-5">
+                        <panel type="warning"
+                               title="Panel Demo"
+                               footer="This is a panel demo"
+                               collapsible="true"
+                               expand="true">
+                            This is Vue + bootstrap panel tag
+                        </panel>
+                    </div>
+                </div>
+
+                <panel-group class="col-md-5">
+                    <panel type="info"
+                           collapsible="true"
+                           title="Panel A"
+                           expand="true">
+                        This is grouped panel A, and exclusion with panel B
+                    </panel>
+                    <panel type="info"
+                           collapsible="true"
+                           title="Panel B">
+                        This is grouped panel B, and exclusion with panel A
+                    </panel>
+                </panel-group>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="asset/js/vendor.js"></script>
+<script src="asset/js/common.js"></script>
+<script src="asset/js/tag.js"></script>
+</body>
+</html>

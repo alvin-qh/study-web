@@ -1,0 +1,23 @@
+{
+  "name": "vue-demo",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Alvin.Qu <quhao@wisdomgarden.com>"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "devDependencies": {
+    "respond": "Respond#^1.4.2",
+    "html5shiv": "^3.7.3",
+    "remarkable-bootstrap-notify": "^3.1.3",
+    "animate.css": "^3.5.2"
+  }
+}

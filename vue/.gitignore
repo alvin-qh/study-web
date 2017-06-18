@@ -1,0 +1,4 @@
+**/.build/
+/www/asset
+bower_components
+node_modules

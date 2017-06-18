@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html ng-app="alertApp">
+<head lang="en">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Alert</title>
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/dist/css/bootstrap-theme.min.css">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="../lib/html5shiv/dist/html5shiv.min.js"></script>
+    <script src="../lib/respond/dest/respond.min.js"></script>
+    <![endif]-->
+</head>
+<body role="document">
+<div class="container" role="main" ng-controller="AlertController">
+    <div class="row">
+        <div class="container-fluid">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="panel-title">Alert</div>
+                </div>
+                <div class="panel-body">
+                    <div style="margin-top: 10px">
+                        <uib-alert ng-if="singleAlertMessage" type="info" close="closeSingleAlert()">
+                            {{singleAlertMessage}}
+                        </uib-alert>
+
+                        <uib-alert ng-repeat="alert in alerts" type="{{alert.type}}" close="deleteAlert($index)">{{alert.message}}</uib-alert>
+                        <uib-alert template-url="alert.html">Use template! </uib-alert>
+                    </div>
+                    <div style="margin-top: 20px" class="form-horizontal">
+                        <div class="form-group form-group-sm">
+                            <label class="col-sm-1 control-label">Type: </label>
+                            <div class="col-sm-2">
+                                <select class="form-control" ng-model="chooseType"
+                                        ng-options="type for type in types">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group form-group-sm">
+                            <label class="col-sm-1 control-label">Text: </label>
+                            <div class="col-sm-2">
+                                <input type="text" class="form-control" ng-model="chooseMessage">
+                            </div>
+                            <div class="col-sm-2">
+                                <button class="btn btn-sm btn-primary" ng-click="addAlert()">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="text/ng-template" id="alert.html">
+    <div class="alert" style="background-color:#01a628;color:white" role="alert">
+        <div ng-transclude></div>
+    </div>
+</script>
+
+<script src="../lib/angular/angular.min.js"></script>
+<script src="../lib/angular-animate/angular-animate.min.js"></script>
+<script src="../lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="asset/js/alert.js"></script>
+
+</body>
+</html>

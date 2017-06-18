@@ -1,0 +1,24 @@
+
+div.row strong, div.row div {
+    display: block;
+    float: left;
+}
+
+div.row div {
+    margin-left: 4px;
+    margin-top: 2px;
+}
+
+div.row {
+    margin-bottom: 10px;
+}
+
+div.row:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+
+#storage-state {
+    font-family: "Courier New", serif;
+}

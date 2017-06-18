@@ -1,0 +1,24 @@
+{
+    "name": "require",
+    "description": "",
+    "main": "index.js",
+    "authors": [
+        "Alvin.Qu <quhao@wisdomgarden.com>"
+    ],
+    "license": "ISC",
+    "homepage": "https://github.com/alvin-study/study-web",
+    "ignore": [
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "bootstrap": "^3.3.7",
+        "requirejs": "^2.3.2",
+        "jquery": "^3.1.1",
+        "parsleyjs": "^2.5.1",
+        "html5shiv": "^3.7.3",
+        "respond": "^1.4.2"
+    }
+}
