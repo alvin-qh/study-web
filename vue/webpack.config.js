@@ -46,7 +46,7 @@ const plugins = (() => {
 			name: ['vendor', 'manifest']
 		}),
 		new ExtractTextPlugin({
-			filename: '[name].css',
+			filename: 'css/[name].css',
 			disable: false,
 			allChunks: true,
 		})
@@ -61,9 +61,9 @@ module.exports = {
 	}, makeEntries()),
 	output: {
 		path: path.resolve(webConfig.paths.dest()),
-		filename: '[name].js',
+		filename: 'js/[name].js',
 		publicPath: 'www',
-		chunkFilename: "[name].js",
+		chunkFilename: "js/[name].js",
 	},
 	resolve: {
 		alias: {
