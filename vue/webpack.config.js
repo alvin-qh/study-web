@@ -127,15 +127,13 @@ module.exports = {
             })
         }, {
             test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
-            use: [
-                {
-                    loader: 'url-loader',
-                    options: {
-                        limit: 30000,
-                        name: "asset/static/[name]-[hash:8].[ext]"
-                    }
+            use: [{
+                loader: 'url-loader',
+                options: {
+                    limit: 30000,
+                    name: "asset/static/[name]-[hash:8].[ext]"
                 }
-            ]
+            }]
         }]
     },
     plugins: plugins,
