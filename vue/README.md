@@ -12,29 +12,22 @@
 curl http://npmjs.org/install.sh | sh
 ```
 
-## Install gulp
-
-```bash
-$ npm install -g gulp
-```
-
-## Install bower
-
-```bash
-$ npm install -g bower
-```
-
 # Setup
 
 ## Install dependency package
 
 ```bash
 $ npm install
-$ bower install
 ```
 
-## Run gulp
+## Install webpack2
 
 ```bash
-$ gulp
+$ npm install -g webpack
+```
+
+## Run
+
+```bash
+$ webpack
 ```
