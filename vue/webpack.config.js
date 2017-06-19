@@ -75,7 +75,7 @@ const plugins = (() => {
         })
     ]
         .concat(makeTemplates())
-        .concat(!webConfig.isProd ? [
+        .concat(webConfig.isProd ? [
             new UglifyJsPlugin({
                 compress: {
                     warnings: false
@@ -84,7 +84,7 @@ const plugins = (() => {
                     comments: false,
                 }
             })
-        ]: []);
+        ] : []);
 })();
 
 module.exports = {
@@ -117,7 +117,7 @@ module.exports = {
                 use: [{
                     loader: 'css-loader',
                     options: {
-                        minimize: !webConfig.isProd
+                        minimize: webConfig.isProd
                     }
                 }, {
                     loader: 'less-loader',
@@ -141,65 +141,6 @@ module.exports = {
     plugins: plugins,
     devServer: {
         contentBase: path.resolve('www/')
-    }
+    },
+    devtool: 'cheap-source-map',
 };
-
-//
-// const ProvidePlugin = webpack.ProvidePlugin;
-// const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
-// const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
-//
-// const plugins = (() => {
-// 	let _plugins = [
-// 		new ProvidePlugin({
-// 			$: "jquery",
-// 			jQuery: "jquery",
-// 			vue: 'vue'
-// 		}),
-// 		new CommonsChunkPlugin({
-// 			name: 'common',
-// 			filename: 'common.js',
-// 			minChunks: 3
-// 		})
-// 	];
-//
-// 	if (webConfig.isProd) {
-// 		_plugins = _plugins.concat([
-// 			new UglifyJsPlugin({
-// 				compress: {
-// 					warnings: false
-// 				},
-// 				output: {
-// 					comments: false,
-// 				}
-// 			})
-// 		]);
-// 	}
-// 	return _plugins;
-// })();
-//
-// console.log(webConfig.paths.dest('js'));
-//
-// module.exports = () => {
-// 	return {
-// 		entry: makeEntries(),
-// 		externals: {
-// 			jquery: "jQuery",
-// 			vue: 'Vue'
-// 		},
-// 		devtool: 'cheap-source-map',
-// 		output: {
-// 			path: webConfig.paths.dest('js'),
-// 			publicPath: webConfig.paths.dest('js'),
-// 			filename: '[name].js'
-// 		},
-// 		watch: false,
-// 		resolve: {
-// 			alias: {
-// 				jquery: webConfig.paths.modules('jquery/dist/jquery.js'),
-// 				vue: webConfig.paths.modules(webConfig.isProd ? 'vue/dist/vue.runtime.js' : 'vue/dist/vue.js')
-// 			}
-// 		},
-// 		cache: true
-// 	}
-// };
