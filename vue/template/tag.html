@@ -5,7 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" type="text/css" href="asset/css/tag/tag.css">
+    <% for (css of htmlWebpackPlugin.files.chunks['common/common'].css) { %>
+    <link href="<%=css %>" rel="stylesheet" type="text/css">
+    <% } %>
+
+    <% for (css of htmlWebpackPlugin.files.chunks['tag/tag'].css) { %>
+    <link href="<%=css %>" rel="stylesheet" type="text/css">
+    <% } %>
 
     <title>Tags</title>
 
@@ -15,6 +21,8 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <script src="<%=htmlWebpackPlugin.files.chunks['manifest'].entry %>"></script>
 </head>
 <body>
 <div id="app" class="container-fluid">
@@ -66,8 +74,7 @@
     </div>
 </div>
 
-<script src="asset/js/manifest.js"></script>
-<script src="asset/js/vendor.js"></script>
-<script src="asset/js/tag/tag.js"></script>
+<script src="<%=htmlWebpackPlugin.files.chunks['vendor'].entry %>"></script>
+<script src="<%=htmlWebpackPlugin.files.chunks['tag/tag'].entry %>"></script>
 </body>
 </html>
