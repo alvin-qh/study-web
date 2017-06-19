@@ -16,9 +16,6 @@ const webConfig = {
         source: file => path.join('asset', file || ''),
         template: file => path.join('template', file || ''),
         dest: file => path.join('www', file || '')
-    },
-    cleanOptions: {
-        force: true
     }
 };
 
