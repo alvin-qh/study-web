@@ -1,14 +1,15 @@
 'use strict';
 
-const webpack = require("webpack");
-const glob = require("glob");
-const path = require("path");
-const fs = require("fs");
 
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const AccessPlugin = require('assets-webpack-plugin');
-const HtmlPlugin = require('html-webpack-plugin');
-const WebpackCleanupPlugin = require("webpack-cleanup-plugin");
+import webpack from "webpack";
+
+import glob from "glob";
+import path from "path";
+
+import ExtractTextPlugin from "extract-text-webpack-plugin";
+import AccessPlugin from "assets-webpack-plugin";
+import HtmlPlugin from "html-webpack-plugin";
+import CleanupPlugin from "webpack-cleanup-plugin";
 
 const webConfig = {
     isProd: (process.env.NODE_ENV === 'production'),
@@ -61,17 +62,17 @@ const plugins = (() => {
             name: ['vendor', 'manifest']
         }),
         new ExtractTextPlugin({
-            filename: 'asset/css/[name]-[chunkhash:8].css',
+            filename: webConfig.isProd ? 'asset/css/[name]-[chunkhash:8].css' : 'asset/css/[name].css',
             disable: false,
             allChunks: true,
         }),
-        new AccessPlugin({
-            filename: webConfig.paths.dest('asset/manifest.json')
-        }),
-        new WebpackCleanupPlugin()
+        new CleanupPlugin()
     ]
         .concat(makeTemplates())
         .concat(webConfig.isProd ? [
+            new AccessPlugin({
+                filename: webConfig.paths.dest('asset/manifest.json')
+            }),
             new UglifyJsPlugin({
                 compress: {
                     warnings: false
@@ -89,8 +90,8 @@ module.exports = {
     }, makeEntries()),
     output: {
         path: path.resolve(webConfig.paths.dest()),
-        filename: 'asset/js/[name]-[chunkhash:8].js',
-        chunkFilename: "asset/js/[name]-[chunkhash:8].js",
+        filename: webConfig.isProd ? 'asset/js/[name]-[chunkhash:8].js' : 'asset/js/[name].js',
+        chunkFilename: webConfig.isProd ? 'asset/js/[name]-[chunkhash:8].js' : 'asset/js/[name].js',
     },
     resolve: {
         alias: {
@@ -127,9 +128,13 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 30000,
-                    name: "asset/static/[name]-[hash:8].[ext]"
+                    name: webConfig.isProd ? 'asset/static/[name]-[hash:8].[ext]' : 'asset/static/[name].[ext]'
                 }
             }]
+        }, {
+            test: /\.vue$/,
+            exclude: [/node_modules/],
+            loader: 'vue-loader'
         }]
     },
     plugins: plugins,
