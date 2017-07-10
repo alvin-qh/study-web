@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <% for (css of htmlWebpackPlugin.files.chunks['common'].css) { %>
+    <link href="<%=css %>" rel="stylesheet" type="text/css">
+    <% } %>
+
+    <% for (css of htmlWebpackPlugin.files.chunks['home'].css) { %>
+    <link href="<%=css %>" rel="stylesheet" type="text/css">
+    <% } %>
+
+    <title>Home</title>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="<%=htmlWebpackPlugin.files.chunks['manifest'].entry %>"></script>
+</head>
+<body>
+<div id="app" class="container-fluid">
+    <school-info suite-id="tj1380e0f1f6041390" app-id="4" corp-id="wxa164b01baf6a74cd"></school-info>
+</div>
+
+<script src="<%=htmlWebpackPlugin.files.chunks['vendor'].entry %>"></script>
+<script src="<%=htmlWebpackPlugin.files.chunks['common'].entry %>"></script>
+<script src="<%=htmlWebpackPlugin.files.chunks['home'].entry %>"></script>
+</body>
+</html>
