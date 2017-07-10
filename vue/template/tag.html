@@ -70,6 +70,16 @@
                     </panel>
                 </panel-group>
             </div>
+
+            <div class="container-fluid">
+                <div class="form form-horizontal">
+                    <name-select label="用户选择" name="user" v-model="userType">
+                        <option value="">请选择用户类型</option>
+                        <option value="TEACHER">教师</option>
+                        <option value="STUDENT">学生</option>
+                    </name-select>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -13,10 +13,15 @@ import "../widget/panel-group";
 
 import "../../css/tag/tag.less";
 
+import "../widget/vue-components";
+
 const app = new Vue({
 	el: '#app',
 	components: {
 		alert: alter
+	},
+	data: {
+        userType: ''
 	},
 	methods: {
 		notify(text) {
@@ -29,6 +34,16 @@ const app = new Vue({
 		},
 		alertClose(type) {
 			this.notify('Alert is ' + type);
+		}
+	},
+	watch: {
+        userType() {
+            $.notify({
+                message: 'User type changed ' + this.userType
+            }, {
+                type: 'info',
+                delay: 1000
+            });
 		}
 	}
 });
