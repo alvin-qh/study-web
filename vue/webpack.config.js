@@ -4,11 +4,11 @@ const webpack = require("webpack");
 const glob = require("glob");
 const path = require("path");
 const fs = require("fs");
-const cp = require('child_process');
 
 const ExtractTextPlugin = require("extract-text-webpack-plugin");
 const AccessPlugin = require('assets-webpack-plugin');
 const HtmlPlugin = require('html-webpack-plugin');
+const WebpackCleanupPlugin = require("webpack-cleanup-plugin");
 
 const webConfig = {
     isProd: (process.env.NODE_ENV === 'production'),
@@ -18,8 +18,6 @@ const webConfig = {
         dest: file => path.join('www', file || '')
     }
 };
-
-cp.execSync(`rm -rf ${webConfig.paths.dest()}`);
 
 function makeEntries() {
     const src = './' + webConfig.paths.source('js') + '/';
@@ -63,13 +61,14 @@ const plugins = (() => {
             name: ['vendor', 'manifest']
         }),
         new ExtractTextPlugin({
-            filename: 'asset/css/[name]-[hash:8].css',
+            filename: 'asset/css/[name]-[chunkhash:8].css',
             disable: false,
             allChunks: true,
         }),
         new AccessPlugin({
             filename: webConfig.paths.dest('asset/manifest.json')
-        })
+        }),
+        new WebpackCleanupPlugin()
     ]
         .concat(makeTemplates())
         .concat(webConfig.isProd ? [
@@ -90,8 +89,8 @@ module.exports = {
     }, makeEntries()),
     output: {
         path: path.resolve(webConfig.paths.dest()),
-        filename: 'asset/js/[name]-[hash:8].js',
-        chunkFilename: "asset/js/[name]-[hash:8].js",
+        filename: 'asset/js/[name]-[chunkhash:8].js',
+        chunkFilename: "asset/js/[name]-[chunkhash:8].js",
     },
     resolve: {
         alias: {
