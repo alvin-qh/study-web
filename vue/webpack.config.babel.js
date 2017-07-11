@@ -14,19 +14,26 @@ import CleanupPlugin from "webpack-cleanup-plugin";
 const webConfig = {
     isProd: (process.env.NODE_ENV === 'production'),
     paths: {
-        source: file => path.join('asset', file || ''),
-        template: file => path.join('template', file || ''),
-        dest: file => path.join('www', file || '')
+        source: file => path.join('src/assets', file || ''),
+        template: file => path.join('src/www', file || ''),
+        dest: file => path.join('out', file || '')
     }
 };
 
 function makeEntries() {
-    const src = './' + webConfig.paths.source('js') + '/';
-    let entries = {};
-    glob.sync(path.join(src, '/**/main-*.js')).map((file) => './' + file)
+    const src = `./${webConfig.paths.source('js')}/`;
+    const entries = {};
+    // glob.sync(path.join(src, '/**/main-*.js')).map((file) => './' + file)
+    //     .forEach(file => {
+    //         let name = file.replace(src, '').replace('main-', '');
+    //         name = name.replace(path.extname(name), '');
+    //         entries[name] = file;
+    //     });
+
+    glob.sync(path.join(src, '/**/main.js')).map(file => `./${file}`)
         .forEach(file => {
-            let name = file.replace(src, '').replace('main-', '');
-            name = name.replace(path.extname(name), '');
+            let name = path.dirname(file);
+            name = name.substr(name.lastIndexOf('/') + 1);
             entries[name] = file;
         });
     return entries;
@@ -36,13 +43,13 @@ function makeTemplates() {
     return glob.sync(path.join(webConfig.paths.template(), '/**/*.html'))
         .map(file => {
             return new HtmlPlugin({
-                filename: path.basename(file),
+                filename: file.substr(file.indexOf('/') + 1),
                 template: file,
                 inject: false,
                 cache: true,
                 minify: {
-                    collapseWhitespace: true,
-                    removeComments: true
+                    collapseWhitespace: webConfig.isProd,
+                    removeComments: webConfig.isProd
                 }
             });
         });

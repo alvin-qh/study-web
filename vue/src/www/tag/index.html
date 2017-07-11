@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <% for (css of htmlWebpackPlugin.files.chunks['common'].css) { %>
+    <link href="<%=(css + '?v=' + new Date().getTime())%>" rel="stylesheet" type="text/css">
+    <% } %>
+
+    <% for (css of htmlWebpackPlugin.files.chunks['tag'].css) { %>
+    <link href="<%=(css + '?v=' + new Date().getTime())%>" rel="stylesheet" type="text/css">
+    <% } %>
+
+    <title>Tags</title>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script src="<%=(htmlWebpackPlugin.files.chunks['manifest'].entry + '?v=' + new Date().getTime())%>"></script>
+</head>
+<body>
+<div id="app" class="container-fluid">
+    <breadcrumb v-bind:previous="[{name:'Home', href:'../index.html'}]"></breadcrumb>
+
+    <div class="panel panel-primary">
+        <div class="panel-heading">
+            <div class="panel-title">
+                <strong>Simple Tag</strong>
+            </div>
+        </div>
+        <div class="panel-body">
+            <div class="clearfix">
+                <alert class="col-md-4" type="danger" closeable="true"
+                       v-on:close="alertClose('close')"
+                       v-on:closed="alertClose('closed')">
+                    Hello
+                </alert>
+            </div>
+
+            <div class="row clearfix">
+                <div class="clearfix">
+                    <div class="col-md-5">
+                        <panel type="warning"
+                               title="Panel Demo"
+                               footer="This is a panel demo"
+                               collapsible="true"
+                               expand="true">
+                            This is Vue + bootstrap panel tag
+                        </panel>
+                    </div>
+                </div>
+
+                <panel-group class="col-md-5">
+                    <panel type="info"
+                           collapsible="true"
+                           title="Panel A"
+                           expand="true">
+                        This is grouped panel A, and exclusion with panel B
+                    </panel>
+                    <panel type="info"
+                           collapsible="true"
+                           title="Panel B">
+                        This is grouped panel B, and exclusion with panel A
+                    </panel>
+                </panel-group>
+            </div>
+
+            <div class="container-fluid">
+                <div class="form form-horizontal">
+                    <name-select label="用户选择" name="user" v-model="userType">
+                        <option value="">请选择用户类型</option>
+                        <option value="TEACHER">教师</option>
+                        <option value="STUDENT">学生</option>
+                    </name-select>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="<%=(htmlWebpackPlugin.files.chunks['vendor'].entry + '?v=' + new Date().getTime())%>"></script>
+<script src="<%=(htmlWebpackPlugin.files.chunks['common'].entry + '?v=' + new Date().getTime())%>"></script>
+<script src="<%=(htmlWebpackPlugin.files.chunks['tag'].entry + '?v=' + new Date().getTime())%>"></script>
+<script>
+    tag.index();
+</script>
+</body>
+</html>
