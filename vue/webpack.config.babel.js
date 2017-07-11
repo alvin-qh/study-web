@@ -69,7 +69,7 @@ const plugins = (() => {
             name: ['vendor', 'manifest']
         }),
         new ExtractTextPlugin({
-            filename: webConfig.isProd ? 'asset/css/[name]-[chunkhash:8].css' : 'asset/css/[name].css',
+            filename: webConfig.isProd ? 'assets/css/[name]-[chunkhash:8].css' : 'assets/css/[name].css',
             disable: false,
             allChunks: true,
         }),
@@ -78,7 +78,7 @@ const plugins = (() => {
         .concat(makeTemplates())
         .concat(webConfig.isProd ? [
             new AccessPlugin({
-                filename: webConfig.paths.dest('asset/manifest.json')
+                filename: webConfig.paths.dest('assets/manifest.json')
             }),
             new UglifyJsPlugin({
                 compress: {
@@ -97,12 +97,12 @@ module.exports = {
     }, makeEntries()),
     output: {
         path: path.resolve(webConfig.paths.dest()),
-        filename: webConfig.isProd ? 'asset/js/[name]-[chunkhash:8].js' : 'asset/js/[name].js',
-        chunkFilename: webConfig.isProd ? 'asset/js/[name]-[chunkhash:8].js' : 'asset/js/[name].js',
+        filename: webConfig.isProd ? 'assets/js/[name]-[chunkhash:8].js' : 'assets/js/[name].js',
+        chunkFilename: webConfig.isProd ? 'assets/js/[name]-[chunkhash:8].js' : 'assets/js/[name].js',
     },
     resolve: {
         alias: {
-            vue: 'vue/dist/vue.js'
+            vue: webConfig.isProd ? 'vue/dist/vue.min.js' : 'vue/dist/vue.js'
         }
     },
     module: {
@@ -135,7 +135,7 @@ module.exports = {
                 loader: 'url-loader',
                 options: {
                     limit: 30000,
-                    name: webConfig.isProd ? 'asset/static/[name]-[hash:8].[ext]' : 'asset/static/[name].[ext]'
+                    name: webConfig.isProd ? 'assets/css/static/[name]-[hash:8].[ext]' : 'assets/css/static/[name].[ext]'
                 }
             }]
         }, {

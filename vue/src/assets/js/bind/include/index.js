@@ -4,7 +4,6 @@ import Vue from "vue";
 import util from "../../common/utils";
 import ns from "../../common/ns";
 
-
 ns('bind.index', function () {
     new Vue({
         el: '#app',
