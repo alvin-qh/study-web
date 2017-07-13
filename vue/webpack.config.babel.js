@@ -59,7 +59,7 @@ const plugins = (() => {
     const ProvidePlugin = webpack.ProvidePlugin;
     const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
     const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
-
+    const HotModuleReplacementPlugin = webpack.HotModuleReplacementPlugin;
     return [
         new ProvidePlugin({
             $: "jquery",
@@ -88,7 +88,9 @@ const plugins = (() => {
                     comments: false,
                 }
             })
-        ] : []);
+        ] : [
+            new HotModuleReplacementPlugin()
+        ]);
 })();
 
 module.exports = {
@@ -130,12 +132,21 @@ module.exports = {
                 fallback: 'style-loader'
             })
         }, {
-            test: /\.(eot|woff|woff2|ttf|svg|png|jpg)$/,
+            test: /\.(eot|woff|woff2|ttf)$/,
             use: [{
                 loader: 'url-loader',
                 options: {
                     limit: 30000,
-                    name: webConfig.isProd ? 'assets/css/static/[name]-[hash:8].[ext]' : 'assets/css/static/[name].[ext]'
+                    name: webConfig.isProd ? 'assets/css/fonts/[name]-[hash:8].[ext]' : 'assets/css/fonts/[name].[ext]'
+                }
+            }]
+        }, {
+            test: /\.(svg|png|jpg|gif)$/,
+            use: [{
+                loader: 'url-loader',
+                options: {
+                    limit: 30000,
+                    name: webConfig.isProd ? 'assets/css/images/[name]-[hash:8].[ext]' : 'assets/css/images/[name].[ext]'
                 }
             }]
         }, {
@@ -146,7 +157,9 @@ module.exports = {
     },
     plugins: plugins,
     devServer: {
-        contentBase: path.resolve('www/')
+        contentBase: path.resolve('out/'),
+        inline: true,
+        hot: true
     },
     devtool: 'cheap-source-map',
 };
