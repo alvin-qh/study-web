@@ -23,6 +23,7 @@ const webConfig = {
 function makeEntries() {
     const src = `./${webConfig.paths.source('js')}/`;
     const entries = {};
+
     // glob.sync(path.join(src, '/**/main-*.js')).map((file) => './' + file)
     //     .forEach(file => {
     //         let name = file.replace(src, '').replace('main-', '');
@@ -42,11 +43,19 @@ function makeEntries() {
 function makeTemplates() {
     return glob.sync(path.join(webConfig.paths.template(), '/**/*.html'))
         .map(file => {
+            let chunks = file.replace(webConfig.paths.template() + '/', '');
+            chunks = chunks.substr(0, chunks.indexOf('/')) || 'home';
+            chunks = ['manifest', 'vendor', 'common', chunks];
+
             return new HtmlPlugin({
                 filename: file.substr(file.indexOf('/') + 1),
                 template: file,
                 inject: false,
+                chunks: chunks,
                 cache: true,
+                chunksSortMode(a, b) {
+                    return chunks.indexOf(a.names[0]) - chunks.indexOf(b.names[0]);
+                },
                 minify: {
                     collapseWhitespace: webConfig.isProd,
                     removeComments: webConfig.isProd
@@ -100,6 +109,7 @@ module.exports = {
     output: {
         path: path.resolve(webConfig.paths.dest()),
         filename: webConfig.isProd ? 'assets/js/[name]-[chunkhash:8].js' : 'assets/js/[name].js',
+        publicPath: "/",
         chunkFilename: webConfig.isProd ? 'assets/js/[name]-[chunkhash:8].js' : 'assets/js/[name].js',
     },
     resolve: {

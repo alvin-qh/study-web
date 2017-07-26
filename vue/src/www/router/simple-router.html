@@ -5,13 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <% for (css of htmlWebpackPlugin.files.chunks['common'].css) { %>
-    <link href="<%=(css + '?v=' + new Date().getTime())%>" rel="stylesheet" type="text/css">
-    <% } %>
-
-    <% for (css of htmlWebpackPlugin.files.chunks['router'].css) { %>
-    <link href="<%=(css + '?v=' + new Date().getTime())%>" rel="stylesheet" type="text/css">
-    <% } %>
+    <% for (chunk in htmlWebpackPlugin.files.chunks) { %><% if (htmlWebpackPlugin.files.chunks[chunk].css.length) { %>
+    <link href="<%=(htmlWebpackPlugin.files.chunks[chunk].css[0] + '?v=' + new Date().getTime())%>" rel="stylesheet">
+    <% }} %>
 
     <title>Simple Router</title>
 
@@ -22,15 +18,15 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script src="<%=(htmlWebpackPlugin.files.chunks['manifest'].entry + '?v=' + new Date().getTime())%>"></script>
 </head>
 <body>
 <div id="app" class="container-fluid">
 </div>
 
-<script src="<%=(htmlWebpackPlugin.files.chunks['vendor'].entry + '?v=' + new Date().getTime())%>"></script>
-<script src="<%=(htmlWebpackPlugin.files.chunks['common'].entry + '?v=' + new Date().getTime())%>"></script>
-<script src="<%=(htmlWebpackPlugin.files.chunks['router'].entry + '?v=' + new Date().getTime())%>"></script>
+<% for (chunk in htmlWebpackPlugin.files.chunks) { %>
+<script src="<%=(htmlWebpackPlugin.files.chunks[chunk].entry + '?v=' + new Date().getTime())%>"></script>
+<% } %>
+
 <script>
     router.simple();
 </script>
