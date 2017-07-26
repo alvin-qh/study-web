@@ -65,8 +65,8 @@ const plugins = (() => {
     const HotModuleReplacementPlugin = webpack.HotModuleReplacementPlugin;
     return [
         new ProvidePlugin({
-            '$': 'jquery',
-            'jQuery': 'jquery'
+            $: 'jquery',
+            jQuery: 'jquery'
         }),
         new CommonsChunkPlugin({
             name: ['vendor', 'manifest']
