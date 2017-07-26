@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+* {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+body {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif
+}
+
+a {
+    text-decoration: none;
+    color: #708090;
+}
+
+.menu-bar {
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+        display: block;
+
+        li {
+            float: left;
+            width: 25%;
+
+            padding-left: 10px;
+            padding-right: 10px;
+
+            position: relative;
+
+            a {
+                display: inline-block;
+                width: 100%;
+                border: 1px solid #eee;
+                padding: 5px 10px;
+
+                &:hover {
+                    background: #eee;
+                }
+            }
+        }
+    }
+
+    ul:after {
+        content: '';
+        display: block;
+        clear: both;
+    }
+
+    .menu-bar-btn {
+        display: none;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    body {
+        font-size: 18px;
+    }
+}
+
+@media screen and (min-width: 1024px) and (max-width: 1200px) {
+    body {
+        font-size: 16px;
+    }
+}
+
+@media screen and (min-width: 480px) and (max-width: 1024px) {
+    body {
+        font-size: 14px;
+    }
+
+    .menu-bar {
+        ul {
+            li {
+                width: 50%;
+                margin-top: 5px;
+            }
+        }
+    }
+}
+
+@media screen and (min-width: 320px) and (max-width: 480px) {
+    body {
+        font-size: 12px;
+    }
+
+    .menu-bar {
+        ul {
+            border: 1px solid #eee;
+            width: 150px;
+            box-shadow: #ddd 2px 2px;
+            position: absolute;
+            background: #fff;
+            display: none;
+
+            li {
+                width: 150px;
+                float: none;
+
+                a {
+                    border: none;
+                }
+            }
+        }
+
+        .menu-bar-btn {
+            display: block;
+            background: url("../../../image/menu-icon.png") no-repeat;
+            background-size: 32px auto;
+            width: 32px;
+            height: 32px;
+        }
+    }
+}
