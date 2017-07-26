@@ -2,8 +2,8 @@
 
 import $ from 'jquery';
 
-$('body').on('click', '.menu-bar>.menu-bar-btn', e => {
-    const $menuBarDropDown = $(e.currentTarget).closest('.menu-bar').find('ul');
+$('body').on('click', '.nav.nav-menu-bar>.nav-menu-btn', e => {
+    const $menuBarDropDown = $(e.currentTarget).closest('.nav-menu-bar').find('.nav-menu');
 
     const display = $menuBarDropDown.css('display');
     if ('none' === display) {
@@ -14,5 +14,5 @@ $('body').on('click', '.menu-bar>.menu-bar-btn', e => {
 });
 
 $(window).on('resize', () => {
-    $('.menu-bar>ul').css('display', '');
+    $('.nav.nav-menu-bar>.nav-menu').css('display', '');
 });
