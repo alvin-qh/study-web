@@ -2,18 +2,17 @@
     <div>
         <div id="breadcrumb">
             <breadcrumb :previous="[
-                {name:'Home', href:'../index.html'},
-                {name:'Router', href:'./index.html'}
-                ]"></breadcrumb>
+                {name:'Home', href:'/www/'},
+                {name:'Router', href:'/www/router/'}
+                ]">
+            </breadcrumb>
         </div>
 
         <div class="container-fluid">
             <ul class="nav nav-tabs" role="tablist">
                 <template v-for="(router, href) in routers">
                     <li role="presentation" :class="{'active': currentLink === href}">
-                        <v-link :href="href" :title="router.title" :routers="routers" v-model="currentLink">
-                            {{router.title}}
-                        </v-link>
+                        <a :href="href" :title="router.title">{{router.title}}</a>
                     </li>
                 </template>
             </ul>
@@ -29,24 +28,19 @@
 </template>
 
 <script>
-    import VLink from "../../../widget/v-link.vue";
     import "../../../widget/breadcrumb";
 
     import routers from "./routers";
 
     export default {
-        components: {
-            VLink
-        },
         data() {
             return {
-                routers: routers,
-                currentLink: window.location.pathname
+                routers: routers
             };
         },
-        watch: {
-            currentLink() {
-                this.$root.currentLink = this.currentLink;
+        computed: {
+        	currentLink() {
+        		return window.location.pathname;
             }
         }
     }

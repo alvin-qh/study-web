@@ -21,7 +21,7 @@
 </head>
 <body>
 <div id="app" class="container-fluid">
-    <breadcrumb :previous="[{name:'Home', href:'../index.html'}, {name:'Router', href:'./index.html'}]"></breadcrumb>
+    <breadcrumb :previous="[{name:'Home', href:'/www/'}, {name:'Router', href:'./index.html'}]"></breadcrumb>
 </div>
 
 <% for (chunk in htmlWebpackPlugin.files.chunks) { %>
@@ -29,7 +29,7 @@
 <% } %>
 
 <script>
-    home();
+	router.page();
 </script>
 </body>
 </html>

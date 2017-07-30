@@ -3,7 +3,7 @@
 import "../widget/breadcrumb";
 
 import "./include/index";
-import "./include/simple-router";
-import "./include/page-router";
+import "./include/simple";
+import "./include/page";
 
 import "../../css/router/main.less";

@@ -15,7 +15,7 @@ Vue.component('breadcrumb', {
 	template: template,
 	data() {
 		return {
-			title: $('head title').text()
+			title: document.title
 		};
 	},
 	props: {
@@ -40,7 +40,9 @@ Vue.component('breadcrumb', {
 				}
 				return ok;
 			},
-			default: []
+			default() {
+				return [];
+			}
 		}
 	}
 });

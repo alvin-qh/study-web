@@ -9,8 +9,8 @@ ns('router.index', function () {
         el: '#app',
         data: {
             links: [
-                {name: 'Simple', href: './simple-router.html'},
-                {name: 'Page', href: './page-router.html'}
+                {name: 'Simple', href: '/www/router/simple.html'},
+                {name: 'Page', href: '/www/router/page.html'}
             ]
         }
     });
