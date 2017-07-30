@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="container-fluid">
         <div id="breadcrumb">
             <breadcrumb :previous="[
                 {name:'Home', href:'/www/'},
@@ -8,7 +8,7 @@
             </breadcrumb>
         </div>
 
-        <div class="container-fluid">
+        <div class="tab-pane">
             <ul class="nav nav-tabs" role="tablist">
                 <template v-for="(router, href) in routers">
                     <li role="presentation" :class="{'active': currentLink === href}">

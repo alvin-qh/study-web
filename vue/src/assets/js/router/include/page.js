@@ -27,7 +27,7 @@ ns('router.page', function () {
 			page('*', e => location.href = e.path);
 			page();
 
-			setTimeout(() => page.redirect('/www/router/page/page1'), 2000);
+			setTimeout(() => page.redirect('/www/router/page/page1'), 1000);
 		},
 		render(h) {
 			return h(this.ViewComponent)

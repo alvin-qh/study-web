@@ -1,6 +1,6 @@
 <template>
     <div class="container-fluid">
-        Loading...
+        <div class="loading">Loading...</div>
     </div>
 </template>
 
@@ -19,3 +19,10 @@
 
 	export default comp;
 </script>
+
+<style lang="less" scoped>
+    .loading {
+        text-align: center;
+        margin-top: 30px;
+    }
+</style>
