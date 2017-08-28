@@ -1,6 +1,5 @@
 'use strict';
 
-
 import webpack from "webpack";
 
 import glob from "glob";
@@ -24,14 +23,7 @@ function makeEntries() {
     const src = `./${webConfig.paths.source('js')}/`;
     const entries = {};
 
-    // glob.sync(path.join(src, '/**/main-*.js')).map((file) => './' + file)
-    //     .forEach(file => {
-    //         let name = file.replace(src, '').replace('main-', '');
-    //         name = name.replace(path.extname(name), '');
-    //         entries[name] = file;
-    //     });
-
-    glob.sync(path.join(src, '/**/main.js')).map(file => `./${file}`)
+    glob.sync(path.join(src, '/**/main.js?(x)')).map(file => `./${file}`)
         .forEach(file => {
             let name = path.dirname(file);
             name = name.substr(name.lastIndexOf('/') + 1);
@@ -69,11 +61,9 @@ const plugins = (() => {
     const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
     const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
     const HotModuleReplacementPlugin = webpack.HotModuleReplacementPlugin;
+
     return [
-        new ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery"
-        }),
+        new ProvidePlugin({}),
         new CommonsChunkPlugin({
             name: ['vendor', 'manifest']
         }),
@@ -104,7 +94,7 @@ const plugins = (() => {
 
 module.exports = {
     entry: Object.assign({
-        vendor: ['jquery', 'bootstrap', 'vue', 'moment', 'lodash']
+        vendor: ['react']
     }, makeEntries()),
     output: {
         path: path.resolve(webConfig.paths.dest()),
@@ -113,19 +103,25 @@ module.exports = {
         chunkFilename: webConfig.isProd ? 'assets/js/[name]-[chunkhash:8].js' : 'assets/js/[name].js',
     },
     resolve: {
-        alias: {
-            vue: webConfig.isProd ? 'vue/dist/vue.min.js' : 'vue/dist/vue.js'
-        },
+        alias: {},
         extensions: ['.js', '.jsx', '.json', '.coffee']
     },
     module: {
         rules: [{
-            test: /\.js$/,
+            test: /\.jsx?$/,
             exclude: [/node_modules/],
             use: [{
                 loader: 'babel-loader',
                 options: {
-                    presets: ['es2015', 'stage-3']
+                    presets: ['es2015', 'stage-3', 'react']
+                }
+            }]
+        }, {
+            test: /\.css$/,
+            use: [{
+                loader: "css-loader",
+                options: {
+                    minimize: webConfig.isProd
                 }
             }]
         }, {
@@ -160,10 +156,6 @@ module.exports = {
                     name: webConfig.isProd ? 'assets/css/images/[name]-[hash:8].[ext]' : 'assets/css/images/[name].[ext]'
                 }
             }]
-        }, {
-            test: /\.vue$/,
-            exclude: [/node_modules/],
-            loader: 'vue-loader'
         }]
     },
     plugins: plugins,
