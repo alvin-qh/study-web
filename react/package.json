@@ -2,7 +2,11 @@
     "name": "react-demo",
     "version": "1.0.0",
     "description": "Demo of react and webpack",
-    "dependencies": {},
+    "dependencies": {
+        "animate.css": "^3.5.2",
+        "bootstrap": "^3.3.7",
+        "react-bootstrap": "^0.31.2"
+    },
     "devDependencies": {
         "assets-webpack-plugin": "^3.5.1",
         "babel-core": "^6.26.0",
@@ -14,8 +18,10 @@
         "babel-preset-stage-3": "^6.24.1",
         "css-loader": "^0.28.5",
         "extract-text-webpack-plugin": "^3.0.0",
+        "file-loader": "^0.11.2",
         "glob": "^7.1.2",
         "html-webpack-plugin": "^2.30.1",
+        "less": "^2.7.2",
         "less-loader": "^4.0.5",
         "react": "^15.6.1",
         "react-dom": "^15.6.1",

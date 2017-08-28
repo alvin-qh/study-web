@@ -94,7 +94,7 @@ const plugins = (() => {
 
 module.exports = {
     entry: Object.assign({
-        vendor: ['react']
+        vendor: ['react', 'react-dom']
     }, makeEntries()),
     output: {
         path: path.resolve(webConfig.paths.dest()),
