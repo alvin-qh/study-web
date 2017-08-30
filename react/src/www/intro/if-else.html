@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>If</title>
+    <title>If / Else</title>
 
     <% for (chunk in htmlWebpackPlugin.files.chunks) { %><% if (htmlWebpackPlugin.files.chunks[chunk].css.length) { %>
     <link href="<%=(htmlWebpackPlugin.files.chunks[chunk].css[0] + '?v=' + new Date().getTime())%>" rel="stylesheet">
@@ -28,7 +28,7 @@
 <% } %>
 
 <script>
-    intro.index();
+    intro.ifElse();
 </script>
 </body>
 </html>

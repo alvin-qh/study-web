@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>If</title>
+    <title>Introduce</title>
 
     <% for (chunk in htmlWebpackPlugin.files.chunks) { %><% if (htmlWebpackPlugin.files.chunks[chunk].css.length) { %>
     <link href="<%=(htmlWebpackPlugin.files.chunks[chunk].css[0] + '?v=' + new Date().getTime())%>" rel="stylesheet">
@@ -20,6 +20,7 @@
 
 </head>
 <body>
+
 <div id="app" class="container-fluid">
 </div>
 
@@ -28,7 +29,7 @@
 <% } %>
 
 <script>
-    intro.index();
+    home.index();
 </script>
 </body>
 </html>

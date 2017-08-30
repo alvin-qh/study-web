@@ -6,36 +6,31 @@ import {Breadcrumb} from "react-bootstrap";
 
 import ns from "../../common/ns";
 
-import "../../../css/intro/index.less";
-
-ns('intro.index', function () {
+ns('intro.hello', function () {
 
     const breadcrumb = (
         <Breadcrumb>
             <Breadcrumb.Item href="/www/">
                 Home
             </Breadcrumb.Item>
-            <Breadcrumb.Item active>
+            <Breadcrumb.Item href="/www/intro/">
                 Introduce
+            </Breadcrumb.Item>
+            <Breadcrumb.Item active>
+                Hello
             </Breadcrumb.Item>
         </Breadcrumb>
     );
 
-    const menu = (
-        <nav className="simple-menu">
-            <ul>
-                <li><a href="hello.html">Hello</a></li>
-                <li><a href="if-else.html">If / Else</a></li>
-            </ul>
-        </nav>
-    );
-
-    const div = (
+    const body = (
         <div className="row">
             {breadcrumb}
-            {menu}
+
+            <div className="text-center">
+                <h1>Hello, World</h1>
+            </div>
         </div>
     );
 
-    ReactDOM.render(div, document.getElementById('app'));
+    ReactDOM.render(body, document.getElementById('app'));
 });
