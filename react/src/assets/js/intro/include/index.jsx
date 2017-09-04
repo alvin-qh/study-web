@@ -25,6 +25,7 @@ ns('intro.index', function () {
         <nav className="simple-menu">
             <ul>
                 <li><a href="hello.html">Hello</a></li>
+                <li><a href="component.html">Component</a></li>
                 <li><a href="if-else.html">If / Else</a></li>
             </ul>
         </nav>
