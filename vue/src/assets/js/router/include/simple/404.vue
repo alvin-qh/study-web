@@ -3,7 +3,9 @@
 </template>
 
 <script>
-	import Layout from "./layout.vue";
+    'use strict';
+
+    import Layout from "./layout.vue";
 
 	export default {
 		title: '404',

@@ -28,6 +28,8 @@
 </template>
 
 <script>
+    'use strict';
+
     import "../../../widget/breadcrumb";
 
     import routers from "./routers";

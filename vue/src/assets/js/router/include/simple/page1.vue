@@ -7,6 +7,8 @@
 </template>
 
 <script>
+    'use strict';
+
     import Layout from "./layout.vue";
 
     const comp = {

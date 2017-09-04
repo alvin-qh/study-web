@@ -5,7 +5,9 @@
 </template>
 
 <script>
-	import Layout from "./layout.vue";
+    'use strict';
+
+    import Layout from "./layout.vue";
 
 	const comp = {
 		title: 'Loading',

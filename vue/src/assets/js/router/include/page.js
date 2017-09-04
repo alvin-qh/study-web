@@ -9,28 +9,28 @@ import ns from "../../common/ns";
 import routers from "./page/routers";
 import PageLoading from "./page/loading.vue";
 
-import "../../widget/breadcrumb";
+import "../../../css/router/router.less";
 
 ns('router.page', function () {
-	new Vue({
-		el: '#app',
-		data: {
-			ViewComponent: PageLoading
-		},
-		created() {
-			page('/www/router/page.html', () => this.ViewComponent = PageLoading);
+    new Vue({
+        el: '#app',
+        data: {
+            ViewComponent: PageLoading
+        },
+        created() {
+            page('/www/router/page.html', () => this.ViewComponent = PageLoading);
 
-			_.each(routers, (comp, href) => {
-				page(href, () => this.ViewComponent = comp);
-			});
+            _.each(routers, (comp, href) => {
+                page(href, () => this.ViewComponent = comp);
+            });
 
-			page('*', e => location.href = e.path);
-			page();
+            page('*', e => location.href = e.path);
+            page();
 
-			setTimeout(() => page.redirect('/www/router/page/page1'), 1000);
-		},
-		render(h) {
-			return h(this.ViewComponent)
-		}
-	});
+            setTimeout(() => page.redirect('/www/router/page/page1'), 500);
+        },
+        render(h) {
+            return h(this.ViewComponent)
+        }
+    });
 });

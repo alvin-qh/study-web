@@ -30,6 +30,8 @@
 </template>
 
 <script>
+    'use strict';
+
     import VLink from "./v-link.vue";
     import routers from "./routers";
 
