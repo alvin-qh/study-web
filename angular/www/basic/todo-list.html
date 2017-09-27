@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html ng-app="todoApp">
+<head lang="en">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Angular Controller</title>
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/dist/css/bootstrap.min.css">
+    <style>
+        span.done-true {
+            text-decoration: line-through;
+        }
+    </style>
+</head>
+<body>
+<div class="container" ng-controller="TodoListController">
+    <div class="row">
+        <div class="container-fluid">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="panel-title">Todo List</div>
+                </div>
+                <div class="panel-body">
+                    <!--执行 TodoListController 中的 remaining 函数, 计算完成的项目数-->
+                    <!--获取 TodoListController 中的 items 集合个数, 获取项目总数-->
+                    <span>{{todo.remaining()}} of {{todo.items.length}} remaining</span>
+                    <!--执行 TodoListController 中的 archive 函数, 删除完成的项目-->
+                    [ <a href="" ng-click="todo.archive()">archive</a> ]
+
+                    <ul class="list-unstyled">
+                        <!--遍历 TodoListController 中的 items 集合, 显示每个项目-->
+                        <li ng-repeat="item in todo.items">
+                            <!--显示项目是否完成的状态, 通过每个 item 的 'done' 属性  -->
+                            <input type="checkbox" ng-model="item.done">
+                            <!--显示项目的内容, 通过每个 item 的 'text' 属性  -->
+                            <span class="done-{{item.done}}">{{item.text}}</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="panel-footer">
+                    <!--表单提交后执行 TodoListController 中的 addToList 函数-->
+                    <form class="form-inline" ng-submit="todo.addToList()">
+                        <div class="form-group form-group-sm">
+                            <!--文本框内容保存为 TodoListController 中的 todoText 属性-->
+                            <input size="20" ng-model="todo.todoText" class="form-control">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-sm">Add</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../lib/angular/angular.min.js"></script>
+<script src="asset/js/todo.js"></script>
+</body>
+</html>

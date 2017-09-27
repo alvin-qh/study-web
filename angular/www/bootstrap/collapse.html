@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="collapseApp">
+<head lang="en">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Collapse</title>
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container" ng-controller="CollapseController">
+    <div class="row">
+        <div class="container-fluid">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="panel-title">Collapse</div>
+                </div>
+                <div class="panel-body">
+                    <div>
+                        <button class="btn btn-primary" ng-click="collapseClick()">Collapse</button>
+                    </div>
+                    <div style="margin-top: 10px">
+                        <div uib-collapse="isCollapsed">
+                            <div class="well well-lg">Some content</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../lib/angular/angular.min.js"></script>
+<script src="../lib/angular-animate/angular-animate.min.js"></script>
+<script src="../lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="asset/js/collapse.js"></script>
+
+</body>
+</html>

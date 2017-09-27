@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html ng-app="compileApp">
+<head lang="en">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>$compile</title>
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../lib/angular-ui-switch/angular-ui-switch.min.css">
+    <link rel="stylesheet" type="text/css" href="asset/css/main.css">
+</head>
+<body>
+<div class="container" ng-controller="CompileController">
+    <div class="row">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <div class="panel-title">$compile</div>
+            </div>
+            <div class="panel-body">
+                <div class="container-fluid">
+                    <div class="form-horizontal">
+                        <div class="form-group form-group-sm">
+                            <label class="control-label">HTML: </label>
+                            <div>
+                                <textarea cols="100" rows="10" ng-model="htmlContent"></textarea>
+                            </div>
+                        </div>
+                        <div class="col-sm-offset-3">
+                            <button type="button" class="btn btn-primary" ng-click="compile()">Compile</button>
+                        </div>
+                    </div>
+                    <div class="compile-result">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../lib/angular/angular.min.js"></script>
+<script src="../lib/angular-animate/angular-animate.min.js"></script>
+<script src="../lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="../lib/angular-ui-switch/angular-ui-switch.min.js"></script>   <!--支持angular的开关组件-->
+<script src="asset/js/$compile.js"></script>
+
+</body>
+</html>

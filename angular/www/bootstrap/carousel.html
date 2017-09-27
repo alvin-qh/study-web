@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html ng-app="carouselApp">
+<head lang="en">
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Carousel</title>
+    <link rel="stylesheet" type="text/css" href="../lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="../lib/angular-ui-switch/angular-ui-switch.min.css">
+    <link rel="stylesheet" type="text/css" href="asset/css/main.css">
+</head>
+<body>
+<div class="container" ng-controller="CarouselController">
+    <div class="row">
+        <div class="container-fluid">
+            <div class="panel panel-primary">
+                <div class="panel-heading">
+                    <div class="panel-title">Carousel</div>
+                </div>
+                <div class="panel-body">
+                    <div style="width: 450px;">
+                        <uib-carousel interval="interval" no-wrap="noWrapSlides">
+                            <uib-slide ng-repeat="slide in slides">
+                                <div ng-if="!slide.image" style="height: 340px; background: #aaa"></div>
+                                <img ng-if="slide.image" ng-src="{{slide.image}}" style="margin:auto;">
+                                <div class="carousel-caption">
+                                    <h4>Slide {{$index + 1}}</h4>
+                                    <p>{{slide.text}}</p>
+                                </div>
+                            </uib-slide>
+                        </uib-carousel>
+                    </div>
+
+                    <div style="margin-top: 30px">
+                        <div class="col-sm-4">
+                            <div class="form-horizontal">
+                                <div class="form-group form-group-sm">
+                                    <label class="control-label">Image url: </label>
+                                    <div>
+                                        <input type="text" class="form-control" ng-model="eachSlide.image">
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-sm">
+                                    <label class="control-label">Text: </label>
+                                    <div>
+                                        <input type="text" class="form-control" ng-model="eachSlide.text">
+                                    </div>
+                                </div>
+                                <div class="form-group form-group-sm">
+                                    <label class="control-label col-sm-4">No Wrap Slides: </label>
+                                    <div>
+                                        <switch ng-model="noWrapSlides" class="green"></switch>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-sm-offset-1">
+                            <div class="form-horizontal">
+                                <div class="form-group form-group-sm">
+                                    <label class="control-label">Interval, in milliseconds:</label>
+                                    <div>
+                                        <input type="number" class="form-control" ng-model="interval">
+                                    </div>
+                                    <div>Enter a negative number or 0 to stop the interval.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="clear: both" class="col-sm-offset-4">
+                            <button class="btn btn-primary btn-sm" ng-click="addNewSlide()">Add Slider</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../lib/angular/angular.min.js"></script>
+<script src="../lib/angular-animate/angular-animate.min.js"></script>
+<script src="../lib/angular-touch/angular-touch.min.js"></script>
+<script src="../lib/angular-ui-switch/angular-ui-switch.min.js"></script>
+<script src="../lib/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="asset/js/carousel.js"></script>
+
+</body>
+</html>

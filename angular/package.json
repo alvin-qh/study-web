@@ -1,0 +1,10 @@
+{
+    "name": "study-angularjs",
+    "version": "0.0.1",
+    "description": "An angularjs demo project",
+    "dependencies": {
+    },
+    "devDependencies": {
+        "bower": "^1.3.3"
+    }
+}
