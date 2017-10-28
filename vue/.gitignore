@@ -3,4 +3,3 @@ node_modules
 package-lock.json
 /PhantomJS*/
 /coverage/
-/package-lock.json
