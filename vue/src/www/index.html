@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html" charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Demo Home</title>
+    <meta name="renderer" content="webkit">
+    <meta name="robots" content="index, follow">
 
     <% for (chunk in htmlWebpackPlugin.files.chunks) { %><% if (htmlWebpackPlugin.files.chunks[chunk].css.length) { %>
     <link href="<%=(htmlWebpackPlugin.files.chunks[chunk].css[0] + '?v=' + new Date().getTime())%>" rel="stylesheet">
@@ -18,58 +19,44 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
 
+    <title>Demo Home</title>
+
 </head>
 <body>
-<div id="app" class="container-fluid">
-    <nav class="row navbar navbar-inverse">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
-                        data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/www/">Home</a>
-            </div>
+<div id="app" role="main">
+    <header>
+        <b-navbar class="bg-dark" toggleable="md" type="dark" variant="info">
+            <b-navbar-toggle target="navbar-collapse"></b-navbar-toggle>
+            <b-navbar-brand href="#">Vue</b-navbar-brand>
+            <b-collapse is-nav id="navbar-collapse">
+                <b-navbar-nav>
+                    <b-nav-item href="/www/bind/">Bind</b-nav-item>
+                    <b-nav-item href="/www/directive/">Directive</b-nav-item>
+                    <b-nav-item href="/www/tag/">Tags</b-nav-item>
+                    <b-nav-item href="/www/tag/">Tags</b-nav-item>
+                    <b-nav-item href="/www/router/">Router</b-nav-item>
+                    <b-nav-item href="/www/vuex/">Vuex</b-nav-item>
+                </b-navbar-nav>
 
-            <div class="collapse navbar-collapse">
-                <ul class="nav navbar-nav">
-                    <li><p class="navbar-text">{{title}}</p></li>
-                    <li class="dropdown">
-                        <a href="javascript:;"
-                           class="dropdown-toggle"
-                           data-toggle="dropdown"
-                           role="button"
-                           aria-haspopup="true"
-                           aria-expanded="false">Demos <span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a href="/www/bind/">Bind</a></li>
-                            <li><a href="/www/directive/">Directive</a></li>
-                            <li><a href="/www/tag/">Tags</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="/www/router/">Router</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="/www/vuex/">Vuex</a></li>
-                        </ul>
-                    </li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li><p class="navbar-text">{{datetime}}</p></li>
-                </ul>
-            </div>
+                <b-navbar-nav class="ml-auto">
+                    <b-nav-item-dropdown text="About" right>
+                        <b-dropdown-item href="#">Readme</b-dropdown-item>
+                        <b-dropdown-divider></b-dropdown-divider>
+                        <b-dropdown-header>Alvin&copy; Homework</b-dropdown-header>
+                        <b-dropdown-item href="#">Author</b-dropdown-item>
+                    </b-nav-item-dropdown>
+                </b-navbar-nav>
+            </b-collapse>
+        </b-navbar>
+    </header>
+
+    <main class="container">
+        <div class="py-4">
+            <h1>Vue Demos
+                <small>How to build user interfaces with this framework.</small>
+            </h1>
         </div>
-    </nav>
-
-    <div class="page-header">
-        <h1>Vue Demos
-            <small>How to build user interfaces with this framework.</small>
-        </h1>
-    </div>
-    <div class="row">
-        <div class="container-fluid">
+        <di>
             <div class="site">
                 <h4>Homepage:</h4>
                 <p><a href="https://vuefe.cn/" class="text-info">https://vuefe.cn/</a></p>
@@ -84,16 +71,14 @@
                 <h4>API Doc:</h4>
                 <p><a href="https://vuefe.cn/v2/api/" class="text-info">https://vuefe.cn/v2/api/</a></p>
             </div>
-        </div>
-    </div>
+        </di>
+    </main>
 </div>
 
 <% for (chunk in htmlWebpackPlugin.files.chunks) { %>
 <script src="<%=(htmlWebpackPlugin.files.chunks[chunk].entry + '?v=' + new Date().getTime())%>"></script>
 <% } %>
 
-<script>
-    home();
-</script>
+<script>home();</script>
 </body>
 </html>

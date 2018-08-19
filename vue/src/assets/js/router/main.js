@@ -1,6 +1,4 @@
-'use strict';
-
-import "./include/index";
-import "./include/simple";
-import "./include/page";
-import "./include/vue";
+import "./index";
+import "./simple";
+import "./page";
+import "./vue";

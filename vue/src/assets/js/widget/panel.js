@@ -1,7 +1,4 @@
-'use strict';
-
 import Vue from "vue";
-import $ from "jquery";
 
 const template = `<div v-bind:class="['panel', 'panel-' + type]">
     <div v-if="title" class="panel-heading">
@@ -50,7 +47,7 @@ Vue.component('panel', {
 	},
 	mounted() {
 		if (this.isCollapse) {
-			const $current = $(this.$el).find('div.collapse');
+			const $current = $().find('div.collapse');
 			const $others = $current.closest('div.panel-group').find('div.panel')
 				.filter((n, other) => other !== $current[0])
 				.map((n, other) => $(other).find('div.collapse'));

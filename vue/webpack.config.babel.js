@@ -1,37 +1,32 @@
-'use strict';
-
-
 import webpack from "webpack";
 
 import glob from "glob";
 import path from "path";
 
+import cssnano from "cssnano";
+import postCssSafeParser from "postcss-safe-parser";
+
 import ExtractTextPlugin from "extract-text-webpack-plugin";
-import AccessPlugin from "assets-webpack-plugin";
 import HtmlPlugin from "html-webpack-plugin";
 import CleanupPlugin from "webpack-cleanup-plugin";
+import OptimizeCssAssetsPlugin from "optimize-css-assets-webpack-plugin";
+import VueLoaderPlugin from "vue-loader/lib/plugin";
 
-const webConfig = {
+const CONFIG = {
     isProd: (process.env.NODE_ENV === 'production'),
     paths: {
-        source: file => path.join('src/assets', file || ''),
-        template: file => path.join('src/www', file || ''),
-        dest: file => path.join('out', file || '')
+        src: file => path.join('src/assets', file || ''),
+        dst: file => path.join('out', file || ''),
+        www: file => path.join('src/www', file || '')
     }
 };
 
 function makeEntries() {
-    const src = `./${webConfig.paths.source('js')}/`;
+    const src = `./${CONFIG.paths.src('js')}/`;
     const entries = {};
 
-    // glob.sync(path.join(src, '/**/main-*.js')).map((file) => './' + file)
-    //     .forEach(file => {
-    //         let name = file.replace(src, '').replace('main-', '');
-    //         name = name.replace(path.extname(name), '');
-    //         entries[name] = file;
-    //     });
-
-    glob.sync(path.join(src, '/**/main.js')).map(file => `./${file}`)
+    glob.sync(path.join(src, '/**/main.js'))
+        .map(file => `./${file}`)
         .forEach(file => {
             let name = path.dirname(file);
             name = name.substr(name.lastIndexOf('/') + 1);
@@ -41,9 +36,9 @@ function makeEntries() {
 }
 
 function makeTemplates() {
-    return glob.sync(path.join(webConfig.paths.template(), '/**/*.html'))
+    return glob.sync(path.join(CONFIG.paths.www(), '/**/*.html'))
         .map(file => {
-            let chunks = file.replace(webConfig.paths.template() + '/', '');
+            let chunks = file.replace(CONFIG.paths.www() + '/', '');
             chunks = chunks.substr(0, chunks.indexOf('/')) || 'home';
             chunks = ['manifest', 'vendor', 'common', chunks];
 
@@ -57,8 +52,8 @@ function makeTemplates() {
                     return chunks.indexOf(a.names[0]) - chunks.indexOf(b.names[0]);
                 },
                 minify: {
-                    collapseWhitespace: webConfig.isProd,
-                    removeComments: webConfig.isProd
+                    collapseWhitespace: CONFIG.isProd,
+                    removeComments: CONFIG.isProd
                 }
             });
         });
@@ -66,57 +61,62 @@ function makeTemplates() {
 
 const plugins = (() => {
     const ProvidePlugin = webpack.ProvidePlugin;
-    const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
-    const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
     const HotModuleReplacementPlugin = webpack.HotModuleReplacementPlugin;
-    return [
+
+    let plugins = [
+        new VueLoaderPlugin(),
         new ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery"
-        }),
-        new CommonsChunkPlugin({
-            name: ['vendor', 'manifest']
+            // $: 'jquery'
         }),
         new ExtractTextPlugin({
-            filename: webConfig.isProd ? 'assets/css/[name]-[chunkhash:8].css' : 'assets/css/[name].css',
+            filename: CONFIG.isProd ? 'static/css/[name]-[chunkhash:8].css' : 'static/css/[name].css',
             disable: false,
             allChunks: true,
         }),
         new CleanupPlugin()
-    ]
-        .concat(makeTemplates())
-        .concat(webConfig.isProd ? [
-            new AccessPlugin({
-                filename: webConfig.paths.dest('assets/manifest.json')
-            }),
-            new UglifyJsPlugin({
-                compress: {
-                    warnings: false
-                },
-                output: {
-                    comments: false,
-                }
+    ].concat(makeTemplates());
+
+    if (!CONFIG.isProd) {
+        plugins = plugins.concat([
+            new HotModuleReplacementPlugin(),
+            new OptimizeCssAssetsPlugin({
+                assetNameRegExp: /\.css$/g,
+                cssProcessor: cssnano,
+                parser: postCssSafeParser,
+                cssProcessorOptions: {discardComments: {removeAll: true}},
+                canPrint: true
             })
-        ] : [
-            new HotModuleReplacementPlugin()
         ]);
+    }
+    return plugins;
 })();
 
-module.exports = {
-    entry: Object.assign({
-        vendor: ['jquery', 'bootstrap', 'vue', 'moment', 'lodash']
-    }, makeEntries()),
+export default {
+    mode: CONFIG.isProd ? 'production' : 'development',
+    entry: Object.assign({vendor: ['vue', 'bootstrap-vue', 'axios', 'moment', 'lodash', 'common']}, makeEntries()),
     output: {
-        path: path.resolve(webConfig.paths.dest()),
-        filename: webConfig.isProd ? 'assets/js/[name]-[chunkhash:8].js' : 'assets/js/[name].js',
+        path: path.resolve(CONFIG.paths.dst()),
+        filename: CONFIG.isProd ? 'static/js/[name]-[chunkhash:8].js' : 'static/js/[name].js',
         publicPath: "/",
-        chunkFilename: webConfig.isProd ? 'assets/js/[name]-[chunkhash:8].js' : 'assets/js/[name].js',
+        chunkFilename: CONFIG.isProd ? 'static/js/[name]-[chunkhash:8].js' : 'static/js/[name].js',
     },
     resolve: {
         alias: {
-            vue: webConfig.isProd ? 'vue/dist/vue.min.js' : 'vue/dist/vue.js'
+            common: `./${CONFIG.paths.src('js')}/common/common.js`,
+            vue: CONFIG.isProd ? 'vue/dist/vue.min.js' : 'vue/dist/vue.js'
         },
-        extensions: ['.js', '.jsx', '.json', '.coffee']
+        extensions: ['.js', '.vue', '.json']
+    },
+    optimization: {
+        minimize: CONFIG.isProd,
+        removeEmptyChunks: true,
+        splitChunks: {
+            chunks: 'all',
+            name: 'vendor'
+        },
+        runtimeChunk: {
+            name: 'manifest',
+        }
     },
     module: {
         rules: [{
@@ -125,17 +125,22 @@ module.exports = {
             use: [{
                 loader: 'babel-loader',
                 options: {
-                    presets: ['es2015', 'stage-3']
+                    presets: ['env']
                 }
             }]
+        }, {
+            test: /\.css/,
+            use: ExtractTextPlugin.extract({
+                use: [{
+                    loader: 'css-loader',
+                }],
+                fallback: 'style-loader'
+            })
         }, {
             test: /\.less$/,
             use: ExtractTextPlugin.extract({
                 use: [{
                     loader: 'css-loader',
-                    options: {
-                        minimize: webConfig.isProd
-                    }
                 }, {
                     loader: 'less-loader',
                     options: {importLoaders: 1}
@@ -145,19 +150,21 @@ module.exports = {
         }, {
             test: /\.(eot|woff|woff2|ttf)$/,
             use: [{
-                loader: 'url-loader',
+                loader: 'file-loader',
                 options: {
-                    limit: 30000,
-                    name: webConfig.isProd ? 'assets/css/fonts/[name]-[hash:8].[ext]' : 'assets/css/fonts/[name].[ext]'
+                    limit: 10240,
+                    name: CONFIG.isProd ? 'static/fonts/[name]-[hash:8].[ext]' : 'static/fonts/[name].[ext]',
+                    publicPath: '/'
                 }
             }]
         }, {
             test: /\.(svg|png|jpg|gif)$/,
             use: [{
-                loader: 'url-loader',
+                loader: 'file-loader',
                 options: {
-                    limit: 30000,
-                    name: webConfig.isProd ? 'assets/css/images/[name]-[hash:8].[ext]' : 'assets/css/images/[name].[ext]'
+                    limit: 10240,
+                    name: CONFIG.isProd ? 'static/images/[name]-[hash:8].[ext]' : 'static/images/[name].[ext]',
+                    publicPath: '/'
                 }
             }]
         }, {

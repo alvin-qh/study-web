@@ -1,7 +1,4 @@
-'use strict';
-
 import Vue from "vue";
-import $ from "jquery";
 
 const template = `<div v-bind:class="['alert', 'alert-' + type]" role="alert">
     <button v-if="closeable === 'true'" type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -10,26 +7,24 @@ const template = `<div v-bind:class="['alert', 'alert-' + type]" role="alert">
     <slot></slot>
 </div>`;
 
-const alert = Vue.extend({
-	template: template,
-	data() {
-		return {};
-	},
-	props: {
-		type: [String],
-		closeable: {
-			default: 'false'
-		}
-	},
-	mounted() {
-		const $alert = $(this.$el);
-		const self = this;
-		$alert.alert()
-			.off('close.bs.alert')
-			.on('close.bs.alert', e => self.$emit('close'))
-			.off('closed.bs.alert')
-			.on('closed.bs.alert', e => self.$emit('closed'));
-	}
+export default Vue.extend({
+    template: template,
+    data() {
+        return {};
+    },
+    props: {
+        type: [String],
+        closeable: {
+            default: 'false'
+        }
+    },
+    mounted() {
+        const $alert = $(this.$el);
+        const self = this;
+        $alert.alert()
+            .off('close.bs.alert')
+            .on('close.bs.alert', e => self.$emit('close'))
+            .off('closed.bs.alert')
+            .on('closed.bs.alert', e => self.$emit('closed'));
+    }
 });
-
-export default alert;
