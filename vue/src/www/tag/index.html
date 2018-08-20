@@ -1,15 +1,12 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:app="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="content-type" content="text/html" charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <title>Tags</title>
-
-    <% for (chunk in htmlWebpackPlugin.files.chunks) { %><% if (htmlWebpackPlugin.files.chunks[chunk].css.length) { %>
-    <link href="<%=(htmlWebpackPlugin.files.chunks[chunk].css[0] + '?v=' + new Date().getTime())%>" rel="stylesheet">
-    <% }} %>
+    <meta name="renderer" content="webkit">
+    <meta name="robots" content="index, follow">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -17,57 +14,47 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    <title>Tags</title>
 </head>
 <body>
-<div id="app" class="container-fluid">
-    <breadcrumb v-bind:previous="[{name:'Home', href:'/www/'}]"></breadcrumb>
+<div id="app" app:name="tag.index">
+    <header>
+        <breadcrumb :previous="[{name:'Home', href:'/www/'}]"></breadcrumb>
+    </header>
 
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <div class="panel-title">
+    <main class="container">
+        <div class="card card">
+            <div class="card-header">
                 <strong>Simple Tag</strong>
             </div>
-        </div>
-        <div class="panel-body">
-            <div class="clearfix">
-                <alert class="col-md-4" type="danger" closeable="true"
-                       v-on:close="alertClose('close')"
-                       v-on:closed="alertClose('closed')">
-                    Hello
-                </alert>
-            </div>
-
-            <div class="row clearfix">
-                <div class="clearfix">
-                    <div class="col-md-5">
-                        <panel type="warning"
-                               title="Panel Demo"
-                               footer="This is a panel demo"
-                               collapsible="true"
-                               expand="true">
-                            This is Vue + bootstrap panel tag
-                        </panel>
-                    </div>
+            <div class="card-body">
+                <div class="my-4">
+                    <alert class="col-4" type="danger" closeable="true" @close="alertClose('close')"
+                           @closed="alertClose('closed')" speed="fast">Hello
+                    </alert>
                 </div>
 
-                <panel-group class="col-md-5">
-                    <panel type="info"
-                           collapsible="true"
-                           title="Panel A"
+                <div class="my-4">
+                    <panel type="warning" title="Panel Demo" footer="This is a panel demo" collapsible="true"
                            expand="true">
-                        This is grouped panel A, and exclusion with panel B
+                        <h4>This is Vue + bootstrap panel tag</h4>
                     </panel>
-                    <panel type="info"
-                           collapsible="true"
-                           title="Panel B">
-                        This is grouped panel B, and exclusion with panel A
-                    </panel>
-                </panel-group>
-            </div>
+                </div>
 
-            <div class="container-fluid">
-                <div class="form form-horizontal">
-                    <name-select label="用户选择" name="user" v-model="userType">
+                <div class="my-4">
+                    <panel-group>
+                        <panel type="info" collapsible="true" title="Panel A" expand="true">
+                            This is grouped panel A, and exclusion with panel B
+                        </panel>
+                        <panel type="info" collapsible="true" title="Panel B">
+                            This is grouped panel B, and exclusion with panel A
+                        </panel>
+                    </panel-group>
+                </div>
+
+                <div class="form my-4">
+                    <name-select class="col-5" label="用户选择" name="user" v-model="userType">
                         <option value="">请选择用户类型</option>
                         <option value="TEACHER">教师</option>
                         <option value="STUDENT">学生</option>
@@ -75,15 +62,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </main>
 </div>
-
-<% for (chunk in htmlWebpackPlugin.files.chunks) { %>
-<script src="<%=(htmlWebpackPlugin.files.chunks[chunk].entry + '?v=' + new Date().getTime())%>"></script>
-<% } %>
-
-<script>
-    tag.index();
-</script>
 </body>
 </html>

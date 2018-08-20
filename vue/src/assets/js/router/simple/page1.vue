@@ -9,15 +9,13 @@
 <script>
     import Layout from "./layout.vue";
 
-    const comp = {
-	    title: 'Page 1',
-	    components: {
-		    Layout
-	    },
-	    created() {
-		    document.title = comp.title;
-	    }
+    export default {
+        title: 'Page 1',
+        components: {
+            Layout
+        },
+        created() {
+            document.title = comp.title;
+        }
     };
-
-    export default comp;
 </script>

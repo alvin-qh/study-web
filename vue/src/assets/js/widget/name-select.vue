@@ -1,7 +1,7 @@
 <template>
-    <div class="form-group form-group-sm clearfix">
-        <label :for="id" class="control-label pull-left">{{label}}: </label>
-        <select :id="id" :name="name" class="form-control pull-left" v-model="selected">
+    <div class="form-group row">
+        <label :for="id" class="col-form-label text-right">{{label}}: </label>
+        <select :id="id" :name="name" class="form-control" v-model="selected">
             <slot></slot>
         </select>
     </div>

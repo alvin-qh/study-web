@@ -1,65 +1,139 @@
+import "../../css/widget/panel.less";
+
 import Vue from "vue";
 
-const template = `<div v-bind:class="['panel', 'panel-' + type]">
-    <div v-if="title" class="panel-heading">
-        <h4 class="panel-title">
-            <a v-if="isCollapse"
-               role="button"
-               data-toggle="collapse"
-               aria-expanded="true">{{title}}</a>
-            <template v-else>{{title}}</template>
-        </h4>
-    </div>
-    <div v-if="isCollapse" v-bind:class="['collapse', {'in': isExpand}]" role="tabpanel" aria-expanded="false">
-        <div class="panel-body">
+const template = `<div class="widget-panel">
+    <div class="card">
+        <div v-if="title" :class="titleStyle">
+            <a v-if="isCollapsible" href="javascript:;" role="button" data-toggle="collapse" aria-expanded="true" @click="collapseMe">{{ title }}</a>
+            <template v-else>{{ title }}</template>
+        </div>
+        <div class="card-body">
             <slot></slot>
         </div>
+        <div v-if="footer" class="card-footer">{{ footer }}</div>
     </div>
-    <div v-else class="panel-body">
-        <slot></slot>
-    </div>
-    <div v-if="footer" class="panel-footer">{{footer}}</div>
 </div>`;
 
 Vue.component('panel', {
-	template: template,
-	data() {
-		return {};
-	},
-	props: {
-		type: [String],
-		title: [String],
-		footer: [String],
-		collapsible: [String, Boolean],
-		expand: [String, Boolean]
-	},
-	computed: {
-		isCollapse: {
-			get() {
-				return this.collapsible === true || this.collapsible === 'true';
-			}
-		},
-		isExpand: {
-			get() {
-				return this.expand === true || this.expand === 'true';
-			}
-		}
-	},
-	mounted() {
-		if (this.isCollapse) {
-			const $current = $().find('div.collapse');
-			const $others = $current.closest('div.panel-group').find('div.panel')
-				.filter((n, other) => other !== $current[0])
-				.map((n, other) => $(other).find('div.collapse'));
+    template: template,
+    data() {
+        return {
+            timer: null,
+            headerHeight: 0,
+            bodyHeight: 0
+        };
+    },
+    props: {
+        type: [String],
+        title: [String],
+        footer: [String],
+        collapsible: {
+            type: [Boolean, String],
+            default: true
+        },
+        speed: {
+            type: String,
+            default: 'normal'
+        },
+        collapsed: {
+            type: [String, Boolean],
+            default: false
+        }
+    },
+    created() {
+        if (this.$parent && this.$parent.add) {
+            this.$parent.add(this);
+        }
+    },
+    mounted() {
+        this.headerHeight = this.$el.querySelector('div.card-header').offsetHeight + 1;
+        this.bodyHeight = this.$el.querySelector('div.card-body').offsetHeight + 1;
+        const $footer = this.$el.querySelector('div.card-footer');
+        if ($footer) {
+            this.bodyHeight += $footer.offsetHeight;
+        }
+    },
+    computed: {
+        isCollapsible() {
+            return this.collapsible === true || this.collapsible === 'true';
+        },
+        titleStyle() {
+            return ['card-header', `bg-${this.type}`];
+        },
+        animateSpeed() {
+            let interval = 20;
+            switch (this.speed) {
+                case 'fast':
+                    interval = 10;
+                    break;
+                case 'slow':
+                    interval = 40;
+                    break;
+            }
+            return interval;
+        }
+    },
+    methods: {
+        isCollapsed() {
+            return this.$el.offsetHeight > this.headerHeight;
+        },
+        collapseMe() {
+            if (this.timer == null) {
+                if (this.isCollapsed()) {
+                    this.fold();
+                } else {
+                    this.unfold();
+                }
+            }
+        },
+        stop() {
+            if (this.timer != null) {
+                clearInterval(this.timer);
+                this.timer = null;
+            }
+        },
+        fold() {
+            this.stop();
+            let height = this.$el.offsetHeight;
 
-			$(this.$el).find('.panel-heading a')
-				.off('click')
-				.on('click', () => {
-					if ($others.length > 0) {
-						$others.each((n, other) => $(other).collapse('hide'));
-					}
-					$current.collapse('toggle');
-				});
-		}
-	}
+            this.timer = setInterval(() => {
+                if (height <= this.headerHeight) {
+                    this.stop();
+                    height = this.headerHeight;
+                } else {
+                    height -= Math.min(10, height - this.headerHeight);
+                }
+                this.$el.style.height = `${height}px`;
+            }, this.animateSpeed);
+        },
+        unfold() {
+            this.stop();
+            if (this.$parent && this.$parent.expanding) {
+                this.$parent.expanding(this);
+            }
+
+            let height = this.$el.offsetHeight;
+
+            this.timer = setInterval(() => {
+                const fullHeight = this.headerHeight + this.bodyHeight;
+                if (height >= fullHeight) {
+                    this.stop();
+                    height = fullHeight;
+                } else {
+                    height += Math.min(10, fullHeight - height);
+                }
+                this.$el.style.height = `${height}px`;
+            }, this.animateSpeed);
+        }
+    },
+    watch: {
+        collapsed(val) {
+            if (val) {
+                this.fold();
+            } else {
+                this.unfold();
+            }
+        }
+    }
 });
