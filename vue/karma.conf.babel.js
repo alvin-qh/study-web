@@ -1,7 +1,7 @@
 // Karma configuration
 // Generated on Tue Jul 11 2017 15:33:17 GMT+0800 (CST)
 
-import webpackConfig from "./webpack.test.config";
+import webpackConfig from "./webpack.test.config.babel";
 
 export default function (config) {
     config.set({
