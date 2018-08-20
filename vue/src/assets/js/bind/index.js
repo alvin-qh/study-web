@@ -1,9 +1,9 @@
 import Vue from "vue";
-import {ns, Times} from "../common/common";
+import {runWith, Times} from "../common/common";
 
 import "../widget/breadcrumb";
 
-ns('bind.index', function () {
+runWith('bind.index', function () {
     new Vue({
         el: '#app',
         data: {

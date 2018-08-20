@@ -45,7 +45,7 @@ function makeTemplates() {
             return new HtmlPlugin({
                 filename: file.substr(file.indexOf('/') + 1),
                 template: file,
-                inject: false,
+                inject: true,
                 chunks: chunks,
                 cache: true,
                 chunksSortMode(a, b) {

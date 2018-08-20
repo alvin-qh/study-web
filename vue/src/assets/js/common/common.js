@@ -24,3 +24,14 @@ export const Times = {
         return moment().format(DATETIME_FORMAT);
     }
 };
+
+
+export function runWith(name, cb) {
+    const app = document.getElementById('app');
+    if (app) {
+        const role = app.getAttribute('app:name');
+        if (role === name) {
+            cb();
+        }
+    }
+}

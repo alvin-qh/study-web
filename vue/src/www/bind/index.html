@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:="" xmlns:app="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="content-type" content="text/html" charset="utf-8">
@@ -7,10 +7,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="renderer" content="webkit">
     <meta name="robots" content="index, follow">
-
-    <% for (chunk in htmlWebpackPlugin.files.chunks) { %><% if (htmlWebpackPlugin.files.chunks[chunk].css.length) { %>
-    <link href="<%=(htmlWebpackPlugin.files.chunks[chunk].css[0] + '?v=' + new Date().getTime())%>" rel="stylesheet">
-    <% }} %>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -23,9 +19,9 @@
 
 </head>
 <body>
-<div id="app" role="main">
+<div id="app" role="main" app:name="bind.index">
     <header>
-        <breadcrumb v-bind:previous="[{name:'Home', href:'/www/'}]"></breadcrumb>
+        <breadcrumb :previous="[{name:'Home', href:'/www/'}]"></breadcrumb>
     </header>
 
     <main class="container">
@@ -75,7 +71,7 @@
         </div>
 
         <div class="my-4">
-            <div v-bind:class="['card', 'card-' + panelColor]">
+            <div :class="['card', 'card-' + panelColor]">
                 <div class="card-header">
                     <strong>Class bind and Watched</strong>
                 </div>
@@ -102,7 +98,7 @@
 
                         <div class="row">
                             <div class="col-2">
-                                <div v-bind:class="['alert', 'alert-sm', 'alert-' + color]">&nbsp;</div>
+                                <div :class="['alert', 'alert-sm', 'alert-' + color]">&nbsp;</div>
                             </div>
                         </div>
                     </div>
@@ -111,11 +107,5 @@
         </div>
     </main>
 </div>
-
-<% for (chunk in htmlWebpackPlugin.files.chunks) { %>
-<script src="<%=(htmlWebpackPlugin.files.chunks[chunk].entry + '?v=' + new Date().getTime())%>"></script>
-<% } %>
-
-<script>bind.index();</script>
 </body>
 </html>
