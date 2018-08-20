@@ -5,7 +5,7 @@
     "scripts": {
         "setup": "npm install --update-binary",
         "package": "./node_modules/.bin/webpack --config webpack.config.babel.js",
-        "test": "./node_modules/.bin/karma start",
+        "test": "NODE_ENV=test ./node_modules/.bin/babel-node ./node_modules/.bin/karma start karma.conf.babel.js",
         "dev": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline"
     },
     "devDependencies": {
@@ -13,6 +13,7 @@
         "ajv": "^6.5.3",
         "animate.css": "^3.7.0",
         "axios": "^0.18.0",
+        "babel-cli": "^6.26.0",
         "babel-core": "^6.26.3",
         "babel-loader": "^7.1.5",
         "babel-plugin-add-module-exports": "^0.2.1",

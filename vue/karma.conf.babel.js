@@ -1,9 +1,9 @@
 // Karma configuration
 // Generated on Tue Jul 11 2017 15:33:17 GMT+0800 (CST)
 
-const webpackConfig = require('./webpack.test.config');
+import webpackConfig from "./webpack.test.config";
 
-module.exports = function (config) {
+export default function (config) {
     config.set({
         // base path that will be used to resolve all patterns (eg. files, exclude)
         basePath: './',
