@@ -1,3 +1,5 @@
+import "../../css/tag/index.less";
+
 import Vue from "vue";
 import {runWith} from "../common/common";
 

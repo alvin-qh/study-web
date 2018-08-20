@@ -8,10 +8,6 @@
     <meta name="renderer" content="webkit">
     <meta name="robots" content="index, follow">
 
-    <% for (chunk in htmlWebpackPlugin.files.chunks) { %><% if (htmlWebpackPlugin.files.chunks[chunk].css.length) { %>
-    <link href="<%=(htmlWebpackPlugin.files.chunks[chunk].css[0] + '?v=' + new Date().getTime())%>" rel="stylesheet">
-    <% }} %>
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -23,7 +19,7 @@
 
 </head>
 <body>
-<div id="app" role="main">
+<div id="app" role="main" app:name="home.index">
     <header>
         <b-navbar class="bg-dark" toggleable="md" type="dark" variant="info">
             <b-navbar-toggle target="navbar-collapse"></b-navbar-toggle>
@@ -32,7 +28,6 @@
                 <b-navbar-nav>
                     <b-nav-item href="/www/bind/">Bind</b-nav-item>
                     <b-nav-item href="/www/directive/">Directive</b-nav-item>
-                    <b-nav-item href="/www/tag/">Tags</b-nav-item>
                     <b-nav-item href="/www/tag/">Tags</b-nav-item>
                     <b-nav-item href="/www/router/">Router</b-nav-item>
                     <b-nav-item href="/www/vuex/">Vuex</b-nav-item>
@@ -74,11 +69,5 @@
         </di>
     </main>
 </div>
-
-<% for (chunk in htmlWebpackPlugin.files.chunks) { %>
-<script src="<%=(htmlWebpackPlugin.files.chunks[chunk].entry + '?v=' + new Date().getTime())%>"></script>
-<% } %>
-
-<script>home();</script>
 </body>
 </html>

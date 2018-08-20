@@ -2,12 +2,12 @@ import "../../css/router/router.less";
 
 import Vue from "vue";
 import Router from "vue-router";
-import {ns} from "../common/common";
+import {runWith} from "../common/common";
 
 import routes from "./vue-router/routes";
 import "../widget/breadcrumb";
 
-ns('router.vue', function () {
+runWith('router.vue-router', function () {
     Vue.use(Router);
 
     const router = new Router({

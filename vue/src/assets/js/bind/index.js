@@ -1,3 +1,5 @@
+import "../../css/bind/index.less";
+
 import Vue from "vue";
 import {runWith, Times} from "../common/common";
 
@@ -9,7 +11,7 @@ runWith('bind.index', function () {
         data: {
             text: '',
             color: 'info',
-            panelColor: 'primary',
+            panelColor: 'info',
             now: Times.nowString()
         },
         computed: {
@@ -32,13 +34,13 @@ runWith('bind.index', function () {
             color(val) {
                 switch (val) {
                 case 'info':
-                    this.panelColor = 'primary';
+                    this.panelColor = 'info';
                     break;
                 case 'warning':
-                    this.panelColor = 'success';
+                    this.panelColor = 'warning';
                     break;
                 case 'danger':
-                    this.panelColor = 'default';
+                    this.panelColor = 'danger';
                     break;
                 }
             }

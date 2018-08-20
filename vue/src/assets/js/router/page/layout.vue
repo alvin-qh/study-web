@@ -1,29 +1,25 @@
 <template>
-    <div class="container-fluid">
-        <div id="breadcrumb">
+    <div class="page-layouts">
+        <header>
             <breadcrumb :previous="[
                 {name:'Home', href:'/www/'},
                 {name:'Router', href:'/www/router/'}
                 ]">
             </breadcrumb>
-        </div>
+        </header>
 
-        <div class="tab-pane">
+        <main class="container">
             <ul class="nav nav-tabs" role="tablist">
-                <template v-for="(router, href) in routers">
-                    <li role="presentation" :class="{'active': currentLink === href}">
-                        <a :href="href" :title="router.title">{{router.title}}</a>
-                    </li>
-                </template>
+                <li class="nav-item" role="presentation" v-for="(router, href) in routers">
+                    <a :class="linkStyle(href)" :href="href" :title="router.title">{{router.title}}</a>
+                </li>
             </ul>
-            <div class="tab-content">
-                <div class="panel panel-default no-top-border">
-                    <div class="panel-body">
-                        <slot></slot>
-                    </div>
+            <div class="card no-top-border">
+                <div class="card-body">
+                    <slot></slot>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
 </template>
 
@@ -38,8 +34,13 @@
             };
         },
         computed: {
-        	currentLink() {
-        		return window.location.pathname;
+            currentLink() {
+                return window.location.pathname;
+            }
+        },
+        methods: {
+            linkStyle(link) {
+                return this.currentLink === link ? ['nav-link', 'active'] : ['nav-link'];
             }
         }
     }

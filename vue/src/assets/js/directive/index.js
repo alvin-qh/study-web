@@ -1,3 +1,5 @@
+import "../../css/directive/index.less";
+
 import Vue from "vue";
 import {runWith} from "../common/common";
 import VueNotifications from "../widget/notifications";

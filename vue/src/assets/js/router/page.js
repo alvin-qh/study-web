@@ -4,12 +4,12 @@ import Vue from "vue";
 import page from "page";
 import * as _ from 'lodash';
 
-import {ns} from "../common/common";
+import {runWith} from "../common/common";
 
 import routers from "./page/routers";
 import PageLoading from "./page/loading.vue";
 
-ns('router.page', function () {
+runWith('router.page', function () {
     new Vue({
         el: '#app',
         data: {

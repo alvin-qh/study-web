@@ -2,12 +2,12 @@ import "../../css/router/router.less";
 
 import Vue from "vue";
 import * as _ from "lodash";
-import {ns} from "../common/common";
+import {runWith} from "../common/common";
 
 import routers from "./simple/routers";
 import Page404 from "./simple/404.vue";
 
-ns('router.simple', function () {
+runWith('router.simple', function () {
     _.each(routers, (router, href) => {
         window.history.pushState(null, router.title, href);
         return false;

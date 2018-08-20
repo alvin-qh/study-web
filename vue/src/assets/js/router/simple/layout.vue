@@ -1,31 +1,27 @@
 <template>
-    <div class="container-fluid">
-        <div id="breadcrumb">
+    <div class="simple-layout">
+        <header>
             <breadcrumb :previous="[
                 {name:'Home', href:'/www/'},
-                {name:'Router', href:'/www/router/'}
-                ]">
+                {name:'Router', href:'/www/router/'}]">
             </breadcrumb>
-        </div>
+        </header>
 
-        <div class="tab-pane">
+        <main class="container">
             <ul class="nav nav-tabs" role="tablist">
-                <template v-for="(router, href) in routers">
-                    <li role="presentation" :class="{'active': currentLink === href}">
-                        <v-link :href="href" :title="router.title" :routers="routers" v-model="currentLink">
-                            {{router.title}}
-                        </v-link>
-                    </li>
-                </template>
+                <li v-for="(router, href) in routers" class="nav-item" role="presentation">
+                    <v-link :class="linkStyle(href)" :href="href" :title="router.title" :routers="routers"
+                            v-model="currentLink">
+                        {{ router.title }}
+                    </v-link>
+                </li>
             </ul>
-            <div class="tab-content">
-                <div class="panel panel-default no-top-border">
-                    <div class="panel-body">
-                        <slot></slot>
-                    </div>
+            <div class="card no-top-border">
+                <div class="card-body">
+                    <slot></slot>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
 </template>
 
@@ -43,6 +39,11 @@
                 routers: routers,
                 currentLink: window.location.pathname
             };
+        },
+        methods: {
+            linkStyle(link) {
+                return this.currentLink === link ? ['nav-link', 'active'] : ['nav-link'];
+            }
         },
         watch: {
             currentLink() {

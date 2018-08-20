@@ -1,9 +1,11 @@
 import "../../css/router/index.less";
 
 import Vue from "vue";
-import {ns} from "../common/common";
+import {runWith} from "../common/common";
 
-ns('router.index', function () {
+import "../widget/breadcrumb";
+
+runWith('router.index', function () {
     new Vue({
         el: '#app',
         data: {

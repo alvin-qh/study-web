@@ -1,9 +1,11 @@
+import "../../css/home/index.less";
+
 import Vue from "vue";
 import {Navbar} from 'bootstrap-vue/es/components';
 
-import {ns, Times} from "../common/common";
+import {runWith, Times} from "../common/common";
 
-ns('home', function () {
+runWith('home.index', function () {
     Vue.use(Navbar);
 
     new Vue({
