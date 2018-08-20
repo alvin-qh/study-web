@@ -1,16 +1,16 @@
-import "../../css/vuex/main.less";
+import "../../css/vuex/index.less";
 
 import Vue from "vue";
 import * as _ from "lodash";
 import page from "page";
 
-import {ns} from "../common/common";
+import {runWith} from "../common/common";
 
 import routers from "./router";
 import IndexPage from "./component/index.vue";
 
 
-ns('vuex.index', function () {
+runWith('vuex.index', function () {
     new Vue({
         el: '#app',
         data: {

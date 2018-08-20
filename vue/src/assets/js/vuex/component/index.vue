@@ -1,14 +1,15 @@
 <template>
-    <div class="container-fluid">
-        <breadcrumb :previous="[{name:'Home', href:'/www/'}]"></breadcrumb>
-
-        <div>
+    <div>
+        <header>
+            <breadcrumb :previous="[{name:'Home', href:'/www/'}]"></breadcrumb>
+        </header>
+        <main class="container">
             <ul class="feature-menu">
                 <li v-for="(comp, href) in routers">
-                    <a :href="href">{{comp.title}}</a>
+                    <a :href="href">{{ comp.title }}</a>
                 </li>
             </ul>
-        </div>
+        </main>
     </div>
 </template>
 

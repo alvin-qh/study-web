@@ -1,21 +1,25 @@
 <template>
-    <div class="container-fluid">
-        <breadcrumb :previous="[{name:'Home', href:'/www/'}, {name:'Vuex', href:'/www/vuex'}]"></breadcrumb>
+    <div>
+        <header>
+            <breadcrumb :previous="[{name:'Home', href:'/www/'}, {name:'Vuex', href:'/www/vuex'}]"></breadcrumb>
+        </header>
 
-        <div class="container">
-            <div class="form-group form-group-sm">
-                <label class="control-label">Operator: </label>
-                <div class="row col-md-5 input-group input-group-sm">
-                    <div class="input-group-btn">
+        <main class="container">
+            <div class="row form-group">
+                <label class="col-1 col-form-label text-right">Operator: </label>
+                <div class="col-3 input-group">
+                    <div class="input-group-prepend">
                         <button class="btn btn-primary" @click="decrement()">-</button>
                     </div>
+
                     <input type="text" class="form-control" readonly :value="count"/>
-                    <div class="input-group-btn">
+
+                    <div class="input-group-append">
                         <button class="btn btn-primary" @click="increment()">+</button>
                     </div>
                 </div>
             </div>
-        </div>
+        </main>
     </div>
 </template>
 
@@ -52,5 +56,4 @@
 </script>
 
 <style lang="less" scoped>
-
 </style>
