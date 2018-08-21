@@ -158,14 +158,12 @@
                                 <template v-if="tab === 'teacher'">
                                     <div class="row form-group">
                                         <label class="col-2 col-form-label text-right">Name:</label>
-                                        <div class="col-7">
-                                            <input type="text" class="form-control" v-model="teacher.name"
-                                                   placeholder="Teacher name">
-                                        </div>
+                                        <input type="text" class="form-control col-7" v-model="teacher.name"
+                                               placeholder="Teacher name">
                                     </div>
                                     <div class="row form-group">
-                                        <label class="col-2 control-label text-right">Gender:</label>
-                                        <div class="col-7">
+                                        <label class="col-2 col-form-label text-right">Gender:</label>
+                                        <div class="row col-7">
                                             <div class="form-check form-check-inline">
                                                 <input class="form-check-input" type="radio" name="gender" value="M"
                                                        v-model="teacher.gender">
@@ -180,102 +178,84 @@
                                     </div>
                                     <div class="row form-group">
                                         <label class="col-2 col-form-label text-right">Subject:</label>
-                                        <div class="col-7">
-                                            <select class="form-control" v-model="teacher.subject">
-                                                <option value="" :selected="!teacher.subject">Select subject</option>
-                                                <option v-for="sub in subjects" :selected="teacher.subject === sub"
-                                                        :value="sub">{{ sub }}
-                                                </option>
-                                            </select>
-                                        </div>
+                                        <select class="form-control col-7" v-model="teacher.subject">
+                                            <option value="" :selected="!teacher.subject">Select subject</option>
+                                            <option v-for="sub in subjects" :selected="teacher.subject === sub"
+                                                    :value="sub">{{ sub }}
+                                            </option>
+                                        </select>
                                     </div>
                                     <div class="row form-group">
                                         <label class="col-2 col-form-label text-right">Phone:</label>
-                                        <div class="col-7">
-                                            <input type="number" class="form-control" v-model="teacher.phone">
-                                        </div>
+                                        <input type="number" class="form-control col-7" v-model="teacher.phone">
                                     </div>
                                     <div class="row form-group">
                                         <label class="col-2 col-form-label text-right">Remark:</label>
-                                        <div class="col-7">
-                                            <textarea class="form-control" rows="5" v-model="teacher.remark"></textarea>
-                                        </div>
+                                        <textarea class="form-control col-7" rows="5"
+                                                  v-model="teacher.remark"></textarea>
                                     </div>
                                 </template>
 
                                 <template v-else-if="tab === 'student'">
                                     <div class="row form-group">
                                         <label class="col-2 col-form-label text-right">Name:</label>
-                                        <div class="col-7">
-                                            <input type="text" class="form-control" placeholder="Student name"
-                                                   v-model="student.name">
-                                        </div>
+                                        <input type="text" class="form-control col-7" placeholder="Student name"
+                                               v-model="student.name">
                                     </div>
                                     <div class="row form-group">
-                                        <label class="col-2 control-label">Gender:</label>
-                                        <div class="col-7">
+                                        <label class="col-2 col-form-label text-right">Gender:</label>
+                                        <div class="row col-7">
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="gender" value="M"
-                                                       v-model="student.gender">
+                                                <input class="form-check-input" type="radio" name="gender"
+                                                       value="M" v-model="student.gender">
                                                 <label class="form-check-label">Male</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="gender" value="F"
-                                                       v-model="student.gender">
+                                                <input class="form-check-input" type="radio" name="gender"
+                                                       value="F" v-model="student.gender">
                                                 <label class="form-check-label">Female</label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="row form-group">
                                         <label class="col-2 col-form-label text-right">Class:</label>
-                                        <div class="col-7">
-                                            <select class="form-control" v-model="student.grade">
-                                                <option value="" :selected="!student.grade">Grade</option>
-                                                <option v-for="grad in grades" :value="grad.name"
-                                                        :selected="grad.name === student.grade">{{ grad.name }}
-                                                </option>
-                                            </select>
-                                        </div>
+                                        <select class="form-control col-7" v-model="student.grade">
+                                            <option value="" :selected="!student.grade">Grade</option>
+                                            <option v-for="grad in grades" :value="grad.name"
+                                                    :selected="grad.name === student.grade">{{ grad.name }}
+                                            </option>
+                                        </select>
                                     </div>
                                     <div class="row form-group">
-                                        <div class="offset-2 col-7">
-                                            <select class="form-control" v-model="student.class">
-                                                <option value="" :selected="!student.class">Class</option>
-                                                <option v-for="cls in gradeClass"
-                                                        :value="cls"
-                                                        :selected="cls === student.class">{{ cls }}
-                                                </option>
-                                            </select>
-                                        </div>
+                                        <select class="form-control offset-2 col-7" v-model="student.class">
+                                            <option value="" :selected="!student.class">Class</option>
+                                            <option v-for="cls in gradeClass"
+                                                    :value="cls"
+                                                    :selected="cls === student.class">{{ cls }}
+                                            </option>
+                                        </select>
                                     </div>
                                     <div class="row form-group">
                                         <label class="col-2 col-form-label text-right">Address:</label>
-                                        <div class="col-7">
-                                            <input type="text" class="form-control">
-                                        </div>
+                                        <input type="text" class="form-control col-7">
                                     </div>
                                     <div class="row form-group">
                                         <label class="col-2 col-form-label text-right">Remark:</label>
-                                        <div class="col-7">
-                                            <textarea class="form-control" rows="5" v-model="student.remark"></textarea>
-                                        </div>
+                                        <textarea class="form-control col-7" rows="5"
+                                                  v-model="student.remark"></textarea>
                                     </div>
                                 </template>
 
                                 <template v-else>
                                     <div class="row form-group">
                                         <label class="col-2 col-form-label text-right">Name:</label>
-                                        <div class="col-7">
-                                            <input type="text" class="form-control" v-model="other.name"
-                                                   placeholder="Your name">
-                                        </div>
+                                        <input type="text" class="form-control col-7" v-model="other.name"
+                                               placeholder="Your name">
                                     </div>
                                     <div class="row form-group">
                                         <label class="col-2 col-form-label text-right">Phone:</label>
-                                        <div class="col-7">
-                                            <input type="text" class="form-control" v-model="other.phone"
-                                                   placeholder="Your phone number">
-                                        </div>
+                                        <input type="text" class="form-control col-7" v-model="other.phone"
+                                               placeholder="Your phone number">
                                     </div>
                                 </template>
 
