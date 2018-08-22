@@ -1,6 +1,12 @@
 import path from "path";
 import ExtractTextPlugin from "extract-text-webpack-plugin";
-import VueLoaderPlugin from "vue-loader/lib/plugin";
+import CleanupPlugin from "webpack-cleanup-plugin";
+
+const extractCss = new ExtractTextPlugin({
+    filename: 'static/css/[name].css',
+    disable: false,
+    allChunks: true,
+});
 
 export default {
     mode: 'development',
@@ -18,12 +24,12 @@ export default {
             use: [{
                 loader: 'babel-loader',
                 options: {
-                    presets: ['env']
+                    presets: ['env', 'stage-3']
                 }
             }]
         }, {
             test: /\.css/,
-            use: ExtractTextPlugin.extract({
+            use: extractCss.extract({
                 use: [{
                     loader: 'css-loader',
                 }],
@@ -31,7 +37,7 @@ export default {
             })
         }, {
             test: /\.less$/,
-            use: ExtractTextPlugin.extract({
+            use: extractCss.extract({
                 use: [{
                     loader: 'css-loader',
                 }, {
@@ -67,12 +73,7 @@ export default {
         }]
     },
     plugins: [
-        new VueLoaderPlugin(),
-        new ExtractTextPlugin({
-            filename: 'static/css/[name].css',
-            disable: false,
-            allChunks: true,
-        })
+        extractCss, new CleanupPlugin()
     ],
     devServer: {
         contentBase: path.resolve('www/')
