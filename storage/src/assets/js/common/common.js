@@ -1,4 +1,5 @@
-;
+import "../../css/common/common.less";
+
 (function (global) {
 
     function _createParameter(queryString) {
