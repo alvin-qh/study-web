@@ -1,71 +1,65 @@
-;
-(function (global) {
-    var div = document.getElementById("support");
-    var span = div.getElementsByTagName('span')[0];
+import $ from "jquery";
+import "bootstrap";
+import "jquery-serializejson";
 
-    if (global.sessionStorage) {
-        span.className = 'info';
-        span.innerText = "系统支持 Session Storage";
-        sessionStorage();
+import {runWith} from "../common/common";
+
+function getSessionStorage() {
+    let className, showText;
+    if (window.sessionStorage) {
+        className = 'info';
+        showText = "Session Storage is supported";
     } else {
-        span.className = 'error';
-        span.innerText = "系统不支持 Session Storage";
+        className = 'warning';
+        showText = "Session Storage is not supported";
     }
 
+    $('#is-support').append(`
+        <div class="alert alert-${className} alert-dismissible fade show" role="alert">
+            ${showText}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>`);
 
-    function sessionStorage() {
-        var storage = global.sessionStorage;
-        var form = document.getElementsByClassName("form")[0];
+    return window.sessionStorage;
+}
 
-        document.addEventListener('DOMContentLoaded', function (e) {
-            var data = storage.getItem('form-data');
-            if (data) {
-                try {
-                    data = JSON.parse(data);
-                    var elems = form.elements;
+runWith('session.index', function () {
 
-                    for (var i = 0; i < elems.length; i++) {
-                        var elem = elems[i];
-                        if (elem.name) {
-                            var val = data[elem.name];
-                            if (elem.type === 'radio') {
-                                elem.checked = elem.value == val;
-                            } else {
-                                elem.value = val || '';
-                            }
-                        }
-                    }
-                } catch (e) {
-                    storage.removeItem('form-data');
-                }
-            }
-        });
+    $(() => {
+        const ss = getSessionStorage();
+        if (!ss) {
+            return;
+        }
 
-        form.addEventListener('submit', function (e) {
+        $('form').on('submit', e => {
             e.preventDefault();
-
-            var elems = form.elements;
-            var data = {};
-
-            for (var i = 0; i < elems.length; i++) {
-                var elem = elems[i];
-                if (elem.name) {
-                    if (elem.type === 'radio') {
-                        if (elem.checked) {
-                            data[elem.name] = elem.value;
-                        }
-                    } else {
-                        data[elem.name] = elem.value;
-                    }
-                }
-            }
-            storage.setItem('form-data', JSON.stringify(data));
+            ss.setItem('form-data', JSON.stringify($(e.currentTarget).serializeJSON()));
             return false;
         });
 
-        form.addEventListener('reset', function (e) {
-            storage.clear();
+        $('.btn-remove').on('click', e => {
+            ss.removeItem('form-data');
+            location.reload();
         });
-    }
 
-})(this);
+        const formData = JSON.parse(ss.getItem('form-data'));
+        if (!formData) {
+            return;
+        }
+
+        for (const name in formData) {
+            if (!formData.hasOwnProperty(name)) {
+                continue;
+            }
+            const value = formData[name];
+            const $inputs = $(`input[name=${name}`);
+            if ($inputs.length > 1) {
+                $inputs.filter(`*[value=${value}]`).prop('checked', true);
+            } else {
+                $inputs.val(value);
+            }
+        }
+    });
+});
