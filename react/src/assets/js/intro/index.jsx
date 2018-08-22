@@ -26,8 +26,8 @@ runWith('intro.index', function () {
         <main className="container">
             <ListGroup>
                 <ListGroupItem><a href="hello.html">Hello</a></ListGroupItem>
+                <ListGroupItem><a href="process-control.html">Process control</a></ListGroupItem>
                 <ListGroupItem><a href="component.html">Component</a></ListGroupItem>
-                <ListGroupItem><a href="if-else.html">If / Else</a></ListGroupItem>
             </ListGroup>
         </main>
     </div>;

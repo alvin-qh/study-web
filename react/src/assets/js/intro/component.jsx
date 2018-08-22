@@ -1,8 +1,8 @@
-import * as _ from "lodash";
 import React, {Component} from "react";
 import {render} from "react-dom";
 import {runWith, Times} from "../common/common";
 import {Breadcrumb, BreadcrumbItem, Card, CardBody, CardFooter, CardHeader} from "reactstrap";
+import PropTypes from "prop-types";
 
 runWith('intro.component', function () {
 
@@ -22,9 +22,21 @@ runWith('intro.component', function () {
         </header>;
     }
 
+    /**
+     * Create component by class
+     */
     class PersonCard extends Component {
+
+        // define props types can passed in this component
+        static propTypes = {
+            className: PropTypes.string,
+            children: PropTypes.node,
+            onFormChanged: PropTypes.func
+        };
+
         constructor(props) {
             super(props);
+
             this.state = {
                 now: Times.nowString(),
                 form: {
@@ -33,12 +45,19 @@ runWith('intro.component', function () {
                     occu: 'STUDENT'
                 }
             };
+            this.emitFormChanged();
 
             setInterval(() => {
                 this.setState({
                     now: Times.nowString()
                 });
             }, 1000);
+        }
+
+        emitFormChanged() {
+            if (this.props.onFormChanged) {
+                this.props.onFormChanged(this.state.form);
+            }
         }
 
         onNameChanged = e => {
@@ -48,6 +67,7 @@ runWith('intro.component', function () {
                     name: e.currentTarget.value
                 }
             });
+            this.emitFormChanged();
         };
 
         onGenderChanged = e => {
@@ -57,6 +77,7 @@ runWith('intro.component', function () {
                     gender: e.currentTarget.value
                 }
             });
+            this.emitFormChanged();
         };
 
         onOccuChanged = e => {
@@ -66,12 +87,15 @@ runWith('intro.component', function () {
                     occu: e.currentTarget.value
                 }
             });
+            this.emitFormChanged();
         };
 
         occupations = [{name: 'Teacher', value: 'TEACHER'}, {name: 'Student', value: 'STUDENT'}];
 
         render() {
-            return <Card>
+            const {className, children, ...attributes} = this.props;
+
+            return <Card {...attributes} className={className}>
                 <CardHeader className="bg-primary text-white"><strong>Alvin</strong></CardHeader>
                 <CardBody>
                     <form className="form">
@@ -97,34 +121,60 @@ runWith('intro.component', function () {
                         </div>
                         <div className="form-group row">
                             <label className="col-form-label col-1 text-right">Occu:</label>
-                            <select className="form-control col-6" onChange={this.onOccuChanged} value={this.state.form.occu}>
-                                {_.map(this.occupations, opt => <option value={opt.value} key={opt.value}>{opt.name}</option>)}
+                            <select className="form-control col-6" onChange={this.onOccuChanged}
+                                    value={this.state.form.occu}>
+                                {this.occupations.map(opt =>
+                                    <option value={opt.value} key={opt.value}>{opt.name}</option>)}
                             </select>
                         </div>
                     </form>
-                    <div className="mt-5 form-group row">
-                        <label className="col-form-label col-1 text-right">JSON: </label>
-                        <textarea className="form-control col-6" readOnly value={JSON.stringify(this.state.form)}/>
-                    </div>
+                    {children}
                 </CardBody>
                 <CardFooter>{this.state.now}</CardFooter>
             </Card>;
         }
     }
 
+    /**
+     * Create component by function
+     */
+    function JSONBoard(props) {
+        const {formData, className, ...attributes} = props;
+
+        return <div {...attributes} className={`form-group ${className}`}>
+            <label className="col-form-label col-1 text-right">JSON: </label>
+            <textarea className="form-control col-6" readOnly value={JSON.stringify(formData)}/>
+        </div>;
+    }
+
+    JSONBoard.propTypes = {
+        formData: PropTypes.object
+    };
+
     class Body extends Component {
         constructor(props) {
             super(props);
-            this.state = {};
+
+            this.state = {
+                formData: null
+            }
         }
+
+        onFormChanged = formData => {
+            this.setState({
+                formData: formData
+            });
+        };
 
         render() {
             return <div>
                 <Header/>
                 <main className="container">
-                    <PersonCard/>
+                    <PersonCard onFormChanged={this.onFormChanged}>
+                        <JSONBoard className="row mt-5" formData={this.state.formData}/>
+                    </PersonCard>
                 </main>
-            </div>
+            </div>;
         }
     }
 

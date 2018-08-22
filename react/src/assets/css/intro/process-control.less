@@ -1,0 +1,58 @@
+@charset "UTF-8";
+
+@color-red: red;
+.color-red {
+  color: @color-red;
+
+  &.darken {
+    color: darken(@color-red, 20%) !important;
+  }
+}
+
+@color-green: green;
+.color-green {
+  color: @color-green;
+
+  &.darken {
+    color: darken(@color-green, 20%) !important;
+  }
+}
+
+@color-blue: blue;
+.color-blue {
+  color: @color-blue;
+
+  &.darken {
+    color: darken(@color-blue, 20%) !important;
+  }
+}
+
+.color-box {
+  width: 50px;
+  height: 50px;
+  margin-right: 20px;
+}
+
+.bg-red {
+  background: @color-red;
+
+  &.darken {
+    background: darken(@color-red, 20%) !important;
+  }
+}
+
+.bg-green {
+  background: @color-green;
+
+  &.darken {
+    background: darken(@color-green, 20%) !important;
+  }
+}
+
+.bg-blue {
+  background: @color-blue;
+
+  &.darken {
+    background: darken(@color-blue, 20%) !important;
+  }
+}
