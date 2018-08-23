@@ -1,11 +1,57 @@
 import $ from "jquery";
 import "bootstrap";
 import "jquery-serializejson";
-import {runWith} from "../common/common";
+import Promise from "promise";
+import {runWith, StringBuilder} from "../common/common";
+
+
+function col(name, type, constraint, _default) {
+    return {name, type, constraint, default: _default}
+}
 
 class Statement {
     constructor(tx) {
         this._tx = tx;
+    }
+
+    query(sql, ...args) {
+        console.log(sql);
+        return new Promise((resolve, reject) => {
+            this._tx.executeSql(sql, args, (tx, rs) => resolve(rs), (tx, err) => {
+                console.error(err);
+                reject(err);
+            });
+        });
+    }
+
+    add(table, entity) {
+        const names = [], marks = [], values = [];
+        for (const name in entity) {
+            if (!entity.hasOwnProperty(name)) {
+                continue;
+            }
+
+            names.push(name);
+            values.push(entity[name]);
+            console.log(values);
+            marks.push('?');
+        }
+        return this.query(`insert into ${table}(${names.join(',')})values(${marks.join(',')});`, ...values);
+    };
+
+    createTable(name, columns) {
+        const sqls = columns.map(c => {
+            const sb = new StringBuilder();
+            sb.append('\t').append(c.name).append(c.type);
+            if (c.constraint) {
+                sb.append(c.constraint);
+            }
+            if (c.default) {
+                sb.append('default').append(typeof c.default === 'string' ? `'${c.default}'` : c.default);
+            }
+            return sb.toString(' ');
+        });
+        return this.query(`create table if not exists ${name}(\n${sqls.join(',\n')}\n);`);
     }
 }
 
@@ -15,9 +61,9 @@ class Database {
         this._conn = window.openDatabase(name, version, describe, size, () => this._new = true);
     }
 
-    transaction(fn) {
-        this._conn.transaction(tx => {
-            fn(new Statement(tx));
+    stm() {
+        return new Promise((resolve, reject) => {
+            this._conn.transaction(tx => resolve(new Statement(tx)), err => reject(err))
         });
     }
 
@@ -45,143 +91,49 @@ function getConnection(name, version, describe = '', size = 1048576) {
             </button>
         </div>`);
 
-    return window.openDatabase ? new Database() : null;
+    return window.openDatabase ? new Database(name, version, describe, size) : null;
 }
 
 runWith('websql.index', function () {
-    const db = getConnection();
+
+    const db = getConnection('demo', '1.0');
     if (!db) {
         return;
     }
 
+    $(() => {
+        db.stm().then(stm => {
+            stm.createTable('demo', [
+                col('id', 'integer', 'primary key'),
+                col('name', 'varchar(50)', 'not null'),
+                col('gender', 'char(1)', 'not null', 'M'),
+                col('birthday', 'date', 'not null'),
+                col('telephone', 'varchar(50)', 'not null')
+            ]).then(() => {
+                stm.query('select name, gender, birthday, telephone from demo where id=?', 1).then(rs => {
+                    let update = false;
+                    if (rs.rows.length > 0) {
+                        const data = rs.rows[0];
+
+                        update = true;
+                    }
+
+                    $('form').on('submit', e => {
+                        e.preventDefault();
+
+                        db.stm().then(stm => {
+                            stm.add('demo', $.extend($(e.currentTarget).serializeJSON(), {id: 1}));
+                        });
+                        return false;
+                    })
+                });
+            });
+        });
+    });
 
 });
 
 // (function (global) {
-//
-//     if (!window.openDatabase) {
-//         throw "Local database not supported";
-//     }
-//
-//     function Database(name, version, size, describe) {
-//         var self = this;
-//
-//         var _new = false;
-//         var _conn = global.openDatabase(name, version, describe || '', size || 1024 * 1024, function () {
-//             _new = true;
-//         });
-//
-//         this.isNew = function () {
-//             return _new;
-//         };
-//
-//         this.conn = function () {
-//             return _conn;
-//         }
-//     }
-//
-//     function createColumnSql(name, type, constraint, _default) {
-//         return {
-//             name: name,
-//             type: type,
-//             constraint: constraint,
-//             'default': _default
-//         }
-//     }
-//
-//     Database.prototype.tx = function (fn) {
-//         this.conn().transaction(function (tx) {
-//             fn(new Statement(tx));
-//         })
-//     };
-//
-//     function Statement(tx) {
-//         this.tx = tx;
-//     }
-//
-//     Statement.prototype.createTable = function (name, columns, successFn, errorFn) {
-//         var columnSqls = [];
-//         for (var i = 0; i < columns.length; i++) {
-//             var column = columns[i];
-//             var columnSql = ['\t', column.name, column.type];
-//             if (column.constraint) {
-//                 columnSql.push(column.constraint);
-//             }
-//             if (column['default']) {
-//                 var def = column['default'];
-//                 if (typeof def !== 'number') {
-//                     def = '\'' + def + '\'';
-//                 }
-//                 columnSql.push('default ' + def);
-//             }
-//             columnSqls.push(columnSql.join(' '));
-//         }
-//         var sql = 'create table if not exists ' + name + '(\n' + columnSqls.join(',\n') + '\n);';
-//         this.tx.executeSql(sql, successFn, function (tx, err) {
-//             if (errorFn) {
-//                 errorFn(err, tx);
-//             }
-//         });
-//     };
-//
-//     Statement.prototype.insert = function (table, entity, successFn, errorFn) {
-//         var names = [], marks = [], values = [];
-//         for (var name in entity) {
-//             var old = values.length;
-//             var val = entity[name];
-//             switch (typeof val) {
-//                 case 'function':
-//                 case 'undefined':
-//                     break;
-//                 default:
-//                     values.push(val);
-//             }
-//             if (values.length != old) {
-//                 names.push(name);
-//                 marks.push('?');
-//             }
-//         }
-//         var sql = 'insert into ' + table + '(' + names.join(',') + ')values(' + marks.join(',') + ');';
-//         console.log(sql);
-//         this.tx.executeSql(sql, values, successFn, function (tx, err) {
-//             if (errorFn) {
-//                 errorFn(err, tx);
-//             }
-//         });
-//     };
-//
-//     Statement.prototype.select = function (table, columns, where, args, successFn, errorFn) {
-//         if (typeof columns === 'function') {
-//             successFn = columns;
-//             errorFn = where;
-//             columns = ['*'];
-//             args = [];
-//         } else if (typeof  where === 'function') {
-//             successFn = where;
-//             errorFn = args;
-//             args = [];
-//         } else if (typeof args === 'function') {
-//             errorFn = successFn;
-//             successFn = args;
-//             args = [];
-//         }
-//
-//         var sql = 'select ' + columns.join(',') + ' from ' + table;
-//         if (where) {
-//             sql += (' where' + where);
-//         }
-//
-//         this.tx.executeSql(sql, args || [], function (tx, result) {
-//             if (successFn) {
-//                 successFn(result, tx);
-//             }
-//         }, function (tx, error) {
-//             console.log(error);
-//             if (errorFn) {
-//                 errorFn(error, tx);
-//             }
-//         });
-//     };
 //
 //     var db = new Database('demo', '1.0');
 //     db.tx(function (stmt) {

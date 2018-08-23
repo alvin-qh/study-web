@@ -98,7 +98,7 @@ const plugins = (() => {
 
 export default {
     mode: CONFIG.isProd ? 'production' : 'development',
-    entry: Object.assign({vendor: ['jquery', 'bootstrap', 'common']}, makeEntries()),
+    entry: Object.assign({vendor: ['jquery', 'bootstrap', 'promise', 'common']}, makeEntries()),
     output: {
         path: path.resolve(CONFIG.paths.dst()),
         filename: CONFIG.isProd ? 'static/js/[name]-[chunkhash:8].js' : 'static/js/[name].js',
