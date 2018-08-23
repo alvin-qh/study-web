@@ -1,48 +1,40 @@
-;
-(function (global) {
-    var storageState = document.getElementById('storage-state');
+import "../../css/storage-state/index.less";
 
-    function displayStorageInfo(storage) {
-        var storageSize = storageState
-            .getElementsByClassName('storage-size')[0]
-            .getElementsByTagName('span')[0];
-        storageSize.innerHTML = storage.length + '个';
+import qs from "querystring";
+import {runWith} from "../common/common";
 
-        var data = [];
-        for (var n in storage) {
-            if (storage.hasOwnProperty(n)) {
-                data.push([n, storage[n] || ''].join('='));
+
+runWith('storageState.index', function () {
+    const $state = $('#storage-state');
+
+    function showStorageInfo(s) {
+        $state.find('.storage-size span').text(s.length);
+
+        const data = [];
+        for (const n in s) {
+            if (s.hasOwnProperty(n)) {
+                data.push(`${n}=${s[n] || ''}`);
             }
         }
-        var storageContent = storageState
-            .getElementsByClassName('storage-content')[0]
-            .getElementsByTagName('div')[0];
-        storageContent.innerHTML = data.join('<br>');
+        $state.find('.storage-content div').html(data.join('<br>'));
     }
 
-    function displayEventInfo(e) {
-        var storageEvent = storageState
-            .getElementsByClassName('storage-event')[0]
-            .getElementsByTagName('div')[0];
-        storageEvent.innerHTML = [
-            'key=' + e.key,
-            'old value=' + e.oldValue,
-            'new value=' + e.newValue,
-            'url=' + e.url
-        ].join('<br>')
+
+    function showEventInfo(e) {
+        $('.storage-event div').html([
+            `key=${e.key}`,
+            `old value=${e.oldValue}`,
+            `new value=${e.newValue}`,
+            `url=${e.url}`].join('<br>'));
     }
 
-    document.addEventListener('DOMContentLoaded', function (e) {
-        var queryString = new QueryString();
-        var storage = global[queryString.get('type')];
-        if (storage) {
-            displayStorageInfo(storage);
-
-            window.addEventListener("storage", function (e) {
-                displayStorageInfo(storage);
-                displayEventInfo(e);
-            });
-        }
-    });
-
-})(this);
+    const params = qs.parse(location.search.substr(1));
+    const storage = window[params['type']];
+    if (storage) {
+        showStorageInfo(storage);
+        $(window).on("storage", e => {
+            showStorageInfo(storage);
+            showEventInfo(e.originalEvent);
+        });
+    }
+});

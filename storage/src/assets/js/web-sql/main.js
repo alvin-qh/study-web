@@ -33,11 +33,36 @@ class Statement {
 
             names.push(name);
             values.push(entity[name]);
-            console.log(values);
             marks.push('?');
         }
         return this.query(`insert into ${table}(${names.join(',')})values(${marks.join(',')});`, ...values);
     };
+
+    update(table, entity, keyName) {
+        return new Promise((resolve, reject) => {
+            const key = entity[keyName];
+
+            if (key == null || isNaN(key) || typeof key === 'undefined') {
+                reject(new Error('Invalid key'));
+            } else {
+                if (typeof key === 'string') {
+                    resolve(`'${key}'`);
+                } else {
+                    resolve(key);
+                }
+            }
+        }).then(key => {
+            const names = [], values = [];
+            for (const name in entity) {
+                if (name === keyName || !entity.hasOwnProperty(name)) {
+                    continue;
+                }
+                names.push(name);
+                values.push(entity[name]);
+            }
+            return this.query(`update ${table} set ${names.map(n => `${n}=?`).join(', ')} where ${keyName}=${key}`, ...values);
+        }).catch(err => console.log(err));
+    }
 
     createTable(name, columns) {
         const sqls = columns.map(c => {
@@ -52,6 +77,10 @@ class Statement {
             return sb.toString(' ');
         });
         return this.query(`create table if not exists ${name}(\n${sqls.join(',\n')}\n);`);
+    }
+
+    dropTable(name) {
+        return this.query(`drop table if exists ${name}`);
     }
 }
 
@@ -102,6 +131,12 @@ runWith('websql.index', function () {
     }
 
     $(() => {
+        $('.btn-remove').on('click', e => {
+            db.stm().then(stm => {
+                stm.dropTable('demo').then(location.reload());
+            });
+        });
+
         db.stm().then(stm => {
             stm.createTable('demo', [
                 col('id', 'integer', 'primary key'),
@@ -114,15 +149,32 @@ runWith('websql.index', function () {
                     let update = false;
                     if (rs.rows.length > 0) {
                         const data = rs.rows[0];
-
+                        for (const name in data) {
+                            if (!data.hasOwnProperty(name)) {
+                                continue;
+                            }
+                            const value = data[name];
+                            const $inputs = $(`input[name=${name}`);
+                            if ($inputs.length > 1) {
+                                $inputs.filter(`*[value=${value}]`).prop('checked', true);
+                            } else {
+                                $inputs.val(value);
+                            }
+                        }
                         update = true;
                     }
 
                     $('form').on('submit', e => {
                         e.preventDefault();
 
+                        const form = $.extend($(e.currentTarget).serializeJSON(), {id: 1});
                         db.stm().then(stm => {
-                            stm.add('demo', $.extend($(e.currentTarget).serializeJSON(), {id: 1}));
+                            if (update) {
+                                stm.update('demo', form, 'id');
+                            } else {
+                                stm.add('demo', form);
+                                update = true;
+                            }
                         });
                         return false;
                     })
@@ -130,58 +182,4 @@ runWith('websql.index', function () {
             });
         });
     });
-
 });
-
-// (function (global) {
-//
-//     var db = new Database('demo', '1.0');
-//     db.tx(function (stmt) {
-//         stmt.createTable('demo', [
-//             createColumnSql('name', 'varchar(50)', 'not null'),
-//             createColumnSql('gender', 'char(1)', 'not null', 'M'),
-//             createColumnSql('age', 'int', 'not null'),
-//             createColumnSql('telephone', 'varchar(50)', 'not null')
-//         ]);
-//     });
-//
-//     var form = document.getElementsByClassName("form")[0];
-//     form.addEventListener('submit', function (e) {
-//         e.preventDefault();
-//
-//         var elems = form.elements;
-//         var data = {};
-//
-//         for (var i = 0; i < elems.length; i++) {
-//             var elem = elems[i];
-//             if (elem.name) {
-//                 if (elem.type === 'radio') {
-//                     if (elem.checked) {
-//                         data[elem.name] = elem.value;
-//                     }
-//                 } else {
-//                     data[elem.name] = elem.value;
-//                 }
-//             }
-//         }
-//         db.tx(function (stmt) {
-//             stmt.insert('demo', data, function () {
-//                 location.reload();
-//             }, function (err) {
-//                 alert(err);
-//             });
-//         });
-//         return false;
-//     });
-//
-//     document.addEventListener('DOMContentLoaded', function (e) {
-//         db.tx(function (stmt) {
-//             stmt.select('demo', function (rs) {
-//                 for (var i = 0; i < rs.rows.length; i++) {
-//                     console.log(rs.rows[i].name);
-//                 }
-//             });
-//         });
-//     });
-//
-// })(this);
