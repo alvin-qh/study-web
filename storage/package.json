@@ -6,7 +6,8 @@
   "scripts": {
     "setup": "npm install --update-binary",
     "package": "./node_modules/.bin/webpack --config webpack.config.babel.js",
-    "dev": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline"
+    "dev": "./node_modules/.bin/webpack-dev-server --config webpack.config.babel.js --inline",
+    "dev:pwa": "./node_modules/.bin/webpack-dev-server --config webpack-pwa.config.babel.js"
   },
   "keywords": [],
   "author": "",
@@ -22,6 +23,7 @@
     "babel-preset-env": "^1.7.0",
     "babel-preset-stage-3": "^6.24.1",
     "bootstrap": "^4.1.3",
+    "copy-webpack-plugin": "^4.5.2",
     "css-loader": "^1.0.0",
     "cssnano": "^4.0.5",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
@@ -32,6 +34,7 @@
     "jquery-serializejson": "^2.8.1",
     "less": "^3.8.1",
     "less-loader": "^4.1.0",
+    "offline-plugin": "^5.0.5",
     "optimize-css-assets-webpack-plugin": "^5.0.0",
     "popper.js": "^1.14.4",
     "postcss-safe-parser": "^4.0.1",

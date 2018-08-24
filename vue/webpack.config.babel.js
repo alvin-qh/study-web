@@ -81,7 +81,7 @@ const plugins = (() => {
     if (CONFIG.isProd) {
         plugins = plugins.concat([
             new OptimizeCssAssetsPlugin({
-                assetNameRegExp: /\.css$/g,
+                assetNameRegExp: /\.css$/,
                 cssProcessor: cssnano,
                 parser: postCssSafeParser,
                 cssProcessorOptions: {discardComments: {removeAll: true}},

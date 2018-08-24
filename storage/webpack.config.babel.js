@@ -10,8 +10,9 @@ import ExtractTextPlugin from "extract-text-webpack-plugin";
 import HtmlPlugin from "html-webpack-plugin";
 import CleanupPlugin from "webpack-cleanup-plugin";
 import OptimizeCssAssetsPlugin from "optimize-css-assets-webpack-plugin";
+import CopyPlugin from "copy-webpack-plugin";
 
-const CONFIG = {
+export const CONFIG = {
     isProd: (process.env.NODE_ENV === 'production'),
     paths: {
         src: file => path.join('src/assets', file || ''),
@@ -37,9 +38,10 @@ function makeEntries() {
 function makeTemplates() {
     return glob.sync(path.join(CONFIG.paths.www(), '/**/*.html'))
         .map(file => {
-            let chunks = file.replace(CONFIG.paths.www() + '/', '');
-            chunks = chunks.substr(0, chunks.indexOf('/')) || 'home';
-            chunks = ['manifest', 'vendor', 'common', chunks];
+            let chunk = file.replace(CONFIG.paths.www() + '/', '');
+            chunk = chunk.substr(0, chunk.indexOf('/')) || 'home';
+
+            const chunks = ['manifest', 'vendor', 'common', chunk];
 
             return new HtmlPlugin({
                 filename: file.substr(file.indexOf('/') + 1),
@@ -75,13 +77,16 @@ const plugins = (() => {
             'window.jQuery': 'jquery'
         }),
         extractCss,
-        new CleanupPlugin()
+        new CleanupPlugin(),
+        new CopyPlugin([
+            {context: CONFIG.paths.www(), from: '**/*.appcache', to: 'www'}
+        ], {copyUnmodified: true}),
     ].concat(makeTemplates());
 
     if (CONFIG.isProd) {
         plugins = plugins.concat([
             new OptimizeCssAssetsPlugin({
-                assetNameRegExp: /\.css$/g,
+                assetNameRegExp: /\.css$/,
                 cssProcessor: cssnano,
                 parser: postCssSafeParser,
                 cssProcessorOptions: {discardComments: {removeAll: true}},
@@ -93,6 +98,7 @@ const plugins = (() => {
             new HotModuleReplacementPlugin()
         ]);
     }
+
     return plugins;
 })();
 
