@@ -1,5 +1,6 @@
+<!--suppress ALL -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" manifest="cache.appcache">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="content-type" content="text/html" charset="utf-8">
@@ -18,43 +19,22 @@
     <title>Application Cache</title>
 </head>
 <body>
-<div id="app" role="main" app:name="appcache.index">
+<div id="app" role="main" app:name="appcache.manifest">
     <header>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="../">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Application Cache</li>
+                <li class="breadcrumb-item"><a href="index.html">Application Cache</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Use Manifest File</li>
             </ol>
         </nav>
     </header>
 
     <main class="container">
-        <div class="mt-4 card">
+        <div class="card py-4">
             <div class="card-body">
-                <pre class="editor editor-colors javascript">
-                </pre>
-
-                <pre class="mt-2 editor editor-colors java">
-                </pre>
+                <img class="cat-image" alt="Cat image">
             </div>
-        </div>
-
-        <div class="mt-4 card">
-            <div class="card-body">
-                <div class="hours clearfix">
-                </div>
-                <div class="minutes clearfix">
-                </div>
-                <div class="seconds clearfix">
-                </div>
-            </div>
-        </div>
-
-        <div class="mt-3 text-right">
-            <a href="use-manifest-file.html">
-                <span>Use manifest file for appcache</span>
-                <i class="ml-1 fa fa-arrow-right"></i>
-            </a>
         </div>
     </main>
 </div>

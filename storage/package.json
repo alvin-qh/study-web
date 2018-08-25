@@ -55,5 +55,8 @@
       "transform-runtime",
       "add-module-exports"
     ]
+  },
+  "dependencies": {
+    "highlight.js": "^9.12.0"
   }
 }

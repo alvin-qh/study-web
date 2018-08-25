@@ -1,7 +1,7 @@
-import baseConfig, {CONFIG} from "./webpack.config.babel";
+import config, {CONFIG} from "./webpack.config.babel";
 import OfflinePlugin from "offline-plugin";
 
-baseConfig.plugins = baseConfig.plugins.concat([
+config.plugins = config.plugins.concat([
     new OfflinePlugin({
         responseStrategy: 'cache-first',
         AppCache: true,
@@ -28,4 +28,4 @@ baseConfig.plugins = baseConfig.plugins.concat([
     })
 ]);
 
-export default baseConfig;
+export default config;
