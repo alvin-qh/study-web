@@ -80,7 +80,7 @@ const plugins = (() => {
         new CleanupPlugin(),
         new CopyPlugin([
             {context: CONFIG.paths.www(), from: '**/*.appcache', to: 'www'}
-        ], {copyUnmodified: true}),
+        ], {copyUnmodified: true})
     ].concat(makeTemplates());
 
     if (CONFIG.isProd) {

@@ -1,30 +1,31 @@
-'use strict';
-
-
 import webpack from "webpack";
 
 import glob from "glob";
 import path from "path";
 
+import cssnano from "cssnano";
+import postCssSafeParser from "postcss-safe-parser";
+
 import ExtractTextPlugin from "extract-text-webpack-plugin";
-import AccessPlugin from "assets-webpack-plugin";
 import HtmlPlugin from "html-webpack-plugin";
 import CleanupPlugin from "webpack-cleanup-plugin";
+import OptimizeCssAssetsPlugin from "optimize-css-assets-webpack-plugin";
 
-const webConfig = {
+export const CONFIG = {
     isProd: (process.env.NODE_ENV === 'production'),
     paths: {
-        source: file => path.join('src/assets', file || ''),
-        template: file => path.join('src/www', file || ''),
-        dest: file => path.join('out', file || '')
+        src: file => path.join('src/assets', file || ''),
+        dst: file => path.join('out', file || ''),
+        www: file => path.join('src/www', file || '')
     }
 };
 
 function makeEntries() {
-    const src = `./${webConfig.paths.source('js')}/`;
+    const src = `./${CONFIG.paths.src('js')}/`;
     const entries = {};
 
-    glob.sync(path.join(src, '/**/main.js')).map(file => `./${file}`)
+    glob.sync(path.join(src, '/**/main.js'))
+        .map(file => `./${file}`)
         .forEach(file => {
             let name = path.dirname(file);
             name = name.substr(name.lastIndexOf('/') + 1);
@@ -34,80 +35,93 @@ function makeEntries() {
 }
 
 function makeTemplates() {
-    return glob.sync(path.join(webConfig.paths.template(), '/**/*.html'))
+    return glob.sync(path.join(CONFIG.paths.www(), '/**/*.html'))
         .map(file => {
-            let chunks = file.replace(webConfig.paths.template() + '/', '');
-            chunks = chunks.substr(0, chunks.indexOf('/')) || 'home';
+            let chunk = file.replace(CONFIG.paths.www() + '/', '');
+            chunk = chunk.substr(0, chunk.indexOf('/')) || 'home';
 
-            chunks = ['manifest', 'vendor', 'common', chunks];
+            const chunks = ['manifest', 'vendor', 'common', chunk];
 
             return new HtmlPlugin({
                 filename: file.substr(file.indexOf('/') + 1),
                 template: file,
-                inject: false,
+                inject: true,
                 chunks: chunks,
+                cache: true,
                 chunksSortMode(a, b) {
                     return chunks.indexOf(a.names[0]) - chunks.indexOf(b.names[0]);
                 },
-                cache: true,
                 minify: {
-                    collapseWhitespace: webConfig.isProd,
-                    removeComments: webConfig.isProd
+                    collapseWhitespace: CONFIG.isProd,
+                    removeComments: CONFIG.isProd
                 }
             });
         });
 }
 
+const extractCss = new ExtractTextPlugin({
+    filename: CONFIG.isProd ? 'static/css/[name]-[chunkhash:8].css' : 'static/css/[name].css',
+    disable: false,
+    allChunks: true,
+});
+
 const plugins = (() => {
     const ProvidePlugin = webpack.ProvidePlugin;
-    const CommonsChunkPlugin = webpack.optimize.CommonsChunkPlugin;
-    const UglifyJsPlugin = webpack.optimize.UglifyJsPlugin;
     const HotModuleReplacementPlugin = webpack.HotModuleReplacementPlugin;
-    return [
+
+    let plugins = [
         new ProvidePlugin({
             $: 'jquery',
-            jQuery: 'jquery'
+            jQuery: 'jquery',
+            'window.jQuery': 'jquery'
         }),
-        new CommonsChunkPlugin({
-            name: ['vendor', 'manifest']
-        }),
-        new ExtractTextPlugin({
-            filename: webConfig.isProd ? 'assets/css/[name]-[chunkhash:8].css' : 'assets/css/[name].css',
-            disable: false,
-            allChunks: true,
-        }),
+        extractCss,
         new CleanupPlugin()
-    ]
-        .concat(makeTemplates())
-        .concat(webConfig.isProd ? [
-            new AccessPlugin({
-                filename: webConfig.paths.dest('assets/manifest.json')
-            }),
-            new UglifyJsPlugin({
-                compress: {
-                    warnings: false
-                },
-                output: {
-                    comments: false,
-                }
+    ].concat(makeTemplates());
+
+    if (CONFIG.isProd) {
+        plugins = plugins.concat([
+            new OptimizeCssAssetsPlugin({
+                assetNameRegExp: /\.css$/,
+                cssProcessor: cssnano,
+                parser: postCssSafeParser,
+                cssProcessorOptions: {discardComments: {removeAll: true}},
+                canPrint: true
             })
-        ] : [
+        ]);
+    } else {
+        plugins = plugins.concat([
             new HotModuleReplacementPlugin()
         ]);
+    }
+
+    return plugins;
 })();
 
-module.exports = {
-    entry: Object.assign({
-        'vendor': ['jquery']
-    }, makeEntries()),
+export default {
+    mode: CONFIG.isProd ? 'production' : 'development',
+    entry: Object.assign({vendor: ['jquery', 'common']}, makeEntries()),
     output: {
-        path: path.resolve(webConfig.paths.dest()),
-        filename: webConfig.isProd ? 'assets/js/[name]-[chunkhash:8].js' : 'assets/js/[name].js',
-        publicPath: '/',
-        chunkFilename: webConfig.isProd ? 'assets/js/[name]-[chunkhash:8].js' : 'assets/js/[name].js',
+        path: path.resolve(CONFIG.paths.dst()),
+        filename: CONFIG.isProd ? 'static/js/[name]-[chunkhash:8].js' : 'static/js/[name].js',
+        publicPath: "/",
+        chunkFilename: CONFIG.isProd ? 'static/js/[name]-[chunkhash:8].js' : 'static/js/[name].js',
     },
     resolve: {
         alias: {
+            common: `./${CONFIG.paths.src('js')}/common/common.js`
+        },
+        extensions: ['.js', '.vue', '.json']
+    },
+    optimization: {
+        minimize: CONFIG.isProd,
+        removeEmptyChunks: true,
+        splitChunks: {
+            chunks: 'all',
+            name: 'vendor'
+        },
+        runtimeChunk: {
+            name: 'manifest',
         }
     },
     module: {
@@ -117,17 +131,22 @@ module.exports = {
             use: [{
                 loader: 'babel-loader',
                 options: {
-                    presets: ['es2015']
-                },
+                    presets: ['env', 'stage-3']
+                }
             }]
         }, {
+            test: /\.css/,
+            use: extractCss.extract({
+                use: [{
+                    loader: 'css-loader'
+                }],
+                fallback: 'style-loader'
+            })
+        }, {
             test: /\.less$/,
-            use: ExtractTextPlugin.extract({
+            use: extractCss.extract({
                 use: [{
                     loader: 'css-loader',
-                    options: {
-                        minimize: webConfig.isProd
-                    }
                 }, {
                     loader: 'less-loader',
                     options: {importLoaders: 1}
@@ -137,18 +156,21 @@ module.exports = {
         }, {
             test: /\.(eot|woff|woff2|ttf)$/,
             use: [{
-                loader: 'url-loader',
+                loader: 'file-loader',
                 options: {
-                    name: webConfig.isProd ? 'assets/css/fonts/[name]-[hash:8].[ext]' : 'assets/css/fonts/[name].[ext]'
+                    limit: 10240,
+                    name: CONFIG.isProd ? 'static/fonts/[name]-[hash:8].[ext]' : 'static/fonts/[name].[ext]',
+                    publicPath: '/'
                 }
             }]
         }, {
             test: /\.(svg|png|jpg|gif)$/,
             use: [{
-                loader: 'url-loader',
+                loader: 'file-loader',
                 options: {
-                    limit: 30000,
-                    name: webConfig.isProd ? 'assets/css/images/[name]-[hash:8].[ext]' : 'assets/css/images/[name].[ext]'
+                    limit: 10240,
+                    name: CONFIG.isProd ? 'static/images/[name]-[hash:8].[ext]' : 'static/images/[name].[ext]',
+                    publicPath: '/'
                 }
             }]
         }, {
