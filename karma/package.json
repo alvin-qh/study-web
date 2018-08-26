@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "description": "karma test demo",
   "main": "karma.conf.babel.js",
-  "keywords": [],
+  "keywords": [
+    "karma",
+    "webpack",
+    "mocha"
+  ],
   "author": "",
   "license": "ISC",
   "scripts": {

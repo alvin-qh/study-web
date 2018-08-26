@@ -4,6 +4,11 @@
   "description": "Demo of react and webpack",
   "author": "Alvin",
   "license": "ISC",
+  "keywords": [
+    "react.js",
+    "webpack",
+    "bootstrap"
+  ],
   "scripts": {
     "setup": "npm install --update-binary",
     "package": "./node_modules/.bin/webpack --config webpack.config.babel.js",

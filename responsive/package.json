@@ -4,6 +4,10 @@
   "description": "Demo of responsive",
   "author": "Alvin",
   "license": "ISC",
+  "keywords": [
+    "responsive",
+    "css"
+  ],
   "scripts": {
     "setup": "npm install --update-binary",
     "package": "./node_modules/.bin/webpack --config webpack.config.babel.js",

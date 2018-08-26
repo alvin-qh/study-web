@@ -9,7 +9,12 @@
     "dev": "./node_modules/.bin/webpack-dev-server --config webpack.config.babel.js --inline",
     "dev:pwa": "./node_modules/.bin/webpack-dev-server --config webpack-pwa.config.babel.js"
   },
-  "keywords": [],
+  "keywords": [
+    "local storage",
+    "session storage",
+    "web sql",
+    "application cache"
+  ],
   "author": "",
   "license": "ISC",
   "devDependencies": {

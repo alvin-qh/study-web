@@ -2,6 +2,11 @@
   "name": "vue-demo",
   "version": "1.0.0",
   "description": "Demo of vue and webpack",
+  "keywords": [
+    "vue",
+    "webpack",
+    "bootstrap"
+  ],
   "scripts": {
     "setup": "npm install --update-binary",
     "package": "./node_modules/.bin/webpack --config webpack.config.babel.js",
