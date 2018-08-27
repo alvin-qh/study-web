@@ -44,7 +44,6 @@
     "offline-plugin": "^5.0.5",
     "optimize-css-assets-webpack-plugin": "^5.0.0",
     "popper.js": "^1.14.4",
-    "postcss-safe-parser": "^4.0.1",
     "promise": "^8.0.1",
     "style-loader": "^0.22.1",
     "url-loader": "^1.1.1",

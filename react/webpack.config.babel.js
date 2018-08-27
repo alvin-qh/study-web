@@ -78,7 +78,6 @@ const plugins = (() => {
             new OptimizeCssAssetsPlugin({
                 assetNameRegExp: /\.css$/,
                 cssProcessor: require('cssnano'),
-                parser: require('postcss-safe-parser'),
                 cssProcessorOptions: {discardComments: {removeAll: true}},
                 canPrint: true
             })
