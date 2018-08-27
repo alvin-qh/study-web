@@ -52,8 +52,8 @@ function showTime() {
 }
 
 runWith('appcache.index', function () {
-    showCode('.editor.javascript', jsCode);
-    showCode('.editor.java', androidCode);
+    showCode('.hljs.javascript', jsCode);
+    showCode('.hljs.java', androidCode);
 
     showTime();
     setInterval(() => showTime(), 1000);
