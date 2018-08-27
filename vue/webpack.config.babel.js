@@ -3,9 +3,6 @@ import webpack from "webpack";
 import glob from "glob";
 import path from "path";
 
-import cssnano from "cssnano";
-import postCssSafeParser from "postcss-safe-parser";
-
 import ExtractTextPlugin from "extract-text-webpack-plugin";
 import HtmlPlugin from "html-webpack-plugin";
 import CleanupPlugin from "webpack-cleanup-plugin";
@@ -82,8 +79,8 @@ const plugins = (() => {
         plugins = plugins.concat([
             new OptimizeCssAssetsPlugin({
                 assetNameRegExp: /\.css$/,
-                cssProcessor: cssnano,
-                parser: postCssSafeParser,
+                cssProcessor: require('cssnano'),
+                parser: require('postcss-safe-parser'),
                 cssProcessorOptions: {discardComments: {removeAll: true}},
                 canPrint: true
             })
