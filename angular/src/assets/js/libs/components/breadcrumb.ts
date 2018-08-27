@@ -13,4 +13,5 @@ declare interface BreadcrumbLevel {
 })
 export class NgBreadcrumbComponent {
     @Input('levels') levels: BreadcrumbLevel[] = [];
+    @Input('dark-mode') darkMode: boolean = true;
 }

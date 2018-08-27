@@ -1,9 +1,9 @@
 <header>
-    <ng-breadcrumb [levels]="breadcrumbLevels"></ng-breadcrumb>
+    <ng-breadcrumb [levels]="breadcrumbLevels" [dark-mode]="true"></ng-breadcrumb>
 </header>
 <main class="container">
     <ng-card>
-        <ng-card-header [dark-model]="true">Card Component Header</ng-card-header>
+        <ng-card-header [dark-mode]="true">Card Component Header</ng-card-header>
         <ng-card-body>
             <div class="row">
                 <form (submit)="display()" class="form col">
@@ -47,6 +47,6 @@
                 </div>
             </div>
         </ng-card-body>
-        <ng-card-footer [dark-model]="true">Card Component Footer</ng-card-footer>
+        <ng-card-footer [dark-mode]="true">Card Component Footer</ng-card-footer>
     </ng-card>
 </main>

@@ -19,7 +19,7 @@ class NgCardComponent {
         </div>`
 })
 class NgCardHeaderComponent {
-    @Input('dark-model') darkMode: boolean = false;
+    @Input('dark-mode') darkMode: boolean = false;
     @Input('title') title: string = '';
 }
 
@@ -42,7 +42,7 @@ class NgCardBodyComponent {
         </div>`
 })
 class NgCardFooterComponent {
-    @Input('dark-model') darkMode: boolean = false;
+    @Input('dark-mode') darkMode: boolean = false;
 }
 
 const modules = [NgCardComponent, NgCardHeaderComponent, NgCardBodyComponent, NgCardFooterComponent];
