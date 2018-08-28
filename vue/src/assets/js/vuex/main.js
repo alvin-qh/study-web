@@ -1,28 +1,36 @@
 import "../../css/vuex/index.less";
 
 import Vue from "vue";
-import * as _ from "lodash";
-import page from "page";
+import VueRouter from "vue-router";
+
+import IndexPage from "./pages/index";
+import BasicPage from "./pages/basic";
 
 import {runWith} from "../common/common";
-
-import routers from "./router";
-import IndexPage from "./component/index.vue";
-
+import Vuex from "vuex";
 
 runWith('vuex.index', function () {
+    Vue.use(VueRouter);
+    Vue.use(Vuex);
+
     new Vue({
         el: '#app',
-        data: {
-            currentView: IndexPage
-        },
+        router: new VueRouter({
+            routes: [{
+                path: '/index',
+                component: IndexPage,
+                name: 'Index'
+            }, {
+                path: '/basic',
+                component: BasicPage,
+                name: 'Basic'
+            }],
+            mode: 'hash'
+        }),
         created() {
-            page('/www/vuex/', () => this.currentView = IndexPage);
-            _.each(routers, (comp, href) => page(href, () => this.currentView = comp));
-            page();
-        },
-        render(h) {
-            return h(this.currentView);
+            if (this.$router.currentRoute.matched.length === 0) {
+                this.$router.replace('/index');
+            }
         }
     });
 });

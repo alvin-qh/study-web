@@ -133,7 +133,10 @@ export default {
             test: /\.ts$/,
             exclude: [/node_modules/],
             use: [{
-                loader: 'awesome-typescript-loader'
+                loader: 'awesome-typescript-loader',
+                options: {
+                    appendTsSuffixTo: [/\.vue$/]
+                }
             }]
         }, {
             test: /\.css/,

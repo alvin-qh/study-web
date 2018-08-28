@@ -1,5 +1,3 @@
-'use strict';
-
 import Page1 from './pages/page1.vue';
 import Page2 from './pages/page2.vue';
 

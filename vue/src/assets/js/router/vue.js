@@ -15,10 +15,6 @@ runWith('router.vue-router', function () {
         mode: 'hash'    // 'history', 'hash', 'abstract'
     });
 
-    router.afterEach(route => {
-        document.title = route.name;
-    });
-
     new Vue({
         el: '#app',
         data: {

@@ -62,7 +62,7 @@ CACHE MANIFEST
 index.html
 stylesheet.css
 images/logo.png
-scripts/main.js
+scripts/main.ts
 ```
 
 该示例将在指定此清单文件的网页上缓存四个文件。
@@ -85,7 +85,7 @@ CACHE:
 index.html
 stylesheet.css
 images/logo.png
-scripts/main.js
+scripts/main.ts
 
 # Resources that require the user to be online.
 NETWORK:

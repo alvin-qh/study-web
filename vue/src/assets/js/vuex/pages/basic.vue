@@ -25,31 +25,28 @@
 
 
 <script>
-	import store from "../store/basic";
+	import {basicStore} from "./stores";
 
 	import "../../widget/breadcrumb";
 
-	const TITLE = 'Basic';
-
 	export default {
-		title: TITLE,
-		created() {
-			document.title = TITLE;
-		},
 		data() {
 			return {};
 		},
+        created() {
+		    document.title = this.$router.currentRoute.name;
+        },
 		computed: {
 			count() {
-				return store.state.count;
+				return basicStore.state.count;
 			}
 		},
 		methods: {
 			decrement() {
-				store.commit('decrement')
+                basicStore.commit('decrement')
 			},
 			increment() {
-				store.commit('increment')
+                basicStore.commit('increment')
 			}
 		}
 	}
