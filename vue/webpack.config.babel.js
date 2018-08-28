@@ -22,7 +22,7 @@ function makeEntries() {
     const src = `./${CONFIG.paths.src('js')}/`;
     const entries = {};
 
-    glob.sync(path.join(src, '/**/main.js'))
+    glob.sync(path.join(src, '/**/main.{j,t}s'))
         .map(file => `./${file}`)
         .forEach(file => {
             let name = path.dirname(file);
@@ -106,7 +106,7 @@ export default {
             common: `./${CONFIG.paths.src('js')}/common/common.js`,
             vue: CONFIG.isProd ? 'vue/dist/vue.min.js' : 'vue/dist/vue.js'
         },
-        extensions: ['.js', '.vue', '.json']
+        extensions: ['.js', '.ts', '.vue', '.json']
     },
     optimization: {
         minimize: CONFIG.isProd,
@@ -128,6 +128,12 @@ export default {
                 options: {
                     presets: ['env', 'stage-3']
                 }
+            }]
+        }, {
+            test: /\.ts$/,
+            exclude: [/node_modules/],
+            use: [{
+                loader: 'awesome-typescript-loader'
             }]
         }, {
             test: /\.css/,
