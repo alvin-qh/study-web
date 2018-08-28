@@ -5,14 +5,12 @@ import {runWith} from "../common/common";
 import hljs from "highlight.js"
 import "../widget/breadcrumb";
 
+import VeeValidate, {Validator} from "vee-validate";
+
 declare interface Birthday {
     year: number,
     month: number,
     date: number
-}
-
-declare interface DOMType {
-    $hljs: HTMLElement | null
 }
 
 class Form {
@@ -24,15 +22,14 @@ class Form {
 }
 
 runWith('form.index', function () {
-    const DOM: DOMType = {
-        $hljs: null
-    };
+    Vue.use(VeeValidate);
 
     new Vue({
         el: '#app',
         data: {
             form: new Form(),
-            formJson: ''
+            formJson: '',
+            submit: false
         },
         created() {
             const now = new Date();
@@ -40,9 +37,20 @@ runWith('form.index', function () {
             this.form.birthday = {year, month, date};
 
             hljs.initHighlightingOnLoad();
+
+            (vue => {
+                Validator.extend('hobbies', {
+                    getMessage(field: any) {
+                        return 'One of hobbies must be checked';
+                    },
+                    validate(value: any) {
+                        return vue.form.hobbies && vue.form.hobbies.length > 0;
+                    }
+                });
+            })(this);
         },
         mounted() {
-            DOM.$hljs = document.querySelector('.hljs.json') as HTMLElement;
+            (this as any).$hljs = document.querySelector('.hljs.json') as HTMLElement;
         },
         computed: {
             now(): Date {
@@ -61,10 +69,18 @@ runWith('form.index', function () {
         watch: {
             form: {
                 handler() {
-                    DOM.$hljs!.innerText = JSON.stringify(this.form, null, '    ');
-                    hljs.highlightBlock(DOM.$hljs!);
+                    const $hljs = (this as any).$hljs;
+                    $hljs!.innerText = JSON.stringify(this.form, null, '    ');
+                    hljs.highlightBlock($hljs!);
                 },
                 deep: true
+            }
+        },
+        methods: {
+            onSubmit() {
+                this.$validator.validateAll().then(result => {
+                    this.submit = result;
+                });
             }
         }
     });
