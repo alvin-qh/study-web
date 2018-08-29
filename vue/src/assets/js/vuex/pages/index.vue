@@ -13,11 +13,11 @@
     </div>
 </template>
 
-<script>
-	import "../../widget/breadcrumb";
+<script lang="ts">
+    import Vue from "vue";
+    import "../../widget/breadcrumb";
 
-	export default {
-    }
+    export default Vue.extend({})
 </script>
 
 <style lang="less" scoped>

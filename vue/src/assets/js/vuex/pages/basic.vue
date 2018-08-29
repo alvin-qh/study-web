@@ -23,34 +23,36 @@
     </div>
 </template>
 
+<script lang="ts">
+    import Vue from "vue";
+    import {basicStore} from "./stores";
 
-<script>
-	import {basicStore} from "./stores";
+    import "../../widget/breadcrumb";
 
-	import "../../widget/breadcrumb";
-
-	export default {
-		data() {
-			return {};
-		},
-        created() {
-		    document.title = this.$router.currentRoute.name;
+    export default Vue.extend({
+        data() {
+            return {
+            };
         },
-		computed: {
-			count() {
-				return basicStore.state.count;
-			}
-		},
-		methods: {
-			decrement() {
+        created() {
+            document.title = this.$router.currentRoute.name as string;
+        },
+        computed: {
+            count() {
+                return basicStore.state.count;
+            }
+        },
+        methods: {
+            decrement() {
                 basicStore.commit('decrement')
-			},
-			increment() {
+            },
+            increment() {
                 basicStore.commit('increment')
-			}
-		}
-	}
+            }
+        }
+    })
 </script>
+
 
 <style lang="less" scoped>
 </style>

@@ -2,16 +2,13 @@ import "../../css/vuex/index.less";
 
 import Vue from "vue";
 import VueRouter from "vue-router";
-
 import IndexPage from "./pages/index";
 import BasicPage from "./pages/basic";
 
 import {runWith} from "../common/common";
-import Vuex from "vuex";
 
 runWith('vuex.index', function () {
     Vue.use(VueRouter);
-    Vue.use(Vuex);
 
     new Vue({
         el: '#app',
