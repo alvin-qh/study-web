@@ -1,7 +1,7 @@
 <nav aria-label="breadcrumb">
     <ol [ngClass]="{'breadcrumb': true, 'bg-dark text-white': darkMode}">
         <li *ngFor="let level of levels" [ngClass]="{'breadcrumb-item':true, 'active':level.href}">
-            <a *ngIf="level.href; else content" [href]="level.href">{{level.title}}</a>
+            <a *ngIf="level.href; else content" [href]="level.href" class="text-white">{{level.title}}</a>
             <ng-template #content>{{level.title}}</ng-template>
         </li>
     </ol>

@@ -122,7 +122,7 @@ export default {
         rules: [{
             test: /\.ts$/,
             use: [{
-                loader: 'awesome-typescript-loader'
+                loader: 'ts-loader'
             }, {
                 loader: 'angular2-template-loader'
             }]
