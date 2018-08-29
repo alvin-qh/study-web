@@ -5,8 +5,8 @@ import {runWith} from "../common/common";
 import NavBar from "../components/nav-bar";
 
 runWith('home.index', function () {
-    const Body = <div>
-        <NavBar/>
+    const Body = [
+        <NavBar/>,
         <main className="container">
             <div className="py-4">
                 <h1>Rect Demos
@@ -34,7 +34,7 @@ runWith('home.index', function () {
                 </div>
             </div>
         </main>
-    </div>;
+    ];
 
     render(Body, document.getElementById('app'));
 });

@@ -4,6 +4,7 @@ import React, {Component} from "react";
 import {render} from "react-dom";
 import {runWith} from "../common/common";
 import {Breadcrumb, BreadcrumbItem} from "reactstrap";
+import {Wrapper} from "../components/utils";
 
 runWith('intro.processControl', function () {
 
@@ -13,11 +14,8 @@ runWith('intro.processControl', function () {
                 <BreadcrumbItem>
                     <a href="/www/">Home</a>
                 </BreadcrumbItem>
-                <BreadcrumbItem>
-                    <a href="/www/intro/">Introduce</a>
-                </BreadcrumbItem>
                 <BreadcrumbItem active>
-                    If/Else
+                    Process Control
                 </BreadcrumbItem>
             </Breadcrumb>
         </header>;
@@ -108,12 +106,12 @@ runWith('intro.processControl', function () {
         }
 
         render() {
-            return <div>
+            return <Wrapper>
                 <Header/>
                 <main className="container">
                     <IfElse/>
                 </main>
-            </div>;
+            </Wrapper>;
         }
     }
 

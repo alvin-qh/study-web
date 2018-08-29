@@ -1,10 +1,15 @@
+import "../../css/form/index.less";
+
 import React from "react";
 import {render} from "react-dom";
-
 import {runWith} from "../common/common";
+import hljs from "highlight.js";
 import {Breadcrumb, BreadcrumbItem} from "reactstrap";
+import {Wrapper} from "../components/utils";
 
-runWith('intro.hello', function () {
+runWith('form.index', function () {
+
+    hljs.initHighlightingOnLoad();
 
     function Header() {
         return <header>
@@ -13,18 +18,19 @@ runWith('intro.hello', function () {
                     <a href="/www/">Home</a>
                 </BreadcrumbItem>
                 <BreadcrumbItem active>
-                    Hello
+                    Form
                 </BreadcrumbItem>
             </Breadcrumb>
         </header>;
     }
 
-    render([
-        <Header/>,
-        <main className="container">
-            <div className="text-center">
-                <h1>Hello, World</h1>
-            </div>
-        </main>
-    ], document.getElementById('app'));
+    function Body() {
+        return <Wrapper>
+            <Header/>
+            <main className="container">
+            </main>
+        </Wrapper>
+    }
+
+    render(<Body/>, document.getElementById('app'));
 });
