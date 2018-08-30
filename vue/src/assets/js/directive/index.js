@@ -33,7 +33,7 @@ runWith('directive.index', function () {
         },
         methods: {
             gotoPage(n) {
-                this.showPage({title: 'Page changed', message: `Current page is ${n}`});
+                Pagination.showPage({title: 'Page changed', message: `Current page is ${n}`});
             },
             addNewName() {
                 if (this.inputItem) {
@@ -132,7 +132,7 @@ runWith('directive.index', function () {
             }
         },
         watch: {
-            'student.grade': newVal => this.student.class = ''
+            'student.grade': () => this.student.class = ''
         },
         methods: {
             active(name) {

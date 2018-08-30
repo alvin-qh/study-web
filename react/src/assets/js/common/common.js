@@ -18,3 +18,13 @@ export function runWith(name, cb) {
         }
     }
 }
+
+export function* range(start, end = null) {
+    if (end == null) {
+        end = start;
+        start = 0;
+    }
+    for (let n = start; n < end; n++) {
+        yield n;
+    }
+}

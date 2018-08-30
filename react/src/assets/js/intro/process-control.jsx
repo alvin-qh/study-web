@@ -4,116 +4,197 @@ import React, {Component} from "react";
 import {render} from "react-dom";
 import {runWith} from "../common/common";
 import {Breadcrumb, BreadcrumbItem} from "reactstrap";
+import {toast, ToastContainer} from 'react-toastify';
 import {Wrapper} from "../components/utils";
+import PropTypes from "prop-types";
 
-runWith('intro.processControl', function () {
+function Header() {
+    // noinspection HtmlUnknownTarget
+    return <header>
+        <Breadcrumb>
+            <BreadcrumbItem>
+                <a href="/www/">Home</a>
+            </BreadcrumbItem>
+            <BreadcrumbItem active>
+                Process Control
+            </BreadcrumbItem>
+        </Breadcrumb>
+    </header>;
+}
 
-    function Header() {
-        return <header>
-            <Breadcrumb>
-                <BreadcrumbItem>
-                    <a href="/www/">Home</a>
-                </BreadcrumbItem>
-                <BreadcrumbItem active>
-                    Process Control
-                </BreadcrumbItem>
-            </Breadcrumb>
-        </header>;
+class IfElse extends Component {
+    static COLORS = {RED: 'Red', GREEN: 'Green', BLUE: 'Blue'};
+
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            color: 'RED'
+        }
     }
 
-    class IfElse extends Component {
-        static COLORS = {RED: 'Red', GREEN: 'Green', BLUE: 'Blue'};
+    onColorChanged = e => {
+        this.setState({
+            color: e.currentTarget.value
+        });
+    };
 
-        constructor(props) {
-            super(props);
+    showColorBoxes(color) {
+        const ColorBox = props => {
+            const {darken} = props;
 
-            this.state = {
-                color: 'RED'
+            let className = `color-box bg-${color.toLowerCase()}`;
+            if (darken) {
+                className += ' darken';
             }
-        }
-
-        onColorChanged = e => {
-            this.setState({
-                color: e.currentTarget.value
-            });
+            return <div className={className}/>
         };
 
-        showColorBoxes(color) {
-            const ColorBox = props => {
-                const {darken} = props;
+        if (this.state.color === color) {
+            return <ColorBox/>;
+        } else {
+            return <ColorBox darken/>;
+        }
+    }
 
-                let className = `color-box bg-${color.toLowerCase()}`;
-                if (darken) {
-                    className += ' darken';
-                }
-                return <div className={className}/>
+    render() {
+        return <div className="card">
+            <div className="card-header">
+                <strong>If / Else</strong>
+            </div>
+
+            <div className="card-body">
+                <div className="ask">
+                    <div className="form-group row">
+                        <label className="col-form-label col-1 text-right">Colors: </label>
+                        <select className="form-control col-6" value={this.state.color}
+                                onChange={this.onColorChanged}>
+                            {Object.keys(IfElse.COLORS).map(key =>
+                                <option value={key} key={key}>{IfElse.COLORS[key]}</option>)}
+                        </select>
+                    </div>
+                </div>
+
+                <div className="answer">
+                    <div className="answer-1 col-3 row">
+                        <div
+                            className={`font-weight-bold col color-red  ${this.state.color !== 'RED' ? 'darken' : ''}`}>Red
+                        </div>
+                        <div
+                            className={`font-weight-bold col color-green ${this.state.color !== 'GREEN' ? 'darken' : ''}`}>Green
+                        </div>
+                        <div
+                            className={`font-weight-bold col color-blue ${this.state.color !== 'BLUE' ? 'darken' : ''}`}>Blue
+                        </div>
+                    </div>
+                </div>
+
+                <div className="answer">
+                    <div className="answer-2 row mt-5">
+                        {this.showColorBoxes('RED')}
+                        {this.showColorBoxes('GREEN')}
+                        {this.showColorBoxes('BLUE')}
+                    </div>
+                </div>
+            </div>
+        </div>;
+    }
+}
+
+class Loop extends Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            count: 1
+        };
+    }
+
+    onValueChanged = (name, e) => {
+        this.setState({
+            [name]: parseInt(e.currentTarget.value)
+        });
+    };
+
+    render() {
+        class Pagination extends Component {
+            static propTypes = {
+                count: PropTypes.number
             };
 
-            if (this.state.color === color) {
-                return <ColorBox/>;
-            } else {
-                return <ColorBox darken/>;
+            constructor(props) {
+                super(props);
+            }
+
+            static showPage(n) {
+                toast.info(`Page index changed to ${n}`, {
+                    position: toast.POSITION.TOP_RIGHT,
+                    autoClose: 1500
+                });
+            }
+
+            pages(n) {
+                // noinspection JSUnnecessarySemicolon
+                return Array.from(Array(n)).map((_, n) =>
+                    <li className="page-item" key={n}>
+                        <a className="page-link" href="javascript:;"
+                           onClick={() => Pagination.showPage(n + 1)}>{n + 1}
+                        </a>
+                    </li>
+                );
+            }
+
+            render() {
+                const {count, ...attributes} = this.props;
+                return <nav aria-label="Page navigation">
+                    <ul {...attributes} className="pagination">
+                        {this.pages(count)}
+                    </ul>
+                    <ToastContainer/>
+                </nav>;
             }
         }
 
-        render() {
-            return <div className="card">
-                <div className="card-header">
-                    <strong>If / Else</strong>
+        return <div className="card mt-4">
+            <div className="card-header">Loop</div>
+            <div className="card-body">
+                <div className="form-group">
+                    <label className="control-label text-right">Pages:</label>
+                    <select className="form-control col-6" onChange={this.onValueChanged.bind(this, 'count')}>
+                        {[...Array(10)].map((_, n) => <option value={n + 1} key={n}>{n + 1}</option>)}
+                    </select>
                 </div>
-
-                <div className="card-body">
-                    <div className="ask">
-                        <div className="form-group row">
-                            <label className="col-form-label col-1 text-right">Colors: </label>
-                            <select className="form-control col-6" value={this.state.color}
-                                    onChange={this.onColorChanged}>
-                                {Object.keys(IfElse.COLORS).map(key =>
-                                    <option value={key} key={key}>{IfElse.COLORS[key]}</option>)}
-                            </select>
+                <div className="mt-4">
+                    <div className="row container">
+                        <div>
+                            <Pagination count={this.state.count}/>
                         </div>
-                    </div>
-
-                    <div className="answer">
-                        <div className="answer-1 col-3 row">
-                            <div
-                                className={`font-weight-bold col color-red  ${this.state.color !== 'RED' ? 'darken' : ''}`}>Red
-                            </div>
-                            <div
-                                className={`font-weight-bold col color-green ${this.state.color !== 'GREEN' ? 'darken' : ''}`}>Green
-                            </div>
-                            <div
-                                className={`font-weight-bold col color-blue ${this.state.color !== 'BLUE' ? 'darken' : ''}`}>Blue
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="answer">
-                        <div className="answer-2 col-3 row mt-5">
-                            {this.showColorBoxes('RED')}
-                            {this.showColorBoxes('GREEN')}
-                            {this.showColorBoxes('BLUE')}
+                        <div className="pt-2 ml-3">
+                            <a href="https://fkhadra.github.io/react-toastify/">Toastify</a>
                         </div>
                     </div>
                 </div>
-            </div>;
-        }
+            </div>
+        </div>;
+    }
+}
+
+class Body extends Component {
+    constructor(props) {
+        super(props);
     }
 
-    class Body extends Component {
-        constructor(props) {
-            super(props);
-        }
-
-        render() {
-            return <Wrapper>
-                <Header/>
-                <main className="container">
-                    <IfElse/>
-                </main>
-            </Wrapper>;
-        }
+    render() {
+        return <Wrapper>
+            <Header/>
+            <main className="container">
+                <IfElse/>
+                <Loop/>
+            </main>
+        </Wrapper>;
     }
+}
 
+runWith('intro.processControl', function () {
     render(<Body/>, document.getElementById('app'));
 });
