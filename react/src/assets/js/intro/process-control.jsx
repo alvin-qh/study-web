@@ -5,7 +5,6 @@ import {render} from "react-dom";
 import {runWith} from "../common/common";
 import {Breadcrumb, BreadcrumbItem} from "reactstrap";
 import {toast, ToastContainer} from 'react-toastify';
-import {Wrapper} from "../components/utils";
 import PropTypes from "prop-types";
 
 function Header() {
@@ -65,8 +64,8 @@ class IfElse extends Component {
 
             <div className="card-body">
                 <div className="ask">
-                    <div className="form-group row">
-                        <label className="col-form-label col-1 text-right">Colors: </label>
+                    <div className="form-group">
+                        <label className="col-form-label">Colors: </label>
                         <select className="form-control col-6" value={this.state.color}
                                 onChange={this.onColorChanged}>
                             {Object.keys(IfElse.COLORS).map(key =>
@@ -156,7 +155,9 @@ class Loop extends Component {
         }
 
         return <div className="card mt-4">
-            <div className="card-header">Loop</div>
+            <div className="card-header">
+                <strong>Loop</strong>
+            </div>
             <div className="card-body">
                 <div className="form-group">
                     <label className="control-label text-right">Pages:</label>
@@ -166,12 +167,14 @@ class Loop extends Component {
                 </div>
                 <div className="mt-4">
                     <div className="row container">
-                        <div>
-                            <Pagination count={this.state.count}/>
-                        </div>
-                        <div className="pt-2 ml-3">
-                            <a href="https://fkhadra.github.io/react-toastify/">Toastify</a>
-                        </div>
+                        <Pagination count={this.state.count}/>
+                    </div>
+                </div>
+                <div className="container">
+                    <div className="site">
+                        <h4>Homepage for Toastify:</h4>
+                        <p><a href="https://fkhadra.github.io/react-toastify/"
+                              className="text-info">https://fkhadra.github.io/react-toastify/</a></p>
                     </div>
                 </div>
             </div>
@@ -185,13 +188,13 @@ class Body extends Component {
     }
 
     render() {
-        return <Wrapper>
+        return <React.Fragment>
             <Header/>
             <main className="container">
                 <IfElse/>
                 <Loop/>
             </main>
-        </Wrapper>;
+        </React.Fragment>;
     }
 }
 

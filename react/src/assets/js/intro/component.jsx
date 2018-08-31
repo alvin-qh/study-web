@@ -6,17 +6,14 @@ import {runWith, Times} from "../common/common";
 import {Breadcrumb, BreadcrumbItem, Card, CardBody, CardFooter, CardHeader} from "reactstrap";
 import PropTypes from "prop-types";
 import hljs from "highlight.js";
-import {Wrapper} from "../components/utils";
 
+// noinspection HtmlUnknownTarget
 /**
  * Create component by function
  */
-function Header(props) {
-    const {className, ...attributes} = props;
-
-    // noinspection HtmlUnknownTarget
-    return <header>
-        <Breadcrumb className={className || ''} {...attributes}>
+const Header = ({className = '', ...attributes}) => (
+    <header>
+        <Breadcrumb className={className} {...attributes}>
             <BreadcrumbItem>
                 <a href="/www/">Home</a>
             </BreadcrumbItem>
@@ -24,8 +21,8 @@ function Header(props) {
                 Component
             </BreadcrumbItem>
         </Breadcrumb>
-    </header>;
-}
+    </header>
+);
 
 /**
  * Create component by class
@@ -194,9 +191,9 @@ class JSONBoard extends Component {
     }
 
     render() {
-        const {formData, className, ...attributes} = this.props;
+        const {formData, className = '', ...attributes} = this.props;
 
-        return <div {...attributes} className={`json-board ${className || ''}`}>
+        return <div {...attributes} className={`json-board ${className}`}>
             <pre className="hljs json" ref={this.preElement}>{JSON.stringify(formData, null, '    ')}</pre>
         </div>;
     }
@@ -222,14 +219,14 @@ class Body extends Component {
     };
 
     render() {
-        return <Wrapper>
+        return <React.Fragment>
             <Header/>
             <main className="container">
                 <PersonCard onFormChanged={this.onFormChanged}>
                     <JSONBoard formData={this.state.formData}/>
                 </PersonCard>
             </main>
-        </Wrapper>
+        </React.Fragment>
     }
 }
 
