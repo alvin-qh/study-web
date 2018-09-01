@@ -11,9 +11,8 @@ function Header() {
             <BreadcrumbItem>
                 <a href="/www/">Home</a>
             </BreadcrumbItem>
-            <BreadcrumbItem active>
-                Hello
-            </BreadcrumbItem>
+            <BreadcrumbItem>Introduce</BreadcrumbItem>
+            <BreadcrumbItem active>Hello</BreadcrumbItem>
         </Breadcrumb>
     </header>;
 }

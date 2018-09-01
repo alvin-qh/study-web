@@ -1,6 +1,6 @@
 import "../../css/intro/component.less";
 
-import React, {Component} from "react";
+import React from "react";
 import {render} from "react-dom";
 import {runWith, Times} from "../common/common";
 import {Breadcrumb, BreadcrumbItem, Card, CardBody, CardFooter, CardHeader} from "reactstrap";
@@ -17,9 +17,8 @@ const Header = ({className = '', ...attributes}) => (
             <BreadcrumbItem>
                 <a href="/www/">Home</a>
             </BreadcrumbItem>
-            <BreadcrumbItem active>
-                Component
-            </BreadcrumbItem>
+            <BreadcrumbItem>Component</BreadcrumbItem>
+            <BreadcrumbItem active>Basic</BreadcrumbItem>
         </Breadcrumb>
     </header>
 );
@@ -27,7 +26,7 @@ const Header = ({className = '', ...attributes}) => (
 /**
  * Create component by class
  */
-class PersonCard extends Component {
+class PersonCard extends React.Component {
 
     // define props types can passed in this component
     static propTypes = {
@@ -123,7 +122,12 @@ class PersonCard extends Component {
 
     render() {
         // noinspection JSUnusedLocalSymbols
-        const {className, children, onFormChanged, ...attributes} = this.props;
+        const {
+            className,
+            children,
+            onFormChanged,
+            ...attributes
+        } = this.props;
 
         return <Card {...attributes} className={className}>
             <CardHeader className="bg-primary text-white"><strong>Alvin</strong></CardHeader>
@@ -132,14 +136,14 @@ class PersonCard extends Component {
                     <div className="col">
                         <form className="form">
                             <div className="form-group row">
-                                <label className="col-form-label col-2 text-right">Name:</label>
-                                <input className="form-control col-8" name="name"
+                                <label className="col-form-label col-3 text-right">Name:</label>
+                                <input className="form-control col-9" name="name"
                                        placeholder="Please input your name"
                                        onChange={this.onFormFieldChanged1.bind(this, 'name')}/>
                             </div>
                             <div className="form-group row">
-                                <label className="col-form-label col-2 text-right">Gender:</label>
-                                <div className="row col-8">
+                                <label className="col-form-label col-3 text-right">Gender:</label>
+                                <div className="row col-9">
                                     <div className="form-check form-check-inline">
                                         <input className="form-check-input" name="gender" type="radio" value="M"
                                                checked={this.state.form.gender === 'M'}
@@ -155,16 +159,16 @@ class PersonCard extends Component {
                                 </div>
                             </div>
                             <div className="form-group row">
-                                <label className="col-form-label col-2 text-right">Occu:</label>
-                                <select className="form-control col-8" onChange={this.onFormFieldChanged2}
+                                <label className="col-form-label col-3 text-right">Occu:</label>
+                                <select className="form-control col-9" onChange={this.onFormFieldChanged2}
                                         name="occu" value={this.state.form.occu}>
                                     {this.occupations.map(opt =>
                                         <option value={opt.value} key={opt.value}>{opt.name}</option>)}
                                 </select>
                             </div>
                             <div className="form-group row">
-                                <label className="col-form-label col-2 text-right">Remark:</label>
-                                <textarea className="form-control col-8" rows="5" name="remark"
+                                <label className="col-form-label col-3 text-right">Remark:</label>
+                                <textarea className="form-control col-9" rows="5" name="remark"
                                           value={this.state.form.remark} onChange={this.onFormFieldChanged2}/>
                             </div>
                         </form>
@@ -180,7 +184,7 @@ class PersonCard extends Component {
 }
 
 
-class JSONBoard extends Component {
+class JSONBoard extends React.Component {
     constructor(props) {
         super(props);
         this.preElement = React.createRef();
@@ -191,7 +195,11 @@ class JSONBoard extends Component {
     }
 
     render() {
-        const {formData, className = '', ...attributes} = this.props;
+        const {
+            formData,
+            className = '',
+            ...attributes
+        } = this.props;
 
         return <div {...attributes} className={`json-board ${className}`}>
             <pre className="hljs json" ref={this.preElement}>{JSON.stringify(formData, null, '    ')}</pre>
@@ -203,7 +211,7 @@ JSONBoard.propTypes = {
     formData: PropTypes.object
 };
 
-class Body extends Component {
+class Body extends React.Component {
     constructor(props) {
         super(props);
 
@@ -231,7 +239,6 @@ class Body extends Component {
 }
 
 runWith('intro.component', function () {
-
     hljs.initHighlightingOnLoad();
 
     render(<Body/>, document.getElementById("app"));

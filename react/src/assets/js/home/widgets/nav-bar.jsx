@@ -8,7 +8,8 @@ import {
     Navbar,
     NavbarBrand,
     NavbarToggler,
-    NavItem, NavLink,
+    NavItem,
+    NavLink,
     UncontrolledDropdown
 } from "reactstrap";
 
@@ -42,12 +43,17 @@ export default class NavBar extends Component {
                             <DropdownMenu>
                                 <DropdownItem tag="a" href="intro/hello.html">Hello</DropdownItem>
                                 <DropdownItem tag="a" href="intro/process-control.html">Process control</DropdownItem>
-                                <DropdownItem tag="a" href="intro/component.html">Component</DropdownItem>
                             </DropdownMenu>
                         </UncontrolledDropdown>
-                        <NavItem>
-                            <NavLink href="form/">Form</NavLink>
-                        </NavItem>
+                        <UncontrolledDropdown nav inNavbar>
+                            <DropdownToggle nav caret>
+                                Component
+                            </DropdownToggle>
+                            <DropdownMenu>
+                                <DropdownItem tag="a" href="component/basic.html">Basic</DropdownItem>
+                                <DropdownItem tag="a" href="component/advance.html">Advance</DropdownItem>
+                            </DropdownMenu>
+                        </UncontrolledDropdown>
                     </Nav>
                     <Nav className="ml-auto" navbar>
                         <UncontrolledDropdown nav inNavbar>

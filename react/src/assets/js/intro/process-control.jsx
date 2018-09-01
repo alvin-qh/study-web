@@ -1,11 +1,12 @@
 import "../../css/intro/process-control.less";
 
-import React, {Component} from "react";
+import React from "react";
+import PropTypes from "prop-types";
+
 import {render} from "react-dom";
 import {runWith} from "../common/common";
 import {Breadcrumb, BreadcrumbItem} from "reactstrap";
 import {toast, ToastContainer} from 'react-toastify';
-import PropTypes from "prop-types";
 
 function Header() {
     // noinspection HtmlUnknownTarget
@@ -14,14 +15,13 @@ function Header() {
             <BreadcrumbItem>
                 <a href="/www/">Home</a>
             </BreadcrumbItem>
-            <BreadcrumbItem active>
-                Process Control
-            </BreadcrumbItem>
+            <BreadcrumbItem>Introduce</BreadcrumbItem>
+            <BreadcrumbItem active>Process Control</BreadcrumbItem>
         </Breadcrumb>
     </header>;
 }
 
-class IfElse extends Component {
+class IfElse extends React.Component {
     static COLORS = {RED: 'Red', GREEN: 'Green', BLUE: 'Blue'};
 
     constructor(props) {
@@ -100,7 +100,7 @@ class IfElse extends Component {
     }
 }
 
-class Loop extends Component {
+class Loop extends React.Component {
 
     constructor(props) {
         super(props);
@@ -116,7 +116,7 @@ class Loop extends Component {
     };
 
     render() {
-        class Pagination extends Component {
+        class Pagination extends React.Component {
             static propTypes = {
                 count: PropTypes.number
             };
@@ -182,7 +182,7 @@ class Loop extends Component {
     }
 }
 
-class Body extends Component {
+class Body extends React.Component {
     constructor(props) {
         super(props);
     }

@@ -1,4 +1,5 @@
 import "../../css/common/common.less";
+import "./polyfills";
 import moment from "moment";
 
 const DATETIME_FORMAT = 'YYYY年MM月DD日 HH:mm:ss';

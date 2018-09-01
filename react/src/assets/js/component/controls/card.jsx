@@ -1,8 +1,9 @@
-import React, {Component} from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
+import {globalStyles} from "./utils";
 
-class Card extends Component {
+class Card extends React.Component {
     constructor(props) {
         super(props);
     }
@@ -10,7 +11,8 @@ class Card extends Component {
     static propTypes = {
         className: PropTypes.string,
         title: PropTypes.string,
-        dark: PropTypes.bool
+        backStyle: PropTypes.oneOf([...globalStyles]),
+        forceStyle: PropTypes.oneOf('light', 'dark')
     };
 
     render() {
@@ -18,11 +20,12 @@ class Card extends Component {
             className = '',
             children,
             title = '',
-            dark = false
+            backStyle = 'primary',
+            forceStyle = 'light'
         } = this.props;
 
         return <div className={classNames('card', className)}>
-            <div className={classNames('card-header', {['bg-dark text-white']: dark})}>
+            <div className={classNames('card-header', `bg-${backStyle}`, `text-${forceStyle}`)}>
                 <strong>{title}</strong>
             </div>
             <div className={classNames('card-body')}>

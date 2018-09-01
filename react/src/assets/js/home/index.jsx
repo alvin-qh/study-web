@@ -2,11 +2,11 @@ import React from "react";
 import {render} from "react-dom";
 
 import {runWith} from "../common/common";
-import NavBar from "../components/nav-bar";
+import NavBar from "./widgets/nav-bar";
 
 const Body = [
-    <NavBar/>,
-    <main className="container">
+    <NavBar key="header"/>,
+    <main className="container" key="main">
         <div className="py-4">
             <h1>Rect Demos
                 <small>How to build user interfaces with this framework.</small>
