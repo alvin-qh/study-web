@@ -8,6 +8,7 @@ import Select from "./select";
 import Checkbox from "./checkbox";
 import Edit from "./edit";
 import Button from "./button";
+import FormValidators from "./validations";
 
 class Form extends React.Component {
 
@@ -21,7 +22,8 @@ class Form extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {...props.data || {}}
+        this.state = {...props.data || {}};
+        this.validators = new FormValidators(() => ({...this.state}));
     }
 
     onFormDataChanged = e => {
@@ -39,6 +41,8 @@ class Form extends React.Component {
         }
         this.setState({
             [target.name]: value
+        }, () => {
+            console.log(this.validators.validate());
         });
     };
 
@@ -72,6 +76,8 @@ class Form extends React.Component {
                             controlCol: cols[1]
                         };
                     }
+                    this.validators.addValidators(child.props.name, child.props.validators);
+
                     child = React.cloneElement(child, props);
                     return <div className={classNames('form-group', {'row': !!cols})}>{child}</div>;
                 }

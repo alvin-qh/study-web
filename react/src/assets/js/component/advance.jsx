@@ -100,7 +100,8 @@ class Body extends React.Component {
                                   cols={this.state.formCols}
                                   data={this.state.form.data}
                                   onSubmit={this.onFormSubmitted}>
-                                <Form.Text label="Name" name="name" placeholder="Please input your name"/>
+                                <Form.Text label="Name" name="name" placeholder="Please input your name"
+                                           validators={['required']}/>
                                 <Form.Text type="number" label="Tel" name="tel"
                                            placeholder="Please input your telephone number"/>
                                 <Form.Radio label="Gender" name="gender" items={Body.gender}/>
