@@ -101,12 +101,14 @@ class Body extends React.Component {
                                   data={this.state.form.data}
                                   onSubmit={this.onFormSubmitted}>
                                 <Form.Text label="Name" name="name" placeholder="Please input your name"
-                                           validators={['required']}/>
+                                           validators={['required', 'length(max=20, min=6)']}/>
                                 <Form.Text type="number" label="Tel" name="tel"
-                                           placeholder="Please input your telephone number"/>
+                                           placeholder="Please input your telephone number"
+                                           validators={['required', 'length(max=20, min=10)']}/>
                                 <Form.Radio label="Gender" name="gender" items={Body.gender}/>
                                 <Form.Select label="Role" name="role" options={Body.roles}/>
-                                <Form.Checkbox label="Hobbies" name="hobbies" items={Body.hobbies}/>
+                                <Form.Checkbox label="Hobbies" name="hobbies" items={Body.hobbies}
+                                               validators={['required']}/>
                                 <Form.Edit label="Remark" name="remark" rows="5" placeholder="Input some remarks"/>
                                 <Button outline type="submit">
                                     <i className="fa fa-check mr-2"/>Submit

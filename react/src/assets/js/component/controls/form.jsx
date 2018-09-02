@@ -11,7 +11,6 @@ import Button from "./button";
 import FormValidators from "./validations";
 
 class Form extends React.Component {
-
     static propTypes = {
         cols: PropTypes.array,
         className: PropTypes.string,
@@ -22,8 +21,11 @@ class Form extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {...props.data || {}};
-        this.validators = new FormValidators(() => ({...this.state}));
+        this.state = {
+            form: {...props.data || {}},
+            errors: {}
+        };
+        this.validators = new FormValidators(() => ({...this.state.form}));
     }
 
     onFormDataChanged = e => {
@@ -31,7 +33,7 @@ class Form extends React.Component {
 
         let value = target.value;
         if (target.type === 'checkbox') {
-            let values = this.state[target.name] || new Set();
+            let values = this.state.form[target.name] || new Set();
             if (target.checked) {
                 values.add(value);
             } else {
@@ -40,18 +42,33 @@ class Form extends React.Component {
             value = values;
         }
         this.setState({
-            [target.name]: value
+            form: {
+                ...this.state.form,
+                [target.name]: value
+            }
         }, () => {
-            console.log(this.validators.validate());
+            const errors = this.validators.validate();
+            this.setState({
+                errors: this.validators.validate()
+            }, () => {
+                if (Object.keys(errors).length > 0 && this.props.onSubmit) {
+                    this.props.onSubmit({data: {}});
+                }
+            });
         });
     };
 
     onSubmit = e => {
         e.preventDefault();
 
-        if (this.props.onSubmit) {
-            this.props.onSubmit({data: {...this.state}});
-        }
+        const errors = this.validators.validate();
+        this.setState({
+            errors: errors
+        }, () => {
+            if (this.props.onSubmit) {
+                this.props.onSubmit({data: Object.keys(errors).length === 0 ? {...this.state.form} : {}});
+            }
+        });
     };
 
     render() {
@@ -67,7 +84,9 @@ class Form extends React.Component {
                 if (child.type && child.type.controlName) {
                     let props = {
                         onDataChanged: this.onFormDataChanged,
-                        value: this.state[child.props.name]
+                        value: this.state.form[child.props.name],
+                        errors: this.state.errors
+
                     };
                     if (cols) {
                         props = {
@@ -76,7 +95,7 @@ class Form extends React.Component {
                             controlCol: cols[1]
                         };
                     }
-                    this.validators.addValidators(child.props.name, child.props.validators);
+                    this.validators.add(child.props.name, child.props.validators);
 
                     child = React.cloneElement(child, props);
                     return <div className={classNames('form-group', {'row': !!cols})}>{child}</div>;

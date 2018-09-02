@@ -23,6 +23,7 @@ class Button extends React.Component {
             type = 'button',
             style = 'primary',
             outline = false,
+            errors = null,
             onClick = () => {
             }
         } = this.props;
@@ -37,6 +38,7 @@ class Button extends React.Component {
 
         return <button type={type}
                        className={className}
+                       disabled={Object.keys(errors).length > 0}
                        onClick={onClick}>{children}</button>
     }
 }

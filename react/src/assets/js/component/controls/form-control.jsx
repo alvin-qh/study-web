@@ -20,13 +20,18 @@ export default class FormControl extends React.Component {
         };
 
         const renderBody = (grouping, render) => {
-            const {controlCol} = this.props;
-            const classes = classNames({
-                'row': !!controlCol && grouping,
-                [`col-${controlCol}`]: !!controlCol,
-                'no-padding': !grouping
-            });
-            return <div className={classes}>{render()}</div>;
+            const {name, controlCol, errors} = this.props;
+            const classes = classNames({[`col-${controlCol}`]: !!controlCol}, 'no-padding');
+            return <div className={classes}>
+                <div>
+                    {render()}
+                    {!!errors[name] && !!errors[name].length && <ul className="form-errors animated fadeIn">
+                        {errors[name].map((err, n) => <li key={n}>
+                            <small className="text-danger">{err}</small>
+                        </li>)}
+                    </ul>}
+                </div>
+            </div>;
         };
 
         this.renderComponent = component => {
