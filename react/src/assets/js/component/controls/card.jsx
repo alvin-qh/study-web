@@ -12,7 +12,7 @@ class Card extends React.Component {
         className: PropTypes.string,
         title: PropTypes.string,
         backStyle: PropTypes.oneOf([...globalStyles]),
-        forceStyle: PropTypes.oneOf('light', 'dark')
+        forceStyle: PropTypes.oneOf(['light', 'dark'])
     };
 
     render() {

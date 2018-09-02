@@ -73,7 +73,7 @@ class Form extends React.Component {
                         };
                     }
                     child = React.cloneElement(child, props);
-                    return <div className={classNames('form-group', {row: !!cols})}>{child}</div>;
+                    return <div className={classNames('form-group', {'row': !!cols})}>{child}</div>;
                 }
                 return child;
             })}

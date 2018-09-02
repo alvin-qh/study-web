@@ -1,4 +1,4 @@
-import "../../css/intro/component.less";
+import "../../css/component/basic.less"
 
 import React from "react";
 import {render} from "react-dom";
@@ -150,7 +150,7 @@ class PersonCard extends React.Component {
                                                onChange={this.onFormFieldChanged1.bind(this, 'gender')}/>
                                         <label className="form-check-label">Male</label>
                                     </div>
-                                    <div className="form-check form-check-inline col-6">
+                                    <div className="form-check form-check-inline">
                                         <input className="form-check-input" name="gender" type="radio" value="F"
                                                checked={this.state.form.gender === 'F'}
                                                onChange={this.onFormFieldChanged1.bind(this, 'gender')}/>

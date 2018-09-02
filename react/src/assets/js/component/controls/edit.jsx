@@ -1,43 +1,30 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {controlClassNames, decorateComponent, labelClassNames} from "./utils";
+import {decorateComponent} from "./utils";
+import FormControl from "./form-control";
 
-class Edit extends React.Component {
+class Edit extends FormControl {
+    static propTypes = {
+        placeholder: PropTypes.string,
+        rows: PropTypes.oneOfType([PropTypes.number, PropTypes.string]),
+        ...FormControl.propTypes
+    };
+
     constructor(props) {
         super(props);
     }
 
-    static propTypes = {
-        label: PropTypes.string,
-        name: PropTypes.string.isRequired,
-        placeholder: PropTypes.string,
-        value: PropTypes.string,
-        rows: PropTypes.oneOfType([PropTypes.number, PropTypes.string])
-    };
-
     render() {
         const {
-            label = '',
-            labelCol = '',
-            name,
-            controlCol = '',
-            value = '',
             placeholder = '',
-            onDataChanged,
             rows = 0
         } = this.props;
 
-
-        return <React.Fragment>
-            {label && <label className={labelClassNames(labelCol)}>{label}:</label>}
+        return this.renderComponent(
             <textarea
-                className={controlClassNames(controlCol)}
-                name={name}
                 rows={rows}
-                placeholder={placeholder}
-                value={value}
-                onChange={onDataChanged}/>
-        </React.Fragment>;
+                className="form-control"
+                placeholder={placeholder}/>);
     }
 }
 

@@ -1,4 +1,4 @@
-import "../../css/form/index.less";
+import "../../css/component/advance.less";
 
 import React from "react";
 import {render} from "react-dom";
