@@ -131,7 +131,7 @@ export default {
             use: [{
                 loader: 'babel-loader',
                 options: {
-                    presets: ['env', 'stage-3']
+                    presets: ["@babel/env"]
                 }
             }]
         }, {

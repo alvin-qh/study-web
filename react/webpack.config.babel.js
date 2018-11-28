@@ -123,7 +123,7 @@ export default {
             use: [{
                 loader: 'babel-loader',
                 options: {
-                    presets: ['env', 'stage-3', 'react'],
+                    presets: ['@babel/env', '@babel/react'],
                     plugins: [
                         ['transform-class-properties']
                     ]
