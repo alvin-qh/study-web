@@ -5,7 +5,7 @@ import path from "path";
 
 import ExtractTextPlugin from "extract-text-webpack-plugin";
 import HtmlPlugin from "html-webpack-plugin";
-import CleanupPlugin from "webpack-cleanup-plugin";
+// import CleanupPlugin from "webpack-cleanup-plugin";
 import OptimizeCssAssetsPlugin from "optimize-css-assets-webpack-plugin";
 import VueLoaderPlugin from "vue-loader/lib/plugin";
 
@@ -71,8 +71,8 @@ const plugins = (() => {
         new ProvidePlugin({
             // $: 'jquery'
         }),
-        extractCss,
-        new CleanupPlugin()
+        extractCss
+        // new CleanupPlugin()
     ].concat(makeTemplates());
 
     if (CONFIG.isProd) {
@@ -126,7 +126,7 @@ export default {
             use: [{
                 loader: 'babel-loader',
                 options: {
-                    presets: ['env', 'stage-3']
+                    presets: ['@babel/env']
                 }
             }]
         }, {
