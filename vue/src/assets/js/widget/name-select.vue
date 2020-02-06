@@ -8,11 +8,19 @@
 </template>
 
 <script>
-    export default {
+    import Vue from "vue";
+
+    export default Vue.extend({
         props: {
-            label: String,
-            name: String,
-            value: ''
+            label: {
+                type: String
+            },
+            name: {
+                type: String
+            },
+            value: {
+                default: ''
+            }
         },
         data() {
             return {
@@ -29,7 +37,7 @@
                 this.$emit('input', this.selected);
             }
         }
-    }
+    });
 </script>
 
 <style scoped lang="less">

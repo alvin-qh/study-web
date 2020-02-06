@@ -2,10 +2,30 @@ import "../../css/form/index.less";
 
 import Vue from "vue";
 import {runWith} from "../common/common";
-import hljs from "highlight.js"
+import * as hljs from "highlight.js"
 import "../widget/breadcrumb";
 
-import VeeValidate, {Validator} from "vee-validate";
+import {ValidationProvider, ValidationObserver, extend} from "vee-validate";
+import {required} from "vee-validate/dist/rules"
+
+// extend('required', required);
+
+extend('name', {
+    ...required,
+    message(field): string {
+        return `The name not valid`;
+    }
+});
+
+extend('hobbies', {
+    validate(value: String) {
+        if (value && value.length > 0) {
+            return true;
+        }
+        return 'One of hobbies must be checked';
+    },
+    computesRequired: true
+});
 
 declare interface Birthday {
     year: number,
@@ -22,14 +42,15 @@ class Form {
 }
 
 runWith('form.index', function () {
-    Vue.use(VeeValidate);
-
     new Vue({
         el: '#app',
         data: {
             form: new Form(),
-            formJson: '',
-            submit: false
+            formJson: ''
+        },
+        components: {
+            ValidationProvider,
+            ValidationObserver
         },
         created() {
             const now = new Date();
@@ -37,17 +58,6 @@ runWith('form.index', function () {
             this.form.birthday = {year, month, date};
 
             hljs.initHighlightingOnLoad();
-
-            (vue => {
-                Validator.extend('hobbies', {
-                    getMessage(field: any) {
-                        return 'One of hobbies must be checked';
-                    },
-                    validate(value: any) {
-                        return vue.form.hobbies && vue.form.hobbies.length > 0;
-                    }
-                });
-            })(this);
         },
         mounted() {
             (this as any).$hljs = document.querySelector('.hljs.json') as HTMLElement;
@@ -78,9 +88,7 @@ runWith('form.index', function () {
         },
         methods: {
             onSubmit() {
-                this.$validator.validateAll().then(result => {
-                    this.submit = result;
-                });
+                return false;
             }
         }
     });

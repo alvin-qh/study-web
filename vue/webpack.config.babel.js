@@ -9,17 +9,21 @@ import HtmlPlugin from "html-webpack-plugin";
 import OptimizeCssAssetsPlugin from "optimize-css-assets-webpack-plugin";
 import VueLoaderPlugin from "vue-loader/lib/plugin";
 
+function normalizePath(p) {
+    return p.replace(/\\/g, '/');
+}
+
 const CONFIG = {
     isProd: (process.env.NODE_ENV === 'production'),
     paths: {
-        src: file => path.join('src/assets', file || ''),
-        dst: file => path.join('out', file || ''),
-        www: file => path.join('src/www', file || '')
+        src: file => normalizePath(path.join('src/assets', file || '')),
+        dst: file => normalizePath(path.join('out', file || '')),
+        www: file => normalizePath(path.join('src/www', file || ''))
     }
 };
 
 function makeEntries() {
-    const src = `./${CONFIG.paths.src('js')}/`;
+    const src = normalizePath(`./${CONFIG.paths.src('js')}/`);
     const entries = {};
 
     glob.sync(path.join(src, '/**/main.{j,t}s'))
@@ -33,9 +37,13 @@ function makeEntries() {
 }
 
 function makeTemplates() {
+    const wwwPath = normalizePath(`${CONFIG.paths.www()}/`);
+
     return glob.sync(path.join(CONFIG.paths.www(), '/**/*.html'))
         .map(file => {
-            let chunks = file.replace(CONFIG.paths.www() + '/', '');
+            file = normalizePath(file);
+
+            let chunks = file.replace(wwwPath, '');
             chunks = chunks.substr(0, chunks.indexOf('/')) || 'home';
             chunks = ['manifest', 'vendor', 'common', chunks];
 
