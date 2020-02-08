@@ -8,12 +8,16 @@ import HtmlPlugin from "html-webpack-plugin";
 import CleanupPlugin from "webpack-cleanup-plugin";
 import OptimizeCssAssetsPlugin from "optimize-css-assets-webpack-plugin";
 
+function normalizePath(p) {
+    return p.replace(/\\/g, '/');
+}
+
 export const CONFIG = {
     isProd: (process.env.NODE_ENV === 'production'),
     paths: {
-        src: file => path.join('src/assets', file || ''),
-        dst: file => path.join('out', file || ''),
-        www: file => path.join('src/www', file || '')
+        src: file => normalizePath(path.join('src/assets', file || '')),
+        dst: file => normalizePath(path.join('out', file || '')),
+        www: file => normalizePath(path.join('src/www', file || ''))
     }
 };
 
@@ -24,6 +28,8 @@ function makeEntries() {
     glob.sync(path.join(src, '/**/main.js'))
         .map(file => `./${file}`)
         .forEach(file => {
+            file = normalizePath(file);
+
             let name = path.dirname(file);
             name = name.substr(name.lastIndexOf('/') + 1);
             entries[name] = file;
@@ -32,9 +38,13 @@ function makeEntries() {
 }
 
 function makeTemplates() {
+    const wwwRoot = normalizePath(`${CONFIG.paths.www()}/`);
+
     return glob.sync(path.join(CONFIG.paths.www(), '/**/*.html'))
         .map(file => {
-            let chunk = file.replace(CONFIG.paths.www() + '/', '');
+            file = normalizePath(file);
+
+            let chunk = file.replace(wwwRoot, '');
             chunk = chunk.substr(0, chunk.indexOf('/')) || 'home';
 
             const chunks = ['manifest', 'vendor', 'common', chunk];

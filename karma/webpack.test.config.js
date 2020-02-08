@@ -1,6 +1,6 @@
-import path from "path";
-import ExtractTextPlugin from "extract-text-webpack-plugin";
-import CleanupPlugin from "webpack-cleanup-plugin";
+const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CleanupPlugin = require("webpack-cleanup-plugin");
 
 const extractCss = new ExtractTextPlugin({
     filename: 'static/css/[name].css',
@@ -8,7 +8,7 @@ const extractCss = new ExtractTextPlugin({
     allChunks: true,
 });
 
-export default {
+module.exports = {
     mode: 'development',
 
     resolve: {

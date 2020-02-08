@@ -1,9 +1,9 @@
 // Karma configuration
 // Generated on Tue Jul 11 2017 15:33:17 GMT+0800 (CST)
 
-import webpackConfig from "./webpack.test.config.babel";
+const webpackConfig = require('./webpack.test.config');
 
-export default function (config) {
+module.exports = function (config) {
     config.set({
         // base path that will be used to resolve all patterns (eg. files, exclude)
         basePath: '.',
@@ -39,7 +39,7 @@ export default function (config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            'test/**/*.test.js': ['webpack']
+            'test/**/*.test.js': ['webpack', 'coverage']
         },
 
 

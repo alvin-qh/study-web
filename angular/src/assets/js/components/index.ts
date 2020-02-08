@@ -1,9 +1,7 @@
-import "../../css/components/index.less";
+import "./index.less";
 
 import {AfterViewInit, Component, DoCheck} from "@angular/core";
-import {createNgRoot} from "../common/common";
-import {NgBreadcrumbComponent} from "../libs/components/breadcrumb";
-import {NgCardModule} from "./card";
+
 import hljs from "highlight.js";
 
 declare interface User {
@@ -17,7 +15,7 @@ declare interface User {
     selector: 'ng-index',
     templateUrl: './index.html'
 })
-class AppComponent implements AfterViewInit, DoCheck {
+export class AppComponent implements AfterViewInit, DoCheck {
     breadcrumbLevels = [
         {href: '../', title: 'Home'},
         {title: 'Components'}
@@ -49,5 +47,3 @@ class AppComponent implements AfterViewInit, DoCheck {
         this.display();
     }
 }
-
-createNgRoot('ng-index', [NgBreadcrumbComponent], [NgCardModule], [AppComponent]);
