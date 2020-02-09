@@ -10,9 +10,9 @@
   ],
   "scripts": {
     "setup": "npm install --update-binary",
-    "package": "./node_modules/.bin/webpack --config webpack.config.babel.js",
+    "package": "./node_modules/.bin/webpack --config webpack.config.js",
     "package:prod": "env NODE_ENV=production npm run package",
-    "dev": "./node_modules/.bin/webpack-dev-server --config webpack.config.babel.js --inline"
+    "dev": "./node_modules/.bin/webpack-dev-server --config webpack.config.js --inline"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",

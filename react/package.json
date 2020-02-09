@@ -11,7 +11,7 @@
   ],
   "scripts": {
     "setup": "npm install --update-binary",
-    "package": "./node_modules/.bin/webpack --config webpack.config.babel.js",
+    "package": "./node_modules/.bin/webpack --config webpack.config.js",
     "package:prod": "env NODE_ENV=production npm run package",
     "dev": "./node_modules/.bin/webpack-dev-server --inline"
   },
