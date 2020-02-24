@@ -7,7 +7,7 @@ import {runWith} from "../common/common";
 import routes from "./vue-router/routes";
 import "../widget/breadcrumb";
 
-runWith('router.vue-router', function () {
+runWith('router.vue-router', () => {
     Vue.use(Router);
 
     const router = new Router({

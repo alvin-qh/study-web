@@ -7,7 +7,7 @@ import {runWith} from "../common/common";
 import routers from "./simple/routers";
 import Page404 from "./simple/404.vue";
 
-runWith('router.simple', function () {
+runWith('router.simple', () => {
     _.each(routers, (router, href) => {
         window.history.pushState(null, router.title, href);
         return false;

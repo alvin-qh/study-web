@@ -5,7 +5,7 @@ import {runWith, Times} from "../common/common";
 
 import "../widget/breadcrumb";
 
-runWith('bind.index', function () {
+runWith('bind.index', () => {
     new Vue({
         el: '#app',
         data: {

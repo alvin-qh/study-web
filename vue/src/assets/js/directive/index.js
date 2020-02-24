@@ -6,7 +6,7 @@ import VueNotifications from "../widget/notifications";
 
 import "../widget/breadcrumb";
 
-runWith('directive.index', function () {
+runWith('directive.index', () => {
     new Vue({
         el: '#breadcrumb'
     });

@@ -5,7 +5,7 @@ import {BootstrapVue, NavbarPlugin} from 'bootstrap-vue';
 
 import {runWith, Times} from "../common/common";
 
-runWith('home.index', function () {
+runWith('home.index', () => {
     Vue.use(BootstrapVue);
     Vue.use(NavbarPlugin);
 

@@ -9,7 +9,7 @@ import {runWith} from "../common/common";
 import routers from "./page/routers";
 import PageLoading from "./page/loading.vue";
 
-runWith('router.page', function () {
+runWith('router.page', () => {
     new Vue({
         el: '#app',
         data: {

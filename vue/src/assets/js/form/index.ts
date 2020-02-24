@@ -41,7 +41,7 @@ class Form {
     remark: string = '';
 }
 
-runWith('form.index', function () {
+runWith('form.index', () => {
     new Vue({
         el: '#app',
         data: {

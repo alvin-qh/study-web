@@ -5,7 +5,7 @@ import {runWith} from "../common/common";
 
 import "../widget/breadcrumb";
 
-runWith('router.index', function () {
+runWith('router.index', () => {
     new Vue({
         el: '#app',
         data: {
