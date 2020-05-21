@@ -61,8 +61,8 @@
     // "emitDecoratorMetadata": true,         /* Enables experimental support for emitting type metadata for decorators. */
   },
   "include": [
-    "**/*.ts",
-    "**/*.vue"
+    "src/assets/js/**/*.ts",
+    "src/assets/js/**/*.vue",
   ],
   "exclude": [
     "node_modules"

@@ -1,32 +1,25 @@
+import webpack from "webpack";
+
+import glob from "glob";
+import path from "path";
+
+import ExtractTextPlugin from "extract-text-webpack-plugin";
+import HtmlPlugin from "html-webpack-plugin";
 // import CleanupPlugin from "webpack-cleanup-plugin";
-
-const webpack = require('webpack');
-
-const glob = require('glob');
-const path = require('path');
-
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlPlugin = require('html-webpack-plugin');
-const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const VueLoaderPlugin = require('vue-loader/lib/plugin');
-const CleanupPlugin = require('webpack-cleanup-plugin');
-
-
-function normalizePath(p) {
-    return p.replace(/\\/g, '/');
-}
+import OptimizeCssAssetsPlugin from "optimize-css-assets-webpack-plugin";
+import VueLoaderPlugin from "vue-loader/lib/plugin";
 
 const CONFIG = {
     isProd: (process.env.NODE_ENV === 'production'),
     paths: {
-        src: file => normalizePath(path.join('src/assets', file || '')),
-        dst: file => normalizePath(path.join('out', file || '')),
-        www: file => normalizePath(path.join('src/www', file || ''))
+        src: file => path.join('src/assets', file || ''),
+        dst: file => path.join('out', file || ''),
+        www: file => path.join('src/www', file || '')
     }
 };
 
 function makeEntries() {
-    const src = normalizePath(`./${CONFIG.paths.src('js')}/`);
+    const src = `./${CONFIG.paths.src('js')}/`;
     const entries = {};
 
     glob.sync(path.join(src, '/**/main.{j,t}s'))
@@ -40,13 +33,9 @@ function makeEntries() {
 }
 
 function makeTemplates() {
-    const wwwPath = normalizePath(`${CONFIG.paths.www()}/`);
-
     return glob.sync(path.join(CONFIG.paths.www(), '/**/*.html'))
         .map(file => {
-            file = normalizePath(file);
-
-            let chunks = file.replace(wwwPath, '');
+            let chunks = file.replace(CONFIG.paths.www() + '/', '');
             chunks = chunks.substr(0, chunks.indexOf('/')) || 'home';
             chunks = ['manifest', 'vendor', 'common', chunks];
 
@@ -82,8 +71,8 @@ const plugins = (() => {
         new ProvidePlugin({
             // $: 'jquery'
         }),
-        extractCss,
-        new CleanupPlugin()
+        extractCss
+        // new CleanupPlugin()
     ].concat(makeTemplates());
 
     if (CONFIG.isProd) {
@@ -103,7 +92,7 @@ const plugins = (() => {
     return plugins;
 })();
 
-module.exports = {
+export default {
     mode: CONFIG.isProd ? 'production' : 'development',
     entry: Object.assign({vendor: ['vue', 'bootstrap-vue', 'axios', 'moment', 'lodash', 'common']}, makeEntries()),
     output: {
@@ -163,8 +152,7 @@ module.exports = {
                 use: [{
                     loader: 'css-loader',
                 }, {
-                    loader: 'less-loader',
-                    options: {importLoaders: 1}
+                    loader: 'less-loader'
                 }],
                 fallback: 'style-loader'
             })
