@@ -1,34 +1,41 @@
-import "../../css/router/router.less";
+import "../../css/router/router.less"
 
-import Vue from "vue";
-import page from "page";
-import * as _ from 'lodash';
+import Vue from "vue"
+import page from "page"
+import _ from 'lodash'
 
-import {runWith} from "../common/common";
+import { runWith } from "../common/common"
 
-import routers from "./page/routers";
-import PageLoading from "./page/loading.vue";
+import routers from "./page/routers"
+import PageLoading from "./page/loading.vue"
 
 runWith('router.page', () => {
-    new Vue({
-        el: '#app',
-        data: {
-            ViewComponent: PageLoading
-        },
-        created() {
-            page('/www/router/page.html', () => this.ViewComponent = PageLoading);
+  // eslint-disable-next-line no-new
+  new Vue({
+    el: '#app',
+    data: {
+      ViewComponent: PageLoading
+    },
+    created() {
+      page('/www/router/page.html', () => {
+        this.ViewComponent = PageLoading
+      })
 
-            _.each(routers, (comp, href) => {
-                page(href, () => this.ViewComponent = comp);
-            });
+      _.each(routers, (comp, href) => {
+        page(href, () => {
+          this.ViewComponent = comp
+        })
+      })
 
-            page('*', e => location.href = e.path);
-            page();
+      page('*', e => {
+        location.href = e.path
+      })
+      page()
 
-            setTimeout(() => page.redirect('/www/router/page/page1'), 500);
-        },
-        render(h) {
-            return h(this.ViewComponent)
-        }
-    });
-});
+      setTimeout(() => page.redirect('/www/router/page/page1'), 500)
+    },
+    render(h) {
+      return h(this.ViewComponent)
+    }
+  })
+})

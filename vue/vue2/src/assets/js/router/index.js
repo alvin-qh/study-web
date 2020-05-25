@@ -1,19 +1,20 @@
-import "../../css/router/index.less";
+import "../../css/router/index.less"
 
-import Vue from "vue";
-import {runWith} from "../common/common";
+import Vue from "vue"
+import { runWith } from "../common/common"
 
-import "../widget/breadcrumb";
+import "../widget/breadcrumb"
 
 runWith('router.index', () => {
-    new Vue({
-        el: '#app',
-        data: {
-            links: [
-                {name: 'Simple', href: '/www/router/simple.html'},
-                {name: 'Page', href: '/www/router/page.html'},
-                {name: 'Vue', href: '/www/router/vue.html'}
-            ]
-        }
-    });
-});
+  // eslint-disable-next-line no-new
+  new Vue({
+    el: '#app',
+    data: {
+      links: [
+        { name: 'Simple', href: '/www/router/simple.html' },
+        { name: 'Page', href: '/www/router/page.html' },
+        { name: 'Vue', href: '/www/router/vue.html' }
+      ]
+    }
+  })
+})

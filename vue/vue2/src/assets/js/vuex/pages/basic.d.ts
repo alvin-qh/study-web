@@ -1,3 +1,3 @@
-import {Vue} from "vue/types/vue";
+import { Vue } from "vue/types/vue"
 
-export default Vue;
+export default Vue

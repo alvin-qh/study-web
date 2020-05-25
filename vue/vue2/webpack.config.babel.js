@@ -1,13 +1,13 @@
-import webpack from "webpack";
+import webpack from "webpack"
 
-import glob from "glob";
-import path from "path";
+import glob from "glob"
+import path from "path"
 
-import ExtractTextPlugin from "extract-text-webpack-plugin";
-import HtmlPlugin from "html-webpack-plugin";
-// import CleanupPlugin from "webpack-cleanup-plugin";
-import OptimizeCssAssetsPlugin from "optimize-css-assets-webpack-plugin";
-import VueLoaderPlugin from "vue-loader/lib/plugin";
+import ExtractTextPlugin from "extract-text-webpack-plugin"
+import HtmlPlugin from "html-webpack-plugin"
+// import CleanupPlugin from "webpack-cleanup-plugin"
+import OptimizeCssAssetsPlugin from "optimize-css-assets-webpack-plugin"
+import VueLoaderPlugin from "vue-loader/lib/plugin"
 
 const CONFIG = {
     isProd: (process.env.NODE_ENV === 'production'),
@@ -16,28 +16,28 @@ const CONFIG = {
         dst: file => path.join('out', file || ''),
         www: file => path.join('src/www', file || '')
     }
-};
+}
 
 function makeEntries() {
-    const src = `./${CONFIG.paths.src('js')}/`;
-    const entries = {};
+    const src = `./${CONFIG.paths.src('js')}/`
+    const entries = {}
 
     glob.sync(path.join(src, '/**/main.{j,t}s'))
         .map(file => `./${file}`)
         .forEach(file => {
-            let name = path.dirname(file);
-            name = name.substr(name.lastIndexOf('/') + 1);
-            entries[name] = file;
-        });
-    return entries;
+            let name = path.dirname(file)
+            name = name.substr(name.lastIndexOf('/') + 1)
+            entries[name] = file
+        })
+    return entries
 }
 
 function makeTemplates() {
     return glob.sync(path.join(CONFIG.paths.www(), '/**/*.html'))
         .map(file => {
-            let chunks = file.replace(CONFIG.paths.www() + '/', '');
-            chunks = chunks.substr(0, chunks.indexOf('/')) || 'home';
-            chunks = ['manifest', 'vendor', 'common', chunks];
+            let chunks = file.replace(CONFIG.paths.www() + '/', '')
+            chunks = chunks.substr(0, chunks.indexOf('/')) || 'home'
+            chunks = ['manifest', 'vendor', 'common', chunks]
 
             return new HtmlPlugin({
                 filename: file.substr(file.indexOf('/') + 1),
@@ -46,25 +46,25 @@ function makeTemplates() {
                 chunks: chunks,
                 cache: true,
                 chunksSortMode(a, b) {
-                    return chunks.indexOf(a.names[0]) - chunks.indexOf(b.names[0]);
+                    return chunks.indexOf(a.names[0]) - chunks.indexOf(b.names[0])
                 },
                 minify: {
                     collapseWhitespace: CONFIG.isProd,
                     removeComments: CONFIG.isProd
                 }
-            });
-        });
+            })
+        })
 }
 
 const extractCss = new ExtractTextPlugin({
     filename: CONFIG.isProd ? 'static/css/[name]-[chunkhash:8].css' : 'static/css/[name].css',
     disable: false,
     allChunks: true,
-});
+})
 
 const plugins = (() => {
-    const ProvidePlugin = webpack.ProvidePlugin;
-    const HotModuleReplacementPlugin = webpack.HotModuleReplacementPlugin;
+    const ProvidePlugin = webpack.ProvidePlugin
+    const HotModuleReplacementPlugin = webpack.HotModuleReplacementPlugin
 
     let plugins = [
         new VueLoaderPlugin(),
@@ -73,7 +73,7 @@ const plugins = (() => {
         }),
         extractCss
         // new CleanupPlugin()
-    ].concat(makeTemplates());
+    ].concat(makeTemplates())
 
     if (CONFIG.isProd) {
         plugins = plugins.concat([
@@ -83,14 +83,14 @@ const plugins = (() => {
                 cssProcessorOptions: {discardComments: {removeAll: true}},
                 canPrint: true
             })
-        ]);
+        ])
     } else {
         plugins = plugins.concat([
             new HotModuleReplacementPlugin()
-        ]);
+        ])
     }
-    return plugins;
-})();
+    return plugins
+})()
 
 export default {
     mode: CONFIG.isProd ? 'production' : 'development',
@@ -189,4 +189,4 @@ export default {
         hot: true
     },
     devtool: 'cheap-source-map',
-};
+}

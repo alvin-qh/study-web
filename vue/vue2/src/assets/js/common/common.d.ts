@@ -1,7 +1,7 @@
 export interface Times {
-    nowString: () => string;
+  nowString: () => string
 }
 
-export type RunWithCallback = () => void;
+export type RunWithCallback = () => void
 
-export declare function runWith(name: string, cb: RunWithCallback): any;
+export declare function runWith(name: string, cb: RunWithCallback): any
