@@ -1,6 +1,5 @@
 /* eslint-disable semi */
 module.exports = {
-
   // Type: string
   // Default: '/'
   //
@@ -65,17 +64,17 @@ module.exports = {
   //            // when using title option,
   //            // template title tag needs to be <title><%= htmlWebpackPlugin.options.title %></title>
   //            title: 'Index Page',
-      // chunks to include on this page, by default includes
-      // extracted common chunks and vendor chunks.
-      chunks: ['chunk-vendors', 'chunk-common', 'index']
-    },
-    // when using the entry-only string format,
-    // template is inferred to be `public/subpage.html`
-    // and falls back to `public/index.html` if not found.
-    // Output filename is inferred to be `subpage.html`.
-    subpage: 'src/subpage/main.js'
-  }
-}
+  //            // chunks to include on this page, by default includes
+  //            // extracted common chunks and vendor chunks.
+  //            chunks: ['chunk-vendors', 'chunk-common', 'index']
+  //          },
+  //        // when using the entry-only string format,
+  //        // template is inferred to be `public/subpage.html`
+  //        // and falls back to `public/index.html` if not found.
+  //        // Output filename is inferred to be `subpage.html`.
+  //        subpage: 'src/subpage/main.js'
+  //      }
+  //    }
   pages: undefined,
 
   //  Whether to perform lint-on-save during development using eslint-loader.
@@ -142,16 +141,28 @@ module.exports = {
   // If the value is a function, it will receive the resolved config as the argument.The function can
   // either mutate the config and return nothing, OR return a cloned or merged version of the config.
   // See also: https://cli.vuejs.org/guide/webpack.html#simple-configuration
-  configureWebpack: function (obj) {
-    console.log(obj)
+  configureWebpack: config => {
+    config.resolve.alias = Object.assign({
+      common: './src/common.ts'
+    }, config.resolve.alias);
+
+    config.entry = Object.assign({
+      vendor: ['vue', /* 'view-design', */'common']
+    }, config.entry);
   },
 
   //  A function that will receive an instance of ChainableConfig powered by webpack-chain.
   // Allows for more fine-grained modification of the internal webpack config.
   // See also: https://github.com/mozilla-neutrino/webpack-chain
   //           https://cli.vuejs.org/guide/webpack.html#chaining-advanced
-  chainWebpack: function (obj) {
-    console.log(obj)
+  chainWebpack: config => {
+    // config.module
+    //   .rule('i18n')
+    //   .resourceQuery(/blockType=i18n/)
+    //   .type('javascript/auto')
+    //   .use('i18n')
+    //   .loader('@kazupon/vue-i18n-loader')
+    //   .end()
   },
 
   css: {
@@ -161,9 +172,18 @@ module.exports = {
     // See also: https://cli.vuejs.org/guide/css.html#css-modules
     requireModuleExtension: true,
 
-    // 
     //
-    // 
-    extract: process.env.NODE_ENV !== 'production'
+    //
+    //
+    extract: process.env.NODE_ENV === 'production'
+  },
+
+  pluginOptions: {
+    i18n: {
+      locale: 'en',
+      fallbackLocale: 'zh-CN',
+      localeDir: 'locales',
+      enableInSFC: true
+    }
   }
 }

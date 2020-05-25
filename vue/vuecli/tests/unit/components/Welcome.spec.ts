@@ -1,12 +1,15 @@
 import { expect } from 'chai'
 import { shallowMount } from '@vue/test-utils'
-import HelloWorld from '@/components/HelloWorld.vue'
+import i18n from '@/i18n'
 
-describe('HelloWorld.vue', () => {
+import Welcome from '@/components/Welcome.vue'
+
+describe('welcome.vue', () => {
   it('renders props.msg when passed', () => {
     const msg = 'new message'
-    const wrapper = shallowMount(HelloWorld, {
-      propsData: { msg }
+    const wrapper = shallowMount(Welcome, {
+      propsData: { msg },
+      i18n
     })
     expect(wrapper.text()).to.include(msg)
   })

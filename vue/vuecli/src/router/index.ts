@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import VueRouter, { RouteConfig } from 'vue-router'
-import Home from '../views/Home.vue'
+import Home from '@/views/Home.vue'
+
+import { LoadingBar } from 'view-design'
 
 Vue.use(VueRouter)
 
@@ -24,6 +26,15 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  LoadingBar.start()
+  next()
+})
+
+router.afterEach(route => {
+  LoadingBar.finish()
 })
 
 export default router
