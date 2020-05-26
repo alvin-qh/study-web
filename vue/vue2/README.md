@@ -39,9 +39,16 @@ $ nvm alias default v12.16.3
 $ npm run setup
 ```
 
-## Run application
+## 3. Build or run application
+
+### 3.1. Build
 
 ```bash
-$ npm run dev #
-$ npm run package
+$ npm run dev
+```
+
+### 3.2. Run
+
+```bash
+$ npm run build
 ```
