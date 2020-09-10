@@ -77,6 +77,12 @@ Vue CLI v4.3.1
   In package.json
 ```
 
-## 3. `vue.config.js`
+## 3. Add i18n support
+
+```bash
+$ vue add i18n
+```
+
+## 4. `vue.config.js`
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
