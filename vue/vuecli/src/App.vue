@@ -67,7 +67,7 @@ import i18n from "@/i18n"
   }
 })
 export default class HomeVue extends Vue {
-  changeLocation (lang: string) {
+  changeLocation (lang: string): void {
     if (window.localStorage) {
       const s = window.localStorage
       s.locale = lang
