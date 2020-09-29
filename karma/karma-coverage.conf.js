@@ -4,96 +4,96 @@
 const webpackConfig = require('./webpack.test.config');
 
 module.exports = function (config) {
-    config.set({
-        // base path that will be used to resolve all patterns (eg. files, exclude)
-        basePath: '.',
+  config.set({
+    // base path that will be used to resolve all patterns (eg. files, exclude)
+    basePath: '.',
 
-        // frameworks to use
-        // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-        frameworks: ['mocha'],
+    // frameworks to use
+    // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
+    frameworks: ['mocha'],
 
-        plugins: [
-            'karma-webpack',
-            'karma-sourcemap-loader',
-            'karma-mocha',
-            'karma-chai',
-            'karma-sourcemap-loader',
-            'karma-sinon-chai',
-            'karma-phantomjs-launcher',
-            'karma-junit-reporter',
-            'karma-coverage'
-        ],
+    plugins: [
+      'karma-webpack',
+      'karma-sourcemap-loader',
+      'karma-mocha',
+      'karma-chai',
+      'karma-sourcemap-loader',
+      'karma-sinon-chai',
+      'karma-phantomjs-launcher',
+      'karma-junit-reporter',
+      'karma-coverage'
+    ],
 
-        webpack: webpackConfig,
+    webpack: webpackConfig,
 
-        // list of files / patterns to load in the browser
-        files: [
-            'test/**/*.test.js'
-        ],
-
-
-        // list of files to exclude
-        exclude: [],
+    // list of files / patterns to load in the browser
+    files: [
+      'test/**/*.test.js'
+    ],
 
 
-        // preprocess matching files before serving them to the browser
-        // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-        preprocessors: {
-            'test/**/*.test.js': ['webpack', 'coverage']
-        },
+    // list of files to exclude
+    exclude: [],
 
 
-        // test results reporter to use
-        // possible values: 'dots', 'progress'
-        // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-        reporters: ['junit', 'progress', 'coverage'],
+    // preprocess matching files before serving them to the browser
+    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
+    preprocessors: {
+      'test/**/*.test.js': ['webpack', 'coverage']
+    },
 
-        coverageReporter: {
-            dir: './coverage',
-            reporters: [
-                {type: 'html', subdir: 'report-html'},
-                {type: 'lcov', subdir: '.'},
-                {type: 'text-summary'}
-            ]
-        },
 
-        junitReporter: {
-            outputFile: './reports/test-results.xml',
-            suite: 'unit'
-        },
+    // test results reporter to use
+    // possible values: 'dots', 'progress'
+    // available reporters: https://npmjs.org/browse/keyword/karma-reporter
+    reporters: ['junit', 'progress', 'coverage'],
 
-        // web server port
-        port: 9876,
+    coverageReporter: {
+      dir: './coverage',
+      reporters: [
+        { type: 'html', subdir: 'report-html' },
+        { type: 'lcov', subdir: '.' },
+        { type: 'text-summary' }
+      ]
+    },
 
-        // enable / disable colors in the output (reporters and logs)
-        colors: true,
+    junitReporter: {
+      outputFile: './reports/test-results.xml',
+      suite: 'unit'
+    },
 
-        // level of logging
-        // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-        logLevel: config.LOG_INFO,
+    // web server port
+    port: 9876,
 
-        // enable / disable watching file and executing tests whenever any file changes
-        autoWatch: false,
+    // enable / disable colors in the output (reporters and logs)
+    colors: true,
 
-        // start these browsers
-        // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-        browsers: ['PhantomJS'],
+    // level of logging
+    // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
+    logLevel: config.LOG_INFO,
 
-        // Have phantomjs exit if a ResourceError is encountered (useful if karma exits without killing phantom)
-        phantomjsLauncher: {
-            exitOnResourceError: true
-        },
+    // enable / disable watching file and executing tests whenever any file changes
+    autoWatch: false,
 
-        // Continuous Integration mode
-        // if true, Karma captures browsers, runs the tests and exits
-        singleRun: true,
+    // start these browsers
+    // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
+    browsers: ['PhantomJS'],
 
-        // Concurrency level
-        // how many browser should be started simultaneous
-        concurrency: Infinity,
+    // Have phantomjs exit if a ResourceError is encountered (useful if karma exits without killing phantom)
+    phantomjsLauncher: {
+      exitOnResourceError: true
+    },
 
-        client: {
-            "captureConsole": true
-        }
-    })
+    // Continuous Integration mode
+    // if true, Karma captures browsers, runs the tests and exits
+    singleRun: true,
+
+    // Concurrency level
+    // how many browser should be started simultaneous
+    concurrency: Infinity,
+
+    client: {
+      "captureConsole": true
+    }
+  })
 };

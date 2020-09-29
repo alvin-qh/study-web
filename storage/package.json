@@ -8,7 +8,7 @@
     "package": "./node_modules/.bin/webpack --config webpack.config.js",
     "package:prod": "env NODE_ENV=production npm run package",
     "dev": "./node_modules/.bin/webpack-dev-server --config webpack.config.js --inline",
-    "dev:pwa": "./node_modules/.bin/webpack-dev-server --config webpack-pwa.config.js"
+    "dev:pwa": "./node_modules/.bin/webpack-dev-server --config webpack-pwa.config.js --inline"
   },
   "keywords": [
     "local storage",
