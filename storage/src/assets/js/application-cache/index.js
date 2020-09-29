@@ -4,7 +4,7 @@ import $ from "jquery";
 import "bootstrap";
 import hljs from "highlight.js";
 
-import {runWith} from "../common/common";
+import { runWith } from "../common/common";
 
 const jsCode = `// Install offline plugin Service Work
 import * as OfflinePluginRuntime from 'offline-plugin/runtime';
@@ -28,33 +28,33 @@ wv.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);`;
 hljs.initHighlightingOnLoad();
 
 function showCode(selector, code) {
-    $(selector).each((n, elem) => {
-        $(elem).text(code);
-        hljs.highlightBlock(elem);
-    });
+  $(selector).each((n, elem) => {
+    $(elem).text(code);
+    hljs.highlightBlock(elem);
+  });
 }
 
 function showTime() {
-    function drawBoxes($elem, n) {
-        $elem.empty();
+  function drawBoxes($elem, n) {
+    $elem.empty();
 
-        for (let i = 0; i < n - 1; i++) {
-            $elem.append(`<div/>`);
-        }
-        const $div = $('<div style="opacity: .8"/>');
-        $elem.append($div);
+    for (let i = 0; i < n - 1; i++) {
+      $elem.append(`<div/>`);
     }
+    const $div = $('<div style="opacity: .8"/>');
+    $elem.append($div);
+  }
 
-    const now = new Date();
-    drawBoxes($('.hours'), now.getHours());
-    drawBoxes($('.minutes'), now.getMinutes());
-    drawBoxes($('.seconds'), now.getSeconds());
+  const now = new Date();
+  drawBoxes($('.hours'), now.getHours());
+  drawBoxes($('.minutes'), now.getMinutes());
+  drawBoxes($('.seconds'), now.getSeconds());
 }
 
 runWith('appcache.index', function () {
-    showCode('.hljs.javascript', jsCode);
-    showCode('.hljs.java', androidCode);
+  showCode('.hljs.javascript', jsCode);
+  showCode('.hljs.java', androidCode);
 
-    showTime();
-    setInterval(() => showTime(), 1000);
+  showTime();
+  setInterval(() => showTime(), 1000);
 });
