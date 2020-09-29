@@ -37,7 +37,7 @@ function makeEntries() {
 }
 
 function makeTemplates() {
-  const wwwRoot = CONFIG.paths.www() + '/';
+  const wwwRoot = normalizePath(`${CONFIG.paths.www()}/`);
 
   return glob.sync(path.join(CONFIG.paths.www(), '/**/*.html'))
     .map(file => {
