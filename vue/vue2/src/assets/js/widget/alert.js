@@ -5,7 +5,7 @@ const template = `<div :class="['alert', 'alert-' + type]" role="alert" v-if="!c
         <span aria-hidden="true">&times</span>
     </button>
     <slot></slot>
-</div>`
+</div>`;
 
 export default Vue.extend({
   template: template,
@@ -27,30 +27,30 @@ export default Vue.extend({
   methods: {
     closeMe() {
       if (this.timer == null) {
-        this.$emit('close')
+        this.$emit('close');
 
-        let interval = 100
+        let interval = 100;
         switch (this.speed) {
           case 'fast':
-            interval = 50
-            break
+            interval = 50;
+            break;
           case 'slow':
-            interval = 200
-            break
+            interval = 200;
+            break;
         }
 
-        let opacity = 1
+        let opacity = 1;
         this.timer = setInterval(() => {
-          opacity -= 0.2
+          opacity -= 0.2;
           if (opacity <= 0) {
-            clearTimeout(this.timer)
-            this.timer = null
-            this.closed = true
-            this.$emit('closed')
+            clearTimeout(this.timer);
+            this.timer = null;
+            this.closed = true;
+            this.$emit('closed');
           }
-          this.$el.style.opacity = `${opacity}`
-        }, interval)
+          this.$el.style.opacity = `${opacity}`;
+        }, interval);
       }
     }
   }
-})
+});

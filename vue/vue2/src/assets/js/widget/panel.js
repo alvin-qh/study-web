@@ -1,6 +1,6 @@
-import "../../css/widget/panel.less"
+import "../../css/widget/panel.less";
 
-import Vue from "vue"
+import Vue from "vue";
 
 const template = `<div class="widget-panel">
     <div class="card">
@@ -13,7 +13,7 @@ const template = `<div class="widget-panel">
         </div>
         <div v-if="footer" class="card-footer">{{ footer }}</div>
     </div>
-</div>`
+</div>`;
 
 Vue.component('panel', {
   template: template,

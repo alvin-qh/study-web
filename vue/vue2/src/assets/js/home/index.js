@@ -1,13 +1,13 @@
-import "../../css/home/index.less"
+import "../../css/home/index.less";
 
-import Vue from "vue"
-import { BootstrapVue, NavbarPlugin } from 'bootstrap-vue'
+import Vue from "vue";
+import { BootstrapVue, NavbarPlugin } from "bootstrap-vue";
 
-import { runWith, Times } from "../common/common"
+import { runWith, Times } from "../common/common";
 
 runWith('home.index', () => {
-  Vue.use(BootstrapVue)
-  Vue.use(NavbarPlugin)
+  Vue.use(BootstrapVue);
+  Vue.use(NavbarPlugin);
 
   // eslint-disable-next-line no-new
   new Vue({
@@ -18,8 +18,8 @@ runWith('home.index', () => {
     },
     created() {
       setInterval(() => {
-        this.datetime = Times.nowString()
-      }, 1000)
+        this.datetime = Times.nowString();
+      }, 1000);
     }
-  })
-})
+  });
+});

@@ -1,13 +1,13 @@
-import "../../css/router/router.less"
+import "../../css/router/router.less";
 
-import Vue from "vue"
-import page from "page"
-import _ from 'lodash'
+import Vue from "vue";
+import page from "page";
+import _ from 'lodash';
 
-import { runWith } from "../common/common"
+import { runWith } from "../common/common";
 
-import routers from "./page/routers"
-import PageLoading from "./page/loading.vue"
+import routers from "./page/routers";
+import PageLoading from "./page/loading.vue";
 
 runWith('router.page', () => {
   // eslint-disable-next-line no-new
@@ -18,24 +18,24 @@ runWith('router.page', () => {
     },
     created() {
       page('/www/router/page.html', () => {
-        this.ViewComponent = PageLoading
-      })
+        this.ViewComponent = PageLoading;
+      });
 
       _.each(routers, (comp, href) => {
         page(href, () => {
-          this.ViewComponent = comp
-        })
-      })
+          this.ViewComponent = comp;
+        });
+      });
 
       page('*', e => {
-        location.href = e.path
-      })
-      page()
+        location.href = e.path;
+      });
+      page();
 
-      setTimeout(() => page.redirect('/www/router/page/page1'), 500)
+      setTimeout(() => page.redirect('/www/router/page/page1'), 500);
     },
     render(h) {
-      return h(this.ViewComponent)
+      return h(this.ViewComponent);
     }
-  })
-})
+  });
+});

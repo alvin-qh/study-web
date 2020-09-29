@@ -4,10 +4,10 @@
   </layout>
 </template>
 
-<script>
+<script lang="js">
 import Layout from "./layout.vue"
 
-const TITLE = "Page 2"
+const TITLE = 'Page 2';
 
 export default {
   title: TITLE,
@@ -15,7 +15,7 @@ export default {
     Layout
   },
   created() {
-    document.title = TITLE
+    document.title = TITLE;
   }
 }
 </script>

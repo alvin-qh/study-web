@@ -4,11 +4,11 @@
   </div>
 </template>
 
-<script>
+<script lang="js">
 export default {
   title: "Loading",
   created() {
-    document.title = this.title
+    document.title = this.title;
   }
 }
 </script>

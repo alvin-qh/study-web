@@ -1,9 +1,9 @@
-import "../../css/router/index.less"
+import "../../css/router/index.less";
 
-import Vue from "vue"
-import { runWith } from "../common/common"
+import Vue from "vue";
+import { runWith } from "../common/common";
 
-import "../widget/breadcrumb"
+import "../widget/breadcrumb";
 
 runWith('router.index', () => {
   // eslint-disable-next-line no-new
@@ -16,5 +16,5 @@ runWith('router.index', () => {
         { name: 'Vue', href: '/www/router/vue.html' }
       ]
     }
-  })
-})
+  });
+});

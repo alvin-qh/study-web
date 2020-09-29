@@ -1,7 +1,12 @@
 <template>
   <div>
     <header>
-      <breadcrumb :previous="[{name:'Home', href:'/www/'}, {name:'Vuex', href:'/www/vuex'}]"></breadcrumb>
+      <breadcrumb
+        :previous="[
+          { name: 'Home', href: '/www/' },
+          { name: 'Vuex', href: '/www/vuex' },
+        ]"
+      ></breadcrumb>
     </header>
 
     <main class="container">

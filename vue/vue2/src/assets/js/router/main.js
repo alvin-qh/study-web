@@ -1,4 +1,4 @@
-import "./index"
-import "./simple"
-import "./page"
-import "./vue"
+import "./index";
+import "./simple";
+import "./page";
+import "./vue";

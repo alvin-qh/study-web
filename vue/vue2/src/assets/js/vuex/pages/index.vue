@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      <breadcrumb :previous="[{name:'Home', href:'/www/'}]"></breadcrumb>
+      <breadcrumb :previous="[{ name: 'Home', href: '/www/' }]"></breadcrumb>
     </header>
     <main class="container">
       <ul class="list-group">

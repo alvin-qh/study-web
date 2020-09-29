@@ -4,7 +4,7 @@
   </a>
 </template>
 
-<script>
+<script lang="js">
 export default {
   props: {
     href: {
@@ -18,9 +18,9 @@ export default {
   },
   methods: {
     go(event) {
-      event.preventDefault()
-      window.history.pushState(null, this.routers[this.href], this.href)
-      this.$emit("input", this.href)
+      event.preventDefault();
+      window.history.pushState(null, this.routers[this.href], this.href);
+      this.$emit("input", this.href);
     }
   }
 }

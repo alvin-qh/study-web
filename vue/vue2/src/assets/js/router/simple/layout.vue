@@ -3,21 +3,28 @@
     <header>
       <breadcrumb
         :previous="[
-                {name:'Home', href:'/www/'},
-                {name:'Router', href:'/www/router/'}]"
+          { name: 'Home', href: '/www/' },
+          { name: 'Router', href: '/www/router/' },
+        ]"
       ></breadcrumb>
     </header>
 
     <main class="container">
       <ul class="nav nav-tabs" role="tablist">
-        <li v-for="(router, href) in routers" class="nav-item" role="presentation" :key="href">
+        <li
+          v-for="(router, href) in routers"
+          class="nav-item"
+          role="presentation"
+          :key="href"
+        >
           <v-link
             :class="linkStyle(href)"
             :href="href"
             :title="router.title"
             :routers="routers"
             v-model="currentLink"
-          >{{ router.title }}</v-link>
+            >{{ router.title }}</v-link
+          >
         </li>
       </ul>
       <div class="card no-top-border">
@@ -29,10 +36,10 @@
   </div>
 </template>
 
-<script>
-import VLink from "./v-link.vue"
-import routers from "./routers"
-import "../../widget/breadcrumb"
+<script lang="js">
+import VLink from "./v-link.vue";
+import routers from "./routers";
+import "../../widget/breadcrumb";
 
 export default {
   components: {
@@ -42,16 +49,16 @@ export default {
     return {
       routers: routers,
       currentLink: window.location.pathname
-    }
+    };
   },
   methods: {
     linkStyle(link) {
-      return this.currentLink === link ? ["nav-link", "active"] : ["nav-link"]
+      return this.currentLink === link ? ["nav-link", "active"] : ["nav-link"];
     }
   },
   watch: {
     currentLink() {
-      this.$root.currentLink = this.currentLink
+      this.$root.currentLink = this.currentLink;
     }
   }
 }

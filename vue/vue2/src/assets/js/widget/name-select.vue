@@ -1,13 +1,13 @@
 <template>
   <div class="form-group row">
-    <label :for="id" class="col-form-label text-right">{{label}}:</label>
+    <label :for="id" class="col-form-label text-right">{{ label }}:</label>
     <select :id="id" :name="name" class="form-control" v-model="selected">
       <slot></slot>
     </select>
   </div>
 </template>
 
-<script>
+<script lang="js">
 import Vue from "vue"
 
 export default Vue.extend({
@@ -29,12 +29,12 @@ export default Vue.extend({
   },
   computed: {
     id() {
-      return `form-control-${this.name}`
+      return `form-control-${this.name}`;
     }
   },
   watch: {
-    selected() {
-      this.$emit("input", this.selected)
+    selected(val) {
+      this.$emit('input', val);
     }
   }
 })

@@ -27,19 +27,19 @@
 </template>
 
 <script lang="js">
-import infiniteScroll from 'vue-infinite-scroll'
+import infiniteScroll from "vue-infinite-scroll";
 
 function makeTableData() {
-  const data = []
+  const data = [];
   for (let i = 0; i < 10000; i++) {
     data.push({
       id: i + 1,
       name: `Alvin_${i}`,
       gender: i % 2 === 0 ? 'M' : 'F',
       type: i % 3 === 0 ? 'STUDENT' : 'TEACHER'
-    })
+    });
   }
-  return data
+  return data;
 }
 
 const dataSource = {
@@ -49,40 +49,40 @@ const dataSource = {
   finish: false,
   nextPage() {
     if (this.finish) {
-      return []
+      return [];
     }
 
-    const start = this.from++ * this.pre
-    const end = start + this.pre
-    const data = this.data.slice(start, end)
+    const start = this.from++ * this.pre;
+    const end = start + this.pre;
+    const data = this.data.slice(start, end);
     if (data.length < this.pre) {
-      this.finish = true
+      this.finish = true;
     }
-    return data
+    return data;
   }
-}
+};
 
 export default {
   data() {
     return {
       tableItems: dataSource.nextPage(),
       busy: false
-    }
+    };
   },
   directives: {
     infiniteScroll
   },
   methods: {
-    loadMore: function () {
-      this.busy = true
+    loadMore() {
+      this.busy = true;
 
       setTimeout(() => {
-        const data = dataSource.nextPage()
+        const data = dataSource.nextPage();
         if (data.length > 0) {
-          this.tableItems = this.tableItems.concat(data)
+          this.tableItems = this.tableItems.concat(data);
         }
-        this.busy = false
-      }, 300)
+        this.busy = false;
+      }, 300);
     }
   }
 }

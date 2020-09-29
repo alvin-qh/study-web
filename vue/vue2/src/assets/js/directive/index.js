@@ -1,16 +1,16 @@
-import "../../css/directive/index.less"
+import "../../css/directive/index.less";
 
-import Vue from "vue"
-import { runWith } from "../common/common"
-import VueNotifications from "../widget/notifications"
+import Vue from "vue";
+import { runWith } from "../common/common";
+import VueNotifications from "../widget/notifications";
 
-import "../widget/breadcrumb"
+import "../widget/breadcrumb";
 
 runWith('directive.index', () => {
   /* eslint-disable no-new */
   new Vue({
     el: '#breadcrumb'
-  })
+  });
 
   /* eslint-disable no-new */
   new Vue({
@@ -22,10 +22,10 @@ runWith('directive.index', () => {
     },
     created() {
       setInterval(() => {
-        this.titleIndex = this.titleIndex > 1 ? 0 : this.titleIndex + 1
-      }, 5000)
+        this.titleIndex = this.titleIndex > 1 ? 0 : this.titleIndex + 1;
+      }, 5000);
     }
-  })
+  });
 
   /* eslint-disable no-new */
   new Vue({
@@ -39,38 +39,38 @@ runWith('directive.index', () => {
     methods: {
       addNewName() {
         if (this.inputItem) {
-          this.items.push(this.inputItem)
+          this.items.push(this.inputItem);
           if (this.items.length === 1) {
-            this.selectedItem = this.inputItem
+            this.selectedItem = this.inputItem;
           }
-          this.items.sort()
+          this.items.sort();
         }
       },
       selectItem(item) {
-        this.selectedItem = item
+        this.selectedItem = item;
       },
       active(current) {
-        return current === this.selectedItem ? 'active' : ''
+        return current === this.selectedItem ? 'active' : '';
       },
       deleteItem(item) {
-        const idx = this.items.indexOf(item)
+        const idx = this.items.indexOf(item);
         if (idx >= 0) {
-          this.items = this.items.filter((item, n) => n !== idx)
+          this.items = this.items.filter((item, n) => n !== idx);
         }
       },
       reverseItems() {
-        this.items = this.items.reverse()
+        this.items = this.items.reverse();
       }
     },
     computed: {
       groupedItems: {
         get() {
-          const result = {}
+          const result = {};
           for (const item of this.items) {
-            result[item] = result[item] || 0
-            result[item]++
+            result[item] = result[item] || 0;
+            result[item]++;
           }
-          return result
+          return result;
         }
       }
     },
@@ -80,7 +80,7 @@ runWith('directive.index', () => {
         timeout: 1000
       }
     }
-  })
+  });
 
   /* eslint-disable no-new */
   new Vue({
@@ -125,27 +125,27 @@ runWith('directive.index', () => {
       gradeClass: {
         get() {
           if (this.student.grade) {
-            const grade = this.grades.find((g) => g.name === this.student.grade)
+            const grade = this.grades.find((g) => g.name === this.student.grade);
             if (grade) {
-              return grade.classes
+              return grade.classes;
             }
           }
-          return []
+          return [];
         }
       }
     },
     watch: {
       'student.grade': () => {
-        this.student.class = ''
+        this.student.class = '';
       }
     },
     methods: {
       active(name) {
-        return name === this.tab ? 'active' : ''
+        return name === this.tab ? 'active' : '';
       },
       changeTab(name) {
-        this.tab = name
+        this.tab = name;
       }
     }
-  })
-})
+  });
+});

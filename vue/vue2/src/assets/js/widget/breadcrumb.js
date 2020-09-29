@@ -1,5 +1,5 @@
-import Vue from "vue"
-import * as _ from "lodash"
+import Vue from "vue";
+import * as _ from "lodash";
 
 const template = `<nav aria-label="breadcrumb">
     <ol class="breadcrumb">
@@ -8,7 +8,7 @@ const template = `<nav aria-label="breadcrumb">
         </li>
         <li class="breadcrumb-item active">{{title}}</li>
     </ol>
-</nav>`
+</nav>`;
 
 Vue.component('breadcrumb', {
   template: template,
@@ -23,25 +23,25 @@ Vue.component('breadcrumb', {
       require: true,
       validator(vals) {
         if (!_.isArray(vals)) {
-          return false
+          return false;
         }
 
-        let ok = true
+        let ok = true;
         for (const val of vals) {
           if (typeof val !== 'object') {
-            ok = false
+            ok = false;
           } else {
-            ok = val.name && val.href
+            ok = val.name && val.href;
           }
           if (!ok) {
-            return false
+            return false;
           }
         }
-        return ok
+        return ok;
       },
       default() {
-        return []
+        return [];
       }
     }
   }
-})
+});

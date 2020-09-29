@@ -1,5 +1,5 @@
-import Page1 from './pages/page1.vue'
-import Page2 from './pages/page2.vue'
+import Page1 from "./pages/page1.vue";
+import Page2 from "./pages/page2.vue";
 
 export default [{
   path: '/page1', // 对应 <router-link to='/page1'></router-link>
@@ -13,4 +13,4 @@ export default [{
     default: Page2
   },
   name: 'Page2'
-}]
+}];
