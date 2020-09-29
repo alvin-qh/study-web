@@ -15,7 +15,7 @@ new Vue({
   render: h => h(App)
 }).$mount('#app')
 
-function setupLocation () {
+function setupLocation() {
   if (window.localStorage) {
     const s = window.localStorage
     const locale = s.locale

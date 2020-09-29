@@ -15,10 +15,10 @@
 </template>
 
 <script>
-import { Vue, Component } from "vue-property-decorator"
-import { Breadcrumb, BreadcrumbItem, Icon, Card } from "view-design"
+import { Vue, Component } from "vue-property-decorator";
+import { Breadcrumb, BreadcrumbItem, Icon, Card } from "view-design";
 
-import Welcome from "@/components/Welcome"
+import Welcome from "@/components/Welcome";
 
 @Component({
   components: {
@@ -26,10 +26,10 @@ import Welcome from "@/components/Welcome"
     BreadcrumbItem,
     Icon,
     Card,
-    Welcome
-  }
+    Welcome,
+  },
 })
-export default class Home extends Vue {}
+export default class Home extends Vue { }
 </script>
 
 <style lang="less" scoped>
