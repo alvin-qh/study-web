@@ -11,15 +11,8 @@
 
     <main class="container">
       <ul class="nav nav-tabs" role="tablist">
-        <li
-          class="nav-item"
-          role="presentation"
-          v-for="(router, href) in routers"
-          :key="href"
-        >
-          <a :class="linkStyle(href)" :href="href" :title="router.title">{{
-            router.title
-          }}</a>
+        <li class="nav-item" role="presentation" v-for="(router, href) in routers" :key="href">
+          <a :class="linkStyle(href)" :href="href" :title="router.title">{{ router.title }}</a>
         </li>
       </ul>
       <div class="card no-top-border">
