@@ -76,7 +76,8 @@
       "ecmaVersion": 2020
     },
     "rules": {
-      "quotes": "off"
+      "quotes": "off",
+      "space-before-function-paren": "off"
     },
     "overrides": [
       {

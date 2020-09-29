@@ -24,12 +24,8 @@
               {{ $t("settings") }}
             </template>
             <MenuGroup :title="$t('setting-i18n')">
-              <MenuItem name="3-1" @click.native="changeLocation('en')">
-                English
-              </MenuItem>
-              <MenuItem name="3-2" @click.native="changeLocation('zh-CN')">
-                简体中文
-              </MenuItem>
+              <MenuItem name="3-1" @click.native="changeLocation('en')">English</MenuItem>
+              <MenuItem name="3-2" @click.native="changeLocation('zh-CN')">简体中文</MenuItem>
             </MenuGroup>
           </Submenu>
         </Menu>
@@ -43,7 +39,7 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Vue } from "vue-property-decorator"
 import {
   Layout,
   Header,
@@ -53,9 +49,9 @@ import {
   MenuItem,
   Icon,
   MenuGroup,
-  Submenu,
-} from "view-design";
-import i18n from "@/i18n";
+  Submenu
+} from "view-design"
+import i18n from "@/i18n"
 
 @Component({
   components: {
@@ -67,16 +63,16 @@ import i18n from "@/i18n";
     MenuItem,
     Icon,
     MenuGroup,
-    Submenu,
-  },
+    Submenu
+  }
 })
 export default class HomeVue extends Vue {
   changeLocation(lang: string): void {
     if (window.localStorage) {
-      const s = window.localStorage;
-      s.locale = lang;
+      const s = window.localStorage
+      s.locale = lang
     }
-    i18n.locale = lang;
+    i18n.locale = lang
   }
 }
 </script>

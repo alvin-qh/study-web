@@ -15,17 +15,17 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator";
+import { Vue, Component } from "vue-property-decorator"
 
-import { Breadcrumb, BreadcrumbItem, Icon, Card } from "view-design";
+import { Breadcrumb, BreadcrumbItem, Icon, Card } from "view-design"
 
 @Component({
   components: {
     Breadcrumb,
     BreadcrumbItem,
     Icon,
-    Card,
-  },
+    Card
+  }
 })
 export default class About extends Vue { }
 </script>

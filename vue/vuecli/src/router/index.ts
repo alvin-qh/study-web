@@ -28,11 +28,13 @@ const router = new VueRouter({
   routes
 })
 
+// eslint-disable-next-line
 router.beforeEach((to, from, next) => {
   LoadingBar.start()
   next()
 })
 
+// eslint-disable-next-line
 router.afterEach(route => {
   LoadingBar.finish()
 })
