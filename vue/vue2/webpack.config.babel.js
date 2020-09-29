@@ -28,19 +28,21 @@ function makeEntries() {
   glob.sync(path.join(src, '/**/main.{j,t}s'))
     .map(file => `./${file}`)
     .forEach(file => {
-      let name = normalizePath(path.dirname(file))
-      name = name.substr(name.lastIndexOf('/') + 1)
+      const name = (name => name.substr(name.lastIndexOf('/') + 1))(normalizePath(path.dirname(file)))
       entries[name] = file
     })
   return entries
 }
 
 function makeTemplates() {
+  const wwwRoot = CONFIG.paths.www() + '/';
+
   return glob.sync(path.join(CONFIG.paths.www(), '/**/*.html'))
     .map(file => {
-      let chunks = file.replace(CONFIG.paths.www() + '/', '')
-      chunks = chunks.substr(0, chunks.indexOf('/')) || 'home'
-      chunks = ['manifest', 'vendor', 'common', chunks]
+      file = normalizePath(file);
+
+      const chunk = (chunk => chunk.substr(0, chunk.indexOf('/')) || 'home')(file.replace(wwwRoot, ''))
+      const chunks = ['manifest', 'vendor', 'common', chunk]
 
       return new HtmlPlugin({
         filename: file.substr(file.indexOf('/') + 1),
@@ -67,21 +69,17 @@ const plugins = (() => {
   const plugins = [
     new ProgressPlugin(),
     new VueLoaderPlugin(),
-    new ProvidePlugin(
-      {
-        // $: 'jquery'
-      }
-    ),
-    new MiniCssExtractPlugin(
-      {
-        filename: CONFIG.isProd ? 'css/[name]-[chunkhash:8].css' : 'css/[name].css'
-      }
-    ),
+    new ProvidePlugin({
+      // $: 'jquery'
+    }),
+    new MiniCssExtractPlugin({
+      filename: CONFIG.isProd ? 'css/[name]-[chunkhash:8].css' : 'css/[name].css'
+    }),
     new HotModuleReplacementPlugin()
   ].concat(makeTemplates())
 
   return plugins
-})()
+})();
 
 export default {
   mode: CONFIG.isProd ? 'production' : 'development',
@@ -107,68 +105,78 @@ export default {
     }
   },
   module: {
-    rules: [{
-      test: /\.js$/,
-      exclude: [/node_modules/],
-      use: [{
-        loader: 'babel-loader',
-        options: {
-          presets: ['@babel/env']
-        }
-      }]
-    }, {
-      test: /\.ts$/,
-      exclude: [/node_modules/],
-      use: [{
-        loader: 'ts-loader',
-        options: {
-          appendTsSuffixTo: [/\.vue$/]
-        }
-      }]
-    }, {
-      test: /\.(less|css)/,
-      use: [
-        {
-          loader: MiniCssExtractPlugin.loader
-        },
-        {
-          loader: 'css-loader',
-          options: {
-            sourceMap: true
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: [/node_modules/],
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: ['@babel/env']
+            }
           }
-        },
-        {
-          loader: 'less-loader',
-          options: {
-            sourceMap: true
+        ]
+      }, {
+        test: /\.ts$/,
+        exclude: [/node_modules/],
+        use: [
+          {
+            loader: 'ts-loader',
+            options: {
+              appendTsSuffixTo: [/\.vue$/]
+            }
           }
-        }
-      ]
-    }, {
-      test: /\.(eot|woff|woff2|ttf)$/,
-      use: [{
-        loader: 'file-loader',
-        options: {
-          limit: 10240,
-          name: CONFIG.isProd ? 'static/fonts/[name]-[hash:8].[ext]' : 'static/fonts/[name].[ext]',
-          publicPath: '/'
-        }
-      }]
-    }, {
-      test: /\.(svg|png|jpg|gif)$/,
-      use: [{
-        loader: 'file-loader',
-        options: {
-          limit: 10240,
-          name: CONFIG.isProd ? 'static/images/[name]-[hash:8].[ext]' : 'static/images/[name].[ext]',
-          publicPath: '/'
-        }
-      }]
-    }, {
-      test: /\.vue$/,
-      exclude: [/node_modules/],
-      loader: 'vue-loader'
-    }]
+        ]
+      }, {
+        test: /\.(less|css)/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          },
+          {
+            loader: 'less-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
+      }, {
+        test: /\.(eot|woff|woff2|ttf)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              limit: 10240,
+              name: CONFIG.isProd ? 'static/fonts/[name]-[hash:8].[ext]' : 'static/fonts/[name].[ext]',
+              publicPath: '/'
+            }
+          }
+        ]
+      }, {
+        test: /\.(svg|png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              limit: 10240,
+              name: CONFIG.isProd ? 'static/images/[name]-[hash:8].[ext]' : 'static/images/[name].[ext]',
+              publicPath: '/'
+            }
+          }
+        ]
+      }, {
+        test: /\.vue$/,
+        exclude: [/node_modules/],
+        loader: 'vue-loader'
+      }
+    ]
   },
   plugins: plugins,
   devServer: {
