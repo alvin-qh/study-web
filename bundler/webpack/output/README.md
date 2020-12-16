@@ -26,7 +26,7 @@ See [index.js](./src/script/index.js) and [print.js](./src/script/print.js)
 $ npm install --save lodash
 ```
 
-### 2.3. Create **webpack config** file
+### 2.3. Create webpack config file
 
 See [webpack.config.js](./webpack.config.js)
 
@@ -67,6 +67,14 @@ See [webpack.config.js](./webpack.config.js)
 
 Use `clean-webpack-plugin` to clean output folder before build
 
+Install dependency
+
+```bash
+$ npm install --save-dev clean-webpack-plugin
+```
+
+Webpack config
+
 ```javascript
 plugins: [
   // ...,
@@ -77,6 +85,14 @@ plugins: [
 ### 3.3. Make html file and inject resource
 
 Use `html-webpack-plugin` to make html file and inject 'js', 'css' file reference.
+
+Install dependency
+
+```bash
+$ npm install --save-dev html-webpack-plugin
+```
+
+Webpack config
 
 ```javascript
 plugins: [
@@ -100,7 +116,36 @@ The template html should be:
 </head>
 <body></body>
 </html>
+```
 
+### 3.4. Output manifest file
+
+Use `webpack-manifest-plugin` to output manifest file.
+
+Install dependency
+
+```bash
+$ npm install --save-dev webpack-manifest-plugin
+```
+
+Webpack config
+
+```javascript
+plugins: [
+  // ...,
+  new WebpackManifestPlugin({ 
+    ...
+  })
+]
+```
+
+The output manifest file:
+
+```json
+{
+  "script/index.js": "script/index.bundle-662fc220.js",
+  "index.html": "index.html"
+}
 ```
 
 ## 4. Build
