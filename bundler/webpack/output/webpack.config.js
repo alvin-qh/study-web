@@ -5,8 +5,7 @@ const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
 module.exports = {
   entry: {
-    'script/index': './src/script/index.js',
-    // print: './src/print.js'
+    'index': './src/script/index.js'
   },
   plugins: [
     new CleanWebpackPlugin(),
@@ -56,6 +55,7 @@ module.exports = {
        * Passing an absolute path to the fileName option will override both the file name and path.
        */
       fileName: 'manifest.json',
+
       /**
        * Type: RegExp | Boolean
        * Default: /([a-f0-9]{32}\.?)/gi
@@ -169,7 +169,7 @@ module.exports = {
     })
   ],
   output: {
-    filename: '[name].bundle-[hash:8].js',
+    filename: 'script/[name].bundle-[hash:8].js',
     path: path.resolve(__dirname, 'dist')
   }
 };

@@ -1,0 +1,11 @@
+@charset 'UTF-8';
+
+* {
+  font: 14px/1.5 Tahoma, Helvetica, Arial, '宋体', sans-serif;
+  box-sizing: border-box;
+}
+
+.text-box {
+  padding: 10px 8px;
+  margin: 10px 20px;
+}

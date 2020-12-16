@@ -1,6 +1,38 @@
 # Output management
 
-## 1. Name of output file
+## 1. Setup
+
+### 1.1. Initalize project
+
+```bash
+$ npm init -y
+```
+
+### 1.2. Install webpack package
+
+```bash
+$ npm install webpack webpack-cli --save-dev
+```
+
+## 2. Create project
+
+### 2.1. Create **javascript** file
+
+See [index.js](./src/script/index.js) and [print.js](./src/script/print.js)
+
+### 2.2. Install runtime dependencies
+
+```bash
+$ npm install --save lodash
+```
+
+### 2.3. Create webpack config file
+
+See [webpack.config.js](./webpack.config.js)
+
+## 3. More output options
+
+### 3.1. Path and file name of output file
 
 - Add prefix path in `entry` options, then the entry file will mapping as: `./src/script/index.js` => `{entry output path}/script/index{.js}`
 
@@ -31,7 +63,7 @@
   }
   ```
 
-## 2. Clean output folder
+### 3.2. Clean output folder
 
 Use `clean-webpack-plugin` to clean output folder before build
 
@@ -50,7 +82,7 @@ plugins: [
 ]
 ```
 
-## 3. Make html file and inject resource
+### 3.3. Make html file and inject resource
 
 Use `html-webpack-plugin` to make html file and inject 'js', 'css' file reference.
 
@@ -86,7 +118,7 @@ The template html should be:
 </html>
 ```
 
-### 4. Output manifest file
+### 3.4. Output manifest file
 
 Use `webpack-manifest-plugin` to output manifest file.
 
@@ -114,4 +146,33 @@ The output manifest file:
   "script/index.js": "script/index.bundle-662fc220.js",
   "index.html": "index.html"
 }
+```
+
+## 4. Build
+
+### 4.1. Test build
+
+```bash
+$ npx webpack
+```
+
+- Check if `./dist/main.js` was created
+- Open `./dist/index.html` in browser
+
+### 4.2. Add run script in package.json
+
+```javascript
+{
+  // ...,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  }
+}
+```
+
+Then build project by `npm run` command
+
+```bash
+$ npm run build
 ```
