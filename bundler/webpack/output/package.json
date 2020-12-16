@@ -1,0 +1,21 @@
+{
+  "name": "study-webpack-output",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alvin",
+  "license": "ISC",
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^5.0.0-alpha.17",
+    "webpack": "^5.10.3",
+    "webpack-cli": "^4.2.0",
+    "webpack-manifest-plugin": "^3.0.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.20"
+  }
+}

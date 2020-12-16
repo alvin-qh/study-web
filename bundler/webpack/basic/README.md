@@ -2,7 +2,7 @@
 
 ## 1. Setup
 
-### 1.1. Initalize node js env
+### 1.1. Initalize project
 
 ```bash
 $ npm init -y
@@ -30,7 +30,7 @@ $ npm install --save lodash
 
 See [webpack.config.js](./webpack.config.js)
 
-### 2.3. Create **html** file
+### 2.4. Create **html** file
 
 See [index.html](./dist/index.html)
 
