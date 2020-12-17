@@ -1,11 +1,26 @@
 @charset 'UTF-8';
 
 * {
-  font: 14px/1.5 Tahoma, Helvetica, Arial, '宋体', sans-serif;
+  font      : 14px/1.5 Tahoma, Helvetica, Arial, '宋体', sans-serif;
   box-sizing: border-box;
 }
 
 .text-box {
   padding: 10px 8px;
-  margin: 10px 20px;
+  margin : 10px 20px;
+}
+
+.image-box1 {
+  width: 600px;
+}
+
+.image-box1 img {
+  width: 100%;
+}
+
+.image-box2 {
+  width           : 600px;
+  height          : 238px;
+  background-image: url(../image/webpack.png);
+  background-size : cover;
 }

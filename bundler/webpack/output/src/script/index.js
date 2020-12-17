@@ -1,3 +1,5 @@
+import '../style/index.css';
+
 import _ from 'lodash';
 import printMe from './print.js';
 
