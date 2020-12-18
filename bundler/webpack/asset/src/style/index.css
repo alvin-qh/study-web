@@ -11,7 +11,9 @@
 }
 
 .image-box1 {
-  width: 600px;
+  padding: 10px 8px;
+  margin : 10px 20px;
+  width  : 600px;
 }
 
 .image-box1 img {
@@ -19,8 +21,20 @@
 }
 
 .image-box2 {
+  padding: 10px 8px;
+  margin : 10px 20px;
+
   width           : 600px;
   height          : 238px;
   background-image: url(../image/webpack.png);
   background-size : cover;
+}
+
+.fa-icon {
+  padding: 10px 8px;
+  margin : 10px 20px;
+}
+
+.fa-icon i.fas {
+  font-size: 30px;
 }
