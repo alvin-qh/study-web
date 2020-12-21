@@ -102,7 +102,7 @@ module.exports = {
         parser: {
           parse: json5.parse,
         }
-      },
+      }
     ]
   }
 };
