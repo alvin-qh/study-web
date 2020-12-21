@@ -2,6 +2,10 @@ const path = require('path');
 
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
+const toml = require('toml');
+const yaml = require('yamljs');
+const json5 = require('json5');
+
 module.exports = {
   entry: {
     'index': './src/script/index.js'
@@ -61,7 +65,44 @@ module.exports = {
             }
           }
         ]
-      }
+      },
+      {
+        test: /\.(csv|tsv)$/,
+        use: [
+          {
+            loader: 'csv-loader'
+          }
+        ]
+      },
+      {
+        test: /\.(xml)$/,
+        use: [
+          {
+            loader: 'xml-loader'
+          }
+        ]
+      },
+      {
+        test: /\.toml$/i,
+        type: 'json',
+        parser: {
+          parse: toml.parse,
+        }
+      },
+      {
+        test: /\.yaml$/i,
+        type: 'json',
+        parser: {
+          parse: yaml.parse,
+        }
+      },
+      {
+        test: /\.json5$/i,
+        type: 'json',
+        parser: {
+          parse: json5.parse,
+        }
+      },
     ]
   }
 };
