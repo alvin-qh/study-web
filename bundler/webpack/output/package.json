@@ -9,7 +9,6 @@
   "author": "Alvin",
   "license": "ISC",
   "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.15.1",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^5.0.1",
     "file-loader": "^6.2.0",
@@ -21,6 +20,7 @@
     "webpack-manifest-plugin": "^3.0.0"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "^5.15.1",
     "lodash": "^4.17.20"
   }
 }
