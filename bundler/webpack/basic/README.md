@@ -4,11 +4,15 @@
 
 ### 1.1. Initalize project
 
+Run shell command
+
 ```bash
 $ npm init -y
 ```
 
 ### 1.2. Install webpack package
+
+Run shell command
 
 ```bash
 $ npm install webpack webpack-cli --save-dev
@@ -21,6 +25,8 @@ $ npm install webpack webpack-cli --save-dev
 See [index.js](./src/index.js)
 
 ### 2.2. Install runtime dependencies
+
+Run shell command
 
 ```bash
 $ npm install --save lodash
@@ -45,7 +51,9 @@ $ npx webpack
 - Check if `./dist/main.js` was created
 - Open `./dist/index.html` in browser
 
-### 3.2. Add run script in package.json
+### 3.2. Add run script
+
+In `package.json`
 
 ```json
 {
@@ -57,7 +65,9 @@ $ npx webpack
 }
 ```
 
-Then build project by `npm run` command
+Then build project
+
+Run shell command
 
 ```bash
 $ npm run build

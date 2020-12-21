@@ -11,12 +11,13 @@ module.exports = {
   },
   devtool: 'inline-source-map',   // add source map inline in source file
   devServer: {
-    contentBase: './dist',
+    contentBase: './dist'
   },
   output: {
     filename: 'script/[name].bundle-[hash:8].js',
     chunkFilename: 'script/[name].bundle-[hash:8].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
   },
   plugins: [
     new CleanWebpackPlugin({

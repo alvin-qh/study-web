@@ -4,6 +4,8 @@
 
 - Add prefix path in `entry` options, then the entry file will mapping as: `./src/script/index.js` => `{entry output path}/script/index{.js}`
 
+  In `webpack.config.js`
+
   ```javascript
   entry: {
     // ...,
@@ -12,6 +14,8 @@
   ```
 
   And the entry output path config as:
+
+  In `webpack.config.js`
 
   ```javascript
   output: {
@@ -32,11 +36,15 @@
 
 - Install dependency
 
+  Run shell command
+
   ```bash
   $ npm install --save-dev mini-css-extract-plugin
   ```
 
 - Config `plugin`
+
+  In `webpack.config.js`
 
   ```javascript
   plugins: [
@@ -49,6 +57,8 @@
   - `filename`: name of outputing css file
 
 - Config `module` > `rules`
+
+  In `webpack.config.js`
 
   ```javascript
   rules: [
@@ -77,11 +87,15 @@
 
 - Install dependency
 
+  Run shell command
+
   ```bash
   $ npm install --save-dev url-loader file-loader
   ```
 
 - Config `module` > `rules`
+
+  In `webpack.config.js`
 
   ```javascript
   rules: [
@@ -122,13 +136,13 @@
 
 Use `clean-webpack-plugin` to clean output folder before build
 
-Install dependency
+Install dependency, Run shell command
 
 ```bash
 $ npm install --save-dev clean-webpack-plugin
 ```
 
-Webpack config
+In `webpack.config.js`
 
 ```javascript
 plugins: [
@@ -141,13 +155,13 @@ plugins: [
 
 Use `html-webpack-plugin` to make html file and inject 'js', 'css' file reference.
 
-Install dependency
+Install dependency, Run shell command
 
 ```bash
 $ npm install --save-dev html-webpack-plugin
 ```
 
-Webpack config
+In `webpack.config.js`
 
 ```javascript
 plugins: [
@@ -159,6 +173,8 @@ plugins: [
 ```
 
 The template html should be:
+
+In `src/template/index.html`
 
 ```html
 <!DOCTYPE html>
@@ -179,13 +195,13 @@ The template html should be:
 
 Use `webpack-manifest-plugin` to output manifest file.
 
-Install dependency
+Install dependency, Run shell command
 
 ```bash
 $ npm install --save-dev webpack-manifest-plugin
 ```
 
-Webpack config
+In `webpack.config.js`
 
 ```javascript
 plugins: [
@@ -196,7 +212,7 @@ plugins: [
 ]
 ```
 
-The output manifest file:
+The output manifest file like:
 
 ```json
 {

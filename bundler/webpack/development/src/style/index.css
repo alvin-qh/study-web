@@ -37,3 +37,23 @@
 .icon-box i.fas {
   font-size: 30px;
 }
+
+.image-box1 {
+  padding: 10px 8px;
+  margin : 10px 20px;
+  width  : 600px;
+}
+
+.image-box1 img {
+  width: 100%;
+}
+
+.image-box2 {
+  padding: 10px 8px;
+  margin : 10px 20px;
+
+  width           : 600px;
+  height          : 238px;
+  background-image: url(../image/webpack.png);
+  background-size : cover;
+}

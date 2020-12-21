@@ -4,11 +4,15 @@
 
 - Install dependencies
 
+  Run shell command
+
   ```bash
   $ npm install --save-dev style-loader css-loader
   ```
 
 - Config `module > rules`, add loaders
+
+  In `webpack.config.js`
 
   ```javascript
   module: {
@@ -32,11 +36,15 @@
 
 - Install dependencies
 
+  Run shell command
+
   ```bash
   $ npm install --save-dev file-loader url-loader
   ```
 
 - Config `module > rules`, add loaders
+
+  In `webpack.config.js`
 
   ```javascript
   module: {
@@ -100,11 +108,15 @@ Use data loader to load `csv` and `xml` as object (`Array` or `Dict`)
 
 - Install dependencies
 
+  Run shell command
+
   ```bash
   $ npm install --save-dev csv-loader xml-loader
   ```
 
 - Config `module > rules`, add loaders
+
+  In `webpack.config.js`
 
   ```javascript
   module: {
@@ -143,11 +155,15 @@ Use data parser to parse `yaml`, `toml` and `json5` to json object
 
 - Install dependencies
 
+  Run shell command
+
   ```bash
   $ npm install --save-dev toml yamljs json5
   ```
 
 - Config `module > rules`, add parsers
+
+  In `webpack.config.js`
 
   ```javascript
   module: {
