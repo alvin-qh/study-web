@@ -1,13 +1,13 @@
 # Output management
 
-## 1. Name of output file
+## 1. Javascript bundler
 
 - Add prefix path in `entry` options, then the entry file will mapping as: `./src/script/index.js` => `{entry output path}/script/index{.js}`
 
   ```javascript
   entry: {
     // ...,
-    'script/index': './src/script/index.js'
+    'index': './src/script/index.js'
   }
   ```
 
@@ -16,22 +16,109 @@
   ```javascript
   output: {
     // ...,
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'script/[name].bundle-[hash:8].js',
+    chunkFilename: 'script/[name].bundle-[hash:8].js'
   }
   ```
 
-  So file `./src/script/index.js` should be mapping as `./dist/script/index.bundle-xxxxxxxx.js`
+  - `path`: path to save output files
+  - `filename`: name format of output files which defined in `entry` option
+  - `chunkFilename`: name format of output files which not defined in `entry` option
 
-- In `output > filename` option, use `[hash:8]` placeholder can output hash code in file name
+  So entry file `./src/script/index.js` should be mapping as output file `./dist/script/index.bundle-xxxxxxxx.js`
+
+## 2. CSS bundler
+
+- Install dependency
+
+  ```bash
+  $ npm install --save-dev mini-css-extract-plugin
+  ```
+
+- Config `plugin`
 
   ```javascript
-  output: {
+  plugins: [
     // ...,
-    filename: '[name].bundle-[hash:8].js'
-  }
+    new MiniCssExtractPlugin({
+      filename: 'style/[name].bundle-[hash:8].css'
+    })
   ```
 
-## 2. Clean output folder
+  - `filename`: name of outputing css file
+
+- Config `module` > `rules`
+
+  ```javascript
+  rules: [
+    {
+      test: /\.css$/i,
+      use: [
+        {
+          loader: MiniCssExtractPlugin.loader,
+          options: {
+            publicPath: '..'
+          }
+        },
+        {
+          loader: 'css-loader'
+        }
+      ]
+    }
+  ]
+  ```
+
+  - `css-loader`: load css from `import` in javascript or `@import` in css file
+  - `MiniCssExtractPlugin.loader`: bundle loaded css content into `.css` file
+    - `publicPath`: prefix path name add in front of rewrite url, in css file
+
+## 3. Assets bundler
+
+- Install dependency
+
+  ```bash
+  $ npm install --save-dev url-loader file-loader
+  ```
+
+- Config `module` > `rules`
+
+  ```javascript
+  rules: [
+    // ...,
+    {
+      test: /\.(svg|png|jpg|gif)$/,
+      use: [
+        {
+          loader: 'url-loader',
+          options: {
+            limit: 10240,
+            name: 'image/[name]-[hash:8].[ext]',
+            publicPath: ''
+          }
+        }
+      ]
+    },
+    {
+      test: /\.(eot|woff|woff2|ttf)$/,
+      use: [
+        {
+          loader: 'url-loader',
+          options: {
+            limit: 10240,
+            name: 'font/[name]-[hash:8].[ext]',
+            publicPath: ''
+          }
+        }
+      ]
+    }
+  ]
+  ```
+
+  - `url-loader`: load file reference in `.js` or `.css` file, and rewrite the url to asset file in output folder
+    - `publicPath`: prefix path name add in front of rewrite url, in javascript file
+
+## 3. Clean output folder
 
 Use `clean-webpack-plugin` to clean output folder before build
 
@@ -50,7 +137,7 @@ plugins: [
 ]
 ```
 
-## 3. Make html file and inject resource
+## 4. Make html file and inject resource
 
 Use `html-webpack-plugin` to make html file and inject 'js', 'css' file reference.
 
@@ -82,11 +169,13 @@ The template html should be:
   <!-- Use title prpperty of HtmlWebpackPlugin object -->
   <title><%= htmlWebpackPlugin.options.title %></title>
 </head>
-<body></body>
+<body>
+  <div class="main"></div>
+</body>
 </html>
 ```
 
-### 4. Output manifest file
+### 5. Output manifest file
 
 Use `webpack-manifest-plugin` to output manifest file.
 
@@ -111,7 +200,13 @@ The output manifest file:
 
 ```json
 {
-  "script/index.js": "script/index.bundle-662fc220.js",
-  "index.html": "index.html"
+  "index.css": "style/index.bundle-e702abe4.css",
+  "index.js": "script/index.bundle-e702abe4.js",
+  "index.svg": "image/fa-solid-900-371dbce0.svg",
+  "image/fa-solid-900.svg": "image/fa-solid-900-371dbce0.svg",
+  "font/fa-solid-900.eot": "font/fa-solid-900-3a24a60e.eot",
+  "font/fa-regular-400.woff2": "font/fa-regular-400-1008b522.woff2",
+  "index.html": "index.html",
+  ...
 }
 ```

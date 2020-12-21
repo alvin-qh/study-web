@@ -73,7 +73,6 @@ row.appendChild(icon('fa-sun'));
 row.appendChild(icon('fa-cloud'));
 wrppper.appendChild(row);
 
-
 row = document.createElement('div');
 row.className = 'row';
 row.appendChild(showData('CSV', csvData));

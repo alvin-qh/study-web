@@ -5,21 +5,8 @@
 - Install dependencies
 
   ```bash
-  $ npm install --save-dev style-loader css-loader mini-css-extract-plugin
+  $ npm install --save-dev style-loader css-loader
   ```
-
-- Config `plugins`, add extract plugin
-
-  ```javascript
-  plugins: [
-    // ...,
-    new MiniCssExtractPlugin({
-      filename: 'style/[name].css'
-    })
-  ]
-  ```
-
-  This plugin can extract all css content from loaders into css file
 
 - Config `module > rules`, add loaders
 
@@ -31,12 +18,6 @@
         test: /\.css$/i,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: '..'
-            }
-          },
-          {
             loader: 'css-loader'
           }
         ]
@@ -45,8 +26,7 @@
   }
   ```
 
-  - The `css-loader` load all css content from every chunk, then js can import css file like `import 'a/b/c.css'`
-  - The `MiniCssExtractPlugin.loader` extract css content from `css-loader` into one bundled css content
+  The `css-loader` load all css content from every chunk, then js can import css file like `import 'a/b/c.css'`
 
 ## 2. Images or fonts asset
 

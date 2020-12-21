@@ -16,14 +16,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       title: 'Output Management',
       template: './src/template/index.html',
-      chunks: 'all',
-      minify: {
-        collapseWhitespace: true,
-        removeComments: true
-      }
+      chunks: 'all'
     }),
     new MiniCssExtractPlugin({
-      filename: '/style/[name].bundle-[hash:8].css'
+      filename: 'style/[name].bundle-[hash:8].css'
     }),
 
     /**
@@ -147,9 +143,9 @@ module.exports = {
        * Allows filtering the files which make up the manifest. 
        * false to remove the file.
        */
-      filter() {
-        return true;
-      },
+      // filter() {
+      //   return true;
+      // },
 
       /**
        * Type: Function
@@ -181,8 +177,8 @@ module.exports = {
     })
   ],
   output: {
-    filename: 'script/[name].bundle-[hash:8].js',
     path: path.resolve(__dirname, 'dist'),
+    filename: 'script/[name].bundle-[hash:8].js',
     chunkFilename: 'script/[name].bundle-[hash:8].js'
   },
   module: {
@@ -191,10 +187,39 @@ module.exports = {
         test: /\.css$/i,
         use: [
           {
-            loader: MiniCssExtractPlugin.loader
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '..'
+            }
           },
           {
             loader: 'css-loader'
+          }
+        ]
+      },
+      {
+        test: /\.(svg|png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10240,
+              name: 'image/[name]-[hash:8].[ext]',
+              publicPath: ''
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(eot|woff|woff2|ttf)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10240,
+              name: 'font/[name]-[hash:8].[ext]',
+              publicPath: ''
+            }
           }
         ]
       }
