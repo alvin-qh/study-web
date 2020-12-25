@@ -11,13 +11,16 @@ module.exports = {
   output: {
     filename: 'script/[name].js',
     chunkFilename: 'script/[name].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist/asset')
   },
   module: {
     rules: [
       {
         test: /\.css$/i,
         use: [
+          {
+            loader: 'style-loader'
+          },
           {
             loader: 'css-loader'
           }
@@ -30,8 +33,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 10240,
-              name: 'image/[name].[ext]',
-              publicPath: ''
+              name: 'image/[name].[ext]'
             }
           }
         ]
@@ -43,8 +45,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 10240,
-              name: 'font/[name].[ext]',
-              publicPath: ''
+              name: 'font/[name].[ext]'
             }
           }
         ]

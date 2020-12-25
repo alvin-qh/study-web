@@ -49,6 +49,8 @@ The source file watcher will be started, when change source file, the webpack bu
 
 ## 2. Use development server
 
+### 2.1. Use devServer
+
 - Install dependency, run shell command:
   
   ```bash
@@ -59,12 +61,7 @@ The source file watcher will be started, when change source file, the webpack bu
 
   ```javascript
   devServer: {
-    contentBase: path.resolve(__dirname, 'dist'),
-    hot: true,
-    inline: true,
-    stats: 'minimal',
-    compress: true,
-    writeToDisk: true
+    contentBase: './dist'
   }
   ```
 
@@ -83,4 +80,44 @@ The source file watcher will be started, when change source file, the webpack bu
 
   ```bash
   $ npm run dev
+  ```
+
+### 2.2. Use middleware
+
+- Install dependency, run shell command:
+  
+  ```bash
+  $ npm install --save-dev express webpack-dev-middleware
+  ```
+
+  `webpack-dev-middleware` is based on `express` framework.
+
+- Add `server.js`
+
+  See [server.js](./server.js)
+
+- Edit webpack config, in `webpack.config.js`
+
+  ```javascript
+  output: {
+    // ...,
+    publicPath: '/'
+  }
+  ```
+
+  - The `webpack-dev-middleware` start dev server by `express` framework and `server.js` file, use `output` folder as web root and `publicPath` as context path.
+
+- Edit `package.json`, add run command
+
+  ```json
+  "scripts": {
+    ...
+    "server": "node server.js"
+  }
+  ```
+
+- Start dev server by shell command
+
+  ```bash
+  $ npm run server
   ```

@@ -1,5 +1,2 @@
 node_modules
-dist/script
-dist/style
-dist/image
-dist/font
+dist/asset

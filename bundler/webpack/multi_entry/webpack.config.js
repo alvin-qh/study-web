@@ -8,37 +8,31 @@ module.exports = {
   mode: 'development',  // or mode: 'production', enable development mode or production mode
   entry: {
     'index': './src/script/index.js',
+    'm1/index': './src/script/m1/index.js',
+    'm2/index': './src/script/m2/index.js',
   },
   devtool: 'inline-source-map',   // add source map inline in source file
   devServer: {
-    contentBase: path.resolve(__dirname, 'dist'),
-    hot: true,
-    inline: true,
-    stats: 'minimal',
-    compress: true,
-    writeToDisk: true
+    contentBase: './dist'
   },
   output: {
-    path: path.resolve(__dirname, 'dist/asset'),
-    filename: 'script/[name].bundle-[contenthash:8].js',
-    chunkFilename: 'script/[name].chunk-[contenthash:8].js'
+    filename: 'script/[name].bundle-[hash:8].js',
+    chunkFilename: 'script/[name].bundle-[hash:8].js',
+    path: path.resolve(__dirname, 'dist'),
+    publicPath: '/'
   },
   plugins: [
     new CleanWebpackPlugin({
-      dry: false,
-      cleanStaleWebpackAssets: false,
-      cleanOnceBeforeBuildPatterns: ['../**/*'],
-      dangerouslyAllowCleanPatternsOutsideProject: true
+      cleanStaleWebpackAssets: false
     }),
     new MiniCssExtractPlugin({
-      filename: 'style/[name].bundle-[contenthash:8].css'
+      filename: 'style/[name].bundle-[hash:8].css'
     }),
     new HtmlWebpackPlugin({
-      title: 'Development',
+      title: 'Output Management',
       template: './src/template/index.html',
-      filename: '../[name].html',
       chunks: 'all'
-    })
+    }),
   ],
   module: {
     rules: [
@@ -48,7 +42,7 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: '../'
+              publicPath: '..'
             }
           },
           {
@@ -63,7 +57,8 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 10240,
-              name: 'image/[name]-[contenthash:8].[ext]'
+              name: 'image/[name]-[hash:8].[ext]',
+              publicPath: ''
             }
           }
         ]
@@ -75,7 +70,8 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 10240,
-              name: 'font/[name]-[contenthash:8].[ext]'
+              name: 'font/[name]-[hash:8].[ext]',
+              publicPath: ''
             }
           }
         ]

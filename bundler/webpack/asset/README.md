@@ -22,6 +22,9 @@
         test: /\.css$/i,
         use: [
           {
+            loader: 'style-loader'
+          },
+          {
             loader: 'css-loader'
           }
         ]
@@ -30,7 +33,8 @@
   }
   ```
 
-  The `css-loader` load all css content from every chunk, then js can import css file like `import 'a/b/c.css'`
+  - The `css-loader` load all css content from every chunk, then js can import css file like `import 'a/b/c.css'`.
+  - The `style-loader` put loaded css content into `<style>` element in html
 
 ## 2. Images or fonts asset
 

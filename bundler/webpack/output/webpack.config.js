@@ -12,14 +12,21 @@ module.exports = {
     'index': './src/script/index.js'
   },
   plugins: [
-    new CleanWebpackPlugin(),
+    new CleanWebpackPlugin({
+      dry: false,
+      cleanStaleWebpackAssets: false,
+      cleanOnceBeforeBuildPatterns: ['../**/*'],
+      dangerouslyAllowCleanPatternsOutsideProject: true  // Allow clean patterns outside of process.cwd()
+                                                         // requires dry option to be explicitly set
+    }),
     new HtmlWebpackPlugin({
       title: 'Output Management',
       template: './src/template/index.html',
+      filename: '../[name].html',
       chunks: 'all'
     }),
     new MiniCssExtractPlugin({
-      filename: 'style/[name].bundle-[hash:8].css'
+      filename: 'style/[name].bundle-[contenthash:8].css'
     }),
 
     /**
@@ -177,9 +184,9 @@ module.exports = {
     })
   ],
   output: {
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'script/[name].bundle-[hash:8].js',
-    chunkFilename: 'script/[name].bundle-[hash:8].js'
+    path: path.resolve(__dirname, 'dist/asset'),
+    filename: 'script/[name].bundle-[contenthash:8].js',
+    chunkFilename: 'script/[name].bundle-[contenthash:8].js'
   },
   module: {
     rules: [
@@ -189,7 +196,7 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: '..'
+              publicPath: '../'
             }
           },
           {
@@ -204,8 +211,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 10240,
-              name: 'image/[name]-[hash:8].[ext]',
-              publicPath: ''
+              name: 'image/[name]-[contenthash:8].[ext]'
             }
           }
         ]
@@ -217,8 +223,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 10240,
-              name: 'font/[name]-[hash:8].[ext]',
-              publicPath: ''
+              name: 'font/[name]-[contenthash:8].[ext]'
             }
           }
         ]

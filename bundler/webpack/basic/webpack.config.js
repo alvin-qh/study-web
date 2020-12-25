@@ -6,6 +6,6 @@ module.exports = {
   },
   output: {
     filename: 'script/[name].js',
-    path: path.resolve(__dirname, 'dist')
+    path: path.resolve(__dirname, 'dist/asset')
   }
 };
