@@ -1,6 +1,7 @@
 # Webpack
 
-- [Basic](./basic/README.md)
-- [Asset](./asset/README.md)
-- [Output](./output/README.md)
-- [Development](./development/README.md)
+1. [Basic](./basic/README.md)
+2. [Asset](./asset/README.md)
+3. [Output](./output/README.md)
+4. [Development](./development/README.md)
+5. [Entrypoints](./entrypoints/README.md)
