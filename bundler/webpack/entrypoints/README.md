@@ -74,7 +74,7 @@ module.exports = {
 
 ## 2. Split Thunks
 
-Pull away the common parts from all the chunks, and split those parts into some shared files.
+Pull away the common parts from all chunks, and split those parts into some shared files.
 
 Create HTML file for each chunk, and inject "common javascript", "bundled javascript" and "bundled css" files automatic.
 
