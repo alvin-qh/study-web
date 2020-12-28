@@ -59,7 +59,7 @@ module.exports = {
        * 
        * A path prefix that will be added to values of the manifest.
        */
-      publicPath: '',
+      // publicPath: '',
 
       /**
        * Type: String

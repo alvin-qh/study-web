@@ -4,9 +4,12 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "watch": "webpack --watch",
-    "dev": "webpack serve"
+    "build:np": "webpack -c webpack-entrypoints.config.js",
+    "build:st": "webpack -c webpack-splitthunk.config.js",
+    "watch:np": "webpack -c webpack-entrypoints.config.js --watch",
+    "watch:st": "webpack -c webpack-splitthunk.config.js --watch",
+    "dev:ep": "webpack serve -c webpack-entrypoints.config.js",
+    "dev:st": "webpack serve -c webpack-splitthunk.config.js"
   },
   "author": "Alvin",
   "license": "ISC",

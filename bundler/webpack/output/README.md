@@ -107,8 +107,7 @@
           loader: 'url-loader',
           options: {
             limit: 10240,
-            name: 'image/[name]-[hash:8].[ext]',
-            publicPath: ''
+            name: 'image/[name]-[hash:8].[ext]'
           }
         }
       ]
@@ -120,8 +119,7 @@
           loader: 'url-loader',
           options: {
             limit: 10240,
-            name: 'font/[name]-[hash:8].[ext]',
-            publicPath: ''
+            name: 'font/[name]-[hash:8].[ext]'
           }
         }
       ]

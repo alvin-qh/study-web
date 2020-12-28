@@ -61,8 +61,7 @@
             loader: 'url-loader',
             options: {
               limit: 10240,
-              name: 'image/[name].[ext]',
-              publicPath: ''
+              name: 'image/[name].[ext]'
             }
           }
         ]
@@ -74,8 +73,7 @@
             loader: 'url-loader',
             options: {
               limit: 10240,
-              name: 'font/[name].[ext]',
-              publicPath: ''
+              name: 'font/[name].[ext]'
             }
           }
         ]

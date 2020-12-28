@@ -2,40 +2,10 @@ const path = require('path');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
-const entries = {
-  'common': './src/script/common/common.js',
-  'index': {
-    import: './src/script/index.js',
-    dependOn: 'common'
-  },
-  'm1/index': {
-    import: './src/script/m1/index.js',
-    dependOn: 'common'
-  },
-  'm2/index': {
-    import: './src/script/m2/index.js',
-    dependOn: 'common'
-  }
-};
-
-const htmls = [...Object.keys(entries).map(key => {
-  if (key === 'common') {
-    return null;
-  }
-  return new HtmlWebpackPlugin({
-    title: `Entrypoint Management - ${key}`,
-    template: './src/template/index.html',
-    filename: `../${key}.html`,
-    chunks: ['common', key]
-  })
-}).filter(entry => entry != null)];
 
 module.exports = {
-  mode: 'development',  // or mode: 'production', enable development mode or production mode
-  entry: entries,
-  devtool: 'inline-source-map',   // add source map inline in source file
+  mode: 'development',
+  devtool: 'inline-source-map',
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
     hot: true,
@@ -58,8 +28,7 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: 'style/[name].bundle-[contenthash:8].css'
-    }),
-    ...htmls
+    })
   ],
   module: {
     rules: [
@@ -84,8 +53,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 10240,
-              name: 'image/[name]-[contenthash:8].[ext]',
-              publicPath: ''
+              name: 'image/[name]-[contenthash:8].[ext]'
             }
           }
         ]
@@ -97,8 +65,7 @@ module.exports = {
             loader: 'url-loader',
             options: {
               limit: 10240,
-              name: 'font/[name]-[contenthash:8].[ext]',
-              publicPath: ''
+              name: 'font/[name]-[contenthash:8].[ext]'
             }
           }
         ]
