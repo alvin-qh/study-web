@@ -4,23 +4,37 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const entries = {
+  'common': './src/script/common/common.js',
+  'index': {
+    import: './src/script/index.js',
+    dependOn: 'common'
+  },
+  'm1/index': {
+    import: './src/script/m1/index.js',
+    dependOn: 'common'
+  },
+  'm2/index': {
+    import: './src/script/m2/index.js',
+    dependOn: 'common'
+  }
+};
+
+const htmls = [...Object.keys(entries).map(key => {
+  if (key === 'common') {
+    return null;
+  }
+  return new HtmlWebpackPlugin({
+    title: `Entrypoint Management - ${key}`,
+    template: './src/template/index.html',
+    filename: `../${key}.html`,
+    chunks: ['common', key]
+  })
+}).filter(entry => entry != null)];
+
 module.exports = {
   mode: 'development',  // or mode: 'production', enable development mode or production mode
-  entry: {
-    'common': './src/script/common/common.js',
-    'index': {
-      import: './src/script/index.js',
-      dependOn: 'common'
-    },
-    'm1/index': {
-      import: './src/script/m1/index.js',
-      dependOn: 'common'
-    },
-    'm2/index': {
-      import: './src/script/m2/index.js',
-      dependOn: 'common'
-    }
-  },
+  entry: entries,
   devtool: 'inline-source-map',   // add source map inline in source file
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
@@ -45,24 +59,7 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: 'style/[name].bundle-[contenthash:8].css'
     }),
-    new HtmlWebpackPlugin({
-      title: 'Multi-entry Management',
-      template: './src/template/index.html',
-      filename: '../index.html',
-      chunks: ['common', 'index']
-    }),
-    new HtmlWebpackPlugin({
-      title: 'Multi-entry Management',
-      template: './src/template/index.html',
-      filename: '../m1/index.html',
-      chunks: ['common', 'm1/index']
-    }),
-    new HtmlWebpackPlugin({
-      title: 'Multi-entry Management',
-      template: './src/template/index.html',
-      filename: '../m2/index.html',
-      chunks: ['common', 'm2/index']
-    })
+    ...htmls
   ],
   module: {
     rules: [
