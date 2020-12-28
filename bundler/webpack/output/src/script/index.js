@@ -3,84 +3,63 @@ import '../style/index.css';
 import _ from 'lodash';
 import printMe from './print.js';
 
-import webpackImage from '../image/webpack.png';
-
 function component() {
-  const element = document.createElement('div');
-  const btn = document.createElement('button');
+  const $div = document.createElement('div');
+  const $btn = document.createElement('button');
+  $div.innerHTML = _.join(['Hello', 'webpack'], ' ');
 
-  element.innerHTML = _.join(['Hello', 'webpack'], ' ');
+  $btn.innerHTML = 'Click Me!';
+  $btn.onclick = printMe;
 
-  btn.innerHTML = 'Click me and check the console!';
-  btn.onclick = printMe;
-
-  element.appendChild(btn);
-
-  return element;
+  $div.appendChild($btn);
+  return $div;
 }
 
 function textBox(text) {
-  const div = document.createElement('div');
-  div.className = 'text-box';
-  div.innerText = text;
-  return div;
+  const $div = document.createElement('div');
+  $div.className = 'text-box';
+  $div.innerText = text;
+  return $div;
 }
 
 function imageBox1(image) {
-  const img = document.createElement('img');
-  img.src = image;
-  img.alt = 'image box';
+  const $image = document.createElement('img');
+  $image.src = image;
+  $image.alt = 'image box';
 
-  const wrapperDiv = document.createElement('div');
-  wrapperDiv.className = 'image-box1';
+  const $div = document.createElement('div');
+  $div.className = 'image-box1';
 
-  wrapperDiv.appendChild(img);
-  return wrapperDiv;
+  $div.appendChild($image);
+  return $div;
 }
 
 function imageBox2() {
-  const wrapperDiv = document.createElement('div');
-  wrapperDiv.className = 'image-box2';
-  return wrapperDiv;
+  const $div = document.createElement('div');
+  $div.className = 'image-box2';
+  return $div;
 }
 
 function icon(name) {
-  const wrapperDiv = document.createElement('div');
-  wrapperDiv.className = 'icon-box';
+  const $div = document.createElement('div');
+  $div.className = 'icon-box';
 
-  const i = document.createElement('i');
-  i.className = `fas ${name}`;
+  const $i = document.createElement('i');
+  $i.className = `fas ${name}`;
 
-  wrapperDiv.appendChild(i);
-  return wrapperDiv;
+  $div.appendChild($i);
+  return $div;
 }
 
-function showData(title, data) {
-  const wrapperDiv = document.createElement('div');
-  wrapperDiv.className = 'data-box';
+const $wrapper = document.body.getElementsByClassName('main')[0];
+$wrapper.appendChild(component());
 
-  const titleDiv = document.createElement('h4');
-  titleDiv.innerText = title;
+$wrapper.appendChild(textBox('Hello World!'));
+$wrapper.appendChild(imageBox1(require('../image/webpack.png').default));
+$wrapper.appendChild(imageBox2());
 
-  wrapperDiv.appendChild(titleDiv);
-
-  const textarea = document.createElement('textarea');
-  textarea.value = JSON.stringify(data, null, 2);
-
-  wrapperDiv.appendChild(textarea);
-  return wrapperDiv;
-}
-
-
-const wrppper = document.body.getElementsByClassName('main')[0];
-wrppper.appendChild(component());
-
-wrppper.appendChild(textBox('Hello World!'));
-wrppper.appendChild(imageBox1(webpackImage));
-wrppper.appendChild(imageBox2());
-
-const row = document.createElement('div');
-row.className = 'row';
-row.appendChild(icon('fa-sun'));
-row.appendChild(icon('fa-cloud'));
-wrppper.appendChild(row);
+const $row = document.createElement('div');
+$row.className = 'row';
+$row.appendChild(icon('fa-sun'));
+$row.appendChild(icon('fa-cloud'));
+$wrapper.appendChild($row);

@@ -39,7 +39,7 @@ function makeTemplates() {
 
   return glob.sync(path.join(CONFIG.paths.www(), '/**/*.html'))
     .map(file => {
-      file = normalizePath(file);
+      file = normalizePath(file)
 
       const chunk = (chunk => chunk.substr(0, chunk.indexOf('/')) || 'home')(file.replace(wwwRoot, ''))
       const chunks = ['manifest', 'vendor', 'common', chunk]
