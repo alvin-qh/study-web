@@ -3,10 +3,7 @@ const config = require('./webpack-common.config');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const entries = {
-  'index': {
-    import: './src/script/index.js',
-    dependOn: 'common'
-  },
+  'index': './src/script/index.js',
   'm1/index': {
     import: './src/script/m1/index.js',
     dependOn: 'common'

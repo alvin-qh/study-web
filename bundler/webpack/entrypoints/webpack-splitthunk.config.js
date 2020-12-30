@@ -36,7 +36,7 @@ module.exports = {
           name: 'common',
           chunks: 'all',
           minChunks: 1,
-          reuseExistingChunk: true,
+          reuseExistingChunk: true
         }
       }
     }
