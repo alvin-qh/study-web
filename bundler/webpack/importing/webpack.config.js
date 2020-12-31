@@ -42,10 +42,10 @@ module.exports = {
       chunks: 'all'
     }),
     new BundleAnalyzerPlugin({
-      reportFilename: '../../bundle-report.html',
+      reportFilename: '../bundle-report.html',
       openAnalyzer: false,
       generateStatsFile: true,
-      statsFilename: 'stats.json',
+      statsFilename: '../stats.json',
       analyzerMode: 'static'
     })
   ],
