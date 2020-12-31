@@ -93,6 +93,7 @@ module.exports = {
   },
   optimization: {
     runtimeChunk: 'single',
+    moduleIds: 'deterministic',
     splitChunks: {
       minChunks: 1,
       minSize: 1,

@@ -34,6 +34,7 @@ In `webpack.config.js`, set `optimization` `/` `splitChunks` options
 ```javascript
 optimization: {
   // ...,
+  moduleIds: 'deterministic',
   splitChunks: {
     minSize: 1,     // the minimum size of extracted code in one .js file
     minChunks: 1,   // the maximum size of extracted code in one .js file
@@ -54,6 +55,13 @@ optimization: {
   }
 }
 ```
+
+`moduleIds`: How to generate the ID for bundled resource file, default value is `false`(let webpack choose how to generate ID itself)
+
+- `natural`: Generate ID by file orders.
+- `named`: Generate ID for debug(easy to read).
+- `deterministic`: Generate ID by hashcode.
+- `size`: Generate ID to make sure file size is smaller
 
 `cacheGroup` option is used to explain how common code is extracted between chunks.
 
