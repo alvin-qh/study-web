@@ -95,3 +95,41 @@ The comment `/* webpackPrefetch: true */` and `/* webpackPreload: true */` will 
 <!-- or -->
 <link rel="preload" as="script" href="vendor.xxx.js">
 ```
+
+## 3. Bundle analysis
+
+Use `webpack-bundle-analyzer` to analyse the statistics of all bundles
+
+Install `webpack-bundle-analyzer` package
+
+```bash
+$ npm install --save-dev webpack-bundle-analyzer
+```
+
+In `webpack.config.js`, add plugin useage
+
+```javascript
+{
+  // ...,
+  plugins: [
+    // ...,
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'static',
+      reportFilename: '../../bundle-report.html',
+      generateStatsFile: true,
+      statsFilename: 'stats.json',
+      openAnalyzer: false
+    })
+  ]
+}
+```
+
+- `analyzerMode`: `server`, `static`, `json` or `disabled`
+  - `server`: Start a http server to show analysis result.
+  - `static`: Generate a static HTML file about analysis result.
+  - `json`: Generate a json file about analysis result.
+  - `disabled`: Do not generate any result file.
+- `reportFilename`: Path to bundle report file that will be generated in static mode. It can be either an absolute path or a path relative to a bundle output directory (which is output.path in webpack config).
+- `generateStatsFile`: Generate a statistics json file.
+- `statsFilename`: Name of generated statistics json file.
+- `openAnalyzer`: Open browser to show analysis result.

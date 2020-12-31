@@ -4,6 +4,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 module.exports = {
   mode: 'development',
   devtool: 'inline-source-map',
@@ -38,6 +40,13 @@ module.exports = {
       template: './src/template/index.html',
       filename: '../[name].html',
       chunks: 'all'
+    }),
+    new BundleAnalyzerPlugin({
+      reportFilename: '../../bundle-report.html',
+      openAnalyzer: false,
+      generateStatsFile: true,
+      statsFilename: 'stats.json',
+      analyzerMode: 'static'
     })
   ],
   module: {
