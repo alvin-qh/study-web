@@ -1,6 +1,6 @@
 import '../style/common.css';
 
-function button(name, action) {
+export function button(name, action) {
   const $div = document.createElement('div');
   $div.className = 'button-box';
 
@@ -13,13 +13,13 @@ function button(name, action) {
   return $div;
 }
 
-function row() {
+export function row() {
   const $row = document.createElement('row');
   $row.className = 'row';
   return $row;
 }
 
-function link(url, text, target = '') {
+export function link(url, text, target = '') {
   const $div = document.createElement('div');
   $div.className = 'link-box';
 
@@ -33,5 +33,3 @@ function link(url, text, target = '') {
   $div.appendChild($a);
   return $div;
 }
-
-export { button, row, link }

@@ -1,4 +1,5 @@
-import {link, _, row} from './common/common.js';
+import { link, row } from './common/common.js';
+import _ from 'lodash';
 
 function textBox(text) {
   const $div = document.createElement('div');

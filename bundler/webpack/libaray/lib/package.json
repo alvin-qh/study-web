@@ -1,0 +1,22 @@
+{
+  "name": "study-webpack-libaray-lib",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "module": "src/index.js",
+  "scripts": {
+    "test": "webpack -c webpack-test.config.js && mocha ./test/dist/**/*.bundle.js",
+    "build": "webpack"
+  },
+  "author": "Alvin",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "clean-webpack-plugin": "^3.0.0",
+    "mocha": "^8.2.1",
+    "webpack": "^5.11.1",
+    "webpack-cli": "^4.3.0"
+  },
+  "dependencies": {
+    "lodash": "^4.17.20"
+  }
+}

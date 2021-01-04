@@ -1,7 +1,7 @@
 import '../../style/index.css';
 import _ from 'lodash';
 
-function link(name, url) {
+export function link(name, url) {
   const $div = document.createElement('div');
   $div.className = 'link-box';
 
@@ -13,14 +13,8 @@ function link(name, url) {
   return $div;
 }
 
-function row() {
+export function row() {
   const $div = document.createElement('div');
   $div.className = 'row';
   return $div;
-}
-
-export {
-  link,
-  _,
-  row
 }

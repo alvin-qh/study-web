@@ -1,5 +1,5 @@
 
-async function sayHello(name) {
+export async function sayHello(name) {
   const { default: _ } = await import(/* webpackPrefetch: true */ 'lodash');
 
   const $div = document.createElement('div');
@@ -8,7 +8,7 @@ async function sayHello(name) {
   return $div;
 }
 
-async function icon(name) {
+export async function icon(name) {
   await import('@fortawesome/fontawesome-free/css/all.css');
 
   const { default: _ } = await import('lodash');
@@ -21,5 +21,3 @@ async function icon(name) {
   $div.appendChild($icon);
   return $div;
 }
-
-export { sayHello, icon }

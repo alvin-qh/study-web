@@ -1,4 +1,5 @@
-import {link, row} from '../common/common.js';
+import { link, row } from '../common/common.js';
+import _ from 'lodash';
 
 function icon(name) {
   const $div = document.createElement('div');

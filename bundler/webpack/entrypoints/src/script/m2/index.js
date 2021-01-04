@@ -1,4 +1,4 @@
-import {link, row} from '../common/common.js';
+import { link, row } from '../common/common.js';
 
 function imageBox1(image) {
   const $image = document.createElement('img');
