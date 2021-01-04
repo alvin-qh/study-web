@@ -34,7 +34,7 @@ module.exports = {
       filename: 'style/[name].bundle-[contenthash:8].css'
     }),
     new HtmlWebpackPlugin({
-      title: 'Development',
+      title: 'Libaray',
       template: './src/template/index.html',
       filename: '../[name].html',
       chunks: 'all'

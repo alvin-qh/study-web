@@ -27,7 +27,7 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin({
-      dry: false,
+      usdry: false,
       cleanStaleWebpackAssets: false,
       cleanOnceBeforeBuildPatterns: ['../**/*'],
       dangerouslyAllowCleanPatternsOutsideProject: true

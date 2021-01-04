@@ -1,15 +1,13 @@
 {
-  "name": "study-webpack-entrypoints",
+  "name": "study-webpack-env",
   "version": "1.0.0",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:np": "webpack -c webpack-entrypoints.config.js",
-    "build:st": "webpack -c webpack-splitthunk.config.js",
-    "watch:np": "webpack -c webpack-entrypoints.config.js --watch",
-    "watch:st": "webpack -c webpack-splitthunk.config.js --watch",
-    "dev:ep": "webpack serve -c webpack-entrypoints.config.js --hot --inline",
-    "dev:st": "webpack serve -c webpack-splitthunk.config.js --hot --inline"
+    "build": "webpack",
+    "build:debug": "webpack --env DEBUG=true",
+    "dev": "webpack serve --hot --inline",
+    "dev:debug": "webpack serve --hot --inline --env DEBUG=true"
   },
   "author": "Alvin",
   "license": "ISC",

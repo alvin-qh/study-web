@@ -75,7 +75,7 @@ The source file watcher will be started, when change source file, the webpack bu
   ```json
   "scripts": {
     ...
-    "dev": "webpack serve"
+    "dev": "webpack serve --hot --inline"
   }
   ```
 
