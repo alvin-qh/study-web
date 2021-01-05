@@ -7,4 +7,4 @@
 5. [Entrypoints](./entrypoints/README.md)
 6. [Importing](./importing/README.md)
 7. [Libaray](./libaray/README.md)
-8. [Libaray](./env/README.md)
+8. [Environment Variables](./env/README.md)
