@@ -8,6 +8,8 @@ const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
 
 module.exports = {
+  mode: 'development',
+  devtool: 'cheap-source-map',
   entry: {
     'index': './src/script/index.js'
   },
@@ -186,7 +188,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist/asset'),
     filename: 'script/[name].bundle-[contenthash:8].js',
-    chunkFilename: 'script/[name].bundle-[contenthash:8].js'
+    chunkFilename: 'script/[name].bundle-[contenthash:8].js',
+    pathinfo: false
   },
   module: {
     rules: [
@@ -229,5 +232,8 @@ module.exports = {
         ]
       }
     ]
+  },
+  optimization: {
+    runtimeChunk: 'single'
   }
 };

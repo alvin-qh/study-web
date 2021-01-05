@@ -17,7 +17,7 @@ function isDebug(env) {
 module.exports = env => {
   return {
     mode: 'development',
-    devtool: 'inline-source-map',
+    devtool: 'cheap-source-map',
     devServer: {
       contentBase: path.resolve(__dirname, 'dist'),
       hot: true,
@@ -32,7 +32,8 @@ module.exports = env => {
     output: {
       filename: 'script/[name].bundle-[contenthash:8].js',
       chunkFilename: 'script/[name].chunk-[contenthash:8].js',
-      path: path.resolve(__dirname, 'dist/asset')
+      path: path.resolve(__dirname, 'dist/asset'),
+      pathinfo: false
     },
     plugins: [
       new CleanWebpackPlugin({

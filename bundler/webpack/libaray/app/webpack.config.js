@@ -9,7 +9,7 @@ module.exports = {
   entry: {
     'index': './src/script/index.js',
   },
-  devtool: 'inline-source-map',   // add source map inline in source file
+  devtool: 'cheap-source-map',   // add source map inline in source file
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
     hot: true,
@@ -21,7 +21,8 @@ module.exports = {
   output: {
     path: path.resolve(__dirname, 'dist/asset'),
     filename: 'script/[name].bundle-[contenthash:8].js',
-    chunkFilename: 'script/[name].chunk-[contenthash:8].js'
+    chunkFilename: 'script/[name].chunk-[contenthash:8].js',
+    pathinfo: false
   },
   plugins: [
     new CleanWebpackPlugin({

@@ -22,7 +22,8 @@
     // ...,
     path: path.resolve(__dirname, 'dist'),
     filename: 'script/[name].bundle-[hash:8].js',
-    chunkFilename: 'script/[name].bundle-[hash:8].js'
+    chunkFilename: 'script/[name].bundle-[hash:8].js',
+    pathinfo: false
   }
   ```
 
