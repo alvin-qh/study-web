@@ -5,6 +5,15 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+function isTrue(value) {
+  return value === true || value === 'true';
+}
+
+function isDebug(env) {
+  const debug = env['DEBUG'] || process.env['DEBUG'];
+  return isTrue(debug) ? '.debug' : '';
+}
+
 module.exports = env => {
   return {
     mode: 'development',
@@ -41,7 +50,7 @@ module.exports = env => {
         filename: `../[name].html`
       }),
       new webpack.ProvidePlugin({
-        component: env.DEBUG === 'true' ? ['./lib/component.debug.js', 'component'] : ['./lib/component.js', 'component']
+        component: [path.resolve(__dirname, `src/script/lib/component${isDebug(env)}.js`), 'component']
       })
     ],
     module: {
