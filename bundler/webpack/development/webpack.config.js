@@ -1,86 +1,26 @@
 const path = require('path');
+const webpackConfig = require('./webpack-common.config.js');
 
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
+// see also: https://webpack.js.org/guides/development/
 module.exports = {
-  mode: 'development',  // or mode: 'production', enable development mode or production mode
-  devtool: 'cheap-source-map',   // add source map inline in source file
-  entry: {
-    'index': './src/script/index.js',
-  },
+  ...webpackConfig,
+
+  // set package mode
+  // or mode: 'production', enable development mode or production mode
+  mode: 'development',
+
+  // set source map generator
+  devtool: 'cheap-source-map',
+
+  // see also: https://webpack.js.org/configuration/dev-server
+  // set options of develope server
   devServer: {
-    contentBase: path.resolve(__dirname, 'dist'),
-    hot: true,
-    inline: true,
-    stats: 'minimal',
-    compress: true,
-    writeToDisk: true
-  },
-  output: {
-    path: path.resolve(__dirname, 'dist/asset'),
-    filename: 'script/[name].bundle-[contenthash:8].js',
-    chunkFilename: 'script/[name].chunk-[contenthash:8].js',
-    pathinfo: false
-  },
-  plugins: [
-    new CleanWebpackPlugin({
-      dry: false,
-      cleanStaleWebpackAssets: false,
-      cleanOnceBeforeBuildPatterns: ['../**/*'],
-      dangerouslyAllowCleanPatternsOutsideProject: true
-    }),
-    new MiniCssExtractPlugin({
-      filename: 'style/[name].bundle-[contenthash:8].css'
-    }),
-    new HtmlWebpackPlugin({
-      title: 'Development',
-      template: './src/template/index.html',
-      filename: '../[name].html',
-      chunks: 'all'
-    })
-  ],
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: '../'
-            }
-          },
-          {
-            loader: 'css-loader'
-          }
-        ]
-      },
-      {
-        test: /\.(svg|png|jpg|gif)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10240,
-              name: 'image/[name]-[contenthash:8].[ext]'
-            }
-          }
-        ]
-      },
-      {
-        test: /\.(eot|woff|woff2|ttf)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10240,
-              name: 'font/[name]-[contenthash:8].[ext]'
-            }
-          }
-        ]
-      }
-    ]
+    contentBase: path.resolve(__dirname, 'dist'),   // set wwwroot folder
+    hot: true,          // 'true' to enable 'HMR' (Hot Module Replacement)
+    inline: true,       // 'true' to enable 'inline' mode, add auto reload script into bundle, or 'false' to enable 'iframe' mode
+    stats: 'minimal',   // to precisely control what bundle information gets displayed
+                        // 'none' | 'errors-only' | 'minimal' | 'normal' | 'verbose'
+    compress: true,     // use 'gzip' to compress response
+    writeToDisk: true   // write bundled files into output folder on disk
   }
 };

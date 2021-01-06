@@ -1,5 +1,7 @@
 # Asset management
 
+> See also: https://webpack.js.org/guides/asset-management
+
 ## 1. css bundler
 
 - Install dependencies

@@ -1,5 +1,7 @@
 # Simple bundler
 
+> See also: https://webpack.js.org/guides/getting-started
+
 ## 1. Setup
 
 ### 1.1. Initalize project

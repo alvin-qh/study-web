@@ -1,5 +1,7 @@
 # Development
 
+> See also: https://webpack.js.org/guides/development/
+
 ## 1. Enable development mode
 
 ### 1.1. Set development mode
@@ -22,7 +24,7 @@ In `webpack.config.js`
 ```javascript
 {
   // ...,
-  devtool: 'inline-source-map'
+  devtool: 'cheap-source-map'
 }
 ```
 
@@ -57,6 +59,8 @@ The source file watcher will be started, when change source file, the webpack bu
 
 - Edit webpack config, in `webpack.config.js`
 
+  > See also: https://webpack.js.org/configuration/dev-server
+
   ```javascript
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
@@ -75,7 +79,7 @@ The source file watcher will be started, when change source file, the webpack bu
   ```json
   "scripts": {
     ...
-    "dev": "webpack serve --hot --inline"
+    "dev": "webpack serve"
   }
   ```
 
