@@ -4,10 +4,10 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack",
-    "build:debug": "webpack --env DEBUG=true",
-    "dev": "webpack serve --hot --inline",
-    "dev:debug": "webpack serve --hot --inline --env DEBUG=true"
+    "build": "webpack --progress",
+    "build:debug": "webpack --progress --env DEBUG=true",
+    "dev": "webpack serve --progress",
+    "dev:debug": "webpack serve --env DEBUG=true --progress"
   },
   "author": "Alvin",
   "license": "ISC",

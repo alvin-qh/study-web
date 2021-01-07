@@ -1,14 +1,15 @@
 const path = require('path');
 const webpack = require('webpack');
 
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpackConfig = require('./webpack-common.config');
 
+// return true if 'value' argument is boolean true or string 'true'
 function isTrue(value) {
   return value === true || value === 'true';
 }
 
+// return string '.debug' if "env['DEBUG']" is true or "process.env['DEBUG']" is true
+// otherwise, return empty string
 function isDebug(env) {
   const debug = env['DEBUG'] || process.env['DEBUG'];
   return isTrue(debug) ? '.debug' : '';
@@ -16,85 +17,17 @@ function isDebug(env) {
 
 module.exports = env => {
   return {
-    mode: 'development',
-    devtool: 'cheap-source-map',
-    devServer: {
-      contentBase: path.resolve(__dirname, 'dist'),
-      hot: true,
-      inline: true,
-      stats: 'minimal',
-      compress: true,
-      writeToDisk: true
-    },
-    entry: {
-      'index': './src/script/index.js'
-    },
-    output: {
-      filename: 'script/[name].bundle-[contenthash:8].js',
-      chunkFilename: 'script/[name].chunk-[contenthash:8].js',
-      path: path.resolve(__dirname, 'dist/asset'),
-      pathinfo: false
-    },
+    ...webpackConfig,
     plugins: [
-      new CleanWebpackPlugin({
-        dry: false,
-        cleanStaleWebpackAssets: false,
-        cleanOnceBeforeBuildPatterns: ['../**/*'],
-        dangerouslyAllowCleanPatternsOutsideProject: true
-      }),
-      new MiniCssExtractPlugin({
-        filename: 'style/[name].bundle-[contenthash:8].css'
-      }),
-      new HtmlWebpackPlugin({
-        title: 'Environment',
-        template: './src/template/index.html',
-        filename: `../[name].html`
-      }),
+      ...webpackConfig.plugins,
+
+      // define provider
+      // when some symbol is defined as provider, it canbe use in anywhere without 'import'
       new webpack.ProvidePlugin({
+
+        // when 'component' symbol used in javasciprt, the specified javascript file will be imported
         component: [path.resolve(__dirname, `src/script/lib/component${isDebug(env)}.js`), 'component']
       })
-    ],
-    module: {
-      rules: [
-        {
-          test: /\.css$/i,
-          use: [
-            {
-              loader: MiniCssExtractPlugin.loader,
-              options: {
-                publicPath: '../'
-              }
-            },
-            {
-              loader: 'css-loader'
-            }
-          ]
-        },
-        {
-          test: /\.(svg|png|jpg|gif)$/,
-          use: [
-            {
-              loader: 'url-loader',
-              options: {
-                limit: 10240,
-                name: 'image/[name]-[contenthash:8].[ext]'
-              }
-            }
-          ]
-        },
-        {
-          test: /\.(eot|woff|woff2|ttf)$/,
-          use: [
-            {
-              loader: 'url-loader',
-              options: {
-                limit: 10240,
-                name: 'font/[name]-[contenthash:8].[ext]'
-              }
-            }
-          ]
-        }
-      ]
-    }
+    ]
   };
 }
