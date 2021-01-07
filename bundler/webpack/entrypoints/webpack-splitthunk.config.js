@@ -1,6 +1,4 @@
-const config = require('./webpack-common.config');
-
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const webpackConfig = require('./webpack-common.config');
 
 const entries = {
   'index': './src/script/index.js',
@@ -8,30 +6,18 @@ const entries = {
   'm2/index': './src/script/m2/index.js'
 };
 
-const htmls = [...Object.keys(entries).map(key => {
-  if (key === 'common') {
-    return null;
-  }
-  return new HtmlWebpackPlugin({
-    title: `Entrypoint Management - ${key}`,
-    template: './src/template/index.html',
-    filename: `../${key}.html`,
-    chunks: ['common', key]
-  })
-}).filter(entry => entry != null)];
-
 module.exports = {
-  ...config,
-  entry: entries,
-  plugins: [
-    ...config.plugins,
-    ...htmls
-  ],
+  ...webpackConfig(entries),
   optimization: {
     runtimeChunk: 'single',
+
+    // split chunk into multi-files
     splitChunks: {
+
       cacheGroups: {
-        default: false,
+        default: false,   // no 'default' group
+
+        // 'common' group, group same part of all chunks into 'common.xxx.js' file
         common: {
           name: 'common',
           chunks: 'all',

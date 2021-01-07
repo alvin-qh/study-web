@@ -4,12 +4,12 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build:np": "webpack -c webpack-entrypoints.config.js",
-    "build:st": "webpack -c webpack-splitthunk.config.js",
-    "watch:np": "webpack -c webpack-entrypoints.config.js --watch",
-    "watch:st": "webpack -c webpack-splitthunk.config.js --watch",
-    "dev:ep": "webpack serve -c webpack-entrypoints.config.js --hot --inline",
-    "dev:st": "webpack serve -c webpack-splitthunk.config.js --hot --inline"
+    "build:ep": "webpack -c webpack-entrypoints.config.js --progress",
+    "build:st": "webpack -c webpack-splitthunk.config.js --progress",
+    "watch:ep": "webpack -c webpack-entrypoints.config.js --watch --progress",
+    "watch:st": "webpack -c webpack-splitthunk.config.js --watch --progress",
+    "dev:ep": "webpack serve -c webpack-entrypoints.config.js --progress",
+    "dev:st": "webpack serve -c webpack-splitthunk.config.js --progress"
   },
   "author": "Alvin",
   "license": "ISC",
