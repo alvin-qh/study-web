@@ -4,8 +4,8 @@
   "main": "dist/index.js",
   "module": "src/index.js",
   "scripts": {
-    "test": "webpack -c webpack-test.config.js && mocha ./test/dist/**/*.bundle.js",
-    "build": "webpack"
+    "test": "webpack -c webpack-test.config.js --progress && mocha ./dist/test/**/*.test.js",
+    "build": "webpack --progress"
   },
   "author": "Alvin",
   "license": "ISC",

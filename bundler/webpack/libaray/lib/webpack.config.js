@@ -1,10 +1,9 @@
 const path = require('path');
 
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const webpackConfig = require('./webpack-common.config');
 
 module.exports = {
-  mode: 'development',
-  devtool: 'cheap-source-map',
+  ...webpackConfig,
   entry: {
     'index': './src/index.js'
   },
@@ -12,9 +11,16 @@ module.exports = {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
     pathinfo: false,
-    library: 'appLib',
-    libraryTarget: 'umd'
+
+    library: 'appLib',    // name of export libaray module
+    libraryTarget: 'umd'  // how the libaray exposed
+                          // 'umd' exposes your library under all the module definitions, 
+                          // allowing it to work with CommonJS, AMD and as global variable
   },
+
+  // define external modules
+  // external modules are not bundled into package
+  // to use this bundled package, external modules must be introduce of additional
   externals: {
     lodash: {
       commonjs: 'lodash',
@@ -22,8 +28,5 @@ module.exports = {
       amd: 'lodash',
       root: '_'
     }
-  },
-  plugins: [
-    new CleanWebpackPlugin()
-  ]
-}
+  }
+};

@@ -1,14 +1,12 @@
 const path = require('path');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',  // or mode: 'production', enable development mode or production mode
-  entry: {
-    'index': './src/script/index.js',
-  },
   devtool: 'cheap-source-map',   // add source map inline in source file
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
@@ -17,6 +15,9 @@ module.exports = {
     stats: 'minimal',
     compress: true,
     writeToDisk: true
+  },
+  entry: {
+    'index': './src/script/index.js',
   },
   output: {
     path: path.resolve(__dirname, 'dist/asset'),
@@ -83,4 +84,4 @@ module.exports = {
       }
     ]
   }
-}
+};

@@ -1,19 +1,15 @@
 const path = require('path');
 
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const webpackConfig = require('./webpack-common.config');
 
 module.exports = {
-  mode: 'development',
-  devtool: 'cheap-source-map',
+  ...webpackConfig,
   entry: {
-    'test_index': './test/test_index.js'
+    'index': './test/test_index.js'
   },
   output: {
-    filename: '[name].bundle.js',
-    path: path.resolve(__dirname, 'test/dist'),
+    filename: '[name].test.js',
+    path: path.resolve(__dirname, 'dist/test'),
     pathinfo: false
-  },
-  plugins: [
-    new CleanWebpackPlugin()
-  ]
-}
+  }
+};
