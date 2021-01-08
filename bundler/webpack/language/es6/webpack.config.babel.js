@@ -1,11 +1,10 @@
 import path from 'path';
-import webpack from 'webpack';
 
 import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
-const config: webpack.Configuration = {
+const config = {
   mode: 'development',
   devtool: 'cheap-source-map',
   devServer: {
@@ -36,7 +35,7 @@ const config: webpack.Configuration = {
       filename: 'style/[name].bundle-[contenthash:8].css'
     }),
     new HtmlWebpackPlugin({
-      title: 'Language-TS',
+      title: 'Language-ES6',
       template: './src/template/index.html',
       filename: `../[name].html`
     })
