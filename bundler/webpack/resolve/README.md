@@ -123,11 +123,21 @@ which is what enables users to leave off the extension when importing:
 
 - Import `.css` file without extension
   
+  In `.js` file
+
   ```javascript
   import '../../style/index';
   ```
 
+  In `.css` file
+
+  ```css
+  @import "~@fortawesome/fontawesome-free/css/all";
+  ```
+
 - Import `.js` file without extension
+
+  In `.js` file
 
   ```javascript
   import { textBox } from './lib/common';
