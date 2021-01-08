@@ -1,5 +1,4 @@
 const path = require('path');
-const webpack = require('webpack');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -36,7 +35,7 @@ module.exports = {
       filename: 'style/[name].bundle-[contenthash:8].css'
     }),
     new HtmlWebpackPlugin({
-      title: 'Build',
+      title: 'Resolve',
       template: './src/template/index.html',
       filename: `../[name].html`
     })
