@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+@import "~@fortawesome/fontawesome-free/css/all.css";
+
+* {
+  font      : 14px/1.5 Tahoma, Helvetica, Arial, '宋体', sans-serif;
+  box-sizing: border-box;
+}
+
+.text-box {
+  padding: 10px 20px;
+}
+
+.text-box>span {
+  font-size: 30pt;
+}
