@@ -1,10 +1,9 @@
 const path = require('path');
+const { merge } = require('webpack-merge');
 
-const webpackConfig = require('./webpack-common.config.js');
+const commonConfig = require('./webpack-common.config.js');
 
-module.exports = {
-  ...webpackConfig,
-
+module.exports = merge(commonConfig,{
   // see also: https://webpack.js.org/configuration/resolve
   resolve: {
     // a list of directories where requests of server-relative URLs (starting with '/') 
@@ -55,4 +54,4 @@ module.exports = {
     // a list of resolve restrictions to restrict the paths that a request can be resolved on
     restrictions: []
   }
-}
+});

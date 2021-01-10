@@ -1,7 +1,8 @@
 const path = require('path');
+const { merge } = require('webpack-merge');
 const webpack = require('webpack');
 
-const webpackConfig = require('./webpack-common.config');
+const commonConfig = require('./webpack-common.config');
 
 // return true if 'value' argument is boolean true or string 'true'
 function isTrue(value) {
@@ -16,10 +17,8 @@ function isDebug(env) {
 }
 
 module.exports = env => {
-  return {
-    ...webpackConfig,
+  return merge(commonConfig, {
     plugins: [
-      ...webpackConfig.plugins,
 
       // define provider
       // when some symbol is defined as provider, it canbe use in anywhere without 'import'
@@ -29,5 +28,5 @@ module.exports = env => {
         component: [path.resolve(__dirname, `src/script/lib/component${isDebug(env)}.js`), 'component']
       })
     ]
-  };
+  });
 }

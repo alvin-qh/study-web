@@ -35,62 +35,9 @@ module.exports = {
       filename: 'style/[name].bundle-[contenthash:8].css'
     }),
     new HtmlWebpackPlugin({
-      title: 'Environment',
+      title: 'Build',
       template: './src/template/index.html',
       filename: `../[name].html`
     })
-  ],
-  module: {
-    rules: [
-      {
-        test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true,
-            cacheCompression: false
-          }
-        }
-      },
-      {
-        test: /\.css$/i,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              publicPath: '../'
-            }
-          },
-          {
-            loader: 'css-loader'
-          }
-        ]
-      },
-      {
-        test: /\.(svg|png|jpg|gif)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10240,
-              name: 'image/[name]-[contenthash:8].[ext]'
-            }
-          }
-        ]
-      },
-      {
-        test: /\.(eot|woff|woff2|ttf)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10240,
-              name: 'font/[name]-[contenthash:8].[ext]'
-            }
-          }
-        ]
-      }
-    ]
-  }
+  ]
 };

@@ -1,12 +1,13 @@
 const path = require('path');
-const webpackConfig = require('./webpack-common.config.js');
+const { merge } = require('webpack-merge');
+
+const commonConfig = require('./webpack-common.config.js');
 
 const toml = require('toml');
 const yaml = require('yamljs');
 const json5 = require('json5');
 
-module.exports = {
-  ...webpackConfig,
+module.exports = merge(commonConfig, {
   module: {
     rules: [
       {
@@ -106,4 +107,4 @@ module.exports = {
       }
     ]
   }
-};
+});

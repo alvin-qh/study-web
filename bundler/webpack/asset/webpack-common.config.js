@@ -15,5 +15,20 @@ module.exports = {
   },
   plugins: [
     new CleanWebpackPlugin()
-  ]
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            cacheDirectory: true,
+            cacheCompression: false
+          }
+        }
+      }
+    ]
+  }
 };

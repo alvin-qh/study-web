@@ -57,6 +57,17 @@ module.exports = function (entities) {
     module: {
       rules: [
         {
+          test: /\.m?js$/,
+          exclude: /(node_modules|bower_components)/,
+          use: {
+            loader: 'babel-loader',
+            options: {
+              cacheDirectory: true,
+              cacheCompression: false
+            }
+          }
+        },
+        {
           test: /\.css$/i,
           use: [
             {

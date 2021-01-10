@@ -1,21 +1,23 @@
 const path = require('path');
+const { merge } = require('webpack-merge');
 
-const webpackConfig = require('./webpack-common.config');
+const commonConfig = require('./webpack-common.config');
 
-module.exports = {
-  ...webpackConfig,
+module.exports = merge(commonConfig, {
   entry: {
     'index': './src/index.js'
   },
   output: {
     filename: '[name].js',
     path: path.resolve(__dirname, 'dist'),
-    pathinfo: false,
 
-    library: 'appLib',    // name of export libaray module
-    libraryTarget: 'umd'  // how the libaray exposed
-                          // 'umd' exposes your library under all the module definitions, 
-                          // allowing it to work with CommonJS, AMD and as global variable
+    // name of export libaray module
+    library: 'appLib',
+
+    // how the libaray exposed
+    // 'umd' exposes your library under all the module definitions, 
+    // allowing it to work with CommonJS, AMD and as global variable
+    libraryTarget: 'umd'
   },
 
   // define external modules
@@ -29,4 +31,4 @@ module.exports = {
       root: '_'
     }
   }
-};
+});
