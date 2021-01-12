@@ -1,4 +1,5 @@
 import '../style/index.css';
+import { join } from 'lodash-es'
 
 export function textBox(text) {
   const $span = document.createElement('span');
@@ -11,4 +12,4 @@ export function textBox(text) {
 }
 
 const $wrapper = document.querySelector('.main');
-$wrapper.appendChild(textBox('Hello World'));
+$wrapper.appendChild(textBox(join(['Hello', 'World'], ' ')));

@@ -49,7 +49,21 @@ const config = {
           loader: 'babel-loader',
           options: {
             cacheDirectory: true,
-            cacheCompression: false
+            cacheCompression: false,
+            presets: [
+              [
+                "@babel/env",
+                {
+                  targets: {
+                    browsers: ['last 3 versions', 'safari >= 7']
+                  },
+                  modules: false,
+                  debug: false,
+                  corejs: "2",
+                  useBuiltIns: "usage"
+                }
+              ]
+            ]
           }
         }
       },
