@@ -1,12 +1,11 @@
 const path = require('path');
+const { merge } = require('webpack-merge');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
-  devtool: 'cheap-source-map',
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
     hot: true,
@@ -21,8 +20,7 @@ module.exports = {
   output: {
     filename: 'script/[name].bundle-[contenthash:8].js',
     chunkFilename: 'script/[name].chunk-[contenthash:8].js',
-    path: path.resolve(__dirname, 'dist/asset'),
-    pathinfo: false
+    path: path.resolve(__dirname, 'dist/asset')
   },
   plugins: [
     new CleanWebpackPlugin({
@@ -39,5 +37,48 @@ module.exports = {
       template: './src/template/index.html',
       filename: `../[name].html`
     })
-  ]
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        include: path.resolve(__dirname, 'src'),
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              publicPath: '../'
+            }
+          },
+          {
+            loader: 'css-loader'
+          }
+        ]
+      },
+      {
+        test: /\.(svg|png|jpg|gif)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10240,
+              name: 'image/[name]-[contenthash:8].[ext]'
+            }
+          }
+        ]
+      },
+      {
+        test: /\.(eot|woff|woff2|ttf)$/,
+        use: [
+          {
+            loader: 'url-loader',
+            options: {
+              limit: 10240,
+              name: 'font/[name]-[contenthash:8].[ext]'
+            }
+          }
+        ]
+      }
+    ]
+  }
 };
