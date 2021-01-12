@@ -1,5 +1,6 @@
 
 export async function sayHello(name) {
+  // const { join } = await import(/* webpackPrefetch: true */ 'lodash-es');  // async import did not suport tree-shake
   const { default: _ } = await import(/* webpackPrefetch: true */ 'lodash');
 
   const $div = document.createElement('div');
@@ -11,7 +12,8 @@ export async function sayHello(name) {
 export async function icon(name) {
   await import('@fortawesome/fontawesome-free/css/all.css');
 
-  const { default: _ } = await import('lodash');
+  // const { join } = await import(/* webpackPrefetch: true */ 'lodash-es');   // async import did not suport tree-shake
+  const { default: _ } = await import(/* webpackPrefetch: true */ 'lodash');
 
   const $icon = document.createElement('i');
   $icon.className = _.join(['fas', name], ' ');

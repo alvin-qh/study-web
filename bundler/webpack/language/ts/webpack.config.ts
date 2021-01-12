@@ -17,7 +17,7 @@ const config: webpack.Configuration = {
     writeToDisk: true
   },
   entry: {
-    'index': './src/script/index.js'
+    'index': './src/script/index.ts'
   },
   output: {
     filename: 'script/[name].bundle-[contenthash:8].js',
@@ -43,6 +43,13 @@ const config: webpack.Configuration = {
   ],
   module: {
     rules: [
+      {
+        test: /\.ts$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'ts-loader'
+        }
+      },
       {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,

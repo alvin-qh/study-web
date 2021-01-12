@@ -178,3 +178,31 @@ function chooseScript(env) {
   ]
 }
 ```
+
+## 3. Use `cross-env`
+
+`cross-env` can set global environment variables cross the platform (on different operate system)
+
+Install the package
+
+```bash
+$ npm install --save-dev cross-env
+```
+
+Use `cross-env` in cli
+
+```bash
+$ npx cross-env DEBUG=true webpack --progress
+```
+
+Use `cross-env` in `package.json`
+
+```json
+{
+  "scripts": {
+    "build:debug": "cross-env DEBUG=true webpack --progress",
+    ...
+  },
+  ...
+}
+```

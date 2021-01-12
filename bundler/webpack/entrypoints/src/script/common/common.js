@@ -1,5 +1,4 @@
 import '../../style/index.css';
-import _ from 'lodash';
 
 export function link(name, url) {
   const $div = document.createElement('div');

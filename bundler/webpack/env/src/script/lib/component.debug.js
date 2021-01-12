@@ -1,5 +1,5 @@
 import '../../style/lib/component.debug.css';
-import _ from 'lodash';
+import { join } from 'lodash-es';
 
 export const component = {
   show(text) {
@@ -7,7 +7,7 @@ export const component = {
     $div.className = 'text-box';
 
     const $i = document.createElement('i');
-    $i.className = _.join(['fas', 'fa-tools'], ' ');
+    $i.className = join(['fas', 'fa-tools'], ' ');
     $div.appendChild($i);
 
     const $span = document.createElement('span');

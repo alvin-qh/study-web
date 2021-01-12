@@ -1,6 +1,6 @@
 import '../style/index.css';
 
-export function textBox(text) {
+function textBox(text: string) {
   const $span = document.createElement('span');
   $span.innerText = text;
 
@@ -11,4 +11,4 @@ export function textBox(text) {
 }
 
 const $wrapper = document.querySelector('.main');
-$wrapper.appendChild(textBox('Hello World'));
+$wrapper?.appendChild(textBox('Hello World'));

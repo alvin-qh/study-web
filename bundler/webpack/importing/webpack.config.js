@@ -18,12 +18,14 @@ module.exports = merge(commonConfig, {
   optimization: {
     runtimeChunk: 'single',
 
-    moduleIds: 'deterministic', // tells webpack which algorithm to use when choosing module ids
+    // tells webpack which algorithm to use when choosing module ids
     // set to 'false' (default value) tells webpack that none of built-in algorithms should be used
     //    'natural': numeric ids in order of usage.
     //    'named': readable ids for better debugging.
     //    'deterministic': module names are hashed into small numeric values.
     //    'size': numeric ids focused on minimal initial download size.
+    moduleIds: 'deterministic', 
+
     splitChunks: {
       minChunks: 1,     // the minimum times must a module be shared among chunks before splitting
       minSize: 1,       // minimum size, in bytes, for a chunk to be generated

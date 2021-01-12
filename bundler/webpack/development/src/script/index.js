@@ -1,6 +1,6 @@
 import '../style/index.css';
 
-import _ from 'lodash';
+import { join } from 'lodash-es';
 
 function textBox(text) {
   const $div = document.createElement('div');
@@ -15,7 +15,7 @@ function icon(name) {
 
   const $i = document.createElement('i');
   $i.className = `fas ${name}`;
-  
+
   $div.appendChild($i);
   return $div;
 }
@@ -39,7 +39,7 @@ function imageBox2() {
 }
 
 const $wrapper = document.body.getElementsByClassName('main')[0];
-$wrapper.appendChild(textBox(_.join(['Hello', 'World'], ' ')));
+$wrapper.appendChild(textBox(join(['Hello', 'World'], ' ')));
 
 const $row = document.createElement('div');
 $row.className = 'row';

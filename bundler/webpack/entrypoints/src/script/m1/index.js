@@ -1,12 +1,12 @@
 import { link, row } from '../common/common.js';
-import _ from 'lodash';
+import { join } from 'lodash-es';
 
 function icon(name) {
   const $div = document.createElement('div');
   $div.className = 'icon-box';
 
   const $i = document.createElement('i');
-  $i.className = _.join(['fas', name], ' ');
+  $i.className = join(['fas', name], ' ');
 
   $div.appendChild($i);
   return $div;

@@ -1,5 +1,5 @@
 import { link, row } from './common/common.js';
-import _ from 'lodash';
+import { join } from 'lodash-es';
 
 function textBox(text) {
   const $div = document.createElement('div');
@@ -9,7 +9,7 @@ function textBox(text) {
 }
 
 const $wrapper = document.body.getElementsByClassName('main')[0];
-$wrapper.appendChild(textBox(_.join(['Hello', 'World'], ' ')));
+$wrapper.appendChild(textBox(join(['Hello', 'World'], ' ')));
 
 const $row = $wrapper.appendChild(row());
 $row.appendChild(link('Page1', './m1/index.html'));
