@@ -1,5 +1,18 @@
 # Build
 
+Use environment variables `NODE_ENV` to control webpack compile mode.
+
+- `cross-env NODE_ENV=development`
+  - set webpack `mode` is 'development'.
+  - do not uglified output bundle.
+  - do not optimize output bundle.
+  - use cheap source map.
+- `cross-env NODE_ENV=production`: set `mode` is `production`
+  - set webpack `mode` is 'production'.
+  - uglified output bundle.
+  - optimize output bundle.
+  - use nosource source map.
+
 ## 1. Use cache
 
 Use cache to speed up compile process
@@ -146,3 +159,65 @@ Use more optimization options to make package size is smallest
 - `devtool`: `hidden-source-map`, generate source map but hide source code.
 - `optimization.splitChunks.cacheGroups.styles`: bundle all css into one `.css` file
 - `optimization.splitChunks.cacheGroups.vendor`: bundle all code from `/node_modules/` folder into one `.js` file
+
+
+## 4. Uglified css file
+
+In `production` mode, use `compression-webpack-plugin` plugin
+
+```javascript
+{
+  // ...,
+  plugins: [
+    // ...,
+    new CssMinimizerPlugin({
+      cache: true,
+      parallel: true,
+      sourceMap: true
+    })
+  ]
+}
+```
+
+## 5. Gzip compression
+
+### 5.1. Compress output bundles
+
+Use `compression-webpack-plugin` to compress output bundles
+
+```javascript
+{
+  // ...,
+  plugins: [
+    // ...,
+    new CompressionPlugin({
+      test: /\.(js|css|html|svg)$/,
+      algorithm: 'gzip',
+      threshold: 10240,
+      minRatio: 0.8,
+      deleteOriginalAssets: false
+    })
+  ]
+}
+```
+
+### 5.2. Config nginx gateway
+
+The `ngx_http_gzip_static_module` module allows sending precompressed files with the `.gz` filename extension instead of regular files.
+
+This module is not built by default, it should be enabled with the `--with-http_gzip_static_module` configuration parameter.
+
+- Example Configuration
+
+```conf
+gzip_static  on;
+gzip_proxied expired no-cache no-store private auth;
+```
+
+- Directives
+
+```plain
+Syntax: gzip_static on | off | always;
+Default: gzip_static off;
+Context: http, server, location
+```

@@ -1,6 +1,7 @@
 const path = require('path');
-const webpack = require('webpack');
 const { merge } = require('webpack-merge');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const CompressionPlugin = require("compression-webpack-plugin");
 
 const threadLoader = require('thread-loader');
 const commonConfig = require('./webpack-common.config.js');
@@ -71,6 +72,20 @@ module.exports = merge(baseConfig, devMode ?
   } : {
     mode: 'production',
     devtool: 'hidden-source-map',
+    plugins: [
+      new CssMinimizerPlugin({
+        cache: true,
+        parallel: true,
+        sourceMap: true
+      }),
+      new CompressionPlugin({
+        test: /\.(js|css|html|svg)$/,
+        algorithm: 'gzip',
+        threshold: 10240,
+        minRatio: 0.8,
+        deleteOriginalAssets: false
+      })
+    ],
     optimization: {
       splitChunks: {
         minChunks: 1,
