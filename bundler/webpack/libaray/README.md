@@ -63,9 +63,14 @@ In `package.json`, define the `CommonJS` entrypoint file and ES6 entrypoint file
 - `main`: The `CommonJS` entrypoint, import all things into target js file.
 - `module`: The `ES6` entrypoint, use treeshake to import the content.
 
-## 3. Enable treeshaking
+## 3. Enable Tree Shaking
 
-Enable treeshaking in `webpack.config.js`
+Enable "Tree Shaking" and mark the module as "side effects free":
+
+- The other packages which import some module from this package can enable tree shaking feature to delete the some dead code.
+- This package should delete some dead code where import from `/node_modules` or other third part libaray.
+
+Enable "Tree Shaking" in `webpack.config.js`
 
 ```javascript
 {

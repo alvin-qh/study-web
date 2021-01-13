@@ -3,10 +3,10 @@ const { merge } = require('webpack-merge');
 
 const commonConfig = require('./webpack-common.config.js');
 
+const devMode = process.env.NODE_ENV !== 'production';
+
 module.exports = merge(commonConfig, {
-  plugins: [
-    new webpack.optimize.ModuleConcatenationPlugin()
-  ],
+  mode: devMode ? 'development' : 'production',
   optimization: {
     runtimeChunk: 'single',
     usedExports: true,

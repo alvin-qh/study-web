@@ -1,6 +1,8 @@
-# Resolve
+# Treeshaking
 
-Resolve options change how modules are resolved. webpack provides reasonable defaults, but it is possible to change the resolving in detail.
+Treeshaking is an algorithm can remove some unused code from imported modules.
+
+Treeshaking based on AST
 
 Have a look at Module Resolution for more explanation of how the resolver works.
 
