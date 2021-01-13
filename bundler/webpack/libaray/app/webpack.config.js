@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
-  mode: 'development',  // or mode: 'production', enable development mode or production mode
+  // mode: 'development',  // or mode: 'production', enable development mode or production mode
   devtool: 'cheap-source-map',   // add source map inline in source file
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
@@ -94,5 +94,9 @@ module.exports = {
         ]
       }
     ]
+  },
+  optimization: {
+    usedExports: true,
+    sideEffects: true
   }
 };

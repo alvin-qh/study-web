@@ -1,13 +1,13 @@
 import { row } from './common.js';
 
-import * as appLib from 'study-webpack-libaray-lib/dist/index';
+import { join as libJoin } from 'study-webpack-libaray-lib';
 
 function icon(name) {
   const $div = document.createElement('div');
   $div.className = 'icon-box';
 
   const $i = document.createElement('i');
-  $i.className = appLib.join(['fas', name], ' ');
+  $i.className = libJoin(['fas', name], ' ');
 
   $div.appendChild($i);
   return $div;
