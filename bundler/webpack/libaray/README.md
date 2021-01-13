@@ -26,25 +26,25 @@ In `webpack.config.js`, add `libaray` and `libarayTarget` in `output` option
 
 ### 1.2. Exclude vendor libaries
 
-The demo import `lodash` libaray, it does not need to be included in the target package.
+This demo was import `lodash-es` package, it does not need to be included in the target package.
 
-Use `externals` option to define which libaray need excluded and how to import it in target js
+Use `externals` option to define which package need excluded and how to import it in target js
 
 ```javascript
 {
   // ...,
   externals: {
-    lodash: {
-      commonjs: 'lodash',
-      commonjs2: 'lodash',
-      amd: 'lodash',
-      root: '_'
+    'lodash-es': {
+      commonjs: 'lodash-es',
+      commonjs2: 'lodash-es',
+      amd: 'lodash-es',
+      root: '_'   // ?
     }
   }
 }
 ```
 
-- `externals` > `lodash`: Exclude `lodash` libaray in target package.
+- `externals` > `lodash-es`: Exclude `lodash-es` libaray in target package.
 - `commonjs`, `commonjs2`, `amd`, `root`: How the target js to import the libaray, and which symbol to use.
 
 ## 2. Define the entrypoint and module
@@ -62,3 +62,30 @@ In `package.json`, define the `CommonJS` entrypoint file and ES6 entrypoint file
 
 - `main`: The `CommonJS` entrypoint, import all things into target js file.
 - `module`: The `ES6` entrypoint, use treeshake to import the content.
+
+## 3. Enable treeshaking
+
+Enable treeshaking in `webpack.config.js`
+
+```javascript
+{
+  // ...,
+  optimization: {
+    usedExports: true,
+    sideEffects: true
+  }
+}
+```
+
+The `optimization.sideEffects` tell compiler to check `sideEffects` option in `package.json`
+
+In `package.json` file
+
+```json
+{
+  ...,
+  "sideEffects": false
+}
+```
+
+`"sideEffects": false` means this package is 'side effects free`, it can be import 

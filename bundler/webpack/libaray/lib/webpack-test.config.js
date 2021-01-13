@@ -10,5 +10,9 @@ module.exports = merge(commonConfig, {
   output: {
     filename: '[name].test.js',
     path: path.resolve(__dirname, 'dist/test')
+  },
+  optimization: {
+    usedExports: true,
+    sideEffects: true
   }
 });

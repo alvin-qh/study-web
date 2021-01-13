@@ -24,11 +24,15 @@ module.exports = merge(commonConfig, {
   // external modules are not bundled into package
   // to use this bundled package, external modules must be introduce of additional
   externals: {
-    lodash: {
-      commonjs: 'lodash',
-      commonjs2: 'lodash',
+    'lodash-es': {
+      commonjs: 'lodash-es',
+      commonjs2: 'lodash-es',
       amd: 'lodash',
-      root: '_'
+      root: 'default'
     }
+  },
+  optimization: {
+    usedExports: true,
+    sideEffects: true   // enable treeshaking
   }
 });

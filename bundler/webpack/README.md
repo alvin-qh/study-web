@@ -10,3 +10,5 @@
 8. [Environment Variables](./env/README.md)
 9. [Configuration Languages](./language/README.md)
 10. [Resolve](./resolve/README.md)
+11. [Build](./build/README.md)
+11. [Tree Shaking](./treeshaking/README.md)

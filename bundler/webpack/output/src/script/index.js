@@ -1,12 +1,12 @@
 import '../style/index.css';
 
-import _ from 'lodash';
+import { join } from 'lodash-es';
 import printMe from './print.js';
 
 function component() {
   const $div = document.createElement('div');
   const $btn = document.createElement('button');
-  $div.innerHTML = _.join(['Hello', 'webpack'], ' ');
+  $div.innerHTML = join(['Hello', 'webpack'], ' ');
 
   $btn.innerHTML = 'Click Me!';
   $btn.onclick = printMe;

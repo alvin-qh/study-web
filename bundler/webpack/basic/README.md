@@ -108,7 +108,7 @@ $ npm run build
             ],
             "node": "8.10"
           },
-          "modules": "umd",
+          "modules": false,
           "debug": false,
           "corejs": "2",
           "useBuiltIns": "usage"
