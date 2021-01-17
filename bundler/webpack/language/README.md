@@ -89,7 +89,7 @@ Create a specify ts config file, such as `tsconfig-webpack.json`
 Define `TS_NODE_PROJECT` env variable to use that specify config file
 
 ```bash
-env TS_NODE_PROJECT="tsconfig-webpack.json" npx webpack
+cross-env TS_NODE_PROJECT="tsconfig-webpack.json" npx webpack
 ```
 
 ### 2.3. Create webpack config with typescript
@@ -99,11 +99,11 @@ Create webpack config file named `webpack.config.ts`, that is default webpack co
 > See also: [webpack.config.ts](./ts/webpack.config.ts)
 
 ```bash
-env TS_NODE_PROJECT="tsconfig-webpack.json" npx webpack --progress
+cross-env TS_NODE_PROJECT="tsconfig-webpack.json" npx webpack --progress
 ```
 
 Or create any `.ts` file, then use `-c` option to select it
 
 ```bash
-env TS_NODE_PROJECT="tsconfig-webpack.json" npx webpack -c webpack-ts.config.ts --progress
+cross-env TS_NODE_PROJECT="tsconfig-webpack.json" npx webpack -c webpack-ts.config.ts --progress
 ```

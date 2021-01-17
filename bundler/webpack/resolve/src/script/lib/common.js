@@ -1,6 +1,6 @@
 import '../../style/index';
 
-export function textBox(text) {
+export function textbox(text) {
   const $span = document.createElement('span');
   $span.innerText = text;
 

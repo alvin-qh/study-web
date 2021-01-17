@@ -8,14 +8,14 @@ import tomlData from '../data/data.toml';
 import yamlData from '../data/data.yaml';
 import jsonData from '../data/data.json5';
 
-function textBox(text) {
+function textbox(text) {
   const $div = document.createElement('div');
   $div.className = 'text-box';
   $div.innerText = text;
   return $div;
 }
 
-function imageBox1(image) {
+function imagebox1(image) {
   const $image = document.createElement('img');
   $image.src = image;
   $image.alt = 'image box';
@@ -27,7 +27,7 @@ function imageBox1(image) {
   return $div;
 }
 
-function imageBox2() {
+function imagebox2() {
   const $div = document.createElement('div');
   $div.className = 'image-box2';
   return $div;
@@ -44,7 +44,7 @@ function icon(name) {
   return $div;
 }
 
-function showData(title, data) {
+function show(title, data) {
   const $div = document.createElement('div');
   $div.className = 'data-box';
 
@@ -60,9 +60,9 @@ function showData(title, data) {
 }
 
 const $wrapper = document.body.getElementsByClassName('main')[0];
-$wrapper.appendChild(textBox('Hello World!'));
-$wrapper.appendChild(imageBox1(require('../image/webpack.png').default));
-$wrapper.appendChild(imageBox2());
+$wrapper.appendChild(textbox('Hello World!'));
+$wrapper.appendChild(imagebox1(require('../image/webpack.png').default));
+$wrapper.appendChild(imagebox2());
 
 let $row = document.createElement('div');
 $row.className = 'row';
@@ -72,9 +72,9 @@ $wrapper.appendChild($row);
 
 $row = document.createElement('div');
 $row.className = 'row';
-$row.appendChild(showData('CSV', csvData));
-$row.appendChild(showData('XML', xmlData));
-$row.appendChild(showData('TOML', tomlData));
-$row.appendChild(showData('YAML', yamlData));
-$row.appendChild(showData('JSON5', jsonData));
+$row.appendChild(show('CSV', csvData));
+$row.appendChild(show('XML', xmlData));
+$row.appendChild(show('TOML', tomlData));
+$row.appendChild(show('YAML', yamlData));
+$row.appendChild(show('JSON5', jsonData));
 $wrapper.appendChild($row);

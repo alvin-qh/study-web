@@ -3,8 +3,11 @@
 @import "~@fortawesome/fontawesome-free/css/all.css";
 
 * {
-  font      : 14px/1.5 Tahoma, Helvetica, Arial, '宋体', sans-serif;
   box-sizing: border-box;
+}
+
+body {
+  font: 14px/1.5 Tahoma, Helvetica, Arial, '宋体', sans-serif;
 }
 
 .row {
@@ -60,5 +63,5 @@
 
 .link-box {
   padding: 10px;
-  margin: 10px 20px;
+  margin : 10px 20px;
 }

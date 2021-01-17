@@ -2,7 +2,7 @@ import '../style/index.css';
 
 import { join } from 'lodash-es';
 
-function textBox(text) {
+function textbox(text) {
   const $div = document.createElement('div');
   $div.className = 'text-box';
   $div.innerText = text;
@@ -20,7 +20,7 @@ function icon(name) {
   return $div;
 }
 
-function imageBox1(image) {
+function imagebox1(image) {
   const $image = document.createElement('img');
   $image.src = image;
   $image.alt = 'image box';
@@ -32,14 +32,14 @@ function imageBox1(image) {
   return $div;
 }
 
-function imageBox2() {
+function imagebox2() {
   const $div = document.createElement('div');
   $div.className = 'image-box2';
   return $div;
 }
 
 const $wrapper = document.body.getElementsByClassName('main')[0];
-$wrapper.appendChild(textBox(join(['Hello', 'World'], ' ')));
+$wrapper.appendChild(textbox(join(['Hello', 'World'], ' ')));
 
 const $row = document.createElement('div');
 $row.className = 'row';
@@ -48,5 +48,5 @@ $wrapper.appendChild($row);
 $row.appendChild(icon('fa-sun'));
 $row.appendChild(icon('fa-cloud'));
 
-$wrapper.appendChild(imageBox1(require('../image/webpack.png').default));
-$wrapper.appendChild(imageBox2());
+$wrapper.appendChild(imagebox1(require('../image/webpack.png').default));
+$wrapper.appendChild(imagebox2());
