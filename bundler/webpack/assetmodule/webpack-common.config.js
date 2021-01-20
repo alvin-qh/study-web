@@ -27,7 +27,7 @@ module.exports = {
       dangerouslyAllowCleanPatternsOutsideProject: true  // Allow clean patterns outside of process.cwd()
     }),
     new HtmlWebpackPlugin({
-      title: 'Resources',
+      title: 'Asset Module',
       template: './src/template/index.html',
       filename: '../[name].html',
       chunks: 'all'
