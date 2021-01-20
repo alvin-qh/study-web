@@ -13,3 +13,4 @@
 11. [Build](./build/README.md)
 12. [Tree Shaking](./treeshaking/README.md)
 13. [Lazy](./lazy/README.md)
+14. [Asset Module](./assetmodule/README.md)
