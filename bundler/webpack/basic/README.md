@@ -110,7 +110,7 @@ $ npm run build
           },
           "modules": false,
           "debug": false,
-          "corejs": "2",
+          "corejs": 3,
           "useBuiltIns": "usage"
         }
       ]
