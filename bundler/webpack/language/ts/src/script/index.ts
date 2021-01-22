@@ -1,14 +1,7 @@
 import '../style/index.css';
+import { join } from 'lodash-es';
 
-function textbox(text: string) {
-  const $span = document.createElement('span');
-  $span.innerText = text;
-
-  const $div = document.createElement('div');
-  $div.appendChild($span);
-  $div.className = 'text-box';
-  return $div;
-}
+import { textbox } from './lib/component';
 
 const $wrapper = document.querySelector('.main');
-$wrapper?.appendChild(textbox('Hello World'));
+$wrapper?.appendChild(textbox(join(['Hello', 'World'], ' ')));

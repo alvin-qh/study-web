@@ -49,7 +49,11 @@ $ npx webpack -c webpack-es6.config.babel.js
 - Install js to ts type support
 
   ```bash
-  $ npm install --save-dev @types/node @types/webpack @types/webpack-dev-server @types/html-webpack-plugin @types/mini-css-extract-plugin
+  $ npm install --save-dev @types/node \
+                           @types/webpack \
+                           @types/webpack-dev-server \
+                           @types/html-webpack-plugin \
+                           @types/mini-css-extract-plugin
   ```
 
 ### 2.2. Initialize the ts-node env
@@ -106,4 +110,102 @@ Or create any `.ts` file, then use `-c` option to select it
 
 ```bash
 cross-env TS_NODE_PROJECT="tsconfig-webpack.json" npx webpack -c webpack-ts.config.ts --progress
+```
+
+### 2.4. Config ESLint for typescript
+
+#### 2.4.1. Install `eslint` package with typescript
+
+> See https://github.com/typescript-eslint/typescript-eslint
+
+```bash
+$ npm install --save-dev eslint \
+                         @typescript-eslint/eslint-plugin \
+                         @typescript-eslint/parser
+```
+
+Initialize `eslint` config file
+
+```bash
+$ npx eslint --init
+```
+
+Answer the all questions, and generate `.eslintrc.json` config file
+
+```json
+{
+  ...
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 12,
+    "sourceType": "module",
+    "tsconfigRootDir": ".",
+    "project": [
+      "./tsconfig.json"
+    ]
+  },
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking"
+  ],
+  ...
+}
+```
+
+> See [eslintrc.json](./ts/.eslintrc.json) file
+
+#### 2.4.2. Work with eslint:
+
+**Cli:**
+
+In `package.json`, add commandline into `scripts`:
+
+```json
+{
+  ...
+  "scripts": {
+    "lint": "eslint --ext .ts src/script/**/*.ts --fix"
+  },
+  ...
+}
+```
+
+**Webpack:**
+
+Install `eslint-loader` to integrate with webpack
+
+```bash
+$ npm install --save-dev eslint-loader
+```
+
+In `webpack.config.ts`, add preload config
+
+```javascript
+{
+  // ...,
+  module: {
+    // ...,
+    rules: [
+      {
+        enforce: 'pre',
+        test: /\.(ts|tsx)$/,
+        exclude: /(node_modules|bower_components)/,
+        use: [
+          {
+            loader: 'eslint-loader',
+            options: {
+              eslintPath: require.resolve('eslint'),
+            }
+          }
+        ]
+      },
+      // ...
+    ]
+  }
+}
 ```
