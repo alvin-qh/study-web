@@ -1,12 +1,11 @@
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
+const devMode = process.env.NODE_ENV !== 'production';
+
 module.exports = {
-  mode: 'development',
+  mode: devMode ? 'development' : 'production',
   devtool: 'cheap-source-map',
-  entry: {
-    'index': './src/script/index.js'
-  },
   output: {
     filename: 'script/[name].js',
     chunkFilename: 'script/[name].js',

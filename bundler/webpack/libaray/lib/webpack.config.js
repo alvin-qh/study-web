@@ -27,7 +27,7 @@ module.exports = merge(commonConfig, {
     'lodash-es': {
       commonjs: 'lodash-es',
       commonjs2: 'lodash-es',
-      amd: 'lodash',
+      amd: 'lodash-es',
       root: 'default'
     }
   },

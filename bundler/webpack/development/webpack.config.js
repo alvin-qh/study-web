@@ -3,11 +3,12 @@ const { merge } = require('webpack-merge');
 
 const commonConfig = require('./webpack-common.config.js');
 
+const devMode = process.env.NODE_ENV !== 'production';
+
 // see also: https://webpack.js.org/guides/development/
 module.exports = merge(commonConfig, {
   // set package mode
-  // or mode: 'production', enable development mode or production mode
-  mode: 'development',
+  mode: devMode ? 'development' : 'production',
 
   // set source map generator
   devtool: 'cheap-source-map',
@@ -22,5 +23,8 @@ module.exports = merge(commonConfig, {
     // 'none' | 'errors-only' | 'minimal' | 'normal' | 'verbose'
     compress: true,     // use 'gzip' to compress response
     writeToDisk: true   // write bundled files into output folder on disk
+  },
+  entry: {
+    'index': './src/script/index.js',
   }
 });

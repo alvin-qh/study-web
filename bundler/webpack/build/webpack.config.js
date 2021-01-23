@@ -20,6 +20,9 @@ const threadLoaderOpt = {
 // threadLoader.warmup(threadLoaderOpt, ['babel-loader']);
 
 const baseConfig = merge(commonConfig, {
+  entry: {
+    'index': './src/script/index.js'
+  },
   output: {
     pathinfo: false
   },

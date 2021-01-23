@@ -4,6 +4,8 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const devMode = process.env.NODE_ENV !== 'production';
+
 // create multiple html entrypoints
 function makeHtmlPlugins(entries) {
   // mapping all entites to 'HtmlWebpackPlugin' object
@@ -25,7 +27,7 @@ function makeHtmlPlugins(entries) {
 
 module.exports = function (entities) {
   return {
-    mode: 'development',
+    mode: devMode ? 'development' : 'production',
     devtool: 'cheap-source-map',
     devServer: {
       contentBase: path.resolve(__dirname, 'dist'),

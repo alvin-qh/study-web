@@ -1,10 +1,20 @@
 const path = require('path');
 
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
+  devtool: 'cheap-source-map',   // add source map inline in source file
+  devServer: {
+    contentBase: path.resolve(__dirname, 'dist'),
+    hot: true,
+    inline: true,
+    stats: 'minimal',
+    compress: true,
+    writeToDisk: true
+  },
   output: {
     path: path.resolve(__dirname, 'dist/asset'),
     filename: 'script/[name].bundle-[contenthash:8].js',
@@ -22,7 +32,7 @@ module.exports = {
       filename: 'style/[name].bundle-[contenthash:8].css'
     }),
     new HtmlWebpackPlugin({
-      title: 'Development',
+      title: 'Libaray',
       template: './src/template/index.html',
       filename: '../[name].html',
       chunks: 'all'

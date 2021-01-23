@@ -5,7 +5,7 @@ const commonConfig = require('./webpack-common.config.js');
 module.exports = () => {
   let entries, config;
 
-  if (process.env['package'] === 'entrypoint') {
+  if (process.env.package === 'entrypoint') {
 
     entries = {
       'index': {

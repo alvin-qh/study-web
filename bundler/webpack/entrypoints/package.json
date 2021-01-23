@@ -5,11 +5,17 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build:ep": "cross-env package=entrypoint webpack --progress",
+    "build:ep:prod": "cross-env package=entrypoint NODE_ENV=production webpack --progress",
     "build:st": "cross-env package=splitthunk webpack --progress",
+    "build:st:prod": "cross-env package=splitthunk NODE_ENV=production webpack --progress",
     "watch:ep": "cross-env package=entrypoint webpack --watch --progress",
+    "watch:ep:prod": "cross-env package=entrypoint NODE_ENV=production webpack --watch --progress",
     "watch:st": "cross-env package=splitthunk webpack --watch --progress",
+    "watch:st:prod": "cross-env package=splitthunk NODE_ENV=production webpack --watch --progress",
     "dev:ep": "cross-env package=entrypoint webpack serve --progress",
-    "dev:st": "cross-env package=splitthunk webpack serve --progress"
+    "dev:ep:prod": "cross-env package=entrypoint NODE_ENV=production webpack serve --progress",
+    "dev:st": "cross-env package=splitthunk webpack serve --progress",
+    "dev:st:prod": "cross-env package=splitthunk NODE_ENV=production webpack serve --progress"
   },
   "author": "Alvin",
   "license": "ISC",

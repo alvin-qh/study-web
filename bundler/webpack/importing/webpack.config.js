@@ -4,6 +4,9 @@ const { merge } = require('webpack-merge');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 module.exports = merge(commonConfig, {
+  entry: {
+    'index': './src/script/index.js'
+  },
   plugins: [
 
     // plugin to analysize bundle composition

@@ -8,6 +8,9 @@ const yaml = require('yamljs');
 const json5 = require('json5');
 
 module.exports = merge(commonConfig, {
+  entry: {
+    'index': './src/script/index.js'
+  },
   module: {
     rules: [
       {

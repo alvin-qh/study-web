@@ -27,7 +27,6 @@ module.exports = merge(commonConfig, modeConfig, {
       minSize: 1,
       cacheGroups: {
         default: false,
-
         // bundle all things from "node_modules" folder into "vender.xxx.js" file
         vendor: {
           test: /[\\/]node_modules[\\/]/,

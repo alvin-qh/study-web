@@ -4,6 +4,9 @@ const commonConfig = require('./webpack-common.config.js');
 const { merge } = require('webpack-merge');
 
 module.exports = merge(commonConfig, {
+  entry: {
+    'index': './src/script/index.js'
+  },
   module: {
     rules: [
       {

@@ -1,7 +1,4 @@
 const path = require('path');
-const {merge} = require('webpack-merge');
-
-const commonConfig = require('./webpack-common.config.js');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
@@ -10,12 +7,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
 
-module.exports = merge(commonConfig, {
+module.exports = {
   mode: 'development',
   devtool: 'cheap-source-map',
-  entry: {
-    'index': './src/script/index.js'
-  },
   plugins: [
     new CleanWebpackPlugin({
       dry: false,
@@ -250,4 +244,4 @@ module.exports = merge(commonConfig, {
   optimization: {
     runtimeChunk: 'single'
   }
-});
+};

@@ -5,8 +5,10 @@ import { CleanWebpackPlugin } from 'clean-webpack-plugin';
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 
+const devMode = process.env.NODE_ENV !== 'production';
+
 const config: webpack.Configuration = {
-  mode: 'development',
+  mode: devMode ? 'development' : 'production',
   devtool: 'cheap-source-map',
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),

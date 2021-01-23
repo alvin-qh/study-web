@@ -14,9 +14,6 @@ module.exports = {
     compress: true,
     writeToDisk: true
   },
-  entry: {
-    'index': './src/script/index.js'
-  },
   output: {
     filename: 'script/[name].bundle-[contenthash:8].js',
     chunkFilename: 'script/[name].chunk-[contenthash:8].js',

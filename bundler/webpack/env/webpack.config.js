@@ -18,12 +18,13 @@ function isDebug(env) {
 
 module.exports = env => {
   return merge(commonConfig, {
+    entry: {
+      'index': './src/script/index.js'
+    },
     plugins: [
-
       // define provider
       // when some symbol is defined as provider, it canbe use in anywhere without 'import'
       new webpack.ProvidePlugin({
-
         // when 'component' symbol used in javasciprt, the specified javascript file will be imported
         component: [path.resolve(__dirname, `src/script/lib/component${isDebug(env)}.js`), 'component']
       })
