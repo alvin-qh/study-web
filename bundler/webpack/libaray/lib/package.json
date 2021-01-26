@@ -5,7 +5,8 @@
   "module": "src/index.js",
   "scripts": {
     "test": "webpack -c webpack-test.config.js --progress && mocha ./dist/test/**/*.test.js",
-    "build": "webpack --progress"
+    "build": "webpack --progress",
+    "build:prod": "cross-env NODE_ENV=production webpack --progress"
   },
   "author": "Alvin",
   "license": "ISC",

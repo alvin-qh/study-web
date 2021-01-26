@@ -1,4 +1,3 @@
-const path = require('path');
 const { merge } = require('webpack-merge');
 
 const commonConfig = require('./webpack-common.config');
@@ -8,9 +7,6 @@ module.exports = merge(commonConfig, {
     'index': './src/index.js'
   },
   output: {
-    filename: '[name].js',
-    path: path.resolve(__dirname, 'dist'),
-
     // name of export libaray module
     library: 'appLib',
 

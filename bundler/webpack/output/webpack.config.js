@@ -1,29 +1,17 @@
 const path = require('path');
-const {merge} = require('webpack-merge');
 
 const commonConfig = require('./webpack-common.config.js');
+const { merge } = require('webpack-merge');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
 
-
 module.exports = merge(commonConfig, {
-  mode: 'development',
-  devtool: 'cheap-source-map',
   entry: {
     'index': './src/script/index.js'
   },
   plugins: [
-    new CleanWebpackPlugin({
-      dry: false,
-      cleanStaleWebpackAssets: false,
-      cleanOnceBeforeBuildPatterns: ['../**/*'],
-      dangerouslyAllowCleanPatternsOutsideProject: true  // Allow clean patterns outside of process.cwd()
-                                                         // requires dry option to be explicitly set
-    }),
     new HtmlWebpackPlugin({
       title: 'Output Management',
       template: './src/template/index.html',
@@ -33,7 +21,6 @@ module.exports = merge(commonConfig, {
     new MiniCssExtractPlugin({
       filename: 'style/[name].bundle-[contenthash:8].css'
     }),
-
     /**
      * Create manifest.json file, include mapping info of file key and file path
      * 
@@ -246,8 +233,5 @@ module.exports = merge(commonConfig, {
         ]
       }
     ]
-  },
-  optimization: {
-    runtimeChunk: 'single'
   }
 });
