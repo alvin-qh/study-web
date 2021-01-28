@@ -8,7 +8,7 @@ const modeConfig = devMode ? {
   devtool: 'cheap-source-map'
 } : {
     mode: 'production',
-    devtool: 'nosource-source-map'
+    devtool: 'nosources-source-map'
   };
 
 module.exports = merge(commonConfig, modeConfig, {

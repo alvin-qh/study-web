@@ -5,7 +5,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "cross-env TS_NODE_PROJECT=\"tsconfig-webpack.json\" webpack --progress",
+    "build:prod": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-webpack.json\" webpack --progress",
+    "watch": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-webpack.json\" webpack --watch --progress",
+    "watch:prod": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-webpack.json\" webpack --watch --progress",
     "dev": "cross-env TS_NODE_PROJECT=\"tsconfig-webpack.json\" webpack serve --progress",
+    "dev:prod": "cross-env NODE_ENV=production TS_NODE_PROJECT=\"tsconfig-webpack.json\" webpack serve --progress",
     "lint": "eslint --ext .ts src/script/**/*.ts --fix"
   },
   "author": "Alvin",

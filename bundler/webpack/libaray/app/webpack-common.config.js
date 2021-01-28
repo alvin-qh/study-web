@@ -5,7 +5,10 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
+const devMode = process.env.NODE_ENV !== 'development';
+
 module.exports = {
+  mode: devMode ? 'development' : 'production',  // enable development mode or production mode
   devtool: 'cheap-source-map',   // add source map inline in source file
   devServer: {
     contentBase: path.resolve(__dirname, 'dist'),
