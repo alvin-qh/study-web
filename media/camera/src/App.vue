@@ -12,7 +12,7 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 import { Component, Vue } from "vue-property-decorator";
 import { Layout, Header, Content } from "view-design";
 

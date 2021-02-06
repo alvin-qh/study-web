@@ -289,8 +289,11 @@ module.exports = {
     //   cert: fs.readFileSync('ca/127.0.0.1+3.pem'),
     //   ca: fs.readFileSync('/path/to/ca.pem'),
     // },
+    host: '0.0.0.0',
+    port: 8080,
+    https: true,
     headers: {
-      'Feature-Policy': 'camera \'self\'',
+      'Feature-Policy': 'camera \'self\''
     }
   },
 

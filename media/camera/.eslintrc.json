@@ -1,0 +1,47 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true,
+        "node": true
+    },
+    "extends": [
+        "plugin:vue/essential",
+        "@vue/standard",
+        "@vue/typescript/recommended"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2020,
+        "parser": "@typescript-eslint/parser",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "vue",
+        "@typescript-eslint"
+    ],
+    "ignorePatterns": [
+      "vue.config.js"
+    ],
+    "rules": {
+      "no-console": "warn",
+      "no-debugger": "warn",
+      "quotes": [
+        0
+      ],
+      "space-before-function-paren": [
+        0
+      ],
+      "comma-dangle": [
+        2,
+        "never"
+      ],
+      "semi": [
+        2,
+        "always"
+      ],
+      "@typescript-eslint/no-explicit-any": "off"
+    }
+}

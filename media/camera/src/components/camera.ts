@@ -16,7 +16,7 @@ function _findGetUserMediaFunction() {
   return null;
 }
 
-export function createMediaDevices() {
+export function createMediaDevices(): MediaDevices {
   const mediaDevices = navigator.mediaDevices || {};
   if (!mediaDevices.getUserMedia) {
     mediaDevices.getUserMedia = constraints => {
@@ -40,7 +40,7 @@ const context: VideoContext = {
   streams: []
 };
 
-export function stopTrack() {
+export function stopTrack(): void {
   _each(context.streams, stream => {
     if (stream) {
       _each(stream.getTracks(), track => track.stop());
@@ -49,6 +49,6 @@ export function stopTrack() {
   context.streams = [];
 }
 
-export function startTrack(stream: MediaStream) {
+export function startTrack(stream: MediaStream): void {
   context.streams.push(stream);
 }

@@ -8,6 +8,7 @@
       ref="video"
     ></video>
 
+    <div class="error">{{ error }}</div>
   </div>
 </template>
 
@@ -19,13 +20,15 @@ const _constraints = {
   audio: false,
   video: {
     sourceId: "default",
-    facingMode: "environment",
-  },
+    facingMode: "environment"
+  }
 };
 
 @Component({})
 export default class CameraPanel extends Vue {
-  created() {
+  error = '';
+
+  created(): void {
     stopTrack();
 
     createMediaDevices()
@@ -33,11 +36,11 @@ export default class CameraPanel extends Vue {
       .then((stream) => {
         startTrack(stream);
 
-        const video = this.$refs["video"] as any;
+        const video = this.$refs.video as any;
         video.srcObject = stream;
       })
       .catch((e) => {
-        console.log(e);
+        this.error = e.toString();
       });
   }
 }

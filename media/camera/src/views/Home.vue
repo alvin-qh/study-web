@@ -10,8 +10,8 @@ import CameraPanel from "@/components/CameraPanel.vue"; // @ is an alias to /src
 
 @Component({
   components: {
-    CameraPanel,
-  },
+    CameraPanel
+  }
 })
 export default class Home extends Vue {}
 </script>
