@@ -69,7 +69,9 @@ If using windows 10 with WSL2, it cannot access the WSL network port directly
   Set port proxy
 
   ```cmd
-  > netsh interface portproxy add v4tov4 listenport=8080 listenaddress=0.0.0.0 connectport=8080 connectaddress=172.20.98.196
+  > netsh interface portproxy add v4tov4 \
+      listenport=8080 listenaddress=0.0.0.0 \
+      connectport=8080 connectaddress=172.20.98.196
   ```
 
   Show all port proxy status
@@ -81,7 +83,8 @@ If using windows 10 with WSL2, it cannot access the WSL network port directly
   Delete port proxy
 
   ```cmd
-  > netsh interface portproxy delete v4tov4 listenport=8080 listenaddress=0.0.0.0
+  > netsh interface portproxy delete v4tov4 \
+    listenport=8080 listenaddress=0.0.0.0
   ```
 
 - Close Windows Firewall
