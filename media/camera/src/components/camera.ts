@@ -1,4 +1,4 @@
-import { each as _each } from 'lodash-es';
+import { each as _each } from 'lodash';
 
 function _findGetUserMediaFunction() {
   const possibleProperties = [

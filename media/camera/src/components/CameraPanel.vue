@@ -3,7 +3,7 @@
     <template v-if="!videoLoaded">
       <div class="alv-video-loadding">Loadding...</div>
     </template>
-    
+
     <div class="alv-video-mask" ref="videoMask"></div>
 
     <video
@@ -52,17 +52,17 @@ export default class CameraPanel extends Vue {
       });
   }
 
-  onVideoLoaded() {
+  onVideoLoaded(): void {
     const bodySize = {
       width: document.body.clientWidth,
       height: document.body.clientHeight
     };
 
-    const $video = <HTMLElement>this.$refs.video;
+    const $video = this.$refs.video as HTMLElement;
     $video.style.top = '0px';
     $video.style.left = `${(bodySize.width - $video.clientWidth) / 2}px`;
 
-    const $mask = <HTMLElement>this.$refs.videoMask;
+    const $mask = this.$refs.videoMask as HTMLElement;
     $mask.style.width = `${$video.clientWidth * 0.75}px`;
     $mask.style.height = `${$video.clientHeight}px`;
 
