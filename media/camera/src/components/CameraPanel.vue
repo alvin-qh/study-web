@@ -1,7 +1,7 @@
 <template>
   <div class="alv-camera">
     <template v-if="!videoLoaded">
-      <div class="alv-video-loadding">Loadding...</div>
+      <div class="alv-video-loadding">Loading...</div>
     </template>
 
     <div class="alv-video-mask" ref="videoMask"></div>
