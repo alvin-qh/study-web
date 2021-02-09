@@ -291,7 +291,7 @@ module.exports = {
     // },
     host: '0.0.0.0',
     port: 8080,
-    https: true,
+    // https: true,
     headers: {
       'Feature-Policy': 'camera \'self\''
     }

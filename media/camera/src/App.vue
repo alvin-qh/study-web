@@ -2,8 +2,8 @@
   <div id="app">
     <Layout class="alv-layout">
       <Header class="alv-header">
-        <router-link to="/">Home</router-link> |
-        <router-link to="/about">About</router-link>
+        <router-link to="/">Media</router-link> |
+        <router-link to="/file">File</router-link>
       </Header>
       <Content>
         <router-view />
@@ -23,7 +23,7 @@ import { Layout, Header, Content } from "view-design";
     Content
   }
 })
-export default class Index extends Vue {}
+export default class Media extends Vue {}
 </script>
 
 <style lang="css" scope>

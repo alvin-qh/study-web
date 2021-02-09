@@ -1,5 +1,5 @@
 <template>
-  <div class="alv-home">
+  <div class="alv-media">
     <CameraPanel />
   </div>
 </template>
@@ -13,5 +13,5 @@ import CameraPanel from "@/components/CameraPanel.vue"; // @ is an alias to /src
     CameraPanel
   }
 })
-export default class Home extends Vue {}
+export default class Media extends Vue {}
 </script>

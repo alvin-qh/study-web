@@ -1,11 +1,18 @@
 <template>
   <div class="alv-camera">
+    <template v-if="!videoLoaded">
+      <div class="alv-video-loadding">Loadding...</div>
+    </template>
+    
+    <div class="alv-video-mask" ref="videoMask"></div>
+
     <video
       class="alv-video"
       playsinline
       autoplay
       x5-video-player-type="h5"
       ref="video"
+      @loadeddata="onVideoLoaded"
     ></video>
 
     <div class="error">{{ error }}</div>
@@ -24,9 +31,10 @@ const _constraints = {
   }
 };
 
-@Component({})
+@Component
 export default class CameraPanel extends Vue {
   error = '';
+  videoLoaded = false;
 
   created(): void {
     stopTrack();
@@ -43,11 +51,50 @@ export default class CameraPanel extends Vue {
         this.error = e.toString();
       });
   }
+
+  onVideoLoaded() {
+    const bodySize = {
+      width: document.body.clientWidth,
+      height: document.body.clientHeight
+    };
+
+    const $video = <HTMLElement>this.$refs.video;
+    $video.style.top = '0px';
+    $video.style.left = `${(bodySize.width - $video.clientWidth) / 2}px`;
+
+    const $mask = <HTMLElement>this.$refs.videoMask;
+    $mask.style.width = `${$video.clientWidth * 0.75}px`;
+    $mask.style.height = `${$video.clientHeight}px`;
+
+    this.videoLoaded = true;
+  }
 }
 </script>
 
 <style type="css" scoped>
-.alv-video {
+
+.alv-camera {
+  position: relative;
+}
+
+.alv-camera .alv-video-loadding {
+  font-size: 50px;
+  color: rgb(74, 57, 228);
+  text-shadow: 5px 5px #ccc;
+  margin: 10% auto;
+}
+
+.alv-camera .alv-video-mask {
+  margin: 0 auto;
+  background-color: rgb(158, 77, 233);
+  box-shadow: 10px 10px rgba(197, 151, 193, 0.356);
+}
+
+.alv-camera .alv-video {
   object-fit: fill;
+  position: absolute;
+  width: 400px;
+  margin: 0 auto;
+  clip-path: circle(40% at 50% 50%);
 }
 </style>
