@@ -84,7 +84,7 @@ If using windows 10 with WSL2, it cannot access the WSL network port directly
 
   ```cmd
   > netsh interface portproxy delete v4tov4 \
-    listenport=8080 listenaddress=0.0.0.0
+      listenport=8080 listenaddress=0.0.0.0
   ```
 
 - Close Windows Firewall
