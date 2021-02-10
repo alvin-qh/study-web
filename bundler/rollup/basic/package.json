@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint src/**/*.js --fix",
     "build": "rollup -c"
   },
   "devDependencies": {
@@ -17,6 +18,7 @@
     "@rollup/plugin-babel": "^5.2.2",
     "@rollup/plugin-node-resolve": "^11.1.0",
     "babel-plugin-import": "^1.13.3",
+    "eslint": "^7.19.0",
     "rollup": "^2.37.0"
   },
   "author": "Alvin",

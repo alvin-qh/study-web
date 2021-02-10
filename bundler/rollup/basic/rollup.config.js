@@ -1,11 +1,14 @@
+import path from 'path';
+
 import resolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
 
 export default {
-  input: './src/script/index.js',
+  input: path.resolve(__dirname, 'src/script/index.js'),
   output: {
-    file: './dist/asset/script/index.min.js',
-    format: 'umd'
+    file: path.resolve(__dirname, 'dist/asset/index.min.js'),
+    format: 'es',   // format: 'umd'
+    sourcemap: true
   },
   plugins: [
     resolve(),
@@ -14,4 +17,4 @@ export default {
       exclude: 'node_modules/**'
     })
   ]
-}
+};

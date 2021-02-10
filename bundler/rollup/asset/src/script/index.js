@@ -1,3 +1,6 @@
+import '../style/index.css';
+import '@fortawesome/fontawesome-free/css/all.css';
+
 import { join } from 'lodash-es';
 import { textbox } from './lib/component.js';
 
