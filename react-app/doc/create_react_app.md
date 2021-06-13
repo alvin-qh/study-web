@@ -167,6 +167,8 @@ $ npx prettier --single-quote --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}
 
     Add `webpack.config.js` into `.storybook` folder, see [.storybook/webpack.config.js](../.storybook/webpack.config.js)
 
+> More info about Storybook, see [Official Website](https://storybook.js.org/docs/react/get-started/introduction)
+
 #### 2.4.2. React Styleguidist
 
 ### 2.4. Bundle analysis
