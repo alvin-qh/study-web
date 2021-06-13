@@ -1,5 +1,7 @@
 # Create React App
 
+> See: https://www.html.cn/create-react-app/docs/getting-started/
+
 - [Create React App](#create-react-app)
   - [1. Create App](#1-create-app)
     - [1.1. Install create-react-app and create app](#11-install-create-react-app-and-create-app)
