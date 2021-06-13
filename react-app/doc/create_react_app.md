@@ -1,5 +1,7 @@
 # Create React App
 
+[toc]
+
 ## 1. Create App
 
 ### 1.1. Install create-react-app and create app
