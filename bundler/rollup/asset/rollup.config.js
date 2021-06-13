@@ -4,6 +4,7 @@ import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
+import postcssCopyAssets from 'postcss-copy-assets';
 import postcssUrl from 'postcss-url';
 import babel from '@rollup/plugin-babel';
 
@@ -21,11 +22,15 @@ export default {
     postcss({
       extensions: ['.css'],
       plugins: [
-        postcssUrl({
-          url: 'copy',
-          basePath: path.resolve(__dirname, 'node_modules'),
-          assetsPath: 'image'
-        })
+        // postcssUrl({
+        //   url: 'copy',
+        //   assetsPath: 'image'
+        // })
+        postcssCopyAssets([
+          {
+            base: 'dist/asset/font'
+          }
+        ])
       ],
       inject: false,  // if 'extract' is true, 'inject' always false
       sourceMap: true,
