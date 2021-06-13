@@ -1,6 +1,22 @@
 # Create React App
 
-[toc]
+- [Create React App](#create-react-app)
+  - [1. Create App](#1-create-app)
+    - [1.1. Install create-react-app and create app](#11-install-create-react-app-and-create-app)
+    - [1.2. Script command](#12-script-command)
+  - [2. Development settings](#2-development-settings)
+    - [2.1. Add Lint Support](#21-add-lint-support)
+    - [2.2. Debug in Chrome](#22-debug-in-chrome)
+      - [2.2.1. Visual Studio Code](#221-visual-studio-code)
+      - [2.2.2. WebStorm](#222-webstorm)
+    - [2.3. Git hook](#23-git-hook)
+    - [2.4. Integrate Component Tools](#24-integrate-component-tools)
+      - [2.4.1. Storybook for React](#241-storybook-for-react)
+      - [2.4.2. React Styleguidist](#242-react-styleguidist)
+    - [2.5. Bundle analysis](#25-bundle-analysis)
+    - [2.6. Use HTTPS](#26-use-https)
+
+
 
 ## 1. Create App
 
@@ -142,22 +158,24 @@ $ npx prettier --single-quote --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}
 
 2. Add scirpt command
 
+    Edit `package.json` file, add the following content:
+
     ```json
     {
       "scripts": {
         "storybook": "start-storybook -p 9001 -c .storybook",
-        "build-storybook": "build-storybook -c .storybook"
+        "storybook:build": "build-storybook -c .storybook"
       }
     }
     ```
 
 3. Create config js file
 
-    See [.storybook/config.js](../.storybook/config.js)
+    Add `config.js` into `.storybook` folder, see [.storybook/config.js](../.storybook/config.js)
 
 4. Write story in storybook
 
-    See [storybooks/button-demo.js](../storybooks/button-demo.js)
+    Add storybook js file into `storybookds` folder, see [storybooks/button-demo.js](../storybooks/button-demo.js)
 
 5. Run storybook
 
@@ -165,7 +183,7 @@ $ npx prettier --single-quote --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}
     $ yarn storybook
     ```
 
-6. Addtion webpack.config.js for storybook
+6. Addtion `webpack.config.js` for storybook
 
     Add `webpack.config.js` into `.storybook` folder, see [.storybook/webpack.config.js](../.storybook/webpack.config.js)
 
@@ -173,4 +191,68 @@ $ npx prettier --single-quote --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}
 
 #### 2.4.2. React Styleguidist
 
-### 2.4. Bundle analysis
+1. Install dependencies
+
+    ```bash
+    $ yarn add react-styleguidist
+    ```
+
+2. Add script commands
+
+    Edit `package.json` file, add the following content:
+
+    ```json
+    {
+      "scripts": {
+        "styleguide": "styleguidist server",
+        "styleguide:build": "styleguidist build"
+      }
+    }
+    ```
+
+3. Run styleguide
+
+    ```bash
+    $ yarn styleguide
+    ```
+
+### 2.5. Bundle analysis
+
+1. Install dependencies
+
+  ```bash
+  $ yarn add source-map-explorer
+  ```
+
+2. Add script command
+
+    Edit `package.json` file, add the following content:
+
+    ```json
+    {
+      "scripts": {
+        "analyze": "source-map-explorer build/static/js/main.*"
+      }
+    }
+    ```
+
+3. Analyze js bundle
+
+    ```bash
+    $ yarn build
+    $ yarn analyze
+    ```
+
+### 2.6. Use HTTPS
+
+Use `HTTP` env variable
+
+```bash
+$ HTTP=true yarn start
+```
+
+or edit `.env` file, and add variable like
+
+```
+HTTP=true
+```

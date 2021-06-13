@@ -5,11 +5,11 @@ const CompressionWebpackPlugin = require('compression-webpack-plugin');
 module.exports = {
   webpack: override(
     config => {
-      if (process.env.NODE_ENV === 'production') {
+      if (process.env.COMPRESS_USE_GZIP === 'true') {
         config.devtool = false;
         config.plugins.push(
           new CompressionWebpackPlugin({
-            test: /\.js$|\.css$/,
+            test: /\.(js|css)$/,
             threshold: 1024
           })
         )
