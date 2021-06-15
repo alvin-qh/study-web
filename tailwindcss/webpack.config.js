@@ -10,7 +10,7 @@ const stylesHandler = "style-loader";
 
 const entries = {
   index: ["./src/index.ts"],
-  basic: ["./src/basic/index.ts"]
+  layout: ["./src/layout/index.ts"]
 }
 
 function makeHtmlTemplates() {
