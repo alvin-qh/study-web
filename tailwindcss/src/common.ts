@@ -3,52 +3,61 @@ import hljs from 'highlight.js';
 import 'highlight.js/styles/stackoverflow-dark.css';
 
 
+hljs.configure({
+  useBR: true
+});
+
+
 class Story {
   private $wrapper: HTMLDivElement;
-  private $html: HTMLDivElement;
-  private $display: HTMLElement;
+  private $html: HTMLDivElement | undefined;
+  private $code: HTMLElement;
 
-  constructor(title: string) {
+  constructor(title: string, language: string = 'html') {
     this.$wrapper = document.createElement('div');
-    this.$wrapper.className = "border rounded-sm border-solid py-2 px-2 shadow-xl";
+    this.$wrapper.className = "border rounded-sm border-solid py-2 px-2 shadow-xl my-5";
 
     const $storyTitle: HTMLDivElement = document.createElement('h1');
-    $storyTitle.innerText = title
+    $storyTitle.innerText = `# ${title}`
     $storyTitle.className = 'font-bold text-sm md:text-lg bg-gray-100 py-2 md:px-3 px-2';
     this.$wrapper.appendChild($storyTitle);
 
-    const $blockHtml: HTMLDivElement = document.createElement('div');
-    $blockHtml.className = 'md:my-4 my-3';
-    this.$wrapper.appendChild($blockHtml);
+    if (language === 'html') {
+      const $htmlBlock: HTMLDivElement = document.createElement('div');
+      $htmlBlock.className = 'md:my-4 my-3';
+      this.$wrapper.appendChild($htmlBlock);
 
-    const $blockHtmlTitle: HTMLElement = document.createElement('h2');
-    $blockHtmlTitle.innerText = 'Demo: ';
-    $blockHtmlTitle.className = 'font-medium md:px-3 px-2 text-xs md:text-base';
-    $blockHtml.appendChild($blockHtmlTitle);
+      const $htmlTitle: HTMLElement = document.createElement('h2');
+      $htmlTitle.innerText = 'Demo: ';
+      $htmlTitle.className = 'font-medium md:px-3 px-2 text-xs md:text-base';
+      $htmlBlock.appendChild($htmlTitle);
 
-    this.$html = document.createElement('div');
-    this.$html.className = "bg-gray-100 py-2 px-3 mt-1"
-    $blockHtml.appendChild(this.$html);
+      this.$html = document.createElement('div');
+      this.$html.className = "bg-gray-100 py-2 px-3 mt-1"
+      $htmlBlock.appendChild(this.$html);
+    }
 
-    const $blockDisplay: HTMLDivElement = document.createElement('div');
-    $blockDisplay.className = 'md:my-4 my-3';
-    this.$wrapper.appendChild($blockDisplay);
+    const $codeBlock: HTMLDivElement = document.createElement('div');
+    $codeBlock.className = 'md:my-4 my-3';
+    this.$wrapper.appendChild($codeBlock);
 
-    const $blockDisplayTitle: HTMLElement = document.createElement('h2');
-    $blockDisplayTitle.innerText = 'Source code: ';
-    $blockDisplayTitle.className = 'font-medium md:px-3 px-2 text-xs md:text-base';
-    $blockDisplay.appendChild($blockDisplayTitle);
+    const $codeBlockTitle: HTMLElement = document.createElement('h2');
+    $codeBlockTitle.innerText = 'Source code: ';
+    $codeBlockTitle.className = 'font-medium md:px-3 px-2 text-xs md:text-base';
+    $codeBlock.appendChild($codeBlockTitle);
 
-    this.$display = document.createElement('code');
-    this.$display.className = 'px-5 mt-1 text-xs md:text-base language-xml hljs';
+    this.$code = document.createElement('code');
+    this.$code.className = `px-5 mt-1 text-xs md:text-base language-${language} hljs`;
     const $pre: HTMLElement = document.createElement('pre');
-    $pre.appendChild(this.$display);
-    $blockDisplay.appendChild($pre);
+    $pre.appendChild(this.$code);
+    $codeBlock.appendChild($pre);
   }
 
-  html(html: string): Story {
-    this.$html.innerHTML = html
-    this.$display.innerText = html;
+  code(code: string): Story {
+    if (this.$html) {
+      this.$html.innerHTML = code
+    }
+    this.$code.innerText = code;
     return this;
   }
 
