@@ -1,5 +1,5 @@
 import {AfterViewInit, Component, DoCheck} from '@angular/core';
-import hljs from 'highlight.js';
+import * as hljs from 'highlight.js';
 
 
 declare interface User {
@@ -32,7 +32,7 @@ export class ComponentComponent implements AfterViewInit, DoCheck {
   }
 
   display() {
-    const element = document.querySelector('.hljs.json');
+    const element: HTMLElement = document.querySelector('.hljs.json');
     if (element != null) {
       (element as HTMLElement).innerText = JSON.stringify(this.user, null, '    ');
       hljs.highlightBlock(element);
