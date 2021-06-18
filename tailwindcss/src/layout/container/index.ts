@@ -1,7 +1,7 @@
-import { Story, StoryBook } from '../common';
+import { Story, StoryBook } from '../../common';
 
 window.onload = () => {
-  const book = new StoryBook('Layout', true);
+  const book = new StoryBook('Container', true);
   book.append([
     new Story("Container")
       .code(`\

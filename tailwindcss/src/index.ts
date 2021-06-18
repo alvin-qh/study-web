@@ -1,17 +1,41 @@
 import { Story, StoryBook } from './common';
 
+const menu = [
+  {
+    title: "Layout",
+    links: [
+      {title: "Container", href: "layout/container.html"},
+      {title: "Box sizing", href: "layout/boxsizing.html"},
+      {title: "Display", href: "layout/display.html"},
+      {title: "Floating", href: "layout/floating.html"},
+    ]
+  }
+]
+
+const menuToHtml = (): string => {
+  const html: Array<string> = [];
+  for (const item of menu) {
+    html.push('  <div>');
+    html.push(`\n    <h3 class="text-sm md:text-base font-medium">${item.title}</h3>`);
+    
+    const block: Array<string> = []
+    for (const link of item.links) {
+      block.push(`\n    <li class="inline-block text-xs md:text-base"><a href="${link.href}">${link.title}</a></li>`)
+    }
+    html.push(block.join(`\n    <b class="text-gray-300">|</b>`))
+    html.push(`\n  </div>`)
+  }
+  return html.join("")
+}
+
 window.onload = () => {
   const book = new StoryBook('Tailwind Demo');
   book.append([
     new Story("Menu")
       .code(`\
 <div class="container mx-auto px-4">
-  <ul class="text-sm">
-    <li class="inline-block"><a href="layout.html">Layout</a></li>
-    <b class="text-gray-300">|</b>
-    <li class="inline-block"><a href="boxsizing.html">Box sizing</a></li>
-  </ul>
+${menuToHtml()}
 </div>`)
   ])
-  .render();
+    .render();
 };

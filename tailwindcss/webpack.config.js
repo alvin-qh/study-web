@@ -9,8 +9,11 @@ const isProduction = process.env.NODE_ENV === "production";
 const stylesHandler = "style-loader";
 
 const entries = {
-  index: ["./src/index.ts"],
-  boxsizing: ["./src/boxsizing/index.ts"]
+  "index": ["./src/index.ts"],
+  "layout/container": ["./src/layout/container/index.ts"],
+  "layout/boxsizing": ["./src/layout/boxsizing/index.ts"],
+  "layout/display": ["./src/layout/display/index.ts"],
+  "layout/floating": ["./src/layout/floating/index.ts"],
 }
 
 function makeHtmlTemplates() {
@@ -68,6 +71,14 @@ const config = {
       {
         test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
         type: "asset",
+        generator: {
+          filename: "asset/[name][ext]"
+        },
+        parser: {
+          dataUrlCondition: {
+            maxSize: 1024 * 15,
+          }
+        }
       }
     ],
   },
