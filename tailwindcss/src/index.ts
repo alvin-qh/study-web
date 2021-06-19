@@ -8,6 +8,9 @@ const menu = [
       {title: "Box sizing", href: "layout/boxsizing.html"},
       {title: "Display", href: "layout/display.html"},
       {title: "Floating", href: "layout/floating.html"},
+      {title: "Clear Floating", href: "layout/clear-floating.html"},
+      {title: "Object Fit", href: "layout/object-fit.html"},
+      {title: "Object Position", href: "layout/object-position.html"},
     ]
   }
 ]

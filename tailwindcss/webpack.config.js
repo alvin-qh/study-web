@@ -14,6 +14,9 @@ const entries = {
   "layout/boxsizing": ["./src/layout/boxsizing/index.ts"],
   "layout/display": ["./src/layout/display/index.ts"],
   "layout/floating": ["./src/layout/floating/index.ts"],
+  "layout/clear-floating": ["./src/layout/clear-floating/index.ts"],
+  "layout/object-fit": ["./src/layout/object-fit/index.ts"],
+  "layout/object-position": ["./src/layout/object-position/index.ts"],
 }
 
 function makeHtmlTemplates() {
