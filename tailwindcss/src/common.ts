@@ -7,7 +7,6 @@ hljs.configure({
   useBR: true
 });
 
-
 class Story {
   private $wrapper: HTMLDivElement;
   private $html: HTMLDivElement | undefined;
@@ -27,14 +26,32 @@ class Story {
       $htmlBlock.className = 'md:my-4 my-3';
       this.$wrapper.appendChild($htmlBlock);
 
-      const $htmlTitle: HTMLElement = document.createElement('h2');
+      const $htmlTitle: HTMLElement = document.createElement('span');
       $htmlTitle.innerText = 'Demo: ';
       $htmlTitle.className = 'font-medium md:px-3 px-2 text-xs md:text-base';
       $htmlBlock.appendChild($htmlTitle);
 
+      const $btnSx: HTMLButtonElement = document.createElement('button');
+      $btnSx.className ="border border-blue-300 px-2 py-1 font-semibold text-xs"
+      $btnSx.innerText = 'SX';
+      $htmlBlock.appendChild($btnSx);
+
+      const $btnMd: HTMLButtonElement = document.createElement('button');
+      $btnMd.className ="border border-blue-300 px-2 py-1 font-semibold text-xs ml-3"
+      $btnMd.innerText = 'MD';
+      $htmlBlock.appendChild($btnMd);
+
       this.$html = document.createElement('div');
-      this.$html.className = "bg-gray-100 py-2 px-3 mt-1"
+      this.$html.className = "bg-gray-100 py-2 px-3 mt-1";
       $htmlBlock.appendChild(this.$html);
+
+      $btnSx.addEventListener('click', e => {
+        this.$html!.className = 'bg-gray-100 py-2 px-3 mt-1 w-1/2';
+      });
+
+      $btnMd.addEventListener('click', e => {
+        this.$html!.className = 'bg-gray-100 py-2 px-3 mt-1 w-full';
+      });
     }
 
     const $codeBlock: HTMLDivElement = document.createElement('div');
@@ -59,7 +76,7 @@ class Story {
     }
     this.$code.innerText = code;
     return this;
-  }
+  } 
 
   get $element(): HTMLDivElement {
     return this.$wrapper

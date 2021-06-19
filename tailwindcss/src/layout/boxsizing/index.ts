@@ -20,7 +20,7 @@ window.onload = () => {
 <div class="box-border md:box-content border-blue-600 border-2 p-4">
   <!-- ... -->
 </div>`),
-    new Story("Config variants", "javascript")
+    new Story("Variants", "javascript")
       .code(`\
 // wailwind.config.js
 module.exports = {
@@ -31,7 +31,7 @@ module.exports = {
     }
   }
 }`),
-    new Story("Disable box sizing", "javascript")
+    new Story("Disabling", "javascript")
       .code(`\
 // wailwind.config.js
 module.exports = {

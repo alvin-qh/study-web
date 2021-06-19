@@ -6,8 +6,6 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const isProduction = process.env.NODE_ENV === "production";
 
-const stylesHandler = "style-loader";
-
 const entries = {
   "index": ["./src/index.ts"],
   "layout/container": ["./src/layout/container/index.ts"],
@@ -17,6 +15,12 @@ const entries = {
   "layout/clear-floating": ["./src/layout/clear-floating/index.ts"],
   "layout/object-fit": ["./src/layout/object-fit/index.ts"],
   "layout/object-position": ["./src/layout/object-position/index.ts"],
+  "flex/direction": ["./src/flex/direction/index.ts"],
+  "flex/wrap": ["./src/flex/wrap/index.ts"],
+  "flex/scale": ["./src/flex/scale/index.ts"],
+  "flex/grow": ["./src/flex/grow/index.ts"],
+  "flex/shrink": ["./src/flex/shrink/index.ts"],
+  "flex/order": ["./src/flex/order/index.ts"],
 }
 
 function makeHtmlTemplates() {

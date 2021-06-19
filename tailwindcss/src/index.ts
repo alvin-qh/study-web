@@ -12,6 +12,17 @@ const menu = [
       {title: "Object Fit", href: "layout/object-fit.html"},
       {title: "Object Position", href: "layout/object-position.html"},
     ]
+  },
+  {
+    title: "Flex Layout",
+    links: [
+      {title: "Flex Direction", href: "flex/direction.html"},
+      {title: "Flex Wrap", href: "flex/wrap.html"},
+      {title: "Flex Scale", href: "flex/scale.html"},
+      {title: "Flex Grow", href: "flex/grow.html"},
+      {title: "Flex Shrink", href: "flex/shrink.html"},
+      {title: "Flex Order", href: "flex/order.html"},
+    ]
   }
 ]
 
@@ -23,10 +34,13 @@ const menuToHtml = (): string => {
     
     const block: Array<string> = []
     for (const link of item.links) {
-      block.push(`\n    <li class="inline-block text-xs md:text-base"><a href="${link.href}">${link.title}</a></li>`)
+      block.push(`\n    <li class="inline-block text-xs md:text-base">\n      <a href="${link.href}">${link.title}</a>\n    </li>`)
     }
     html.push(block.join(`\n    <b class="text-gray-300">|</b>`))
     html.push(`\n  </div>`)
+    if (item !== menu[menu.length - 1]) {
+      html.push('\n');
+    }
   }
   return html.join("")
 }
@@ -36,7 +50,7 @@ window.onload = () => {
   book.append([
     new Story("Menu")
       .code(`\
-<div class="container mx-auto px-4">
+<div class="container mx-auto px-4 space-y-2 flex flex-col">
 ${menuToHtml()}
 </div>`)
   ])
