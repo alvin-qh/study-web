@@ -21,6 +21,15 @@ const entries = {
   "flex/grow": ["./src/flex/grow/index.ts"],
   "flex/shrink": ["./src/flex/shrink/index.ts"],
   "flex/order": ["./src/flex/order/index.ts"],
+  "box-alignment/justify-content": ["./src/box-alignment/justify-content/index.ts"],
+  "box-alignment/justify-items": ["./src/box-alignment/justify-items/index.ts"],
+  "box-alignment/justify-self": ["./src/box-alignment/justify-self/index.ts"],
+  "box-alignment/align-content": ["./src/box-alignment/align-content/index.ts"],
+  "box-alignment/align-items": ["./src/box-alignment/align-items/index.ts"],
+  "box-alignment/align-self": ["./src/box-alignment/align-self/index.ts"],
+  "box-alignment/place-content": ["./src/box-alignment/place-content/index.ts"],
+  "box-alignment/place-items": ["./src/box-alignment/place-items/index.ts"],
+  "box-alignment/place-self": ["./src/box-alignment/place-self/index.ts"],
 }
 
 function makeHtmlTemplates() {

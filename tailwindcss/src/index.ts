@@ -23,6 +23,20 @@ const menu = [
       {title: "Flex Shrink", href: "flex/shrink.html"},
       {title: "Flex Order", href: "flex/order.html"},
     ]
+  },
+  {
+    title: "Box Alignment",
+    links: [
+      {title: "Justify Content", href: "box-alignment/justify-content.html"},
+      {title: "Justify Items", href: "box-alignment/justify-items.html"},
+      {title: "Justify Self", href: "box-alignment/justify-self.html"},
+      {title: "Align Content", href: "box-alignment/align-content.html"},
+      {title: "Align Items", href: "box-alignment/align-items.html"},
+      {title: "Align Self", href: "box-alignment/align-self.html"},
+      {title: "Place Content", href: "box-alignment/place-content.html"},
+      {title: "Place Items", href: "box-alignment/place-items.html"},
+      {title: "Place Self", href: "box-alignment/place-self.html"},
+    ]
   }
 ]
 
