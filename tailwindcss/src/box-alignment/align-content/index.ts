@@ -1,82 +1,132 @@
 import { Story, StoryBook } from '../../common';
 
 window.onload = () => {
-  const book = new StoryBook('Flex Scale', true);
+  const book = new StoryBook('Align Content', true);
   book.append([
-    new Story("Initial")
+    new Story("Start")
       .code(`\
-<!-- The 'flex-initial' element won't grow size, but will shrink if needed -->
-<div class="flex space-x-2 text-lg font-semibold text-white">
-  <div class="flex-initial flex items-center bg-indigo-500 px-4">Short</div>
-  <div class="flex-initial flex items-center bg-indigo-500 px-4">Medium length</div>
-  <div class="flex-initial flex items-center bg-indigo-500 px-4">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-    Qui ad labore ipsam, aut rem quo repellat esse tempore id, quidem
+<!-- Use 'content-start' to arrange the rows in the container relative to the starting point of the cross axis -->
+<div class="flex flex-wrap content-start h-48 text-white text-lg font-semibold">
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-rose-400 h-12">1</div>
+  </div>
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-rose-400 h-12">2</div>
+  </div>
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-rose-400 h-12">3</div>
+  </div>
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-rose-400 h-12">4</div>
+  </div>
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-rose-400 h-12">5</div>
   </div>
 </div>
 `),
-    new Story("Flex 1")
+    new Story("Center")
       .code(`\
-<!-- Use 'flex-1' will grow and shrink as needed without taking initial size into account -->
-<div class="flex space-x-2 text-lg text-white font-semibold">
-  <div class="flex-1 flex items-center bg-pink-400 px-4">Short</div>
-  <div class="flex-1 flex items-center bg-pink-400 px-4">Medium length</div>
-  <div class="flex-1 flex items-center bg-pink-400 px-4">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-    Qui ad labore ipsam, aut rem quo repellat esse tempore id, quidem
+<!-- Use 'content-center' to arrange the rows in the container relative to the center of the cross axis -->
+<div class="flex flex-wrap content-center h-48 text-white text-lg font-semibold">
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-blue-400 h-12">1</div>
+  </div>
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-blue-400 h-12">2</div>
+  </div>
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-blue-400 h-12">3</div>
+  </div>
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-blue-400 h-12">4</div>
+  </div>
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-blue-400 h-12">5</div>
   </div>
 </div>
 `),
-    new Story("Auto")
+    new Story("End")
       .code(`\
-<!-- Use 'flex-auto' will grow and shrink as needed taking initial size into account -->
-<div class="flex space-x-2 text-lg text-white font-semibold">
-  <div class="flex-auto flex items-center bg-blue-400 px-4">Short</div>
-  <div class="flex-auto flex items-center bg-blue-400 px-4">Medium length</div>
-  <div class="flex-auto flex items-center bg-blue-400 px-4">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-    Qui ad labore ipsam, aut rem quo repellat esse tempore id, quidem
+<!-- Use 'content-end' to arrange the rows in the container relative to the end of the cross axis -->
+<div class="flex flex-wrap content-end h-48 text-white text-lg font-semibold">
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-green-400 h-12">1</div>
+  </div>
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-green-400 h-12">2</div>
+  </div>
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-green-400 h-12">3</div>
+  </div>
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-green-400 h-12">4</div>
+  </div>
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-green-400 h-12">5</div>
   </div>
 </div>
 `),
-    new Story("None")
+    new Story("Space Between")
       .code(`\
-<!-- use 'flex-none' will grow and shrink as needed taking initial size into account -->
-<div class="flex space-x-2 text-lg text-white font-semibold">
-  <div class="flex-1 flex items-center bg-green-400 px-4">
-    Item that can grow or shrink if needed
+<!-- Use 'content-between' to allocate rows in the container so that there is equal space between each row -->
+<div class="flex flex-wrap content-between h-48 text-white text-lg font-semibold">
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-yellow-400 h-12">1</div>
   </div>
-  <div class="flex-none flex items-center bg-green-600 px-4">
-    Item that cannot grow or shrink
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-yellow-400 h-12">2</div>
   </div>
-  <div class="flex-1 flex items-center bg-green-400 px-4">
-    Item that can grow or shrink if needed
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-yellow-400 h-12">3</div>
+  </div>
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-yellow-400 h-12">4</div>
+  </div>
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-yellow-400 h-12">5</div>
+  </div>
+</div>
+`),
+    new Story("Space Around")
+      .code(`\
+<!-- Use 'content-around' to distribute the rows in a container so that there is equal space around each row -->
+<div class="flex flex-wrap content-between h-48 text-white text-lg font-semibold">
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-light-blue-400 h-12">1</div>
+  </div>
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-light-blue-400 h-12">2</div>
+  </div>
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-light-blue-400 h-12">3</div>
+  </div>
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-light-blue-400 h-12">4</div>
+  </div>
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-light-blue-400 h-12">5</div>
   </div>
 </div>
 `),
     new Story("Responsive")
       .code(`\
-<div class="flex space-x-2 text-lg text-white font-semibold">
-  <div class="flex-1 md:flex-initial flex items-center bg-red-400 px-4">1</div>
-  <div class="flex-1 md:flex-initial flex items-center bg-red-400 px-4">2</div>
-  <div class="flex-1 md:flex-initial flex items-center bg-red-400 px-4">3</div>
+<div class="flex flex-wrap content-start md:content-around h-48 text-white text-lg font-semibold">
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-violet-400 h-12">1</div>
+  </div>
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-violet-400 h-12">2</div>
+  </div>
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-violet-400 h-12">3</div>
+  </div>
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-violet-400 h-12">4</div>
+  </div>
+  <div class="w-1/3 p-2">
+    <div class="flex items-center justify-center bg-violet-400df h-12">5</div>
+  </div>
 </div>
-`),
-    new Story("Flex Values", "javascript")
-      .code(`\
-// wailwind.config.js
-module.exports = {
-  theme: {
-    flex: {
-      '1': '1 1 0%',
-      auto: '1 1 auto',
-//    initial: '0 1 auto',   // Disable original 'flex-initial' define
-      inherit: 'inherit',    // Add new 'flex-initial' class
-      none: 'none',
-      '2': '2 2 0%',         // add new 'flex-2' class
-    }
-  }
-}
 `),
     new Story("Variants", "javascript")
       .code(`\
@@ -85,7 +135,7 @@ module.exports = {
   variants: {
     extend: {
       // ...
-      flex: ['hover', 'focus'],
+      alignContent: ['hover', 'focus'],
     }
   }
 }
@@ -97,7 +147,7 @@ module.exports = {
   variants: {
     extend: {
       // ...
-      flex: false
+      alignContent: false
     }
   }
 }`)

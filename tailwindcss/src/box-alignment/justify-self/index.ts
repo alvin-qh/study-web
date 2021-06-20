@@ -1,77 +1,78 @@
 import { Story, StoryBook } from '../../common';
 
 window.onload = () => {
-  const book = new StoryBook('Flex Order', true);
+  const book = new StoryBook('Justify Self', true);
   book.append([
-    new Story("Order by Number")
+    new Story("Auto")
       .code(`\
-<!-- Use 'order-{n}' to set the order absolutely -->
-<div class="flex justify-between font-semibold text-white text-lg">
-  <div class="order-2 w-16 h-16 bg-blue-400 flex items-center justify-center">
-    1
-  </div>
-  <div class="order-3 w-16 h-16 bg-blue-400 flex items-center justify-center">
-    2
-  </div>
-  <div class="order-1 w-16 h-16 bg-blue-400 flex items-center justify-center">
-    3
-  </div>
+<!-- Use 'justify-self-auto' to align an item based on the value of the grid's 'justify-items' property -->
+<div class="grid grid-cols-3 gap-4 justify-items-stretch auto-rows-fr h-32 text-white text-lg font-semibold">
+  <div class="bg-stripes bg-stripes-purple-400"></div>
+  <div class="justify-self-auto flex items-center justify-center bg-purple-400">1</div>
+  <div class="bg-stripes bg-stripes-purple-400"></div>
+  <div class="bg-stripes bg-stripes-purple-400"></div>
+  <div class="bg-stripes bg-stripes-purple-400"></div>
+  <div class="bg-stripes bg-stripes-purple-400"></div>
 </div>
 `),
-    new Story("Order by Position")
+    new Story("Start")
       .code(`\
-<!-- Use 'order-{first | last | none}' to set order relative -->
-<div class="flex justify-between font-semibold text-white text-lg">
-  <div class="order-last w-16 h-16 bg-pink-400 flex items-center justify-center">
-    1
-  </div>
-  <div class="order-none w-16 h-16 bg-pink-400 flex items-center justify-center">
-    2
-  </div>
-  <div class="order-first w-16 h-16 bg-pink-400 flex items-center justify-center">
-    3
-  </div>
+<!-- Use 'justify-self-start' to align the grid items along the starting point of the inline axis -->
+<div class="grid grid-cols-3 gap-4 justify-items-stretch auto-rows-fr h-32 text-white text-lg font-semibold">
+  <div class="bg-stripes bg-stripes-green-400"></div>
+  <div class="justify-self-start flex items-center justify-center bg-green-400 px-4">1</div>
+  <div class="bg-stripes bg-stripes-green-400"></div>
+  <div class="bg-stripes bg-stripes-green-400"></div>
+  <div class="bg-stripes bg-stripes-green-400"></div>
+  <div class="bg-stripes bg-stripes-green-400"></div>
+</div>
+`),
+    new Story("Center")
+      .code(`\
+<!-- Use 'justify-self-center' to align the grid item along the center of its inline axis -->
+<div class="grid grid-cols-3 gap-4 justify-items-stretch auto-rows-fr h-32 text-white text-lg font-semibold">
+  <div class="bg-stripes bg-stripes-yellow-400"></div>
+  <div class="justify-self-center flex items-center justify-center bg-yellow-400 px-4">1</div>
+  <div class="bg-stripes bg-stripes-yellow-400"></div>
+  <div class="bg-stripes bg-stripes-yellow-400"></div>
+  <div class="bg-stripes bg-stripes-yellow-400"></div>
+  <div class="bg-stripes bg-stripes-yellow-400"></div>
+</div>
+`),
+    new Story("End")
+      .code(`\
+<!-- Use 'justify-self-center' to align the grid item along the center of its inline axis -->
+<div class="grid grid-cols-3 gap-4 justify-items-stretch auto-rows-fr h-32 text-white text-lg font-semibold">
+  <div class="bg-stripes bg-stripes-pink-400"></div>
+  <div class="justify-self-end flex items-center justify-center bg-pink-400 px-4">1</div>
+  <div class="bg-stripes bg-stripes-pink-400"></div>
+  <div class="bg-stripes bg-stripes-pink-400"></div>
+  <div class="bg-stripes bg-stripes-pink-400"></div>
+  <div class="bg-stripes bg-stripes-pink-400"></div>
+</div>
+`),
+    new Story("Stretch")
+      .code(`\
+<!-- Use 'justify-self-stretch' to stretch a grid item to fill the grid area on its inline axis -->
+<div class="grid grid-cols-3 gap-4 justify-items-start auto-rows-fr h-32 text-white text-lg font-semibold">
+  <div class="bg-stripes px-4 bg-stripes-purple-400"></div>
+  <div class="justify-self-stretch flex items-center justify-center bg-purple-400 px-4">1</div>
+  <div class="bg-stripes px-4 bg-stripes-purple-400"></div>
+  <div class="bg-stripes px-4 bg-stripes-purple-400"></div>
+  <div class="bg-stripes px-4 bg-stripes-purple-400"></div>
+  <div class="bg-stripes px-4 bg-stripes-purple-400"></div>
 </div>
 `),
     new Story("Responsive")
       .code(`\
-<div class="flex justify-between font-semibold text-white text-lg">
-  <div class="order-last md:order-1 w-16 h-16 bg-green-400 flex items-center justify-center">
-    1
-  </div>
-  <div class="order-none md:order-2 w-16 h-16 bg-green-400 flex items-center justify-center">
-    2
-  </div>
-  <div class="order-first md:order-3 w-16 h-16 bg-green-400 flex items-center justify-center">
-    3
-  </div>
+<div class="grid grid-cols-3 gap-4 justify-items-stretch auto-rows-fr h-32 font-semibold text-white text-lg">
+  <div class="bg-stripes px-4 bg-stripes-purple-400"></div>
+  <div class="justify-self-stretch md:justify-self-start flex items-center justify-center bg-purple-400 px-4">1</div>
+  <div class="bg-stripes px-4 bg-stripes-purple-400"></div>
+  <div class="bg-stripes px-4 bg-stripes-purple-400"></div>
+  <div class="bg-stripes px-4 bg-stripes-purple-400"></div>
+  <div class="bg-stripes px-4 bg-stripes-purple-400"></div>
 </div>
-`),
-    new Story("Order Values", "javascript")
-      .code(`\
-// wailwind.config.js
-module.exports = {
-  theme: {
-    order: {
-      first: '-9999',
-      last: '9999',
-//    none: '0',      // Disable 'order-none'
-      normal: '0',    // Add new 'order-normal'
-      '1': '1',
-      '2': '2',
-      '3': '3',
-      '4': '4',
-      '5': '5',
-      '6': '6',
-//    '7': '7',       // Disable 'order-{7~12}'
-//    '8': '8',
-//    '9': '9',
-//    '10': '10',
-//    '11': '11',
-//    '12': '12'
-    }
-  }
-}
 `),
     new Story("Variants", "javascript")
       .code(`\
@@ -80,7 +81,7 @@ module.exports = {
   variants: {
     extend: {
       // ...
-      order: ['hover', 'focus'],
+      justifySelf: ['hover', 'focus'],
     }
   }
 }
@@ -92,7 +93,7 @@ module.exports = {
   variants: {
     extend: {
       // ...
-      order: false
+      justifySelf: false
     }
   }
 }`)

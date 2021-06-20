@@ -1,6 +1,6 @@
-// Generated using webpack-cli https://github.com/webpack/webpack-cli
-
 const path = require("path");
+const webpack = require("webpack");
+
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
@@ -54,6 +54,7 @@ function makeHtmlTemplates() {
 
 
 const config = {
+  mode: isProduction ? "production" : "development",
   entry: entries,
   output: {
     path: path.resolve(__dirname, "dist"),
@@ -64,6 +65,7 @@ const config = {
     host: "localhost",
   },
   plugins: [
+    new webpack.ProgressPlugin(),
     ...makeHtmlTemplates(),
     new MiniCssExtractPlugin({
       filename: isProduction ? 'css/[name]-[chunkhash:8].css' : 'css/[name].css'
@@ -101,6 +103,24 @@ const config = {
   resolve: {
     extensions: [".tsx", ".ts", ".js"],
   },
+  optimization: {
+    minimize: isProduction,
+    usedExports: true,
+    providedExports: true,
+    sideEffects: true,
+    removeEmptyChunks: true,
+    runtimeChunk: 'single',
+    splitChunks: {
+      cacheGroups: {
+        common: {
+          name: 'common',
+          chunks: 'all',
+          minChunks: 3,
+          reuseExistingChunk: true,
+        }
+      }
+    }
+  }
 };
 
 module.exports = config

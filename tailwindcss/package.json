@@ -3,18 +3,19 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "webpack --mode=production --node-env=production",
-    "build:dev": "webpack --mode=development",
-    "build:prod": "webpack --mode=production --node-env=production",
-    "watch": "webpack --mode=development --watch",
-    "serve": "webpack serve --mode=development --stats-error-details"
+    "build:dev": "env NODE_ENV=development webpack",
+    "build:prod": "env NODE_ENV=production webpack",
+    "watch": "env NODE_ENV=development webpack --watch",
+    "serve": "env NODE_ENV=development webpack serve --stats-error-details"
   },
   "devDependencies": {
     "autoprefixer": "^10.2.6",
+    "cross-env": "^7.0.3",
     "css-loader": "^5.2.6",
     "html-webpack-plugin": "^5.3.1",
     "mini-css-extract-plugin": "^1.6.0",
     "postcss": "^8.3.2",
+    "postcss-fixes": "^2.0.1",
     "postcss-loader": "^6.1.0",
     "prettier": "^2.3.1",
     "style-loader": "^2.0.0",
@@ -27,7 +28,6 @@
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
-    "@types/highlight.js": "^10.1.0",
     "highlight.js": "^10.2.0",
     "tailwindcss": "^2.1.4"
   }
