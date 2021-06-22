@@ -12,7 +12,6 @@
     - [2.3. Use Purge](#23-use-purge)
   - [2.4. Use Tailwind without postcss](#24-use-tailwind-without-postcss)
   - [3. Menu](#3-menu)
-    - [3.1.](#31)
 
 ## 0. Prepare
 
@@ -119,4 +118,4 @@ Include the generated `.css` file into HTML
 
 ## 3. Menu
 
-### 3.1. 
+    Layout
