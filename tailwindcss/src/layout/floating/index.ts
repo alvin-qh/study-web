@@ -4,8 +4,11 @@ import image from '../../asset/image.jpg';
 window.onload = () => {
   const book = new StoryBook('Floating', true);
   book.append([
-    new Story("Float Right")
+    new Story("Float Right", "将元素浮动到父容器的右侧")
       .code(`\
+<!--
+  'float-right': 设置向右浮动
+-->
 <img class="float-right w-40 h-40 m-1" 
      src="${image}">
 <p>
@@ -22,8 +25,11 @@ window.onload = () => {
   Etiam eu vehicula felis.
 </p>
 `),
-    new Story("Float Left")
+    new Story("Float Left", "将元素浮动到父容器的左侧")
       .code(`\
+<!--
+  'float-left': 设置向左浮动
+-->
 <img class="float-left w-40 h-40 m-1" 
      src="${image}">
 <p>
@@ -40,8 +46,11 @@ window.onload = () => {
   Etiam eu vehicula felis.
 </p>
 `),
-    new Story("No Float")
+    new Story("No Float", "不浮动")
       .code(`\
+<!--
+  'float-none': 设置元素不浮动
+-->
 <img class="float-none w-40 h-40 m-1" 
      src="${image}">
 <p>
@@ -76,7 +85,7 @@ window.onload = () => {
   Etiam eu vehicula felis.
 </p>
 `),
-    new Story("Variants", "javascript")
+    new Story("Variants", "", "javascript")
       .code(`\
 // tailwind.config.js
 module.exports = {
@@ -88,7 +97,7 @@ module.exports = {
   }
 }
 `),
-    new Story("Disabling", "javascript")
+    new Story("Disabling", "", "javascript")
       .code(`\
 // tailwind.config.js
 module.exports = {

@@ -20,14 +20,25 @@ class Story {
   private $html: HTMLDivElement | undefined;
   private $code: HTMLElement;
 
-  constructor(title: string, language: string = 'html') {
+  constructor(title: string, descirpt: string = "", language: string = 'html') {
     this.$wrapper = document.createElement('div');
     this.$wrapper.className = "border rounded-sm border-solid py-2 px-2 shadow-xl my-5";
 
+    const $titleBlock: HTMLDivElement = document.createElement('div');
+    $titleBlock.className = 'bg-gray-100 py-2 md:px-3 px-2';
+    this.$wrapper.appendChild($titleBlock);
+
     const $storyTitle: HTMLDivElement = document.createElement('h1');
     $storyTitle.innerText = `# ${title}`
-    $storyTitle.className = 'font-bold text-sm md:text-lg bg-gray-100 py-2 md:px-3 px-2';
-    this.$wrapper.appendChild($storyTitle);
+    $storyTitle.className = 'font-bold text-sm md:text-lg';
+    $titleBlock.appendChild($storyTitle);
+
+    if (descirpt) {
+      const $storyDescript: HTMLSpanElement = document.createElement('span');
+      $storyDescript.innerHTML = descirpt;
+      $storyDescript.className = 'text-sm md:text-base pl-3 md:pl-4 text-gray-500';
+      $titleBlock.appendChild($storyDescript);
+    }
 
     if (language === 'html') {
       const $htmlBlock: HTMLDivElement = document.createElement('div');
@@ -40,12 +51,12 @@ class Story {
       $htmlBlock.appendChild($htmlTitle);
 
       const $btnSx: HTMLButtonElement = document.createElement('button');
-      $btnSx.className ="border border-blue-300 px-2 py-1 font-semibold text-xs"
+      $btnSx.className = "border border-blue-300 px-2 py-1 font-semibold text-xs"
       $btnSx.innerText = 'SX';
       $htmlBlock.appendChild($btnSx);
 
       const $btnMd: HTMLButtonElement = document.createElement('button');
-      $btnMd.className ="border border-blue-300 px-2 py-1 font-semibold text-xs ml-3"
+      $btnMd.className = "border border-blue-300 px-2 py-1 font-semibold text-xs ml-3"
       $btnMd.innerText = 'MD';
       $htmlBlock.appendChild($btnMd);
 
@@ -84,7 +95,7 @@ class Story {
     }
     this.$code.innerText = code;
     return this;
-  } 
+  }
 
   get $element(): HTMLDivElement {
     return this.$wrapper

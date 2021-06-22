@@ -4,11 +4,10 @@ import image from '../../asset/image.jpg';
 window.onload = () => {
   const book = new StoryBook('Clear Floating', true);
   book.append([
-    new Story("Clear Left")
+    new Story("Clear Left", "清除之前元素的左浮动")
       .code(`\
 <!-- 
-  Use 'clear-left', 
-  put the element under the element with 'float-left' class 
+  'clear-left': 清除当前元素的左浮动，当前元素放置在之前左浮动元素的下方 
 -->
 <img class="float-left w-40 h-40" src="${image}">
 <img class="float-right w-60 h-60" src="${image}">
@@ -29,11 +28,10 @@ window.onload = () => {
   efficitur odio eu, finibus justo. Etiam eu vehicula felis.
 </p>
 `),
-    new Story("Clear Right")
+    new Story("Clear Right", "清除之前元素的右浮动")
       .code(`\
 <!-- 
-  Use 'clear-right', 
-  put the element under the element with 'float-right' class 
+  'clear-right': 清除当前元素的右浮动，当前元素放置在之前右浮动元素的下方 
 -->
 <img class="float-left w-40 h-40" src="${image}">
 <img class="float-right w-60 h-60" src="${image}">
@@ -54,11 +52,10 @@ window.onload = () => {
   efficitur odio eu, finibus justo. Etiam eu vehicula felis.
 </p>
 `),
-    new Story("Clear Both")
+    new Story("Clear Both", "清除之前元素的所有浮动")
       .code(`\
 <!-- 
-  Use 'clear-both', 
-  put the element under the element either with 'float-left' or 'float-right' class 
+  'clear-both': 清除当前元素的浮动，将元素放置在所有之前的浮动元素下方 
 -->
 <img class="float-left w-40 h-40" src="${image}">
 <img class="float-right w-60 h-60" src="${image}">
@@ -79,11 +76,10 @@ window.onload = () => {
   efficitur odio eu, finibus justo. Etiam eu vehicula felis.
 </p>
 `),
-    new Story("Don't Clear")
+    new Story("Don't Clear", "不清除当前元素的浮动，相当于不增加 'clear-{left, right, both}' 类的情况")
       .code(`\
 <!-- 
-  Use 'clear-none', 
-  reset any clear property on element
+  'clear-none': 重置所有的清除浮动行为，即不再对浮动进行清除
 -->
 <img class="float-left w-40 h-40 m-2" src="${image}">
 <img class="float-right w-60 h-60 m-2" src="${image}">
@@ -125,7 +121,7 @@ window.onload = () => {
   efficitur odio eu, finibus justo. Etiam eu vehicula felis.
 </p>
 `),
-new Story("Variants", "javascript")
+new Story("Variants", "", "javascript")
       .code(`\
 // tailwind.config.js
 module.exports = {
@@ -137,7 +133,7 @@ module.exports = {
   }
 }
 `),
-new Story("Disabling", "javascript")
+new Story("Disabling", "", "javascript")
       .code(`\
 // tailwind.config.js
   module.exports = {

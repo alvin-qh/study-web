@@ -11,7 +11,6 @@
     - [2.2. Compile css file](#22-compile-css-file)
     - [2.3. Use Purge](#23-use-purge)
   - [2.4. Use Tailwind without postcss](#24-use-tailwind-without-postcss)
-  - [3. Menu](#3-menu)
 
 ## 0. Prepare
 
@@ -115,7 +114,3 @@ Include the generated `.css` file into HTML
 ```html
 <link href="/tailwind.css" rel="stylesheet">
 ```
-
-## 3. Menu
-
-    Layout
