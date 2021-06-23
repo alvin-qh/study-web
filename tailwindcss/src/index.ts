@@ -18,18 +18,19 @@ const menu = [
     title: "Flex Layout",
     descript: "定义弹性容器布局",
     links: [
-      {title: "Flex Direction", href: "flex/direction.html", descript: "设置容器"},
-      {title: "Flex Wrap", href: "flex/wrap.html", descript: "设置容器"},
-      {title: "Flex Scale", href: "flex/scale.html", descript: "设置容器"},
-      {title: "Flex Grow", href: "flex/grow.html", descript: "设置容器"},
-      {title: "Flex Shrink", href: "flex/shrink.html", descript: "设置容器"},
-      {title: "Flex Order", href: "flex/order.html", descript: "设置容器"},
+      {title: "Flex Direction", href: "flex/direction.html", descript: "设置元素在容器中的布局方向"},
+      {title: "Flex Wrap", href: "flex/wrap.html", descript: "设置容器内元素如何换行"},
+      {title: "Flex Scale", href: "flex/scale.html", descript: "控制元素的放大和缩小"},
+      {title: "Flex Grow", href: "flex/grow.html", descript: "控制元素在必要时进行放大"},
+      {title: "Flex Shrink", href: "flex/shrink.html", descript: "控制元素在必要时进行缩小"},
+      {title: "Flex Order", href: "flex/order.html", descript: "设置元素排列顺序"},
     ]
   },
   {
     title: "Box Alignment",
+    descript: "定义元素在容器中的定位对齐方式",
     links: [
-      {title: "Justify Content", href: "box-alignment/justify-content.html", descript: "设置容器"},
+      {title: "Justify Content", href: "box-alignment/justify-content.html", descript: "定义元素如何依据其容器进行主轴排列对齐"},
       {title: "Justify Items", href: "box-alignment/justify-items.html", descript: "设置容器"},
       {title: "Justify Self", href: "box-alignment/justify-self.html", descript: "设置容器"},
       {title: "Align Content", href: "box-alignment/align-content.html", descript: "设置容器"},

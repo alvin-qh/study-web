@@ -3,66 +3,75 @@ import { Story, StoryBook } from '../../common';
 window.onload = () => {
   const book = new StoryBook('Flex Scale', true);
   book.append([
-    new Story("Initial")
+    new Story("Initial", "允许元素在考虑到其初始尺寸的情况下根据其容器尺寸进行缩小但不放大")
       .code(`\
-<!-- The 'flex-initial' element won't grow size, but will shrink if needed -->
-<div class="flex space-x-2 text-lg font-semibold text-white">
-  <div class="flex-initial flex items-center bg-indigo-500 px-4">Short</div>
-  <div class="flex-initial flex items-center bg-indigo-500 px-4">Medium length</div>
-  <div class="flex-initial flex items-center bg-indigo-500 px-4">
+<!--
+  'flex-initial': 当容器尺寸大于元素尺寸时，显示元素的原始尺寸
+                  当容器尺寸小于元素尺寸时，缩小元素以适应容器尺寸
+-->
+<div class="flex gap-4 text-lg font-semibold text-white">
+  <div class="flex-initial flex items-center justify-center px-2 bg-indigo-500">Short</div>
+  <div class="flex-initial flex items-center justify-center px-2 bg-indigo-500">Medium length</div>
+  <div class="flex-initial flex items-center justify-center px-2 bg-indigo-500">
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
     Qui ad labore ipsam, aut rem quo repellat esse tempore id, quidem
   </div>
 </div>
 `),
-    new Story("Flex 1")
+    new Story("Flex 1", "允许元素根据其容器尺寸进行放大和缩小，忽略其初始尺寸")
       .code(`\
-<!-- Use 'flex-1' will grow and shrink as needed without taking initial size into account -->
-<div class="flex space-x-2 text-lg text-white font-semibold">
-  <div class="flex-1 flex items-center bg-pink-400 px-4">Short</div>
-  <div class="flex-1 flex items-center bg-pink-400 px-4">Medium length</div>
-  <div class="flex-1 flex items-center bg-pink-400 px-4">
+<!--
+  'flex-1': 子元素完全根据容器情况进行缩放，
+-->
+<div class="flex gap-4 text-lg text-white font-semibold">
+  <div class="flex-1 flex items-center justify-center bg-pink-400 px-4">Short</div>
+  <div class="flex-1 flex items-center justify-center bg-pink-400 px-4">Medium length</div>
+  <div class="flex-1 flex items-center justify-center bg-pink-400 px-4">
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
     Qui ad labore ipsam, aut rem quo repellat esse tempore id, quidem
   </div>
 </div>
 `),
-    new Story("Auto")
+    new Story("Auto", "在考虑到元素初始大小的情况下对其进行放大和缩小")
       .code(`\
-<!-- Use 'flex-auto' will grow and shrink as needed taking initial size into account -->
-<div class="flex space-x-2 text-lg text-white font-semibold">
-  <div class="flex-auto flex items-center bg-blue-400 px-4">Short</div>
-  <div class="flex-auto flex items-center bg-blue-400 px-4">Medium length</div>
-  <div class="flex-auto flex items-center bg-blue-400 px-4">
+<!--
+  'flex-auto': 自动根据容器尺寸对元素进行缩放，并考虑元素的初始尺寸
+-->
+<div class="flex gap-4 text-lg text-white font-semibold">
+  <div class="flex-auto flex items-center bg-blue-400 px-2">Short</div>
+  <div class="flex-auto flex items-center bg-blue-400 px-2">Medium length</div>
+  <div class="flex-auto flex items-center bg-blue-400 px-2">
     Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
     Qui ad labore ipsam, aut rem quo repellat esse tempore id, quidem
   </div>
 </div>
 `),
-    new Story("None")
+    new Story("None", "阻止元素缩放")
       .code(`\
-<!-- use 'flex-none' will grow and shrink as needed taking initial size into account -->
-<div class="flex space-x-2 text-lg text-white font-semibold">
-  <div class="flex-1 flex items-center bg-green-400 px-4">
+<!--
+  'flex-none': 阻止元素为适应其容器进行的缩放
+-->
+<div class="flex gap-4 text-lg text-white font-semibold">
+  <div class="flex-1 flex items-center bg-green-400 px-2">
     Item that can grow or shrink if needed
   </div>
-  <div class="flex-none flex items-center bg-green-600 px-4">
+  <div class="flex-none flex items-center bg-green-600 px-2">
     Item that cannot grow or shrink
   </div>
-  <div class="flex-1 flex items-center bg-green-400 px-4">
+  <div class="flex-1 flex items-center bg-green-400 px-2">
     Item that can grow or shrink if needed
   </div>
 </div>
 `),
     new Story("Responsive")
       .code(`\
-<div class="flex space-x-2 text-lg text-white font-semibold">
+<div class="flex gap-4 text-lg text-white font-semibold">
   <div class="flex-1 md:flex-initial flex items-center bg-red-400 px-4">1</div>
   <div class="flex-1 md:flex-initial flex items-center bg-red-400 px-4">2</div>
   <div class="flex-1 md:flex-initial flex items-center bg-red-400 px-4">3</div>
 </div>
 `),
-    new Story("Flex Values", "javascript")
+    new Story("Flex Values", "可以通过设置'tailwind.config.js'来配置缩放样式类", "javascript")
       .code(`\
 // wailwind.config.js
 module.exports = {
@@ -78,9 +87,9 @@ module.exports = {
   }
 }
 `),
-    new Story("Variants", "javascript")
+    new Story("Variants", "", "javascript")
       .code(`\
-// wailwind.config.js
+// tailwind.config.js
 module.exports = {
   variants: {
     extend: {
@@ -90,9 +99,9 @@ module.exports = {
   }
 }
 `),
-    new Story("Disabling", "javascript")
+    new Story("Disabling", "", "javascript")
       .code(`\
-// wailwind.config.js
+// tailwind.config.js
 module.exports = {
   variants: {
     extend: {

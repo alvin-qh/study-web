@@ -3,54 +3,62 @@ import { Story, StoryBook } from '../../common';
 window.onload = () => {
   const book = new StoryBook('Flex Direction', true);
   book.append([
-    new Story("Horizontal")
+    new Story("Horizontal", "沿与文本相同的方向水平放置子元素")
       .code(`\
-<!-- Use 'flex-row' to place flex elements horizontal -->
+<!--
+  'flex-row': 沿与文本相同的方向水平放置子元素
+-->
 <div class="flex flex-row space-x-2 text-lg text-white font-semibold">
-  <div class="px-4 py-2 bg-red-400">1</div>
-  <div class="px-4 py-2 bg-red-400">2</div>
-  <div class="px-4 py-2 bg-red-400">3</div>
+  <div class="flex w-32 h-12 items-center justify-center bg-red-400">1</div>
+  <div class="flex w-32 h-12 items-center justify-center bg-red-400">2</div>
+  <div class="flex w-32 h-12 items-center justify-center bg-red-400">3</div>
 </div>
 `),
-    new Story("Reverse Horizontal")
+    new Story("Reve rse Horizontal", "用与文本相反的方向水平放置子元素")
       .code(`\
-<!-- Use 'flex-row-reverse' to place flex elements reversed horizontal -->
+<!--
+  'flex-row-reverse': 用与文本相反的方向水平放置子元素
+-->
 <div class="flex flex-row-reverse text-lg text-white font-semibold">
-  <div class="px-4 py-2 bg-blue-400 mx-2">1</div>
-  <div class="px-4 py-2 bg-blue-400 mx-2">2</div>
-  <div class="px-4 py-2 bg-blue-400 mx-2">3</div>
+  <div class="flex w-32 h-12 items-center justify-center bg-blue-400 mx-2">1</div>
+  <div class="flex w-32 h-12 items-center justify-center bg-blue-400 mx-2">2</div>
+  <div class="flex w-32 h-12 items-center justify-center bg-blue-400 mx-2">3</div> 
 </div>
 `),
-    new Story("Vertical")
+    new Story("Vertical", "沿垂直方向放置子元素")
       .code(`\
-<!-- Use 'flex-col' to place flex elements vertical -->
+<!--
+  'flex-col': 沿垂直方向放置子元素
+-->
 <div class="flex flex-col space-y-2 text-lg text-white font-semibold">
-  <div class="px-4 py-2 bg-green-400">1</div>
-  <div class="px-4 py-2 bg-green-400">2</div>
-  <div class="px-4 py-2 bg-green-400">3</div>
+  <div class="flex h-12 items-center justify-center bg-green-400">1</div>
+  <div class="flex h-12 items-center justify-center bg-green-400">2</div>
+  <div class="flex h-12 items-center justify-center bg-green-400">3</div>
 </div>
 `),
-    new Story("Vertical")
+    new Story("Vertical", "沿垂直方向反向放置子元素")
       .code(`\
-<!-- Use 'flex-col-reverse' to place flex elements reversed vertical -->
+<!--
+  'flex-col-reverse': 沿垂直方向反向放置子元素 
+-->
 <div class="flex flex-col-reverse text-lg text-white font-semibold">
-  <div class="px-4 py-2 bg-purple-400 my-2">1</div>
-  <div class="px-4 py-2 bg-purple-400 my-2">2</div>
-  <div class="px-4 py-2 bg-purple-400 my-2">3</div>
+  <div class="flex h-12 items-center justify-center bg-purple-400 my-2">1</div>
+  <div class="flex h-12 items-center justify-center bg-purple-400 my-2">2</div>
+  <div class="flex h-12 items-center justify-center bg-purple-400 my-2">3</div>
 </div>
 `),
     new Story("Responsive")
       .code(`\
 <div class="flex flex-col space-y-2 text-lg text-white font-semibold
             md:flex-row md:space-x-2 md:space-y-0">
-  <div class="px-4 py-2 bg-indigo-400">1</div>
-  <div class="px-4 py-2 bg-indigo-400">2</div>
-  <div class="px-4 py-2 bg-indigo-400">3</div>
+  <div class="flex md:w-32 h-12 items-center justify-center bg-indigo-400">1</div>
+  <div class="flex md:w-32 h-12 items-center justify-center bg-indigo-400">2</div>
+  <div class="flex md:w-32 h-12 items-center justify-center bg-indigo-400">3</div>
 </div>
 `),
-    new Story("Variants", "javascript")
+    new Story("Variants", "", "javascript")
       .code(`\
-// wailwind.config.js
+// tailwind.config.js
 module.exports = {
   variants: {
     extend: {
@@ -59,9 +67,9 @@ module.exports = {
     }
   }
 }`),
-    new Story("Disabling", "javascript")
+    new Story("Disabling", "", "javascript")
       .code(`\
-// wailwind.config.js
+// tailwind.config.js
 module.exports = {
   variants: {
     extend: {

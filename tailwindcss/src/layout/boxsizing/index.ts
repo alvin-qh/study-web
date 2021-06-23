@@ -28,7 +28,7 @@ window.onload = () => {
 </div>`),
     new Story("Variants", "", "javascript")
       .code(`\
-// wailwind.config.js
+// tailwind.config.js
 module.exports = {
   variants: {
     extend: {
@@ -39,7 +39,7 @@ module.exports = {
 }`),
     new Story("Disabling", "", "javascript")
       .code(`\
-// wailwind.config.js
+// tailwind.config.js
 module.exports = {
   variants: {
     extend: {
