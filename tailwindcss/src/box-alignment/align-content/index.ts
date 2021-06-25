@@ -3,108 +3,118 @@ import { Story, StoryBook } from '../../common';
 window.onload = () => {
   const book = new StoryBook('Align Content', true);
   book.append([
-    new Story("Start")
+    new Story("Start", "容器内元素对齐到容器的起点位置")
       .code(`\
-<!-- Use 'content-start' to arrange the rows in the container relative to the starting point of the cross axis -->
+<!--
+  'content-start': 容器内元素对齐到容器的起点位置
+-->
 <div class="flex flex-wrap content-start h-48 text-white text-lg font-semibold">
   <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-rose-400 h-12">1</div>
+    <div class="h-12 flex items-center justify-center bg-rose-400">1</div>
   </div>
   <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-rose-400 h-12">2</div>
+    <div class="h-12 flex items-center justify-center bg-rose-400">2</div>
   </div>
   <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-rose-400 h-12">3</div>
+    <div class="h-12 flex items-center justify-center bg-rose-400">3</div>
   </div>
   <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-rose-400 h-12">4</div>
+    <div class="h-12 flex items-center justify-center bg-rose-400">4</div>
   </div>
   <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-rose-400 h-12">5</div>
+    <div class="h-12 flex items-center justify-center bg-rose-400">5</div>
   </div>
 </div>
 `),
-    new Story("Center")
+    new Story("Center", "容器内元素对齐到容器的中心位置")
       .code(`\
-<!-- Use 'content-center' to arrange the rows in the container relative to the center of the cross axis -->
+<!--
+  'content-center': 容器内元素对齐到容器的中心位置
+-->
 <div class="flex flex-wrap content-center h-48 text-white text-lg font-semibold">
   <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-blue-400 h-12">1</div>
+    <div class="h-12 flex items-center justify-center bg-blue-400">1</div>
   </div>
   <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-blue-400 h-12">2</div>
+    <div class="h-12 flex items-center justify-center bg-blue-400">2</div>
   </div>
   <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-blue-400 h-12">3</div>
+    <div class="h-12 flex items-center justify-center bg-blue-400">3</div>
   </div>
   <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-blue-400 h-12">4</div>
+    <div class="h-12 flex items-center justify-center bg-blue-400">4</div>
   </div>
   <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-blue-400 h-12">5</div>
+    <div class="h-12 flex items-center justify-center bg-blue-400">5</div>
   </div>
 </div>
 `),
-    new Story("End")
+    new Story("End", "容器内元素对齐到容器的终点位置")
       .code(`\
-<!-- Use 'content-end' to arrange the rows in the container relative to the end of the cross axis -->
+<!--
+  'content-end': 容器内元素对齐到容器的终点位置
+-->
 <div class="flex flex-wrap content-end h-48 text-white text-lg font-semibold">
   <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-green-400 h-12">1</div>
+    <div class="h-12 flex items-center justify-center bg-green-400">1</div>
   </div>
   <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-green-400 h-12">2</div>
+    <div class="h-12 flex items-center justify-center bg-green-400">2</div>
   </div>
   <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-green-400 h-12">3</div>
+    <div class="h-12 flex items-center justify-center bg-green-400">3</div>
   </div>
   <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-green-400 h-12">4</div>
+    <div class="h-12 flex items-center justify-center bg-green-400">4</div>
   </div>
   <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-green-400 h-12">5</div>
-  </div>
-</div>
-`),
-    new Story("Space Between")
-      .code(`\
-<!-- Use 'content-between' to allocate rows in the container so that there is equal space between each row -->
-<div class="flex flex-wrap content-between h-48 text-white text-lg font-semibold">
-  <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-yellow-400 h-12">1</div>
-  </div>
-  <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-yellow-400 h-12">2</div>
-  </div>
-  <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-yellow-400 h-12">3</div>
-  </div>
-  <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-yellow-400 h-12">4</div>
-  </div>
-  <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-yellow-400 h-12">5</div>
+    <div class="h-12 flex items-center justify-center bg-green-400">5</div>
   </div>
 </div>
 `),
-    new Story("Space Around")
+    new Story("Space Between", "平均分配容器的行，使每行之间具有相同的间距")
       .code(`\
-<!-- Use 'content-around' to distribute the rows in a container so that there is equal space around each row -->
+<!--
+  'content-between': 平均分配容器的行，使之具有相同的间距
+-->
 <div class="flex flex-wrap content-between h-48 text-white text-lg font-semibold">
   <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-light-blue-400 h-12">1</div>
+    <div class="h-12 flex items-center justify-center bg-yellow-400">1</div>
   </div>
   <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-light-blue-400 h-12">2</div>
+    <div class="h-12 flex items-center justify-center bg-yellow-400">2</div>
   </div>
   <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-light-blue-400 h-12">3</div>
+    <div class="h-12 flex items-center justify-center bg-yellow-400">3</div>
   </div>
   <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-light-blue-400 h-12">4</div>
+    <div class="h-12 flex items-center justify-center bg-yellow-400">4</div>
   </div>
   <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-light-blue-400 h-12">5</div>
+    <div class="h-12 flex items-center justify-center bg-yellow-400">5</div>
+  </div>
+</div>
+`),
+    new Story("Space Around", "平均分配容器的行，使每行的周围具有相同的空间")
+      .code(`\
+<!--
+  'content-around': 平均分配容器的行，使每行的周围具有相同的空间
+-->
+<div class="flex flex-wrap content-around h-48 text-white text-lg font-semibold">
+  <div class="w-1/3 p-2">
+    <div class="h-12 flex items-center justify-center bg-light-blue-400">1</div>
+  </div>
+  <div class="w-1/3 p-2">
+    <div class="h-12 flex items-center justify-center bg-light-blue-400">2</div>
+  </div>
+  <div class="w-1/3 p-2">
+    <div class="h-12 flex items-center justify-center bg-light-blue-400">3</div>
+  </div>
+  <div class="w-1/3 p-2">
+    <div class="h-12 flex items-center justify-center bg-light-blue-400">4</div>
+  </div>
+  <div class="w-1/3 p-2">
+    <div class="h-12 flex items-center justify-center bg-light-blue-400">5</div>
   </div>
 </div>
 `),
@@ -112,23 +122,23 @@ window.onload = () => {
       .code(`\
 <div class="flex flex-wrap content-start md:content-around h-48 text-white text-lg font-semibold">
   <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-violet-400 h-12">1</div>
+    <div class="h-12 flex items-center justify-center bg-violet-400">1</div>
   </div>
   <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-violet-400 h-12">2</div>
+    <div class="h-12 flex items-center justify-center bg-violet-400">2</div>
   </div>
   <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-violet-400 h-12">3</div>
+    <div class="h-12 flex items-center justify-center bg-violet-400">3</div>
   </div>
   <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-violet-400 h-12">4</div>
+    <div class="h-12 flex items-center justify-center bg-violet-400">4</div>
   </div>
   <div class="w-1/3 p-2">
-    <div class="flex items-center justify-center bg-violet-400df h-12">5</div>
+    <div class="h-12 flex items-center justify-center bg-violet-400df">5</div>
   </div>
 </div>
 `),
-    new Story("Variants", "javascript")
+    new Story("Variants", "", "javascript")
       .code(`\
 // wailwind.config.js
 module.exports = {
@@ -140,7 +150,7 @@ module.exports = {
   }
 }
 `),
-    new Story("Disabling", "javascript")
+    new Story("Disabling", "", "javascript")
       .code(`\
 // wailwind.config.js
 module.exports = {

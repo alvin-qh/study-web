@@ -3,10 +3,14 @@ import { Story, StoryBook } from '../../common';
 window.onload = () => {
   const book = new StoryBook('Justify Self', true);
   book.append([
-    new Story("Auto")
+    new Story("Auto", "元素根据容器的'justify-items-{*}'样式类与网格进行对齐")
       .code(`\
-<!-- Use 'justify-self-auto' to align an item based on the value of the grid's 'justify-items' property -->
-<div class="grid grid-cols-3 gap-4 justify-items-stretch auto-rows-fr h-32 text-white text-lg font-semibold">
+<!-- 
+  'justify-self-auto': 元素根据容器的
+                       'justify-items-{auto, start, end, center, stretch}'样式类
+                       与网格进行对齐
+-->
+<div class="grid grid-cols-3 gap-4 justify-items-auto auto-rows-fr h-32 text-white text-lg font-semibold">
   <div class="bg-stripes bg-stripes-purple-400"></div>
   <div class="justify-self-auto flex items-center justify-center bg-purple-400">1</div>
   <div class="bg-stripes bg-stripes-purple-400"></div>
@@ -15,10 +19,14 @@ window.onload = () => {
   <div class="bg-stripes bg-stripes-purple-400"></div>
 </div>
 `),
-    new Story("Start")
+    new Story("Start", "覆盖容器定义的'justify-items-{*}'样式类，令元素对齐到网格起点")
       .code(`\
-<!-- Use 'justify-self-start' to align the grid items along the starting point of the inline axis -->
-<div class="grid grid-cols-3 gap-4 justify-items-stretch auto-rows-fr h-32 text-white text-lg font-semibold">
+<!--
+  'justify-self-start': 元素覆盖容器的
+                        'justify-items-{auto, start, end, center, stretch}'样式类，
+                        与网格起点进行对齐
+-->
+<div class="grid grid-cols-3 gap-4 justify-items-auto auto-rows-fr h-32 text-white text-lg font-semibold">
   <div class="bg-stripes bg-stripes-green-400"></div>
   <div class="justify-self-start flex items-center justify-center bg-green-400 px-4">1</div>
   <div class="bg-stripes bg-stripes-green-400"></div>
@@ -27,10 +35,14 @@ window.onload = () => {
   <div class="bg-stripes bg-stripes-green-400"></div>
 </div>
 `),
-    new Story("Center")
+    new Story("Center", "覆盖容器定义的'justify-items-{*}'样式类，令元素对齐到网格中央")
       .code(`\
-<!-- Use 'justify-self-center' to align the grid item along the center of its inline axis -->
-<div class="grid grid-cols-3 gap-4 justify-items-stretch auto-rows-fr h-32 text-white text-lg font-semibold">
+<!--
+  'justify-self-center': 覆盖容器定义的
+                         'justify-items-{auto, start, end, center, stretch}'样式类，
+                         令元素对齐到网格中央
+-->
+<div class="grid grid-cols-3 gap-4 justify-items-auto auto-rows-fr h-32 text-white text-lg font-semibold">
   <div class="bg-stripes bg-stripes-yellow-400"></div>
   <div class="justify-self-center flex items-center justify-center bg-yellow-400 px-4">1</div>
   <div class="bg-stripes bg-stripes-yellow-400"></div>
@@ -39,10 +51,14 @@ window.onload = () => {
   <div class="bg-stripes bg-stripes-yellow-400"></div>
 </div>
 `),
-    new Story("End")
+    new Story("End", "覆盖容器定义的'justify-items-{*}'样式类，令元素对齐到网格末尾")
       .code(`\
-<!-- Use 'justify-self-center' to align the grid item along the center of its inline axis -->
-<div class="grid grid-cols-3 gap-4 justify-items-stretch auto-rows-fr h-32 text-white text-lg font-semibold">
+<!--
+  'justify-self-end': 覆盖容器定义的
+                      'justify-items-{auto, start, end, center, stretch}'样式类，
+                      令元素对齐到网格末尾
+-->
+<div class="grid grid-cols-3 gap-4 justify-items-auto auto-rows-fr h-32 text-white text-lg font-semibold">
   <div class="bg-stripes bg-stripes-pink-400"></div>
   <div class="justify-self-end flex items-center justify-center bg-pink-400 px-4">1</div>
   <div class="bg-stripes bg-stripes-pink-400"></div>
@@ -51,9 +67,13 @@ window.onload = () => {
   <div class="bg-stripes bg-stripes-pink-400"></div>
 </div>
 `),
-    new Story("Stretch")
+    new Story("Stretch", "覆盖容器定义的'justify-items-{*}'样式类，令元素拉伸到整个网格")
       .code(`\
-<!-- Use 'justify-self-stretch' to stretch a grid item to fill the grid area on its inline axis -->
+<!-- 
+  'justify-self-stretch': 覆盖容器定义的
+                          'justify-items-{auto, start, end, center, stretch}'样式类，
+                          令元素拉伸到整个网格
+-->
 <div class="grid grid-cols-3 gap-4 justify-items-start auto-rows-fr h-32 text-white text-lg font-semibold">
   <div class="bg-stripes px-4 bg-stripes-purple-400"></div>
   <div class="justify-self-stretch flex items-center justify-center bg-purple-400 px-4">1</div>
@@ -74,9 +94,9 @@ window.onload = () => {
   <div class="bg-stripes px-4 bg-stripes-purple-400"></div>
 </div>
 `),
-    new Story("Variants", "javascript")
+    new Story("Variants", "", "javascript")
       .code(`\
-// wailwind.config.js
+// tailwind.config.js
 module.exports = {
   variants: {
     extend: {
@@ -86,9 +106,9 @@ module.exports = {
   }
 }
 `),
-    new Story("Disabling", "javascript")
+    new Story("Disabling", "", "javascript")
       .code(`\
-// wailwind.config.js
+// tailwind.config.js
 module.exports = {
   variants: {
     extend: {

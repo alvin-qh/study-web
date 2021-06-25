@@ -116,9 +116,9 @@ class StoryBook {
 
     if (showBackward) {
       const $backward: HTMLAnchorElement = document.createElement('a');
-      $backward.innerText = '⇦'
+      $backward.innerText = '<<'
       $backward.href = '..';
-      $backward.className = 'inline-block text-white text-xs md:text-base font-bold px-3 py-1 bg-blue-600 rounded-md border border-blue-200 border-solid shadow shadow-md';
+      $backward.className = 'inline-block text-white text-xs md:text-base pb-1 font-bold px-3 bg-blue-600 rounded-md border border-blue-200 border-solid shadow shadow-md';
       this.$main.appendChild($backward);
     }
   }

@@ -3,10 +3,10 @@ import { Story, StoryBook } from '../../common';
 window.onload = () => {
   const book = new StoryBook('Jusitify Content', true);
   book.append([
-    new Story("Start", "令元素沿着容器主轴的起点对齐")
+    new Story("Start", "元素在水平方向对齐到容器的起点")
       .code(`\
 <!-- 
-  'flex-start': 令元素按容器主轴的起点对齐
+  'flex-start': 元素在水平方向对齐到容器的起点
 -->
 <div class="flex justify-start gap-4 text-lg text-white font-semibold">
   <div class="w-16 h-16 flex items-center justify-center bg-pink-400">1</div>
@@ -14,10 +14,10 @@ window.onload = () => {
   <div class="w-16 h-16 flex items-center justify-center bg-pink-400">3</div>
 </div>
 `),
-    new Story("Center", "令元素沿着容器主轴的中心点对齐")
+    new Story("Center", "元素在水平方向对齐到容器的中央")
       .code(`\
 <!-- 
-  'flex-center': 令元素沿着容器主轴的中心点对齐
+  'flex-center': 元素在水平方向对齐到容器的中央
 -->
 <div class="flex justify-center gap-4 text-lg text-white font-semibold">
   <div class="w-16 h-16 flex items-center justify-center bg-blue-400">1</div>
@@ -25,10 +25,10 @@ window.onload = () => {
   <div class="w-16 h-16 flex items-center justify-center bg-blue-400">3</div>
 </div>
 `),
-    new Story("End", "令元素沿着容器主轴的终点对齐")
+    new Story("End", "元素在水平方向对齐到容器的终点")
       .code(`\
 <!-- 
-  'flex-end': 令元素沿着容器主轴的终点对齐
+  'flex-end': 元素在水平方向对齐到容器的终点
 -->
 <div class="flex justify-end gap-4 text-lg text-white font-semibold">
   <div class="w-16 h-16 flex items-center justify-center bg-purple-400">1</div>
@@ -36,10 +36,10 @@ window.onload = () => {
   <div class="w-16 h-16 flex items-center justify-center bg-purple-400">3</div>
 </div>
 `),
-    new Story("Space Between", "令元素沿着容器主轴的进行排列，元素间的距离相等")
+    new Story("Space Between", "元素在水平位置平均放置，元素间距离相等")
       .code(`\
 <!--
-  'justify-betweenr': 让项目沿着容器主轴排列，并使每个项目之间的距离相等
+  'justify-betweenr': 元素在水平位置平均放置，元素间距离相等
 -->
 <div class="flex justify-between gap-4 text-lg text-white font-semibold">
   <div class="w-16 h-16 flex items-center justify-center bg-green-400">1</div>
@@ -47,10 +47,10 @@ window.onload = () => {
   <div class="w-16 h-16 flex items-center justify-center bg-green-400">3</div>
 </div>
 `),
-    new Story("Space Around", "令元素沿着容器主轴的进行排列，且元素两侧的距离相等")
+    new Story("Space Around", "元素在水平位置平均放置，各元素周围的距离相等")
       .code(`\
 <!--
-  'justify-around': 令元素沿着容器主轴的进行排列，且元素两侧的距离相等
+  'justify-around': 元素在水平位置平均放置，各元素周围的距离相等
 -->
 <div class="flex justify-around gap-4 text-lg text-white font-semibold">
   <div class="w-16 h-16 flex items-center justify-center bg-indigo-400">1</div>
