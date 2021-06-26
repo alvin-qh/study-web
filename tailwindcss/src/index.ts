@@ -30,15 +30,15 @@ const menu = [
     title: "Box Alignment",
     descript: "定义元素在容器中的定位对齐方式",
     links: [
-      {title: "Justify Content", href: "box-alignment/justify-content.html", descript: "设置元素沿主轴排列对齐的容器"},
-      {title: "Justify Items", href: "box-alignment/justify-items.html", descript: "设置元素沿网格排列对齐的容器"},
-      {title: "Justify Self", href: "box-alignment/justify-self.html", descript: "设置元素本身在网格容器中的对齐方式"},
-      {title: "Align Content", href: "box-alignment/align-content.html", descript: "设置容器对内容行的对齐方式"},
-      {title: "Align Items", href: "box-alignment/align-items.html", descript: "设置容器对内元素每行的按横轴的对齐方式"},
-      {title: "Align Self", href: "box-alignment/align-self.html", descript: "设置容器"},
-      {title: "Place Content", href: "box-alignment/place-content.html", descript: "设置容器"},
-      {title: "Place Items", href: "box-alignment/place-items.html", descript: "设置容器"},
-      {title: "Place Self", href: "box-alignment/place-self.html", descript: "设置容器"},
+      {title: "Justify Content", href: "box-alignment/justify-content.html", descript: "设置容器内容沿水平对齐的方式"},
+      {title: "Justify Items", href: "box-alignment/justify-items.html", descript: "设置容器内元素沿水平对齐的的方式"},
+      {title: "Justify Self", href: "box-alignment/justify-self.html", descript: "设置元素相对于容器沿水平对齐的方式"},
+      {title: "Align Content", href: "box-alignment/align-content.html", descript: "设置容器内容的垂直对齐的方式"},
+      {title: "Align Items", href: "box-alignment/align-items.html", descript: "设置容器内元素的垂直对齐的方式"},
+      {title: "Align Self", href: "box-alignment/align-self.html", descript: "设置元素相对于容器沿垂直对齐的方式"},
+      {title: "Place Content", href: "box-alignment/place-content.html", descript: "设置容器内容在垂直和水平两个方向对齐的方式"},
+      {title: "Place Items", href: "box-alignment/place-items.html", descript: "设置容器内元素在垂直和水平两个方向对齐的方式"},
+      {title: "Place Self", href: "box-alignment/place-self.html", descript: "设置元素相对于容器在垂直和水平两个方向对齐的方式"},
     ]
   }
 ]

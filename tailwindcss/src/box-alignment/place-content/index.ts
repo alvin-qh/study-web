@@ -1,103 +1,137 @@
 import { Story, StoryBook } from '../../common';
 
 window.onload = () => {
-  const book = new StoryBook('Flex Scale', true);
+  const book = new StoryBook('Place Content', true);
   book.append([
-    new Story("Initial")
+    new Story("Center", "将元素定位在容器的中心位置")
       .code(`\
-<!-- The 'flex-initial' element won't grow size, but will shrink if needed -->
-<div class="flex space-x-2 text-lg font-semibold text-white">
-  <div class="flex-initial flex items-center bg-indigo-500 px-4">Short</div>
-  <div class="flex-initial flex items-center bg-indigo-500 px-4">Medium length</div>
-  <div class="flex-initial flex items-center bg-indigo-500 px-4">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-    Qui ad labore ipsam, aut rem quo repellat esse tempore id, quidem
-  </div>
+<!--
+  'place-content-center': 将元素定位在容器的中心位置
+-->
+<div class="grid grid-cols-3 gap-4 place-content-center h-48 text-white font-semibold text-lg">
+  <div class="flex items-center justify-center bg-light-blue-400 py-3">1</div>
+  <div class="flex items-center justify-center bg-light-blue-400 py-3">2</div>
+  <div class="flex items-center justify-center bg-light-blue-400 py-3">3</div>
+  <div class="flex items-center justify-center bg-light-blue-400 py-3">4</div>
+  <div class="flex items-center justify-center bg-light-blue-400 py-3">5</div>
+  <div class="flex items-center justify-center bg-light-blue-400 py-3">6</div>
 </div>
 `),
-    new Story("Flex 1")
+    new Story("Start")
       .code(`\
-<!-- Use 'flex-1' will grow and shrink as needed without taking initial size into account -->
-<div class="flex space-x-2 text-lg text-white font-semibold">
-  <div class="flex-1 flex items-center bg-pink-400 px-4">Short</div>
-  <div class="flex-1 flex items-center bg-pink-400 px-4">Medium length</div>
-  <div class="flex-1 flex items-center bg-pink-400 px-4">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-    Qui ad labore ipsam, aut rem quo repellat esse tempore id, quidem
-  </div>
+<!--
+  'place-content-center': 将元素定位在容器的中心位置
+-->
+<div class="grid grid-cols-3 gap-4 place-content-start h-48 text-white font-semibold text-lg">
+  <div class="flex items-center justify-center bg-purple-500 py-3">1</div>
+  <div class="flex items-center justify-center bg-purple-500 py-3">2</div>
+  <div class="flex items-center justify-center bg-purple-500 py-3">3</div>
+  <div class="flex items-center justify-center bg-purple-500 py-3">4</div>
+  <div class="flex items-center justify-center bg-purple-500 py-3">5</div>
+  <div class="flex items-center justify-center bg-purple-500 py-3">6</div>
 </div>
 `),
-    new Story("Auto")
+    new Story("End")
       .code(`\
-<!-- Use 'flex-auto' will grow and shrink as needed taking initial size into account -->
-<div class="flex space-x-2 text-lg text-white font-semibold">
-  <div class="flex-auto flex items-center bg-blue-400 px-4">Short</div>
-  <div class="flex-auto flex items-center bg-blue-400 px-4">Medium length</div>
-  <div class="flex-auto flex items-center bg-blue-400 px-4">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-    Qui ad labore ipsam, aut rem quo repellat esse tempore id, quidem
-  </div>
+<!--
+  'place-content-center': 将元素定位在容器的终点位置
+-->
+<div class="grid grid-cols-3 gap-4 place-content-end h-48 text-white font-semibold text-lg">
+  <div class="flex items-center justify-center bg-rose-500 py-3">1</div>
+  <div class="flex items-center justify-center bg-rose-500 py-3">2</div>
+  <div class="flex items-center justify-center bg-rose-500 py-3">3</div>
+  <div class="flex items-center justify-center bg-rose-500 py-3">4</div>
+  <div class="flex items-center justify-center bg-rose-500 py-3">5</div>
+  <div class="flex items-center justify-center bg-rose-500 py-3">6</div>
 </div>
 `),
-    new Story("None")
+    new Story("Space Between", "使每行元素周围都具有相同的空间")
       .code(`\
-<!-- use 'flex-none' will grow and shrink as needed taking initial size into account -->
-<div class="flex space-x-2 text-lg text-white font-semibold">
-  <div class="flex-1 flex items-center bg-green-400 px-4">
-    Item that can grow or shrink if needed
-  </div>
-  <div class="flex-none flex items-center bg-green-600 px-4">
-    Item that cannot grow or shrink
-  </div>
-  <div class="flex-1 flex items-center bg-green-400 px-4">
-    Item that can grow or shrink if needed
-  </div>
+<!--
+  'place-content-center': 使每行元素周围都具有相同的空间
+-->
+<div class="grid grid-cols-3 gap-4 place-content-between h-48 text-white font-semibold text-lg">
+  <div class="flex items-center justify-center bg-amber-500 py-3">1</div>
+  <div class="flex items-center justify-center bg-amber-500 py-3">2</div>
+  <div class="flex items-center justify-center bg-amber-500 py-3">3</div>
+  <div class="flex items-center justify-center bg-amber-500 py-3">4</div>
+  <div class="flex items-center justify-center bg-amber-500 py-3">5</div>
+  <div class="flex items-center justify-center bg-amber-500 py-3">6</div>
+</div>
+`),
+    new Story("Space Around", "使每行元素周围都具有相同的空间")
+      .code(`\
+<!--
+  'place-content-center': 使每行元素周围都具有相同的空间
+-->
+<div class="grid grid-cols-3 gap-4 place-content-around h-48 text-white font-semibold text-lg">
+  <div class="flex items-center justify-center bg-fuchsia-500 py-3">1</div>
+  <div class="flex items-center justify-center bg-fuchsia-500 py-3">2</div>
+  <div class="flex items-center justify-center bg-fuchsia-500 py-3">3</div>
+  <div class="flex items-center justify-center bg-fuchsia-500 py-3">4</div>
+  <div class="flex items-center justify-center bg-fuchsia-500 py-3">5</div>
+  <div class="flex items-center justify-center bg-fuchsia-500 py-3">6</div>
+</div>
+`),
+    new Story("Space Evenly", "使元素相对于网格具备相同的间距")
+      .code(`\
+<!--
+  'place-content-center': 使元素相对于网格具备相同的间距
+-->
+<div class="grid grid-cols-3 gap-4 place-content-evenly h-48 text-white font-semibold text-lg">
+  <div class="flex items-center justify-center bg-emerald-500 py-3">1</div>
+  <div class="flex items-center justify-center bg-emerald-500 py-3">2</div>
+  <div class="flex items-center justify-center bg-emerald-500 py-3">3</div>
+  <div class="flex items-center justify-center bg-emerald-500 py-3">4</div>
+  <div class="flex items-center justify-center bg-emerald-500 py-3">5</div>
+  <div class="flex items-center justify-center bg-emerald-500 py-3">6</div>
+</div>
+`),
+    new Story("Stretch", "拉伸元素以填充网格")
+      .code(`\
+<!--
+  'place-content-center': 拉伸元素以填充网格
+-->
+<div class="grid grid-cols-3 gap-4 place-content-stretch h-48 text-white font-semibold text-lg">
+  <div class="flex items-center justify-center bg-indigo-500 py-3">1</div>
+  <div class="flex items-center justify-center bg-indigo-500 py-3">2</div>
+  <div class="flex items-center justify-center bg-indigo-500 py-3">3</div>
+  <div class="flex items-center justify-center bg-indigo-500 py-3">4</div>
+  <div class="flex items-center justify-center bg-indigo-500 py-3">5</div>
+  <div class="flex items-center justify-center bg-indigo-500 py-3">6</div>
 </div>
 `),
     new Story("Responsive")
       .code(`\
-<div class="flex space-x-2 text-lg text-white font-semibold">
-  <div class="flex-1 md:flex-initial flex items-center bg-red-400 px-4">1</div>
-  <div class="flex-1 md:flex-initial flex items-center bg-red-400 px-4">2</div>
-  <div class="flex-1 md:flex-initial flex items-center bg-red-400 px-4">3</div>
+<div class="grid grid-cols-3 gap-4 place-content-start md:place-content-center h-48 text-white font-semibold text-lg">
+  <div class="flex items-center justify-center bg-yellow-500 py-3">1</div>
+  <div class="flex items-center justify-center bg-yellow-500 py-3">2</div>
+  <div class="flex items-center justify-center bg-yellow-500 py-3">3</div>
+  <div class="flex items-center justify-center bg-yellow-500 py-3">4</div>
+  <div class="flex items-center justify-center bg-yellow-500 py-3">5</div>
+  <div class="flex items-center justify-center bg-yellow-500 py-3">6</div>
 </div>
 `),
-    new Story("Flex Values", "javascript")
+    new Story("Variants", "", "javascript")
       .code(`\
-// wailwind.config.js
-module.exports = {
-  theme: {
-    flex: {
-      '1': '1 1 0%',
-      auto: '1 1 auto',
-//    initial: '0 1 auto',   // Disable original 'flex-initial' define
-      inherit: 'inherit',    // Add new 'flex-initial' class
-      none: 'none',
-      '2': '2 2 0%',         // add new 'flex-2' class
-    }
-  }
-}
-`),
-    new Story("Variants", "javascript")
-      .code(`\
-// wailwind.config.js
+// tailwind.config.js
 module.exports = {
   variants: {
     extend: {
       // ...
-      flex: ['hover', 'focus'],
+      placeContent: ['hover', 'focus'],
     }
   }
 }
 `),
-    new Story("Disabling", "javascript")
+    new Story("Disabling", "", "javascript")
       .code(`\
-// wailwind.config.js
+// tailwind.config.js
 module.exports = {
   variants: {
     extend: {
       // ...
-      flex: false
+      placeContent: false
     }
   }
 }`)

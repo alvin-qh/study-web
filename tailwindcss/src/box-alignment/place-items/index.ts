@@ -1,80 +1,104 @@
 import { Story, StoryBook } from '../../common';
 
 window.onload = () => {
-  const book = new StoryBook('Flex Shrink', true);
+  const book = new StoryBook('Place Items', true);
   book.append([
-    new Story("Shrink")
+    new Story("Auto", "将网格元素自动放置在其网格区域")
       .code(`\
-<!-- Use 'flex-shrink' to allow a flex item to shrink if needed -->
-<div class="flex space-x-2 font-semibold text-white text-lg">
-  <div class="flex-grow w-16 h-16 bg-purple-400 flex items-center justify-center px-2">
-    Locked
-  </div>
-  <div class="flex-shrink w-64 h-16 bg-purple-400 flex items-center justify-center">
-    Shrinkable
-  </div>
-  <div class="flex-grow w-16 h-16 bg-purple-400 flex items-center justify-center px-2">
-    Locked
-  </div>
+<!--
+  'place-items-auto': 将网格元素自动放置在其网格区域
+-->
+<div class="grid grid-cols-3 gap-4 place-items-auto h-40 text-white font-semibold text-lg">
+  <div class="flex items-center justify-center bg-indigo-400">1</div>
+  <div class="flex items-center justify-center bg-indigo-400">2</div>
+  <div class="flex items-center justify-center bg-indigo-400">3</div>
+  <div class="flex items-center justify-center bg-indigo-400">4</div>
+  <div class="flex items-center justify-center bg-indigo-400">5</div>
+  <div class="flex items-center justify-center bg-indigo-400">6</div>
 </div>
 `),
-    new Story("Don't Shrink")
+    new Story("Start", "将元素放置在网格的起始位置")
       .code(`\
-<!-- Use 'flex-shrink-0' will privent the element to shrink -->
-<div class="flex space-x-2 font-semibold text-white text-lg">
-  <div class="flex-1 h-16 bg-blue-400 flex items-center justify-center px-2">
-    Shrinkable
-  </div>
-  <div class="flex-shrink-0 w-32 h-16 bg-blue-400 flex items-center justify-center">
-    Locked
-  </div>
-  <div class="flex-1 h-16 bg-blue-400 flex items-center justify-center px-2">
-    Shrinkable
-  </div>
+<!--
+  'place-items-start': 将元素放置在网格的起始位置
+-->
+<div class="grid grid-cols-3 gap-4 place-items-start h-40 text-white font-semibold text-lg">
+  <div class="flex w-16 h-16 items-center justify-center bg-green-500">1</div>
+  <div class="flex w-16 h-16 items-center justify-center bg-green-500">2</div>
+  <div class="flex w-16 h-16 items-center justify-center bg-green-500">3</div>
+  <div class="flex w-16 h-16 items-center justify-center bg-green-500">4</div>
+  <div class="flex w-16 h-16 items-center justify-center bg-green-500">5</div>
+  <div class="flex w-16 h-16 items-center justify-center bg-green-500">6</div>
+</div>
+`),
+    new Story("Start", "将元素放置在网格的终点位置")
+      .code(`\
+<!--
+  'place-items-end': 将元素放置在网格的终点位置
+-->
+<div class="grid grid-cols-3 gap-4 place-items-end h-40 text-white font-semibold text-lg">
+  <div class="flex w-16 h-16 items-center justify-center bg-amber-500">1</div>
+  <div class="flex w-16 h-16 items-center justify-center bg-amber-500">2</div>
+  <div class="flex w-16 h-16 items-center justify-center bg-amber-500">3</div>
+  <div class="flex w-16 h-16 items-center justify-center bg-amber-500">4</div>
+  <div class="flex w-16 h-16 items-center justify-center bg-amber-500">5</div>
+  <div class="flex w-16 h-16 items-center justify-center bg-amber-500">6</div>
+</div>
+`),
+    new Story("Center", "将元素放置在网格的中央位置")
+      .code(`\
+<!--
+  'place-items-center': 将元素放置在网格的中央位置
+-->
+<div class="grid grid-cols-3 gap-4 place-items-center h-40 text-white font-semibold text-lg">
+  <div class="flex w-16 h-16 items-center justify-center bg-violet-500">1</div>
+  <div class="flex w-16 h-16 items-center justify-center bg-violet-500">2</div>
+  <div class="flex w-16 h-16 items-center justify-center bg-violet-500">3</div>
+  <div class="flex w-16 h-16 items-center justify-center bg-violet-500">4</div>
+  <div class="flex w-16 h-16 items-center justify-center bg-violet-500">5</div>
+  <div class="flex w-16 h-16 items-center justify-center bg-violet-500">6</div>
+</div>
+`),
+    new Story("Stretch", "拉伸元素以充满网格")
+      .code(`\
+<!--
+  'place-items-stretch': 拉伸元素以充满网格
+-->
+<div class="grid grid-cols-3 gap-4 place-items-stretch h-40 text-white font-semibold text-lg">
+  <div class="flex items-center justify-center bg-light-blue-500">1</div>
+  <div class="flex items-center justify-center bg-light-blue-500">2</div>
+  <div class="flex items-center justify-center bg-light-blue-500">3</div>
+  <div class="flex items-center justify-center bg-light-blue-500">4</div>
+  <div class="flex items-center justify-center bg-light-blue-500">5</div>
+  <div class="flex items-center justify-center bg-light-blue-500">6</div>
 </div>
 `),
     new Story("Responsive")
       .code(`\
-<div class="flex space-x-2 font-semibold text-white text-lg">
-  <div class="flex-shrink md:flex-shrink-0 w-48 h-16 bg-pink-400 flex items-center justify-center">
-    1
-  </div>
-  <div class="flex-shrink md:flex-shrink-0 w-48 h-16 bg-pink-400 flex items-center justify-center">
-    2
-  </div>
-  <div class="flex-shrink md:flex-shrink-0 w-48 h-16 bg-pink-400 flex items-center justify-center">
-    3
-  </div>
+<div class="grid grid-cols-3 gap-4 place-items-start md:place-content-center h-40 text-white font-semibold text-lg">
+  <div class="flex w-16 h-16 items-center justify-center bg-rose-500">1</div>
+  <div class="flex w-16 h-16 items-center justify-center bg-rose-500">2</div>
+  <div class="flex w-16 h-16 items-center justify-center bg-rose-500">3</div>
+  <div class="flex w-16 h-16 items-center justify-center bg-rose-500">4</div>
+  <div class="flex w-16 h-16 items-center justify-center bg-rose-500">5</div>
+  <div class="flex w-16 h-16 items-center justify-center bg-rose-500">6</div>
 </div>
 `),
-    new Story("Shrink Values", "javascript")
+    new Story("Variants", "", "javascript")
       .code(`\
-// wailwind.config.js
-module.exports = {
-  theme: {
-    flexGrow: {
-      '0': 0,
-//    DEFAULT: 1,   // Disable original grow default value
-      DEFAULT: 2,   // Add new grow default value
-      '1': 1        // Add 'flex-group-1' class
-  }
-}
-`),
-    new Story("Variants", "javascript")
-      .code(`\
-// wailwind.config.js
+// tailwind.config.js
 module.exports = {
   variants: {
     extend: {
       // ...
-      flexShrink: ['hover', 'focus'],
+      placeItems: ['hover', 'focus'],
     }
   }
 }
 `),
-    new Story("Disabling", "javascript")
+    new Story("Disabling", "", "javascript")
       .code(`\
-// wailwind.config.js
+// tailwind.config.js
 module.exports = {
   variants: {
     extend: {

@@ -110,7 +110,7 @@ module.exports = {
   variants: {
     extend: {
       // ...
-      flexShrink: ['hover', 'focus'],
+      alignItems: ['hover', 'focus'],
     }
   }
 }
@@ -122,7 +122,7 @@ module.exports = {
   variants: {
     extend: {
       // ...
-      flexShrink: false
+      alignItems: false
     }
   }
 }`)
