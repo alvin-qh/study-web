@@ -20,6 +20,9 @@ window.onload = () => {
 `),
     new Story("Start / End", "使用'col-start-{n}'和'col-end-{n}'样式类，使元素以第n条网格线为起点或终点。这些功能类也可以与'col-span-{n}'样式类结合使用，来跨越特定数量的列")
       .code(`\
+<!--
+  'col-start-{n} / col-end-{n}': 注意，数字计算均是从1开始，cols+1结束
+-->
 <div class="grid grid-cols-6 gap-4 h-48 overflow-y-auto text-white text-lg font-semibold">
   <div class="flex items-center justify-center bg-stripes bg-stripes-light-blue-500"></div>
   <div class="col-start-2 col-span-4 flex items-center justify-center bg-light-blue-500">1</div>
@@ -39,7 +42,7 @@ window.onload = () => {
   <div class="col-start-1 col-span-2 md:col-span-6 flex items-center justify-center bg-orange-500">3</div>
 </div>
 `),
-    new Story("Variants", "可以通过修改tailwind配置，增加更多的样式类", "javascript")
+    new Story("Customize", "可以通过修改tailwind配置，增加更多的样式类", "javascript")
       .code(`\
 // tailwind.config.js
 module.exports = {

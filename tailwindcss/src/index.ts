@@ -31,13 +31,13 @@ const menu = [
     descript: "定义网格容器布局",
     links: [
       {title: "Grid Template Columns", href: "grid/template-columns.html", descript: "设置网格布局的列"},
-      {title: "Grid Column Start/End", href: "grid/column-start-end.html", descript: "设置网格的大小和放置方式"},
-      {title: "Grid Template Rows", href: "grid/template-rows.html", descript: ""},
-      {title: "Grid Row Start/End", href: "grid/row-start-end.html", descript: ""},
-      {title: "Grid Auto Flow", href: "grid/auto-flow.html", descript: ""},
-      {title: "Grid Auto Columns", href: "grid/auto-columns.html", descript: ""},
-      {title: "Grid Auto Rows", href: "grid/auto-rows.html", descript: ""},
-      {title: "Gap", href: "grid/gap.html", descript: ""},
+      {title: "Grid Column Start/End", href: "grid/column-start-end.html", descript: "设置网格列的大小和放置方式"},
+      {title: "Grid Template Rows", href: "grid/template-rows.html", descript: "设置网格布局的行"},
+      {title: "Grid Row Start/End", href: "grid/row-start-end.html", descript: "设置网格行的大小和放置方式"},
+      {title: "Grid Auto Flow", href: "grid/auto-flow.html", descript: "设置网格中如何自动放置元素"},
+      {title: "Grid Auto Columns", href: "grid/auto-columns.html", descript: "设置网格列大小"},
+      {title: "Grid Auto Rows", href: "grid/auto-rows.html", descript: "设置网格行大小"},
+      {title: "Gap", href: "grid/gap.html", descript: "设置网格之间的距离"},
     ]
   },
   {

@@ -34,7 +34,7 @@ window.onload = () => {
   <div class="flex items-center justify-center bg-blue-500">9</div>
 </div>
 `),
-    new Story("Variants", "默认的'grid-template-column'最多有12个等宽的列，可以通过定制主题配置的'gridTemplateColumns'部分来改变、添加或删除它们", "javascript")
+    new Story("Customize", "默认的'grid-template-column'最多有12个等宽的列，可以通过定制主题配置的'gridTemplateColumns'部分来改变、添加或删除它们", "javascript")
       .code(`\
 // tailwind.config.js
 module.exports = {
