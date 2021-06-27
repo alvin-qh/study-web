@@ -73,7 +73,7 @@ window.onload = () => {
 `),
     new Story("Flex Values", "可以通过设置'tailwind.config.js'来配置缩放样式类", "javascript")
       .code(`\
-// wailwind.config.js
+// tailwind.config.js
 module.exports = {
   theme: {
     flex: {
@@ -82,7 +82,7 @@ module.exports = {
 //    initial: '0 1 auto',   // Disable original 'flex-initial' define
       inherit: 'inherit',    // Add new 'flex-initial' class
       none: 'none',
-      '2': '2 2 0%',         // add new 'flex-2' class
+      '2': '2 2 0%'          // add new 'flex-2' class
     }
   }
 }
@@ -93,7 +93,6 @@ module.exports = {
 module.exports = {
   variants: {
     extend: {
-      // ...
       flex: ['hover', 'focus'],
     }
   }
@@ -103,13 +102,11 @@ module.exports = {
       .code(`\
 // tailwind.config.js
 module.exports = {
-  variants: {
-    extend: {
-      // ...
-      flex: false
-    }
+  corePlugins: {
+    flex: false
   }
-}`)
+}
+`)
   ])
     .render();
 };

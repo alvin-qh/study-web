@@ -70,7 +70,6 @@ module.exports = {
 module.exports = {
   variants: {
     extend: {
-      // ...
       flexShrink: ['hover', 'focus'],
     }
   }
@@ -80,13 +79,11 @@ module.exports = {
       .code(`\
 // tailwind.config.js
 module.exports = {
-  variants: {
-    extend: {
-      // ...
-      flexShrink: false
-    }
+  corePlugins: {
+    flexShrink: false
   }
-}`)
+}
+`)
   ])
     .render();
 };

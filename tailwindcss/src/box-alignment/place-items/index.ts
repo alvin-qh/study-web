@@ -90,8 +90,7 @@ window.onload = () => {
 module.exports = {
   variants: {
     extend: {
-      // ...
-      placeItems: ['hover', 'focus'],
+      placeItems: ['hover', 'focus']
     }
   }
 }
@@ -100,11 +99,8 @@ module.exports = {
       .code(`\
 // tailwind.config.js
 module.exports = {
-  variants: {
-    extend: {
-      // ...
-      flexShrink: false
-    }
+  corePlugins: {
+    placeItems: false
   }
 }`)
   ])

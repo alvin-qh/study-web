@@ -38,6 +38,15 @@ const entries = {
   "box-alignment/place-content": ["./src/box-alignment/place-content/index.ts"],
   "box-alignment/place-items": ["./src/box-alignment/place-items/index.ts"],
   "box-alignment/place-self": ["./src/box-alignment/place-self/index.ts"],
+  "spacing/padding": ["./src/spacing/padding/index.ts"],
+  "spacing/margin": ["./src/spacing/margin/index.ts"],
+  "spacing/between": ["./src/spacing/between/index.ts"],
+  "sizing/width": ["./src/sizing/width/index.ts"],
+  "sizing/min-width": ["./src/sizing/min-width/index.ts"],
+  "sizing/max-width": ["./src/sizing/max-width/index.ts"],
+  "sizing/height": ["./src/sizing/height/index.ts"],
+  "sizing/min-height": ["./src/sizing/min-height/index.ts"],
+  "sizing/max-height": ["./src/sizing/max-height/index.ts"],
 }
 
 function makeHtmlTemplates() {

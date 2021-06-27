@@ -75,7 +75,6 @@ module.exports = {
 module.exports = {
   variants: {
     extend: {
-      // ...
       objectPosition: ['hover', 'focus'],
     }
   }
@@ -86,7 +85,6 @@ module.exports = {
 // tailwind.config.js
 module.exports = {
   corePlugins: {
-    // ...
     objectPosition: false,
   }
 }

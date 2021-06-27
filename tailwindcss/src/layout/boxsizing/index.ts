@@ -32,7 +32,6 @@ window.onload = () => {
 module.exports = {
   variants: {
     extend: {
-      // ...
       boxSizing: ['hover', 'focus']
     }
   }
@@ -41,11 +40,8 @@ module.exports = {
       .code(`\
 // tailwind.config.js
 module.exports = {
-  variants: {
-    extend: {
-      // ...
-      boxSizing: false
-    }
+  corePlugins: {
+    boxSizing: false
   }
 }`)
   ])

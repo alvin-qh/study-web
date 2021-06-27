@@ -140,11 +140,10 @@ window.onload = () => {
 `),
     new Story("Variants", "", "javascript")
       .code(`\
-// wailwind.config.js
+// tailwind.config.js
 module.exports = {
   variants: {
     extend: {
-      // ...
       alignContent: ['hover', 'focus'],
     }
   }
@@ -152,13 +151,10 @@ module.exports = {
 `),
     new Story("Disabling", "", "javascript")
       .code(`\
-// wailwind.config.js
+// tailwind.config.js
 module.exports = {
-  variants: {
-    extend: {
-      // ...
-      alignContent: false
-    }
+  corePlugins: {
+    alignContent: false
   }
 }`)
   ])

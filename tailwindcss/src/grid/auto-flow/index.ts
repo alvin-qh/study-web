@@ -53,7 +53,6 @@ window.onload = () => {
 module.exports = {
   variants: {
     extend: {
-      // ...
       gridAutoFlow: ['hover', 'focus']
     }
   }
@@ -63,13 +62,11 @@ module.exports = {
       .code(`\
 // tailwind.config.js
 module.exports = {
-  variants: {
-    extend: {
-      // ...
-      gridAutoFlow: false
-    }
+  corePlugins: {
+    gridAutoFlow: false
   }
-}`)
+}
+`)
   ])
     .render();
 };

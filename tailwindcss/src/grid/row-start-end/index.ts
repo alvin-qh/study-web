@@ -41,23 +41,22 @@ window.onload = () => {
 module.exports = {
   theme: {
     extend: {
-      // ...
       gridRow: {
-        'span-16': 'span 16 / span 16',
+        'span-16': 'span 16 / span 16'
       },
       gridRowStart: {
         '13': '13',
         '14': '14',
         '15': '15',
         '16': '16',
-        '17': '17',
+        '17': '17'
       },
       gridRowEnd: {
         '13': '13',
         '14': '14',
         '15': '15',
         '16': '16',
-        '17': '17',
+        '17': '17'
       }
     }
   }
@@ -68,12 +67,9 @@ module.exports = {
 // tailwind.config.js
 module.exports = {
   variants: {
-    extend: {
-      // ...
-      gridRow: ['hover', 'focus'],
-      gridRowStart: ['hover', 'focus'],
-      gridRowEnd: ['hover', 'focus']
-    }
+    gridRow: ['responsive', 'hover'],
+    gridRowStart: ['responsive', 'hover'],
+    gridRowEnd: ['responsive', 'hover']
   }
 }
 `),
@@ -81,15 +77,13 @@ module.exports = {
       .code(`\
 // tailwind.config.js
 module.exports = {
-  variants: {
-    extend: {
-      // ...
-      gridRow: false,
-      gridRowStart: false,
-      gridRowEnd: false,
-    }
+  corePlugins: {
+    gridRow: false,
+    gridRowStart: false,
+    gridRowEnd: false
   }
-}`)
+}
+`)
   ])
     .render();
 };

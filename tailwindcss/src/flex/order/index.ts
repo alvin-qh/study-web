@@ -83,7 +83,6 @@ module.exports = {
 module.exports = {
   variants: {
     extend: {
-      // ...
       order: ['hover', 'focus'],
     }
   }
@@ -93,11 +92,8 @@ module.exports = {
       .code(`\
 // tailwind.config.js
 module.exports = {
-  variants: {
-    extend: {
-      // ...
-      order: false
-    }
+  corePlugins: {
+    order: false
   }
 }`)
   ])

@@ -51,7 +51,6 @@ window.onload = () => {
 module.exports = {
   variants: {
     extend: {
-      // ...
       flexWrap: ['hover', 'focus']
     }
   }
@@ -61,11 +60,8 @@ module.exports = {
       .code(`\
 // tailwind.config.js
 module.exports = {
-  variants: {
-    extend: {
-      // ...
-      flexWrap: false
-    }
+  corePlugins: {
+    flexWrap: false
   }
 }`)
   ])

@@ -109,8 +109,7 @@ window.onload = () => {
 module.exports = {
   variants: {
     extend: {
-      // ...
-      alignItems: ['hover', 'focus'],
+      alignItems: ['hover', 'focus']
     }
   }
 }
@@ -119,11 +118,8 @@ module.exports = {
       .code(`\
 // tailwind.config.js
 module.exports = {
-  variants: {
-    extend: {
-      // ...
-      alignItems: false
-    }
+  corePlugins: {
+    alignItems: false
   }
 }`)
   ])

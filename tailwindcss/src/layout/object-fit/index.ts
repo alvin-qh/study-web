@@ -67,7 +67,6 @@ window.onload = () => {
 module.exports = {
   variants: {
     extend: {
-      // ...
       objectFit: ['hover', 'focus'],
     }
   }
@@ -78,7 +77,6 @@ module.exports = {
 // tailwind.config.js
 module.exports = {
   corePlugins: {
-    // ...
     objectFit: false,
   }
 }

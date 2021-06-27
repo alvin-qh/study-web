@@ -41,13 +41,12 @@ window.onload = () => {
 module.exports = {
   theme: {
     extend: {
-      // ...
       gridTemplateRows: {
         // Simple 8 row grid
         '8': 'repeat(8, minmax(0, 1fr))',
 
         // Complex site-specific row configuration
-        'layout': '200px minmax(900px, 1fr) 100px',
+        'layout': '200px minmax(900px, 1fr) 100px'
       }
     }
   }
@@ -59,7 +58,6 @@ module.exports = {
 module.exports = {
   variants: {
     extend: {
-      // ...
       gridTemplateRows: ['hover', 'focus']
     }
   }
@@ -69,13 +67,11 @@ module.exports = {
       .code(`\
 // tailwind.config.js
 module.exports = {
-  variants: {
-    extend: {
-      // ...
-      gridTemplateColumns: false
-    }
+  corePlugins: {
+    gridTemplateRows: false
   }
-}`)
+}
+`)
   ])
     .render();
 };

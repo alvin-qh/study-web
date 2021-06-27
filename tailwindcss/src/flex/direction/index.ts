@@ -62,7 +62,6 @@ window.onload = () => {
 module.exports = {
   variants: {
     extend: {
-      // ...
       flexDirection: ['hover', 'focus']
     }
   }
@@ -71,11 +70,8 @@ module.exports = {
       .code(`\
 // tailwind.config.js
 module.exports = {
-  variants: {
-    extend: {
-      // ...
-      flexDirection: false
-    }
+  corePlugins: {
+    flexDirection: false
   }
 }`)
   ])

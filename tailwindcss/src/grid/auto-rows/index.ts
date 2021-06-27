@@ -100,7 +100,6 @@ window.onload = () => {
 module.exports = {
   theme: {
     extend: {
-      // ...
       gridAutoRows: {
         '2fr': 'minmax(0, 2fr)'
       }
@@ -114,7 +113,6 @@ module.exports = {
 module.exports = {
   variants: {
     extend: {
-      // ...
       gridAutoRows: ['hover', 'focus']
     }
   }
@@ -124,13 +122,11 @@ module.exports = {
       .code(`\
 // tailwind.config.js
 module.exports = {
-  variants: {
-    extend: {
-      // ...
-      gridAutoRows: false
-    }
+  corePlugins: {
+    gridAutoRows: false
   }
-}`)
+}
+`)
   ])
     .render();
 };

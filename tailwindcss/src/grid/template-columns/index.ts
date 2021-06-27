@@ -40,7 +40,6 @@ window.onload = () => {
 module.exports = {
   theme: {
     extend: {
-      // ...
       gridTemplateColumns: {
         // Simple 16 column grid
         '16': 'repeat(16, minmax(0, 1fr))',
@@ -58,7 +57,6 @@ module.exports = {
 module.exports = {
   variants: {
     extend: {
-      // ...
       gridTemplateColumns: ['hover', 'focus']
     }
   }
@@ -68,13 +66,11 @@ module.exports = {
       .code(`\
 // tailwind.config.js
 module.exports = {
-  variants: {
-    extend: {
-      // ...
-      gridTemplateColumns: false
-    }
+  corePlugins: {
+    gridTemplateColumns: false
   }
-}`)
+}
+`)
   ])
     .render();
 };

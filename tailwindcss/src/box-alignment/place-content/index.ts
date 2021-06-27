@@ -118,7 +118,6 @@ window.onload = () => {
 module.exports = {
   variants: {
     extend: {
-      // ...
       placeContent: ['hover', 'focus'],
     }
   }
@@ -128,11 +127,8 @@ module.exports = {
       .code(`\
 // tailwind.config.js
 module.exports = {
-  variants: {
-    extend: {
-      // ...
-      placeContent: false
-    }
+  corePlugins: {
+    placeContent: false
   }
 }`)
   ])

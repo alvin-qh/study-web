@@ -54,29 +54,50 @@ const menu = [
       {title: "Place Items", href: "box-alignment/place-items.html", descript: "设置容器内元素在垂直和水平两个方向对齐的方式"},
       {title: "Place Self", href: "box-alignment/place-self.html", descript: "设置元素相对于容器在垂直和水平两个方向对齐的方式"},
     ]
+  },
+  {
+    title: "Spacing",
+    descript: "定义元素的间距，包括内边距，外边距，元素间距",
+    links: [
+      {title: "Padding", href: "spacing/padding.html", descript: "设置元素内边距"},
+      {title: "Margin", href: "spacing/margin.html", descript: "设置元素外边距"},
+      {title: "Between", href: "spacing/between.html", descript: "设置元素间的间隔"},
+    ]
+  },
+  {
+    title: "Sizing",
+    descript: "定义元素的间距，包括内边距，外边距，元素间距",
+    links: [
+      {title: "Width", href: "sizing/width.html", descript: "设置元素的宽度"},
+      {title: "Min Width", href: "sizing/min-width.html", descript: "设置元素的最小宽度"},
+      {title: "Max Width", href: "sizing/max-width.html", descript: "设置元素的最大宽度"},
+      {title: "Height", href: "sizing/height.html", descript: "设置元素的高度"},
+      {title: "Min Height", href: "sizing/min-height.html", descript: "设置元素的最小高度"},
+      {title: "Max Height", href: "sizing/max-height.html", descript: "设置元素的最大高度"},
+    ]
   }
 ]
 
 const menuToHtml = (): string => {
   const html: Array<string> = [];
   for (const item of menu) {
-    html.push(`    <div>
-      <span class="text-sm md:text-base font-medium">${item.title}</span>: 
-      <span class="text-xs text-gray-500">${item.descript}</span>
-      <ul>`);
+    html.push(`  <div>
+    <span class="text-sm md:text-base font-medium">${item.title}</span>: 
+    <span class="text-xs text-gray-500">${item.descript}</span>
+    <ul>`);
     
     const block: Array<string> = []
     for (const link of item.links) {
       block.push(`
-        <li class="text-xs list-item list-disc ml-10 md:text-base">
-          <a href="${link.href}">${link.title}</a>: 
-          <span class="text-xs text-gray-500">${link.descript}</span>
-        </li>`
+      <li class="text-xs list-item list-disc ml-10 md:text-base">
+        <a href="${link.href}">${link.title}</a>: 
+        <span class="text-xs text-gray-500">${link.descript}</span>
+      </li>`
       )
     }
     html.push(`${block.join('')}
-      </ul>
-    </div>`)
+    </ul>
+  </div>`)
     if (item !== menu[menu.length - 1]) {
       html.push('\n');
     }

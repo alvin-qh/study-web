@@ -53,7 +53,7 @@ window.onload = () => {
 `),
     new Story("Grow Values", "", "javascript")
       .code(`\
-// wailwind.config.js
+// tailwind.config.js
 module.exports = {
   theme: {
     flexGrow: {
@@ -70,8 +70,7 @@ module.exports = {
 module.exports = {
   variants: {
     extend: {
-      // ...
-      flexGrow: ['hover', 'focus'],
+      flexGrow: ['hover', 'focus']
     }
   }
 }
@@ -80,13 +79,11 @@ module.exports = {
       .code(`\
 // tailwind.config.js
 module.exports = {
-  variants: {
-    extend: {
-      // ...
-      flexGrow: false
-    }
+  corePlugins: {
+    flexGrow: false
   }
-}`)
+}
+`)
   ])
     .render();
 };

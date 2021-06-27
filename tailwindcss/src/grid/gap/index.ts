@@ -44,13 +44,27 @@ window.onload = () => {
   <div class="flex items-center justify-center bg-rose-500">4</div>
 </div>
 `),
-    new Story("Customize", "可以通过tailwind配置增加、删除或修改'spacing'部分的样式类", "javascript")
+    new Story("Customize", "一次性自定义'padding', 'margin', 'width'和'height'的值", "javascript")
       .code(`\
 // tailwind.config.js
 module.exports = {
   theme: {
     extend: {
-      // ...
+      spacing: {
+        '72': '18rem',
+        '84': '21rem',
+        '96': '24rem'
+      }
+    }
+  }
+}
+`),
+    new Story("Customize", "可以通过tailwind配置增加、删除或修改'gap'部分的样式类", "javascript")
+      .code(`\
+// tailwind.config.js
+module.exports = {
+  theme: {
+    extend: {
       gap: {
         '11': '2.75rem',
         '13': '3.25rem'
@@ -65,7 +79,6 @@ module.exports = {
 module.exports = {
   variants: {
     extend: {
-      // ...
       gap: ['hover', 'focus']
     }
   }
@@ -75,13 +88,11 @@ module.exports = {
       .code(`\
 // tailwind.config.js
 module.exports = {
-  variants: {
-    extend: {
-      // ...
-      gap: false
-    }
+  corePlugins: {
+    gap: false
   }
-}`)
+}
+`)
   ])
     .render();
 };

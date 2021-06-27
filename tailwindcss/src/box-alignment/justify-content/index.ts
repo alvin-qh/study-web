@@ -84,7 +84,6 @@ window.onload = () => {
 module.exports = {
   variants: {
     extend: {
-      // ...
       justifyContent: ['hover', 'focus']
     }
   }
@@ -93,11 +92,8 @@ module.exports = {
       .code(`\
 // tailwind.config.js
 module.exports = {
-  variants: {
-    extend: {
-      // ...
-      justifyContent: false
-    }
+  corePlugins: {
+    justifyContent: false
   }
 }`)
   ])

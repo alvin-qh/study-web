@@ -91,7 +91,6 @@ window.onload = () => {
 module.exports = {
   variants: {
     extend: {
-      // ...
       float: ['hover', 'focus']
     }
   }
@@ -102,7 +101,6 @@ module.exports = {
 // tailwind.config.js
 module.exports = {
   corePlugins: {
-    // ...
     float: false,
   }
 }

@@ -127,8 +127,7 @@ new Story("Variants", "", "javascript")
 module.exports = {
   variants: {
     extend: {
-      // ...
-      clear: ['hover', 'focus'],
+      clear: ['hover', 'focus']
     }
   }
 }
@@ -138,8 +137,7 @@ new Story("Disabling", "", "javascript")
 // tailwind.config.js
   module.exports = {
     corePlugins: {
-      // ...
-      clear: false,
+      clear: false
     }
   }
 `)

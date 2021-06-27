@@ -174,7 +174,6 @@ window.onload = () => {
 module.exports = {
   variants: {
     extend: {
-      // ...
       display: ['hover', 'focus']
     }
   }
@@ -185,7 +184,6 @@ module.exports = {
 // tailwind.config.js
 module.exports = {
   corePlugins: {
-    // ...
     display: false,
   }
 }

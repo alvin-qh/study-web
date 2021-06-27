@@ -68,7 +68,6 @@ module.exports = {
 /* tailwind.config.js */      
 module.exports = {
   variants: {
-    // ...
     container: []
   }
 };
@@ -78,7 +77,6 @@ module.exports = {
 /* tailwind.config.js */      
 module.exports = {
   corePlugins: {
-    // ...
     container: false,
   }
 };
