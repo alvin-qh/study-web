@@ -135,12 +135,12 @@ module.exports = {
 new Story("Disabling", "", "javascript")
       .code(`\
 // tailwind.config.js
-  module.exports = {
-    corePlugins: {
-      clear: false
-    }
+module.exports = {
+  corePlugins: {
+    clear: false
   }
+}
 `)
   ])
     .render();
-};
+}

@@ -75,6 +75,32 @@ const menu = [
       {title: "Min Height", href: "sizing/min-height.html", descript: "设置元素的最小高度"},
       {title: "Max Height", href: "sizing/max-height.html", descript: "设置元素的最大高度"},
     ]
+  },
+  {
+    title: "Typesetting",
+    descript: "定义排版样式，包括字体、文本、字间距等",
+    links: [
+      {title: "Font Family", href: "typesetting/font-family.html", descript: "设置元素的字体名称"},
+      {title: "Font Size", href: "typesetting/font-size.html", descript: "设置元素的字体大小"},
+      {title: "Font Smoothing", href: "typesetting/font-smooth.html", descript: "设置元素的字体平滑度"},
+      {title: "Font Style", href: "typesetting/font-style.html", descript: "设置元素的字体样式"},
+      {title: "Font Weight", href: "typesetting/font-weight.html", descript: "设置元素的字体粗细"},
+      {title: "Font Variant Numeric", href: "typesetting/font-variant-numeric.html", descript: "设置数字变形"},
+      {title: "Letter Spacing", href: "typesetting/letter-spacing.html", descript: "设置字母间距"},
+      {title: "Line Height", href: "typesetting/line-height.html", descript: "设置行高"},
+      {title: "List Style", href: "typesetting/list-style.html", descript: "设置列表标记样式"},
+      {title: "List Position", href: "typesetting/list-position.html", descript: "设置列表标记位置"},
+      {title: "Placeholder Color", href: "typesetting/placeholder-color.html", descript: "设置占位文本颜色"},
+      {title: "Placeholder Opacity", href: "typesetting/placeholder-opacity.html", descript: "设置占位文本透明度"},
+      {title: "Text Align", href: "typesetting/text-align.html", descript: "设置文本对齐方式"},
+      {title: "Text Color", href: "typesetting/text-color.html", descript: "设置文本颜色"},
+      {title: "Text Opacity", href: "typesetting/text-opacity.html", descript: "设置文本透明度"},
+      {title: "Text Decoration", href: "typesetting/text-decoration.html", descript: "设置文本装饰"},
+      {title: "Text Transform", href: "typesetting/text-transform.html", descript: "设置文本转换"},
+      {title: "Vertical Align", href: "typesetting/vertical-align.html", descript: "设置文本垂直对齐"},
+      {title: "White Space", href: "typesetting/white-space.html", descript: "设置空格字符"},
+      {title: "Word Break", href: "typesetting/word-break.html", descript: "设置换行样式"},
+    ]
   }
 ]
 
@@ -115,4 +141,4 @@ ${menuToHtml()}
 </div>`)
   ])
     .render();
-};
+}

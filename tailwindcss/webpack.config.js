@@ -47,6 +47,27 @@ const entries = {
   "sizing/height": ["./src/sizing/height/index.ts"],
   "sizing/min-height": ["./src/sizing/min-height/index.ts"],
   "sizing/max-height": ["./src/sizing/max-height/index.ts"],
+  "typesetting/font-family": ["./src/typesetting/font-family/index.ts"],
+  "typesetting/font-size": ["./src/typesetting/font-size/index.ts"],
+  "typesetting/font-smooth": ["./src/typesetting/font-smooth/index.ts"],
+  "typesetting/font-style": ["./src/typesetting/font-style/index.ts"],
+  "typesetting/font-weight": ["./src/typesetting/font-weight/index.ts"],
+  "typesetting/font-variant-numeric": ["./src/typesetting/font-variant-numeric/index.ts"],
+  "typesetting/letter-spacing": ["./src/typesetting/letter-spacing/index.ts"],
+  "typesetting/line-height": ["./src/typesetting/line-height/index.ts"],
+  "typesetting/list-style": ["./src/typesetting/list-style/index.ts"],
+  "typesetting/list-position": ["./src/typesetting/list-position/index.ts"],
+  "typesetting/placeholder-color": ["./src/typesetting/placeholder-color/index.ts"],
+  "typesetting/placeholder-opacity": ["./src/typesetting/placeholder-opacity/index.ts"],
+  "typesetting/text-align": ["./src/typesetting/text-align/index.ts"],
+  "typesetting/text-color": ["./src/typesetting/text-color/index.ts"],
+  "typesetting/text-opacity": ["./src/typesetting/text-opacity/index.ts"],
+  "typesetting/text-decoration": ["./src/typesetting/text-decoration/index.ts"],
+  "typesetting/text-transform": ["./src/typesetting/text-transform/index.ts"],
+  "typesetting/text-overflow": ["./src/typesetting/text-overflow/index.ts"],
+  "typesetting/vertical-align": ["./src/typesetting/vertical-align/index.ts"],
+  "typesetting/white-space": ["./src/typesetting/white-space/index.ts"],
+  "typesetting/word-break": ["./src/typesetting/word-break/index.ts"],
 }
 
 function makeHtmlTemplates() {
@@ -76,6 +97,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, "dist"),
     filename: isProduction ? 'js/[name]-[chunkhash:8].js' : 'js/[name].js',
+    publicPath: '/'
   },
   devServer: {
     open: true,
@@ -104,8 +126,8 @@ const config = {
         use: [{ loader: MiniCssExtractPlugin.loader }, "css-loader", "postcss-loader"],
       },
       {
-        test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-        type: "asset",
+        test: /\.(eot|svg|ttf|woff|woff2|otf|png|jpg|gif)$/i,
+        type: "asset/resource",
         generator: {
           filename: "asset/[name][ext]"
         },
@@ -138,6 +160,6 @@ const config = {
       }
     }
   }
-};
+}
 
 module.exports = config

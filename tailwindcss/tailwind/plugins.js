@@ -9,7 +9,7 @@ const toRgba = (hexCode, opacity = 50) => {
   const b = parseInt(hex.substring(4, 6), 16);
 
   return `rgba(${r},${g},${b},${opacity / 100})`;
-};
+}
 
 const flattenColorPalette = (obj, sep = '-') => Object.assign(
   {},
@@ -39,7 +39,7 @@ const pluginStripes = ({ addUtilities, theme }) => {
       `,
       backgroundSize: '5.66px 5.66px',
     }
-  };
+  }
 
   const addColor = (name, color) => (utilities[`.bg-stripes-${name}`] = { '--stripes-color': color });
 

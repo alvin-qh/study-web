@@ -159,4 +159,4 @@ module.exports = {
 }`)
   ])
     .render();
-};
+}

@@ -1,0 +1,4 @@
+*         text=auto eof=lf
+*.jpg	  	binary
+*.woff2		binary
+*.otf	    binary
