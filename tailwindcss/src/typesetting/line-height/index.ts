@@ -1,89 +1,162 @@
 import { Story, StoryBook } from '../../common';
-import image from '../../asset/image.jpg';
+
 
 window.onload = () => {
-  const book = new StoryBook('Floating', true);
+  const book = new StoryBook('Line Height', true);
   book.append([
-    new Story("Float Right", "将元素浮动到父容器的右侧")
+    new Story("Relative Line Height", "设置相对行高")
       .code(`\
 <!--
-  'float-right': 设置向右浮动
+  'leading-{none,tight,sung,normal,relexed,loose}': 设置相对行高
 -->
-<img class="float-right w-40 h-40 m-1" 
-     src="${image}">
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam venenatis et lorem 
-  sit amet vehicula. Etiam vel nibh nec nisi euismod mollis ultrices condimentum 
-  velit. Proin velit libero, interdum ac rhoncus sit amet, pellentesque ac turpis. 
-  Quisque ac luctus turpis, vel efficitur ante. Cras convallis risus vel vehicula 
-  dapibus. Donec eget neque fringilla, faucibus mi quis, porttitor magna. Cras 
-  pellentesque leo est, et luctus neque rutrum eu. Aliquam consequat velit sed 
-  sem posuere, vitae sollicitudin mi consequat. Mauris eget ipsum sed dui rutrum 
-  fringilla. Donec varius vehicula magna sit amet auctor. Ut congue vehicula 
-  lectus in blandit. Vivamus suscipit eleifend turpis, nec sodales sem vulputate a. 
-  Curabitur pulvinar libero viverra, efficitur odio eu, finibus justo. 
-  Etiam eu vehicula felis.
-</p>
+<div class="space-y-6 px-4 py-6 bg-purple-100 text-purple-500">
+  <div class="space-y-1">
+    <dt class="font-mono text-xs">leading-none</dt>
+    <dd class="leading-none text-purple-700">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+      Assumenda, quia temporibus eveniet a libero incidunt suscipit laborum, 
+      rerum accusantium modi quidem, 
+      ipsam illum quis sed voluptatum quae eum fugit earum.
+    </dd>
+  </div>
+  <div class="space-y-1">
+    <dt class="font-mono text-xs">leading-tight</dt>
+    <dd class="leading-tight text-purple-700">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+      Assumenda, quia temporibus eveniet a libero incidunt suscipit laborum, 
+      rerum accusantium modi quidem, 
+      ipsam illum quis sed voluptatum quae eum fugit earum.
+    </dd>
+  </div>
+  <div class="space-y-1">
+    <dt class="font-mono text-xs">leading-snug</dt>
+    <dd class="leading-snug text-purple-700">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+      Assumenda, quia temporibus eveniet a libero incidunt suscipit laborum, 
+      rerum accusantium modi quidem, 
+      ipsam illum quis sed voluptatum quae eum fugit earum.
+    </dd>
+  </div>
+  <div class="space-y-1">
+    <dt class="font-mono text-xs">leading-normal</dt>
+    <dd class="leading-normal text-purple-700">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+      Assumenda, quia temporibus eveniet a libero incidunt suscipit laborum, 
+      rerum accusantium modi quidem, 
+      ipsam illum quis sed voluptatum quae eum fugit earum.
+    </dd>
+  </div>
+  <div class="space-y-1">
+    <dt class="font-mono text-xs">leading-loose</dt>
+    <dd class="leading-loose text-purple-700">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+      Assumenda, quia temporibus eveniet a libero incidunt suscipit laborum, 
+      rerum accusantium modi quidem, 
+      ipsam illum quis sed voluptatum quae eum fugit earum.
+    </dd>
+  </div>
+</div>
 `),
-    new Story("Float Left", "将元素浮动到父容器的左侧")
+    new Story("Absolute Line Height", "绝对行高")
       .code(`\
 <!--
-  'float-left': 设置向左浮动
+  'leading-{3~10}': 设置绝对行高
 -->
-<img class="float-left w-40 h-40 m-1" 
-     src="${image}">
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam venenatis et lorem 
-  sit amet vehicula. Etiam vel nibh nec nisi euismod mollis ultrices condimentum 
-  velit. Proin velit libero, interdum ac rhoncus sit amet, pellentesque ac turpis. 
-  Quisque ac luctus turpis, vel efficitur ante. Cras convallis risus vel vehicula 
-  dapibus. Donec eget neque fringilla, faucibus mi quis, porttitor magna. Cras 
-  pellentesque leo est, et luctus neque rutrum eu. Aliquam consequat velit sed 
-  sem posuere, vitae sollicitudin mi consequat. Mauris eget ipsum sed dui rutrum 
-  fringilla. Donec varius vehicula magna sit amet auctor. Ut congue vehicula 
-  lectus in blandit. Vivamus suscipit eleifend turpis, nec sodales sem vulputate a. 
-  Curabitur pulvinar libero viverra, efficitur odio eu, finibus justo. 
-  Etiam eu vehicula felis.
-</p>
-`),
-    new Story("No Float", "不浮动")
-      .code(`\
-<!--
-  'float-none': 设置元素不浮动
--->
-<img class="float-none w-40 h-40 m-1" 
-     src="${image}">
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam venenatis et lorem 
-  sit amet vehicula. Etiam vel nibh nec nisi euismod mollis ultrices condimentum 
-  velit. Proin velit libero, interdum ac rhoncus sit amet, pellentesque ac turpis. 
-  Quisque ac luctus turpis, vel efficitur ante. Cras convallis risus vel vehicula 
-  dapibus. Donec eget neque fringilla, faucibus mi quis, porttitor magna. Cras 
-  pellentesque leo est, et luctus neque rutrum eu. Aliquam consequat velit sed 
-  sem posuere, vitae sollicitudin mi consequat. Mauris eget ipsum sed dui rutrum 
-  fringilla. Donec varius vehicula magna sit amet auctor. Ut congue vehicula 
-  lectus in blandit. Vivamus suscipit eleifend turpis, nec sodales sem vulputate a. 
-  Curabitur pulvinar libero viverra, efficitur odio eu, finibus justo. 
-  Etiam eu vehicula felis.
-</p>
+<div class="space-y-6 bg-green-100 px-4 py-6 text-green-600">
+  <div class="space-y-1">
+    <dt class="font-mono text-xs">leading-3</dt>
+    <dd class="leading-3 text-green-800">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+      Assumenda, quia temporibus eveniet a libero incidunt suscipit laborum, 
+      rerum accusantium modi quidem, 
+      ipsam illum quis sed voluptatum quae eum fugit earum.
+    </dd>
+  </div>
+  <div class="space-y-1">
+    <dt class="font-mono text-xs">leading-4</dt>
+    <dd class="leading-4 text-green-800">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+      Assumenda, quia temporibus eveniet a libero incidunt suscipit laborum, 
+      rerum accusantium modi quidem, 
+      ipsam illum quis sed voluptatum quae eum fugit earum.
+    </dd>
+  </div>
+  <div class="space-y-1">
+    <dt class="font-mono text-xs">leading-5</dt>
+    <dd class="leading-5 text-green-800">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+      Assumenda, quia temporibus eveniet a libero incidunt suscipit laborum, 
+      rerum accusantium modi quidem, 
+      ipsam illum quis sed voluptatum quae eum fugit earum.
+    </dd>
+  </div>
+  <div class="space-y-1">
+    <dt class="font-mono text-xs">leading-6</dt>
+    <dd class="leading-6 text-green-800">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+      Assumenda, quia temporibus eveniet a libero incidunt suscipit laborum, 
+      rerum accusantium modi quidem, 
+      ipsam illum quis sed voluptatum quae eum fugit earum.
+    </dd>
+  </div>
+  <div class="space-y-1">
+    <dt class="font-mono text-xs">leading-7</dt>
+    <dd class="leading-7 text-green-800">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+      Assumenda, quia temporibus eveniet a libero incidunt suscipit laborum, 
+      rerum accusantium modi quidem, 
+      ipsam illum quis sed voluptatum quae eum fugit earum.
+    </dd>
+  </div>
+  <div class="space-y-1">
+    <dt class="font-mono text-xs">leading-8</dt>
+    <dd class="leading-8 text-green-800">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+      Assumenda, quia temporibus eveniet a libero incidunt suscipit laborum, 
+      rerum accusantium modi quidem, 
+      ipsam illum quis sed voluptatum quae eum fugit earum.
+    </dd>
+  </div>
+  <div class="space-y-1">
+    <dt class="font-mono text-xs">leading-9</dt>
+    <dd class="leading-9 text-green-800">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+      Assumenda, quia temporibus eveniet a libero incidunt suscipit laborum, 
+      rerum accusantium modi quidem, 
+      ipsam illum quis sed voluptatum quae eum fugit earum.
+    </dd>
+  </div>
+  <div class="space-y-1">
+    <dt class="font-mono text-xs">leading-10</dt>
+    <dd class="leading-10 text-green-800">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+      Assumenda, quia temporibus eveniet a libero incidunt suscipit laborum, 
+      rerum accusantium modi quidem, 
+      ipsam illum quis sed voluptatum quae eum fugit earum.
+    </dd>
+  </div>
+</div>
 `),
     new Story("Responsive")
       .code(`\
-<img class="float-none md:float-left w-40 h-40 m-1" 
-     src="${image}">
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam venenatis et lorem 
-  sit amet vehicula. Etiam vel nibh nec nisi euismod mollis ultrices condimentum 
-  velit. Proin velit libero, interdum ac rhoncus sit amet, pellentesque ac turpis. 
-  Quisque ac luctus turpis, vel efficitur ante. Cras convallis risus vel vehicula 
-  dapibus. Donec eget neque fringilla, faucibus mi quis, porttitor magna. Cras 
-  pellentesque leo est, et luctus neque rutrum eu. Aliquam consequat velit sed 
-  sem posuere, vitae sollicitudin mi consequat. Mauris eget ipsum sed dui rutrum 
-  fringilla. Donec varius vehicula magna sit amet auctor. Ut congue vehicula 
-  lectus in blandit. Vivamus suscipit eleifend turpis, nec sodales sem vulputate a. 
-  Curabitur pulvinar libero viverra, efficitur odio eu, finibus justo. 
-  Etiam eu vehicula felis.
+<p class="leading-none md:leading-loose bg-light-blue-100 text-blue-700 px-4 py-6">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+  Assumenda, quia temporibus eveniet a libero incidunt suscipit laborum, 
+  rerum accusantium modi quidem, 
+  ipsam illum quis sed voluptatum quae eum fugit earum.
 </p>
+`),
+    new Story("Customize", "通过Tailwind配置定义行高样式类", "javascript")
+      .code(`\
+// tailwind.config.js
+module.exports = {
+  theme: {
+    lineHeight: {
+      'extra-loose': '2.5',
+      '12': '3rem'
+    }
+  }
+}
 `),
     new Story("Variants", "", "javascript")
       .code(`\
@@ -91,7 +164,7 @@ window.onload = () => {
 module.exports = {
   variants: {
     extend: {
-      float: ['hover', 'focus']
+      lineHeight: ['hover', 'focus']
     }
   }
 }
@@ -101,7 +174,7 @@ module.exports = {
 // tailwind.config.js
 module.exports = {
   corePlugins: {
-    float: false,
+    lineHeight: false
   }
 }
 `)

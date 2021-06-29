@@ -1,5 +1,4 @@
 import { Story, StoryBook } from '../../common';
-import image from '../../asset/image.jpg';
 
 window.onload = () => {
   const book = new StoryBook('Font Weight', true);

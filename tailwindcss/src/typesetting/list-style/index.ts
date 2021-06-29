@@ -1,83 +1,88 @@
 import { Story, StoryBook } from '../../common';
 
 window.onload = () => {
-  const book = new StoryBook('Container', true);
+  const book = new StoryBook('List Style', true);
   book.append([
-    new Story("Container", "设置容器在不同屏幕尺寸下的固定宽度，设置容器是否在父级容器里居中。")
+    new Story("List Style", "设置列表标记样式")
       .code(`\
 <!--
-  'container': 设置容器的固定尺寸
-  'mx-auto': 容器在父容器里居中
+  'list-none': 不显示列表标记
+  'list-disc': 圆形列表标记
+  'list-decimal': 数字列表标记
 -->
-<div class="container mx-auto">
-    <div class="bg-red-200 h-8"></div>
-</div>
-<div class="container mx-auto px-10 mt-1">
-    <div class="bg-red-200 h-8"></div>
+<div class="px-4 py-6 space-y-6 bg-purple-100 text-purple-800">
+  <div class="space-y-2">
+    <dt class="text-purple-400">list-none (default)</dt>
+    <dd>
+      <ul class="list-none list-inside leading-relaxed">
+        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit</li>
+        <li>Assumenda, quia temporibus eveniet a libero incidunt suscipit</li>
+        <li>Quidem, ipsam illum quis sed voluptatum quae eum fugit earum</li>
+      </ul>
+    </dd>
+  </div>
+  <div class="space-y-2">
+    <dt class="text-purple-400">list-disc</dt>
+    <dd>
+      <ul class="list-disc list-inside leading-relaxed">
+        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit</li>
+        <li>Assumenda, quia temporibus eveniet a libero incidunt suscipit</li>
+        <li>Quidem, ipsam illum quis sed voluptatum quae eum fugit earum</li>
+      </ul>
+    </dd>
+  </div>
+  <div class="space-y-2">
+    <dt class="text-purple-400">list-disc</dt>
+    <dd>
+      <ol class="list-decimal list-inside leading-relaxed">
+        <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit</li>
+        <li>Assumenda, quia temporibus eveniet a libero incidunt suscipit</li>
+        <li>Quidem, ipsam illum quis sed voluptatum quae eum fugit earum</li>
+      </ol>
+    </dd>
+  </div>
 </div>
 `),
     new Story("Responsive", "使用屏幕尺寸前缀进行屏幕自适应设置")
       .code(`\
-<!--
-    使用 'sm', 'md', 'lg', 'xl', '2xl' 适配不同尺寸的屏幕
--->
-<div class="md:container md:mx-auto">
-  <div class="bg-red-200 h-8"></div>
-</div>`),
-    new Story("Center container by default", "设置元素在父容器中默认居中", "javascript")
+<ul class="list-none md:list-disc list-inside px-4 py-6 bg-yellow-100 text-yellow-700">
+  <li>Lorem ipsum dolor sit amet, consectetur adipisicing elit</li>
+  <li>Assumenda, quia temporibus eveniet a libero incidunt suscipit</li>
+  <li>Quidem, ipsam illum quis sed voluptatum quae eum fugit earum</li>
+</ul>
+`),
+    new Story("Customize", "通过Tailwind添加、删除和修改列表标记样式类", "javascript")
       .code(`\
 /* tailwind.config.js */      
 module.exports = {
   theme: {
-    container: {
-      center: true
+    listStyleType: {
+      none: 'none',
+      disc: 'disc',
+      decimal: 'decimal',
+      square: 'square',
+      roman: 'upper-roman'
     }
   }
 }
 `),
-    new Story("Default Padding", "设置容器的默认内边距", "javascript")
-      .code(`\
-/* tailwind.config.js */      
-module.exports = {
-  theme: {
-    container: {
-      padding: '2rem',
-    }
-  }
-}
-`),
-    new Story("Override Padding for Difference Screen Size", "为不同的屏幕尺寸设置自适应的容器内边距", "javascript")
-      .code(`\
-/* tailwind.config.js */      
-module.exports = {
-  theme: {
-    container: {
-      padding: {
-        DEFAULT: '1rem',
-        sm: '2rem',
-        lg: '4rem',
-        xl: '5rem',
-        '2xl': '6rem',
-      }
-    }
-  }
-}
-`),
-    new Story("Disable Responsive", "禁用自适应", "javascript")
+    new Story("Variants", "", "javascript")
       .code(`\
 /* tailwind.config.js */      
 module.exports = {
   variants: {
-    container: []
+    extend: {
+      listStyleType: ['hover', 'focus']
+    }
   }
 }
 `),
-    new Story("Disable Container", "禁用样式", "javascript")
+    new Story("Disabling", "", "javascript")
       .code(`\
 /* tailwind.config.js */      
 module.exports = {
   corePlugins: {
-    container: false,
+    listStyleType: false,
   }
 }
 `)
