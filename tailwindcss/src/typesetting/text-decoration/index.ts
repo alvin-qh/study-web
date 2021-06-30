@@ -1,19 +1,17 @@
 import { Story, StoryBook } from '../../common';
 
 window.onload = () => {
-  const book = new StoryBook('Container', true);
+  const book = new StoryBook('Text Decoration', true);
   book.append([
-    new Story("Container", "设置容器在不同屏幕尺寸下的固定宽度，设置容器是否在父级容器里居中。")
+    new Story("Underline", "设置文本下划线")
       .code(`\
 <!--
-  'container': 设置容器的固定尺寸
-  'mx-auto': 容器在父容器里居中
+  'underline': 设置文本下划线
 -->
-<div class="container mx-auto">
-    <div class="bg-red-200 h-8"></div>
-</div>
-<div class="container mx-auto px-10 mt-1">
-    <div class="bg-red-200 h-8"></div>
+<div class="bg-purple-100 px-4 py-6">
+  <p class="underline text-lg font-medium">
+    The quick brown fox jumped over the lazy dog.
+  </p>
 </div>
 `),
     new Story("Responsive", "使用屏幕尺寸前缀进行屏幕自适应设置")

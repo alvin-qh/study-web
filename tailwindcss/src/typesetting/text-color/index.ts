@@ -1,83 +1,78 @@
 import { Story, StoryBook } from '../../common';
 
 window.onload = () => {
-  const book = new StoryBook('Container', true);
+  const book = new StoryBook('Text Color', true);
   book.append([
-    new Story("Container", "设置容器在不同屏幕尺寸下的固定宽度，设置容器是否在父级容器里居中。")
+    new Story("Text Color", "设置文本颜色")
       .code(`\
 <!--
-  'container': 设置容器的固定尺寸
-  'mx-auto': 容器在父容器里居中
+  'text-{color}-{amount}': 设置字体的颜色和色深
 -->
-<div class="container mx-auto">
-    <div class="bg-red-200 h-8"></div>
-</div>
-<div class="container mx-auto px-10 mt-1">
-    <div class="bg-red-200 h-8"></div>
+<div class="px-4 py-6 bg-purple-100">
+  <p class="text-lg font-medium text-purple-600">
+    The quick brown fox jumped over the lazy dog.
+  </p>
 </div>
 `),
     new Story("Responsive", "使用屏幕尺寸前缀进行屏幕自适应设置")
       .code(`\
+<div class="px-4 py-6 bg-blue-100">
+  <p class="text-lg font-medium text-blue-600 md:text-green-600">
+    The quick brown fox jumped over the lazy dog.
+  </p>
+</div>
+`),
+    new Story("Hover", "设置鼠标悬停时的文字颜色")
+      .code(`\
 <!--
-    使用 'sm', 'md', 'lg', 'xl', '2xl' 适配不同尺寸的屏幕
+  悬停功能类也可以通过在'hover:'前缀前添加响应的'{screen}:'前缀来与响应的样式类组合使用
 -->
-<div class="md:container md:mx-auto">
-  <div class="bg-red-200 h-8"></div>
-</div>`),
-    new Story("Center container by default", "设置元素在父容器中默认居中", "javascript")
+<div class="flex px-4 py-6 bg-red-100">
+  <button class="font-medium text-white hover:text-red-500 bg-red-500 focus:outline-none shadow-lg rounded-lg py-2 px-3">
+    Hover me
+  </button>
+</div>
+`),
+    new Story("Focus", "设置焦点上的文本颜色")
+      .code(`\
+<!--
+  悬停功能类也可以通过在'focus:'前缀前添加响应的'{screen}:'前缀来与响应的样式类组合使用
+-->
+<div class="px-4 py-6 bg-green-100">
+  <input class="font-medium text-gray-400 focus:text-gray-800 focus:outline-none w-2/3 shadow-lg rounded-lg py-2 px-3">
+</div>
+`),
+    new Story("Customize", "通过Tailwind配置定义文本颜色样式类", "javascript")
       .code(`\
 /* tailwind.config.js */      
 module.exports = {
   theme: {
-    container: {
-      center: true
+//  textColor: theme => theme('colors'),   // 取消系统定义的文本颜色样式类
+    textColor: {    // 添加自定义文本颜色样式类
+      'primary': '#3490dc',
+      'secondary': '#ffed4a',
+      'danger': '#e3342f',
     }
   }
 }
 `),
-    new Story("Default Padding", "设置容器的默认内边距", "javascript")
-      .code(`\
-/* tailwind.config.js */      
-module.exports = {
-  theme: {
-    container: {
-      padding: '2rem',
-    }
-  }
-}
-`),
-    new Story("Override Padding for Difference Screen Size", "为不同的屏幕尺寸设置自适应的容器内边距", "javascript")
-      .code(`\
-/* tailwind.config.js */      
-module.exports = {
-  theme: {
-    container: {
-      padding: {
-        DEFAULT: '1rem',
-        sm: '2rem',
-        lg: '4rem',
-        xl: '5rem',
-        '2xl': '6rem',
-      }
-    }
-  }
-}
-`),
-    new Story("Disable Responsive", "禁用自适应", "javascript")
+    new Story("Variants", "", "javascript")
       .code(`\
 /* tailwind.config.js */      
 module.exports = {
   variants: {
-    container: []
+    extend: {
+      textColor: ['active']
+    }
   }
 }
 `),
-    new Story("Disable Container", "禁用样式", "javascript")
+    new Story("Disabling", "", "javascript")
       .code(`\
 /* tailwind.config.js */      
 module.exports = {
   corePlugins: {
-    container: false,
+    textColor: false,
   }
 }
 `)

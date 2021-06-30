@@ -15,7 +15,7 @@ module.exports = {
     colors,
     extend: {
       fontFamily: {
-        source: [
+        "source": [
           "Source Sans Pro",
           "ui-sans-serif",
           "system-ui",
@@ -42,6 +42,9 @@ module.exports = {
           "Liberation Mono",
           "Courier New",
           "monospace"
+        ],
+        "flow": [
+          "Flow"
         ]
       }
     }

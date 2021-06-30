@@ -3,80 +3,89 @@ import { Story, StoryBook } from '../../common';
 window.onload = () => {
   const book = new StoryBook('Container', true);
   book.append([
-    new Story("Container", "设置容器在不同屏幕尺寸下的固定宽度，设置容器是否在父级容器里居中。")
+    new Story("Align Left", "文本左对齐")
       .code(`\
 <!--
-  'container': 设置容器的固定尺寸
-  'mx-auto': 容器在父容器里居中
+  'text-left': 文本左对齐
 -->
-<div class="container mx-auto">
-    <div class="bg-red-200 h-8"></div>
-</div>
-<div class="container mx-auto px-10 mt-1">
-    <div class="bg-red-200 h-8"></div>
+<div class="px-4 py-6 bg-purple-100">
+  <p class="text-left font-flow leading-5 text-3xl text-purple-600">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+    Nobis fugit, enim molestiae praesentium eveniet, 
+    recusandae et error beatae facilis ex harum consequuntur, 
+    quia pariatur non. Doloribus illo, ullam blanditiis ab.
+  </p>
 </div>
 `),
-    new Story("Responsive", "使用屏幕尺寸前缀进行屏幕自适应设置")
+    new Story("Align Center", "文本居中对齐")
       .code(`\
 <!--
-    使用 'sm', 'md', 'lg', 'xl', '2xl' 适配不同尺寸的屏幕
+  'text-center': 文本居中对齐
 -->
-<div class="md:container md:mx-auto">
-  <div class="bg-red-200 h-8"></div>
-</div>`),
-    new Story("Center container by default", "设置元素在父容器中默认居中", "javascript")
-      .code(`\
-/* tailwind.config.js */      
-module.exports = {
-  theme: {
-    container: {
-      center: true
-    }
-  }
+<div class="px-4 py-6 bg-rose-100">
+  <p class="text-center font-flow leading-5 text-3xl text-rose-600">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+    Nobis fugit, enim molestiae praesentium eveniet, 
+    recusandae et error beatae facilis ex harum consequuntur, 
+    quia pariatur non. Doloribus illo, ullam blanditiis ab.
+  </p>
+</div>
 `),
-    new Story("Default Padding", "设置容器的默认内边距", "javascript")
+    new Story("Align Right", "文本右对齐")
       .code(`\
-/* tailwind.config.js */      
-module.exports = {
-  theme: {
-    container: {
-      padding: '2rem',
-    }
-  }
-}
+<!--
+  'text-right': 文本右对齐
+-->
+<div class="px-4 py-6 bg-green-100">
+  <p class="text-right font-flow leading-5 text-3xl text-green-600">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+    Nobis fugit, enim molestiae praesentium eveniet, 
+    recusandae et error beatae facilis ex harum consequuntur, 
+    quia pariatur non. Doloribus illo, ullam blanditiis ab.
+  </p>
+</div>
 `),
-    new Story("Override Padding for Difference Screen Size", "为不同的屏幕尺寸设置自适应的容器内边距", "javascript")
+    new Story("Align Justify", "文本两端对齐")
       .code(`\
-/* tailwind.config.js */      
-module.exports = {
-  theme: {
-    container: {
-      padding: {
-        DEFAULT: '1rem',
-        sm: '2rem',
-        lg: '4rem',
-        xl: '5rem',
-        '2xl': '6rem',
-      }
-    }
-  }
-}
+<!--
+  'text-right': 文本两端对齐
+-->
+<div class="px-4 py-6 bg-yellow-100">
+  <p class="text-justify font-flow leading-5 text-3xl text-yellow-600">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+    Nobis fugit, enim molestiae praesentium eveniet, 
+    recusandae et error beatae facilis ex harum consequuntur, 
+    quia pariatur non. Doloribus illo, ullam blanditiis ab.
+  </p>
+</div>
 `),
-    new Story("Disable Responsive", "禁用自适应", "javascript")
+    new Story("Responsive", "")
+      .code(`\
+<div class="px-4 py-6 bg-blue-100">
+  <p class="text-left md:text-center font-flow leading-5 text-3xl text-blue-600">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+    Nobis fugit, enim molestiae praesentium eveniet, 
+    recusandae et error beatae facilis ex harum consequuntur, 
+    quia pariatur non. Doloribus illo, ullam blanditiis ab.
+  </p>
+</div>
+`),
+    new Story("Variants", "", "javascript")
       .code(`\
 /* tailwind.config.js */      
 module.exports = {
   variants: {
-    container: []
+    extend: {
+      textAlign: ['hover', 'focus']
+    }
   }
-}
 `),
-    new Story("Disable Container", "禁用样式", "javascript")
+    new Story("Disabling", "", "javascript")
       .code(`\
 /* tailwind.config.js */      
 module.exports = {
   corePlugins: {
-    container: false,
+    textAlign: false,
   }
 }
 `)
