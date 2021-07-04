@@ -1,83 +1,66 @@
 import { Story, StoryBook } from '../../common';
 
 window.onload = () => {
-  const book = new StoryBook('Container', true);
+  const book = new StoryBook('Word Break', true);
   book.append([
-    new Story("Container", "设置容器在不同屏幕尺寸下的固定宽度，设置容器是否在父级容器里居中。")
+    new Story("Normal", "设置默认的文本换行，只在换行和空格处换行")
       .code(`\
 <!--
-  'container': 设置容器的固定尺寸
-  'mx-auto': 容器在父容器里居中
+  'break-normal': 设置默认的文本换行，只在换行和空格处换行
 -->
-<div class="container mx-auto">
-    <div class="bg-red-200 h-8"></div>
-</div>
-<div class="container mx-auto px-10 mt-1">
-    <div class="bg-red-200 h-8"></div>
+<div class="flex justify-center bg-light-blue-100 px-4 py-6">
+  <div class="break-normal w-1/3 rounded-md bg-light-blue-200 text-light-blue-600 p-4 text-lg font-medium">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiisitaquequodpraesentiumexplicaboincidunt? Dolores beatae nam at sed dolorum ratione dolorem nisi velit cum.
+  </div>
 </div>
 `),
-    new Story("Responsive", "使用屏幕尺寸前缀进行屏幕自适应设置")
+    new Story("Break Words", "必要时，在一个单词内进行换行")
       .code(`\
 <!--
-    使用 'sm', 'md', 'lg', 'xl', '2xl' 适配不同尺寸的屏幕
+  'break-words': 必要时，在一个单词内进行换行
 -->
-<div class="md:container md:mx-auto">
-  <div class="bg-red-200 h-8"></div>
-</div>`),
-    new Story("Center container by default", "设置元素在父容器中默认居中", "javascript")
-      .code(`\
-/* tailwind.config.js */      
-module.exports = {
-  theme: {
-    container: {
-      center: true
-    }
-  }
-}
+<div class="flex justify-center bg-yellow-100 px-4 py-6">
+  <div class="break-words w-1/3 rounded-md bg-yellow-200 text-yellow-600 p-4 text-lg font-medium">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiisitaquequodpraesentiumexplicaboincidunt? Dolores beatae nam at sed dolorum ratione dolorem nisi velit cum.
+  </div>
+</div>
 `),
-    new Story("Default Padding", "设置容器的默认内边距", "javascript")
+    new Story("Break All", "在必要的位置添加换行，而不试图保持完整的单词")
       .code(`\
-/* tailwind.config.js */      
-module.exports = {
-  theme: {
-    container: {
-      padding: '2rem',
-    }
-  }
-}
+<!--
+  'break-all': 在必要的位置添加换行，而不试图保持完整的单词
+-->
+<div class="flex justify-center bg-green-100 px-4 py-6">
+  <div class="break-all w-1/3 rounded-md bg-green-200 text-green-600 p-4 text-lg font-medium">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiisitaquequodpraesentiumexplicaboincidunt? Dolores beatae nam at sed dolorum ratione dolorem nisi velit cum.
+  </div>
+</div>
 `),
-    new Story("Override Padding for Difference Screen Size", "为不同的屏幕尺寸设置自适应的容器内边距", "javascript")
+    new Story("Responsive", "")
       .code(`\
-/* tailwind.config.js */      
-module.exports = {
-  theme: {
-    container: {
-      padding: {
-        DEFAULT: '1rem',
-        sm: '2rem',
-        lg: '4rem',
-        xl: '5rem',
-        '2xl': '6rem',
-      }
-    }
-  }
-}
+<div class="flex justify-center bg-orange-100 px-4 py-6">
+  <div class="break-normal md:break-all w-1/3 rounded-md bg-orange-200 text-orange-600 p-4 text-lg font-medium">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiisitaquequodpraesentiumexplicaboincidunt? Dolores beatae nam at sed dolorum ratione dolorem nisi velit cum.
+  </div>
+</div>
 `),
-    new Story("Disable Responsive", "禁用自适应", "javascript")
+    new Story("Variants", "", "javascript")
       .code(`\
 /* tailwind.config.js */      
 module.exports = {
   variants: {
-    container: []
+    extend: {
+      wordBreak: ['hover', 'focus']
+    }
   }
 }
 `),
-    new Story("Disable Container", "禁用样式", "javascript")
+    new Story("Disabling", "", "javascript")
       .code(`\
 /* tailwind.config.js */      
 module.exports = {
   corePlugins: {
-    container: false,
+    wordBreak: false
   }
 }
 `)

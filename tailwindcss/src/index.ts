@@ -97,6 +97,7 @@ const menu = [
       {title: "Text Opacity", href: "typesetting/text-opacity.html", descript: "设置文本透明度"},
       {title: "Text Decoration", href: "typesetting/text-decoration.html", descript: "设置文本装饰"},
       {title: "Text Transform", href: "typesetting/text-transform.html", descript: "设置文本转换"},
+      {title: "Text Overflow", href: "typesetting/text-overflow.html", descript: "设置文本溢出"},
       {title: "Vertical Align", href: "typesetting/vertical-align.html", descript: "设置文本垂直对齐"},
       {title: "White Space", href: "typesetting/white-space.html", descript: "设置空格字符"},
       {title: "Word Break", href: "typesetting/word-break.html", descript: "设置换行样式"},

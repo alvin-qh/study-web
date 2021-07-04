@@ -1,83 +1,74 @@
 import { Story, StoryBook } from '../../common';
 
 window.onload = () => {
-  const book = new StoryBook('Container', true);
+  const book = new StoryBook('Text Overflow', true);
   book.append([
-    new Story("Container", "设置容器在不同屏幕尺寸下的固定宽度，设置容器是否在父级容器里居中。")
+    new Story("Truncate", "文本溢出容器时截断文本")
       .code(`\
 <!--
-  'container': 设置容器的固定尺寸
-  'mx-auto': 容器在父容器里居中
+  'truncate': 截断超出容器的文本，并用'...'表示多余的文本
 -->
-<div class="container mx-auto">
-    <div class="bg-red-200 h-8"></div>
-</div>
-<div class="container mx-auto px-10 mt-1">
-    <div class="bg-red-200 h-8"></div>
+<div class="flex justify-center bg-blue-100 px-4 py-6 text-lg font-medium">
+  <p class="truncate w-2/3 rounded-md bg-blue-300 text-blue-600 px-4 py-2">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+    Blanditiisitaquequodpraesentiumexplicaboincidunt? 
+    Dolores beatae nam at sed dolorum ratione dolorem nisi velit cum.
+  </p>
 </div>
 `),
-    new Story("Responsive", "使用屏幕尺寸前缀进行屏幕自适应设置")
+    new Story("Overflow Ellipsis", "在必要时使用省略号 ('...') 截断文本")
       .code(`\
 <!--
-    使用 'sm', 'md', 'lg', 'xl', '2xl' 适配不同尺寸的屏幕
+  'overflow-ellipsis': 在必要时使用省略号 '...' 截断文本
 -->
-<div class="md:container md:mx-auto">
-  <div class="bg-red-200 h-8"></div>
-</div>`),
-    new Story("Center container by default", "设置元素在父容器中默认居中", "javascript")
-      .code(`\
-/* tailwind.config.js */      
-module.exports = {
-  theme: {
-    container: {
-      center: true
-    }
-  }
-}
+<div class="flex justify-center bg-green-100 px-4 py-6 text-lg font-medium">
+  <p class="overflow-ellipsis overflow-hidden w-1/2 rounded-md bg-green-300 text-green-600 px-4 py-2">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+    Blanditiisitaquequodpraesentiumexplicaboincidunt? 
+    Dolores beatae nam at sed dolorum ratione dolorem nisi velit cum.
+  </p>
+</div>
 `),
-    new Story("Default Padding", "设置容器的默认内边距", "javascript")
+    new Story("Overflow Clip", "在必要时截断文本")
       .code(`\
-/* tailwind.config.js */      
-module.exports = {
-  theme: {
-    container: {
-      padding: '2rem',
-    }
-  }
-}
+<!--
+  'overflow-clip': 在必要时截断文本
+-->
+<div class="flex justify-center bg-light-blue-100 px-4 py-6 text-lg font-medium">
+  <p class="overflow-clip overflow-hidden w-1/2 rounded-md bg-light-blue-300 text-light-blue-600 px-4 py-2">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+    Blanditiisitaquequodpraesentiumexplicaboincidunt? 
+    Dolores beatae nam at sed dolorum ratione dolorem nisi velit cum.
+  </p>
+</div>
 `),
-    new Story("Override Padding for Difference Screen Size", "为不同的屏幕尺寸设置自适应的容器内边距", "javascript")
+    new Story("Responsive", "")
       .code(`\
-/* tailwind.config.js */      
-module.exports = {
-  theme: {
-    container: {
-      padding: {
-        DEFAULT: '1rem',
-        sm: '2rem',
-        lg: '4rem',
-        xl: '5rem',
-        '2xl': '6rem',
-      }
-    }
-  }
-}
+<div class="flex justify-center bg-red-100 px-4 py-6 text-lg font-medium">
+  <p class="truncate md:overflow-clip md:overflow-hidden w-1/2 rounded-md bg-red-300 text-red-600 px-4 py-2">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+    Blanditiisitaquequodpraesentiumexplicaboincidunt? 
+    Dolores beatae nam at sed dolorum ratione dolorem nisi velit cum.
+  </p>
+</div>
 `),
-    new Story("Disable Responsive", "禁用自适应", "javascript")
+    new Story("Variants", "", "javascript")
       .code(`\
 /* tailwind.config.js */      
 module.exports = {
   variants: {
-    container: []
+    extend: {
+      textOverflow: ['hover', 'focus']
+    }
   }
 }
 `),
-    new Story("Disable Container", "禁用样式", "javascript")
+    new Story("Disabling", "", "javascript")
       .code(`\
 /* tailwind.config.js */      
 module.exports = {
   corePlugins: {
-    container: false,
+    textOverflow: false
   }
 }
 `)

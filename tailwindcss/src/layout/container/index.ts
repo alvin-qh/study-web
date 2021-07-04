@@ -10,10 +10,10 @@ window.onload = () => {
   'mx-auto': 容器在父容器里居中
 -->
 <div class="container mx-auto">
-    <div class="bg-red-200 h-8"></div>
+  <div class="bg-red-200 h-8"></div>
 </div>
 <div class="container mx-auto px-10 mt-1">
-    <div class="bg-red-200 h-8"></div>
+  <div class="bg-red-200 h-8"></div>
 </div>
 `),
     new Story("Responsive", "使用屏幕尺寸前缀进行屏幕自适应设置")

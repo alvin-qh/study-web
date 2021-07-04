@@ -1,83 +1,112 @@
 import { Story, StoryBook } from '../../common';
 
 window.onload = () => {
-  const book = new StoryBook('Container', true);
+  const book = new StoryBook('White Spaces', true);
   book.append([
-    new Story("Container", "设置容器在不同屏幕尺寸下的固定宽度，设置容器是否在父级容器里居中。")
+    new Story("Normal", "使文本在换行或空格处折行")
       .code(`\
 <!--
-  'container': 设置容器的固定尺寸
-  'mx-auto': 容器在父容器里居中
+  'whitespace-normal': 使文本在换行或空格处折行
 -->
-<div class="container mx-auto">
-    <div class="bg-red-200 h-8"></div>
+<div class="bg-blue-100 flex justify-center px-4 py-6">
+    <div class="whitespace-normal bg-blue-300 rounded-md p-4 font-flow w-1/2 text-blue-600 text-3xl leading-5 font-medium">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+  Omnis quidem itaque beatae, rem tenetur quia iure,
+  eum natus enim maxime laudantium quibusdam illo nihil, 
+
+  reprehenderit saepe quam aliquid odio accusamus.
+    </div>
 </div>
-<div class="container mx-auto px-10 mt-1">
-    <div class="bg-red-200 h-8"></div>
+`),
+    new Story("No Wrap", "禁止文本换行")
+      .code(`\
+<!--
+  'whitespace-nowrap': 禁止文本换行
+-->
+<div class="bg-green-100 flex justify-center px-4 py-6">
+    <div class="whitespace-nowrap overflow-hidden bg-green-300 rounded-md p-4 font-flow w-1/2 text-green-600 text-3xl leading-5 font-medium">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+  Omnis quidem itaque beatae, rem tenetur quia iure,
+  eum natus enim maxime laudantium quibusdam illo nihil, 
+
+  reprehenderit saepe quam aliquid odio accusamus.
+    </div>
+</div>
+`),
+    new Story("No Wrap", "保留文本中的换行和空格，但不自动折行")
+      .code(`\
+<!--
+  'whitespace-pre': 保留文本中的换行和空格，但不自动折行
+-->
+<div class="bg-yellow-100 flex justify-center px-4 py-6">
+    <div class="whitespace-pre overflow-x-auto bg-yellow-300 rounded-md p-4 font-flow w-1/2 text-yellow-600 text-3xl leading-5 font-medium">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+  Omnis quidem itaque beatae, rem tenetur quia iure,
+  eum natus enim maxime laudantium quibusdam illo nihil, 
+
+  reprehenderit saepe quam aliquid odio accusamus.
+    </div>
+</div>
+`),
+    new Story("Pre Line", "保留换行但不保留空格，文本按需要自动折行")
+      .code(`\
+<!--
+  'whitespace-pre-line': 保留换行但不保留空格，文本按需要自动折行
+-->
+<div class="bg-light-blue-100 flex justify-center px-4 py-6">
+    <div class="whitespace-pre-line bg-light-blue-300 rounded-md p-4 font-flow w-1/2 text-light-blue-600 text-3xl leading-5 font-medium">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+  Omnis quidem itaque beatae, rem tenetur quia iure,
+  eum natus enim maxime laudantium quibusdam illo nihil, 
+
+  reprehenderit saepe quam aliquid odio accusamus.
+    </div>
+</div>
+`),
+    new Story("Pre Wrap", "即保留换行也保留空格，并且文本按照需要自动折行")
+      .code(`\
+<!--
+  'whitespace-pre-wrap': 即保留换行也保留空格，并且文本按照需要自动折行
+-->
+<div class="bg-rose-100 flex justify-center px-4 py-6">
+    <div class="whitespace-pre-wrap bg-rose-300 rounded-md p-4 font-flow w-1/2 text-rose-600 text-3xl leading-5 font-medium">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+  Omnis quidem itaque beatae, rem tenetur quia iure,
+  eum natus enim maxime laudantium quibusdam illo nihil, 
+
+  reprehenderit saepe quam aliquid odio accusamus.
+    </div>
 </div>
 `),
     new Story("Responsive", "使用屏幕尺寸前缀进行屏幕自适应设置")
       .code(`\
-<!--
-    使用 'sm', 'md', 'lg', 'xl', '2xl' 适配不同尺寸的屏幕
--->
-<div class="md:container md:mx-auto">
-  <div class="bg-red-200 h-8"></div>
-</div>`),
-    new Story("Center container by default", "设置元素在父容器中默认居中", "javascript")
-      .code(`\
-/* tailwind.config.js */      
-module.exports = {
-  theme: {
-    container: {
-      center: true
-    }
-  }
-}
+<div class="bg-green-100 flex justify-center px-4 py-6">
+    <div class="whitespace-normal md:whitespace-pre overflow-x-auto bg-green-300 rounded-md p-4 font-flow w-1/2 text-green-600 text-3xl leading-5 font-medium">
+  Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+  Omnis quidem itaque beatae, rem tenetur quia iure,
+  eum natus enim maxime laudantium quibusdam illo nihil, 
+
+  reprehenderit saepe quam aliquid odio accusamus.
+    </div>
+</div>
 `),
-    new Story("Default Padding", "设置容器的默认内边距", "javascript")
-      .code(`\
-/* tailwind.config.js */      
-module.exports = {
-  theme: {
-    container: {
-      padding: '2rem',
-    }
-  }
-}
-`),
-    new Story("Override Padding for Difference Screen Size", "为不同的屏幕尺寸设置自适应的容器内边距", "javascript")
-      .code(`\
-/* tailwind.config.js */      
-module.exports = {
-  theme: {
-    container: {
-      padding: {
-        DEFAULT: '1rem',
-        sm: '2rem',
-        lg: '4rem',
-        xl: '5rem',
-        '2xl': '6rem',
-      }
-    }
-  }
-}
-`),
-    new Story("Disable Responsive", "禁用自适应", "javascript")
+    new Story("Variants", "", "javascript")
       .code(`\
 /* tailwind.config.js */      
 module.exports = {
   variants: {
-    container: []
+    extend: {
+      whitespace: ['hover', 'focus']
+    }
   }
 }
 `),
-    new Story("Disable Container", "禁用样式", "javascript")
+    new Story("Disabling", "", "javascript")
       .code(`\
 /* tailwind.config.js */      
 module.exports = {
   corePlugins: {
-    container: false,
+    whitespace: false
   }
 }
 `)
