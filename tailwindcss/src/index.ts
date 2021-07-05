@@ -102,6 +102,16 @@ const menu = [
       {title: "White Space", href: "typesetting/white-space.html", descript: "设置空格字符"},
       {title: "Word Break", href: "typesetting/word-break.html", descript: "设置换行样式"},
     ]
+  },
+  {
+    title: "Background",
+    descript: "定义元素的背景",
+    links: [
+      {title: "Attachment", href: "background/attachment.html", descript: "固定背景图像"},
+      {title: "Clip", href: "background/clip.html", descript: "设置背景图像的剪裁"},
+      {title: "Color", href: "background/color.html", descript: "设置背景色"},
+      {title: "Opacity", href: "background/opacity.html", descript: "设置背景透明度"},
+    ]
   }
 ]
 

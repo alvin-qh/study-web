@@ -7,6 +7,10 @@
   a {
     @apply text-blue-500
   }
+
+  .text-transparent {
+    @apply text-white text-opacity-0
+  }
 }
 
 @font-face {
