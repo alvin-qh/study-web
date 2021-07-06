@@ -46,6 +46,9 @@ module.exports = {
         "flow": [
           "Flow"
         ]
+      },
+      backgroundSize: {
+        '6': '6rem'
       }
     }
   },

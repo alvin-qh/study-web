@@ -111,6 +111,9 @@ const menu = [
       {title: "Clip", href: "background/clip.html", descript: "设置背景图像的剪裁"},
       {title: "Color", href: "background/color.html", descript: "设置背景色"},
       {title: "Opacity", href: "background/opacity.html", descript: "设置背景透明度"},
+      {title: "Position", href: "background/position.html", descript: "设置背景图像的位置"},
+      {title: "Repeat", href: "background/repeat.html", descript: "设置背景图像的重复方式"},
+      {title: "Size", href: "background/size.html", descript: "设置背景图片的大小"},
     ]
   }
 ]

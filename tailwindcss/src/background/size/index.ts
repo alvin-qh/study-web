@@ -1,96 +1,52 @@
 import { Story, StoryBook } from '../../common';
 
 window.onload = () => {
-  const book = new StoryBook('Width', true);
+  const book = new StoryBook('Background Image Size', true);
   book.append([
-    new Story("Auto", "让浏览器来自动决定元素的宽度")
+    new Story("Auto", "以默认大小显示背景图像")
       .code(`\
 <!--
-  'w-auto': 自动设置元素宽度
+  'bg-auto': 以默认大小显示背景图片
 -->
-<div class="my-5 mx-4 text-white text-lg font-semibold">
-  <div class="w-auto py-4 flex items-center justify-center bg-green-500">
-    The element has auto width
-  </div>
+<div class="p-6 bg-yellow-100">
+  <div class="bg-auto bg-no-repeat bg-center bg-small flex-1 h-36"></div>
 </div>
 `),
-    new Story("Screen Width", "使一个元素跨越整个视口宽度")
+    new Story("Cover", "缩放图像，使其填满容器")
       .code(`\
 <!--
-  'w-screen': 设置基于视口宽度的元素的宽度
+  'bg-cover': 缩放背景图像，使图像的大小充满其所在元素
 -->
-<div class="my-5 mx-4 overflow-x-auto text-white text-lg font-semibold">
-  <div class="w-screen py-4 flex items-center justify-center bg-rose-500">
-    The element has screen width
-  </div>
+<div class="p-6 bg-green-100">
+  <div class="bg-cover bg-no-repeat bg-center bg-small flex-1 h-36"></div>
 </div>
 `),
-    new Story("Fixed Width", "设置固定宽度值")
+    new Story("Contain", "使背景图像适合容器，不对图像进行拉伸")
       .code(`\
 <!--
-  'w-{number}或w-px': 基于数值设置固定宽度值
+  'bg-contain': 使背景图像适合容器，不对图像进行拉伸
 -->
-<div class="my-5 mx-4 space-y-4 text-white text-sm font-semibold">
-  <div class="w-8 py-2 pl-1 flex justify-start bg-light-blue-500">w-8</div>
-  <div class="w-12 py-2 pl-1 flex justify-start bg-light-blue-500">w-12</div>
-  <div class="w-16 py-2 pl-1 flex justify-start bg-light-blue-500">w-16</div>
-  <div class="w-24 py-2 pl-1 flex justify-start bg-light-blue-500">w-24</div>
-</div>
-`),
-    new Story("Fluid Width", "通过一个百分比值设置元素宽度")
-      .code(`\
-<!--
-  'w-{fraction}或w-full': 设置基于百分比的元素宽度
--->
-<div class="space-y-5 my-5 mx-5 text-white text-lg font-semibold font-mono">
-  <div class="flex flex-row">
-    <div class="w-1/2 py-3 flex items-center justify-center bg-fuchsia-300">w-1/2</div>
-    <div class="w-1/2 py-3 flex items-center justify-center bg-fuchsia-500">w-1/2</div>
-  </div>
-  <div class="flex flex-row">
-    <div class="w-2/5 py-3 flex items-center justify-center bg-fuchsia-300">w-2/5</div>
-    <div class="w-3/5 py-3 flex items-center justify-center bg-fuchsia-500">w-3/5</div>
-  </div>
-  <div class="flex flex-row">
-    <div class="w-1/3 py-3 flex items-center justify-center bg-fuchsia-300">w-1/3</div>
-    <div class="w-2/3 py-3 flex items-center justify-center bg-fuchsia-500">w-2/3</div>
-  </div>
-  <div class="flex flex-row">
-    <div class="w-1/4 py-3 flex items-center justify-center bg-fuchsia-300">w-1/4</div>
-    <div class="w-3/4 py-3 flex items-center justify-center bg-fuchsia-500">w-3/4</div>
-  </div>
-  <div class="flex flex-row">
-    <div class="w-1/5 py-3 flex items-center justify-center bg-fuchsia-300">w-1/5</div>
-    <div class="w-4/5 py-3 flex items-center justify-center bg-fuchsia-500">w-4/5</div>
-  </div>
-  <div class="flex flex-row">
-    <div class="w-1/6 py-3 flex items-center justify-center bg-fuchsia-300">w-1/6</div>
-    <div class="w-5/6 py-3 flex items-center justify-center bg-fuchsia-500">w-5/6</div>
-  </div>
-  <div class="flex flex-row">
-    <div class="w-full py-3 flex items-center justify-center bg-fuchsia-500">w-1/4</div>
-  </div>
+<div class="p-6 bg-red-100">
+  <div class="bg-contain bg-no-repeat bg-center bg-small flex-1 h-36"></div>
 </div>
 `),
     new Story("Responsive")
       .code(`\
-<div class="my-5 mx-5 text-white text-lg font-semibold">
-  <div class="w-1/2 md:w-full py-3 flex items-center justify-center bg-green-500">
-    Responsive
-  </div>
+<div class="p-6 bg-blue-100">
+  <div class="bg-auto md:bg-contain bg-no-repeat bg-center bg-small flex-1 h-36"></div>
 </div>
 `),
-    new Story("Customize", "一次性自定义'padding', 'margin', 'width'和'height'的值", "javascript")
+    new Story("Customize", "通过Tailwind配置设置背景图像尺寸样式类", "javascript")
       .code(`\
 // tailwind.config.js
 module.exports = {
   theme: {
-    extend: {
-      spacing: {
-        '72': '18rem',
-        '84': '21rem',
-        '96': '24rem'
-      }
+    backgroundSize: {
+      'auto': 'auto',
+      'cover': 'cover',
+      'contain': 'contain',
+      '50%': '50%',   // New
+      '16': '4rem'    // New
     }
   }
 }
@@ -119,7 +75,7 @@ module.exports = {
 module.exports = {
   variants: {
     extend: {
-      width: ['hover', 'focus']
+      backgroundSize: ['hover', 'focus']
     }
   }
 }
@@ -129,7 +85,7 @@ module.exports = {
 // tailwind.config.js
 module.exports = {
   corePlugins: {
-    width: false
+    backgroundSize: false
   }
 }`)
   ])

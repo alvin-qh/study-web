@@ -43,3 +43,11 @@
   font-style : normal;
   src        : url(asset/flow-circular.woff) format("woff")
 }
+
+.bg-cat {
+  background-image: url(asset/image.jpg);
+}
+
+.bg-small {
+  background-image: url(asset/bg.jpg);
+}

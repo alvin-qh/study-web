@@ -1,47 +1,44 @@
 import { Story, StoryBook } from '../../common';
 
 window.onload = () => {
-  const book = new StoryBook('Min Height', true);
+  const book = new StoryBook('Opacity', true);
   book.append([
-    new Story("Min Height", "使用'min-h-0', 'min-h-full'或'min-h-screen'样式类设置元素的最小高度")
+    new Story("Set Opacity", "设置元素背景不透明度")
       .code(`\
-<div class="h-48 p-6 text-white text-lg font-semibold bg-purple-300">
-  <div class="h-24 min-h-full flex items-center justify-center bg-purple-500">
-    min-h-full
-  </div>
-</div>
-<hr class="my-6">
-<div class="h-48 p-6 text-white text-lg font-semibold bg-purple-300">
-  <div class="h-24 min-h-0 flex items-center justify-center bg-purple-500">
-    min-h-0
-  </div>
-</div>
-<hr class="my-6">
-<div class="h-48 p-6 overflow-y-auto text-white text-lg font-semibold bg-purple-300">
-  <div class="h-24 min-h-screen flex items-center justify-center bg-purple-500">
-    min-h-screen
-  </div>
+<!--
+  'bg-opacity-{amount}': 设置元素背景的不透明度，包括背景和边框
+-->
+<div class="grid grid-cols-2 grid-flow-row gap-4 w-full p-10 text-white text-2xl font-semibold bg-blue-100">
+  <div class="bg-opacity-100 bg-light-blue-600 h-20 rounded-md flex items-center justify-center">100%</div>
+  <div class="bg-opacity-75 bg-light-blue-600 h-20 rounded-md flex items-center justify-center">75%</div>
+  <div class="bg-opacity-50 bg-light-blue-600 h-20 rounded-md flex items-center justify-center">50%</div>
+  <div class="bg-opacity-25 bg-light-blue-600 h-20 rounded-md flex items-center justify-center">25%</div>
+  <div class="bg-opacity-0 bg-light-blue-600 h-20 rounded-md flex items-center justify-center">0%</div>
 </div>
 `),
     new Story("Responsive")
       .code(`\
-<div class="h-48 p-6 text-white text-lg font-semibold bg-green-300">
-  <div class="h-24 min-h-0 md:min-h-full flex items-center justify-center bg-green-500">
-    Responsive
-  </div>
+<div class="w-full p-10 text-white text-2xl font-semibold bg-green-100">
+  <div class="bg-opacity-100 md:bg-opacity-50 w-1/2 m-auto bg-green-600 h-20 rounded-md"></div>
 </div>
 `),
-    new Story("Customize", "通过Tailwind配置文件定制默认最小高度", "javascript")
+    new Story("Customize", "通过Tailwind配置文件设置透明度样式类", "javascript")
       .code(`\
 // tailwind.config.js
 module.exports = {
   theme: {
-    minHeight: {
-      '0': '0',
-      '1/4': '25%',
-      '1/2': '50%',
-      '3/4': '75%',
-      'full': '100%'
+    // 定义元素不透明度
+    opacity: {
+      '15': '0.15',
+      '35': '0.35',
+      '65': '0.65'
+    },
+
+    // 定义背景不透明度
+    backgroundOpacity: {
+      '10': '0.1',
+      '20': '0.2',
+      '95': '0.95'
     }
   }
 }
@@ -52,7 +49,7 @@ module.exports = {
 module.exports = {
   variants: {
     extend: {
-      minHeight: ['hover', 'focus']
+      backgroundOpacity: ['active']
     }
   }
 }
@@ -62,7 +59,7 @@ module.exports = {
 // tailwind.config.js
 module.exports = {
   corePlugins: {
-    minHeight: false
+    backgroundOpacity: false
   }
 }`)
   ])
