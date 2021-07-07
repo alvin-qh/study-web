@@ -115,6 +115,17 @@ const menu = [
       {title: "Repeat", href: "background/repeat.html", descript: "设置背景图像的重复方式"},
       {title: "Size", href: "background/size.html", descript: "设置背景图片的大小"},
     ]
+  },
+  {
+    title: "Animation",
+    descript: "定义元素的动画",
+    links: [
+      {title: "Transition", href: "animation/transition.html", descript: "控制元素过渡动画"},
+      {title: "Duration", href: "animation/duration.html", descript: "控制过渡动画的持续时间"},
+      {title: "Timing", href: "animation/color.html", descript: "控制过渡动画的计时曲线"},
+      {title: "Delay", href: "animation/delay.html", descript: "设置过渡动画的延迟时间"},
+      {title: "Animate", href: "animation/animate.html", descript: "设置元素的动画样式"},
+    ]
   }
 ]
 

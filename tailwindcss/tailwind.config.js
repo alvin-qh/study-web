@@ -55,7 +55,8 @@ module.exports = {
   variants: {
     extend: {
       backgroundColor: ['active'],
-      boxShadow: ['active']
+      boxShadow: ['active', 'hover'],
+      transitionProperty: ['responsive', 'motion-safe', 'motion-reduce'],
     }
   },
   plugins: [
