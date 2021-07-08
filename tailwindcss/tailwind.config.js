@@ -57,6 +57,7 @@ module.exports = {
       backgroundColor: ['active'],
       boxShadow: ['active', 'hover'],
       transitionProperty: ['responsive', 'motion-safe', 'motion-reduce'],
+      animation: ['hover', 'focus'],
     }
   },
   plugins: [

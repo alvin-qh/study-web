@@ -14,8 +14,8 @@ window.onload = () => {
                  bg-blue-600 hover:bg-red-600 
                  transform hover:-translate-y-1 hover:scale-110 
                  shadow-md hover:shadow-lg 
-                 px-4 py-2 text-xl font-medium text-white rounded-md 
-                 focus:outline-none">
+                 text-xl font-medium text-white rounded-md 
+                 focus:outline-none px-4 py-2">
     Hover me
   </button>
 </div>
@@ -30,8 +30,8 @@ window.onload = () => {
                  bg-amber-200 hover:bg-amber-600 
                  transform hover:-translate-y-1 hover:scale-110 
                  shadow-md hover:shadow-xl
-                 px-4 py-2 text-xl font-medium text-white rounded-md 
-                 focus:outline-none">
+                 text-xl font-medium text-white rounded-md 
+                 focus:outline-none px-4 py-2">
     Hover me
   </button>
 </div>
@@ -43,8 +43,8 @@ window.onload = () => {
 -->
 <div class="flex items-center justify-center h-32 bg-red-100">
   <button class="transition-colors duration-500 ease-in-out 
-                 bg-blue-600 hover:bg-green-600 
-                 text-gray-300 hover:text-yellow-200
+                 bg-red-600 hover:bg-blue-600 
+                 text-gray-300 hover:text-green-200
                  px-4 py-2 text-xl font-medium rounded-md shadow-md focus:outline-none">
     Hover me
   </button>
@@ -58,7 +58,8 @@ window.onload = () => {
 <div class="flex items-center justify-center h-32 bg-fuchsia-100">
   <button class="transition-opacity duration-500 ease-in-out 
                  opacity-100 hover:opacity-50
-                 px-4 py-2 text-xl font-medium rounded-md shadow-md bg-fuchsia-700 text-white focus:outline-none">
+                 px-4 py-2 text-xl font-medium text-white
+                 rounded-md shadow-md bg-fuchsia-700 focus:outline-none">
     Hover me
   </button>
 </div>
@@ -71,7 +72,8 @@ window.onload = () => {
 <div class="flex items-center justify-center h-32 bg-green-100">
   <button class="transition-shadow duration-500 ease-in-out
                  shadow-2xl active:shadow
-                 px-4 py-2 text-xl font-medium rounded-md bg-green-700 text-white focus:outline-none">
+                 px-4 py-2 text-xl font-medium text-white
+                 rounded-md bg-green-700 focus:outline-none">
     Click me
   </button>
 </div>
@@ -84,7 +86,8 @@ window.onload = () => {
 <div class="flex items-center justify-center h-32 bg-cyan-100">
   <button class="transition-transform duration-500 ease-in-out
                  transform-gpu hover:translate-x-2 hover:scale-110 hover:-rotate-12
-                 px-4 py-2 text-xl font-medium rounded-md shadow-md bg-cyan-700 text-white focus:outline-none">
+                 px-4 py-2 text-xl font-medium rounded-md shadow-md text-white
+                 bg-cyan-700 focus:outline-none">
     Hover me
   </button>
 </div>
