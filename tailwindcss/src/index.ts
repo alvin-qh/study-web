@@ -127,6 +127,18 @@ const menu = [
       {title: "Delay", href: "animation/delay.html", descript: "设置过渡动画的延迟时间"},
       {title: "Animate", href: "animation/animate.html", descript: "设置元素的动画样式"},
     ]
+  },
+  {
+    title: "Transform",
+    descript: "定义元素变换",
+    links: [
+      {title: "Transition", href: "transform/transform.html", descript: "控制元素的变换行为"},
+      {title: "Origin", href: "transform/origin.html", descript: "控制元素的原点变换行为"},
+      {title: "Scale", href: "transform/scale.html", descript: "控制元素的缩放行为"},
+      {title: "Rotate", href: "transform/rotate.html", descript: "控制元素的旋转行为"},
+      {title: "Translate", href: "transform/translate.html", descript: "控制元素的平移行为"},
+      {title: "Skew", href: "transform/skew.html", descript: "控制元素的倾斜行为"},
+    ]
   }
 ]
 
