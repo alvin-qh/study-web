@@ -1,67 +1,56 @@
 import { Story, StoryBook } from '../../common';
+import image from '../../asset/image.jpg';
 
 window.onload = () => {
-  const book = new StoryBook('Background Color', true);
+  const book = new StoryBook('Scale', true);
   book.append([
-    new Story("Background Color", "设置背景色")
+    new Story("Set Scale Percent", "设置元素的缩放百分比")
       .code(`\
 <!--
-  'bg-{color}-{amount}': 设置背景颜色和色深
-  'active:bg-{color}-{amount}': 需要在 Variants 中设置 'backgroundColor: ["active"]'
-  'active:shadow-{size}': 需要在 Variants 中设置 'boxShadow: ["active"]'
+  'scale-{amount}': 设置元素的缩放百分比
+  'scale-{x,y}-{amount}': 设置元素在x或y轴坐标上的缩放百分比
 -->
-<div class="bg-green-100 flex items-center justify-center px-4 py-6">
-  <button class="bg-green-500 active:bg-green-600  
-                 shadow-md active:shadow-inner 
-                 focus:outline-none 
-                 text-xl font-semibold text-white 
-                 border-green-600 rounded-md px-4 py-2">
-    Click me
-  </button>
-</div>
-`),
-    new Story("No shadow", "取消阴影设置")
-      .code(`\
-<!--
-  'shadow-none': 取消阴影
--->
-<div class="bg-red-100 flex justify-center px-4 py-6">
-  <div class="shadow-none
-              bg-red-200 text-red-500 rounded-md 
-              text-xl font-medium flex items-center justify-center
-              w-48 h-28">
-    .shadow-none
+<div class="flex flex-col space-y-8 items-center justify-center bg-gradient-to-r from-purple-50 to-purple-200 py-6">
+  <div class="bg-purple-700 bg-stripes bg-stripes-white flex w-20 h-20">
+    <img class="transform-gpu scale-75" src="${image}">
+  </div>
+  <div class="bg-purple-700 bg-stripes bg-stripes-white flex w-20 h-20">
+    <img class="transform-gpu scale-100" src="${image}">
+  </div>
+  <div class="bg-purple-700 bg-stripes bg-stripes-white flex w-20 h-20">
+    <img class="transform-gpu scale-150" src="${image}">
+  </div>
+  <div class="bg-purple-700 bg-stripes bg-stripes-white flex w-20 h-20">
+    <img class="transform-gpu scale-x-125" src="${image}">
   </div>
 </div>
 `),
     new Story("Responsive")
       .code(`\
-<div class="bg-green-100 flex justify-center px-4 py-6">
-  <div class="shadow-none md:shadow-xl
-              bg-green-200 text-green-500 rounded-md 
-              text-xl font-medium flex items-center justify-center
-              w-48 h-28">
-    Responsive
+<div class="flex justify-center bg-gradient-to-r from-blue-50 to-blue-200 py-6">
+  <div class="bg-blue-700 bg-stripes bg-stripes-white flex w-20 h-20">
+    <img class="transform-gpu scale-75 md:scale-100" src="${image}">
   </div>
 </div>
 `),
-    new Story("Customize", "通过Tailwind配置定义阴影样式类", "javascript")
+    new Story("Customize", "通过Tailwind配置设置缩放比例样式类", "javascript")
       .code(`\
 // tailwind.config.js
 module.exports = {
   theme: {
-    boxShadow: {
-      sm: '0 1px 2px 0 rgba(0, 0, 0, 0.05)',
-      DEFAULT: '0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06)',
-      md: '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-      lg: '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
-      xl: '0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04)',
-      '2xl': '0 25px 50px -12px rgba(0, 0, 0, 0.25)',
-      '3xl': '0 35px 60px -15px rgba(0, 0, 0, 0.3)',  // New
-      inner: 'inset 0 2px 4px 0 rgba(0, 0, 0, 0.06)',
-//    outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',   // Delete
-      focus: '0 0 0 3px rgba(66, 153, 225, 0.5)',     // New
-      none: 'none'
+    scale: {
+      '0': '0',
+      '25': '.25',    // New
+      '50': '.5',
+      '75': '.75',
+      '90': '.9',
+//    '95': '.95',
+      '100': '1',
+//    '105': '1.05',
+//    '110': '1.1',
+      '125': '1.25',
+      '150': '1.5',
+      '200': '2'      // New
     }
   }
 }
@@ -72,7 +61,7 @@ module.exports = {
 module.exports = {
   variants: {
     extend: {
-      boxShadow: ['active']
+      scale: ['active', 'group-hover']
     }
   }
 }
@@ -82,7 +71,7 @@ module.exports = {
 // tailwind.config.js
 module.exports = {
   corePlugins: {
-    boxShadow: false
+    scale: false
   }
 }`)
   ])

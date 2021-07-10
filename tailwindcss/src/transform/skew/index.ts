@@ -1,44 +1,61 @@
 import { Story, StoryBook } from '../../common';
+import image from '../../asset/image.jpg';
 
 window.onload = () => {
-  const book = new StoryBook('Opacity', true);
+  const book = new StoryBook('Skew', true);
   book.append([
-    new Story("Set Opacity", "设置元素背景不透明度")
+    new Story("Set Skew", "设置元素的倾斜度")
       .code(`\
 <!--
-  'bg-opacity-{amount}': 设置元素背景的不透明度，包括背景和边框
+  'skew-{x,y}-{amount}': 设置元素相对x轴或y轴的倾斜度
 -->
-<div class="grid grid-cols-2 grid-flow-row gap-4 w-full p-10 text-white text-2xl font-semibold bg-blue-100">
-  <div class="bg-opacity-100 bg-light-blue-600 h-20 rounded-md flex items-center justify-center">100%</div>
-  <div class="bg-opacity-75 bg-light-blue-600 h-20 rounded-md flex items-center justify-center">75%</div>
-  <div class="bg-opacity-50 bg-light-blue-600 h-20 rounded-md flex items-center justify-center">50%</div>
-  <div class="bg-opacity-25 bg-light-blue-600 h-20 rounded-md flex items-center justify-center">25%</div>
-  <div class="bg-opacity-0 bg-light-blue-600 h-20 rounded-md flex items-center justify-center">0%</div>
+<div class="flex flex-col items-center space-y-10 bg-gradient-to-r from-blue-50 to-blue-200 py-6">
+  <div class="flex flex-row space-x-10">
+    <div class="flex bg-blue-700 bg-stripes bg-stripes-white w-20 h-20">
+      <img class="transform-gpu skew-y-0" src="${image}">
+    </div>
+    <div class="flex bg-blue-700 bg-stripes bg-stripes-white w-20 h-20">
+      <img class="transform-gpu skew-y-3" src="${image}">
+    </div>
+    <div class="flex bg-blue-700 bg-stripes bg-stripes-white w-20 h-20">
+      <img class="transform-gpu skew-y-6" src="${image}">
+    </div>
+    <div class="flex bg-blue-700 bg-stripes bg-stripes-white w-20 h-20">
+      <img class="transform-gpu skew-y-12" src="${image}">
+    </div>
+  </div>
+  <div class="flex flex-row space-x-10">
+    <div class="flex bg-blue-700 bg-stripes bg-stripes-white w-20 h-20">
+      <img class="transform-gpu skew-x-0" src="${image}">
+    </div>
+    <div class="flex bg-blue-700 bg-stripes bg-stripes-white w-20 h-20">
+      <img class="transform-gpu skew-x-3" src="${image}">
+    </div>
+    <div class="flex bg-blue-700 bg-stripes bg-stripes-white w-20 h-20">
+      <img class="transform-gpu skew-x-6" src="${image}">
+    </div>
+    <div class="flex bg-blue-700 bg-stripes bg-stripes-white w-20 h-20">
+      <img class="transform-gpu skew-x-12" src="${image}">
+    </div>
+  </div>
 </div>
 `),
     new Story("Responsive")
       .code(`\
-<div class="w-full p-10 text-white text-2xl font-semibold bg-green-100">
-  <div class="bg-opacity-100 md:bg-opacity-50 w-1/2 m-auto bg-green-600 h-20 rounded-md"></div>
+<div class="flex flex-col items-center space-y-10 bg-gradient-to-r from-rose-50 to-rose-200 py-6">
+  <div class="flex bg-rose-700 bg-stripes bg-stripes-white w-20 h-20">
+    <img class="transform-gpu skew-y-12 md:skew-y-6" src="${image}">
+  </div>
 </div>
 `),
-    new Story("Customize", "通过Tailwind配置文件设置透明度样式类", "javascript")
+    new Story("Customize", "通过Tailwind配置设置元素的倾斜度样式类", "javascript")
       .code(`\
 // tailwind.config.js
 module.exports = {
   theme: {
-    // 定义元素不透明度
-    opacity: {
-      '15': '0.15',
-      '35': '0.35',
-      '65': '0.65'
-    },
-
-    // 定义背景不透明度
-    backgroundOpacity: {
-      '10': '0.1',
-      '20': '0.2',
-      '95': '0.95'
+    skew: {
+      '25': '25deg',
+      '60': '60deg'
     }
   }
 }
@@ -49,7 +66,7 @@ module.exports = {
 module.exports = {
   variants: {
     extend: {
-      backgroundOpacity: ['active']
+      skew: ['active', 'group-hover']
     }
   }
 }
@@ -59,7 +76,7 @@ module.exports = {
 // tailwind.config.js
 module.exports = {
   corePlugins: {
-    backgroundOpacity: false
+    skew: false
   }
 }`)
   ])
