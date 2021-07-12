@@ -2,6 +2,13 @@ import { Story, StoryBook } from './common';
 
 const menu = [
   {
+    title: "Core",
+    descript: "核心概念",
+    links: [
+      {title: "PostCSS", href: "core/postcss.html", descript: "使用PostCSS对Tailwind进行处理"},
+    ]
+  },
+  {
     title: "Layout",
     descript: "定义基本的容器布局",
     links: [

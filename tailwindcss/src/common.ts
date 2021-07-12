@@ -1,19 +1,13 @@
 import './common.css';
+import showdown from 'showdown';
 
 import hljs from 'highlight.js/lib/core';
-import javascript from 'highlight.js/lib/languages/javascript';
-import xml from 'highlight.js/lib/languages/xml';
-import css from 'highlight.js/lib/languages/css';
-import 'highlight.js/styles/stackoverflow-dark.css';
+import 'highlight.js/styles/base16/default-dark.css';
 
-hljs.registerLanguage('javascript', javascript);
-hljs.registerLanguage('html', xml);
-hljs.registerLanguage('css', css);
-
-
-hljs.configure({
-  useBR: true
-});
+hljs.registerLanguage('javascript', require('highlight.js/lib/languages/javascript'));
+hljs.registerLanguage('html', require('highlight.js/lib/languages/xml'));
+hljs.registerLanguage('css', require('highlight.js/lib/languages/css'));
+hljs.registerLanguage('bash', require('highlight.js/lib/languages/bash'));
 
 class Story {
   private $wrapper: HTMLDivElement;
@@ -78,22 +72,38 @@ class Story {
     this.$wrapper.appendChild($codeBlock);
 
     const $codeBlockTitle: HTMLElement = document.createElement('h2');
-    $codeBlockTitle.innerText = 'Source code: ';
     $codeBlockTitle.className = 'font-medium md:px-3 px-2 text-xs md:text-base';
     $codeBlock.appendChild($codeBlockTitle);
 
-    this.$code = document.createElement('code');
-    this.$code.className = `px-5 mt-1 text-xs md:text-base language-${language} hljs`;
-    const $pre: HTMLElement = document.createElement('pre');
-    $pre.appendChild(this.$code);
-    $codeBlock.appendChild($pre);
+    if (language === "markdown") {
+      $codeBlockTitle.innerText = 'Content: ';
+
+      this.$code = document.createElement('div');
+      this.$code.className = `px-5 py-2 mt-1 text-xs md:text-base block markdown`;
+      $codeBlock.appendChild(this.$code);
+    } else {
+      $codeBlockTitle.innerText = 'Source code: ';
+
+      this.$code = document.createElement('code');
+      this.$code.className = `px-5 mt-1 text-xs md:text-base hljs ${language} language-${language}`;
+
+      const $pre: HTMLElement = document.createElement('pre');
+      $pre.appendChild(this.$code);
+      $codeBlock.appendChild($pre);
+    }
+    this.$code.setAttribute("lang", language);
   }
 
   code(code: string): Story {
     if (this.$html) {
       this.$html.innerHTML = code
     }
-    this.$code.innerText = code;
+    const lang = this.$code.getAttribute("lang");
+    if (lang === "markdown") {
+      this.$code.innerHTML = new showdown.Converter().makeHtml(code);
+    } else {
+      this.$code.textContent = code;
+    }
     return this;
   }
 

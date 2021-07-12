@@ -9,26 +9,28 @@
     "serve": "env NODE_ENV=development webpack serve --stats-error-details"
   },
   "devDependencies": {
-    "autoprefixer": "^10.2.6",
+    "autoprefixer": "^10.3.0",
     "cross-env": "^7.0.3",
     "css-loader": "^5.2.6",
-    "html-webpack-plugin": "^5.3.1",
-    "mini-css-extract-plugin": "^1.6.0",
-    "postcss": "^8.3.2",
+    "html-webpack-plugin": "^5.3.2",
+    "mini-css-extract-plugin": "^2.1.0",
+    "postcss": "^8.3.5",
     "postcss-fixes": "^2.0.1",
-    "postcss-loader": "^6.1.0",
-    "prettier": "^2.3.1",
-    "style-loader": "^2.0.0",
+    "postcss-loader": "^6.1.1",
+    "prettier": "^2.3.2",
+    "style-loader": "^3.0.0",
     "stylus": "^0.54.8",
     "stylus-loader": "^6.1.0",
     "ts-loader": "^9.2.3",
-    "typescript": "^4.3.2",
-    "webpack": "^5.38.1",
+    "typescript": "^4.3.5",
+    "webpack": "^5.44.0",
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^3.11.2"
   },
   "dependencies": {
-    "highlight.js": "^10.2.0",
-    "tailwindcss": "^2.1.4"
+    "@types/showdown": "^1.9.4",
+    "highlight.js": "^11.1.0",
+    "showdown": "^1.9.1",
+    "tailwindcss": "^2.2.4"
   }
 }
