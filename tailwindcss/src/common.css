@@ -11,6 +11,13 @@
   .text-transparent {
     @apply text-white text-opacity-0
   }
+
+  .btn {
+    @apply py-2 px-4 font-semibold rounded-lg shadow-md;
+  }
+  .btn-green {
+    @apply text-white bg-green-500 hover:bg-green-700;
+  }
 }
 
 @font-face {
@@ -57,6 +64,10 @@
   color: white;
 }
 
+.markdown p {
+  margin: 0.5em 0;
+}
+
 .markdown h1 {
   font-size: xx-large;
   font-weight: bold;
@@ -96,4 +107,13 @@
   display: block;
   margin: 0.5em 0;
   padding: 0.5em 0.4em;
+}
+
+.markdown ul {
+  list-style: disc;
+  padding: 10px 20px;
+}
+
+.markdown ul li {
+  margin: .5em .2em;
 }

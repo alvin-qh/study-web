@@ -5,7 +5,10 @@ const menu = [
     title: "Core",
     descript: "核心概念",
     links: [
-      {title: "PostCSS", href: "core/postcss.html", descript: "使用PostCSS对Tailwind进行处理"},
+      {title: "Install Tailwind", href: "core/install.html", descript: "安装 Tailwind"},
+      {title: "Using with Preprocessors", href: "core/postcss.html", descript: "使用PostCSS对Tailwind进行处理"},
+      {title: "Optimizing for Production", href: "core/optimizing.html", descript: "使用PostCSS对Tailwind进行处理"},
+      {title: "Css Class", href: "core/css-class.html", descript: "Tailwind 样式类"},
     ]
   },
   {
@@ -13,7 +16,7 @@ const menu = [
     descript: "定义基本的容器布局",
     links: [
       {title: "Container", href: "layout/container.html", descript: "设置容器的固定宽度，是否居中"},
-      {title: "Box sizing", href: "layout/boxsizing.html", descript: "设置容器的盒模型，是否计算边框和 padding"},
+      {title: "Box Sizing", href: "layout/boxsizing.html", descript: "设置容器的盒模型，是否计算边框和 padding"},
       {title: "Display", href: "layout/display.html", descript: "设置容器内元素的显示方式，即定义容器的布局方式"},
       {title: "Floating", href: "layout/floating.html", descript: "设置元素在父容器内的浮动方式"},
       {title: "Clear Floating", href: "layout/clear-floating.html", descript: "清除元素周围的其它元素浮动，即终止后续元素的浮动"},
