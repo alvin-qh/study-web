@@ -1,11 +1,17 @@
-import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import loadModule from './components/Load';
+import React, { lazy, Suspense } from 'react';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import Loading from '@components/Loading';
+
+const Home = lazy(() => import(/* webpackChunkName: "home" */ "@pages/Home"));
 
 const App = () => (
   <Router>
-    <Route path="/" component={loadModule(import(/* webpackChunkName: "home" */ "@pages/Home"))}>
-    </Route>
+    <Suspense fallback={Loading}>
+      <Switch>
+        <Route exact path="/" component={Home}>
+        </Route>
+      </Switch>
+    </Suspense>
   </Router>
 );
 

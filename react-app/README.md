@@ -40,7 +40,9 @@
 
   编译或打包应用
 
-### 1.3. [更多 Create React App 参考](./doc/create-react-app.md)
+### 1.3. Create React App 详解
+
+参考：[Create React App 详解](./doc/create-react-app.md)
 
 ## 2. 使用 React Router 组件
 

@@ -122,7 +122,9 @@
 添加依赖项:
 
 ```bash
-$ yarn add husky lint-staged prettier
+$ npm install --save-dev husky lint-staged prettier
+# 或者
+$ yarn add -D husky lint-staged prettier
 ```
 
 在 `package.json` 文件中添加如下设置：
@@ -154,9 +156,9 @@ $ npx prettier --single-quote --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}
 1. 安装依赖
 
     ```bash
-    $ npm install --save storybook @storybook/react
+    $ npm install --save-dev storybook @storybook/react
     # 或者
-    $ yarn add storybook @storybook/react
+    $ yarn add -D storybook @storybook/react
     ```
 
 2. 增加启动命令
@@ -197,9 +199,9 @@ $ npx prettier --single-quote --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}
 1. 安装依赖
 
     ```bash
-    $ npm install --save react-styleguidist
+    $ npm install --save-dev react-styleguidist
     # 或者
-    $ yarn add react-styleguidist
+    $ yarn add -D react-styleguidist
     ```
 
 2. 设置启动命令
@@ -226,9 +228,9 @@ $ npx prettier --single-quote --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}
 1. 安装依赖
 
   ```bash
-  $ npm install --save source-map-explorer
+  $ npm install --save-dev source-map-explorer
   # 或者
-  $ yarn add source-map-explorer
+  $ yarn add -D source-map-explorer
   ```
 
 2. 增加启动命令
@@ -271,9 +273,9 @@ $ npx prettier --single-quote --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}
 1. 安装插件
 
     ```bash
-    $ npm install --save customize-cra
+    $ npm install --save-dev customize-cra
     # 或者
-    $ yarn add customize-cra
+    $ yarn add -D customize-cra
     ```
 
 2. 添加配置文件
@@ -313,9 +315,9 @@ $ npx prettier --single-quote --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}
     - 安装依赖
 
       ```bash
-      $ npm install --save react-app-rewired
+      $ npm install --save-dev react-app-rewired
       # 或者
-      $ yarn add react-app-rewired
+      $ yarn add -D react-app-rewired
       ```
 
     - 编辑 `package.json` 文件，设置启动命令
@@ -338,9 +340,9 @@ $ npx prettier --single-quote --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}
       安装依赖
 
       ```bash
-      $ npm install --save compression-webpack-plugin
+      $ npm install --save-dev compression-webpack-plugin
       # 或者
-      $ yarn add compression-webpack-plugin
+      $ yarn add -D compression-webpack-plugin
       ```
 
       配置插件
@@ -387,9 +389,9 @@ $ npx prettier --single-quote --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}
       - 安装插件
 
         ```bash
-        $ npm install --save babel-plugin-import
+        $ npm install --save-dev babel-plugin-import
         # 或者
-        $ yarn add babel-plugin-import
+        $ yarn add -D babel-plugin-import
         ```
 
       - 使用插件（以支持 Less 以及 antd 样式库为例）
@@ -397,9 +399,9 @@ $ npx prettier --single-quote --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}
         安装依赖
 
         ```bash
-        $ npm install --save less lessloader
+        $ npm install --save-dev less lessloader
         # 或者
-        $ yarn add less lessloader
+        $ yarn add -D less lessloader
         ```
 
         配置插件
@@ -421,9 +423,9 @@ $ npx prettier --single-quote --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}
     安装依赖
 
     ```bash
-    $ npm install --save postcss postcss-pxtorem
+    $ npm install --save-dev postcss postcss-pxtorem
     # 或者
-    $ yarn add postcss postcss-pxtorem
+    $ yarn add -D postcss postcss-pxtorem
     ```
 
     ```javascript
