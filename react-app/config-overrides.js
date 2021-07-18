@@ -17,10 +17,11 @@ module.exports = {
       return config;
     },
     addWebpackAlias({
-      '@': path.resolve('src')
+      '@': path.join(__dirname, '.', 'src'),
+      '@pages': path.join(__dirname, '.', 'src/pages'),
+      '@components': path.join(__dirname, '.', 'src/components')
     }),
-    fixBabelImports('import', {
-    }),
+    fixBabelImports('import'),
     addPostcssPlugins([
       require('postcss-pxtorem')({
         rootValue: 75,

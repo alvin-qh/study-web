@@ -1,45 +1,44 @@
-# React App
+# 创建 React App
 
-## 1. Use `create-react-app` 
+## 1. 使用 `create-react-app` 工具链
 
-### 1.1. Create react app
+### 1.1. 创建 React 应用
 
-- Use npx
+- 通过 `npx` 工具
 
   ```bash
   $ npm install -g create-react-app   # Optional
   $ npx create-react-app my-react-app
   ```
 
-- Use npm
+- 通过 `npm` 工具
 
   ```bash
   $ npm install -g create-react-app  # Optional
   $ npm init react-app my-react-app
   ``` 
 
-- Use yarn
+- 通过 `yarn` 工具
 
   ```bash
   $ yarn global add create-react-app  # Optional
   $ yarn create react-app my-react-app
   ```
 
-### 1.2. Script command
+### 1.2. 命令行
 
-- `npm start` or `yarn start`
+- 通过 `npm start` 或者 `yarn start` 命令
 
-  Start the app in dev mode. Open http://localhost:3000 to visit this app.
-  If the code changed, the app should be recompiled and reload in browser.
+  该命令以 `dev` 模式启动应用，地址为 `http://localhost:3000`.
+  如果代码发送变换，则应用会被浏览器自动重载
 
-- `npm test` or `yarn test`
+- `npm test` 或 `yarn test`
 
-  Run unit test
+  运行测试
 
-- `npm run build` or `yarn build`
+- `npm run build` 或 `yarn build`
 
-  Build the package
+  编译或打包应用
 
-
-### 1.3. [More "Create React App" document](./doc/create_react_app.md)
+### 1.3. [更多 Create React App 参考](./doc/create_react_app.md)
 
