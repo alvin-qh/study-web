@@ -1,71 +1,68 @@
-# Create React App
+# 使用 Create React App
 
-> See: https://www.html.cn/create-react-app/docs/getting-started/
+> 参考: https://www.html.cn/create-react-app/docs/getting-started/
 
-- [Create React App](#create-react-app)
-  - [1. Create App](#1-create-app)
-    - [1.1. Install create-react-app and create app](#11-install-create-react-app-and-create-app)
-    - [1.2. Script command](#12-script-command)
-  - [2. Development settings](#2-development-settings)
-    - [2.1. Add Lint Support](#21-add-lint-support)
-    - [2.2. Debug in Chrome](#22-debug-in-chrome)
+- [使用 Create React App](#使用-create-react-app)
+  - [1. 创建应用](#1-创建应用)
+    - [1.1. 安装 `create-react-app` 工具并创建应用](#11-安装-create-react-app-工具并创建应用)
+    - [1.2. 启动 React 应用](#12-启动-react-应用)
+  - [2. 开发设置](#2-开发设置)
+    - [2.1. 添加 lint 支持](#21-添加-lint-支持)
+    - [2.2. 配置 Chrome 浏览器调试](#22-配置-chrome-浏览器调试)
       - [2.2.1. Visual Studio Code](#221-visual-studio-code)
       - [2.2.2. WebStorm](#222-webstorm)
     - [2.3. Git hook](#23-git-hook)
-    - [2.4. Integrate Component Tools](#24-integrate-component-tools)
-      - [2.4.1. Storybook for React](#241-storybook-for-react)
-      - [2.4.2. React Styleguidist](#242-react-styleguidist)
-    - [2.5. Bundle analysis](#25-bundle-analysis)
-    - [2.6. Use HTTPS](#26-use-https)
+    - [2.4. 集成常用组件](#24-集成常用组件)
+      - [2.4.1. 集成 Storybook](#241-集成-storybook)
+      - [2.4.2. 集成 Styleguidist](#242-集成-styleguidist)
+      - [2.4.3 集成 Bundle analysis](#243-集成-bundle-analysis)
+    - [2.5. 使用 HTTPS 进行调试](#25-使用-https-进行调试)
 
+## 1. 创建应用
 
+### 1.1. 安装 `create-react-app` 工具并创建应用
 
-## 1. Create App
-
-### 1.1. Install create-react-app and create app
-
-- Use npx
+- 通过 `npx`
 
   ```bash
   $ npm install -g create-react-app   # Optional
   $ npx create-react-app my-react-app
   ```
 
-- Use npm
+- 通过 `npm`
 
   ```bash
   $ npm install -g create-react-app  # Optional
   $ npm init react-app my-react-app
   ``` 
 
-- Use yarn
+- 通过 `yarn`
 
   ```bash
   $ yarn global add create-react-app  # Optional
   $ yarn create react-app my-react-app
   ```
 
-### 1.2. Script command
+### 1.2. 启动 React 应用
 
-- `npm start` or `yarn start`
+- `npm start` 或者 `yarn start`
 
-  Start the app in dev mode. Open http://localhost:3000 to visit this app.
-  If the code changed, the app should be recompiled and reload in browser.
+  该命令以 `dev` 模式启动应用，地址为 `http://localhost:3000`.
+  如果代码发送变换，则应用会被浏览器自动重载
 
-- `npm test` or `yarn test`
+- `npm test` 或者 `yarn test`
 
-  Run unit test
+  运行测试
 
-- `npm run build` or `yarn build`
+- `npm run build` 或者 `yarn build`
 
-  Build the package
+  编译或打包应用
 
+## 2. 开发设置
 
-## 2. Development settings
+### 2.1. 添加 lint 支持
 
-### 2.1. Add Lint Support
-
-Add `.eslintrc.json` at project root
+在项目根路径增加 `.eslintrc.json` 文件，从 `react-app` 继承 lint 规则
 
 ```json
 {
@@ -73,13 +70,13 @@ Add `.eslintrc.json` at project root
 }
 ```
 
-### 2.2. Debug in Chrome
+### 2.2. 配置 Chrome 浏览器调试
 
 #### 2.2.1. Visual Studio Code
 
-1. Install "Debugger for Chrome" plugin in VSCode.
+1. 在 VSCode 中安装 "Debugger for Chrome" 插件
 
-2. Add the following config in `.vscode/launch.json` file.
+2. 将如下配置加入 `.vscode/launch.json` 文件中
 
     ```json
     {
@@ -99,34 +96,35 @@ Add `.eslintrc.json` at project root
     }
     ```
     
-3. Debug (or Run) app in Chrome
+3. 在 Chrome 中调试 (或运行) 应用
 
-    Run `yarn start`
+    运行 `yarn start` 命令行
 
-    Press 'F5' Start Debugging (or 'Shift + F9' Run Without Debugging) to start app in Chrome
+    通过 'F5' 快捷键在 Chrome 中启动调试 (或者 'Shift + F9' 运行应用)
 
 #### 2.2.2. WebStorm
 
-1. Install "JetBrains IDE Support Chrome" Plugin in WebStorm.
+1. 安装 "JetBrains IDE Support Chrome" 插件
 
-2. In WebStorm menu `Run` -> `Edit Configurations ...`, Click `+` button and select `Javascript Debug`. Paste url "http://localhost:3000" into URL property and save.
+2. 在 `Run` -> `Edit Configurations ...` 菜单项中, 点击 `+` 按钮并选择 `Javascript Debug`，在 URL 属性栏中填入 `http://localhost:3000`
 
-3. Debug (or Run) app in Chrome
+3. 在 Chrome 中启动调试 (或运行) 应用
 
-  Run `yarn start`
-  Press `^D` (macOS) or `F9` (Windows) to start debug in WebStorm
+    执行 `yarn start` 命令行
+
+    使用快捷键 `^D` (macOS) 或 `F9` (Windows) 启动调试
 
 ### 2.3. Git hook
 
-Use "prettier" to format code.
+使用 "prettier" 格式化代码
 
-Add dependencies:
+添加依赖项:
 
 ```bash
 $ yarn add husky lint-staged prettier
 ```
 
-Set add settings in `package.json` file
+在 `package.json` 文件中添加如下设置：
 
 ```json
 "husky": {
@@ -142,25 +140,25 @@ Set add settings in `package.json` file
 }
 ```
 
-Or run cli to format code
+也可以直接通过命令行格式化代码
 
 ```bash
 $ npx prettier --single-quote --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}"
 ```
 
-### 2.4. Integrate Component Tools
+### 2.4. 集成常用组件
 
-#### 2.4.1. Storybook for React
+#### 2.4.1. 集成 Storybook
 
-1. Install dependencies
+1. 安装依赖
 
     ```bash
     $ yarn add storybook @storybook/react
     ```
 
-2. Add scirpt command
+2. 增加启动命令
 
-    Edit `package.json` file, add the following content:
+    编辑 `package.json` 文件，增加如下启动项:
 
     ```json
     {
@@ -171,37 +169,37 @@ $ npx prettier --single-quote --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}
     }
     ```
 
-3. Create config js file
+3. 创建配置文件
 
-    Add `config.js` into `.storybook` folder, see [.storybook/config.js](../.storybook/config.js)
+    在 `.storybook` 路径下增加 `config.js` 文件, 参考 [.storybook/config.js](../.storybook/config.js)
 
-4. Write story in storybook
+4. 添加 "Story" 文件
 
-    Add storybook js file into `storybookds` folder, see [storybooks/button-demo.js](../storybooks/button-demo.js)
+    在 `storybookds` 路径下增加 `.js` 文件. 参考 [storybooks/button-demo.js](../storybooks/button-demo.js)
 
-5. Run storybook
+5. 启动 "Storybook"
 
     ```bash
     $ yarn storybook
     ```
 
-6. Addtion `webpack.config.js` for storybook
+6. 为 "Storybook" 增加 `webpack.config.js` 配置 
 
-    Add `webpack.config.js` into `.storybook` folder, see [.storybook/webpack.config.js](../.storybook/webpack.config.js)
+    在 `.storybook` 路径下增加 `webpack.config.js`. 参考 [.storybook/webpack.config.js](../.storybook/webpack.config.js)
 
-> More info about Storybook, see [Official Website](https://storybook.js.org/docs/react/get-started/introduction)
+> 更多关于 "Storybook" 信息，参见 [Official Website](https://storybook.js.org/docs/react/get-started/introduction)
 
-#### 2.4.2. React Styleguidist
+#### 2.4.2. 集成 Styleguidist
 
-1. Install dependencies
+1. 安装依赖
 
     ```bash
     $ yarn add react-styleguidist
     ```
 
-2. Add script commands
+2. 设置启动命令
 
-    Edit `package.json` file, add the following content:
+    编辑 `package.json` 文件, 增加如下配置:
 
     ```json
     {
@@ -212,23 +210,23 @@ $ npx prettier --single-quote --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}
     }
     ```
 
-3. Run styleguide
+3. 执行 styleguide
 
     ```bash
     $ yarn styleguide
     ```
 
-### 2.5. Bundle analysis
+#### 2.4.3 集成 Bundle analysis
 
-1. Install dependencies
+1. 安装依赖
 
   ```bash
   $ yarn add source-map-explorer
   ```
 
-2. Add script command
+2. 增加启动命令
 
-    Edit `package.json` file, add the following content:
+    编辑 `package.json` 文件, 增加如下配置:
 
     ```json
     {
@@ -238,23 +236,23 @@ $ npx prettier --single-quote --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}
     }
     ```
 
-3. Analyze js bundle
+3. 执行 bundle 分析工具
 
     ```bash
     $ yarn build
     $ yarn analyze
     ```
 
-### 2.6. Use HTTPS
+### 2.5. 使用 HTTPS 进行调试
 
-Use `HTTP` env variable
+1. 通过 `HTTP` 环境变量
 
-```bash
-$ HTTP=true yarn start
-```
+    ```bash
+    $ HTTP=true yarn start
+    ```
 
-or edit `.env` file, and add variable like
+2. 编辑 `.env` 文件，增加环境变量设置
 
-```
-HTTP=true
-```
+    ```ini
+    HTTP=true
+    ```
