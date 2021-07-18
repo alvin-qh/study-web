@@ -1,6 +1,6 @@
 # 使用 Create React App
 
-> 参考: https://www.html.cn/create-react-app/docs/getting-started/
+> 参考: [英文文档](https://reactjs.org/docs/create-a-new-react-app.html) | [中文文档](https://www.html.cn/create-react-app/docs/getting-started/)
 
 - [使用 Create React App](#使用-create-react-app)
   - [1. 创建应用](#1-创建应用)

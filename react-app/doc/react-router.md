@@ -1,10 +1,6 @@
 # 使用 React Router 组件
 
-> 参考：
-> 
->   [React Router Quick start](https://reactrouter.com/web/guides/quick-start)
->
->   [React Code-Splitting](https://reactrouter.com/web/guides/quick-start)
+> 参考：[英文文档](https://reactrouter.com/web/guides/quick-start) | [中文文档](http://react-guide.github.io/react-router-cn/) | [使用教程](https://www.ruanyifeng.com/blog/2016/05/react_router.html) | [代码分割](https://reactrouter.com/web/guides/quick-start)
 
 - [使用 React Router 组件](#使用-react-router-组件)
   - [1. 安装依赖项](#1-安装依赖项)
