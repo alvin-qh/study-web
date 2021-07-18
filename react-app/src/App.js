@@ -4,7 +4,7 @@ import loadModule from './components/Load';
 
 const App = () => (
   <Router>
-    <Route path="/" component={loadModule(import("@pages/Home"))}>
+    <Route path="/" component={loadModule(import(/* webpackChunkName: "home" */ "@pages/Home"))}>
     </Route>
   </Router>
 );

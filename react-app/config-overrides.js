@@ -5,8 +5,9 @@ const CompressionWebpackPlugin = require('compression-webpack-plugin');
 module.exports = {
   webpack: override(
     config => {
+      config.devtool = false;
+
       if (process.env.COMPRESS_USE_GZIP === 'true') {
-        config.devtool = false;
         config.plugins.push(
           new CompressionWebpackPlugin({
             test: /\.(js|css)$/,
@@ -21,7 +22,7 @@ module.exports = {
       '@pages': path.join(__dirname, '.', 'src/pages'),
       '@components': path.join(__dirname, '.', 'src/components')
     }),
-    fixBabelImports('import'),
+    fixBabelImports('import', []),
     addPostcssPlugins([
       require('postcss-pxtorem')({
         rootValue: 75,

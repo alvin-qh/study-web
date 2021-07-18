@@ -17,6 +17,7 @@
       - [2.4.2. 集成 Styleguidist](#242-集成-styleguidist)
       - [2.4.3 集成 Bundle analysis](#243-集成-bundle-analysis)
     - [2.5. 使用 HTTPS 进行调试](#25-使用-https-进行调试)
+    - [2.6. 使用 `customize-cra` 插件](#26-使用-customize-cra-插件)
 
 ## 1. 创建应用
 
@@ -153,6 +154,8 @@ $ npx prettier --single-quote --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}
 1. 安装依赖
 
     ```bash
+    $ npm install --save storybook @storybook/react
+    # 或者
     $ yarn add storybook @storybook/react
     ```
 
@@ -194,6 +197,8 @@ $ npx prettier --single-quote --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}
 1. 安装依赖
 
     ```bash
+    $ npm install --save react-styleguidist
+    # 或者
     $ yarn add react-styleguidist
     ```
 
@@ -221,6 +226,8 @@ $ npx prettier --single-quote --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}
 1. 安装依赖
 
   ```bash
+  $ npm install --save source-map-explorer
+  # 或者
   $ yarn add source-map-explorer
   ```
 
@@ -255,4 +262,177 @@ $ npx prettier --single-quote --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}
 
     ```ini
     HTTP=true
+    ```
+
+### 2.6. 使用 `customize-cra` 插件
+
+`customize-cra` 插件用于设置自定义的 webpack 配置
+
+1. 安装插件
+
+    ```bash
+    $ npm install --save customize-cra
+    # 或者
+    $ yarn add customize-cra
+    ```
+
+2. 添加配置文件
+
+    在项目根路径下增加 `config-overrides.js` 文件，参加 [config-overrides.js](../config-overrides.js)
+
+    `config-overrides.js` 配置的基本格式如下：
+
+    ```javascript
+    module.exports = {
+      webpack: override(
+        config => {
+          // 对 webpack config 对象进行操作
+          return config;
+        },
+        addWebpackAlias({
+          // 设置文件引用别名
+        }),
+        fixBabelImports('import', { 
+          // 设置 import 引用配置
+        }),
+        addPostcssPlugins([
+          // 设置 postcss 插件
+        ])
+      ),
+      devServer: overrideDevServer(
+        config => {
+          // 设置开发服务器配置
+          return config;
+        }
+      )
+    };
+    ```
+
+3. 使用 `customize-cra` 插件
+
+    - 安装依赖
+
+      ```bash
+      $ npm install --save react-app-rewired
+      # 或者
+      $ yarn add react-app-rewired
+      ```
+
+    - 编辑 `package.json` 文件，设置启动命令
+
+      ```json
+      {
+        "scripts": {
+          // "start": "react-scripts start",
+          "start": "react-app-rewired start"
+        }
+      }
+      ```
+
+      即将 `react-scripts <cmd>` 命令改为 `react-app-rewired <cmd>` 即可
+
+4. 常用配置范例
+
+   - 设置 GZIP 压缩选项
+
+      安装依赖
+
+      ```bash
+      $ npm install --save compression-webpack-plugin
+      # 或者
+      $ yarn add compression-webpack-plugin
+      ```
+
+      配置插件
+
+      ```javascript
+      config => {
+        // ...
+        if (process.env.COMPRESS_USE_GZIP === 'true') {
+          config.plugins.push(
+            new CompressionWebpackPlugin({
+              test: /\.(js|css)$/,
+              threshold: 1024
+            })
+          )
+        }
+        return config;
+      }
+      ```
+
+   - 设置 devtools 配置
+
+      ```javascript
+      config => {
+        // ...
+        config.devtool = false;
+        return config;
+      }
+      ```
+
+   - 设置引用路径别名
+
+      ```javascript
+      addWebpackAlias({
+        '@': path.join(__dirname, '.', 'src'),   // '__dirname/src' 的别名
+        '@pages': path.join(__dirname, '.', 'src/pages'),   // '__dirname/src/pages' 的别名
+        '@components': path.join(__dirname, '.', 'src/components')    // '__dirname/src/components' 的别名
+      })
+      ```
+
+   - <span id="use-plugin-babel-plugin-import">使用 `babel-plugin-import` 插件</span>
+
+      该插件的作用是：将 `import` 写法自动转换为按需引入的方式
+
+      - 安装插件
+
+        ```bash
+        $ npm install --save babel-plugin-import
+        # 或者
+        $ yarn add babel-plugin-import
+        ```
+
+      - 使用插件（以支持 Less 以及 antd 样式库为例）
+
+        安装依赖
+
+        ```bash
+        $ npm install --save less lessloader
+        # 或者
+        $ yarn add less lessloader
+        ```
+
+        配置插件
+
+        ```javascript
+        fixBabelImports('import', [
+          { // support: 'import {...} from 'antd';
+            libraryName: "antd",
+            libraryDirectory: "lib",
+            style: true
+          }
+        ]),
+        addLessLoader(),      // 支持 less 文件
+        addDecoratorLegacy()  // 支持修饰器写法
+        ```
+
+  - 配置 PostCSS 插件（以 `postcss-pxtorem` 插件为例）
+
+    安装依赖
+
+    ```bash
+    $ npm install --save postcss postcss-pxtorem
+    # 或者
+    $ yarn add postcss postcss-pxtorem
+    ```
+
+    ```javascript
+    addPostcssPlugins([
+      require('postcss-pxtorem')({
+        rootValue: 75,
+        propList: ['*'],
+        minPixelValue: 2,
+        selectorBlackList: ['am-']
+      })
+    ])
     ```
