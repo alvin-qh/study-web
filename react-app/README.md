@@ -42,9 +42,16 @@
 
 ### 1.3. Create React App 详解
 
-参考：[Create React App 详解](./doc/create-react-app.md)
+参考：[Create React App](./doc/create-react-app.md)
 
 ## 2. 使用 React Router 组件
 
-参考：[React Router 简介](doc/react-router.md)
+参考：[React Router](doc/react-router.md)
 
+## 3. 集成 Tailwind CSS
+
+参考：[Tailwind CSS](doc/use-tailwindcss.md)
+
+## 4. 集成 Typescript
+
+参考：[Typescript](doc/typescript-integration.md)
