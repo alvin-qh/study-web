@@ -1,8 +1,13 @@
+import logoImage from '../logo.svg';
+
 const Home = () => (
   <div className="home">
-    <nav className="p-4 bg-gradient-to-b from-light-blue-50 to-light-blue-200">
-      DDD
-    </nav>
+    <div className="bg-gradient-to-b from-gray-900 to-gray-600
+                    rounded-md shadow-lg border-sky-800 drop-shadow-md
+                    flex flex-col items-center justify-center py-14 mt-28 w-2/3 mx-auto">
+      <img className="w-72 animate-spin" src={logoImage} alt="logo"></img>
+      <p className="text-white mt-10 text-5xl font-bold">Study React</p>
+    </div>
   </div>
 );
 

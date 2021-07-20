@@ -32,12 +32,12 @@ module.exports = {
     addPostcssPlugins([
       require('postcss-fixes'),
       require('tailwindcss'),
-      require('postcss-pxtorem')({
-        rootValue: 75,
-        propList: ['*'],
-        minPixelValue: 2,
-        selectorBlackList: ['am-']
-      }),
+      // require('postcss-pxtorem')({
+      //   rootValue: 75,
+      //   propList: ['*'],
+      //   minPixelValue: 2,
+      //   selectorBlackList: ['am-']
+      // }),
       require('autoprefixer')
     ])
   ),

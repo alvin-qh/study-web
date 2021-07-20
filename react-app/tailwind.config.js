@@ -5,7 +5,8 @@ require('./tailwind/colors');
 
 module.exports = {
   purge: [
-    './src/**/*.ts'
+    "./src/**/*.ts",
+    "./src/**/*.css",
   ],
   darkMode: false, // or 'media' or 'class'
   theme: {
