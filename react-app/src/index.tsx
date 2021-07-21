@@ -1,17 +1,11 @@
-import 'normalize.css/normalize.css';
-import '@blueprintjs/icons/lib/css/blueprint-icons.css';
-import '@blueprintjs/core/lib/css/blueprint.css';
-import './index.css';
-
-import { StrictMode } from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import './index.css';
 import reportWebVitals from './reportWebVitals';
 
+
 ReactDOM.render(
-  <StrictMode>
-    <App />
-  </StrictMode>,
+  <App />,
   document.getElementById('root')
 );
 
