@@ -4,8 +4,6 @@ import Loading from '@components/loading';
 import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom';
 
-
-
 const Nav = () => {
   const history = useHistory();
 
@@ -14,7 +12,17 @@ const Nav = () => {
       <MenuItem
         icon="book"
         text="Hello World"
-        onClick={() => history.push("/basic/hello")}
+        onClick={() => history.push("/basic/hello?name=Alvin")}
+      />
+      <MenuItem
+        icon="box"
+        text="Component"
+        onClick={() => history.push("/basic/component")}
+      />
+      <MenuItem
+        icon="star"
+        text="State"
+        onClick={() => history.push("/basic/state")}
       />
     </Menu>
   );
@@ -24,20 +32,13 @@ const Nav = () => {
       <Navbar.Group align={Alignment.LEFT}>
         <Navbar.Heading className="font-bold">Study React</Navbar.Heading>
         <Navbar.Divider />
-        <Button
-          className="bp3-minimal focus:outline-none"
-          icon="home" text="Home"
-          onClick={() => history.push("/")}
-        />
+        <Button icon="home" text="Home" onClick={() => history.push('/')} className="focus:outline-none"/>
         <Popover2
           interactionKind="hover"
           content={BasicMenu}
-          placement="bottom-start">
-          <Button
-            className="bp3-minimal focus:outline-none"
-            icon="code"
-            text="Basic"
-          />
+          placement="bottom-start"
+          minimal={true}>
+          <Button icon="code" text="Basic" />
         </Popover2>
       </Navbar.Group>
     </Navbar>
@@ -47,18 +48,18 @@ const Nav = () => {
 const Body = () => {
   const Home = lazy(() => import(/* webpackChunkName: "home" */ "@pages/home"));
   const BasicHello = lazy(() => import(/* webpackChunkName: "basic-hello" */ "@pages/basic-hello"));
+  const BasicComponent = lazy(() => import(/* webpackChunkName: "basic-component" */ "@pages/basic-component"));
+  const BasicState = lazy(() => import(/* webpackChunkName: "basic-state" */ "@pages/basic-state"));
 
   return (
     <div
       className="container mx-auto bg-gradient-to-b from-gray-100 to-gray-150 px-4 py-14 border-gray-600 shadow-lg min-h-screen">
       <Suspense fallback={Loading}>
         <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route path="/basic/hello">
-            <BasicHello name="Alvin" />
-          </Route>
+          <Route exact path="/" component={Home} />
+          <Route path="/basic/hello" component={BasicHello} />
+          <Route path="/basic/component" component={BasicComponent} />
+          <Route path="/basic/state" component={BasicState} />
         </Switch>
       </Suspense>
     </div>
