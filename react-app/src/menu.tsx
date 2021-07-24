@@ -26,6 +26,11 @@ export const MainMenu = () => {
         text="Event"
         onClick={() => history.push("/basic/event")}
       />
+      <MenuItem
+        icon="fork"
+        text="Condition Render"
+        onClick={() => history.push("/basic/condition-render")}
+      />
     </Menu>
   )
 };

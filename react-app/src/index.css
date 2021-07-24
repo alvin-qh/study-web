@@ -6,3 +6,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.bp3-control input:focus~.bp3-control-indicator {
+  @apply outline-none
+}
