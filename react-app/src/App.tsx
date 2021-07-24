@@ -1,41 +1,22 @@
-import { Alignment, Button, Menu, MenuItem, Navbar } from '@blueprintjs/core';
+import { Alignment, Button, Navbar } from '@blueprintjs/core';
 import { Popover2 } from '@blueprintjs/popover2';
 import Loading from '@components/loading';
 import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom';
+import { MainMenu } from './menu';
 
 const Nav = () => {
   const history = useHistory();
-
-  const BasicMenu = (
-    <Menu>
-      <MenuItem
-        icon="book"
-        text="Hello World"
-        onClick={() => history.push("/basic/hello?name=Alvin")}
-      />
-      <MenuItem
-        icon="box"
-        text="Component"
-        onClick={() => history.push("/basic/component")}
-      />
-      <MenuItem
-        icon="star"
-        text="State"
-        onClick={() => history.push("/basic/state")}
-      />
-    </Menu>
-  );
 
   return (
     <Navbar fixedToTop={true} className="bp3-dark shadow-md">
       <Navbar.Group align={Alignment.LEFT}>
         <Navbar.Heading className="font-bold">Study React</Navbar.Heading>
         <Navbar.Divider />
-        <Button icon="home" text="Home" onClick={() => history.push('/')} className="focus:outline-none"/>
+        <Button icon="home" text="Home" onClick={() => history.push('/')} className="focus:outline-none" />
         <Popover2
           interactionKind="hover"
-          content={BasicMenu}
+          content={MainMenu()}
           placement="bottom-start"
           minimal={true}>
           <Button icon="code" text="Basic" />
@@ -47,9 +28,10 @@ const Nav = () => {
 
 const Body = () => {
   const Home = lazy(() => import(/* webpackChunkName: "home" */ "@pages/home"));
-  const BasicHello = lazy(() => import(/* webpackChunkName: "basic-hello" */ "@pages/basic-hello"));
-  const BasicComponent = lazy(() => import(/* webpackChunkName: "basic-component" */ "@pages/basic-component"));
-  const BasicState = lazy(() => import(/* webpackChunkName: "basic-state" */ "@pages/basic-state"));
+  const BasicHello = lazy(() => import(/* webpackChunkName: "basic-hello" */ "@pages/basic/hello"));
+  const BasicComponent = lazy(() => import(/* webpackChunkName: "basic-component" */ "@/pages/basic/component"));
+  const BasicState = lazy(() => import(/* webpackChunkName: "basic-state" */ "@pages/basic/state"));
+  const BasicEvent = lazy(() => import(/* webpackChunkName: "basic-state" */ "@pages/basic/evnet"));
 
   return (
     <div
@@ -60,6 +42,7 @@ const Body = () => {
           <Route path="/basic/hello" component={BasicHello} />
           <Route path="/basic/component" component={BasicComponent} />
           <Route path="/basic/state" component={BasicState} />
+          <Route path="/basic/event" component={BasicEvent} />
         </Switch>
       </Suspense>
     </div>

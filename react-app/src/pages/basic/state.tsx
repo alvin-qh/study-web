@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { PureComponent } from 'react';
 
 type StateProp = {
   className?: string
@@ -9,7 +9,7 @@ type StateState = {
   datetime?: string
 }
 
-class Clock extends Component<StateProp, StateState> {
+class Clock extends PureComponent<StateProp, StateState> {
   state: StateState = {
     datetime: new Date().toLocaleString()
   }
