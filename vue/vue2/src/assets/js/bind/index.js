@@ -1,9 +1,9 @@
-import "../../css/bind/index.less";
+import '../../css/bind/index.less';
 
-import Vue from "vue";
-import { runWith, Times } from "../common/common";
+import Vue from 'vue';
+import { runWith, Times } from '../common/common';
 
-import "../widget/breadcrumb";
+import '../widget/breadcrumb';
 
 runWith('bind.index', () => {
   /* eslint-disable no-new */

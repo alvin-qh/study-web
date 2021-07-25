@@ -32,7 +32,7 @@
           </div>
           <div class="card-body">
             <div class="form">
-              <div class="form-group">
+              <div class="mb-3">
                 <div class="col-4">
                   <input type="text" class="form-control" v-model="name" placeholder="Please input your name">
                 </div>
@@ -69,7 +69,7 @@
           </div>
           <div class="card-body">
             <div class="form-horizontal">
-              <div class="form-group col-4">
+              <div class="mb-3 col-4">
                 <select class="form-control" v-model="pageCount">
                   <option v-for="n in 10" :value="n">{{ n }}</option>
                 </select>
@@ -93,7 +93,7 @@
               </nav>
             </div>
             <div class="my-4 col-4">
-              <div class="form-group">
+              <div class="mb-3">
                 <input type="text" class="form-control" v-model="inputItem" @keydown.enter="addNewName"
                   placeholder="Please input one item">
               </div>
@@ -134,93 +134,114 @@
             </ul>
             <div class="tab-content card card-default">
               <div class="card-body">
-                <div class="form col-7">
+                <div class="form col-7 px-3">
                   <template v-if="tab === 'teacher'">
-                    <div class="row form-group">
-                      <label class="col-2 col-form-label text-right">Name:</label>
-                      <input type="text" class="form-control col-7" v-model="teacher.name" placeholder="Teacher name">
+                    <div class="row mb-3">
+                      <label class="col-form-label">Name:</label>
+                      <div>
+                        <input type="text" class="form-control col-7" v-model="teacher.name" placeholder="Teacher name">
+                      </div>
                     </div>
-                    <div class="row form-group">
-                      <label class="col-2 col-form-label text-right">Gender:</label>
-                      <div class="row col-7">
-                        <div class="form-check form-check-inline">
+                    <div class="row mb-3">
+                      <label class="col-form-label">Gender:</label>
+                      <div>
+                        <div class="form-check">
                           <input class="form-check-input" type="radio" name="gender" value="M" v-model="teacher.gender">
                           <label class="form-check-label">Male</label>
                         </div>
-                        <div class="form-check form-check-inline">
+                        <div class="form-check">
                           <input class="form-check-input" type="radio" name="gender" value="F" v-model="teacher.gender">
                           <label class="form-check-label">Female</label>
                         </div>
                       </div>
                     </div>
-                    <div class="row form-group">
-                      <label class="col-2 col-form-label text-right">Subject:</label>
-                      <select class="form-control col-7" v-model="teacher.subject">
-                        <option value="" :selected="!teacher.subject">Select subject</option>
-                        <option v-for="sub in subjects" :selected="teacher.subject === sub" :value="sub">{{ sub }}
-                        </option>
-                      </select>
+                    <div class="row mb-3">
+                      <label class="col-form-label">Subject:</label>
+                      <div>
+                        <select class="form-control" v-model="teacher.subject">
+                          <option value="" :selected="!teacher.subject">Select subject</option>
+                          <option v-for="sub in subjects" :selected="teacher.subject === sub" :value="sub">{{ sub }}
+                          </option>
+                        </select>
+                      </div>
                     </div>
-                    <div class="row form-group">
-                      <label class="col-2 col-form-label text-right">Phone:</label>
-                      <input type="number" class="form-control col-7" v-model="teacher.phone">
+                    <div class="row mb-3">
+                      <label class="col-form-label">Phone:</label>
+                      <div>
+                        <input type="number" class="form-control col-7" v-model="teacher.phone">
+                      </div>
                     </div>
-                    <div class="row form-group">
-                      <label class="col-2 col-form-label text-right">Remark:</label>
-                      <textarea class="form-control col-7" rows="5" v-model="teacher.remark"></textarea>
+                    <div class="row mb-3">
+                      <label class="col-form-label">Remark:</label>
+                      <div>
+                        <textarea class="form-control col-7" rows="5" v-model="teacher.remark"></textarea>
+                      </div>
                     </div>
                   </template>
                   <template v-else-if="tab === 'student'">
-                    <div class="row form-group">
-                      <label class="col-2 col-form-label text-right">Name:</label>
-                      <input type="text" class="form-control col-7" placeholder="Student name" v-model="student.name">
+                    <div class="row mb-3">
+                      <label class="col-form-label">Name:</label>
+                      <div>
+                        <input type="text" class="form-control" placeholder="Student name" v-model="student.name">
+                      </div>
                     </div>
-                    <div class="row form-group">
-                      <label class="col-2 col-form-label text-right">Gender:</label>
-                      <div class="row col-7">
-                        <div class="form-check form-check-inline">
+                    <div class="row mb-3">
+                      <label class="col-form-label">Gender:</label>
+                      <div>
+                        <div class="form-check">
                           <input class="form-check-input" type="radio" name="gender" value="M" v-model="student.gender">
                           <label class="form-check-label">Male</label>
                         </div>
-                        <div class="form-check form-check-inline">
+                        <div class="form-check">
                           <input class="form-check-input" type="radio" name="gender" value="F" v-model="student.gender">
                           <label class="form-check-label">Female</label>
                         </div>
                       </div>
                     </div>
-                    <div class="row form-group">
-                      <label class="col-2 col-form-label text-right">Class:</label>
-                      <select class="form-control col-7" v-model="student.grade">
-                        <option value="" :selected="!student.grade">Grade</option>
-                        <option v-for="grad in grades" :value="grad.name" :selected="grad.name === student.grade">
-                          {{ grad.name }} </option>
-                      </select>
+                    <div class="row mb-3">
+                      <label class="col-form-label">Class:</label>
+                      <div>
+                        <select class="form-control" v-model="student.grade">
+                          <option value="" :selected="!student.grade">Grade</option>
+                          <option v-for="grad in grades" :value="grad.name" :selected="grad.name === student.grade">
+                            {{ grad.name }} </option>
+                        </select>
+                      </div>
                     </div>
-                    <div class="row form-group">
-                      <select class="form-control offset-2 col-7" v-model="student.class">
-                        <option value="" :selected="!student.class">Class</option>
-                        <option v-for="cls in gradeClass" :value="cls" :selected="cls === student.class">{{ cls }}
-                        </option>
-                      </select>
+                    <div class="row mb-3">
+                      <div>
+                        <select class="form-control" v-model="student.class">
+                          <option value="" :selected="!student.class">Class</option>
+                          <option v-for="cls in gradeClass" :value="cls" :selected="cls === student.class">{{ cls }}
+                          </option>
+                        </select>
+                      </div>
                     </div>
-                    <div class="row form-group">
-                      <label class="col-2 col-form-label text-right">Address:</label>
-                      <input type="text" class="form-control col-7">
+                    <div class="row mb-3">
+                      <label class="col-form-label">Address:</label>
+                      <div>
+                        <input type="text" class="form-control">
+                      </div>
                     </div>
-                    <div class="row form-group">
-                      <label class="col-2 col-form-label text-right">Remark:</label>
-                      <textarea class="form-control col-7" rows="5" v-model="student.remark"></textarea>
+                    <div class="row mb-3">
+                      <label class="col-form-label">Remark:</label>
+                      <div>
+                        <textarea class="form-control" rows="5" v-model="student.remark"></textarea>
+                      </div>
                     </div>
                   </template>
                   <template v-else>
-                    <div class="row form-group">
-                      <label class="col-2 col-form-label text-right">Name:</label>
-                      <input type="text" class="form-control col-7" v-model="other.name" placeholder="Your name">
+                    <div class="row mb-3">
+                      <label class="col-form-label">Name:</label>
+                      <div>
+                        <input type="text" class="form-control" v-model="other.name" placeholder="Your name">
+                      </div>
                     </div>
-                    <div class="row form-group">
-                      <label class="col-2 col-form-label text-right">Phone:</label>
-                      <input type="text" class="form-control col-7" v-model="other.phone"
-                        placeholder="Your phone number">
+                    <div class="row mb-3">
+                      <label class="col-form-label">Phone:</label>
+                      <div>
+                        <input type="text" class="form-control" v-model="other.phone" placeholder="Your phone number">
+                      </div>
                     </div>
                   </template>
                   <div class="btn-bar offset-4">

@@ -1,13 +1,14 @@
-import Vue from "vue";
-import * as _ from "lodash";
+import { isArray } from 'lodash';
+import Vue from 'vue';
 
-const template = `<nav aria-label="breadcrumb">
-    <ol class="breadcrumb">
-        <li v-for="item in previous" class="breadcrumb-item">
-            <a :href="item.href">{{item.name}}</a>
-        </li>
-        <li class="breadcrumb-item active">{{title}}</li>
-    </ol>
+const template = `\
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li v-for="item in previous" class="breadcrumb-item">
+      <a :href="item.href">{{item.name}}</a>
+    </li>
+    <li class="breadcrumb-item active">{{title}}</li>
+  </ol>
 </nav>`;
 
 Vue.component('breadcrumb', {
@@ -15,14 +16,14 @@ Vue.component('breadcrumb', {
   data() {
     return {
       title: document.title
-    }
+    };
   },
   props: {
     previous: {
       type: Array,
       require: true,
       validator(vals) {
-        if (!_.isArray(vals)) {
+        if (!isArray(vals)) {
           return false;
         }
 

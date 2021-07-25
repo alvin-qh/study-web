@@ -180,8 +180,6 @@ export default {
   },
   plugins: plugins,
   devServer: {
-    contentBase: path.resolve('out/'),
-    inline: true,
     hot: true
   },
   devtool: 'cheap-source-map'

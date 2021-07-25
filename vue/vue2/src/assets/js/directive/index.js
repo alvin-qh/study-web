@@ -1,10 +1,10 @@
-import "../../css/directive/index.less";
+import Vue from 'vue';
+import '../../css/directive/index.less';
+import { runWith } from '../common/common';
+import '../widget/breadcrumb';
+import VueNotifications from '../widget/notifications';
 
-import Vue from "vue";
-import { runWith } from "../common/common";
-import VueNotifications from "../widget/notifications";
 
-import "../widget/breadcrumb";
 
 runWith('directive.index', () => {
   /* eslint-disable no-new */
@@ -135,7 +135,7 @@ runWith('directive.index', () => {
       }
     },
     watch: {
-      'student.grade': () => {
+      'student.grade'() {
         this.student.class = '';
       }
     },

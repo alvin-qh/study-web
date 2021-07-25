@@ -36,93 +36,109 @@
           </div>
           <div class="card-body">
             <div class="row">
-              <form class="form col" @submit.prevent="handleSubmit(onSubmit)">
-                <div class="form-group">
+              <form class="form col px-5" @submit.prevent="handleSubmit(onSubmit)">
+                <div class="mb-3 form-group">
                   <validation-provider name="name" rules="name" v-slot="{ errors }">
-                    <div class="row">
+                    <div class="row col-9">
                       <label class="col-form-label col-3 asterisk">Name:</label>
-                      <input type="text" :class="['form-control', 'col-9']" name="name"
-                        placeholder="Please input your name" v-model="form.name">
+                      <div class="col-9">
+                        <input type="text" class="form-control" name="name" placeholder="Please input your name"
+                          v-model="form.name">
+                      </div>
                     </div>
                     <transition name="fade">
                       <small v-if="errors.length" class="offset-3 text-danger">{{ errors[0] }}</small>
                     </transition>
                   </validation-provider>
                 </div>
-                <div class="form-group row">
-                  <label class="col-form-label col-3 asterisk">Gender:</label>
-                  <div class="row col-9">
-                    <div class="form-check-inline">
-                      <input type="radio" class="form-check-input" name="gender" value="M" v-model="form.gender">
-                      <label class="form-check-label">Male</label>
+                <div class="mb-3 form-group">
+                  <fieldset class="row col-9">
+                    <legend class="col-form-label col-3 asterisk">Gender:</legend>
+                    <div class="col-9">
+                      <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" name="gender" value="M" v-model="form.gender">
+                        <label class="form-check-label">Male</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input type="radio" class="form-check-input" name="gender" value="F" v-model="form.gender">
+                        <label class="form-check-label">Female</label>
+                      </div>
                     </div>
-                    <div class="form-check-inline ml-2">
-                      <input type="radio" class="form-check-input" name="gender" value="F" v-model="form.gender">
-                      <label class="form-check-label">Female</label>
+                  </fieldset>
+                </div>
+                <div class="mb-3 form-group">
+                  <div class="col-9 row">
+                    <label class="col-form-label col-3 asterisk">Birthday:</label>
+                    <div class="col-3">
+                      <select name="birthday.year" class="form-control" required v-model.number="form.birthday.year">
+                        <option v-for="year in 60">{{year + (now.getFullYear() - 60)}}</option>
+                      </select>
+                    </div>
+                    <label class="col-form-label date-split col-1">/</label>
+                    <div class="col-2">
+                      <select name="birthday.year" class="form-control" required v-model.number="form.birthday.month">
+                        <option v-for="month in 12">{{month}}</option>
+                      </select>
+                    </div>
+                    <label class="col-form-label date-split col-1">/</label>
+                    <div class="col-2">
+                      <select name="birthday.year" class="form-control" required v-model.number="form.birthday.date">
+                        <option v-for="date in lastMonthDay">{{date}}</option>
+                      </select>
                     </div>
                   </div>
                 </div>
-                <div class="form-group row">
-                  <label class="col-form-label col-3 asterisk">Birthday:</label>
-                  <select name="birthday.year" class="form-control col-2" required v-model.number="form.birthday.year">
-                    <option v-for="year in 60">{{year + (now.getFullYear() - 60)}}</option>
-                  </select>
-                  <label class="col-form-label date-split">/</label>
-                  <select name="birthday.year" class="form-control col-2" required v-model.number="form.birthday.month">
-                    <option v-for="month in 12">{{month}}</option>
-                  </select>
-                  <label class="col-form-label date-split">/</label>
-                  <select name="birthday.year" class="form-control col-2" required v-model.number="form.birthday.date">
-                    <option v-for="date in lastMonthDay">{{date}}</option>
-                  </select>
-                </div>
-                <div class="form-group">
+                <div class="mb-3 form-group">
                   <validation-provider name="hobbies" rules="hobbies" v-slot="{ errors }">
-                    <div class="row">
-                      <label class="col-form-label col-3">Hobbies:</label>
-                      <div class="row col-9">
-                        <div class="form-check-inline">
+                    <fieldset class="row col-9">
+                      <legend class="col-form-label col-3">Hobbies:</legend>
+                      <div class="col-9">
+                        <div class="form-check">
                           <input type="checkbox" class="form-check-input" name="hobbies" value="READING"
                             v-model="form.hobbies">
                           <label class="form-check-label">Reading</label>
                         </div>
-                        <div class="form-check-inline">
+                        <div class="form-check">
                           <input type="checkbox" class="form-check-input" name="hobbies" value="COOKING"
                             v-model="form.hobbies">
                           <label class="form-check-label">Cooking</label>
                         </div>
-                        <div class="form-check-inline">
+                        <div class="form-check">
                           <input type="checkbox" class="form-check-input" name="hobbies" value="SPORTING"
                             v-model="form.hobbies">
                           <label class="form-check-label">Sporting</label>
                         </div>
-                        <div class="form-check-inline">
+                        <div class="form-check">
                           <input type="checkbox" class="form-check-input" name="hobbies" value="TRAVEL"
                             v-model="form.hobbies">
                           <label class="form-check-label">Travel</label>
                         </div>
-                        <div class="form-check-inline">
+                        <div class="form-check">
                           <input type="checkbox" class="form-check-input" name="hobbies" value="GARDENING"
                             v-model="form.hobbies">
                           <label class="form-check-label">Gardening</label>
                         </div>
                       </div>
-                    </div>
+                    </fieldset>
                     <transition name="fade">
                       <small v-if="errors.length > 0" class="offset-3 text-danger"> {{ errors[0] }} </small>
                     </transition>
                   </validation-provider>
                 </div>
-                <div class="form-group row">
-                  <label class="col-form-label col-3">Remark:</label>
-                  <textarea class="form-control col-9" rows="4" name="remark" v-model="form.remark"></textarea>
+                <div class="mb-3 form-group">
+                  <div class="row col-9">
+                    <label class="col-form-label col-3">Remark:</label>
+                    <div class="col-9">
+                      <textarea class="form-control" rows="4" name="remark" v-model="form.remark"></textarea>
+                    </div>
+                  </div>
                 </div>
                 <div class="row">
-                  <button class="btn btn-dark offset-3">Submit</button>
+                  <button class="btn btn-primary">Submit</button>
                 </div>
               </form>
               <div class="col">
-                <pre class="hljs json">{{formJson}}</pre>
+                <pre class="hljs json p-3">{{formJson}}</pre>
               </div>
             </div>
           </div>
