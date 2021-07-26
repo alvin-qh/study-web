@@ -18,6 +18,7 @@
     "noEmit": true,
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
+    "downlevelIteration": true,
     "lib": [
       "dom",
       "dom.iterable",

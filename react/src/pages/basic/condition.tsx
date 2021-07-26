@@ -9,7 +9,7 @@ interface ConditionProp<T> extends HTMLAttributes<T> {
 /**
  * 基本条件渲染，根据条件渲染不同的 JSX 片段
  */
-const Welcome = ({ name, gender, ...props }: ConditionProp<HTMLDivElement>) => {
+const Welcome = ({ name, gender, ...props }: ConditionProp<HTMLDivElement>): JSX.Element => {
   // 根据分支语句进行条件渲染
   /*
     let Greeting: JSX.Element;
@@ -30,13 +30,13 @@ const Welcome = ({ name, gender, ...props }: ConditionProp<HTMLDivElement>) => {
   );
 }
 
-const Gender = ({ name, gender, ...props }: ConditionProp<HTMLDivElement>) => (
+const Gender = ({ name, gender, ...props }: ConditionProp<HTMLDivElement>): JSX.Element => (
   <p {...props}>
     {name}'s gender is: {(gender === "M" && <b>Male</b>) || (gender === "F" && <b>Female</b>)}
   </p>
 )
 
-const ConditionRender = () => {
+const ConditionRender = (): JSX.Element => {
   // 定义一组 state hook
   const [gender, setGender] = useState("M");
 

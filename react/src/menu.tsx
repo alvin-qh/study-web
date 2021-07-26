@@ -28,8 +28,13 @@ export const MainMenu = () => {
       />
       <MenuItem
         icon="fork"
-        text="Condition Render"
-        onClick={() => history.push("/basic/condition-render")}
+        text="Condition"
+        onClick={() => history.push("/basic/condition")}
+      />
+      <MenuItem
+        icon="repeat"
+        text="Loop"
+        onClick={() => history.push("/basic/loop")}
       />
     </Menu>
   )

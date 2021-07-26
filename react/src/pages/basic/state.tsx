@@ -16,7 +16,7 @@ class Clock extends PureComponent<StateProp, StateState> {
 
   timer: any = 0
 
-  componentDidMount() {
+  componentDidMount(): void {
     this.timer = setInterval(() => {
       const now = new Date();
       this.setState({
@@ -25,14 +25,14 @@ class Clock extends PureComponent<StateProp, StateState> {
     }, 1000);
   }
 
-  componentWillUnmount() {
+  componentWillUnmount(): void {
     if (this.timer) {
       clearInterval(this.timer);
       this.timer = 0;
     }
   }
 
-  render() {
+  render(): JSX.Element {
     const {
       className = ""
     } = this.props;
@@ -44,7 +44,7 @@ class Clock extends PureComponent<StateProp, StateState> {
 }
 
 
-const StateComponent = () => (
+const StateComponent = (): JSX.Element => (
   <div>
     <Clock
       className="text-gray-700 text-lg font-bold text-center py-10"

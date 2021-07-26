@@ -1,7 +1,7 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 
-const Content = () => React.createElement(
+const Content = (): JSX.Element => React.createElement(
   'p',
   {
     className: 'text-lg text-gray-600 p-6',
@@ -10,7 +10,7 @@ const Content = () => React.createElement(
   'The world is busy. Who is not busy? May you laugh and be busy and seek the joy of life.'
 );
 
-const BasicHello = () => {
+const BasicHello = (): JSX.Element => {
   const params = new URLSearchParams(useLocation().search);
 
   return (

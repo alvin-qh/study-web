@@ -41,7 +41,7 @@ class ActionLink extends PureComponent<HTMLAttributes<HTMLAnchorElement>> {
     showToaster(`"${e.currentTarget.dataset.eventName}" event is emitted`);
   }
 
-  render() {
+  render(): JSX.Element {
     return (
       // onClick={this.EventFunction} 事件指向当前类的处理方法
       <a {...this.props}
@@ -57,7 +57,7 @@ class ActionLink extends PureComponent<HTMLAttributes<HTMLAnchorElement>> {
 /**
  * 通过函数定义事件处理
  */
-const ActionButton = ({ children, className, ...props }: HTMLAttributes<HTMLButtonElement>) => {
+const ActionButton = ({ children, className, ...props }: HTMLAttributes<HTMLButtonElement>): JSX.Element => {
   // onClick 对应的事件函数类型 (e: XXXEvent): void => { ... }
   const handleClick = (e: MouseEvent<HTMLElement>): void => {
     // 'e.currentTarget' 出发事件的元素对象

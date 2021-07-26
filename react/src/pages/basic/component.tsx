@@ -13,14 +13,14 @@ type WelcomeProp = {
 const WelcomeFunc = ({
   name = 'Alivn',
   className = ""
-}: WelcomeProp) => (
+}: WelcomeProp): JSX.Element => (
   <h1 className={className}>Hello, {name}</h1>
 );
 
 
 /* 定义一个类组件 */
 class WelcomeCls extends Component<WelcomeProp> {
-  render() {
+  render(): JSX.Element {
     const {
       name = 'Alvin',
       className = ""
@@ -33,7 +33,7 @@ class WelcomeCls extends Component<WelcomeProp> {
 }
 
 
-const BasicComponent = () => (
+const BasicComponent = (): JSX.Element => (
   <div>
     <WelcomeFunc
       name="Alvin"
