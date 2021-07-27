@@ -34,6 +34,7 @@ const Body = () => {
   const BasicEvent = lazy(() => import(/* webpackChunkName: "basic-state" */ "@pages/basic/evnet"));
   const BasicCondition = lazy(() => import(/* webpackChunkName: "basic-condition" */ "@/pages/basic/condition"));
   const BasicLoop = lazy(() => import(/* webpackChunkName: "basic-loop" */ "@pages/basic/loop"));
+  const BasicStateUp = lazy(() => import(/* webpackChunkName: "basic-stateup" */ "@pages/basic/stateup"));
 
   return (
     <div
@@ -47,6 +48,7 @@ const Body = () => {
           <Route path="/basic/event" component={BasicEvent} />
           <Route path="/basic/condition" component={BasicCondition} />
           <Route path="/basic/loop" component={BasicLoop} />
+          <Route path="/basic/stateup" component={BasicStateUp} />
         </Switch>
       </Suspense>
     </div>

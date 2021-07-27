@@ -36,6 +36,11 @@ export const MainMenu = () => {
         text="Loop"
         onClick={() => history.push("/basic/loop")}
       />
+      <MenuItem
+        icon="upload"
+        text="State Up"
+        onClick={() => history.push("/basic/stateup")}
+      />
     </Menu>
   )
 };
