@@ -3,7 +3,7 @@ import { Popover2 } from '@blueprintjs/popover2';
 import Loading from '@components/loading';
 import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom';
-import { MainMenu } from './menu';
+import { BasicMenu, HookMenu } from './menu';
 
 const Nav = () => {
   const history = useHistory();
@@ -14,12 +14,26 @@ const Nav = () => {
         <Navbar.Heading className="font-bold">Study React</Navbar.Heading>
         <Navbar.Divider />
         <Button icon="home" text="Home" onClick={() => history.push('/')} className="focus:outline-none" />
+        <Navbar.Divider />
         <Popover2
           interactionKind="hover"
-          content={MainMenu()}
+          content={<BasicMenu />}
           placement="bottom-start"
           minimal={true}>
-          <Button icon="code" text="Basic" />
+          <Button
+            icon="code"
+            text="Basic"
+          />
+        </Popover2>
+        <Popover2
+          interactionKind="hover"
+          content={<HookMenu />}
+          placement="bottom-start"
+          minimal={true}>
+          <Button
+            icon="ungroup-objects"
+            text="Hook"
+          />
         </Popover2>
       </Navbar.Group>
     </Navbar>
@@ -36,6 +50,8 @@ const Body = () => {
   const BasicLoop = lazy(() => import(/* webpackChunkName: "basic-loop" */ "@pages/basic/loop"));
   const BasicStateUp = lazy(() => import(/* webpackChunkName: "basic-stateup" */ "@pages/basic/stateup"));
 
+  const HookPreview = lazy(() => import(/* webpackChunkName: "hook-preview" */ "@pages/hook/preview"));
+
   return (
     <div
       className="container mx-auto bg-gradient-to-b from-gray-100 to-gray-150 px-4 py-14 border-gray-600 shadow-lg min-h-screen">
@@ -49,6 +65,8 @@ const Body = () => {
           <Route path="/basic/condition" component={BasicCondition} />
           <Route path="/basic/loop" component={BasicLoop} />
           <Route path="/basic/stateup" component={BasicStateUp} />
+
+          <Route path="/hook/preview" component={HookPreview} />
         </Switch>
       </Suspense>
     </div>

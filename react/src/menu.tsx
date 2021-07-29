@@ -1,46 +1,75 @@
 import { Menu, MenuItem } from '@blueprintjs/core';
 import { useHistory } from 'react-router-dom';
 
-export const MainMenu = () => {
-  const history = useHistory();
+export const BasicMenu = () => {
+  const push = useHistory().push;
 
   return (
     <Menu>
       <MenuItem
         icon="book"
         text="Hello World"
-        onClick={() => history.push("/basic/hello?name=Alvin")}
+        onClick={() => push("/basic/hello?name=Alvin")}
       />
       <MenuItem
         icon="box"
         text="Component"
-        onClick={() => history.push("/basic/component")}
+        onClick={() => push("/basic/component")}
       />
       <MenuItem
         icon="star"
         text="State"
-        onClick={() => history.push("/basic/state")}
+        onClick={() => push("/basic/state")}
       />
       <MenuItem
         icon="archive"
         text="Event"
-        onClick={() => history.push("/basic/event")}
+        onClick={() => push("/basic/event")}
       />
       <MenuItem
         icon="fork"
         text="Condition"
-        onClick={() => history.push("/basic/condition")}
+        onClick={() => push("/basic/condition")}
       />
       <MenuItem
         icon="repeat"
         text="Loop"
-        onClick={() => history.push("/basic/loop")}
+        onClick={() => push("/basic/loop")}
       />
       <MenuItem
         icon="upload"
         text="State Up"
-        onClick={() => history.push("/basic/stateup")}
+        onClick={() => push("/basic/stateup")}
       />
     </Menu>
   )
 };
+
+export const HookMenu = () => {
+  const push = useHistory().push;
+
+  return (
+    <Menu>
+      <MenuItem
+        icon="unresolve"
+        text="Hook Preview"
+        onClick={() => push("/hook/preview")}
+      />
+      <MenuItem
+        icon="right-join"
+        text="State Hook"
+        onClick={() => push("/hook/state-hook")}
+      />
+      <MenuItem
+        icon="left-join"
+        text="Effect Hook"
+        onClick={() => push("/hook/effect-hook")}
+      />
+      <MenuItem
+        icon="manually-entered-data"
+        text="Effect Hook"
+        onClick={() => push("/hook/hook-rule")}
+      />
+    </Menu>
+  );
+}
