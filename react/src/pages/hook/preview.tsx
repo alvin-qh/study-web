@@ -27,8 +27,12 @@ const CountEffect = (): JSX.Element => {
   const [count, setCount] = useState<number>(0);
 
   // 通过 useEffect 处理 state 变量变换后执行的方法
-  useEffect((): void => {
+  useEffect(() => {
+    const oldTitle = document.title;
     document.title = `You clicked ${count} times`;
+
+    // 返回函数，消除副作用
+    return () => { document.title = oldTitle; }
   }, [count]);
 
   return (

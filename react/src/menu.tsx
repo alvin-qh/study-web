@@ -52,13 +52,13 @@ export const HookMenu = () => {
     <Menu>
       <MenuItem
         icon="unresolve"
-        text="Hook Preview"
+        text="Preview"
         onClick={() => push("/hook/preview")}
       />
       <MenuItem
         icon="right-join"
-        text="State Hook"
-        onClick={() => push("/hook/state-hook")}
+        text="State"
+        onClick={() => push("/hook/state")}
       />
       <MenuItem
         icon="left-join"

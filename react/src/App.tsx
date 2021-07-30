@@ -51,6 +51,7 @@ const Body = () => {
   const BasicStateUp = lazy(() => import(/* webpackChunkName: "basic-stateup" */ "@pages/basic/stateup"));
 
   const HookPreview = lazy(() => import(/* webpackChunkName: "hook-preview" */ "@pages/hook/preview"));
+  const HookState = lazy(() => import(/* webpackChunkName: "hook-state" */ "@pages/hook/state"));
 
   return (
     <div
@@ -67,6 +68,7 @@ const Body = () => {
           <Route path="/basic/stateup" component={BasicStateUp} />
 
           <Route path="/hook/preview" component={HookPreview} />
+          <Route path="/hook/state" component={HookState} />
         </Switch>
       </Suspense>
     </div>
