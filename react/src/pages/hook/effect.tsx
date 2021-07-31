@@ -1,3 +1,6 @@
+/**
+ * 如何使用 Effect Hook
+ */
 import { PureComponent, useEffect, useState } from "react";
 
 type EffectProp = {

@@ -70,6 +70,11 @@ export const HookMenu = () => {
         text="Context"
         onClick={() => push("/hook/context")}
       />
+      <MenuItem
+        icon="series-configuration"
+        text="Custom"
+        onClick={() => push("/hook/custom")}
+      />
     </Menu>
   );
 }
