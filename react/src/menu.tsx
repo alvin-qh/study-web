@@ -62,8 +62,8 @@ export const HookMenu = () => {
       />
       <MenuItem
         icon="left-join"
-        text="Effect Hook"
-        onClick={() => push("/hook/effect-hook")}
+        text="Effect"
+        onClick={() => push("/hook/effect")}
       />
       <MenuItem
         icon="manually-entered-data"

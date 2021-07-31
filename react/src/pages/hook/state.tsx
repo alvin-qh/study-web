@@ -1,21 +1,21 @@
 import { Button, Intent } from "@blueprintjs/core";
 import { PureComponent, useState } from "react";
 
-type StateHookProp = {
+type StateProp = {
 }
 
 /**
- * 定义 State 对象的类型，用于 StateHookWithClass 类中
+ * 定义 State 对象的类型，用于 StateWithClass 类中
  */
-type StateHookState = {
+type State = {
   count: number;
 }
 
 /**
  * 通过 state 属性，在 Component 类中使用 state
  */
-class StateHookWithClass extends PureComponent<StateHookProp, StateHookState> {
-  constructor(props: StateHookProp) {
+class StateWithClass extends PureComponent<StateProp, State> {
+  constructor(props: StateProp) {
     super(props);
 
     // 定义 state 属性
@@ -44,7 +44,7 @@ class StateHookWithClass extends PureComponent<StateHookProp, StateHookState> {
 /**
  * 通过 useState Hook 在 Component 函数中使用 state
  */
-const StateHookWithFunc = ({ ...props }: StateHookProp): JSX.Element => {
+const StateHookWithFunc = ({ ...props }: StateProp): JSX.Element => {
 
   // 通过 useState 设置一对值，count 用于读取值，setCount 函数用于设置值
   const [count, setCount] = useState<number>(0);
@@ -70,7 +70,7 @@ const HookState = (): JSX.Element => {
     <div className="px-4 py-6 space-y-6">
       <div>
         <h1 className="text-lg font-medium px-2 py-1 bg-gradient-to-r from-sky-100 to-sky-50">State Hook In Component Class: </h1>
-        <StateHookWithClass />
+        <StateWithClass />
       </div>
       <div>
         <h1 className="text-lg font-medium px-2 py-1 bg-gradient-to-r from-rose-100 to-rose-50">State Hook In Component Function: </h1>
