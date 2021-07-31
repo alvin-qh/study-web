@@ -96,7 +96,7 @@ type FriendWithStatus = Friend & {
  */
 const useFriendsStatus = (): Array<FriendWithStatus> => {
   // 定义 state，所有的 friend 和其状态
-  const [friendWithStatus, setFriendWithStatus] = useState<Array<FriendWithStatus>>(ChatRoomAPI.friends.map(f => ({ ...f, status: "offline" as Status })));
+  const [friendWithStatus, setFriendWithStatus] = useState<Array<FriendWithStatus>>(ChatRoomAPI.friends.map(f => ({ ...f, status: "offline" })));
 
   useEffect(() => {
     const chatRoomApi = new ChatRoomAPI();
@@ -110,7 +110,7 @@ const useFriendsStatus = (): Array<FriendWithStatus> => {
           if (fws.id === newStatus.id) {
             return { ...fws, status: newStatus.status };
           }
-          return {...fws};
+          return { ...fws };
         })
       });
     });
