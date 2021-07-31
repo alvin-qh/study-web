@@ -53,6 +53,7 @@ const Body = () => {
   const HookPreview = lazy(() => import(/* webpackChunkName: "hook-preview" */ "@pages/hook/preview"));
   const HookState = lazy(() => import(/* webpackChunkName: "hook-state" */ "@pages/hook/state"));
   const HookEffect = lazy(() => import(/* webpackChunkName: "hook-effect" */ "@pages/hook/effect"));
+  const HookContext = lazy(() => import(/* webpackChunkName: "hook-context" */ "@pages/hook/context"));
 
   return (
     <div
@@ -71,6 +72,7 @@ const Body = () => {
           <Route path="/hook/preview" component={HookPreview} />
           <Route path="/hook/state" component={HookState} />
           <Route path="/hook/effect" component={HookEffect} />
+          <Route path="/hook/context" component={HookContext} />
         </Switch>
       </Suspense>
     </div>

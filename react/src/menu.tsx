@@ -67,8 +67,8 @@ export const HookMenu = () => {
       />
       <MenuItem
         icon="manually-entered-data"
-        text="Effect Hook"
-        onClick={() => push("/hook/hook-rule")}
+        text="Context"
+        onClick={() => push("/hook/context")}
       />
     </Menu>
   );
