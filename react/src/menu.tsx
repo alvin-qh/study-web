@@ -71,6 +71,11 @@ export const HookMenu = () => {
         onClick={() => push("/hook/context")}
       />
       <MenuItem
+        icon="manually-entered-data"
+        text="Callback"
+        onClick={() => push("/hook/callback")}
+      />
+      <MenuItem
         icon="series-configuration"
         text="Custom"
         onClick={() => push("/hook/custom")}
