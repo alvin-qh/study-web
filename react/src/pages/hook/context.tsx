@@ -1,3 +1,17 @@
+/**
+ * Context
+ * 上下文对象，可以在指定范围内直接访问存储在 context 中的值
+ * 
+ * 基本使用：
+ *  const Context = React.createContext(...);    // 创建上下文对象，以及其缺省值，该语句需要在所有 React 组件外执行
+ * 
+ *  const [context, setContext] = useState<ContextType>(...);   // 为 context 对象定义 state hook
+ * 
+ *  <Context.Provider value={context}>...</Context.Provider>    // 定义上下文作用范围，在标签内为上下文范围，可以通过 setContext 改变 context 值
+ * 
+ *  const context = useContext<ContextType>(...);     // 在子组件内部使用 context 对象，如果上一步改变了 context，则所有使用 context 的组件同步更新
+ */
+
 import { Button, Intent, Radio, RadioGroup } from "@blueprintjs/core";
 import React, { FormEvent, useContext, useState } from "react";
 

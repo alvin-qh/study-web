@@ -56,6 +56,7 @@ const Body = () => {
   const HookContext = lazy(() => import(/* webpackChunkName: "hook-context" */ "@pages/hook/context"));
   const HookCallback = lazy(() => import(/* webpackChunkName: "hook-callback" */ "@pages/hook/callback"));
   const HookCustom = lazy(() => import(/* webpackChunkName: "hook-custom" */ "@pages/hook/custom"));
+  const HookMemo = lazy(() => import(/* webpackChunkName: "hook-memo" */ "@pages/hook/memo"));
 
   return (
     <div
@@ -77,6 +78,7 @@ const Body = () => {
           <Route path="/hook/context" component={HookContext} />
           <Route path="/hook/callback" component={HookCallback} />
           <Route path="/hook/custom" component={HookCustom} />
+          <Route path="/hook/memo" component={HookMemo} />
         </Switch>
       </Suspense>
     </div>
