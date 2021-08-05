@@ -71,12 +71,17 @@ export const HookMenu = () => {
         onClick={() => push("/hook/context")}
       />
       <MenuItem
-        icon="manually-entered-data"
+        icon="send-to-graph"
+        text="Reducer"
+        onClick={() => push("/hook/reducer")}
+      />
+      <MenuItem
+        icon="chevron-backward"
         text="Callback"
         onClick={() => push("/hook/callback")}
       />
       <MenuItem
-        icon="series-configuration"
+        icon="history"
         text="Memo"
         onClick={() => push("/hook/memo")}
       />

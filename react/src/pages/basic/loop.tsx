@@ -50,6 +50,7 @@ const WordList = (props: { className: string }): JSX.Element => {
             content={(
               <div>
                 <Button
+                  className="focus:outline-none"
                   intent={Intent.DANGER}
                   minimal={true}
                   icon="delete"
