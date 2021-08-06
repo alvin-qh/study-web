@@ -56,8 +56,9 @@ const Body = () => {
   const HookContext = lazy(() => import(/* webpackChunkName: "hook-context" */ "@pages/hook/context"));
   const HookReducer = lazy(() => import(/* webpackChunkName: "hook-reducer" */ "@pages/hook/reducer"));
   const HookCallback = lazy(() => import(/* webpackChunkName: "hook-callback" */ "@pages/hook/callback"));
-  const HookCustom = lazy(() => import(/* webpackChunkName: "hook-custom" */ "@pages/hook/custom"));
   const HookMemo = lazy(() => import(/* webpackChunkName: "hook-memo" */ "@pages/hook/memo"));
+  const HookRef = lazy(() => import(/* webpackChunkName: "hook-ref" */ "@pages/hook/ref"));
+  const HookCustom = lazy(() => import(/* webpackChunkName: "hook-custom" */ "@pages/hook/custom"));
 
   return (
     <div
@@ -79,8 +80,9 @@ const Body = () => {
           <Route path="/hook/context" component={HookContext} />
           <Route path="/hook/reducer" component={HookReducer} />
           <Route path="/hook/callback" component={HookCallback} />
-          <Route path="/hook/custom" component={HookCustom} />
           <Route path="/hook/memo" component={HookMemo} />
+          <Route path="/hook/ref" component={HookRef} />
+          <Route path="/hook/custom" component={HookCustom} />
         </Switch>
       </Suspense>
     </div>
