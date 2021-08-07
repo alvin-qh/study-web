@@ -66,8 +66,10 @@ const ActionButton = ({ children, className, ...props }: HTMLAttributes<HTMLButt
   }
 
   return (
-    <Button className={`${className} block`} {...props}
+    <Button className={`${className} block`}
+      {...props}
       icon="emoji"
+      large={true}
       data-event-name="ActionButton"
       intent={Intent.PRIMARY}
       onClick={handleClick}>
@@ -86,8 +88,10 @@ const ActionButtonWithArgs1 = ({ children, className, ...props }: HTMLAttributes
   }
 
   return (
-    <Button className={`${className} block`} {...props}
+    <Button className={`${className} block`}
+      {...props}
       icon="warning-sign"
+      large={true}
       intent={Intent.WARNING}
       onClick={handleClick.bind(this, "ActionButton with \"bind\" event is emitted")}>
       {children}
@@ -105,8 +109,10 @@ const ActionButtonWithArgs2 = ({ children, className, ...props }: HTMLAttributes
   }
 
   return (
-    <Button className={`${className} block`} {...props}
+    <Button className={`${className} block`}
+      {...props}
       icon="error"
+      large={true}
       intent={Intent.DANGER}
       onClick={e => handleClick("ActionButton with \"lambda\" event is emitted")}>
       {children}
@@ -118,19 +124,19 @@ const ActionButtonWithArgs2 = ({ children, className, ...props }: HTMLAttributes
 const BasicEvent = () => {
   return (
     <div className="space-y-4 py-6">
-      <ActionLink className="block font-bold text-lg">
+      <ActionLink className="font-medium text-lg">
         Click me !
       </ActionLink>
 
-      <ActionButton className="font-bold text-lg focus:outline-none ">
+      <ActionButton className="font-medium flex items-center">
         Click me !
       </ActionButton>
 
-      <ActionButtonWithArgs1 className="font-bold text-lg focus:outline-none">
+      <ActionButtonWithArgs1 className="font-medium flex items-center">
         Click me !
       </ActionButtonWithArgs1>
 
-      <ActionButtonWithArgs2 className="font-bold text-lg focus:outline-none">
+      <ActionButtonWithArgs2 className="font-medium flex items-center">
         Click me !
       </ActionButtonWithArgs2>
     </div>

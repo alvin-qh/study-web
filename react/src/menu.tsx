@@ -1,105 +1,86 @@
-import { Menu, MenuItem } from '@blueprintjs/core';
+import { IconName, MaybeElement, Menu, MenuItem } from '@blueprintjs/core';
+import { History, LocationState } from "history";
+import { useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 
-export const BasicMenu = () => {
-  const push = useHistory().push;
+class MenuItemData {
+  readonly icon: IconName | MaybeElement;
+  readonly text: string;
+  readonly path: string;
 
-  return (
-    <Menu>
-      <MenuItem
-        icon="book"
-        text="Hello World"
-        onClick={() => push("/basic/hello?name=Alvin")}
-      />
-      <MenuItem
-        icon="box"
-        text="Component"
-        onClick={() => push("/basic/component")}
-      />
-      <MenuItem
-        icon="star"
-        text="State"
-        onClick={() => push("/basic/state")}
-      />
-      <MenuItem
-        icon="archive"
-        text="Event"
-        onClick={() => push("/basic/event")}
-      />
-      <MenuItem
-        icon="fork"
-        text="Condition"
-        onClick={() => push("/basic/condition")}
-      />
-      <MenuItem
-        icon="repeat"
-        text="Loop"
-        onClick={() => push("/basic/loop")}
-      />
-      <MenuItem
-        icon="upload"
-        text="State Up"
-        onClick={() => push("/basic/stateup")}
-      />
-    </Menu>
-  )
+  constructor(icon: IconName | MaybeElement, text: string, path: string) {
+    this.icon = icon;
+    this.text = text;
+    this.path = path;
+  }
+}
+
+class MenuData {
+  readonly items: Array<MenuItemData>;
+  private readonly basePath: string;
+
+  constructor(basePath: string, items: Array<MenuItemData>) {
+    if (basePath.endsWith("/")) {
+      basePath = basePath.substr(0, basePath.length - 1);
+    }
+    this.basePath = basePath;
+    this.items = items;
+  }
+
+  render(history: History<LocationState>): JSX.Element {
+    return (
+      <Menu>
+        {
+          this.items.map(item => (
+            <MenuItem
+              icon={item.icon}
+              text={item.text}
+              onClick={() => history.push(`${this.basePath}${item.path}`)}
+              key={item.text}
+            />
+          ))
+        }
+      </Menu>
+    );
+  }
+}
+
+export const BasicMenu = () => {
+  const history = useHistory();
+
+  const menu = useMemo(() => (
+    new MenuData("/basic", [
+      new MenuItemData("book", "Hello World", "/hello?name=Alvin"),
+      new MenuItemData("box", "Component", "/component"),
+      new MenuItemData("star", "State", "/state"),
+      new MenuItemData("archive", "Event", "/event"),
+      new MenuItemData("fork", "Condition", "/condition"),
+      new MenuItemData("repeat", "Loop", "/loop"),
+      new MenuItemData("upload", "State Up", "/stateup"),
+    ]).render(history)
+  ), [history]);
+
+  return menu;
 };
 
 export const HookMenu = () => {
-  const push = useHistory().push;
+  const history = useHistory();
 
-  return (
-    <Menu>
-      <MenuItem
-        icon="unresolve"
-        text="Preview"
-        onClick={() => push("/hook/preview")}
-      />
-      <MenuItem
-        icon="right-join"
-        text="State"
-        onClick={() => push("/hook/state")}
-      />
-      <MenuItem
-        icon="left-join"
-        text="Effect"
-        onClick={() => push("/hook/effect")}
-      />
-      <MenuItem
-        icon="manually-entered-data"
-        text="Context"
-        onClick={() => push("/hook/context")}
-      />
-      <MenuItem
-        icon="send-to-graph"
-        text="Reducer"
-        onClick={() => push("/hook/reducer")}
-      />
-      <MenuItem
-        icon="chevron-backward"
-        text="Callback"
-        onClick={() => push("/hook/callback")}
-      />
-      <MenuItem
-        icon="history"
-        text="Memo"
-        onClick={() => push("/hook/memo")}
-      />
-      <MenuItem
-        icon="flow-end"
-        text="Ref"
-        onClick={() => push("/hook/ref")}
-      />
-      <MenuItem
-        icon="repeat"
-        text="Imperative Handle"
-        onClick={() => push("/hook/imperative-handle")}
-      />
-      <MenuItem
-        icon="series-configuration"
-        text="Custom"
-        onClick={() => push("/hook/custom")}
-      />
-    </Menu>
-  );
+  const menu = useMemo(() => (
+    new MenuData("/hook", [
+      new MenuItemData("unresolve", "Preview", "/preview"),
+      new MenuItemData("right-join", "State", "/state"),
+      new MenuItemData("left-join", "Effect", "/effect"),
+      new MenuItemData("manually-entered-data", "Context", "/context"),
+      new MenuItemData("send-to-graph", "Reducer", "/reducer"),
+      new MenuItemData("chevron-backward", "Callback", "/callback"),
+      new MenuItemData("history", "Memo", "/memo"),
+      new MenuItemData("flow-end", "Ref", "/ref"),
+      new MenuItemData("repeat", "Imperative Handle", "/imperative-handle"),
+      new MenuItemData("control", "Layout Effect", "/layout-effect"),
+      new MenuItemData("series-configuration", "Custom", "/custom"),
+    ]).render(history)
+  ), [history])
+
+  return menu;
 }

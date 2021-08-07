@@ -50,7 +50,7 @@ const FancyInput = forwardRef((
       </label>
       <input
         type="text"
-        className="border text-lg px-2 py-1 rounded-md shadow-md ml-2 flex-grow"
+        className="border text-lg px-2 py-1 rounded-md shadow-sm ml-2 flex-grow focus:outline-none focus:shadow-md"
         ref={inputRef}
       />
     </div>
@@ -62,7 +62,7 @@ const HookImperativeHandle = (): JSX.Element => {
   const inputRef = useRef<FancyInputRef>(null);
 
   return (
-    <div className="w-1/3">
+    <div className="w-1/3 px-4 py-6">
       <FancyInput
         label="输入"
         ref={inputRef}    // 设置引用属性

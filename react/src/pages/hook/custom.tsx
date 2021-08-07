@@ -3,7 +3,7 @@
  */
 import { Icon } from "@blueprintjs/core";
 import { random } from "lodash";
-import { useEffect, useState } from "react";
+import { useDebugValue, useEffect, useState } from "react";
 
 
 type Friend = {
@@ -97,18 +97,22 @@ type FriendWithStatus = Friend & {
 const useFriendsStatus = (): Array<FriendWithStatus> => {
   // 定义 state，所有的 friend 和其状态
   const [friendWithStatus, setFriendWithStatus] = useState<Array<FriendWithStatus>>(ChatRoomAPI.friends.map(f => ({ ...f, status: "offline" })));
+  const [newStatus, setNewStatus] = useState<FriendWithStatus | null>(null)
 
   useEffect(() => {
     const chatRoomApi = new ChatRoomAPI();
 
     // 注册回调函数
     chatRoomApi.registStatusCallbacks(newStatus => {
+
       // 根据返回的 friend 状态，更新 friends 信息
       // 更新 friend 信息 state
       setFriendWithStatus(status => {
         return status.map(fws => {
           if (fws.id === newStatus.id) {
-            return { ...fws, status: newStatus.status };
+            const s = { ...fws, status: newStatus.status };
+            setNewStatus(s);
+            return s;
           }
           return { ...fws };
         })
@@ -118,6 +122,9 @@ const useFriendsStatus = (): Array<FriendWithStatus> => {
     // 消除 effect，关闭 API
     return () => { chatRoomApi.close() };
   }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+  // 用于在 React Developer Tools 显示 debug 信息
+  useDebugValue(newStatus, newStatus => `${newStatus?.name}(id=${newStatus?.id}) 状态被更新为: ${newStatus?.status}`);
 
   // 返回 friends 状态 state
   return friendWithStatus;
