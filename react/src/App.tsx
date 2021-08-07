@@ -58,6 +58,7 @@ const Body = () => {
   const HookCallback = lazy(() => import(/* webpackChunkName: "hook-callback" */ "@pages/hook/callback"));
   const HookMemo = lazy(() => import(/* webpackChunkName: "hook-memo" */ "@pages/hook/memo"));
   const HookRef = lazy(() => import(/* webpackChunkName: "hook-ref" */ "@pages/hook/ref"));
+  const HookImperativeHandle = lazy(() => import(/* webpackChunkName: "hook-imperative-handle" */ "@pages/hook/imperative-handle"));
   const HookCustom = lazy(() => import(/* webpackChunkName: "hook-custom" */ "@pages/hook/custom"));
 
   return (
@@ -82,6 +83,7 @@ const Body = () => {
           <Route path="/hook/callback" component={HookCallback} />
           <Route path="/hook/memo" component={HookMemo} />
           <Route path="/hook/ref" component={HookRef} />
+          <Route path="/hook/imperative-handle" component={HookImperativeHandle} />
           <Route path="/hook/custom" component={HookCustom} />
         </Switch>
       </Suspense>

@@ -91,6 +91,11 @@ export const HookMenu = () => {
         onClick={() => push("/hook/ref")}
       />
       <MenuItem
+        icon="repeat"
+        text="Imperative Handle"
+        onClick={() => push("/hook/imperative-handle")}
+      />
+      <MenuItem
         icon="series-configuration"
         text="Custom"
         onClick={() => push("/hook/custom")}
