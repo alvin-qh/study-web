@@ -3,7 +3,7 @@ import { Popover2 } from '@blueprintjs/popover2';
 import Loading from '@components/loading';
 import { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Route, Switch, useHistory } from 'react-router-dom';
-import { BasicMenu, HookMenu } from './menu';
+import { BasicMenu, HookMenu, ReduxMenu } from './menu';
 
 const Nav = () => {
   const history = useHistory();
@@ -35,6 +35,16 @@ const Nav = () => {
             text="Hook"
           />
         </Popover2>
+        <Popover2
+          interactionKind="hover"
+          content={<ReduxMenu />}
+          placement="bottom-start"
+          minimal={true}>
+          <Button
+            icon="exchange"
+            text="Redux"
+          />
+        </Popover2>
       </Navbar.Group>
     </Navbar>
   )
@@ -62,12 +72,15 @@ const Body = () => {
   const HookLayoutEffect = lazy(() => import(/* webpackChunkName: "hook-layout-effect" */ "@pages/hook/layout-effect"));
   const HookCustom = lazy(() => import(/* webpackChunkName: "hook-custom" */ "@pages/hook/custom"));
 
+  const ReduxBasic = lazy(() => import(/* webpackChunkName: "redux-basic" */ "@pages/redux/basic"));
+
   return (
     <div
       className="container mx-auto bg-gradient-to-b from-gray-100 to-gray-150 px-4 py-14 border-gray-600 shadow-lg min-h-screen">
       <Suspense fallback={Loading}>
         <Switch>
-          <Route exact path="/" component={Home} />
+          <Route path="/" component={Home} exact />
+
           <Route path="/basic/hello" component={BasicHello} />
           <Route path="/basic/component" component={BasicComponent} />
           <Route path="/basic/state" component={BasicState} />
@@ -87,6 +100,8 @@ const Body = () => {
           <Route path="/hook/imperative-handle" component={HookImperativeHandle} />
           <Route path="/hook/layout-effect" component={HookLayoutEffect} />
           <Route path="/hook/custom" component={HookCustom} />
+
+          <Route path="/redux/basic" component={ReduxBasic} />
         </Switch>
       </Suspense>
     </div>

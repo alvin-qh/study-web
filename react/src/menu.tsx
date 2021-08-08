@@ -84,3 +84,15 @@ export const HookMenu = () => {
 
   return menu;
 }
+
+export const ReduxMenu = () => {
+  const history = useHistory();
+
+  const menu = useMemo(() => (
+    new MenuData("/redux", [
+      new MenuItemData("path", "Basic", "/basic"),
+    ]).render(history)
+  ), [history])
+
+  return menu;
+}
