@@ -1,3 +1,4 @@
+import { Button, InputGroup, Intent } from "@blueprintjs/core";
 import { Dispatch, useState } from "react";
 import { connect } from "react-redux";
 import { addTodo, setVisibilityFilter, toggleTodo } from "./action";
@@ -7,8 +8,8 @@ type AddTodoProps = {
   dispatch: Dispatch<TodoAction>,
 }
 
-const AddTodo = ({ dispatch }: AddTodoProps) => {
-  const [input, setInput] = useState<string>();
+const _AddTodo = ({ dispatch }: AddTodoProps) => {
+  const [input, setInput] = useState<string>("");
 
   return (
     <div>
@@ -21,14 +22,29 @@ const AddTodo = ({ dispatch }: AddTodoProps) => {
           dispatch(addTodo(input));
           setInput("");
         }}>
-        <input onChange={e => setInput(e.currentTarget.value)} />
-        <button type="submit">Add Todo</button>
+        <div
+          className="flex items-center space-x-2"
+        >
+          <InputGroup
+            large={true}
+            onChange={e => setInput(e.currentTarget.value)}
+            className="flex-1 focus:outline-none shadow-md"
+            value={input}
+          />
+          <Button
+            type="submit"
+            large={true}
+            intent={Intent.PRIMARY}
+            icon="saved"
+            className="flex-0 focus:outline-none shadow-md"
+          />
+        </div>
       </form>
     </div>
   );
 }
 
-export const AddNewTodo = connect()(AddTodo);
+export const AddTodo = connect()(_AddTodo);
 
 
 type TodoItemProps = {
@@ -40,7 +56,7 @@ type TodoItemProps = {
 
 const TodoItem = ({ completed, text, onClick }: TodoItemProps): JSX.Element => (
   <li
-    className={completed ? "line-through" : "no-underline"}
+    className={`${completed ? "line-through bg-sky-100" : "no-underline bg-green-100 font-medium"} px-4 py-2 border-b border-gray-300`}
     onClick={onClick}
   >
     {text}
@@ -52,8 +68,11 @@ type TodoListProps = {
   onTodoClick: (id: string) => void;
 }
 
-const TodoList = ({ todos, onTodoClick }: TodoListProps): JSX.Element => (
-  <ul>
+const _TodoList = ({ todos, onTodoClick }: TodoListProps): JSX.Element => (
+  <ul
+    style={{ minHeight: "200px" }}
+    className="border shadow-md rounded-md bg-white"
+  >
     {
       todos.map(todo => (
         <TodoItem key={todo.id} {...todo} onClick={() => onTodoClick(todo.id)} />
@@ -62,19 +81,31 @@ const TodoList = ({ todos, onTodoClick }: TodoListProps): JSX.Element => (
   </ul>
 );
 
-export const VisibleTodoList = connect(
-  (state: State) => (
-    {
-      todos: state.todos
+const _todoListMapStateToProps = (state: State): Omit<TodoListProps, "onTodoClick"> => {
+  const visibleFilter = (todos: Array<TodoData>, filter: VisibilityFilter): Array<TodoData> => {
+    switch (filter) {
+      case VisibilityFilter.SHOW_ACTIVE:
+        return todos.filter(t => !t.completed);
+      case VisibilityFilter.SHOW_COMPLETED:
+        return todos.filter(t => t.completed);
+      case VisibilityFilter.SHOW_ALL:
+      default:
+        return todos;
     }
-  ),
-  (dispatch: Dispatch<TodoAction>) => (
-    {
-      onTodoClick: (id: string) => dispatch(toggleTodo(id))
-    }
-  ),
-)(TodoList);
+  }
 
+  return {
+    todos: visibleFilter(state.todos, state.filter)
+  }
+}
+
+const _todoListMapDispathToProps = (dispatch: Dispatch<TodoAction>): Omit<TodoListProps, "todos"> => {
+  return {
+    onTodoClick: (id: string) => dispatch(toggleTodo(id))
+  }
+}
+
+export const TodoList = connect(_todoListMapStateToProps, _todoListMapDispathToProps)(_TodoList);
 
 type LinkProps = {
   active: boolean;
@@ -82,9 +113,9 @@ type LinkProps = {
   children: string | JSX.Element;
 }
 
-const Link = ({ active, onClick, children }: LinkProps): JSX.Element => {
+const _Link = ({ active, onClick, children }: LinkProps): JSX.Element => {
   if (active) {
-    return <span>{children}</span>
+    return <span className="text-gray-500 font-bold px-2 py-1 bg-gray-100">{children}</span>
   }
 
   return (
@@ -94,40 +125,45 @@ const Link = ({ active, onClick, children }: LinkProps): JSX.Element => {
         e.preventDefault();
         onClick();
       }}
+      className="hover:no-underline text-sky-600 px-2 py-1 bg-gray-100"
     >
       {children}
     </a>
   );
 };
 
-const FilterLink = connect(
-  (state: State, ownProps: { filter: VisibilityFilter }) => (
-    {
-      active: state.filter === ownProps.filter
-    }
-  ),
-  (dispatch: Dispatch<FilterAction>, ownProps: { filter: VisibilityFilter }) => (
-    {
-      onClick: () => dispatch(setVisibilityFilter(ownProps.filter))
-    }
-  )
-)(Link);
+type LinkExternProps = {
+  filter: VisibilityFilter
+}
 
+const _linkStateToProps = (state: State, ownProps: LinkExternProps): Omit<LinkProps, "onClick" | "children"> => (
+  {
+    active: state.filter === ownProps.filter
+  }
+);
+
+const _linkMapDispathToProps = (dispatch: Dispatch<FilterAction>, ownProps: LinkExternProps): Omit<LinkProps, "active" | "children"> => (
+  {
+    onClick: () => dispatch(setVisibilityFilter(ownProps.filter))
+  }
+);
+
+const Link = connect(_linkStateToProps, _linkMapDispathToProps)(_Link);
 
 export const Footer = (): JSX.Element => (
   <p>
     Show:
     {' '}
-    <FilterLink filter={VisibilityFilter.SHOW_ALL}>
+    <Link filter={VisibilityFilter.SHOW_ALL}>
       All
-    </FilterLink>
+    </Link>
     {', '}
-    <FilterLink filter={VisibilityFilter.SHOW_ACTIVE}>
+    <Link filter={VisibilityFilter.SHOW_ACTIVE}>
       Active
-    </FilterLink>
+    </Link>
     {', '}
-    <FilterLink filter={VisibilityFilter.SHOW_COMPLETED}>
+    <Link filter={VisibilityFilter.SHOW_COMPLETED}>
       Completed
-    </FilterLink>
+    </Link>
   </p>
 );
