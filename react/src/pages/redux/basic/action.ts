@@ -1,6 +1,9 @@
 import { ADD_TODO, FilterAction, SET_VISIBILITY_FILTER, TodoAction, TOGGLE_TODO, VisibilityFilter } from "./type";
 
-const uuid = () => {
+/**
+ * 产生一个 UUID
+ */
+function uuid() {
   let d = new Date().getTime();
   if (window.performance && typeof window.performance.now === "function") {
     d += performance.now();
@@ -12,6 +15,9 @@ const uuid = () => {
   });
 }
 
+/**
+ * 定义添加 Todo 项目的 Action
+ */
 export const addTodo = (text: string): TodoAction => {
   return {
     type: ADD_TODO,
@@ -20,6 +26,9 @@ export const addTodo = (text: string): TodoAction => {
   }
 }
 
+/**
+ * 定义切换 Todo 项目状态的 Action
+ */
 export const toggleTodo = (id: string): TodoAction => {
   return {
     type: TOGGLE_TODO,
@@ -27,6 +36,9 @@ export const toggleTodo = (id: string): TodoAction => {
   }
 }
 
+/**
+ * 设置筛选项的 Action
+ */
 export const setVisibilityFilter = (filter: VisibilityFilter): FilterAction => {
   return {
     type: SET_VISIBILITY_FILTER,

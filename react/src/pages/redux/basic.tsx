@@ -121,7 +121,8 @@ import { todoAppStore } from "./basic/reducer";
 const ReduxBasic = (): JSX.Element => {
   return (
     <Provider store={todoAppStore}>
-      <div className="w-1/3">
+      <div className="w-1/3 px-2 py-4">
+        <p className="font-medium text-lg mb-2">Todo List: </p>
         <div>
           <AddTodo />
         </div>
