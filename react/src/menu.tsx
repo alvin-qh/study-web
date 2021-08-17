@@ -91,6 +91,7 @@ export const ReduxMenu = () => {
   const menu = useMemo(() => (
     new MenuData("/redux", [
       new MenuItemData("path", "Basic", "/basic"),
+      new MenuItemData("wrench", "Toolkit", "/toolkit"),
     ]).render(history)
   ), [history])
 

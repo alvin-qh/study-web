@@ -73,6 +73,7 @@ const Body = () => {
   const HookCustom = lazy(() => import(/* webpackChunkName: "hook-custom" */ "@pages/hook/custom"));
 
   const ReduxBasic = lazy(() => import(/* webpackChunkName: "redux-basic" */ "@pages/redux/basic"));
+  const ReduxToolkit = lazy(() => import(/* webpackChunkName: "redux-basic" */ "@pages/redux/toolkit"));
 
   return (
     <div
@@ -102,6 +103,7 @@ const Body = () => {
           <Route path="/hook/custom" component={HookCustom} />
 
           <Route path="/redux/basic" component={ReduxBasic} />
+          <Route path="/redux/toolkit" component={ReduxToolkit} />
         </Switch>
       </Suspense>
     </div>

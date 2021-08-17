@@ -14,7 +14,7 @@ type AddTodoProps = {
 /**
  * 定义 Todo 组件
  */
-const _AddTodo = ({ dispatch }: AddTodoProps) => {
+const _AddTodo = ({ dispatch }: AddTodoProps): JSX.Element => {
   const [input, setInput] = useState<string>("");
 
   return (

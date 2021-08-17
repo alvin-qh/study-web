@@ -1,4 +1,7 @@
-import { combineReducers, createStore } from 'redux';
+import { applyMiddleware, combineReducers, createStore } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import invariant from 'redux-immutable-state-invariant';
+import * as actionCreators from './action';
 import { ADD_TODO, FilterAction, SET_VISIBILITY_FILTER, TodoAction, TodoData, TOGGLE_TODO, VisibilityFilter } from "./type";
 
 /**
@@ -46,9 +49,22 @@ const visibilityFilterReducer = (filter: VisibilityFilter = VisibilityFilter.SHO
 /**
  * 组合前两个 reducer，产生整体的 reducer 函数
  */
-export const todoAppReducer = combineReducers({
+const todoAppReducer = combineReducers({
   filter: visibilityFilterReducer,
   todos: todosReducer,
 });
 
-export const todoAppStore = createStore(todoAppReducer);
+
+export default function configureStore(preloadedState?: any) {
+  // 引入开发工具支持
+  const composeEnhancers = process.env.NODE_ENV !== 'production'
+    ? composeWithDevTools({ actionCreators, trace: true, traceLimit: 25 })
+    : (args: any) => undefined;
+
+  const store = createStore(
+    todoAppReducer,
+    preloadedState,
+    process.env.NODE_ENV !== 'production' ? composeEnhancers(applyMiddleware(invariant())) : undefined
+  );
+  return store;
+}

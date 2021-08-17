@@ -4,6 +4,10 @@
  *    Redux 采用集中存储方式，将状态存储在 store 中。任何对 store 内容的改变，都将传递给引用这些 store 的组件中，
  * 并跟随 store 内容变化重新渲染组件。
  * 
+ * 安装依赖：
+ *      yarn add react-redux @types/react-redux redux-devtools @types/redux-devtools redux-devtools-extension @types/redux-devtools-extension
+ *      
+ * 
  * Redux 包含如下几个要素：
  * 
  *    1. Action，即行为。Action 是由一个对象表示，并至少包含一个 type 字段表示 Action 类型。
@@ -116,11 +120,13 @@
  */
 import { Provider } from "react-redux";
 import { AddTodo, Footer, TodoList } from "./basic/component";
-import { todoAppStore } from "./basic/reducer";
+import configureStore from "./basic/reducer";
+
+const store = configureStore()
 
 const ReduxBasic = (): JSX.Element => {
   return (
-    <Provider store={todoAppStore}>
+    <Provider store={store}>
       <div className="w-1/3 px-2 py-4">
         <p className="font-medium text-lg mb-2">Todo List: </p>
         <div>
