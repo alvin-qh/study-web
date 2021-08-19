@@ -50,7 +50,7 @@ const ReduxBasic = (): JSX.Element => {
   return (
     <Provider store={store}>
       <div className="w-1/3 px-2 py-4">
-        <p className="font-medium text-lg mb-2">Todo List: </p>
+        <p className="font-medium text-lg mb-2">Redux Toolkit Todo List: </p>
         <div>
           <AddTodo />
         </div>
