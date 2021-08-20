@@ -73,7 +73,8 @@ const Body = () => {
   const HookCustom = lazy(() => import(/* webpackChunkName: "hook-custom" */ "@pages/hook/custom"));
 
   const ReduxBasic = lazy(() => import(/* webpackChunkName: "redux-basic" */ "@pages/redux/basic"));
-  const ReduxToolkit = lazy(() => import(/* webpackChunkName: "redux-basic" */ "@pages/redux/toolkit"));
+  const ReduxToolkit = lazy(() => import(/* webpackChunkName: "redux-toolkit" */ "@pages/redux/toolkit"));
+  const Middleware = lazy(() => import(/* webpackChunkName: "redux-middleware" */ "@pages/redux/middleware"));
 
   return (
     <div
@@ -104,6 +105,7 @@ const Body = () => {
 
           <Route path="/redux/basic" component={ReduxBasic} />
           <Route path="/redux/toolkit" component={ReduxToolkit} />
+          <Route path="/redux/middleware" component={Middleware} />
         </Switch>
       </Suspense>
     </div>

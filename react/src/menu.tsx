@@ -92,6 +92,7 @@ export const ReduxMenu = () => {
     new MenuData("/redux", [
       new MenuItemData("path", "Basic", "/basic"),
       new MenuItemData("wrench", "Toolkit", "/toolkit"),
+      new MenuItemData("inheritance", "Middleware", "/middleware"),
     ]).render(history)
   ), [history])
 
