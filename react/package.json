@@ -17,6 +17,7 @@
     "@types/redux-devtools": "^3.7.0",
     "@types/redux-devtools-extension": "^2.13.2",
     "@types/redux-immutable-state-invariant": "^2.1.2",
+    "@types/redux-logger": "^3.0.9",
     "dayjs": "^1.10.6",
     "lodash": "^4.17.21",
     "normalize.css": "^8.0.1",
@@ -27,6 +28,7 @@
     "redux-devtools": "^3.7.0",
     "redux-devtools-extension": "^2.13.9",
     "redux-immutable-state-invariant": "^2.1.0",
+    "redux-logger": "^3.0.6",
     "web-vitals": "^2.1.0"
   },
   "devDependencies": {

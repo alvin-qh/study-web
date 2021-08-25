@@ -53,20 +53,46 @@
  *        middleware: [someMiddleware, ...],
  *      });
  * 
+ *    middleware 属性可以取值为一个中间件数组，或者一个参数为 getDefaultMiddlewares 函数的函数，用于将新的中间件和默认的中间件合并
+ * 
  *  有大量的第三方 Redux 中间件可以使用，常用的几个中间件可以给 Redux 编程带来很多便利。
+ * 
+ *  第三方 middleware：
+ *  1. redux-logger：记录 redux dispatch 过程中的日志
+ *     安装：yarn add redux-logger @types/redux-logger
+ *     使用：import createLogger from 'redux-logger';   createLogger 作为 Middleware 使用即可
+ * 
+ *  2. 
  */
+import { Radio, RadioGroup } from "@blueprintjs/core";
+import { useState } from "react";
 import { Provider } from "react-redux";
-import SimpleMiddleware from "./middleware/simple";
+import Processor from "./middleware/component";
 import appStore from "./middleware/store";
 
 const Middleware = (): JSX.Element => {
+  const [actionType, setActionType] = useState("sync");
+
   return (
     <Provider store={appStore}>
       <div
         className="px-4 py-6">
-        <div
-          className="border border-gray-300 px-4 py-6 shadow-md bg-white">
-          <SimpleMiddleware />
+        <div className="border border-gray-300 px-4 py-6 shadow-md bg-white">
+          <div
+            className="flex mb-5"
+          >
+            <div className="flex-1 text-lg font-medium">Processor:</div>
+            <RadioGroup
+              className="flex items-center"
+              selectedValue={actionType}
+              onChange={e => setActionType(e.currentTarget.value)}
+            >
+              <Radio label="同步Action" value="sync" className="mx-4" />
+              <Radio label="异步Action（类型1）" value="async_type1" className="mx-4" />
+              <Radio label="异步Action（类型2）" value="async_type2" className="mx-4" />
+            </RadioGroup>
+          </div>
+          <Processor actionType={actionType} />
         </div>
       </div>
     </Provider>

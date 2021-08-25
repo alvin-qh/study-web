@@ -1,13 +1,27 @@
-import { combineReducers, configureStore } from "@reduxjs/toolkit";
-import { reducer as simpleReducer, simpleLoggerMiddleware } from "./simple";
+import { combineReducers, configureStore, Middleware } from "@reduxjs/toolkit";
+import createLogger from 'redux-logger';
+import thunk from "redux-thunk";
+import { reducer } from "./component";
+import { simpleLogger } from "./middleware";
 
 /**
  * Root Reducer
  */
 const rootReducer = combineReducers({
-  // simple 模块的 reducer
-  simple: simpleReducer
+  // process 模块的 reducer
+  process: reducer
 });
+
+
+type GetMiddlewareFunction = () => Array<Middleware>;
+type CombineMiddlewareFunction = (getDefaultMiddlewares: GetMiddlewareFunction) => Array<Middleware>;
+
+/**
+ * 将新加入的中间件和默认中间件合并起来
+ */
+const combineMiddlewares = (...middlewares: Array<Middleware>): CombineMiddlewareFunction => {
+  return (getDefaultMiddlewares: GetMiddlewareFunction) => [...getDefaultMiddlewares(), ...middlewares];
+}
 
 
 /**
@@ -16,7 +30,7 @@ const rootReducer = combineReducers({
 export default configureStore({
   reducer: rootReducer,
   // 设置 Middleware
-  middleware: [simpleLoggerMiddleware],
+  middleware: combineMiddlewares(simpleLogger, createLogger, thunk),
   devTools: (process.env.NODE_ENV !== 'production') ? {
     trace: true,
     traceLimit: 25
