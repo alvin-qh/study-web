@@ -3,7 +3,7 @@ import { AnyAction, Dispatch, Middleware, MiddlewareAPI } from "@reduxjs/toolkit
 /**
  * 定义 Redux Middleware，用于记录每次 dispatch 的日志
  */
-export const simpleLogger: Middleware =
+const simpleLogger: Middleware =
   (store: MiddlewareAPI<Dispatch<AnyAction>, any>) =>
     (next: Dispatch<AnyAction>) => (action: AnyAction) => {
       console.group(`Simple Logger: ${action.type}`);
@@ -22,3 +22,5 @@ export const simpleLogger: Middleware =
         console.groupEnd();
       }
     }
+
+export default simpleLogger;

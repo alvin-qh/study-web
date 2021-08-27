@@ -1,8 +1,8 @@
 import { combineReducers, configureStore, Middleware } from "@reduxjs/toolkit";
 import createLogger from 'redux-logger';
 import thunk from "redux-thunk";
-import { reducer } from "./component";
-import { simpleLogger } from "./middleware";
+import simpleLogger from "./middleware";
+import { reducer } from "./process";
 
 /**
  * Root Reducer

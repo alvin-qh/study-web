@@ -18,6 +18,9 @@ export const setVisibilityFilter = createAction<VisibilityFilter>('SET_VISIBILIT
 
 /**
  * 创建一个 Slice 对象
+ * 
+ * 注意：传统的 reducer 函数通过参数传入旧的 state 并返回新的 state
+ *      createSlice 函数为 reducer 启用了 Immer 功能，允许对 state 参数本身做修改（mutation）操作
  */
 const slice = createSlice({
   name: 'todo',
