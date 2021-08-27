@@ -1,8 +1,7 @@
 import { Button, InputGroup, Intent } from '@blueprintjs/core';
 import { memo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { addTodo, selectFilter, selectItems, setVisibilityFilter, toggleTodo } from './slice';
-import { VisibilityFilter } from './type';
+import { addTodo, selectFilter, selectItems, setVisibilityFilter, toggleTodo, VisibilityFilter } from './todo';
 
 
 /**

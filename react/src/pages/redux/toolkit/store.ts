@@ -1,6 +1,6 @@
 
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import todoReducer from './slice';
+import { todoReducer } from './todo';
 
 /**
  * 定义根 reducer，组合各个模块定义的 reducer 函数

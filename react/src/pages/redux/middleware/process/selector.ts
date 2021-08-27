@@ -1,5 +1,5 @@
 import { Intent } from "@blueprintjs/core";
-import State from "./state";
+import State from "./type";
 
 /**
  * 获取当前进度的 Selector

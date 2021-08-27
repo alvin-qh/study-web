@@ -1,20 +1,12 @@
 import { createAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TodoState, VisibilityFilter } from "./type";
+import { uuid } from "./util";
 
-function uuid() {
-  let d = new Date().getTime();
-  if (window.performance && typeof window.performance.now === "function") {
-    d += performance.now();
-  }
-  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, c => {
-    const r = (d + Math.random() * 16) % 16 | 0;
-    d = Math.floor(d / 16);
-    return (c === "x" ? r : (r & 0x3 | 0x8)).toString(16);    // eslint-disable-line no-mixed-operators
-  });
-}
-
-
+/**
+ * 创建一个 Action 函数
+ */
 export const setVisibilityFilter = createAction<VisibilityFilter>('SET_VISIBILITY_FILTER');
+
 
 /**
  * 创建一个 Slice 对象
@@ -86,34 +78,8 @@ const slice = createSlice({
   }
 });
 
-
 // 通过 Slice 对象获取 Action 方法
 export const { addTodo, toggleTodo } = slice.actions;
 
-/**
- * 定义获取 Todo 项集合的 selector 方法
- */
-export const selectItems = (state: any) => {
-  const todoState = state.todo as TodoState;
-
-  switch (todoState.filter) {
-    case VisibilityFilter.SHOW_ACTIVE:
-      return todoState.items.filter(t => !t.completed);
-    case VisibilityFilter.SHOW_COMPLETED:
-      return todoState.items.filter(t => t.completed);
-    case VisibilityFilter.SHOW_ALL:
-    default:
-      return todoState.items;
-  }
-}
-
-/**
- * 定义获取过滤项的 selector 方法
- */
-export const selectFilter = (state: any) => {
-  const todoState = state.todo as TodoState;
-  return todoState.filter;
-};
-
-// 从 Slice 对象中获取 reducer 函数
-export default slice.reducer
+// 获取 reduce 函数
+export default slice.reducer;

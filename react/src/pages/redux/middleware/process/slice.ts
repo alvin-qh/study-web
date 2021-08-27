@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import State from "./state";
+import State from "./type";
 
 /**
  * 创建 Slice 对象
