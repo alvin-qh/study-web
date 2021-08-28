@@ -1,6 +1,5 @@
-import getExectors from './exec';
 import { selectIntent, selectIsWaiting, selectValue } from './selector';
-import reducer from './slice';
+import reducer, { getExectors } from './slice';
 
 export {
   selectIntent,
