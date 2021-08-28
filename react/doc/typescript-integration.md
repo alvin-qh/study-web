@@ -89,13 +89,13 @@ module.exports = {
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": [              // 设置'@'表示'src'路径，即'@index'表示'src/index.ts'文件
+      "~/*": [              // 设置'~'表示'src'路径，即'@index'表示'src/index.ts'文件
         "src/*"
       ],
-      "@pages/*": [         // 设置'@pages'表示'src/pages'路径，即'@pages/Home'表示'src/pages/Home.tsx'文件
+      "~pages/*": [         // 设置'~pages'表示'src/pages'路径，即'~pages/Home'表示'src/pages/Home.tsx'文件
         "src/pages/*"
       ],
-      "@components/*": [    // 设置'@components'表示'src/components'路径，即'@components/Loading'表示'src/components/Loading.tsx'文件
+      "~components/*": [    // 设置'~components'表示'src/components'路径，即'~components/Loading'表示'src/components/Loading.tsx'文件
         "src/components/*"
       ]
     }

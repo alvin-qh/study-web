@@ -1661,6 +1661,18 @@
     jest-util "^27.0.6"
     slash "^3.0.0"
 
+"@jest/console@^27.1.0":
+  version "27.1.0"
+  resolved "https://r.cnpmjs.org/@jest/console/download/@jest/console-27.1.0.tgz#de13b603cb1d389b50c0dc6296e86e112381e43c"
+  integrity sha1-3hO2A8sdOJtQwNxiluhuESOB5Dw=
+  dependencies:
+    "@jest/types" "^27.1.0"
+    "@types/node" "*"
+    chalk "^4.0.0"
+    jest-message-util "^27.1.0"
+    jest-util "^27.1.0"
+    slash "^3.0.0"
+
 "@jest/core@^26.6.0", "@jest/core@^26.6.3":
   version "26.6.3"
   resolved "https://r.cnpmjs.org/@jest/core/download/@jest/core-26.6.3.tgz#7639fcb3833d748a4656ada54bde193051e45fad"
@@ -1892,6 +1904,16 @@
     "@types/istanbul-lib-coverage" "^2.0.0"
     collect-v8-coverage "^1.0.0"
 
+"@jest/test-result@^27.1.0":
+  version "27.1.0"
+  resolved "https://r.cnpmjs.org/@jest/test-result/download/@jest/test-result-27.1.0.tgz#9345ae5f97f6a5287af9ebd54716cd84331d42e8"
+  integrity sha1-k0WuX5f2pSh6+evVRxbNhDMdQug=
+  dependencies:
+    "@jest/console" "^27.1.0"
+    "@jest/types" "^27.1.0"
+    "@types/istanbul-lib-coverage" "^2.0.0"
+    collect-v8-coverage "^1.0.0"
+
 "@jest/test-sequencer@^26.6.3":
   version "26.6.3"
   resolved "https://r.cnpmjs.org/@jest/test-sequencer/download/@jest/test-sequencer-26.6.3.tgz#98e8a45100863886d074205e8ffdc5a7eb582b17"
@@ -1970,6 +1992,17 @@
   version "27.0.6"
   resolved "https://r.cnpmjs.org/@jest/types/download/@jest/types-27.0.6.tgz#9a992bc517e0c49f035938b8549719c2de40706b"
   integrity sha1-mpkrxRfgxJ8DWTi4VJcZwt5AcGs=
+  dependencies:
+    "@types/istanbul-lib-coverage" "^2.0.0"
+    "@types/istanbul-reports" "^3.0.0"
+    "@types/node" "*"
+    "@types/yargs" "^16.0.0"
+    chalk "^4.0.0"
+
+"@jest/types@^27.1.0":
+  version "27.1.0"
+  resolved "https://r.cnpmjs.org/@jest/types/download/@jest/types-27.1.0.tgz#674a40325eab23c857ebc0689e7e191a3c5b10cc"
+  integrity sha1-Z0pAMl6rI8hX68Bonn4ZGjxbEMw=
   dependencies:
     "@types/istanbul-lib-coverage" "^2.0.0"
     "@types/istanbul-reports" "^3.0.0"
@@ -10038,6 +10071,21 @@ jest-message-util@^27.0.6:
     slash "^3.0.0"
     stack-utils "^2.0.3"
 
+jest-message-util@^27.1.0:
+  version "27.1.0"
+  resolved "https://r.cnpmjs.org/jest-message-util/download/jest-message-util-27.1.0.tgz#e77692c84945d1d10ef00afdfd3d2c20bd8fb468"
+  integrity sha1-53aSyElF0dEO8Ar9/T0sIL2PtGg=
+  dependencies:
+    "@babel/code-frame" "^7.12.13"
+    "@jest/types" "^27.1.0"
+    "@types/stack-utils" "^2.0.0"
+    chalk "^4.0.0"
+    graceful-fs "^4.2.4"
+    micromatch "^4.0.4"
+    pretty-format "^27.1.0"
+    slash "^3.0.0"
+    stack-utils "^2.0.3"
+
 jest-mock@^26.6.2:
   version "26.6.2"
   resolved "https://r.cnpmjs.org/jest-mock/download/jest-mock-26.6.2.tgz#d6cb712b041ed47fe0d9b6fc3474bc6543feb302"
@@ -10064,7 +10112,7 @@ jest-regex-util@^26.0.0:
   resolved "https://r.cnpmjs.org/jest-regex-util/download/jest-regex-util-26.0.0.tgz#d25e7184b36e39fd466c3bc41be0971e821fee28"
   integrity sha1-0l5xhLNuOf1GbDvEG+CXHoIf7ig=
 
-jest-regex-util@^27.0.6:
+jest-regex-util@^27.0.0, jest-regex-util@^27.0.6:
   version "27.0.6"
   resolved "https://r.cnpmjs.org/jest-regex-util/download/jest-regex-util-27.0.6.tgz#02e112082935ae949ce5d13b2675db3d8c87d9c5"
   integrity sha1-AuESCCk1rpSc5dE7JnXbPYyH2cU=
@@ -10341,6 +10389,18 @@ jest-util@^27.0.6:
     is-ci "^3.0.0"
     picomatch "^2.2.3"
 
+jest-util@^27.1.0:
+  version "27.1.0"
+  resolved "https://r.cnpmjs.org/jest-util/download/jest-util-27.1.0.tgz#06a53777a8cb7e4940ca8e20bf9c67dd65d9bd68"
+  integrity sha1-BqU3d6jLfklAyo4gv5xn3WXZvWg=
+  dependencies:
+    "@jest/types" "^27.1.0"
+    "@types/node" "*"
+    chalk "^4.0.0"
+    graceful-fs "^4.2.4"
+    is-ci "^3.0.0"
+    picomatch "^2.2.3"
+
 jest-validate@^26.6.2:
   version "26.6.2"
   resolved "https://r.cnpmjs.org/jest-validate/download/jest-validate-26.6.2.tgz#23d380971587150467342911c3d7b4ac57ab20ec"
@@ -10378,6 +10438,19 @@ jest-watch-typeahead@0.6.1:
     string-length "^4.0.1"
     strip-ansi "^6.0.0"
 
+jest-watch-typeahead@^0.6.4:
+  version "0.6.4"
+  resolved "https://r.cnpmjs.org/jest-watch-typeahead/download/jest-watch-typeahead-0.6.4.tgz#ea70bf1bec34bd4f55b5b72d471b02d997899c3e"
+  integrity sha1-6nC/G+w0vU9VtbctRxsC2ZeJnD4=
+  dependencies:
+    ansi-escapes "^4.3.1"
+    chalk "^4.0.0"
+    jest-regex-util "^27.0.0"
+    jest-watcher "^27.0.0"
+    slash "^3.0.0"
+    string-length "^4.0.1"
+    strip-ansi "^6.0.0"
+
 jest-watcher@^26.3.0, jest-watcher@^26.6.2:
   version "26.6.2"
   resolved "https://r.cnpmjs.org/jest-watcher/download/jest-watcher-26.6.2.tgz#a5b683b8f9d68dbcb1d7dae32172d2cca0592975"
@@ -10389,6 +10462,19 @@ jest-watcher@^26.3.0, jest-watcher@^26.6.2:
     ansi-escapes "^4.2.1"
     chalk "^4.0.0"
     jest-util "^26.6.2"
+    string-length "^4.0.1"
+
+jest-watcher@^27.0.0:
+  version "27.1.0"
+  resolved "https://r.cnpmjs.org/jest-watcher/download/jest-watcher-27.1.0.tgz#2511fcddb0e969a400f3d1daa74265f93f13ce93"
+  integrity sha1-JRH83bDpaaQA89Hap0Jl+T8TzpM=
+  dependencies:
+    "@jest/test-result" "^27.1.0"
+    "@jest/types" "^27.1.0"
+    "@types/node" "*"
+    ansi-escapes "^4.2.1"
+    chalk "^4.0.0"
+    jest-util "^27.1.0"
     string-length "^4.0.1"
 
 jest-watcher@^27.0.6:
@@ -13399,6 +13485,16 @@ pretty-format@^27.0.2, pretty-format@^27.0.6:
   integrity sha1-q3cMR7LG+JOiGu/Fe3XaY+9JoR8=
   dependencies:
     "@jest/types" "^27.0.6"
+    ansi-regex "^5.0.0"
+    ansi-styles "^5.0.0"
+    react-is "^17.0.1"
+
+pretty-format@^27.1.0:
+  version "27.1.0"
+  resolved "https://r.cnpmjs.org/pretty-format/download/pretty-format-27.1.0.tgz#022f3fdb19121e0a2612f3cff8d724431461b9ca"
+  integrity sha1-Ai8/2xkSHgomEvPP+NckQxRhuco=
+  dependencies:
+    "@jest/types" "^27.1.0"
     ansi-regex "^5.0.0"
     ansi-styles "^5.0.0"
     react-is "^17.0.1"

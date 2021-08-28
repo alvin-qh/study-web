@@ -376,9 +376,9 @@ $ npx prettier --single-quote --write "src/**/*.{js,jsx,ts,tsx,json,css,scss,md}
 
       ```javascript
       addWebpackAlias({
-        '@': path.join(__dirname, '.', 'src'),   // '__dirname/src' 的别名
-        '@pages': path.join(__dirname, '.', 'src/pages'),   // '__dirname/src/pages' 的别名
-        '@components': path.join(__dirname, '.', 'src/components')    // '__dirname/src/components' 的别名
+        '~': path.join(__dirname, '.', 'src'),   // '__dirname/src' 的别名
+        '~pages': path.join(__dirname, '.', 'src/pages'),   // '__dirname/src/pages' 的别名
+        '~components': path.join(__dirname, '.', 'src/components')    // '__dirname/src/components' 的别名
       })
       ```
 

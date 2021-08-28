@@ -45,6 +45,7 @@
     "customize-cra": "^1.0.0",
     "husky": "^7.0.1",
     "jest": "^27.0.6",
+    "jest-watch-typeahead": "^0.6.4",
     "lint-staged": "^11.0.1",
     "postcss": "^7",
     "postcss-fixes": "^2.0.1",
@@ -95,6 +96,11 @@
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
+    }
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "~components/(.*)": "<rootDir>/src/components/$1"
     }
   },
   "lint-staged": {

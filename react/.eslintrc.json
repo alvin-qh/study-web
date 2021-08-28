@@ -8,6 +8,11 @@
       "version": "detect"
     },
     "import/resolver": {
+      "typescript": {},
+      "babel-plugin-root-import": {
+        "rootPathPrefix": "~",
+        "rootPathSuffix": "src"
+      },
       "node": {
         "extensions": [
           ".js",
@@ -18,6 +23,5 @@
       }
     }
   },
-  "rules": {
-  }
+  "rules": {}
 }

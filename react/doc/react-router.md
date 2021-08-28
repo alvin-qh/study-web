@@ -60,7 +60,7 @@ const Loading = (
 );
 
 // 异步加载组件
-const Home = lazy(() => import(/* webpackChunkName: "home" */ "@pages/Home"));
+const Home = lazy(() => import(/* webpackChunkName: "home" */ "~pages/Home"));
 
 const App = () => (
   <Router>
