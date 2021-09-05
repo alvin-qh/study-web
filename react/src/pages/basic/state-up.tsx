@@ -18,7 +18,7 @@ function toFahrenheit(celsius: number): number {
 /**
  * 温度类型和转换函数的对应关系
  */
-const transforsMap = {
+const transfersMap = {
   "C": toCelsius,
   "F": toFahrenheit
 }
@@ -57,10 +57,10 @@ const TemperatureInput = ({ ...props }: TemperatureInputProp): JSX.Element => {
   } = props;
 
   // 输入组件的引用
-  const intputGroupRef = useRef<HTMLInputElement>(null);
+  const inputGroupRef = useRef<HTMLInputElement>(null);
 
   // 温度转换函数
-  const transferFn = transforsMap[type];
+  const transferFn = transfersMap[type];
 
   /**
    * 转换温度
@@ -70,8 +70,8 @@ const TemperatureInput = ({ ...props }: TemperatureInputProp): JSX.Element => {
       return transferFn(temperature.value).toString();
     }
 
-    if (intputGroupRef.current?.value) {  // 当前文本框有值时，返回当前文本框的值
-      return intputGroupRef.current.value;
+    if (inputGroupRef.current?.value) {  // 当前文本框有值时，返回当前文本框的值
+      return inputGroupRef.current.value;
     }
 
     // 返回缺省值
@@ -84,7 +84,7 @@ const TemperatureInput = ({ ...props }: TemperatureInputProp): JSX.Element => {
         large={true}
         value={changeTemperature(temperature)}
         leftIcon={icon}
-        inputRef={intputGroupRef}
+        inputRef={inputGroupRef}
         onChange={e => onChange && onChange(type, parseFloat(e.currentTarget.value))}
         intent={intent}
       />

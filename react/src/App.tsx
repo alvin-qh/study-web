@@ -55,10 +55,10 @@ const Body = () => {
   const BasicHello = lazy(() => import(/* webpackChunkName: "basic-hello" */ "~pages/basic/hello"));
   const BasicComponent = lazy(() => import(/* webpackChunkName: "basic-component" */ "~pages/basic/component"));
   const BasicState = lazy(() => import(/* webpackChunkName: "basic-state" */ "~pages/basic/state"));
-  const BasicEvent = lazy(() => import(/* webpackChunkName: "basic-state" */ "~pages/basic/evnet"));
+  const BasicEvent = lazy(() => import(/* webpackChunkName: "basic-event" */ "~/pages/basic/event"));
   const BasicCondition = lazy(() => import(/* webpackChunkName: "basic-condition" */ "~pages/basic/condition"));
   const BasicLoop = lazy(() => import(/* webpackChunkName: "basic-loop" */ "~pages/basic/loop"));
-  const BasicStateUp = lazy(() => import(/* webpackChunkName: "basic-stateup" */ "~pages/basic/stateup"));
+  const BasicStateUp = lazy(() => import(/* webpackChunkName: "basic-state-up" */ "~pages/basic/state-up"));
 
   const HookPreview = lazy(() => import(/* webpackChunkName: "hook-preview" */ "~pages/hook/preview"));
   const HookState = lazy(() => import(/* webpackChunkName: "hook-state" */ "~pages/hook/state"));
@@ -89,7 +89,7 @@ const Body = () => {
           <Route path="/basic/event" component={BasicEvent} />
           <Route path="/basic/condition" component={BasicCondition} />
           <Route path="/basic/loop" component={BasicLoop} />
-          <Route path="/basic/stateup" component={BasicStateUp} />
+          <Route path="/basic/state-up" component={BasicStateUp} />
 
           <Route path="/hook/preview" component={HookPreview} />
           <Route path="/hook/state" component={HookState} />

@@ -56,7 +56,7 @@ export const BasicMenu = () => {
       new MenuItemData("archive", "Event", "/event"),
       new MenuItemData("fork", "Condition", "/condition"),
       new MenuItemData("repeat", "Loop", "/loop"),
-      new MenuItemData("upload", "State Up", "/stateup"),
+      new MenuItemData("upload", "State Up", "/state-up"),
     ]).render(history)
   ), [history]);
 

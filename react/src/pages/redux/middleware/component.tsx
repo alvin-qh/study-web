@@ -27,6 +27,7 @@ const ProcessButton = ({ actionType }: ProcessProps): JSX.Element => {
       <Button
         intent={Intent.PRIMARY}
         large={true}
+        loading={isWaiting}
         onClick={() => dec(dispatch, 0.1)}
         disabled={value === 0 || isWaiting}
         className="focus:outline-none"
@@ -36,6 +37,7 @@ const ProcessButton = ({ actionType }: ProcessProps): JSX.Element => {
       <Button
         intent={Intent.PRIMARY}
         large={true}
+        loading={isWaiting}
         onClick={() => inc(dispatch, 0.1)}
         disabled={value === 1 || isWaiting}
         className="focus:outline-none"
