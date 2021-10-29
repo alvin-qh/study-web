@@ -1,3 +1,5 @@
+// cspell: ignore yxxx
+
 export function uuid() {
   let d = new Date().getTime();
   if (window.performance && typeof window.performance.now === "function") {

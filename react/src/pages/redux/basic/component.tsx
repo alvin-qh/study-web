@@ -136,7 +136,7 @@ const _todoListMapStateToProps = (state: State): Omit<TodoListProps, "onTodoClic
 /**
  * 将 dispatch 转换为 _TodoList 组件的 props 属性
  */
-const _todoListMapDispathToProps = (dispatch: Dispatch<TodoAction>): Omit<TodoListProps, "todos"> => {
+const _todoListMapDispatchToProps = (dispatch: Dispatch<TodoAction>): Omit<TodoListProps, "todos"> => {
   return {
     onTodoClick: (id: string) => dispatch(toggleTodo(id))
   }
@@ -145,7 +145,7 @@ const _todoListMapDispathToProps = (dispatch: Dispatch<TodoAction>): Omit<TodoLi
 // 通过 connect 函数产生 TodoList 组件
 export const TodoList = connect(
   _todoListMapStateToProps,   // state 到 props 转换函数
-  _todoListMapDispathToProps  // dispatch 到 props 转换函数
+  _todoListMapDispatchToProps  // dispatch 到 props 转换函数
 )(_TodoList);
 
 
@@ -204,7 +204,7 @@ const _linkStateToProps = (state: State, externProps: LinkExternProps): Omit<Lin
  * dispatch 转换为 _Link 组件的 props 属性
  * externProps 表示 connect 后额外附加的属性
  */
-const _linkMapDispathToProps = (dispatch: Dispatch<FilterAction>, externProps: LinkExternProps): Omit<LinkProps, "active" | "children"> => (
+const _linkMapDispatchToProps = (dispatch: Dispatch<FilterAction>, externProps: LinkExternProps): Omit<LinkProps, "active" | "children"> => (
   {
     onClick: () => dispatch(setVisibilityFilter(externProps.filter))
   }
@@ -215,7 +215,7 @@ const _linkMapDispathToProps = (dispatch: Dispatch<FilterAction>, externProps: L
  */
 const Link = connect(
   _linkStateToProps,
-  _linkMapDispathToProps
+  _linkMapDispatchToProps
 )(_Link);
 
 

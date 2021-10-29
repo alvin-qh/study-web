@@ -1,5 +1,7 @@
 import { ADD_TODO, FilterAction, SET_VISIBILITY_FILTER, TodoAction, TOGGLE_TODO, VisibilityFilter } from "./type";
 
+// cspell: ignore yxxx
+
 /**
  * 产生一个 UUID
  */

@@ -125,7 +125,7 @@ type RunDispatchFunc = (dispatch: Dispatch<any>, value: number) => void;
 /**
  * 根据选项返回不同的 dispatch 处理函数
  */
-export const getExectors = (actionType: string): [RunDispatchFunc, RunDispatchFunc] => {
+export const getExecutors = (actionType: string): [RunDispatchFunc, RunDispatchFunc] => {
   switch (actionType) {
     case 'sync':
       return [

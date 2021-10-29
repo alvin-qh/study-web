@@ -1,11 +1,11 @@
 /**
  * useReducer hook 相当于 useState hook 的完整功能版
  * 
- * useReducer 函数定义为 (reduce, initalizeState, initalizer): [state, dispach]，其中：
+ * useReducer 函数定义为 (reduce, initializeState, initializer): [state, dispatch]，其中：
  * 参数:
  *  reduce: 函数类型，返回新的 state
- *  initalizeState: 初始的 state 值
- *  initalizer: 初始化 state 值的函数，参数为 initalizeState
+ *  initializeState: 初始的 state 值
+ *  initializer: 初始化 state 值的函数，参数为 initializeState
  * 返回值:
  *  state：经过 reduce 函数计算的新 state
  *  dispatch：调用 reduce 函数的代理函数
@@ -29,8 +29,8 @@ import { memo, useEffect, useMemo, useReducer, useState } from "react";
 const Operator = {
   UNKNOWN: "unknown",
   ADD: "add",
-  SUB: "substract",
-  MULT: "multiply",
+  SUB: "subtract",
+  MUL: "multiply",
   DIV: "divide"
 }
 
@@ -73,7 +73,7 @@ const reduce = (state: StateType, action: ActionType): StateType => {
     case Operator.SUB:
       result = action.firstNum - action.secondNum;
       break;
-    case Operator.MULT:
+    case Operator.MUL:
       result = action.firstNum * action.secondNum;
       break;
     case Operator.DIV:
@@ -91,7 +91,7 @@ const reduce = (state: StateType, action: ActionType): StateType => {
 /**
  * state 初始值
  */
-const initalizeState: StateType = {
+const initializeState: StateType = {
   operator: Operator.UNKNOWN,
   result: 0
 }
@@ -99,7 +99,7 @@ const initalizeState: StateType = {
 /**
  * 初始化 state 值的函数
  */
-const initalizer = (initValue: StateType): StateType => initValue;
+const initializer = (initValue: StateType): StateType => initValue;
 
 /**
  * 定义操作符选项的类型
@@ -120,7 +120,7 @@ const OperatorSelect = Select.ofType<IOperator>();
 const selectItems: Array<IOperator> = [
   { operator: Operator.ADD, name: '➕' },
   { operator: Operator.SUB, name: '➖' },
-  { operator: Operator.MULT, name: '✖' },
+  { operator: Operator.MUL, name: '✖' },
   { operator: Operator.DIV, name: '➗' },
 ]
 
@@ -138,7 +138,7 @@ const Calculator = memo((): JSX.Element => {
   // useReducer，返回表示计算结果的 result state 和代理 reduce 函数调用 dispatch 函数
   //  result: 保存计算结果
   //  dispatch: 调用 reduce 函数的代理函数
-  const [result, dispatch] = useReducer(reduce, initalizeState, initalizer);
+  const [result, dispatch] = useReducer(reduce, initializeState, initializer);
 
   const [automate, setAutomate] = useState<boolean>(false);
   const [firstNum, setFirstNum] = useState<number>(0);

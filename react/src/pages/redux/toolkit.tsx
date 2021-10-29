@@ -38,7 +38,7 @@
  *    const value = useSelector(...)   // 通过一个 (state) => any 的函数，将 state 转换为所需的 value 值
  *    // use the value in component
  * 
- *    const dispatch = useDispath()    // 获取当前上下文中定义的 root dispatch
+ *    const dispatch = useDispatch()    // 获取当前上下文中定义的 root dispatch
  *    dispatch(someAction(payload))
  */
 

@@ -121,7 +121,7 @@ const ContextSetting = ({ onThemesChanged }: ContextSettingProp): JSX.Element =>
         </div>
       </div>
       <div>
-        <p className="font-medium bg-">Select bacground color:</p>
+        <p className="font-medium bg-">Select background color:</p>
         <div className="mt-2">
           <RadioGroup
             onChange={handleColorChangeEvent}

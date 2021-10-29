@@ -60,14 +60,14 @@ const Counter = memo(({ initial, onChange }: CounterProps): JSX.Element => {
   }
 
   // 通过 useCallback 缓存回调方法，避免每次调用 handleClick 产生新的回调方法，导致 Button 组件重绘
-  const handleClickIncreament = useCallback(handleClick(1), []);    // eslint-disable-line react-hooks/exhaustive-deps
-  const handleClickDecreament = useCallback(handleClick(-1), []);   // eslint-disable-line react-hooks/exhaustive-deps
+  const handleClickIncrement = useCallback(handleClick(1), []);    // eslint-disable-line react-hooks/exhaustive-deps
+  const handleClickDecrement = useCallback(handleClick(-1), []);   // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <div>
       <ButtonGroup>
-        <Button onClick={handleClickIncreament} className="focus:outline-none">+</Button>
-        <Button onClick={handleClickDecreament} className="focus:outline-none">-</Button>
+        <Button onClick={handleClickIncrement} className="focus:outline-none">+</Button>
+        <Button onClick={handleClickDecrement} className="focus:outline-none">-</Button>
       </ButtonGroup>
     </div>
   );

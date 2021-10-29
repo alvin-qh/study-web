@@ -24,6 +24,7 @@ type FriendStatus = {
  */
 class ChatRoomAPI {
   // 定义保存 friend 信息的数据库
+  // cspell: disable
   private static _friends: Array<Friend> = [
     { id: "PHRHCNvR0D80", name: "Alvin", gender: "M" },
     { id: "6gMh9uPNuazh", name: "Emma", gender: "F" },
@@ -34,6 +35,7 @@ class ChatRoomAPI {
     { id: "f6tEfifpipwY", name: "Riley", gender: "M" },
     { id: "QiUsAhBCm3w8", name: "Aubri", gender: "F" }
   ]
+  // cspell: enable
 
   private _timer: any = null;
 
@@ -50,7 +52,7 @@ class ChatRoomAPI {
   /**
    * 注册回调函数，当 friend 状态发生变化时回调此函数
    */
-  registStatusCallbacks(callback: (status: FriendStatus) => void): void {
+  registerStatusCallbacks(callback: (status: FriendStatus) => void): void {
     if (this._timer) {
       clearInterval(this._timer);
     }
@@ -103,7 +105,7 @@ const useFriendsStatus = (): Array<FriendWithStatus> => {
     const chatRoomApi = new ChatRoomAPI();
 
     // 注册回调函数
-    chatRoomApi.registStatusCallbacks(newStatus => {
+    chatRoomApi.registerStatusCallbacks(newStatus => {
 
       // 根据返回的 friend 状态，更新 friends 信息
       // 更新 friend 信息 state

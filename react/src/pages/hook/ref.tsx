@@ -32,7 +32,7 @@ const StateHistory = ({ value }: StateHistoryProp): JSX.Element => {
   return (
     <div className="text-lg">
       <p>The current state value is: <b>{value}</b></p>
-      <p>The privious state value is: <b>{previousValue}</b></p>
+      <p>The previous state value is: <b>{previousValue}</b></p>
     </div>
   );
 }
@@ -63,7 +63,7 @@ const RefInvariance = ({ value }: RefInvarianceProps): JSX.Element => {
   return (
     <div className="text-lg">
       <p>The current state value is: <b>{currentChangeCount}</b></p>
-      <p>The privious state value is: <b>{refChangeCount}</b></p>
+      <p>The previous state value is: <b>{refChangeCount}</b></p>
     </div>
   );
 }

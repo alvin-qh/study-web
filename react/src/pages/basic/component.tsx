@@ -11,7 +11,7 @@ type WelcomeProp = {
 
 /* 定义一个函数组件 */
 const WelcomeFunc = ({
-  name = 'Alivn',
+  name = 'Alvin',
   className = ""
 }: WelcomeProp): JSX.Element => (
   <h1 className={className}>Hello, {name}</h1>

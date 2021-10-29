@@ -3,12 +3,12 @@
  * 
  * 如果要在 dispatch 的时候完成一些标准动作（例如记录日志），则需对 dispatch 进行替换操作，例如：
  * 
- *    const nextDispach = store.dispatch;   // 保存 store 对象中现有的 dispatch 函数
+ *    const nextDispatch = store.dispatch;   // 保存 store 对象中现有的 dispatch 函数
  * 
- *    store.dispath = (action: AnyAction):void => {   // 替换 store 对象中的 dispach 函数
- *      ... do something before disptch
- *      const result = nextDispach(action);
- *      ... do something after disptch
+ *    store.dispatch = (action: AnyAction):void => {   // 替换 store 对象中的 dispatch 函数
+ *      ... do something before dispatch
+ *      const result = nextDispatch(action);
+ *      ... do something after dispatch
  *      return result;
  *    }
  * 
@@ -46,7 +46,7 @@
  *        applyMiddleware(someMiddleware, ...),
  *      );
  * 
- *    如果使用 Redux Toolki，则直接在 configureStore 函数参数中，设置 middleware 属性即可
+ *    如果使用 Redux Toolkit，则直接在 configureStore 函数参数中，设置 middleware 属性即可
  * 
  *      const store = configureStore({
  *        reducer: rootReducer,
@@ -66,7 +66,7 @@
  *    在使用 Redux 时，一些 Action 可能是需要异步执行的，例如读取网络资源，此时为了性能考量，需要 Action 异步执行，reducer 用来处理异步执行的中间状态和结果
  *    在传统的 Redux 使用里，异步 Action 是通过 redux-thunk + redux-promise 这两个中间件实现功能的，前者使得 dispatch 函数可以接受一个函数类型参数，后者
  * 允许 dispatch 函数可以接受一个 Promise 对象类型的参数。从而实现异步 Action 处理。
- *    Redux tookit 内置了这两个中间件（并默认启用），且提供了简化使用的方法：
+ *    Redux toolkit 内置了这两个中间件（并默认启用），且提供了简化使用的方法：
  *      1. 通过 createAsyncThunk 函数创建异步的 Action，返回一个 Promise 对象 await 的结果；
  *      2. 在 createSlice 时，添加 extraReducers，假设 const asyncAction = createAsyncThunk(...); 则：
  *          extraReducers: {

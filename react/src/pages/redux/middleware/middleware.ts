@@ -9,7 +9,7 @@ const simpleLogger: Middleware =
       console.group(`Simple Logger: ${action.type}`);
 
       try {
-        console.info('dispaching', action);
+        console.info('dispatching', action);
 
         const result = next(action);
         console.log('next state', store.getState());

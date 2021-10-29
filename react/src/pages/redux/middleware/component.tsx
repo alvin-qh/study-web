@@ -1,6 +1,6 @@
 import { Button, Intent, ProgressBar } from "@blueprintjs/core";
 import { useDispatch, useSelector } from "react-redux";
-import { getExectors, selectIntent, selectIsWaiting, selectValue } from "./process";
+import { getExecutors, selectIntent, selectIsWaiting, selectValue } from "./process";
 
 /**
  * 进度条属性
@@ -20,7 +20,7 @@ const ProcessButton = ({ actionType }: ProcessProps): JSX.Element => {
   // 获取等待状态
   const isWaiting = useSelector(selectIsWaiting);
 
-  const [inc, dec] = getExectors(actionType);
+  const [inc, dec] = getExecutors(actionType);
 
   return (
     <div className="flex justify-between px-2">

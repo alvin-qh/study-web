@@ -91,7 +91,7 @@
  *            </ul>
  *          );
  * 
- *      上述这种方法需手动处理 state => props 和 dispath => props，所以 redux-react 提供了 connect 函数，返回一个 connector，包装
+ *      上述这种方法需手动处理 state => props 和 dispatch => props，所以 redux-react 提供了 connect 函数，返回一个 connector，包装
  *      一个自动完成上述转换的组件，避免手动传递 props 和处理事件，例如：
  * 
  *          const _linkStateToProps = (state: State, externProps: LinkExternProps): Omit<LinkProps, "onClick" | "children"> => (
@@ -100,21 +100,21 @@
  *            }
  *          );
  * 
- *          const _linkMapDispathToProps = (dispatch: Dispatch<FilterAction>, externProps: LinkExternProps): Omit<LinkProps, "active" | "children"> => (
+ *          const _linkMapDispatchToProps = (dispatch: Dispatch<FilterAction>, externProps: LinkExternProps): Omit<LinkProps, "active" | "children"> => (
  *            {
  *              onClick: () => dispatch(setVisibilityFilter(externProps.filter))
  *            }
  *          );
  * 
  *      如此一来，可以通过 connect 函数返回 connector 来包装指定组件，connector 会根据 _linkStateToProps 函数自动将 store 中存储的 state 转到组件的 props，同时通过
- *      _linkMapDispathToProps 函数，响应组件的 onClick 事件，把事件传递的值通过 dispatch 和 reducer 存入 store 中。
+ *      _linkMapDispatchToProps 函数，响应组件的 onClick 事件，把事件传递的值通过 dispatch 和 reducer 存入 store 中。
  * 
- *          const Link = connect(_linkStateToProps, _linkMapDispathToProps)(_Link);
+ *          const Link = connect(_linkStateToProps, _linkMapDispatchToProps)(_Link);
  * 
  *      对于无法通过 store 转换的 props，则可以通过传统方式，在组件的属性上直接传递即可。
  * 
  *          <Link filter={VisibilityFilter.SHOW_ALL}>All</Link>       // 传递额外的 filter 属性和 children 属性，这些属性会传递到 _linkStateToProps 或 
- *                                                                    // _linkMapDispathToProps 函数的第二个参数中
+ *                                                                    // _linkMapDispatchToProps 函数的第二个参数中
  * 
  * 所以，所谓 Redux，即通过 reducer 将数据和 Action 存入 Store，在通知相关组件展示数据的过程。
  */
