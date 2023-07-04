@@ -75,27 +75,22 @@ module.exports = {
       },
       {
         test: /\.(svg|png|jpg|gif)$/,
-        use: [
-          {
-            loader: "url-loader",
-            options: {
-              limit: 10240,
-              name: "image/[name]-[contenthash:8].[ext]"
-            }
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            maxSize: 128 * 1024
           }
-        ]
+        },
+        generator: {
+          filename: "image/[name]-[contenthash:8][ext]"
+        }
       },
       {
         test: /\.(eot|woff|woff2|ttf)$/,
-        use: [
-          {
-            loader: "url-loader",
-            options: {
-              limit: 10240,
-              name: "font/[name]-[contenthash:8].[ext]"
-            }
-          }
-        ]
+        type: "asset/resource",
+        generator: {
+          filename: "font/[name]-[contenthash:8][ext]"
+        }
       }
     ]
   }

@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack --progress",
-    "build:prod": "cross-env NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider webpack --progress",
-    "watch": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack --progress --watch",
-    "watch:prod": "cross-env NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider webpack --progress --watch",
-    "dev": "cross-env NODE_OPTIONS=--openssl-legacy-provider webpack serve --progress",
-    "dev:prod": "cross-env NODE_ENV=production NODE_OPTIONS=--openssl-legacy-provider webpack serve --progress"
+    "build": "webpack --progress",
+    "build:prod": "cross-env NODE_ENV=production webpack --progress",
+    "watch": "webpack --progress --watch",
+    "watch:prod": "cross-env NODE_ENV=production webpack --progress --watch",
+    "dev": "webpack serve --progress",
+    "dev:prod": "cross-env NODE_ENV=production webpack serve --progress"
   },
   "author": "Alvin",
   "license": "ISC",

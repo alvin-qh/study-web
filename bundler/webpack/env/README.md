@@ -24,12 +24,12 @@ $ npx webpack --env DEBUG
 
 Follow the env variable after `--env`, like `name=value`. more env variables need more `--env` parameter.
 
-`--env DEBUG=true` means `DEBUG` variable is `'true'`, the value is string.
+`--env DEBUG=true` means `DEBUG` variable is `"true"`, the value is string.
 
-`--env DEBUG` means `DEBUG` variable is `true`, the value is boolean. 
+`--env DEBUG` means `DEBUG` variable is `true`, the value is boolean.
 
 ```bash
-$ npx webpack --env production  # set production variable is true
+npx webpack --env production  # set production variable is true
 ```
 
 In `webpack.config.js`, read the environment variables
@@ -78,7 +78,7 @@ Automatically load modules instead of having to import or require them when use 
   // ...,
   plugins: [
     new webpack.ProvidePlugin({
-      identifier: 'module',
+      identifier: "module",
       // ...
     })
   ]
@@ -92,7 +92,7 @@ By default, module resolution path is current folder (`./**`) and `node_modules`
   // ...,
   plugins: [
     new webpack.ProvidePlugin({
-      identifier: ['module', 'property'],
+      identifier: ["module", "property"],
       // ...
     })
   ]
@@ -108,8 +108,8 @@ It is also possible to specify full path:
   // ...,
   plugins: [
     new webpack.ProvidePlugin({
-      identifier2: path.resolve(__dirname, `path/to/javascipt`),
-      identifier1: [path.resolve(__dirname, `path/to/javascipt`), 'property']
+      identifier2: path.resolve(__dirname, `path/to/javascript`),
+      identifier1: [path.resolve(__dirname, `path/to/javascript`), "property"]
       // ...
     })
   ]
@@ -125,9 +125,9 @@ Examples:
   // ...,
   plugins: [
     new webpack.ProvidePlugin({
-      $: 'jquery',
-      jQuery: 'jquery',
-      'window.jQuery': 'jquery'
+      $: "jquery",
+      jQuery: "jquery",
+      "window.jQuery": "jquery"
     })
   ]
 }
@@ -140,7 +140,7 @@ Examples:
   // ...,
   plugins: [
     new webpack.ProvidePlugin({
-      _map: ['lodash', 'map']
+      _map: ["lodash", "map"]
     })
   ]
 }
@@ -153,7 +153,7 @@ Examples:
   // ...,
   plugins: [
     new webpack.ProvidePlugin({
-      Vue: ['vue/dist/vue.esm.js', 'default']
+      Vue: ["vue/dist/vue.esm.js", "default"]
     })
   ]
 }
@@ -164,7 +164,7 @@ Import different file by condition
 ```javascript
 
 function chooseScript(env) {
-  const mark = env.DEBUG ? '-debug' : '';
+  const mark = env.DEBUG ? "-debug" : "";
   // when debug is false, file name is ${__dirname/path/to/script-debug.js}
   return path.resolve(__dirname, `path/to/script${mark}.js`);
 }
@@ -173,7 +173,7 @@ function chooseScript(env) {
   // ...,
   plugins: [
     new webpack.ProvidePlugin({
-      component: [chooseScript(env), 'property']
+      component: [chooseScript(env), "property"]
     })
   ]
 }
@@ -186,13 +186,13 @@ function chooseScript(env) {
 Install the package
 
 ```bash
-$ npm install --save-dev cross-env
+npm install --save-dev cross-env
 ```
 
 Use `cross-env` in cli
 
 ```bash
-$ npx cross-env DEBUG=true webpack --progress
+npx cross-env DEBUG=true webpack --progress
 ```
 
 Use `cross-env` in `package.json`

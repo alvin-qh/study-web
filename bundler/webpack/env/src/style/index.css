@@ -5,7 +5,7 @@
 }
 
 body {
-  font: 14px/1.5 Tahoma, Helvetica, Arial, '宋体', sans-serif;
+  font: 14px/1.5 Tahoma, Helvetica, Arial, "宋体", sans-serif;
 }
 
 .text-box {
@@ -18,5 +18,5 @@ body {
 
 .text-box .fas {
   margin-right: 10px;
-  font-size   : 30pt;
+  font-size: 30pt;
 }
