@@ -2,13 +2,24 @@
   "version": "0.2",
   "language": "en",
   "words": [
+    "antd",
     "codelyzer",
+    "Cofounder",
+    "corejs",
     "devkit",
+    "entites",
+    "entrypoints",
     "fontawesome",
     "fortawesome",
+    "imagebox",
     "jasminewd",
+    "linebreak",
+    "nosources",
     "pathinfo",
-    "popperjs"
+    "popperjs",
+    "splitthunk",
+    "textbox",
+    "treeshaking"
   ],
   "flagWords": [],
   "enabled": true
