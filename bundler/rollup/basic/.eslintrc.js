@@ -5,28 +5,28 @@ module.exports = {
     browser: true
   },
   extends: [
-    'eslint:recommended'
+    "eslint:recommended"
   ],
   parserOptions: {
     ecmaVersion: 12,
-    sourceType: 'module'
+    sourceType: "module"
   },
   rules: {
-    'indent': [
-      'error',
+    "indent": [
+      "error",
       2
     ],
-    'linebreak-style': [
-      'error',
-      'unix'
+    "linebreak-style": [
+      "error",
+      "unix"
     ],
-    'quotes': [
-      'error',
-      'single'
+    "quotes": [
+      "error",
+      "single"
     ],
-    'semi': [
-      'error',
-      'always'
+    "semi": [
+      "error",
+      "always"
     ]
   }
 }

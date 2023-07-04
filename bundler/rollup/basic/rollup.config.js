@@ -1,20 +1,19 @@
-import path from 'path';
+const path = require("path");
+const resolve = require("@rollup/plugin-node-resolve")
+const babel = require("@rollup/plugin-babel");
 
-import resolve from '@rollup/plugin-node-resolve';
-import babel from '@rollup/plugin-babel';
-
-export default {
-  input: path.resolve(__dirname, 'src/script/index.js'),
+module.exports = {
+  input: path.resolve(__dirname, "src/script/index.js"),
   output: {
-    file: path.resolve(__dirname, 'dist/asset/index.min.js'),
-    format: 'es',   // format: 'umd'
+    file: path.resolve(__dirname, "dist/asset/index.min.js"),
+    format: "es",   // format: "umd"
     sourcemap: true
   },
   plugins: [
     resolve(),
     babel({
-      babelHelpers: 'runtime',
-      exclude: 'node_modules/**'
+      babelHelpers: "runtime",
+      exclude: "node_modules/**"
     })
   ]
 };

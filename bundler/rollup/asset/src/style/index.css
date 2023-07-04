@@ -1,9 +1,9 @@
-@charset 'UTF-8';
+@charset "UTF-8";
 
 * {
   box-sizing: border-box;
 }
 
 body {
-  font: 14px/1.5 Tahoma, Helvetica, Arial, '宋体', sans-serif;
+  font: 14px/1.5 Tahoma, Helvetica, Arial, "宋体", sans-serif;
 }

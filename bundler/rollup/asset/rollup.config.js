@@ -1,14 +1,13 @@
-import path from 'path';
+const path = require("path");
+const peerDepsExternal = require("rollup-plugin-peer-deps-external");
+const resolve = require("@rollup/plugin-node-resolve");
+const commonjs = require("@rollup/plugin-commonjs");
+const postcss = require("rollup-plugin-postcss");
+const postcssCopyAssets = require("postcss-copy-assets");
+// const postcssUrl = require("postcss-url");
+const babel = require("@rollup/plugin-babel");
 
-import peerDepsExternal from 'rollup-plugin-peer-deps-external';
-import resolve from '@rollup/plugin-node-resolve';
-import commonjs from '@rollup/plugin-commonjs';
-import postcss from 'rollup-plugin-postcss';
-import postcssCopyAssets from 'postcss-copy-assets';
-import postcssUrl from 'postcss-url';
-import babel from '@rollup/plugin-babel';
-
-export default {
+module.exports = {
   input: path.resolve(__dirname, 'src/script/index.js'),
   output: {
     file: path.resolve(__dirname, 'dist/asset/index.min.js'),
