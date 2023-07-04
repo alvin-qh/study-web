@@ -9,7 +9,7 @@
   ```javascript
   entry: {
     // ...,
-    'index': './src/script/index.js'
+    "index": "./src/script/index.js"
   }
   ```
 
@@ -20,9 +20,9 @@
   ```javascript
   output: {
     // ...,
-    path: path.resolve(__dirname, 'dist'),
-    filename: 'script/[name].bundle-[hash:8].js',
-    chunkFilename: 'script/[name].bundle-[hash:8].js',
+    path: path.resolve(__dirname, "dist"),
+    filename: "script/[name].bundle-[hash:8].js",
+    chunkFilename: "script/[name].bundle-[hash:8].js",
     pathinfo: false
   }
   ```
@@ -40,7 +40,7 @@
   Run shell command
 
   ```bash
-  $ npm install --save-dev mini-css-extract-plugin
+  npm install --save-dev mini-css-extract-plugin
   ```
 
 - Config `plugin`
@@ -51,8 +51,9 @@
   plugins: [
     // ...,
     new MiniCssExtractPlugin({
-      filename: 'style/[name].bundle-[hash:8].css'
+      filename: "style/[name].bundle-[hash:8].css"
     })
+  ]
   ```
 
   - `filename`: name of outputing css file
@@ -69,11 +70,11 @@
         {
           loader: MiniCssExtractPlugin.loader,
           options: {
-            publicPath: '..'
+            publicPath: ".."
           }
         },
         {
-          loader: 'css-loader'
+          loader: "css-loader"
         }
       ]
     }
@@ -91,7 +92,7 @@
   Run shell command
 
   ```bash
-  $ npm install --save-dev url-loader file-loader
+  npm install --save-dev url-loader file-loader
   ```
 
 - Config `module` > `rules`
@@ -105,10 +106,10 @@
       test: /\.(svg|png|jpg|gif)$/,
       use: [
         {
-          loader: 'url-loader',
+          loader: "url-loader",
           options: {
             limit: 10240,
-            name: 'image/[name]-[hash:8].[ext]'
+            name: "image/[name]-[hash:8].[ext]"
           }
         }
       ]
@@ -117,10 +118,10 @@
       test: /\.(eot|woff|woff2|ttf)$/,
       use: [
         {
-          loader: 'url-loader',
+          loader: "url-loader",
           options: {
             limit: 10240,
-            name: 'font/[name]-[hash:8].[ext]'
+            name: "font/[name]-[hash:8].[ext]"
           }
         }
       ]
@@ -138,7 +139,7 @@ Use `clean-webpack-plugin` to clean output folder before build
 Install dependency, Run shell command
 
 ```bash
-$ npm install --save-dev clean-webpack-plugin
+npm install --save-dev clean-webpack-plugin
 ```
 
 In `webpack.config.js`
@@ -152,12 +153,12 @@ plugins: [
 
 ## 4. Make html file and inject resource
 
-Use `html-webpack-plugin` to make html file and inject 'js', 'css' file reference.
+Use `html-webpack-plugin` to make html file and inject "js", "css" file reference.
 
 Install dependency, Run shell command
 
 ```bash
-$ npm install --save-dev html-webpack-plugin
+npm install --save-dev html-webpack-plugin
 ```
 
 In `webpack.config.js`
@@ -165,8 +166,8 @@ In `webpack.config.js`
 ```javascript
 plugins: [
   new HtmlWebpackPlugin({
-    title: 'Output Management',  // title of html
-    template: './src/template/index.html'  // template of html (optional)
+    title: "Output Management",  // title of html
+    template: "./src/template/index.html"  // template of html (optional)
   })
 ]
 ```
@@ -197,7 +198,7 @@ Use `webpack-manifest-plugin` to output manifest file.
 Install dependency, Run shell command
 
 ```bash
-$ npm install --save-dev webpack-manifest-plugin
+npm install --save-dev webpack-manifest-plugin
 ```
 
 In `webpack.config.js`

@@ -1,4 +1,4 @@
-import { textbox } from 'common';
+import { textbox } from "common";
 
-const $wrapper = document.querySelector('.main');
-$wrapper.appendChild(textbox('Hello World'));
+const $wrapper = document.querySelector(".main");
+$wrapper.appendChild(textbox("Hello World"));

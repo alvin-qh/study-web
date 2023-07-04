@@ -1,17 +1,15 @@
-const path = require('path');
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-
-const devMode = process.env.NODE_ENV !== 'production';
+const devMode = process.env.NODE_ENV !== "production";
 
 module.exports = {
-  mode: devMode ? 'development' : 'production',
-  devtool: 'cheap-source-map',
+  mode: devMode ? "development" : "production",
+  devtool: "cheap-source-map",
   plugins: [
     new CleanWebpackPlugin({
       dry: false,
       cleanStaleWebpackAssets: false,
-      cleanOnceBeforeBuildPatterns: ['../**/*'],
+      cleanOnceBeforeBuildPatterns: ["../**/*"],
       dangerouslyAllowCleanPatternsOutsideProject: true  // Allow clean patterns outside of process.cwd()
       // requires dry option to be explicitly set
     })
@@ -20,6 +18,6 @@ module.exports = {
     pathinfo: false
   },
   optimization: {
-    runtimeChunk: 'single'
+    runtimeChunk: "single"
   }
 };

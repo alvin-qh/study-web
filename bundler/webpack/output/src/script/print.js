@@ -1,3 +1,3 @@
 export default function printMe() {
-  window.alert('I get called from print.js!');
+  window.alert("I get called from print.js!");
 }

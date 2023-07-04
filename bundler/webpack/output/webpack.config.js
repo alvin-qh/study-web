@@ -1,25 +1,25 @@
-const path = require('path');
+const path = require("path");
 
-const commonConfig = require('./webpack-common.config.js');
-const { merge } = require('webpack-merge');
+const commonConfig = require("./webpack-common.config.js");
+const { merge } = require("webpack-merge");
 
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const { WebpackManifestPlugin } = require("webpack-manifest-plugin");
 
 module.exports = merge(commonConfig, {
   entry: {
-    'index': './src/script/index.js'
+    "index": "./src/script/index.js"
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Output Management',
-      template: './src/template/index.html',
-      filename: '../[name].html',
-      chunks: 'all'
+      title: "Output Management",
+      template: "./src/template/index.html",
+      filename: "../[name].html",
+      chunks: "all"
     }),
     new MiniCssExtractPlugin({
-      filename: 'style/[name].bundle-[contenthash:8].css'
+      filename: "style/[name].bundle-[contenthash:8].css"
     }),
     /**
      * Create manifest.json file, include mapping info of file key and file path
@@ -38,12 +38,12 @@ module.exports = merge(commonConfig, {
     new WebpackManifestPlugin({
       /**
        * Type: String
-       * Default: ''
+       * Default: ""
        * 
        * Specifies a path prefix for all keys in the manifest. 
        * Useful for including your output path in the manifest.
        */
-      basePath: '',
+      basePath: "",
 
       /**
        * Type: String
@@ -51,7 +51,7 @@ module.exports = merge(commonConfig, {
        * 
        * A path prefix that will be added to values of the manifest.
        */
-      // publicPath: '',
+      // publicPath: "",
 
       /**
        * Type: String
@@ -61,14 +61,14 @@ module.exports = merge(commonConfig, {
        * By default the plugin will emit manifest.json to your output directory.
        * Passing an absolute path to the fileName option will override both the file name and path.
        */
-      fileName: 'manifest.json',
+      fileName: "manifest.json",
 
       /**
        * Type: RegExp | Boolean
        * Default: /([a-f0-9]{32}\.?)/gi
        * 
        * If set to a valid RegExp, removes hashes from manifest keys.
-       * The default value for this option is a regular expression targeting Webpack's default md5 hash. 
+       * The default value for this option is a regular expression targeting Webpack"s default md5 hash. 
        * To target other hashing functions / algorithms, set this option to an appropriate RegExp. 
        * To disable replacing the hashes in key names, set this option to false.
        */
@@ -81,7 +81,7 @@ module.exports = merge(commonConfig, {
        * A cache of key/value pairs to used to seed the manifest. 
        * This may include a set of custom key/value pairs to include in your manifest, 
        * or may be used to combine manifests across compilations in multi-compiler mode. 
-       * To combine manifests, pass a shared seed object to each compiler's 
+       * To combine manifests, pass a shared seed object to each compiler"s 
        * WebpackManifestPlugin instance.
        */
       seed: {},
@@ -126,7 +126,7 @@ module.exports = merge(commonConfig, {
        * 
        * Allows sorting the files which make up the manifest. 
        * Return 0 to indicate no change, -1 to indicate the file should be moved to a lower index, 
-       * and 1 to indicate the file shoud be moved to a higher index.
+       * and 1 to indicate the file should be moved to a higher index.
        */
       sort() {
         return 0;
@@ -169,16 +169,16 @@ module.exports = merge(commonConfig, {
        * @returns {Object}
        * 
        * A custom Function to create the manifest.
-       * Can return anything as long as it's serialisable by JSON.stringify.
+       * Can return anything as long as it"s serializable by JSON.stringify.
        */
       // generate(seed, files, entries) {
       // }
     })
   ],
   output: {
-    path: path.resolve(__dirname, 'dist/asset'),
-    filename: 'script/[name].bundle-[contenthash:8].js',
-    chunkFilename: 'script/[name].bundle-[contenthash:8].js',
+    path: path.resolve(__dirname, "dist/asset"),
+    filename: "script/[name].bundle-[contenthash:8].js",
+    chunkFilename: "script/[name].bundle-[contenthash:8].js",
     pathinfo: false
   },
   module: {
@@ -187,7 +187,7 @@ module.exports = merge(commonConfig, {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
             cacheDirectory: true,
             cacheCompression: false
@@ -200,37 +200,32 @@ module.exports = merge(commonConfig, {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: '../'
+              publicPath: "../"
             }
           },
           {
-            loader: 'css-loader'
+            loader: "css-loader"
           }
         ]
       },
       {
         test: /\.(svg|png|jpg|gif)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10240,
-              name: 'image/[name]-[contenthash:8].[ext]'
-            }
+        type: "asset",
+        parser: {
+          dataUrlCondition: {
+            maxSize: 128 * 1024
           }
-        ]
+        },
+        generator: {
+          filename: "image/[name]-[contenthash:8][ext]"
+        }
       },
       {
         test: /\.(eot|woff|woff2|ttf)$/,
-        use: [
-          {
-            loader: 'url-loader',
-            options: {
-              limit: 10240,
-              name: 'font/[name]-[contenthash:8].[ext]'
-            }
-          }
-        ]
+        type: "asset/resource",
+        generator: {
+          filename: "font/[name]-[contenthash:8][ext]"
+        }
       }
     ]
   }

@@ -1,12 +1,12 @@
-const path = require('path');
-const { merge } = require('webpack-merge');
+const path = require("path");
+const { merge } = require("webpack-merge");
 
-const commonConfig = require('./webpack-common.config.js');
+const commonConfig = require("./webpack-common.config.js");
 
 module.exports = merge(commonConfig,{
   // see also: https://webpack.js.org/configuration/resolve
   resolve: {
-    // a list of directories where requests of server-relative URLs (starting with '/') 
+    // a list of directories where requests of server-relative URLs (starting with "/") 
     // are resolved, 
     // defaults to context configuration option. On non-Windows systems these requests 
     // are resolved as an absolute path first.
@@ -14,27 +14,27 @@ module.exports = merge(commonConfig,{
 
     // create aliases to import or require certain modules more easily
     alias: {
-      common$: path.resolve(__dirname, 'src/script/lib/common.js')
-      // ['@fortawesome/fontawesome-free']: false   // disable this module
+      common$: path.resolve(__dirname, "src/script/lib/common.js")
+      // ["@fortawesome/fontawesome-free"]: false   // disable this module
     },
 
     // the JSON files to use for descriptions
-    descriptionFiles: ['package.json'],
+    descriptionFiles: ["package.json"],
 
     // If true, it will not allow extension-less files
-    // So by default "require('./foo')" works if "./foo" has a ".js" extension,
-    // but with this enabled only "require('./foo.js')" will work
+    // So by default "require("./foo")" works if "./foo" has a ".js" extension,
+    // but with this enabled only "require("./foo.js")" will work
     enforceExtension: false,
 
     // the default module extensions
-    // "import './foo.js'" or "import '../bar.css'" can be "import './foo'" or "import '../bar'"
-    extensions: ['.js', '.css'],
+    // "import "./foo.js"" or "import "../bar.css"" can be "import "./foo"" or "import "../bar""
+    extensions: [".js", ".css"],
 
     // the filename to be used while resolving directories
-    mainFiles: ['index'],
+    mainFiles: ["index"],
 
     // the entrypoint of module
-    mainFields: ['browser', 'module', 'main'],
+    mainFields: ["browser", "module", "main"],
 
     // enable aggressive, but unsafe, caching of modules. Passing true will cache everything
     // also can be regexp like "unsafeCache: /src\/index/"
