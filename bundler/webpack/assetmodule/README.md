@@ -43,7 +43,6 @@ Asset Modules type replaces all of these loaders by adding 4 new module types:
 
 To replace loaders by asset modules.
 
-
 For the following usage of `loader`
 
 ```javascript
