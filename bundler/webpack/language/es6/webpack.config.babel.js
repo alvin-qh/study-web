@@ -1,27 +1,22 @@
-import path from 'path';
-import { merge } from 'webpack-merge';
+import ESLintPlugin from "eslint-webpack-plugin";
+import { merge } from "webpack-merge";
 
-import commonConfig from './webpack-common.config.babel';
+import commonConfig from "./webpack-common.config.babel";
 
 export default merge(commonConfig, {
+  plugins: [
+    new ESLintPlugin()
+  ],
   entry: {
-    'index': './src/script/index.js'
+    "index": "./src/script/index.js"
   },
   module: {
     rules: [
       {
-        enforce: 'pre',
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: 'eslint-loader'
-        }
-      },
-      {
-        test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
             cacheDirectory: true,
             cacheCompression: false,
@@ -30,7 +25,7 @@ export default merge(commonConfig, {
                 "@babel/env",
                 {
                   targets: {
-                    browsers: ['last 3 versions', 'safari >= 7']
+                    browsers: ["last 3 versions", "safari >= 7"]
                   },
                   modules: false,
                   debug: false,
