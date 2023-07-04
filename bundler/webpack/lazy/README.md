@@ -5,7 +5,7 @@
 Async `import` function import a module and return a `Promise` object, so this module can be import async like this:
 
 ```javascript
-import('./foo.js')
+import("./foo.js")
   .then(({ foo: bar }) => { ... })
   .catch(err => { ... })
   .finally(() => { ... });
@@ -16,7 +16,7 @@ In the `then` callback function, the arguments list is "live bindings" which nee
 - When more than one "live bindings" need to be imported:
 
   ```javascript
-  import('./foo.js')
+  import("./foo.js")
     .then(({ 
       foo1: bar1,
       foo2: bar2,
@@ -29,7 +29,7 @@ In the `then` callback function, the arguments list is "live bindings" which nee
 - When default "live bindings" need to be imported:
 
   ```javascript
-  import('./foo.js')
+  import("./foo.js")
     .then(({ default: bar }) => { ... })
     .catch(err => { ... })
     .finally(() => { ... });
@@ -41,7 +41,7 @@ In the `then` callback function, the arguments list is "live bindings" which nee
   import(
     /* webpackChunkName: "page1", 
       webpackPrefetch: true */ 
-    './foo.js'
+    "./foo.js"
   ).then( ... ).catch( ... ).finally( ... );
   ```
 
@@ -52,7 +52,7 @@ In the `then` callback function, the arguments list is "live bindings" which nee
 
   ```javascript
   async function foo() {
-    const { default: _ } = await import('lodash');
+    const { default: _ } = await import("lodash");
   }
   ```
 
@@ -60,7 +60,7 @@ In the `then` callback function, the arguments list is "live bindings" which nee
 
   ```javascript
   async function foo() {
-    const { join: _join } = await import('lodash-es');
+    const { join: _join } = await import("lodash-es");
   }
   ```
 
@@ -71,7 +71,7 @@ In the `then` callback function, the arguments list is "live bindings" which nee
     const { 
       join: _join,
       map: _map
-    } = await import('lodash-es');
+    } = await import("lodash-es");
   }
   ```
 
@@ -91,8 +91,8 @@ In `webpack.config.js` file:
         // ...,
         vendor: {
           test: /[\\/]node_modules[\\/]/,
-          chunks: 'all',
-          name: 'vendor',
+          chunks: "all",
+          name: "vendor",
           reuseExistingChunk: true
         }
       }
@@ -110,7 +110,7 @@ In `webpack.config.js` file:
 ```javascript
 {
   entry: {
-    'index': './src/script/index.js'
+    "index": "./src/script/index.js"
   },
   // ...
 }
@@ -127,25 +127,25 @@ In `./src/script/index.js`, the frontend router should be initialize first
     /* navigation element */,
     {
       index: {
-        title: 'Home',
-        href: '/',
-        module: () => import(/* webpackPrefetch: true */ './index.js')
+        title: "Home",
+        href: "/",
+        module: () => import(/* webpackPrefetch: true */ "./index.js")
       },
       page1: {
-        title: 'Page1',
-        href: '/page-1',
-        module: () => import(/* webpackChunkName: "page1", webpackPrefetch: true */ './page1.js')
+        title: "Page1",
+        href: "/page-1",
+        module: () => import(/* webpackChunkName: "page1", webpackPrefetch: true */ "./page1.js")
       },
       page2: {
-        title: 'Page2',
-        href: '/page-2',
-        module: () => import(/* webpackChunkName: "page2", webpackPrefetch: true */ './page2.js')
+        title: "Page2",
+        href: "/page-2",
+        module: () => import(/* webpackChunkName: "page2", webpackPrefetch: true */ "./page2.js")
       },
-      '404': {
-        title: '404',
-        href: '/404',
-        module: () => import(/* webpackChunkName: "404", webpackPrefetch: true */ './404.js'),
-        menu: 'hidden'    // do not display on menu
+      "404": {
+        title: "404",
+        href: "/404",
+        module: () => import(/* webpackChunkName: "404", webpackPrefetch: true */ "./404.js"),
+        menu: "hidden"    // do not display on menu
       }
     }
   );
@@ -157,8 +157,8 @@ The `route` function import form `./router.js`, see `export function route( ... 
 When the page is loaded (or history go back), it is routed to the specified module call based on the current location
 
 ```javascript
-window.addEventListener('load', _reload);
-window.addEventListener('popstate', _reload);
+window.addEventListener("load", _reload);
+window.addEventListener("popstate", _reload);
 ```
 
 See `_reload` function from [./router.js](./src/script/router.js) file
@@ -175,9 +175,9 @@ In `webpack.config.js` file:
   devServer: {
     // ...,
     historyApiFallback: true,
-    publicPath: '/'
+    publicPath: "/"
   }
 }
 ```
 
-- `historyApiFallback`: redirect request to `publicPath: '/'`
+- `historyApiFallback`: redirect request to `publicPath: "/"`

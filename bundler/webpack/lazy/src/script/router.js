@@ -1,4 +1,4 @@
-import { forEach as _forEach, keys as _keys } from 'lodash-es';
+import { forEach as _forEach, keys as _keys } from "lodash-es";
 
 /**
  * the root html element, new elements must be appended into it
@@ -6,13 +6,13 @@ import { forEach as _forEach, keys as _keys } from 'lodash-es';
 let _$root = null;
 
 /**
- * the route table, mapping the navagate pathname to executable script
+ * the route table, mapping the navigate pathname to executable script
  * 
  * each route object in this table has the type:
  * {
- *    title: reqired, string, inner text of <ttitle> element
- *    href: reqired, string, the pathname of route
- *    module: reqired, function, return a Promise object to import the target script
+ *    title: required, string, inner text of <title> element
+ *    href: required, string, the pathname of route
+ *    module: required, function, return a Promise object to import the target script
  *    context: optional, object, the context or state object to keep in "window.history"
  * }
  */
@@ -42,7 +42,7 @@ function _jumpTo(r) {
 
   // change html title
   if (r.title) {
-    document.querySelector('html>head>title').innerText = r.title;
+    document.querySelector("html>head>title").innerText = r.title;
   }
 }
 
@@ -55,7 +55,7 @@ function _reload() {
   // traverse the routing table, find which route object should match current pathname and jump to it
   _forEach(_keys(_routes || {}), key => {
     const it = _routes[key];
-    const pathname = window.location.pathname || '/';
+    const pathname = window.location.pathname || "/";
     if (it && it.href === pathname) {
       _jumpTo(it);
       found = true;
@@ -64,7 +64,7 @@ function _reload() {
 
   // no route object was matched, jump to 404
   if (!found) {
-    jumpTo('404');
+    jumpTo("404");
   }
 }
 
@@ -75,8 +75,8 @@ function _reload() {
  */
 function render($h) {
   if (_$root && $h) {
-    _$root.innerHTML = '';  // empty the container element
-    _$root.appendChild($h); // append genderated element into container element
+    _$root.innerHTML = "";  // empty the container element
+    _$root.appendChild($h); // append generated element into container element
   }
 }
 
@@ -89,22 +89,22 @@ function render($h) {
  */
 export function route($root, $nav, routes) {
   // create top element for menu
-  const $ul = document.createElement('ul');
-  $ul.className = 'menu-bar';
+  const $ul = document.createElement("ul");
+  $ul.className = "menu-bar";
 
   // traverse route table to create menu item and add "click" event handler for it
   _forEach(_keys(routes), key => {
     const it = routes[key];
-    if (it.menu !== 'hidden') {   // test this route object if can disaplay on menu
-      const $li = document.createElement('li');
-      const $a = document.createElement('a');
+    if (it.menu !== "hidden") {   // test this route object if can display on menu
+      const $li = document.createElement("li");
+      const $a = document.createElement("a");
       $li.appendChild($a);
 
       $a.innerText = it.title;
-      $a.href = 'javascript:;';
+      $a.href = "javascript:;";
 
       // add "click" event handler, to jump to the target view
-      $a.addEventListener('click', () => _jumpTo(it), false);
+      $a.addEventListener("click", () => _jumpTo(it), false);
       $ul.appendChild($li);
     }
   });
@@ -121,12 +121,12 @@ export function route($root, $nav, routes) {
  * @param {*} name route name
  */
 export function jumpTo(name) {
-  const r = _routes[name] || '404';
+  const r = _routes[name] || "404";
   _jumpTo(r);
 }
 
 // jump once when page was loaded
-window.addEventListener('load', _reload);
+window.addEventListener("load", _reload);
 
 // jump once when history is go back
-window.addEventListener('popstate', _reload);
+window.addEventListener("popstate", _reload);

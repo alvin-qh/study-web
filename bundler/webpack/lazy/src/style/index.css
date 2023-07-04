@@ -5,55 +5,55 @@
 }
 
 body {
-  font: 14px/1.5 Tahoma, Helvetica, Arial, '宋体', sans-serif;
+  font: 14px/1.5 Tahoma, Helvetica, Arial, "宋体", sans-serif;
 }
 
 .main {
-  width : 1000px;
+  width: 1000px;
   margin: 0 auto;
 }
 
 .navigation {
   margin-bottom: 10px;
-  font-size    : 16px;
-  font-weight  : bold;
+  font-size: 16px;
+  font-weight: bold;
 }
 
 .navigation ul.menu-bar {
   list-style: none;
-  margin    : 0;
-  padding   : 0 10px;
+  margin: 0;
+  padding: 0 10px;
 }
 
 .navigation ul.menu-bar::after {
-  content   : '';
-  display   : block;
-  clear     : both;
-  width     : 0;
-  height    : 0;
+  content: "";
+  display: block;
+  clear: both;
+  width: 0;
+  height: 0;
   visibility: hidden;
 }
 
 .navigation ul.menu-bar li {
-  float  : left;
+  float: left;
   padding: 5px 10px;
 }
 
 .navigation ul.menu-bar li a {
-  color          : rgb(74, 123, 163);
+  color: rgb(74, 123, 163);
   text-decoration: none;
 }
 
 .breadcrumb {
-  padding         : 5px 20px;
+  padding: 5px 20px;
   background-color: rgb(233, 227, 219);
-  font-size       : 12px;
+  font-size: 12px;
 }
 
 .breadcrumb a {
-  padding        : 0 3px;
-  font-size      : 10px;
-  color          : rgb(170, 146, 116);
+  padding: 0 3px;
+  font-size: 10px;
+  color: rgb(170, 146, 116);
   text-decoration: none;
 }
 
@@ -62,13 +62,13 @@ body {
 }
 
 .main div.container {
-  margin-top      : 10px;
-  padding         : 20px;
+  margin-top: 10px;
+  padding: 20px;
   background-color: rgb(252, 249, 243);
 }
 
 .main div.container .home {
-  font-size  : 22px;
+  font-size: 22px;
   font-weight: bold;
 }
 
@@ -77,12 +77,12 @@ body {
 }
 
 .main div.container .page-1 {
-  font-size  : 20px;
+  font-size: 20px;
   font-weight: 400;
 }
 
 .main div.container .error {
-  font-size  : 20px;
+  font-size: 20px;
   font-weight: 400;
   color: rgb(219, 71, 71);
 }
