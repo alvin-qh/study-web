@@ -1,31 +1,27 @@
-import { merge } from 'webpack-merge';
+import ESLintPlugin from "eslint-webpack-plugin";
+import { merge } from "webpack-merge";
 
-import commonConfig from './webpack-common.config';
+import commonConfig from "./webpack-common.config";
 
 export default merge(commonConfig, {
+  plugins: [
+    new ESLintPlugin()
+  ],
   entry: {
-    'index': './src/script/index.ts'
+    "index": "./src/script/index.ts"
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.css', '.js', '.jsx']
+    extensions: [".ts", ".tsx", ".css", ".js", ".jsx"]
   },
   module: {
     rules: [
       {
-        enforce: 'pre',
         test: /\.(ts|tsx)$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: 'eslint-loader'
-        }
-      },
-      {
-        test: /\.(ts|tsx)$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'ts-loader'
+          loader: "ts-loader"
         }
       }
     ]
   }
-});
+} as any);
