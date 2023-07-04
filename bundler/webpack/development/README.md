@@ -1,6 +1,6 @@
 # Development
 
-> See also: https://webpack.js.org/guides/development/
+> See also: <https://webpack.js.org/guides/development/>
 
 ## 1. Enable development mode
 
@@ -44,7 +44,7 @@ In `package.json`
 Then run shell command
 
 ```bash
-$ npm run watch
+npm run watch
 ```
 
 The source file watcher will be started, when change source file, the webpack build work automated.
@@ -54,12 +54,12 @@ The source file watcher will be started, when change source file, the webpack bu
 - Install dependency, run shell command:
   
   ```bash
-  $ npm install --save-dev webpack-dev-server
+  npm install --save-dev webpack-dev-server
   ```
 
 - Edit webpack config, in `webpack.config.js`
 
-  > See also: https://webpack.js.org/configuration/dev-server
+  > See also: <https://webpack.js.org/configuration/dev-server>
 
   ```javascript
   devServer: {
@@ -86,5 +86,5 @@ The source file watcher will be started, when change source file, the webpack bu
 - Start dev server by shell command
 
   ```bash
-  $ npm run dev
+  npm run dev
   ```
