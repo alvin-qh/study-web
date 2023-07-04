@@ -1,18 +1,18 @@
-const path = require('path');
+const path = require("path");
 
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 
-const devMode = process.env.NODE_ENV !== 'production';
+const devMode = process.env.NODE_ENV !== "production";
 
 module.exports = {
-  mode: devMode ? 'development' : 'production',
-  devtool: 'cheap-source-map',
+  mode: devMode ? "development" : "production",
+  devtool: "cheap-source-map",
   entry: {
-    'index': './src/index.js'
+    "index": "./src/index.js"
   },
   output: {
-    filename: 'script/[name].js',
-    path: path.resolve(__dirname, 'dist/asset'),
+    filename: "script/[name].js",
+    path: path.resolve(__dirname, "dist/asset"),
     pathinfo: false
   },
   plugins: [
@@ -24,7 +24,7 @@ module.exports = {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
             cacheDirectory: true,
             cacheCompression: false
