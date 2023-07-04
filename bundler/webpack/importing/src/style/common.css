@@ -5,16 +5,16 @@
 }
 
 body {
-  font: 14px/1.5 Tahoma, Helvetica, Arial, '宋体', sans-serif;
+  font: 14px/1.5 Tahoma, Helvetica, Arial, "宋体", sans-serif;
 }
 
 .row::after {
-  content   : '';
-  display   : block;
+  content: "";
+  display: block;
   visibility: hidden;
-  height    : 0;
-  width     : 0;
-  clear     : both;
+  height: 0;
+  width: 0;
+  clear: both;
 }
 
 .row>div {
@@ -31,5 +31,5 @@ body {
 
 .icon-box {
   font-size: 18px;
-  margin   : 0 10px;
+  margin: 0 10px;
 }

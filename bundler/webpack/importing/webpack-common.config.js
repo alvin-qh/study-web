@@ -1,43 +1,49 @@
-const path = require('path');
+const path = require("path");
 
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-const devMode = process.env.NODE_ENV !== 'production';
+const devMode = process.env.NODE_ENV !== "production";
 
 module.exports = {
-  mode: devMode ? 'development' : 'production',
-  devtool: 'cheap-source-map',
+  mode: devMode ? "development" : "production",
+  devtool: "cheap-source-map",
   devServer: {
-    contentBase: path.resolve(__dirname, 'dist'),
+    static: {
+      directory: path.join(__dirname, "dist"),
+    },
+    devMiddleware: {
+      index: true,
+      mimeTypes: { phtml: "text/html" },
+      publicPath: "/",
+      serverSideRender: true,
+      writeToDisk: true,
+    },
     hot: true,
-    inline: true,
-    stats: 'minimal',
     compress: true,
-    writeToDisk: true
   },
   output: {
-    filename: 'script/[name].bundle-[contenthash:8].js',
-    chunkFilename: 'script/[name].chunk-[contenthash:8].js',
-    path: path.resolve(__dirname, 'dist/asset'),
+    filename: "script/[name].bundle-[contenthash:8].js",
+    chunkFilename: "script/[name].chunk-[contenthash:8].js",
+    path: path.resolve(__dirname, "dist/asset"),
     pathinfo: false
   },
   plugins: [
     new CleanWebpackPlugin({
       dry: false,
       cleanStaleWebpackAssets: false,
-      cleanOnceBeforeBuildPatterns: ['../**/*'],
+      cleanOnceBeforeBuildPatterns: ["../**/*"],
       dangerouslyAllowCleanPatternsOutsideProject: true
     }),
     new MiniCssExtractPlugin({
-      filename: 'style/[name].bundle-[contenthash:8].css'
+      filename: "style/[name].bundle-[contenthash:8].css"
     }),
     new HtmlWebpackPlugin({
-      title: 'Importing',
-      template: './src/template/index.html',
-      filename: '../[name].html',
-      chunks: 'all'
+      title: "Importing",
+      template: "./src/template/index.html",
+      filename: "../[name].html",
+      chunks: "all"
     })
   ],
   module: {
@@ -46,7 +52,7 @@ module.exports = {
         test: /\.m?js$/,
         exclude: /(node_modules|bower_components)/,
         use: {
-          loader: 'babel-loader',
+          loader: "babel-loader",
           options: {
             cacheDirectory: true,
             cacheCompression: false
@@ -59,11 +65,11 @@ module.exports = {
           {
             loader: MiniCssExtractPlugin.loader,
             options: {
-              publicPath: '../'
+              publicPath: "../"
             }
           },
           {
-            loader: 'css-loader'
+            loader: "css-loader"
           }
         ]
       },
@@ -71,10 +77,10 @@ module.exports = {
         test: /\.(svg|png|jpg|gif)$/,
         use: [
           {
-            loader: 'url-loader',
+            loader: "url-loader",
             options: {
               limit: 10240,
-              name: 'image/[name]-[contenthash:8].[ext]'
+              name: "image/[name]-[contenthash:8].[ext]"
             }
           }
         ]
@@ -83,10 +89,10 @@ module.exports = {
         test: /\.(eot|woff|woff2|ttf)$/,
         use: [
           {
-            loader: 'url-loader',
+            loader: "url-loader",
             options: {
               limit: 10240,
-              name: 'font/[name]-[contenthash:8].[ext]'
+              name: "font/[name]-[contenthash:8].[ext]"
             }
           }
         ]
