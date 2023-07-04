@@ -1,0 +1,14 @@
+{
+  "version": "0.2",
+  "language": "en",
+  "words": [
+    "codelyzer",
+    "devkit",
+    "fontawesome",
+    "fortawesome",
+    "jasminewd",
+    "popperjs"
+  ],
+  "flagWords": [],
+  "enabled": true
+}
