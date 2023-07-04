@@ -7,7 +7,7 @@
 }
 
 body {
-  font: 14px/1.5 Tahoma, Helvetica, Arial, '宋体', sans-serif;
+  font: 14px/1.5 Tahoma, Helvetica, Arial, "宋体", sans-serif;
 }
 
 .row {
@@ -15,11 +15,11 @@ body {
 }
 
 .row::after {
-  content   : '';
-  clear     : both;
-  display   : block;
-  width     : 0;
-  height    : 0;
+  content: "";
+  clear: both;
+  display: block;
+  width: 0;
+  height: 0;
   visibility: hidden;
 }
 
@@ -29,12 +29,12 @@ body {
 
 .text-box {
   padding: 10px 8px;
-  margin : 10px 20px;
+  margin: 10px 20px;
 }
 
 .icon-box {
   padding: 10px 8px;
-  margin : 10px 20px;
+  margin: 10px 20px;
 }
 
 .icon-box i.fas {
@@ -43,8 +43,8 @@ body {
 
 .image-box1 {
   padding: 10px 8px;
-  margin : 10px 20px;
-  width  : 600px;
+  margin: 10px 20px;
+  width: 600px;
 }
 
 .image-box1 img {
@@ -53,15 +53,15 @@ body {
 
 .image-box2 {
   padding: 10px 8px;
-  margin : 10px 20px;
+  margin: 10px 20px;
 
-  width           : 600px;
-  height          : 238px;
+  width: 600px;
+  height: 238px;
   background-image: url(../image/webpack.png);
-  background-size : cover;
+  background-size: cover;
 }
 
 .link-box {
   padding: 10px;
-  margin : 10px 20px;
+  margin: 10px 20px;
 }
