@@ -1,15 +1,15 @@
-const path = require('path');
-const { merge } = require('webpack-merge');
+const path = require("path");
+const { merge } = require("webpack-merge");
 
-const commonConfig = require('./webpack-common.config');
+const commonConfig = require("./webpack-common.config");
 
 module.exports = merge(commonConfig, {
   entry: {
-    'index': './test/test_index.js'
+    "index": "./src/index.spec.js"
   },
   output: {
-    filename: '[name].test.js',
-    path: path.resolve(__dirname, 'dist/test')
+    filename: "[name].spec.js",
+    path: path.resolve(__dirname, "dist")
   },
   optimization: {
     usedExports: true,
