@@ -19,7 +19,7 @@ function imagebox2() {
 }
 
 const $wrapper = document.body.getElementsByClassName("main")[0];
-$wrapper.appendChild(imagebox1(require("../../image/webpack.png").default));
+$wrapper.appendChild(imagebox1(require("../../image/webpack.png")));
 $wrapper.appendChild(imagebox2());
 
 const $row = $wrapper.appendChild(row());
