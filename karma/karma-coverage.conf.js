@@ -1,34 +1,37 @@
 // Karma configuration
 // Generated on Tue Jul 11 2017 15:33:17 GMT+0800 (CST)
 
-const webpackConfig = require('./webpack.test.config');
+const webpackConfig = require("./webpack.test.config");
 
-module.exports = function (config) {
+// 获取 ChromeHeadless 路径作为环境变量
+process.env.CHROME_BIN = require("puppeteer").executablePath();
+
+module.exports = config => {
   config.set({
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: '.',
+    basePath: ".",
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['mocha'],
+    frameworks: ["mocha"],
 
     plugins: [
-      'karma-webpack',
-      'karma-sourcemap-loader',
-      'karma-mocha',
-      'karma-chai',
-      'karma-sourcemap-loader',
-      'karma-sinon-chai',
-      'karma-phantomjs-launcher',
-      'karma-junit-reporter',
-      'karma-coverage'
+      "karma-webpack",
+      "karma-sourcemap-loader",
+      "karma-mocha",
+      "karma-chai",
+      "karma-sourcemap-loader",
+      "karma-sinon-chai",
+      "karma-chrome-launcher",
+      "karma-junit-reporter",
+      "karma-coverage"
     ],
 
     webpack: webpackConfig,
 
     // list of files / patterns to load in the browser
     files: [
-      'test/**/*.test.js'
+      "src/**/*.spec.js"
     ],
 
 
@@ -39,27 +42,27 @@ module.exports = function (config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'test/**/*.test.js': ['webpack', 'coverage']
+      "src/**/*.spec.js": ["webpack", "coverage"]
     },
 
 
     // test results reporter to use
-    // possible values: 'dots', 'progress'
+    // possible values: "dots", "progress"
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['junit', 'progress', 'coverage'],
+    reporters: ["junit", "progress", "coverage"],
 
     coverageReporter: {
-      dir: './coverage',
+      dir: "./coverage",
       reporters: [
-        { type: 'html', subdir: 'report-html' },
-        { type: 'lcov', subdir: '.' },
-        { type: 'text-summary' }
+        { type: "html", subdir: "report-html" },
+        { type: "lcov", subdir: "." },
+        { type: "text-summary" }
       ]
     },
 
     junitReporter: {
-      outputFile: './reports/test-results.xml',
-      suite: 'unit'
+      outputFile: "./reports/test-results.xml",
+      suite: "unit"
     },
 
     // web server port
@@ -77,12 +80,7 @@ module.exports = function (config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
-
-    // Have phantomjs exit if a ResourceError is encountered (useful if karma exits without killing phantom)
-    phantomjsLauncher: {
-      exitOnResourceError: true
-    },
+    browsers: ["ChromeHeadless"],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits

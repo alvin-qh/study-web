@@ -36,3 +36,12 @@
     "webpack-merge": "^5.9.0"
   }
 }
+
+
+
+
+
+"mini-css-extract-plugin": "^2.7.6",
+"mocha": "^10.2.0",
+"moment": "^2.29.4",
+
