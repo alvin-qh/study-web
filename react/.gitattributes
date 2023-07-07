@@ -1,7 +1,0 @@
-*         text=auto eof=lf
-*.jpg	  	binary
-*.woff    binary
-*.woff2		binary
-*.otf	    binary
-*.ico     binary
-*.icon    binary
