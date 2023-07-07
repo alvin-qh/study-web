@@ -3,6 +3,7 @@
   "language": "en",
   "words": [
     "antd",
+    "blueprintjs",
     "codelyzer",
     "Cofounder",
     "corejs",
@@ -19,9 +20,11 @@
     "nosources",
     "pathinfo",
     "popperjs",
+    "reduxjs",
     "splitthunk",
     "subdir",
     "textbox",
+    "todos",
     "treeshaking"
   ],
   "flagWords": [],
