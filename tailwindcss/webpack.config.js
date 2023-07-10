@@ -14,7 +14,7 @@ const entries = (() => {
   }
 
   const baseDir = path.join(__dirname, "src");
-  files = glob.sync(path.join(baseDir, "**/index.ts"));
+  const files = glob.sync(path.join(baseDir, "**/index.ts"));
 
   for (const file of files) {
     let key = path.dirname(path.relative(baseDir, file));
