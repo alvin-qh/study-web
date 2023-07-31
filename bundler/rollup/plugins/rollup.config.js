@@ -1,7 +1,7 @@
 const path = require("path");
 const html = require("@rollup/plugin-html");
 // const image = require("@rollup/plugin-image");
-const babel = require("@rollup/plugin-babel");
+// const babel = require("@rollup/plugin-babel");
 const url = require("@rollup/plugin-url");
 const typescript = require("@rollup/plugin-typescript");
 
