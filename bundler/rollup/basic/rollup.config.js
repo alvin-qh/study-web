@@ -1,12 +1,12 @@
 const path = require("path");
-const resolve = require("@rollup/plugin-node-resolve")
+const resolve = require("@rollup/plugin-node-resolve");
 const babel = require("@rollup/plugin-babel");
 
 module.exports = {
   input: path.resolve(__dirname, "src/script/index.js"),
   output: {
     file: path.resolve(__dirname, "dist/asset/index.min.js"),
-    format: "es",   // format: "umd"
+    format: "cjs",   // format: "umd"
     sourcemap: true
   },
   plugins: [

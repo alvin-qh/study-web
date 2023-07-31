@@ -1,5 +1,5 @@
-import { join } from 'lodash-es';
-import { textbox } from './lib/component.js';
+import { join } from "lodash-es";
+import { textbox } from "./lib/component.js";
 
-const $wrapper = document.querySelector('.main');
-$wrapper.appendChild(textbox(join(['Hello', 'World'], ' ')));
+const $wrapper = document.querySelector(".main");
+$wrapper.appendChild(textbox(join(["Hello", "World"], " ")));
