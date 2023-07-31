@@ -1,5 +1,5 @@
 const path = require("path");
-const resolve = require("@rollup/plugin-node-resolve");
+const node = require("@rollup/plugin-node-resolve");
 const babel = require("@rollup/plugin-babel");
 
 module.exports = {
@@ -10,9 +10,9 @@ module.exports = {
     sourcemap: true
   },
   plugins: [
-    resolve(),
+    node(),
     babel({
-      babelHelpers: "runtime",
+      babelHelpers: "bundled",
       exclude: "node_modules/**"
     })
   ]
