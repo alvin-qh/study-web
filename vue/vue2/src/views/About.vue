@@ -1,9 +1,7 @@
 <template>
   <main>
     <Breadcrumb class="breadcrumb">
-      <BreadcrumbItem to="/">
-        <Icon type="ios-home" />Home
-      </BreadcrumbItem>
+      <BreadcrumbItem to="/"> <Icon type="ios-home" />Home </BreadcrumbItem>
       <BreadcrumbItem>About</BreadcrumbItem>
     </Breadcrumb>
     <Card :bordered="false" dis-hover>
@@ -15,19 +13,18 @@
 </template>
 
 <script lang="ts">
-import { Vue, Component } from "vue-property-decorator"
-
-import { Breadcrumb, BreadcrumbItem, Icon, Card } from "view-design"
+import { Breadcrumb, BreadcrumbItem, Card, Icon } from "view-design";
+import { Component, Vue } from "vue-property-decorator";
 
 @Component({
   components: {
     Breadcrumb,
     BreadcrumbItem,
     Icon,
-    Card
-  }
+    Card,
+  },
 })
-export default class About extends Vue { }
+export default class About extends Vue {}
 </script>
 
 <style lang="less" scoped>

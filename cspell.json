@@ -27,7 +27,8 @@
     "subdir",
     "textbox",
     "todos",
-    "treeshaking"
+    "treeshaking",
+    "vuex"
   ],
   "flagWords": [],
   "enabled": true
