@@ -189,15 +189,6 @@ module.exports = {
   },
 
   css: {
-    // Type: boolean
-    // Default: true
-    //
-    // By default, only files that ends in *.module.[ext] are treated as CSS modules.
-    // Setting this to false will allow you to drop .module in the filenames and treat
-    // all *.(css|scss|sass|less|styl(us)?) files as CSS modules.
-    // See also: https://cli.vuejs.org/guide/css.html#css-modules
-    requireModuleExtension: true,
-
     // Type: boolean | Object
     // Default: true in production, false in development
     //

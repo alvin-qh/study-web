@@ -1,4 +1,3 @@
-const path = require("path");
 const { override, fixBabelImports, /* addWebpackAlias, */ addPostcssPlugins, overrideDevServer, /* addBabelPlugin */ } = require("customize-cra");
 const { alias, configPaths } = require("react-app-rewire-alias");
 const CompressionWebpackPlugin = require("compression-webpack-plugin");
