@@ -1,0 +1,17 @@
+ul.pages {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.pages li {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+ul.pages li:not(:last-child)::after {
+  content: "|";
+  display: inline-flex;
+  margin: 0 10px;
+}
