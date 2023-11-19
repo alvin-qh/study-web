@@ -1,0 +1,5 @@
+@charset "UTF-8";
+
+.tableCell>div:first-child {
+  @apply h-full flex items-center;
+}

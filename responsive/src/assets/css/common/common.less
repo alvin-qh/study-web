@@ -1,0 +1,154 @@
+@charset "UTF-8";
+@import "~animate.css";
+
+* {
+  box-sizing        : border-box;
+  -moz-box-sizing   : border-box;
+  -webkit-box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin     : 0;
+  padding    : 0;
+  height     : 100%;
+}
+
+a {
+  text-decoration: none;
+  color          : #708090;
+}
+
+nav {
+  &.nav {
+    position: relative;
+    padding : 10px 0;
+
+    &>.nav-menu {
+      padding   : 0;
+      margin    : 0;
+      position  : relative;
+      list-style: none;
+
+      &>.nav-menu-item {
+        float        : left;
+        width        : 25%;
+        padding-left : 10px;
+        padding-right: 10px;
+
+        &>a {
+          display       : inline-block;
+          width         : 100%;
+          border        : 1px solid #eee;
+          padding-top   : 10px;
+          padding-bottom: 10px;
+          text-align    : center;
+
+          &:hover {
+            background: #eee;
+          }
+        }
+      }
+
+      &:after {
+        content: '';
+        display: block;
+        clear  : both;
+      }
+    }
+  }
+
+  &.nav-menu-bar {
+    font-size: 22px;
+  }
+}
+
+.container {
+  width        : 100%;
+  padding-right: 15px;
+  padding-left : 15px;
+  margin-right : auto;
+  margin-left  : auto;
+}
+
+.row {
+  padding-left : -15px;
+  padding-right: -15px;
+}
+
+@media screen and (min-width: 1200px) {
+  body {
+    font-size: 18px;
+
+    .container {
+      max-width: 1140px;
+    }
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  body {
+    font-size: 16px;
+
+    .container {
+      max-width: 960px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  body {
+    font-size: 14px;
+
+    .container {
+      max-width: 720px;
+    }
+
+    .nav.nav-menu-bar>.nav-menu>.nav-menu-item {
+      width: 50%;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 12px;
+
+    .container {
+      max-width: 540px;
+    }
+
+    .nav.nav-menu-bar {
+      &>.nav-menu-btn {
+        display        : block;
+        background     : url("../../images/menu-icon.png") no-repeat;
+        background-size: 20px auto;
+        width          : 20px;
+        height         : 20px;
+        margin-top     : 10px;
+        margin-left    : 20px;
+        cursor         : pointer;
+      }
+
+      &>.nav-menu {
+        border    : 1px solid #eee;
+        width     : 120px;
+        box-shadow: #ddd 2px 2px;
+        position  : absolute;
+        background: #fff;
+        font-size : 14px;
+        display   : none;
+
+        &>.nav-menu-item {
+          width  : 100%;
+          float  : none;
+          padding: 0;
+
+          &>a {
+            border: none;
+          }
+        }
+      }
+    }
+  }
+}

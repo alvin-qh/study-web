@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font: 14px/1.5 Tahoma, Helvetica, Arial, '宋体', sans-serif;
+}
+
+.row::after {
+  content: '';
+  display: block;
+  visibility: hidden;
+  height: 0;
+  width: 0;
+  clear: both;
+}
+
+.row>div {
+  float: left;
+}
+
+.button-box {
+  margin: 10px 20px;
+}
+
+.text-box {
+  padding: 5px 10px;
+}
+
+.icon-box {
+  font-size: 18px;
+  margin: 0 10px;
+}

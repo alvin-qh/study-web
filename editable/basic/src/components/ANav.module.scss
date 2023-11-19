@@ -1,0 +1,65 @@
+nav.menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  padding: 10px 5px;
+
+  .title {
+    font-weight: bold;
+    font-size: 1.125rem;
+    align-self: center;
+    margin: 20px auto;
+  }
+
+  ul.menu-block {
+    display: flex;
+    flex-direction: column;
+    margin: 0 15px;
+    padding: 0;
+
+    li {
+      display: flex;
+      flex-direction: column;
+      padding: 0;
+      list-style: none;
+      position: relative;
+
+      a, span {
+        width: 100%;
+        padding: 10px 20px;
+        color: #fff;
+        font-size: 12px;
+
+        &:hover {
+          background-color: #323030;
+        }
+      }
+
+      .drop-icon {
+        position: absolute;
+        top: 8px;
+        right: 0px;
+      }
+    }
+  }
+
+  ul.menu-visible {
+    animation: disappear .2s linear forwards;
+  }
+}
+
+@keyframes disappear {
+  0% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: .5;
+  }
+
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}

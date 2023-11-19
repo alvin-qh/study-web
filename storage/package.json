@@ -1,0 +1,59 @@
+{
+  "name": "storage-demo",
+  "version": "1.0.0",
+  "description": "Web strorage demo",
+  "main": "index.js",
+  "scripts": {
+    "package": "webpack --config webpack.config.js",
+    "package:prod": "env NODE_ENV=production npm run package",
+    "dev": "webpack-dev-server --config webpack.config.js",
+    "dev:pwa": "webpack-dev-server --config webpack-pwa.config.js"
+  },
+  "keywords": [
+    "local storage",
+    "session storage",
+    "web sql",
+    "application cache"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/cli": "^7.22.10",
+    "@babel/core": "^7.22.10",
+    "@babel/plugin-transform-runtime": "^7.22.10",
+    "@babel/preset-env": "^7.22.10",
+    "@babel/register": "^7.22.5",
+    "@babel/runtime": "^7.22.10",
+    "@fortawesome/fontawesome-free": "^6.4.2",
+    "@popperjs/core": "^2.11.8",
+    "animate.css": "^4.1.1",
+    "babel-loader": "^9.1.3",
+    "bootstrap": "^5.3.1",
+    "copy-webpack-plugin": "^11.0.0",
+    "css-loader": "^6.8.1",
+    "glob": "^10.3.3",
+    "highlight.js": "^11.8.0",
+    "html-webpack-plugin": "^5.5.3",
+    "jquery": "^3.7.0",
+    "jquery-serializejson": "^3.2.1",
+    "less": "^4.2.0",
+    "less-loader": "^11.1.3",
+    "mini-css-extract-plugin": "^2.7.6",
+    "offline-plugin": "^5.0.7",
+    "promise": "^8.3.0",
+    "querystring": "^0.2.1",
+    "style-loader": "^3.3.3",
+    "url-loader": "^4.1.1",
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "babel": {
+    "presets": [
+      "@babel/env"
+    ],
+    "plugins": [
+      "@babel/transform-runtime"
+    ]
+  }
+}
