@@ -27,7 +27,7 @@ function makeEntries() {
   glob.sync(path.join(src, '/**/main.js'))
     .map(file => `./${file}`)
     .forEach(file => {
-      const name = (name => name.substr(name.lastIndexOf('/') + 1))(normalizePath(path.dirname(file)))
+      const name = (name => name.substr(name.lastIndexOf('/') + 1))(normalizePath(path.dirname(file)));
       entries[name] = file;
     });
   return entries;
@@ -50,7 +50,7 @@ function makeTemplates() {
         chunks: chunks,
         cache: true,
         chunksSortMode(a, b) {
-          return chunks.indexOf(a) - chunks.indexOf(b)
+          return chunks.indexOf(a) - chunks.indexOf(b);
         },
         minify: {
           collapseWhitespace: CONFIG.isProd,
@@ -88,7 +88,7 @@ module.exports = {
   output: {
     path: path.resolve(CONFIG.paths.dst()),
     filename: CONFIG.isProd ? 'static/js/[name]-[chunkhash:8].js' : 'static/js/[name].js',
-    publicPath: "/",
+    publicPath: '/',
     chunkFilename: CONFIG.isProd ? 'static/js/[name]-[chunkhash:8].js' : 'static/js/[name].js',
   },
   resolve: {
@@ -113,7 +113,7 @@ module.exports = {
           {
             loader: 'babel-loader',
             options: {
-              presets: ["@babel/env"]
+              presets: ['@babel/env']
             }
           }
         ]
@@ -138,20 +138,20 @@ module.exports = {
         ]
       }, {
         test: /\.(eot|woff|woff2|ttf)$/,
-        type: "asset/resource",
+        type: 'asset/resource',
         generator: {
-          filename: "font/[name]-[contenthash:8][ext]"
+          filename: 'font/[name]-[contenthash:8][ext]'
         }
       }, {
         test: /\.(svg|png|jpg|gif)$/,
-        type: "asset",
+        type: 'asset',
         parser: {
           dataUrlCondition: {
             maxSize: 128 * 1024
           }
         },
         generator: {
-          filename: "image/[name]-[contenthash:8][ext]"
+          filename: 'image/[name]-[contenthash:8][ext]'
         }
       }
     ]

@@ -1,4 +1,4 @@
-import "../../css/home/index.less";
+import '../../css/home/index.less';
 
 import $ from 'jquery';
 

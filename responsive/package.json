@@ -2,34 +2,36 @@
   "name": "responsive-demo",
   "version": "1.0.0",
   "description": "Demo of responsive",
-  "author": "Alvin",
-  "license": "ISC",
-  "keywords": [
-    "responsive",
-    "css"
-  ],
+  "private": true,
   "scripts": {
+    "lint": "eslint src --ext js --fix",
     "package": "webpack --config webpack.config.js",
     "package:prod": "env NODE_ENV=production npm run package",
     "dev": "webpack-dev-server --config webpack.config.js"
   },
-  "devDependencies": {
-    "@babel/cli": "^7.22.10",
-    "@babel/core": "^7.22.10",
-    "@babel/plugin-transform-runtime": "^7.22.10",
-    "@babel/preset-env": "^7.22.10",
-    "@babel/register": "^7.22.5",
-    "@babel/runtime": "^7.22.10",
+  "dependencies": {
     "animate.css": "^4.1.1",
+    "jquery": "^3.7.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.23.4",
+    "@babel/core": "^7.23.3",
+    "@babel/eslint-parser": "^7.23.3",
+    "@babel/plugin-transform-runtime": "^7.23.4",
+    "@babel/preset-env": "^7.23.3",
+    "@babel/register": "^7.22.15",
+    "@babel/runtime": "^7.23.4",
     "babel-loader": "^9.1.3",
     "css-loader": "^6.8.1",
-    "glob": "^10.3.3",
+    "eslint": "^8.53.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "glob": "^10.3.10",
     "html-webpack-plugin": "^5.5.3",
-    "jquery": "^3.7.0",
     "less": "^4.2.0",
     "less-loader": "^11.1.3",
     "mini-css-extract-plugin": "^2.7.6",
-    "webpack": "^5.88.2",
+    "webpack": "^5.89.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1"
   },
