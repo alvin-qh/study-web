@@ -1,11 +1,11 @@
 const path = require('path');
 
-const commonConfig = require('./webpack-common.config.js');
 const { merge } = require('webpack-merge');
 
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const { WebpackManifestPlugin } = require('webpack-manifest-plugin');
+const commonConfig = require('./webpack-common.config');
 
 module.exports = merge(commonConfig, {
   entry: {
@@ -157,7 +157,7 @@ module.exports = merge(commonConfig, {
        */
       map(file) {
         return file;
-      },
+      }
 
       /**
        * Type: Function

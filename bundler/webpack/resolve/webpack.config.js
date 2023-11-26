@@ -1,7 +1,7 @@
 const path = require('path');
 const { merge } = require('webpack-merge');
 
-const commonConfig = require('./webpack-common.config.js');
+const commonConfig = require('./webpack-common.config');
 
 module.exports = merge(commonConfig, {
   // see also: https://webpack.js.org/configuration/resolve
@@ -14,7 +14,8 @@ module.exports = merge(commonConfig, {
 
     // create aliases to import or require certain modules more easily
     alias: {
-      common$: path.resolve(__dirname, 'src/script/lib/common.js')
+      common$: path.resolve(__dirname, 'src/script/lib/common.js'),
+      '@': path.resolve(__dirname, 'src/')
       // ["@fortawesome/fontawesome-free"]: false   // disable this module
     },
 

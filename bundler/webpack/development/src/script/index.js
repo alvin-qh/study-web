@@ -49,4 +49,5 @@ $row.appendChild(icon('fa-sun'));
 $row.appendChild(icon('fa-cloud'));
 
 $wrapper.appendChild(imagebox1(require('../image/webpack.png')));
+
 $wrapper.appendChild(imagebox2());

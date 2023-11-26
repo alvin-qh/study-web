@@ -61,6 +61,7 @@ function show(title, data) {
 const $wrapper = document.body.getElementsByClassName('main')[0];
 $wrapper.appendChild(textbox('Hello World!'));
 $wrapper.appendChild(imagebox1(require('../image/webpack.png').default));
+
 $wrapper.appendChild(imagebox2());
 
 let $row = document.createElement('div');

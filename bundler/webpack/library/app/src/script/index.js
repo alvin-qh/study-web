@@ -1,6 +1,6 @@
 import { join as libJoin } from 'study-webpack-library-lib';
 
-import { row } from './common.js';
+import { row } from './common';
 
 function icon(name) {
   const $div = document.createElement('div');

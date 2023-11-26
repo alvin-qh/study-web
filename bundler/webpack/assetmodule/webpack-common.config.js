@@ -12,17 +12,17 @@ module.exports = {
   devtool: 'cheap-source-map',
   devServer: {
     static: {
-      directory: path.join(__dirname, 'dist'),
+      directory: path.join(__dirname, 'dist')
     },
     devMiddleware: {
       index: true,
       mimeTypes: { phtml: 'text/html' },
       publicPath: '/',
       serverSideRender: true,
-      writeToDisk: true,
+      writeToDisk: true
     },
     hot: true,
-    compress: true,
+    compress: true
   },
   plugins: [
     new CleanWebpackPlugin({

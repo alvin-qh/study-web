@@ -1,11 +1,11 @@
-const TerserPlugin = require("terser-webpack-plugin");
-const { merge } = require("webpack-merge");
+const TerserPlugin = require('terser-webpack-plugin');
+const { merge } = require('webpack-merge');
 
-const commonConfig = require("./webpack-common.config.js");
+const commonConfig = require('./webpack-common.config');
 
 module.exports = merge(commonConfig, {
   optimization: {
-    runtimeChunk: "single",
+    runtimeChunk: 'single',
 
     usedExports: true,
 
@@ -18,7 +18,7 @@ module.exports = merge(commonConfig, {
         test: /\.m?js$/,    // for all "*.js" files
 
         // config "uglify-js"
-        minify: (file /*, sourceMap */) => {
+        minify: (file /* , sourceMap */) => {
           const opts = {
             compress: true,   // do code compress
             mangle: false,    // do not shuffle the code
@@ -26,7 +26,8 @@ module.exports = merge(commonConfig, {
               beautify: true  // format the output code
             }
           };
-          return require("uglify-js").minify(file, opts);
+          // eslint-disable-next-line global-require
+          return require('uglify-js').minify(file, opts);
         }
       })
     ]

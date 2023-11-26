@@ -1,16 +1,16 @@
 const { merge } = require('webpack-merge');
 
-const commonConfig = require('./webpack-common.config.js');
+const commonConfig = require('./webpack-common.config');
 
 module.exports = () => {
-  let entries, config;
+  let entries;
+  let config;
 
   if (process.env.package === 'entrypoint') {
-
     entries = {
       index: {
-        import: './src/script/index.js',    // entrypoint js file
-        dependOn: 'common'    // name of depend on chunk by this chunk
+        import: './src/script/index.js', // entrypoint js file
+        dependOn: 'common' // name of depend on chunk by this chunk
       },
       'm1/index': {
         import: './src/script/m1/index.js',
@@ -20,7 +20,7 @@ module.exports = () => {
         import: './src/script/m2/index.js',
         dependOn: 'common'
       },
-      common: './src/script/common/common.js'   // this chunk may be depended on by other chunks
+      common: './src/script/common/common.js' // this chunk may be depended on by other chunks
     };
 
     config = {
@@ -47,7 +47,7 @@ module.exports = () => {
         splitChunks: {
 
           cacheGroups: {
-            default: false,   // no "default" group
+            default: false, // no "default" group
 
             // "common" group, group same part of all chunks into "common.xxx.js" file
             common: {

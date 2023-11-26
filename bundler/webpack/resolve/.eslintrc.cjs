@@ -2,12 +2,20 @@ module.exports = {
   root: true,
   env: {
     es2021: true,
-    node: true,
     browser: true
   },
   extends: [
-    'eslint:recommended',
+    'airbnb-base',
+    'prettier',
+    'eslint:recommended'
   ],
+  settings: {
+    'import/resolver': {
+      alias: [
+        ['@', 'src']
+      ]
+    }
+  },
   overrides: [
     {
       env: {
@@ -28,11 +36,13 @@ module.exports = {
   parserOptions: {
     parser: '@babel/eslint-parser',
     ecmaVersion: 'latest',
-    sourceType: 'module',
+    sourceType: 'module'
   },
   plugins: [
-    'simple-import-sort',
-    'prettier'
+    'import',
+    'prettier',
+    'promise',
+    'simple-import-sort'
   ],
   rules: {
     indent: ['warn', 2],
@@ -41,11 +51,16 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     quotes: ['warn', 'single'],
     semi: ['error', 'always'],
+    'import/no-extraneous-dependencies': 'off',
     'simple-import-sort/exports': 'error',
     'simple-import-sort/imports': 'error',
     'sort-imports': 'off',
     'quote-props': ['error', 'as-needed'],
     'no-multiple-empty-lines': ['warn', { max: 2, maxEOF: 0 }],
-    'no-trailing-spaces': 'warn'
+    'no-trailing-spaces': 'warn',
+    'no-plusplus': 'off',
+    'comma-dangle': ['error', 'never'],
+    'import/prefer-default-export': 'off',
+    'import/no-unresolved': 'off'
   }
 };

@@ -1,7 +1,7 @@
 const path = require('path');
 const { merge } = require('webpack-merge');
 
-const commonConfig = require('./webpack-common.config.js');
+const commonConfig = require('./webpack-common.config');
 
 const devMode = process.env.NODE_ENV !== 'production';
 
@@ -18,7 +18,7 @@ module.exports = merge(commonConfig, {
   devServer: {
     static: {
       // set wwwroot folder
-      directory: path.join(__dirname, 'dist'),
+      directory: path.join(__dirname, 'dist')
     },
     devMiddleware: {
       index: true,
@@ -27,12 +27,12 @@ module.exports = merge(commonConfig, {
       serverSideRender: true,
       stats: 'minimal', // "none" | "errors-only" | "minimal" | "normal" | "verbose"
       // "none" | "errors-only" | "minimal" | "normal" | "verbose"
-      writeToDisk: true, // write bundled files into output folder on disk
+      writeToDisk: true // write bundled files into output folder on disk
     },
     hot: true, // "true" to enable "HMR" (Hot Module Replacement)
-    compress: true, // use "gzip" to compress response
+    compress: true // use "gzip" to compress response
   },
   entry: {
-    index: './src/script/index.js',
+    index: './src/script/index.js'
   }
 });

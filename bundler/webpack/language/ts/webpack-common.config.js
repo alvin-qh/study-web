@@ -6,7 +6,7 @@ import url from 'url';
 
 const devMode = process.env.NODE_ENV !== 'production';
 
-// eslint-disable-next-line @typescript-eslint/naming-convention
+// eslint-disable-next-line no-underscore-dangle, @typescript-eslint/naming-convention
 const __dirname = path.dirname(url.fileURLToPath(import.meta.url));
 
 export default {

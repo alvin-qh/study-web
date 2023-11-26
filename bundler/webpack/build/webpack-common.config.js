@@ -7,17 +7,17 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 module.exports = {
   devServer: {
     static: {
-      directory: path.join(__dirname, 'dist'),
+      directory: path.join(__dirname, 'dist')
     },
     devMiddleware: {
       index: true,
       mimeTypes: { phtml: 'text/html' },
       publicPath: '/',
       serverSideRender: true,
-      writeToDisk: true,
+      writeToDisk: true
     },
     hot: true,
-    compress: true,
+    compress: true
   },
   output: {
     filename: 'script/[name].bundle-[contenthash:8].js',

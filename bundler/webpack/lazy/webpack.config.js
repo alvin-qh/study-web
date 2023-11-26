@@ -1,5 +1,5 @@
-const commonConfig = require('./webpack-common.config.js');
 const { merge } = require('webpack-merge');
+const commonConfig = require('./webpack-common.config');
 
 const devMode = process.env.NODE_ENV !== 'production';
 

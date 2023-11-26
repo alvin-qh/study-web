@@ -1,6 +1,6 @@
 import '@fortawesome/fontawesome-free/css/all.css';
 
-import { breadcrumb, container, icon, text } from './common.js';
+import { breadcrumb, container, icon, text } from './common';
 
 export default function init() {
   const $wrapper = document.createElement('div');

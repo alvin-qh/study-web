@@ -4,7 +4,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
 
 // const threadLoader = require("thread-loader");
-const commonConfig = require('./webpack-common.config.js');
+const commonConfig = require('./webpack-common.config');
 
 const devMode = process.env.NODE_ENV !== 'production';
 

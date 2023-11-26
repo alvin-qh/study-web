@@ -1,10 +1,12 @@
 module.exports = {
+  root: true,
   env: {
-    browser: true,
-    node: true,
-    es2021: true
+    es2021: true,
+    browser: true
   },
   extends: [
+    'airbnb-base',
+    'prettier',
     'standard-with-typescript',
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended'
@@ -29,8 +31,7 @@ module.exports = {
   parserOptions: {
     parser: '@typescript-eslint/parser',
     ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['tsconfig.json']
+    sourceType: 'module'
   },
   plugins: [
     'simple-import-sort',
@@ -52,11 +53,16 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     quotes: ['warn', 'single'],
     semi: ['error', 'always'],
+    'import/no-extraneous-dependencies': 'off',
     'simple-import-sort/exports': 'error',
     'simple-import-sort/imports': 'error',
     'sort-imports': 'off',
     'quote-props': ['error', 'as-needed'],
     'no-multiple-empty-lines': ['warn', { max: 2, maxEOF: 0 }],
-    'no-trailing-spaces': 'warn'
+    'no-trailing-spaces': 'warn',
+    'no-plusplus': 'off',
+    'import/prefer-default-export': 'off',
+    'import/no-unresolved': 'off',
+    'import/extensions': ['error', 'never', { js: 'always' }]
   }
 };

@@ -1,7 +1,7 @@
 import {
   join as _join,
   split as _split,
-  trim as _trim,
+  trim as _trim
 } from 'lodash-es';
 
 /**

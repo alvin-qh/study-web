@@ -1,11 +1,11 @@
 import '../style/index.css';
 
-import { breadcrumb, container } from './common.js';
-import { route } from './router.js';
+import { breadcrumb, container } from './common';
+import { route } from './router';
 
 // Run once, define the route table (mapping the pathname with executable script)
 // render the navigation menu
-(function () {
+(() => {
   route(
     document.querySelector('div.main div.router'),
     document.querySelector('div.main header nav.navigation'),
@@ -13,22 +13,23 @@ import { route } from './router.js';
       index: {
         title: 'Home',
         href: '/',
-        module: () => import(/* webpackPrefetch: true */ './index.js')
+        // eslint-disable-next-line import/no-self-import
+        module: () => import(/* webpackPrefetch: true */ './index')
       },
       page1: {
         title: 'Page1',
         href: '/page-1',
-        module: () => import(/* webpackChunkName: "page1", webpackPrefetch: true */ './page1.js')
+        module: () => import(/* webpackChunkName: "page1", webpackPrefetch: true */ './page1')
       },
       page2: {
         title: 'Page2',
         href: '/page-2',
-        module: () => import(/* webpackChunkName: "page2", webpackPrefetch: true */ './page2.js')
+        module: () => import(/* webpackChunkName: "page2", webpackPrefetch: true */ './page2')
       },
       404: {
         title: '404',
         href: '/404',
-        module: () => import(/* webpackChunkName: "404", webpackPrefetch: true */ './404.js'),
+        module: () => import(/* webpackChunkName: "404", webpackPrefetch: true */ './404'),
         menu: 'hidden'    // do not display on menu
       }
     }

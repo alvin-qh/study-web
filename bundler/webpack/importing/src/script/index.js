@@ -1,5 +1,5 @@
-import { button, link, row } from './common.js';
-import { icon, sayHello } from './lib/component.js';
+import { button, link, row } from './common';
+import { icon, sayHello } from './lib/component';
 
 const $wrapper = document.querySelector('.main');
 

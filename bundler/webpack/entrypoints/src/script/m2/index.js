@@ -1,4 +1,4 @@
-import { link, row } from '../common/common.js';
+import { link, row } from '../common/common';
 
 function imagebox1(image) {
   const $image = document.createElement('img');
@@ -20,6 +20,7 @@ function imagebox2() {
 
 const $wrapper = document.body.getElementsByClassName('main')[0];
 $wrapper.appendChild(imagebox1(require('../../image/webpack.png')));
+
 $wrapper.appendChild(imagebox2());
 
 const $row = $wrapper.appendChild(row());

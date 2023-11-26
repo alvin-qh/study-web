@@ -1,6 +1,6 @@
 import { forEach as _forEach, join as _join } from 'lodash-es';
 
-import { jumpTo } from './router.js';
+import { jumpTo } from './router';
 
 export function breadcrumb($root, paths) {
   const $nav = document.createElement('nav');
@@ -10,6 +10,7 @@ export function breadcrumb($root, paths) {
     if (n !== paths.length - 1) {
       const $a = document.createElement('a');
       $a.innerText = p.text;
+      // eslint-disable-next-line no-script-url
       $a.href = 'javascript:;';
       $a.addEventListener('click', () => jumpTo(p.name), false);
       $nav.appendChild($a);

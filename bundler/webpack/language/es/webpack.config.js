@@ -1,7 +1,7 @@
 import ESLintPlugin from 'eslint-webpack-plugin';
 import { merge } from 'webpack-merge';
 
-import commonConfig from './webpack-common.config.js';
+import commonConfig from './webpack-common.config';
 
 export default merge(commonConfig, {
   plugins: [

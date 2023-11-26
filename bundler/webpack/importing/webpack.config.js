@@ -1,7 +1,7 @@
-const commonConfig = require('./webpack-common.config.js');
 const { merge } = require('webpack-merge');
 
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const commonConfig = require('./webpack-common.config');
 
 module.exports = merge(commonConfig, {
   entry: {

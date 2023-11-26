@@ -2,7 +2,7 @@ import '../style/index.css';
 
 import { join } from 'lodash-es';
 
-import { printMe } from './print.js';
+import { printMe } from './print';
 
 function component() {
   const $div = document.createElement('div');
@@ -57,6 +57,7 @@ $wrapper.appendChild(component());
 
 $wrapper.appendChild(textbox('Hello World!'));
 $wrapper.appendChild(imagebox1(require('../image/webpack.png')));
+
 $wrapper.appendChild(imagebox2());
 
 const $row = document.createElement('div');

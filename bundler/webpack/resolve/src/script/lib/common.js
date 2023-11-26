@@ -1,4 +1,4 @@
-import '../../style/index';
+import '@/style/index.css';
 
 export function textbox(text) {
   const $span = document.createElement('span');

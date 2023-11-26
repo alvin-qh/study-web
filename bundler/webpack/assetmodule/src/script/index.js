@@ -43,6 +43,7 @@ function icon(name) {
 const $wrapper = document.body.getElementsByClassName('main')[0];
 $wrapper.appendChild(textbox(txt));
 $wrapper.appendChild(imagebox1(require('../image/webpack.png')));
+
 $wrapper.appendChild(imagebox2());
 
 const $row = document.createElement('div');

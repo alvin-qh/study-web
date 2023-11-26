@@ -1,3 +1,5 @@
+/* eslint-disable no-underscore-dangle */
+
 import { forEach as _forEach, keys as _keys } from 'lodash-es';
 
 /**
@@ -28,7 +30,7 @@ let _routes = {};
  */
 function _jumpTo(r) {
   // push give href into top of the history stack
-  history.pushState(r.context || {}, r.title || {}, r.href);
+  window.history.pushState(r.context || {}, r.title || {}, r.href);
 
   // run "module" function, import the module
   const m = r.module();
@@ -101,6 +103,7 @@ export function route($root, $nav, routes) {
       $li.appendChild($a);
 
       $a.innerText = it.title;
+      // eslint-disable-next-line no-script-url
       $a.href = 'javascript:;';
 
       // add "click" event handler, to jump to the target view

@@ -1,6 +1,6 @@
 import { join } from 'lodash-es';
 
-import { link, row } from './common/common.js';
+import { link, row } from './common/common';
 
 function textbox(text) {
   const $div = document.createElement('div');

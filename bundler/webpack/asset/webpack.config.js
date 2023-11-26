@@ -1,11 +1,10 @@
 const path = require('path');
 const { merge } = require('webpack-merge');
 
-const commonConfig = require('./webpack-common.config.js');
-
 const toml = require('toml');
 const yaml = require('yamljs');
 const json5 = require('json5');
+const commonConfig = require('./webpack-common.config');
 
 module.exports = merge(commonConfig, {
   entry: {
@@ -85,7 +84,7 @@ module.exports = merge(commonConfig, {
         include: path.resolve(__dirname, 'src'),  // constraint the scope of the parser
         type: 'json',
         parser: {
-          parse: toml.parse,
+          parse: toml.parse
         }
       },
       {
@@ -95,7 +94,7 @@ module.exports = merge(commonConfig, {
         include: path.resolve(__dirname, 'src'),  // constraint the scope of the parser
         type: 'json',
         parser: {
-          parse: yaml.parse,
+          parse: yaml.parse
         }
       },
       {
@@ -105,7 +104,7 @@ module.exports = merge(commonConfig, {
         include: path.resolve(__dirname, 'src'),  // constraint the scope of the parser
         type: 'json',
         parser: {
-          parse: json5.parse,
+          parse: json5.parse
         }
       }
     ]
