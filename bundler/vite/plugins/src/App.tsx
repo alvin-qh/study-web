@@ -1,7 +1,7 @@
 import { Router, useRoutes } from '@solidjs/router';
 import { type JSX } from 'solid-js';
 
-import Nav from '@/components/Nav';
+import Nav from '@/components/Nav.tsx';
 import routes from '~solid-pages';
 
 const App = (): JSX.Element => {

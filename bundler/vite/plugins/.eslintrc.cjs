@@ -5,6 +5,7 @@ module.exports = {
     es2021: true
   },
   extends: [
+    'airbnb-base',
     'standard-with-typescript',
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
@@ -62,6 +63,7 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     quotes: ['warn', 'single'],
     semi: ['error', 'always'],
+    'import/no-unresolved': 'off',
     'simple-import-sort/exports': 'error',
     'simple-import-sort/imports': 'error',
     'sort-imports': 'off',
