@@ -2,54 +2,48 @@ module.exports = {
   env: {
     es2021: true,
     node: true,
-    browser: true,
+    browser: true
   },
   extends: [
     'airbnb',
     'prettier',
+    'standard-with-typescript',
     'eslint:recommended',
-    // 'plugin:prettier/recommended',
-    'plugin:vue/vue3-recommended',
-    'plugin:react/recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:import/recommended',
-    'plugin:import/errors',
     'plugin:import/warnings',
+    'plugin:import/errors'
   ],
   overrides: [
     {
       env: {
-        node: true,
+        node: true
       },
       files: ['.eslintrc.{js,cjs}'],
       parserOptions: {
-        sourceType: 'script',
+        sourceType: 'script'
       },
       rules: {
-        'simple-import-sort/imports': 'off',
-      },
-    },
+        'simple-import-sort/imports': 'off'
+      }
+    }
   ],
-  parser: 'vue-eslint-parser',
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     parser: '@typescript-eslint/parser',
     ecmaFeatures: {
-      jsx: true,
       experimentalObjectRestSpread: true,
-      experimentalDecorators: true,
+      experimentalDecorators: true
     },
-    ecmaVersion: 12,
+    ecmaVersion: 'latest',
     sourceType: 'module',
-    project: ['tsconfig.json'],
-    extraFileExtensions: ['vue'],
+    project: ['tsconfig.json']
   },
   plugins: [
-    'vue',
-    'react',
     'import',
     'prettier',
     'promise',
-    'simple-import-sort',
+    'simple-import-sort'
   ],
   rules: {
     '@typescript-eslint/no-non-null-assertion': 'off',
@@ -67,22 +61,13 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     quotes: ['warn', 'single'],
     semi: ['error', 'always'],
+    'import/no-extraneous-dependencies': 'off',
     'simple-import-sort/exports': 'error',
     'simple-import-sort/imports': 'error',
     'sort-imports': 'off',
-    'vue/max-attributes-per-line': [
-      'error',
-      {
-        singleline: {
-          max: 6,
-        },
-        multiline: {
-          max: 1,
-        },
-      },
-    ],
     'quote-props': ['error', 'as-needed'],
     'no-multiple-empty-lines': ['warn', { max: 2, maxEOF: 0 }],
     'no-trailing-spaces': 'warn',
-  },
+    'no-plusplus': 'off'
+  }
 };

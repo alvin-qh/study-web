@@ -1,9 +1,12 @@
-import { defineConfig } from "vite";
-import eslint from "vite-plugin-eslint";
+import { defineConfig } from 'vite';
+import eslint from 'vite-plugin-eslint';
 
+/**
+ * @type {import('vite').UserConfig}
+ */
 export default defineConfig({
   plugins: [
-    eslint(),
+    eslint()
   ],
   css: {
     preprocessorOptions: {

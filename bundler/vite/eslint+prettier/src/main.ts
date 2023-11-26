@@ -1,25 +1,39 @@
 import './main.scss';
 
-import $ from 'jquery';
-
 import logo from './assets/logo.webp';
 
-const $nav = $('<nav>');
+const $nav = document.createElement('nav');
 
-const $logo = $('<img alt=*>').appendTo($nav);
-$logo.addClass('logo');
-$logo.attr('src', logo);
+const $logo = document.createElement('img');
+$logo.alt = '*';
+$logo.src = logo;
+$logo.classList.add('logo');
+$nav.appendChild($logo);
 
-const $menu = $('<ul class=menu>').appendTo($nav);
-[
-  ['Vue', '/vue.html'],
-  ['React', '/react.html'],
-].forEach((item) => {
-  const $item = $('<li>').appendTo($menu);
-  $('<a href=\'javascript:;\'>')
-    .text(item[0])
-    .attr('href', item[1])
-    .appendTo($item);
+const $menu = document.createElement('ul');
+$menu.classList.add('menu');
+$nav.appendChild($menu);
+
+const $inputBar = document.createElement('div');
+$inputBar.classList.add('input-bar');
+
+const $label = document.createElement('label');
+$label.textContent = 'Count: ';
+$inputBar.appendChild($label);
+
+const $input = document.createElement('input');
+$input.type = 'text';
+$input.readOnly = true;
+
+let count = 0;
+$input.value = `${count}`;
+
+$input.addEventListener('click', () => {
+  $input.value = `${count++}`;
 });
 
-$('#app').append($nav);
+$inputBar.appendChild($input);
+
+const $app = document.querySelector('#app')!;
+$app.appendChild($nav);
+$app.appendChild($inputBar);
