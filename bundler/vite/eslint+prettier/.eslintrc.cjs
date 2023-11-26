@@ -1,11 +1,10 @@
 module.exports = {
+  root: true,
   env: {
     es2021: true,
-    node: true,
     browser: true
   },
   extends: [
-    'airbnb',
     'prettier',
     'standard-with-typescript',
     'eslint:recommended',
@@ -43,7 +42,8 @@ module.exports = {
     'import',
     'prettier',
     'promise',
-    'simple-import-sort'
+    'simple-import-sort',
+    '@typescript-eslint'
   ],
   rules: {
     '@typescript-eslint/no-non-null-assertion': 'off',
