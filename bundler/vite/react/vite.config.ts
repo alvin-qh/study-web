@@ -1,7 +1,18 @@
 import react from '@vitejs/plugin-react-swc';
 import { defineConfig } from 'vite';
+import eslint from 'vite-plugin-eslint';
 
-// https://vitejs.dev/config/
+/**
+ * @type {import('vite').UserConfig}
+ */
 export default defineConfig({
-  plugins: [react()],
+  css: {
+    preprocessorOptions: {
+      scss: ''
+    }
+  },
+  plugins: [
+    react(),
+    eslint()
+  ]
 });
