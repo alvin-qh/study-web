@@ -2,12 +2,12 @@ module.exports = {
   root: true,
   env: {
     es2021: true,
-    node: true,
     browser: true
   },
   extends: [
+    'airbnb-base',
+    'prettier',
     'standard-with-typescript',
-    // "prettier",
     'eslint:recommended',
     // "plugin:prettier/recommended",
     'plugin:vue/vue3-recommended',
@@ -33,10 +33,7 @@ module.exports = {
   parser: 'vue-eslint-parser',
   parserOptions: {
     parser: '@typescript-eslint/parser',
-    ecmaFeatures: {
-      jsx: true
-    },
-    ecmaVersion: 12,
+    ecmaVersion: 'latest',
     sourceType: 'module',
     project: ['tsconfig.json'],
     extraFileExtensions: [
@@ -44,9 +41,11 @@ module.exports = {
     ]
   },
   plugins: [
-    'vue',
+    'prettier',
+    '@typescript-eslint',
+    'promise',
     'simple-import-sort',
-    'prettier'
+    'vue'
   ],
   rules: {
     '@typescript-eslint/no-non-null-assertion': 'off',
@@ -77,6 +76,7 @@ module.exports = {
     }],
     'quote-props': ['error', 'as-needed'],
     'no-multiple-empty-lines': ['warn', { max: 2, maxEOF: 0 }],
-    'no-trailing-spaces': 'warn'
+    'no-trailing-spaces': 'warn',
+    'import/no-extraneous-dependencies': 'off'
   }
 };
