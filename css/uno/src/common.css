@@ -1,0 +1,131 @@
+@unocss preflights;
+@unocss default;
+
+/* 设置公共的样式 */
+@layer default {
+  :any-link {
+    /* 引用 uno 定义的样式 */
+    @apply text-blue-500;
+    text-decoration: none;
+  }
+
+  .text-transparent {
+    @apply text-white text-opacity-0
+  }
+
+  .btn {
+    @apply py-2 px-4 font-semibold rounded-lg shadow-md border-0 font-size-4;
+  }
+
+  .btn-green {
+    @apply text-white bg-green-500 hover:bg-green-700;
+  }
+}
+
+* {
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  font-feature-settings: normal;
+  font-variation-settings: normal;
+}
+
+/* 自定义字体配置 */
+@font-face {
+  font-family: Inter var;
+  font-weight: 100 900;
+  font-display: swap;
+  font-style: normal;
+  font-named-instance: 'Regular';
+  src: url(asset/Inter-roman-latin.var.woff2) format('woff2')
+}
+
+@font-face {
+  font-family: Source Sans Pro;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(asset/SourceSansPro-Regular.otf) format('opentype')
+}
+
+@font-face {
+  font-family: Ubuntu Mono;
+  font-weight: 700;
+  font-style: normal;
+  src: url(asset/Ubuntu-Mono-bold.woff2) format('woff2')
+}
+
+@font-face {
+  font-family: Flow;
+  font-weight: 400;
+  font-style: normal;
+  src: url(asset/flow-circular.woff) format('woff')
+}
+
+.bg-cat {
+  background-image: url(asset/image.jpg);
+}
+
+.bg-small {
+  background-image: url(asset/bg.jpg);
+}
+
+.markdown {
+  background-color: #1c1b1b;
+  color: white;
+}
+
+.markdown p {
+  margin: 0.5em 0;
+}
+
+.markdown h1 {
+  font-size: xx-large;
+  font-weight: bold;
+  margin-top: 2em;
+  margin-bottom: 1.5em;
+}
+
+.markdown h2 {
+  font-size: x-large;
+  font-weight: bold;
+  margin-top: 1.5em;
+  margin-bottom: 1em;
+}
+
+.markdown h3 {
+  font-size: large;
+  font-weight: bold;
+  margin-top: 1.2em;
+  margin-bottom: .8em;
+}
+
+.markdown blockquote {
+  border-left: 4px solid rgb(160, 160, 160);
+  padding: .2em 0 .2em .4em;
+  color: #aaa;
+}
+
+.markdown code,
+.markdown pre code {
+  display: inline-block;
+  background-color: rgba(70, 70, 71, 0.651);
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  border-radius: 0.4em;
+}
+
+.markdown pre code {
+  display: block;
+  margin: 0.5em 0;
+  padding: 0.5em 0.4em;
+}
+
+.markdown ul {
+  list-style: disc;
+  padding: 10px 20px;
+}
+
+.markdown ul li {
+  margin: .5em .2em;
+}
+
+@unocss;
