@@ -35,7 +35,6 @@
   ],
   "include": [
     ".eslintrc.cjs",
-    "vite.d.ts",
     "vite.config.ts",
     "src/**/*.d.ts",
     "src/**/*.ts",

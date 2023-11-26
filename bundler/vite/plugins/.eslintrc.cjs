@@ -1,12 +1,12 @@
 module.exports = {
+  root: true,
   env: {
     browser: true,
-    es2021: true,
-    node: true,
+    es2021: true
   },
   extends: [
-    'eslint:recommended',
     'standard-with-typescript',
+    'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:jsx-a11y/recommended'
   ],
@@ -32,7 +32,7 @@ module.exports = {
     ecmaFeatures: {
       jsx: true
     },
-    ecmaVersion: 12,
+    ecmaVersion: 'latest',
     sourceType: 'module',
     project: ['tsconfig.json'],
     extraFileExtensions: [
@@ -40,9 +40,11 @@ module.exports = {
     ]
   },
   plugins: [
+    'import',
+    'promise',
+    'jsx-a11y',
     '@typescript-eslint',
-    'simple-import-sort',
-    'jsx-a11y'
+    'simple-import-sort'
   ],
   rules: {
     '@typescript-eslint/no-non-null-assertion': 'off',

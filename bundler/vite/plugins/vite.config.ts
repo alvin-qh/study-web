@@ -4,6 +4,9 @@ import eslint from 'vite-plugin-eslint';
 import pages from 'vite-plugin-pages';
 import solid from 'vite-plugin-solid';
 
+/**
+ * @type {import('vite').UserConfig}
+ */
 export default defineConfig({
   resolve: {
     alias: {
@@ -39,7 +42,7 @@ export default defineConfig({
     })
   ],
   build: {
-    target: 'esnext',
+    target: 'es6',
     modulePreload: {
       polyfill: false
     }
