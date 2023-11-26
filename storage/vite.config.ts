@@ -2,7 +2,9 @@ import { defineConfig } from 'vite';
 import path from 'path';
 import eslint from 'vite-plugin-eslint';
 
-
+/**
+ * @type {import('vite').UserConfig}
+ */
 export default defineConfig({
   resolve: {
     alias: {

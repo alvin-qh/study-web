@@ -4,9 +4,13 @@ module.exports = {
     es2021: true
   },
   extends: [
+    'prettier',
     'standard-with-typescript',
     'eslint:recommended',
-    'plugin:@typescript-eslint/recommended'
+    'plugin:@typescript-eslint/recommended',
+    'plugin:import/recommended',
+    'plugin:import/warnings',
+    'plugin:import/errors'
   ],
   overrides: [
     {
@@ -28,13 +32,16 @@ module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
     parser: '@typescript-eslint/parser',
-    ecmaVersion: 12,
+    ecmaVersion: 'latest',
     sourceType: 'module',
     project: ['tsconfig.json']
   },
   plugins: [
-    '@typescript-eslint',
-    'simple-import-sort'
+    'import',
+    'prettier',
+    'promise',
+    'simple-import-sort',
+    '@typescript-eslint'
   ],
   rules: {
     '@typescript-eslint/no-non-null-assertion': 'off',
@@ -52,11 +59,13 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     quotes: ['warn', 'single'],
     semi: ['error', 'always'],
+    'import/no-extraneous-dependencies': 'off',
     'simple-import-sort/exports': 'error',
     'simple-import-sort/imports': 'error',
     'sort-imports': 'off',
     'quote-props': ['error', 'as-needed'],
     'no-multiple-empty-lines': ['warn', { max: 2, maxEOF: 0 }],
-    'no-trailing-spaces': 'warn'
+    'no-trailing-spaces': 'warn',
+    'no-plusplus': 'off'
   }
 };
