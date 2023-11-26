@@ -52,9 +52,11 @@ module.exports = {
     ]
   },
   plugins: [
+    '@typescript-eslint',
     'promise',
     'react',
     'react-refresh',
+    'jsx-a11y',
     'simple-import-sort'
   ],
   rules: {
