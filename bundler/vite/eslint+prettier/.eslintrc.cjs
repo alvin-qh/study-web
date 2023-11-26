@@ -5,6 +5,7 @@ module.exports = {
     browser: true
   },
   extends: [
+    'airbnb-base',
     'prettier',
     'standard-with-typescript',
     'eslint:recommended',
