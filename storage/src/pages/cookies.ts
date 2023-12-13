@@ -15,7 +15,7 @@ function setCookie(name: string, value: string, expiresSecond: number, path: str
 }
 
 function deleteCookie(name: string): void {
-  document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+  document.cookie = `${name}=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
 }
 
 function getAllCookies(): Record<string, string> {
@@ -24,20 +24,21 @@ function getAllCookies(): Record<string, string> {
     return {};
   }
 
-  return cookies.split(';').reduce((cookies: Record<string, string>, pairs: string) => {
+  return cookies.split(';').reduce((c: Record<string, string>, pairs: string) => {
     const [key, value] = pairs.split('=', 2);
-    cookies[key.trim()] = decodeURIComponent(value);
-    return cookies;
+    c[key.trim()] = decodeURIComponent(value);
+    return c;
   }, {});
 }
 
 function _renderAllCookies($h: HTMLElement): void {
   function _renderTableRow(): string {
-    const html = [];
+    const html: string[] = [];
 
     const cookies = getAllCookies();
     console.log(cookies);
-    for (const key in cookies) {
+
+    Object.keys(cookies).forEach(key => {
       html.push(`
     <tr>
       <td>${key}</td>
@@ -46,7 +47,7 @@ function _renderAllCookies($h: HTMLElement): void {
         <a class="delete-cookie" data-cookie-name="${key}" href="javascript:;">Delete</a>
       </td>
     </tr>`);
-    }
+    });
     return html.join('');
   }
 
@@ -118,7 +119,7 @@ export default (): HTMLElement => {
 
   $row1.querySelector('button')!.addEventListener('click', () => {
     if ($inputName.value && $inputValue.value) {
-      const expired = parseInt($selectExpired.value);
+      const expired = parseInt($selectExpired.value, 10);
       setCookie($inputName.value, $inputValue.value, expired);
 
       _renderAllCookies($row2);

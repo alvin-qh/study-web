@@ -11,9 +11,9 @@ export default (): HTMLElement => {
   const json = localStorage.getItem('user-form');
   const data: FormData = json ? JSON.parse(json) : { name: '', gender: 'M' };
 
-  const form = new Form(data, (data: FormData) => {
-    const json = JSON.stringify(data);
-    localStorage.setItem('user-form', json);
+  const form = new Form(data, (fd: FormData) => {
+    const obj = JSON.stringify(fd);
+    localStorage.setItem('user-form', obj);
   });
   form.render($form);
 

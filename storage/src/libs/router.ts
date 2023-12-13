@@ -11,7 +11,7 @@ interface Route {
   href: string
   menu?: 'hidden'
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  module: () => Promise<any>
+  module: () => Promise<{ default: () => HTMLElement }>
   context?: object
   target?: '_blank'
 }
@@ -45,7 +45,7 @@ function _jumpTo(r: Route | string): void {
   }
 
   // push give href into top of the history stack
-  history.pushState(r.context ?? {}, r.title ?? '', r.href);
+  window.history.pushState(r.context ?? {}, r.title ?? '', r.href);
 
   // run "module" function, import the module
   const m = r.module();
@@ -71,13 +71,13 @@ function _reload(): void {
 
   let found = false;
   // traverse the routing table, find which route object should match current pathname and jump to it
-  for (const key in _routes) {
+  Object.keys(_routes).forEach(key => {
     const it = _routes[key];
     if (it && it.href.startsWith(pathname)) {
       _jumpTo(it);
       found = true;
     }
-  }
+  });
 
   // no route object was matched, jump to 404
   if (!found) {
@@ -117,35 +117,37 @@ export function route($root: HTMLElement, $nav: HTMLElement, routes: Record<stri
     const pathname = window.location.pathname || '/';
 
     // traverse route table to create menu item and add "click" event handler for it
-    for (const key in routes) {
-      const route = routes[key];
-      if (route.menu !== 'hidden') { // test this route object if can display on menu
+    Object.keys(routes).forEach(key => {
+      const routeItem = routes[key];
+      if (routeItem.menu !== 'hidden') { // test this route object if can display on menu
         const $li = document.createElement('li');
         const $a = document.createElement('a');
         $li.appendChild($a);
 
-        $a.innerText = route.title ?? '';
-        if (route.target === '_blank') {
-          $a.target = route.target;
-          $a.href = route.href;
+        $a.innerText = routeItem.title ?? '';
+        if (routeItem.target === '_blank') {
+          $a.target = routeItem.target;
+          $a.href = routeItem.href;
         } else {
+          // eslint-disable-next-line no-script-url
           $a.href = 'javascript:;';
           // add "click" event handler, to jump to the target view
           $a.addEventListener('click', () => {
             $ul.querySelector('a.active')?.classList.remove('active');
 
-            _jumpTo(route);
+            _jumpTo(routeItem);
             $a.classList.add('active');
           });
         }
 
-        if (route.href.startsWith(pathname)) {
+        if (routeItem.href.startsWith(pathname)) {
           $a.classList.add('active');
         }
 
         $ul.appendChild($li);
       }
-    }
+    });
+
     $nav.appendChild($ul);
   }
 

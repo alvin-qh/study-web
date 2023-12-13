@@ -9,7 +9,7 @@ export class Form {
   private readonly _data: FormData;
   private readonly _onSubmit?: (data: FormData) => void;
 
-  constructor(data?: FormData, onSubmit?: (data: FormData) => void) {
+  constructor(data?: FormData, onSubmit?: (fd: FormData) => void) {
     this._data = data ?? {
       name: '', gender: 'M'
     };

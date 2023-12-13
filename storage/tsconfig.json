@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "allowImportingTsExtensions": true,
-    "allowJs": true,
     "isolatedModules": true,
     "lib": [
       "DOM",
@@ -23,9 +22,6 @@
     "skipLibCheck": true,
     "strict": true,
     "target": "ES2020",
-    "types": [
-      // "vite-plugin-pages/client"
-    ],
     "useDefineForClassFields": true
   },
   "exclude": [

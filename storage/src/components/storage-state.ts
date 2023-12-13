@@ -9,13 +9,14 @@ export class StorageState {
 
   _storageContent(): string {
     const html: string[] = ['<table><tbody>'];
-    for (const key in this._storage) {
+    Object.keys(this._storage).forEach(key => {
       // eslint-disable-next-line no-prototype-builtins
       if (this._storage.hasOwnProperty(key)) {
         html.push(`<th>${key}</th>`);
         html.push(`<td>${this._storage[key]}</td>`);
       }
-    }
+    });
+
     html.push('</tbody></table>');
     return html.join('');
   }

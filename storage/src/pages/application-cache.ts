@@ -1,3 +1,1 @@
-export default (): HTMLElement => {
-  return document.createElement('div');
-};
+export default (): HTMLElement => document.createElement('div');
