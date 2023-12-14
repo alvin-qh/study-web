@@ -125,45 +125,27 @@ select {
   font-weight: 600;
 }
 
-.storage-info .storage-content table,
-.storage-event table,
-.cookie-list table {
+table {
   border-collapse: collapse;
 }
 
-.storage-info .storage-content table td,
-.storage-info .storage-content table th,
-.storage-event table td,
-.storage-event table th {
-  border: 1px solid #575757;
-  padding: 3px 4px;
+td,
+th {
+  border: 1px solid #8b8b8b;
   word-break: break-all;
+  white-space: nowrap;
+  min-width: 100px;
+  text-align: left;
+  padding: 3px 8px;
+  font-size: smaller;
 }
 
-.storage-info .storage-content table th,
-.storage-event table th {
-  white-space: nowrap;
+thead th {
+  text-align: center;
 }
 
 .storage-event {
   font-size: smaller;
-}
-
-.storage-event table thead th {
-  text-align: left;
-}
-
-.cookie-list th,
-.cookie-list td,
-.storage-event table th,
-.storage-event table td {
-  border: 1px solid #8e8d8d
-}
-
-.cookie-list th,
-.cookie-list td {
-  text-align: left;
-  padding: 3px 8px;
 }
 
 .cookie-list th:first-child {
@@ -190,6 +172,10 @@ select {
   color: #fff;
   position: relative;
   transition: opacity .3s ease-out;
+}
+
+.tips.error {
+  background-color: #633636;
 }
 
 .tips.hide {

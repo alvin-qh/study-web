@@ -63,8 +63,7 @@ function _renderAllCookies($h: HTMLElement): void {
     <tbody>
     ${_renderTableRow()}
     </tbody>
-  </table>
-  `;
+  </table>`;
 
   $h.querySelectorAll('.delete-cookie').forEach($elem => {
     $elem.addEventListener('click', (e: Event) => {
@@ -109,8 +108,8 @@ export default (): HTMLElement => {
       <div class="button-row">
         <button type="button">Save</button>
       </div>
-    </form>
-  `;
+    </form>`;
+
   $main.appendChild($row1);
 
   const $inputName = $row1.querySelector<HTMLInputElement>('input[name=name]')!;

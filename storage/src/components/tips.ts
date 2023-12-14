@@ -17,17 +17,22 @@ export class Tips {
       }
     });
 
-    const $close = $tips.querySelector('.close a')!;
-    $close.addEventListener('click', () => {
+    $tips.querySelector('.close a')!.addEventListener('click', (event: Event) => {
+      event.preventDefault();
       $tips.classList.add('hide');
     });
 
     this._$tips = $tips;
   }
 
-  show(message: string): void {
+  show(message: string, type: 'info' | 'error' = 'info'): void {
     this._$tips.querySelector('span')!.textContent = message;
     this._$tips.style.display = 'block';
+    if (type === 'error') {
+      this._$tips.classList.add('error');
+    } else {
+      this._$tips.classList.remove('error');
+    }
 
     setTimeout(() => { this._$tips.classList.remove('hide'); }, 10);
   }
