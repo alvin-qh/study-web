@@ -209,6 +209,57 @@ thead th {
   margin-left: 30px;
 }
 
+.timer-ticket {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.timer-ticket .hours,
+.timer-ticket .minutes,
+.timer-ticket .seconds {
+  display: flex;
+  align-items: center;
+}
+
+.timer-ticket .hours div,
+.timer-ticket .minutes div,
+.timer-ticket .seconds div {
+  width: 3vh;
+  height: 3vh;
+  border: 1px solid #34333330;
+}
+
+.timer-ticket .hours div {
+  background: #a63f3b;
+}
+
+.timer-ticket .hours span {
+  color: #9e1511;
+  padding-left: 10px;
+  font-weight: 600;
+}
+
+.timer-ticket .minutes div {
+  background: #25a141;
+}
+
+.timer-ticket .minutes span {
+  color: #079228;
+  padding-left: 10px;
+  font-weight: 600;
+}
+
+.timer-ticket .seconds div {
+  background: #484da1;
+}
+
+.timer-ticket .seconds span {
+  color: #1f269e;
+  padding-left: 10px;
+  font-weight: 600;
+}
+
 
 @media (prefers-color-scheme: light) {
   :root {
