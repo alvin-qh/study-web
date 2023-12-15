@@ -33,7 +33,7 @@ export default class BasicPage implements Component {
     renderer.setSize(width, height);
     $h.appendChild(renderer.domElement);
 
-    let cameraStep = 0.1;
+    let cameraStep = 0.2;
 
     function animate(): void {
       requestAnimationFrame(animate);
@@ -42,7 +42,7 @@ export default class BasicPage implements Component {
         cube.rotation.y += 0.01;
       });
       camera.position.z += cameraStep;
-      if (camera.position.z > 100 || camera.position.z < 6) {
+      if (camera.position.z > 100 || camera.position.z < 4) {
         cameraStep = -cameraStep;
       }
       renderer.render(scene, camera);

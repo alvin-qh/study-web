@@ -50,7 +50,6 @@ h1 {
 }
 
 #app {
-  max-width: 1400px;
   margin: 0 auto;
 }
 
@@ -70,11 +69,11 @@ header {
       background-image: url(asset/threejs-logo.svg);
       background-repeat: no-repeat;
       background-size: contain;
-    
+
       &:hover {
         filter: drop-shadow(0 0 2em #646cffaa);
       }
-    
+
       .vanilla {
         &:hover {
           filter: drop-shadow(0 0 2em #3178c6aa);
@@ -84,7 +83,7 @@ header {
 
     .menu-item {
       padding-left: 20px;
-      
+
       .menu-bar {
         margin: 0;
         padding: 0;
