@@ -1,3 +1,10 @@
+// eslint-disable-next-line import/no-unresolved
+import { registerSW } from 'virtual:pwa-register';
+
+if ('serviceWorker' in navigator) {
+  registerSW();
+}
+
 function showTime($root: HTMLElement): void {
   function drawBoxes($elem: HTMLElement, n: number): void {
     $elem.innerHTML = '';

@@ -1,14 +1,7 @@
 import './style.css';
 
-// eslint-disable-next-line import/no-unresolved
-import { registerSW } from 'virtual:pwa-register';
-
 import { addStorageChangeRecord } from './components/storage-event.ts';
 import { route } from './libs/router.ts';
-
-if ('serviceWorker' in navigator) {
-  registerSW();
-}
 
 
 const $app = document.querySelector('#app')!;
