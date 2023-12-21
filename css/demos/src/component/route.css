@@ -1,0 +1,14 @@
+.menu {
+  display: flex;
+}
+
+.menu ul {
+  margin: 0;
+  padding: 1.25rem .625rem;
+  list-style: none;
+}
+
+.menu ul li a {
+  display: block;
+  
+}
