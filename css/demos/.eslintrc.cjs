@@ -67,6 +67,7 @@ module.exports = {
     'no-multiple-empty-lines': ['warn', { max: 2, maxEOF: 0 }],
     'no-trailing-spaces': 'warn',
     'no-plusplus': 'off',
+    'no-restricted-syntax': 'off',
     'import/prefer-default-export': 'off',
     'import/no-unresolved': 'off',
     'import/extensions': 'off',
