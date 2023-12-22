@@ -7,6 +7,7 @@ export interface RouteItem {
   href: string
   module: () => Promise<{ default: new () => Component }>
   context?: object
+  $element?: HTMLAnchorElement
 }
 
 export class Route implements Component {
@@ -28,6 +29,9 @@ export class Route implements Component {
     r.module()
       .then(({ default: Page }) => {
         this.gotoPage(new Page(), r.href, r.title, r.context);
+        if (r.$element) {
+          r.$element.classList.add('active');
+        }
       })
       .catch(err => { throw err; });
   }
@@ -75,13 +79,11 @@ export class Route implements Component {
       $a.href = '#';
       $a.textContent = item.title;
 
+      item.$element = $a;
+
       $a.addEventListener('click', e => {
         e.preventDefault();
         $ul.querySelector('a.active')?.classList.remove('active');
-
-        const $target = e.currentTarget as HTMLLinkElement;
-        $target.classList.add('active');
-
         this.jumpTo(item);
       });
 
@@ -93,7 +95,6 @@ export class Route implements Component {
     $h.innerHTML = '';
     $h.appendChild($nav);
 
-    window.addEventListener('load', () => { this.reload(); });
-    window.addEventListener('popstate', () => { this.reload(); });
+    this.reload();
   }
 }

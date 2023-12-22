@@ -24,21 +24,34 @@ export default class WaveProgress implements Component {
     let progressValue = 0;
     changeProgress(progressValue);
 
-    let oldX = 0;
-    $slide.addEventListener('mousemove', (e: MouseEvent) => {
+    let mouseDown = false;
+
+    $slide.addEventListener('mousedown', (e: MouseEvent) => {
+      e.preventDefault();
+      mouseDown = true;
+    });
+
+    $progressBar.addEventListener('mousemove', (e: MouseEvent) => {
       e.preventDefault();
 
-      if (e.buttons === 0) {
+      if (!mouseDown) {
         return;
       }
-      if (e.pageX < oldX) {
-        progressValue = Math.max(0, progressValue - 1);
-      } else if (e.pageX > oldX) {
-        progressValue = Math.min(progressValue + 1, 100);
+
+      if (e.target === $slide) {
+        return;
+      }
+
+      progressValue = Math.round((e.offsetX / $progressBar.clientWidth) * 100);
+      if (progressValue <= 0 || progressValue > 100) {
+        return;
       }
       changeProgress(progressValue);
+    });
 
-      oldX = e.pageX;
+    window.document.addEventListener('mouseup', (e: MouseEvent) => {
+      e.preventDefault();
+      mouseDown = false;
     });
 
     $h.innerHTML = '';

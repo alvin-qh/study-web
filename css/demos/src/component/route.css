@@ -8,7 +8,14 @@
   list-style: none;
 }
 
+.menu ul li {
+  padding: 5px 10px;
+}
+
 .menu ul li a {
   display: block;
-  
+}
+
+.menu ul li a.active {
+  color: rgb(99, 99, 100);
 }
