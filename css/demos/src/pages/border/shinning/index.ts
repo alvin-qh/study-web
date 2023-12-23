@@ -1,4 +1,4 @@
-import './shining.css';
+import './index.css';
 
 import { type Component } from '@/component/base';
 

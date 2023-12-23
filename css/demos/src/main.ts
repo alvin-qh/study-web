@@ -22,7 +22,12 @@ window.onload = () => {
       {
         title: '闪光边框',
         href: '/border/shine',
-        module: async () => await import('./pages/border/shining')
+        module: async () => await import('./pages/border/shinning')
+      },
+      {
+        title: '无缝轮播',
+        href: '/layout/carousel',
+        module: async () => await import('./pages/layout/carousel')
       }
     ],
     async () => await import('./pages/error')
