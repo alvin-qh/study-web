@@ -1,0 +1,38 @@
+.shinning-border-cards {
+  display: grid;
+  padding: 30px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 30vh);
+  grid-gap: 1vh;
+}
+
+.shinning-border-cards .card {
+  position: relative;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.shinning-border-cards .card .inner {
+  position: absolute;
+  background: #171717;
+  inset: 2px;
+  border-radius: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 3;
+}
+
+.shinning-border-cards .card::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: var(--y, -1000px);
+  left: var(--x, -1000px);
+  z-index: 2;
+  border-radius: inherit;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(closest-side circle, rgba(255, 255, 255, 0.6) 0%, transparent);
+}
