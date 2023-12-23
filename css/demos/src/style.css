@@ -70,7 +70,7 @@ button:focus-visible {
 
 #app {
   display: grid;
-  grid-template-columns: 14vh auto;
+  grid-template-columns: 18vh auto;
   height: 100%;
 }
 

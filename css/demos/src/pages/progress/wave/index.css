@@ -23,19 +23,35 @@
   overflow: hidden;
 }
 
+.wave-progress .ring::before,
 .wave-progress .ring::after {
   content: '';
   display: block;
   position: absolute;
   width: 400px;
   height: 400px;
-  background-color: #1f71dc;
-  animation: spin 8s linear infinite;
-  border-radius: 40%;
+  background-color: #1f71dc5e;
+  animation: spin1 8s linear infinite;
   top: calc(100% - var(--percent));
+  border-radius: 40%;
 }
 
-@keyframes spin {
+@keyframes spin1 {
+  from {
+    transform: rotate(90deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.wave-progress .ring::after {
+  background-color: #1f71dc;
+  animation: spin2 8s linear infinite;
+}
+
+@keyframes spin2 {
   from {
     transform: rotate(0deg);
   }
@@ -44,7 +60,6 @@
     transform: rotate(360deg);
   }
 }
-
 
 .wave-progress .progress-bar {
   width: 100%;
