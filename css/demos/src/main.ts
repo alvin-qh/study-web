@@ -26,8 +26,13 @@ window.onload = () => {
       },
       {
         title: '无缝轮播',
-        href: '/layout/carousel',
-        module: async () => await import('./pages/layout/carousel')
+        href: '/scroll/carousel',
+        module: async () => await import('./pages/scroll/carousel')
+      },
+      {
+        title: '视差滚动',
+        href: '/scroll/parallax',
+        module: async () => await import('./pages/scroll/parallax')
       }
     ],
     async () => await import('./pages/error')
