@@ -13,7 +13,8 @@
 .parallax .scroll-container .item {
   width: 800px;
   height: 450px;
-  transition: linear 0.3s;
+  transition: linear 1s;
+  overflow: hidden;
 }
 
 .parallax .scroll-container .item.cur {
@@ -23,6 +24,7 @@
 .parallax .scroll-container .item.prev,
 .parallax .scroll-container .item.next {
   height: 0%;
+  margin-top: 0;
 }
 
 .parallax .scroll-container.scroll-up .item.prev,
@@ -34,11 +36,16 @@
   height: 100%;
 }
 
+.parallax .scroll-container.scroll-down .item.prev,
+.parallax .scroll-container.scroll-down .item.cur {
+  height: 0%;
+}
+
 .parallax .scroll-container.scroll-down .item.prev {
   height: 100%;
 }
 
-.parallax .scroll-container.scroll-down .item.prev,
+.parallax .scroll-container.scroll-up .item.cur,
 .parallax .scroll-container.scroll-down .item.cur {
-  height: 100%;
+  margin-top: -30px;
 }

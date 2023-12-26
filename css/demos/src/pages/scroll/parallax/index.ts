@@ -25,8 +25,6 @@ export default class FlipScroll implements Component {
         prev = images.length - 1;
       }
 
-      const cur = n;
-
       let next = n + 1;
       if (next >= images.length) {
         next = 0;
@@ -40,21 +38,21 @@ export default class FlipScroll implements Component {
       $div = document.createElement('div');
       $div.className = 'item prev';
       $img = document.createElement('img');
-      $img.src = `/bg/${images[prev]}`;
+      $img.src = `/bg/${images[next]}`;
       $div.appendChild($img);
       $container.appendChild($div);
 
       $div = document.createElement('div');
       $div.className = 'item cur';
       $img = document.createElement('img');
-      $img.src = `/bg/${images[cur]}`;
+      $img.src = `/bg/${images[n]}`;
       $div.appendChild($img);
       $container.appendChild($div);
 
       $div = document.createElement('div');
       $div.className = 'item next';
       $img = document.createElement('img');
-      $img.src = `/bg/${images[next]}`;
+      $img.src = `/bg/${images[prev]}`;
       $div.appendChild($img);
       $container.appendChild($div);
     }
@@ -63,15 +61,13 @@ export default class FlipScroll implements Component {
 
     let isAnimationend = false;
 
-    $container.querySelectorAll('.scroll-container .item')!.forEach($item => {
-      $item.addEventListener('transitionend', () => {
-        isAnimationend = false;
-        $container.classList.remove('scroll-up', 'scroll-down');
-        changeImageOrder();
-      });
+    $container.addEventListener('transitionend', () => {
+      isAnimationend = false;
+      $container.classList.remove('scroll-up', 'scroll-down');
+      changeImageOrder();
     });
 
-    $wrapper.addEventListener('wheel', (event: WheelEvent) => {
+    window.addEventListener('wheel', (event: WheelEvent) => {
       console.log(isAnimationend);
       if (!event.deltaY || isAnimationend) {
         return;
@@ -80,14 +76,12 @@ export default class FlipScroll implements Component {
       isAnimationend = true;
 
       if (event.deltaY > 0) {
-        n++;
-        if (n === images.length) {
+        if (++n === images.length) {
           n = 0;
         }
         $container.classList.add('scroll-down');
       } else if (event.deltaY < 0) {
-        n--;
-        if (n === 0) {
+        if (--n < 0) {
           n = images.length - 1;
         }
         $container.classList.add('scroll-up');
