@@ -1,1 +1,1 @@
-export { default as MenuItems } from "./MenuItems.vue";
+export { default as MenuItems } from './MenuItems.vue';

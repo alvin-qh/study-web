@@ -62,7 +62,7 @@ const styles = ref<CSSProperties>({
 
 <style scoped lang="scss">
 .style-choose {
-  width: calc(100%/3.2);
+  width: calc(100%/2.2);
 }
 
 .style-test {

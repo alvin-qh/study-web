@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { type MenuData } from "@/menu";
+import { type MenuData } from '@/menu';
 
 defineProps({
   items: { type: Array<MenuData>, required: true },
