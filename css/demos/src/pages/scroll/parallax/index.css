@@ -13,7 +13,7 @@
 .parallax .scroll-container .item {
   width: 800px;
   height: 450px;
-  transition: linear 1s;
+  transition: linear .3s;
   overflow: hidden;
 }
 
@@ -43,9 +43,4 @@
 
 .parallax .scroll-container.scroll-down .item.prev {
   height: 100%;
-}
-
-.parallax .scroll-container.scroll-up .item.cur,
-.parallax .scroll-container.scroll-down .item.cur {
-  margin-top: -30px;
 }
