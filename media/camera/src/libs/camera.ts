@@ -39,9 +39,10 @@ export function createMediaDevices(): MediaDevices {
 
   // 如果 `MediaDevices` 对象上不包含 `getUserMedia` 函数，则添加该函数
   if (!mediaDevices.getUserMedia) {
-    mediaDevices.getUserMedia = async (constraints: MediaStreamConstraints) => {
+    mediaDevices.getUserMedia = async (constraints: MediaStreamConstraints) =>
       // 返回 `Promise<MediaStream>` 对象
-      return await new Promise((resolve, reject) => {
+      // eslint-disable-next-line no-return-await
+      await new Promise((resolve, reject) => {
         const func = _findGetUserMediaFunction();
         if (!func) {
           reject(new Error('getUserMedia is not implemented in this browser'));
@@ -49,7 +50,6 @@ export function createMediaDevices(): MediaDevices {
         }
         func.call(navigator, constraints, resolve, reject);
       });
-    };
   }
   return mediaDevices;
 }

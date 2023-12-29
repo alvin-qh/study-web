@@ -24,6 +24,7 @@ export class Video {
    * @param options 选项对象
    */
   constructor(options: VideoOptions) {
+    // eslint-disable-next-line no-underscore-dangle
     this._options = options;
   }
 
