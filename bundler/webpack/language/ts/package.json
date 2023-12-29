@@ -1,15 +1,14 @@
 {
   "name": "study-webpack-language-ts",
-  "version": "1.0.0",
-  "private": true,
   "type": "module",
+  "version": "1.0.0",
+  "author": "Alvin",
+  "private": true,
   "scripts": {
-    "lint": "eslint src --ext ts --fix",
+    "lint": "eslint src --ext ts,js --fix",
     "build": "webpack --progress",
     "dev": "webpack serve --progress"
   },
-  "author": "Alvin",
-  "license": "ISC",
   "devDependencies": {
     "@types/html-webpack-plugin": "^3.2.9",
     "@types/lodash-es": "^4.17.11",
