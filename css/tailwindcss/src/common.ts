@@ -137,8 +137,8 @@ export class StoryBook {
     }
   }
 
-  append(storys: Story[]): this {
-    storys.forEach(story => {
+  append(stores: Story[]): this {
+    stores.forEach(story => {
       this.$main.appendChild(story.$element);
     });
     return this;
