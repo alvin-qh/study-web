@@ -1,0 +1,85 @@
+@import 'font-awesome/css/font-awesome.css';
+
+.menu-3d {
+  display: flex;
+  justify-content: center;
+  margin-top: 10rem;
+}
+
+.menu-3d ul {
+  position: relative;
+  transform: skewY(-15deg);
+}
+
+.menu-3d ul li {
+  position: relative;
+  list-style: none;
+  width: 200px;
+  padding: 15px;
+  background: #3e3f46;
+  z-index: calc(1 * var(--i));
+  transition: .5s;
+}
+
+.menu-3d ul li:hover {
+  background: #996fae;
+  transform: translateX(-50px);
+}
+
+.menu-3d ul li::before {
+  font-family: 'FontAwesome';
+  color: #999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  content: attr(data-icon);
+  position: absolute;
+  top: 0;
+  left: -40px;
+  width: 40px;
+  height: 100%;
+  background: #2e3133;
+  transform-origin: right;
+  transform: skewY(45deg);
+  transition: .5s;
+}
+
+.menu-3d ul li:hover::before {
+  background: #7b5190;
+}
+
+.menu-3d ul li::after {
+  content: '';
+  position: absolute;
+  top: -40px;
+  left: 0;
+  width: 100%;
+  height: 40px;
+  background: #35383e;
+  transform-origin: bottom;
+  transform: skewX(45deg);
+  translate: .5s;
+}
+
+.menu-3d ul li:hover::after {
+  background: #86589d;
+}
+
+.menu-3d ul li a {
+  display: block;
+  text-decoration: none;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  translate: .5s;
+  width: 100%;
+  height: 100%;
+}
+
+.menu-3d ul li a:hover {
+  color: #fff;
+}
+
+.menu-3d ul li:last-child::after {
+  box-shadow: -120px 120px 20px rgba(0, 0, 0, 0.25);
+}

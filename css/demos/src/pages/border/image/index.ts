@@ -18,6 +18,8 @@ export default class Shining implements Component {
       <p>One Ring to bring them all, and in the darkness bind them.</p>
       <p>In the Land of Mordor, where the shadows lie.</p>
     </div>`;
+
+    $h.innerHTML = '';
     $h.appendChild($div);
   }
 }

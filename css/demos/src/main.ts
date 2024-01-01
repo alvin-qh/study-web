@@ -38,6 +38,11 @@ window.onload = () => {
         title: '视差滚动',
         href: '/scroll/parallax',
         module: async () => await import('./pages/scroll/parallax')
+      },
+      {
+        title: '3D 菜单',
+        href: '/layout/3d-menu',
+        module: async () => await import('./pages/layout/3d-menu')
       }
     ],
     async () => await import('./pages/error')
