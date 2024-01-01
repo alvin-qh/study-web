@@ -43,6 +43,11 @@ window.onload = () => {
         title: '3D 菜单',
         href: '/layout/3d-menu',
         module: async () => await import('./pages/layout/3d-menu')
+      },
+      {
+        title: '滑动卡片',
+        href: '/layout/slide-card',
+        module: async () => await import('./pages/layout/slide-card')
       }
     ],
     async () => await import('./pages/error')
