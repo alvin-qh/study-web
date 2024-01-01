@@ -25,6 +25,11 @@ window.onload = () => {
         module: async () => await import('./pages/border/shinning')
       },
       {
+        title: '图片边框',
+        href: '/border/image',
+        module: async () => await import('./pages/border/image')
+      },
+      {
         title: '无缝轮播',
         href: '/scroll/carousel',
         module: async () => await import('./pages/scroll/carousel')
