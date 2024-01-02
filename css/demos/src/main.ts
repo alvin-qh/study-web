@@ -48,6 +48,11 @@ window.onload = () => {
         title: '滑动卡片',
         href: '/layout/slide-card',
         module: async () => await import('./pages/layout/slide-card')
+      },
+      {
+        title: '贝塞尔运动',
+        href: '/animate/bezier',
+        module: async () => await import('./pages/animate/bezier')
       }
     ],
     async () => await import('./pages/error')
