@@ -1,33 +1,33 @@
 /**
  * useMemo，根据参数是否变化决定是否调用指定函数
  */
-import { Button, InputGroup, Intent, Label, OverlayToaster, Position } from "@blueprintjs/core";
-import React, { useContext, useMemo, useState } from "react";
+import { Button, InputGroup, Intent, Label, OverlayToaster, Position } from '@blueprintjs/core';
+import React, { type JSX, useContext, useMemo, useState } from 'react';
 
-type ContextType = {
-  value: string;
-};
+interface ContextType {
+  value: string
+}
 
 const AppToaster = OverlayToaster.create({
-  className: "recipe-toaster",
+  className: 'recipe-toaster',
   position: Position.TOP,
   maxToasts: 1
 });
 
-const Context = React.createContext<ContextType>({ value: "" });
+const Context = React.createContext<ContextType>({ value: '' });
 
 
 /**
  * Common 组件属性
  */
-type CommonProps = {
-  onValueChange: (value: string) => void;   // 文本框内容变化事件
+interface CommonProps {
+  onValueChange: (value: string) => void // 文本框内容变化事件
 }
 
 /**
  * 公共的 Common 组件
  */
-const Common = ({ onValueChange }: CommonProps) => {
+const Common = ({ onValueChange }: CommonProps): JSX.Element => {
   // 获取上下文 context 对象
   const context = useContext(Context);
 
@@ -41,9 +41,9 @@ const Common = ({ onValueChange }: CommonProps) => {
           <InputGroup
             placeholder="Please press any value"
             large={true}
-            onChange={e => {
-              onValueChange(e.currentTarget.value);     /* 发出事件，引发父组件进行一次渲染 */
-              setRenderTimes(times => times + 1);       /* 记录重新渲染次数 */
+            onChange={(e) => {
+              onValueChange(e.currentTarget.value); /* 发出事件，引发父组件进行一次渲染 */
+              setRenderTimes((times) => times + 1); /* 记录重新渲染次数 */
             }}
             value={context.value}
           />
@@ -53,8 +53,8 @@ const Common = ({ onValueChange }: CommonProps) => {
             className="px-6 mt-2"
             intent={Intent.PRIMARY}
             onClick={() => {
-              onValueChange(context.value);             /* 发出事件，引发父组件进行一次渲染（将文本框内容重发一次） */
-              setRenderTimes(times => times + 1);       /* 记录重新渲染次数 */
+              onValueChange(context.value); /* 发出事件，引发父组件进行一次渲染（将文本框内容重发一次） */
+              setRenderTimes((times) => times + 1); /* 记录重新渲染次数 */
             }}
           >
             Run
@@ -68,12 +68,12 @@ const Common = ({ onValueChange }: CommonProps) => {
       </div>
     </div >
   );
-}
+};
 
 
-const MemoFunction = (): React.JSX.Element => {
+const MemoFunction = (): JSX.Element => {
   // 定义处理 context 的 state
-  const [context, setContext] = useState<ContextType>({ value: "With useMemo" });
+  const [context, setContext] = useState<ContextType>({ value: 'With useMemo' });
 
   // 使用 useMemo 包装函数
   // 被包装的函数只有在 context.value 值发生变化时才会执行一次
@@ -85,7 +85,7 @@ const MemoFunction = (): React.JSX.Element => {
           The value is: <b>{context.value}</b>
         </>
       ),
-      icon: "notifications",
+      icon: 'notifications',
       intent: Intent.PRIMARY
     });
     return context.value;
@@ -95,15 +95,15 @@ const MemoFunction = (): React.JSX.Element => {
 
   return (
     <Context.Provider value={context}>
-      <Common onValueChange={value => setContext({ value: value })} />
+      <Common onValueChange={(value) => { setContext({ value }); }} />
     </Context.Provider>
   );
 };
 
 
-const WithoutMemoFunction = (): React.JSX.Element => {
+const WithoutMemoFunction = (): JSX.Element => {
   // 定义处理 context 的 state
-  const [context, setContext] = useState<ContextType>({ value: "Without useMemo" });
+  const [context, setContext] = useState<ContextType>({ value: 'Without useMemo' });
 
   // 使用 useMemo 包装函数
   // 被包装的函数只有在 context.value 值发生变化时才会执行一次
@@ -116,7 +116,7 @@ const WithoutMemoFunction = (): React.JSX.Element => {
             The value is: <b>{context.value}</b>
           </>
         ),
-        icon: "notifications",
+        icon: 'notifications',
         intent: Intent.PRIMARY
       });
       return context.value;
@@ -127,25 +127,23 @@ const WithoutMemoFunction = (): React.JSX.Element => {
 
   return (
     <Context.Provider value={context}>
-      <Common onValueChange={value => setContext({ value: value })} />
+      <Common onValueChange={(value) => { setContext({ value }); }} />
     </Context.Provider>
   );
 };
 
-const HookMemo = () => {
-  return (
-    <div>
-      <div className="px-2 py-6">
-        <p className="text-xl font-medium">With useMemo to cache function and return value: </p>
-        <MemoFunction />
-      </div>
-      <hr />
-      <div className="px-2 py-6">
-        <p className="text-xl font-medium">Without useMemo to cache function and return value: </p>
-        <WithoutMemoFunction />
-      </div>
+const HookMemo = (): JSX.Element => (
+  <div>
+    <div className="px-2 py-6">
+      <p className="text-xl font-medium">With useMemo to cache function and return value: </p>
+      <MemoFunction />
     </div>
-  );
-}
+    <hr />
+    <div className="px-2 py-6">
+      <p className="text-xl font-medium">Without useMemo to cache function and return value: </p>
+      <WithoutMemoFunction />
+    </div>
+  </div>
+);
 
 export default HookMemo;

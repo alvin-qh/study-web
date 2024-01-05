@@ -1,6 +1,7 @@
-import { createAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { TodoState, VisibilityFilter } from "./type";
-import { uuid } from "./util";
+import { createAction, createSlice, type PayloadAction } from '@reduxjs/toolkit';
+
+import { type TodoState, VisibilityFilter } from './type';
+import { uuid } from './util';
 
 /**
  * 创建一个 Action 函数
@@ -10,7 +11,7 @@ export const setVisibilityFilter = createAction<VisibilityFilter>('SET_VISIBILIT
 
 /**
  * 创建一个 Slice 对象
- * 
+ *
  * 注意：传统的 reducer 函数通过参数传入旧的 state 并返回新的 state
  *      createSlice 函数为 reducer 启用了 Immer 功能，允许对 state 参数本身做修改（mutation）操作
  */
@@ -38,7 +39,7 @@ const slice = createSlice({
             text,
             completed: false
           }
-        ]
+        ];
       }
     },
 
@@ -48,7 +49,7 @@ const slice = createSlice({
     toggleTodo: (state: TodoState, action: PayloadAction<string>): void => {
       const id = action.payload;
       if (id) {
-        state.items = state.items.map(item => {
+        state.items = state.items.map((item) => {
           if (item.id === id) {
             item.completed = !item.completed;
           }
@@ -57,24 +58,16 @@ const slice = createSlice({
       }
     }
   },
-  // extraReducers: builder => {
-  //   /**
-  //    * 设置过滤项
-  //    */
-  //   builder.addCase(toggleTodoBy, (state: TodoState, action: PayloadAction<string>): void => {
-  //     const filter = action.payload;
-  //     if (filter) {
-  //       state.filter = filter;
-  //     }
-  //   })
-  // }
-  extraReducers: {
-    [setVisibilityFilter.type]: (state: TodoState, action: PayloadAction<string>): void => {
+  extraReducers: (builder) => {
+    /**
+     * 设置过滤项
+     */
+    builder.addCase(setVisibilityFilter.type, (state: TodoState, action: PayloadAction<string>): void => {
       const filter = action.payload;
       if (filter) {
         state.filter = filter;
       }
-    }
+    });
   }
 });
 

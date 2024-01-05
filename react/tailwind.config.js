@@ -1,15 +1,13 @@
-const colors = require("./tailwind/colors");
-const { pluginStripes } = require("./tailwind/plugins");
+const colors = require('./tailwind/colors');
+const { pluginStripes } = require('./tailwind/plugins');
 
-require("./tailwind/colors");
-
-console.log("aaaaa");
+require('./tailwind/colors');
 
 module.exports = {
   purge: [
-    "./src/**/*.ts",
-    "./src/**/*.tsx",
-    "./src/**/*.css",
+    './src/**/*.ts',
+    './src/**/*.tsx',
+    './src/**/*.css'
   ],
   darkMode: false, // or "media" or "class"
   theme: {
@@ -19,52 +17,52 @@ module.exports = {
     colors,
     extend: {
       fontFamily: {
-        "source": [
-          "Source Sans Pro",
-          "ui-sans-serif",
-          "system-ui",
-          "-apple-system",
-          "BlinkMacSystemFont",
-          "Segoe UI",
-          "Roboto",
-          "Helvetica Neue",
-          "Arial",
-          "Noto Sans",
-          "sans-serif",
-          "Apple Color Emoji",
-          "Segoe UI Emoji",
-          "Segoe UI Symbol",
-          "Noto Color Emoji"
+        source: [
+          'Source Sans Pro',
+          'ui-sans-serif',
+          'system-ui',
+          '-apple-system',
+          'BlinkMacSystemFont',
+          'Segoe UI',
+          'Roboto',
+          'Helvetica Neue',
+          'Arial',
+          'Noto Sans',
+          'sans-serif',
+          'Apple Color Emoji',
+          'Segoe UI Emoji',
+          'Segoe UI Symbol',
+          'Noto Color Emoji'
         ],
-        "ubuntu-mono": [
-          "Ubuntu Mono",
-          "ui-monospace", 
-          "SFMono-Regular",
-          "Menlo",
-          "Monaco",
-          "Consolas",
-          "Liberation Mono",
-          "Courier New",
-          "monospace"
+        'ubuntu-mono': [
+          'Ubuntu Mono',
+          'ui-monospace',
+          'SFMono-Regular',
+          'Menlo',
+          'Monaco',
+          'Consolas',
+          'Liberation Mono',
+          'Courier New',
+          'monospace'
         ],
-        "flow": [
-          "Flow"
+        flow: [
+          'Flow'
         ]
       },
       backgroundSize: {
-        "6": "6rem"
+        6: '6rem'
       }
     }
   },
   variants: {
     extend: {
-      backgroundColor: ["active"],
-      boxShadow: ["active", "hover"],
-      transitionProperty: ["responsive", "motion-safe", "motion-reduce"],
-      animation: ["hover", "focus"],
+      backgroundColor: ['active'],
+      boxShadow: ['active', 'hover'],
+      transitionProperty: ['responsive', 'motion-safe', 'motion-reduce'],
+      animation: ['hover', 'focus']
     }
   },
   plugins: [
     pluginStripes
   ]
-}
+};

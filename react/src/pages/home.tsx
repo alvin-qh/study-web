@@ -1,6 +1,8 @@
+import { type JSX } from 'react';
+
 import logoImage from '../logo.svg';
 
-const Home = () => (
+const Home = (): JSX.Element => (
   <div className="home">
     <div className="bg-gradient-to-b from-gray-900 to-gray-600
                     rounded-md shadow-lg border-sky-800 drop-shadow-md

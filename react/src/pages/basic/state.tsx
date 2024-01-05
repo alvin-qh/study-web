@@ -1,20 +1,20 @@
-import { PureComponent } from "react";
+import { type JSX, PureComponent } from 'react';
 
-type StateProp = {
+interface StateProp {
   className?: string
-};
+}
 
 /* 定义组件的状态类型 */
-type StateState = {
+interface StateState {
   datetime?: string
 }
 
 class Clock extends PureComponent<StateProp, StateState> {
   state: StateState = {
     datetime: new Date().toLocaleString()
-  }
+  };
 
-  timer: any = 0
+  timer: NodeJS.Timeout | null = null;
 
   componentDidMount(): void {
     this.timer = setInterval(() => {
@@ -28,13 +28,13 @@ class Clock extends PureComponent<StateProp, StateState> {
   componentWillUnmount(): void {
     if (this.timer) {
       clearInterval(this.timer);
-      this.timer = 0;
+      this.timer = null;
     }
   }
 
-  render(): React.JSX.Element {
+  render(): JSX.Element {
     const {
-      className = ""
+      className = ''
     } = this.props;
 
     return (
@@ -44,7 +44,7 @@ class Clock extends PureComponent<StateProp, StateState> {
 }
 
 
-const StateComponent = (): React.JSX.Element => (
+const StateComponent = (): JSX.Element => (
   <div>
     <Clock
       className="text-gray-700 text-lg font-bold text-center py-10"

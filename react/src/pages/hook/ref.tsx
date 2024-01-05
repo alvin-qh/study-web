@@ -1,21 +1,21 @@
 /**
  * useRef 返回一个对象，该对象的 current 可以引用到任意值或对象
- * 
+ *
  * useRef 返回值具备不变性，即相同位置的 useRef 调用返回的值总是和上一次调用是相同的
  * useRef 的一般用法是通过 React 组件的 ref 属性对该组件进行引用，无论组件重新产生多少次，其 current 均引用到该组件
  */
 
-import { InputGroup } from "@blueprintjs/core";
-import { useEffect, useRef, useState } from "react";
+import { InputGroup } from '@blueprintjs/core';
+import { useEffect, useRef, useState } from 'react';
 
-type StateHistoryProp = {
-  value: string;
+interface StateHistoryProp {
+  value: string
 }
 
 /**
  * 设置一个自定义 Hook，用来返回一个变量的前一个值
  */
-const usePrevious = function <T>(value: T): T {
+function usePrevious<T>(value: T): T {
   // 定义 lastValueRef 引用到传入的 value 属性上
   const previousRef = useRef<T>(value);
 
@@ -35,10 +35,9 @@ const StateHistory = ({ value }: StateHistoryProp): JSX.Element => {
       <p>The previous state value is: <b>{previousValue}</b></p>
     </div>
   );
-}
+};
 
-type RefInvarianceProps = StateHistoryProp & {
-}
+type RefInvarianceProps = StateHistoryProp;
 
 /**
  * 验证 ref 不变性的组件
@@ -53,9 +52,9 @@ const RefInvariance = ({ value }: RefInvarianceProps): JSX.Element => {
   const [refChangeCount, setRefChangeCount] = useState<number>(0);
 
   // 保存 value 变化
-  useEffect(() => setCurrentChangeCount(count => count + 1), [value]);
+  useEffect(() => { setCurrentChangeCount((count) => count + 1); }, [value]);
   // 保存 ref 变化
-  useEffect(() => setRefChangeCount(count => count + 1), [valueRef]);
+  useEffect(() => { setRefChangeCount((count) => count + 1); }, [valueRef]);
 
   // 当 value 发生变化时，将 value 存入 ref.current 中
   useEffect(() => { valueRef.current = value; }, [value]);
@@ -66,10 +65,10 @@ const RefInvariance = ({ value }: RefInvarianceProps): JSX.Element => {
       <p>The previous state value is: <b>{refChangeCount}</b></p>
     </div>
   );
-}
+};
 
 const HookRef = (): JSX.Element => {
-  const [state, setState] = useState<string>("");
+  const [state, setState] = useState<string>('');
 
   // 定义一个引用到组件的 ref
   const inputRef = useRef<HTMLInputElement>(null);
@@ -81,8 +80,8 @@ const HookRef = (): JSX.Element => {
         <InputGroup
           className="shadow-lg"
           large={true}
-          onChange={e => setState(e.currentTarget.value)}
-          inputRef={inputRef}   // ref 引用到组件
+          onChange={(e) => { setState(e.currentTarget.value); }}
+          inputRef={inputRef} // ref 引用到组件
         />
       </div>
       <hr />
@@ -107,11 +106,11 @@ const HookRef = (): JSX.Element => {
       <div className="px-2 py-4">
         <p className="text-lg font-bold">useRef 引用到组件：<b className="font-normal">同步组件的值</b></p>
         <div className="shadow-lg border-2 mt-2 px-2 py-2">
-          <p>{inputRef.current?.value || "-"}</p>  {/* 通过引用同步组件的值 */}
+          <p>{inputRef.current?.value ?? '-'}</p>  {/* 通过引用同步组件的值 */}
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default HookRef;

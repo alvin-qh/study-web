@@ -1,26 +1,27 @@
-import { Button, InputGroup, Intent } from "@blueprintjs/core";
-import { Dispatch, useState } from "react";
-import { connect } from "react-redux";
-import { addTodo, setVisibilityFilter, toggleTodo } from "./action";
-import { FilterAction, State, TodoAction, TodoData, VisibilityFilter } from "./type";
+import { Button, InputGroup, Intent } from '@blueprintjs/core';
+import { type Dispatch, useState } from 'react';
+import { connect } from 'react-redux';
+
+import { addTodo, setVisibilityFilter, toggleTodo } from './action';
+import { type FilterAction, type State, type TodoAction, type TodoData, VisibilityFilter } from './type';
 
 /**
  * 定义 Todo 组件的 Props
  */
-type AddTodoProps = {
-  dispatch: Dispatch<TodoAction>,
+interface AddTodoProps {
+  dispatch: Dispatch<TodoAction>
 }
 
 /**
  * 定义 Todo 组件
  */
 const _AddTodo = ({ dispatch }: AddTodoProps): JSX.Element => {
-  const [input, setInput] = useState<string>("");
+  const [input, setInput] = useState<string>('');
 
   return (
     <div>
       <form
-        onSubmit={e => {    // 定义表单提交事件响应
+        onSubmit={(e) => { // 定义表单提交事件响应
           e.preventDefault();
 
           if (!input?.trim()) {
@@ -29,14 +30,14 @@ const _AddTodo = ({ dispatch }: AddTodoProps): JSX.Element => {
 
           // 通过 dispatch 方法提交 TodoAction
           dispatch(addTodo(input));
-          setInput("");
+          setInput('');
         }}>
         <div
           className="flex items-center space-x-2"
         >
           <InputGroup
             large={true}
-            onChange={e => setInput(e.currentTarget.value)}
+            onChange={(e) => { setInput(e.currentTarget.value); }}
             className="flex-1 focus:outline-none shadow-md"
             value={input}
           />
@@ -51,19 +52,19 @@ const _AddTodo = ({ dispatch }: AddTodoProps): JSX.Element => {
       </form>
     </div>
   );
-}
+};
 
 // 通过 connection 定义 AddTodo 组件，从而获取组件的 dispatch 属性
-export const AddTodo = connect()(_AddTodo);
+export const AddTodo = connect(_AddTodo);
 
 
 /**
  * 定义 Todo Item 组件的 Props
  */
-type TodoItemProps = {
-  text: string,         // Todo Item 的 text
-  completed: boolean,   // Todo Item 是否被完成
-  onClick: () => void,  // Todo Item 被点击事件
+interface TodoItemProps {
+  text: string // Todo Item 的 text
+  completed: boolean // Todo Item 是否被完成
+  onClick: () => void // Todo Item 被点击事件
 }
 
 /**
@@ -71,7 +72,13 @@ type TodoItemProps = {
  */
 const TodoItem = ({ completed, text, onClick }: TodoItemProps): JSX.Element => (
   <li
-    className={`${completed ? "line-through bg-sky-100" : "no-underline bg-green-100 font-medium"} px-4 py-2 border-b border-gray-300`}
+    className={
+      `${completed ? 'line-through bg-sky-100' : 'no-underline bg-green-100 font-medium'}
+      px-4
+      py-2
+      border-b
+      border-gray-300`
+    }
     onClick={onClick}
   >
     {text}
@@ -82,9 +89,9 @@ const TodoItem = ({ completed, text, onClick }: TodoItemProps): JSX.Element => (
 /**
  * Todo 列表组件的 Props
  */
-type TodoListProps = {
-  todos: Array<TodoData>;             // 要展示的 Todo 项目集合
-  onTodoClick: (id: string) => void;  // Todo 项目被点击的事件
+interface TodoListProps {
+  todos: TodoData[] // 要展示的 Todo 项目集合
+  onTodoClick: (id: string) => void // Todo 项目被点击的事件
 }
 
 /**
@@ -92,16 +99,16 @@ type TodoListProps = {
  */
 const _TodoList = ({ todos, onTodoClick }: TodoListProps): JSX.Element => (
   <ul
-    style={{ minHeight: "200px" }}
+    style={{ minHeight: '200px' }}
     className="border shadow-md rounded-md bg-white"
   >
     {
       // 渲染列表中所有的 Todo Item 组件
-      todos.map(todo => (
+      todos.map((todo) => (
         <TodoItem
           key={todo.id}
-          {...todo}     // text={todo.text} completed={todo.completed}
-          onClick={() => onTodoClick(todo.id)}
+          {...todo} // text={todo.text} completed={todo.completed}
+          onClick={() => { onTodoClick(todo.id); }}
         />
       ))
     }
@@ -112,66 +119,65 @@ const _TodoList = ({ todos, onTodoClick }: TodoListProps): JSX.Element => (
 /**
  * 将 state 转换为 _TodoList 组件 props 属性
  */
-const _todoListMapStateToProps = (state: State): Omit<TodoListProps, "onTodoClick"> => {
+const _todoListMapStateToProps = (state: State): Omit<TodoListProps, 'onTodoClick'> => {
   /**
    * 根据 VisibilityFilter 的值对 todo 集合进行过滤
    */
-  const visibleFilter = (todos: Array<TodoData>, filter: VisibilityFilter): Array<TodoData> => {
+  const visibleFilter = (todos: TodoData[], filter: VisibilityFilter): TodoData[] => {
     switch (filter) {
-      case VisibilityFilter.SHOW_ACTIVE:
-        return todos.filter(t => !t.completed);
-      case VisibilityFilter.SHOW_COMPLETED:
-        return todos.filter(t => t.completed);
-      case VisibilityFilter.SHOW_ALL:
-      default:
-        return todos;
+    case VisibilityFilter.SHOW_ACTIVE:
+      return todos.filter((t) => !t.completed);
+    case VisibilityFilter.SHOW_COMPLETED:
+      return todos.filter((t) => t.completed);
+    case VisibilityFilter.SHOW_ALL:
+    default:
+      return todos;
     }
-  }
+  };
 
   return {
     todos: visibleFilter(state.todos, state.filter)
-  }
-}
+  };
+};
 
 /**
  * 将 dispatch 转换为 _TodoList 组件的 props 属性
  */
-const _todoListMapDispatchToProps = (dispatch: Dispatch<TodoAction>): Omit<TodoListProps, "todos"> => {
-  return {
-    onTodoClick: (id: string) => dispatch(toggleTodo(id))
-  }
-}
+const _todoListMapDispatchToProps = (dispatch: Dispatch<TodoAction>): Omit<TodoListProps, 'todos'> => ({
+  onTodoClick: (id: string) => { dispatch(toggleTodo(id)); }
+});
 
 // 通过 connect 函数产生 TodoList 组件
 export const TodoList = connect(
-  _todoListMapStateToProps,   // state 到 props 转换函数
-  _todoListMapDispatchToProps  // dispatch 到 props 转换函数
+  _todoListMapStateToProps, // state 到 props 转换函数
+  _todoListMapDispatchToProps // dispatch 到 props 转换函数
 )(_TodoList);
 
 
 /**
  * 定义 _Link 组件 Props 属性
  */
-type LinkProps = {
-  active: boolean;
-  onClick: () => void;
-  children: string | JSX.Element;
+interface LinkProps {
+  active: boolean
+  onClick: () => void
+  children: string | JSX.Element
 }
 
 /**
  * 定义 _Link 组件
  */
-const _Link = ({ active, onClick, children }: LinkProps): JSX.Element => {
-  return active ? (
+const _Link = ({ active, onClick, children }: LinkProps): JSX.Element => (active
+  ? (
     <span
       className="text-gray-500 font-bold px-2 py-1 bg-gray-100"
     >
       {children}
     </span>
-  ) : (
+  )
+  : (
     <a
       href="#!"
-      onClick={e => {
+      onClick={(e) => {
         e.preventDefault();
         onClick();
       }}
@@ -179,14 +185,13 @@ const _Link = ({ active, onClick, children }: LinkProps): JSX.Element => {
     >
       {children}
     </a>
-  );
-};
+  ));
 
 
 /**
  * 定义 Link 组件的拓展属性
  */
-type LinkExternProps = {
+interface LinkExternProps {
   filter: VisibilityFilter
 }
 
@@ -194,7 +199,7 @@ type LinkExternProps = {
  * state 转换为 _Link 组件的 props 属性
  * externProps 表示 connect 后额外附加的属性
  */
-const _linkStateToProps = (state: State, externProps: LinkExternProps): Omit<LinkProps, "onClick" | "children"> => (
+const _linkStateToProps = (state: State, externProps: LinkExternProps): Omit<LinkProps, 'onClick' | 'children'> => (
   {
     active: state.filter === externProps.filter
   }
@@ -204,11 +209,12 @@ const _linkStateToProps = (state: State, externProps: LinkExternProps): Omit<Lin
  * dispatch 转换为 _Link 组件的 props 属性
  * externProps 表示 connect 后额外附加的属性
  */
-const _linkMapDispatchToProps = (dispatch: Dispatch<FilterAction>, externProps: LinkExternProps): Omit<LinkProps, "active" | "children"> => (
-  {
-    onClick: () => dispatch(setVisibilityFilter(externProps.filter))
-  }
-);
+const _linkMapDispatchToProps =
+  (dispatch: Dispatch<FilterAction>, externProps: LinkExternProps): Omit<LinkProps, 'active' | 'children'> => (
+    {
+      onClick: () => { dispatch(setVisibilityFilter(externProps.filter)); }
+    }
+  );
 
 /**
  * 通过 connect 定义 Link 组件

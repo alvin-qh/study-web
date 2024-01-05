@@ -1,4 +1,4 @@
-import { Intent, Spinner } from "@blueprintjs/core";
+import { Intent, Spinner } from '@blueprintjs/core';
 
 const Loading = (
   <div className="w-full h-screen flex justify-center items-center">

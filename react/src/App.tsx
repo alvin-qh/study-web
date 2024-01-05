@@ -1,11 +1,11 @@
-import { Alignment, Button, Navbar } from "@blueprintjs/core";
-import { Popover } from "@blueprintjs/core";
-import Loading from "./components/loading";
-import { lazy, Suspense } from "react";
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
-import { BasicMenu, HookMenu, ReduxMenu } from "./menu";
+import { Alignment, Button, Navbar, Popover } from '@blueprintjs/core';
+import { type JSX, lazy, Suspense } from 'react';
+import { BrowserRouter, Route, Routes, useNavigate } from 'react-router-dom';
 
-const Nav = () => {
+import Loading from './components/loading';
+import { BasicMenu, HookMenu, ReduxMenu } from './menu';
+
+const Nav = (): JSX.Element => {
   const navigate = useNavigate();
 
   return (
@@ -13,7 +13,7 @@ const Nav = () => {
       <Navbar.Group align={Alignment.LEFT}>
         <Navbar.Heading className="font-bold">Study React</Navbar.Heading>
         <Navbar.Divider />
-        <Button icon="home" text="Home" onClick={() => navigate("/")} className="focus:outline-none" />
+        <Button icon="home" text="Home" onClick={() => { navigate('/'); }} className="focus:outline-none" />
         <Navbar.Divider />
         <Popover
           interactionKind="hover"
@@ -47,34 +47,34 @@ const Nav = () => {
         </Popover>
       </Navbar.Group>
     </Navbar>
-  )
-}
+  );
+};
 
-const Body = () => {
-  const Home = lazy(() => import(/* webpackChunkName: "home" */ "./pages/home"));
-  const BasicHello = lazy(() => import(/* webpackChunkName: "basic-hello" */ "./pages/basic/hello"));
-  const Basicelement = lazy(() => import(/* webpackChunkName: "basic-element" */ "./pages/basic/component"));
-  const BasicState = lazy(() => import(/* webpackChunkName: "basic-state" */ "./pages/basic/state"));
-  const BasicEvent = lazy(() => import(/* webpackChunkName: "basic-event" */ "./pages/basic/event"));
-  const BasicCondition = lazy(() => import(/* webpackChunkName: "basic-condition" */ "./pages/basic/condition"));
-  const BasicLoop = lazy(() => import(/* webpackChunkName: "basic-loop" */ "./pages/basic/loop"));
-  const BasicStateUp = lazy(() => import(/* webpackChunkName: "basic-state-up" */ "./pages/basic/state-up"));
+const Body = (): JSX.Element => {
+  const Home = lazy(async () => await import(/* webpackChunkName: "home" */ './pages/home'));
+  const BasicHello = lazy(async () => await import(/* webpackChunkName: "basic-hello" */ './pages/basic/hello'));
+  const Basicelement = lazy(async () => await import(/* webpackChunkName: "basic-element" */ './pages/basic/component'));
+  const BasicState = lazy(async () => await import(/* webpackChunkName: "basic-state" */ './pages/basic/state'));
+  const BasicEvent = lazy(async () => await import(/* webpackChunkName: "basic-event" */ './pages/basic/event'));
+  const BasicCondition = lazy(async () => await import(/* webpackChunkName: "basic-condition" */ './pages/basic/condition'));
+  const BasicLoop = lazy(async () => await import(/* webpackChunkName: "basic-loop" */ './pages/basic/loop'));
+  const BasicStateUp = lazy(async () => await import(/* webpackChunkName: "basic-state-up" */ './pages/basic/state-up'));
 
-  const HookPreview = lazy(() => import(/* webpackChunkName: "hook-preview" */ "./pages/hook/preview"));
-  const HookState = lazy(() => import(/* webpackChunkName: "hook-state" */ "./pages/hook/state"));
-  const HookEffect = lazy(() => import(/* webpackChunkName: "hook-effect" */ "./pages/hook/effect"));
-  const HookContext = lazy(() => import(/* webpackChunkName: "hook-context" */ "./pages/hook/context"));
-  const HookReducer = lazy(() => import(/* webpackChunkName: "hook-reducer" */ "./pages/hook/reducer"));
-  const HookCallback = lazy(() => import(/* webpackChunkName: "hook-callback" */ "./pages/hook/callback"));
-  const HookMemo = lazy(() => import(/* webpackChunkName: "hook-memo" */ "./pages/hook/memo"));
-  const HookRef = lazy(() => import(/* webpackChunkName: "hook-ref" */ "./pages/hook/ref"));
-  const HookImperativeHandle = lazy(() => import(/* webpackChunkName: "hook-imperative-handle" */ "./pages/hook/imperative-handle"));
-  const HookLayoutEffect = lazy(() => import(/* webpackChunkName: "hook-layout-effect" */ "./pages/hook/layout-effect"));
-  const HookCustom = lazy(() => import(/* webpackChunkName: "hook-custom" */ "./pages/hook/custom"));
+  const HookPreview = lazy(async () => await import(/* webpackChunkName: "hook-preview" */ './pages/hook/preview'));
+  const HookState = lazy(async () => await import(/* webpackChunkName: "hook-state" */ './pages/hook/state'));
+  const HookEffect = lazy(async () => await import(/* webpackChunkName: "hook-effect" */ './pages/hook/effect'));
+  const HookContext = lazy(async () => await import(/* webpackChunkName: "hook-context" */ './pages/hook/context'));
+  const HookReducer = lazy(async () => await import(/* webpackChunkName: "hook-reducer" */ './pages/hook/reducer'));
+  const HookCallback = lazy(async () => await import(/* webpackChunkName: "hook-callback" */ './pages/hook/callback'));
+  const HookMemo = lazy(async () => await import(/* webpackChunkName: "hook-memo" */ './pages/hook/memo'));
+  const HookRef = lazy(async () => await import(/* webpackChunkName: "hook-ref" */ './pages/hook/ref'));
+  const HookImperativeHandle = lazy(async () => await import(/* webpackChunkName: "hook-imperative-handle" */ './pages/hook/imperative-handle'));
+  const HookLayoutEffect = lazy(async () => await import(/* webpackChunkName: "hook-layout-effect" */ './pages/hook/layout-effect'));
+  const HookCustom = lazy(async () => await import(/* webpackChunkName: "hook-custom" */ './pages/hook/custom'));
 
-  const ReduxBasic = lazy(() => import(/* webpackChunkName: "redux-basic" */ "./pages/redux/basic"));
-  const ReduxToolkit = lazy(() => import(/* webpackChunkName: "redux-toolkit" */ "./pages/redux/toolkit"));
-  const Middleware = lazy(() => import(/* webpackChunkName: "redux-middleware" */ "./pages/redux/middleware"));
+  const ReduxBasic = lazy(async () => await import(/* webpackChunkName: "redux-basic" */ './pages/redux/basic'));
+  const ReduxToolkit = lazy(async () => await import(/* webpackChunkName: "redux-toolkit" */ './pages/redux/toolkit'));
+  const Middleware = lazy(async () => await import(/* webpackChunkName: "redux-middleware" */ './pages/redux/middleware'));
 
   return (
     <div
@@ -109,10 +109,10 @@ const Body = () => {
         </Routes>
       </Suspense>
     </div>
-  )
-}
+  );
+};
 
-const App = () => (
+const App = (): JSX.Element => (
   <BrowserRouter>
     <div className="main">
       <Nav />

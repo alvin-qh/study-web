@@ -16,10 +16,10 @@ export type SET_VISIBILITY_FILTER = typeof SET_VISIBILITY_FILTER;
 /**
  * 定义增加 Todo 项目的 Action 类型
  */
-export type TodoAction = {
-  type: ADD_TODO | TOGGLE_TODO;
-  id?: string;
-  text?: string;
+export interface TodoAction {
+  type: ADD_TODO | TOGGLE_TODO
+  id?: string
+  text?: string
 }
 
 /**
@@ -29,7 +29,7 @@ export const VisibilityFilter = {
   SHOW_ALL: 'SHOW_ALL',
   SHOW_COMPLETED: 'SHOW_COMPLETED',
   SHOW_ACTIVE: 'SHOW_ACTIVE'
-}
+};
 
 // 过滤器项目类型
 export type VisibilityFilter = typeof VisibilityFilter[keyof typeof VisibilityFilter];
@@ -37,24 +37,24 @@ export type VisibilityFilter = typeof VisibilityFilter[keyof typeof VisibilityFi
 /**
  * 定义过滤项切换 Action
  */
-export type FilterAction = {
-  type: SET_VISIBILITY_FILTER;
-  filter: VisibilityFilter;
+export interface FilterAction {
+  type: SET_VISIBILITY_FILTER
+  filter: VisibilityFilter
 }
 
 /**
  * 定义每个 Todo 项目的类型
  */
-export type TodoData = {
-  id: string,
-  text: string,
-  completed: boolean,
+export interface TodoData {
+  id: string
+  text: string
+  completed: boolean
 }
 
 /**
  * 定义存储在 Store 中的对象类型
  */
-export type State = {
-  filter: VisibilityFilter;
-  todos: Array<TodoData>
+export interface State {
+  filter: VisibilityFilter
+  todos: TodoData[]
 }

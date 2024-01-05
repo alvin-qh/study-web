@@ -1,5 +1,5 @@
-import { IconName, InputGroup, Intent, MaybeElement } from "@blueprintjs/core";
-import { useRef, useState } from "react";
+import { type IconName, InputGroup, Intent, type MaybeElement } from '@blueprintjs/core';
+import { type JSX, useRef, useState } from 'react';
 
 /**
  * 华氏度转摄氏度
@@ -19,34 +19,34 @@ function toFahrenheit(celsius: number): number {
  * 温度类型和转换函数的对应关系
  */
 const transfersMap = {
-  "C": toCelsius,
-  "F": toFahrenheit
-}
+  C: toCelsius,
+  F: toFahrenheit
+};
 
 /**
  * 温度输入组件的属性
  */
 interface TemperatureInputProp {
-  type: "C" | "F"
-  temperature: Temperature;
-  className?: string;
-  icon?: IconName | MaybeElement;
-  onChange?: (type: string, value: number) => void;
-  intent?: Intent;
+  type: 'C' | 'F'
+  temperature: Temperature
+  className?: string
+  icon?: IconName | MaybeElement
+  onChange?: (type: string, value: number) => void
+  intent?: Intent
 }
 
 /**
  * 温度值类型
  */
-type Temperature = {
-  type: string;
-  value: number;
+interface Temperature {
+  type: string
+  value: number
 }
 
 /**
  * 温度输入组件
  */
-const TemperatureInput = ({ ...props }: TemperatureInputProp): React.JSX.Element => {
+const TemperatureInput = ({ ...props }: TemperatureInputProp): JSX.Element => {
   const {
     type,
     temperature,
@@ -65,18 +65,18 @@ const TemperatureInput = ({ ...props }: TemperatureInputProp): React.JSX.Element
   /**
    * 转换温度
    */
-  const changeTemperature = (temperature: Temperature): string => {
-    if (temperature.type !== type) {  // 温度类型不同时，返回转换后的结果
-      return transferFn(temperature.value).toString();
+  const changeTemperature = (temp: Temperature): string => {
+    if (temp.type !== type) { // 温度类型不同时，返回转换后的结果
+      return transferFn(temp.value).toString();
     }
 
-    if (inputGroupRef.current?.value) {  // 当前文本框有值时，返回当前文本框的值
+    if (inputGroupRef.current?.value) { // 当前文本框有值时，返回当前文本框的值
       return inputGroupRef.current.value;
     }
 
     // 返回缺省值
-    return isNaN(temperature.value) ? "" : temperature.value.toString();
-  }
+    return Number.isNaN(temp.value) ? '' : temp.value.toString();
+  };
 
   return (
     <div className={className}>
@@ -85,16 +85,16 @@ const TemperatureInput = ({ ...props }: TemperatureInputProp): React.JSX.Element
         value={changeTemperature(temperature)}
         leftIcon={icon}
         inputRef={inputGroupRef}
-        onChange={e => onChange?.(type, parseFloat(e.currentTarget.value))}
+        onChange={(e) => onChange?.(type, parseFloat(e.currentTarget.value))}
         intent={intent}
       />
     </div>
   );
-}
+};
 
 
-const BasicStateUp = (): React.JSX.Element => {
-  const [temperature, setTemperature] = useState<Temperature>({ type: "C", value: 0 });
+const BasicStateUp = (): JSX.Element => {
+  const [temperature, setTemperature] = useState<Temperature>({ type: 'C', value: 0 });
 
   return (
     <div className="px-4 py-6">
@@ -105,7 +105,7 @@ const BasicStateUp = (): React.JSX.Element => {
           className="w-1/4"
           icon="heatmap"
           temperature={temperature}
-          onChange={(type, value) => setTemperature(() => ({ type, value }))}
+          onChange={(type, value) => { setTemperature(() => ({ type, value })); }}
           intent={Intent.PRIMARY}
         />
       </div>
@@ -116,7 +116,7 @@ const BasicStateUp = (): React.JSX.Element => {
           className="w-1/4"
           icon="heatmap"
           temperature={temperature}
-          onChange={(type, value) => setTemperature(() => ({ type, value }))}
+          onChange={(type, value) => { setTemperature(() => ({ type, value })); }}
           intent={Intent.WARNING}
         />
       </div>

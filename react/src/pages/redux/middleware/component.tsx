@@ -1,12 +1,13 @@
-import { Button, Intent, ProgressBar } from "@blueprintjs/core";
-import { useDispatch, useSelector } from "react-redux";
-import { getExecutors, selectIntent, selectIsWaiting, selectValue } from "./process";
+import { Button, Intent, ProgressBar } from '@blueprintjs/core';
+import { useDispatch, useSelector } from 'react-redux';
+
+import { getExecutors, selectIntent, selectIsWaiting, selectValue } from './process';
 
 /**
  * 进度条属性
  */
-type ProcessProps = {
-  actionType: string;
+interface ProcessProps {
+  actionType: string
 }
 
 /**
@@ -28,7 +29,7 @@ const ProcessButton = ({ actionType }: ProcessProps): JSX.Element => {
         intent={Intent.PRIMARY}
         large={true}
         loading={isWaiting}
-        onClick={() => dec(dispatch, 0.1)}
+        onClick={() => { dec(dispatch, 0.1); }}
         disabled={value === 0 || isWaiting}
         className="focus:outline-none"
       >
@@ -38,7 +39,7 @@ const ProcessButton = ({ actionType }: ProcessProps): JSX.Element => {
         intent={Intent.PRIMARY}
         large={true}
         loading={isWaiting}
-        onClick={() => inc(dispatch, 0.1)}
+        onClick={() => { inc(dispatch, 0.1); }}
         disabled={value === 1 || isWaiting}
         className="focus:outline-none"
       >
@@ -46,7 +47,7 @@ const ProcessButton = ({ actionType }: ProcessProps): JSX.Element => {
       </Button>
     </div>
   );
-}
+};
 
 
 /**
@@ -65,19 +66,17 @@ const ProcessBar = (): JSX.Element => {
       value={value}
     />
   );
-}
+};
 
 
 /**
  * 组件
  */
-const Processor = ({ actionType }: ProcessProps): JSX.Element => {
-  return (
-    <div>
-      <ProcessButton actionType={actionType} />
-      <ProcessBar />
-    </div>
-  );
-}
+const Processor = ({ actionType }: ProcessProps): JSX.Element => (
+  <div>
+    <ProcessButton actionType={actionType} />
+    <ProcessBar />
+  </div>
+);
 
 export default Processor;

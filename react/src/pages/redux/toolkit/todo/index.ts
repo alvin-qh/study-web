@@ -4,14 +4,10 @@ import { VisibilityFilter } from './type';
 
 export {
   addTodo,
-  toggleTodo,
-  setVisibilityFilter,
-
-  VisibilityFilter,
-
   selectFilter,
   selectItems,
-
-  todoReducer
+  setVisibilityFilter,
+  todoReducer,
+  toggleTodo,
+  VisibilityFilter
 };
-

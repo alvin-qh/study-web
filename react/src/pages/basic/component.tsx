@@ -1,29 +1,29 @@
-import { Component } from "react";
+import { Component, type JSX } from 'react';
 
 /**
  * 定义组件的属性类型
  */
-type WelcomeProp = {
-  name?: string,
+interface WelcomeProp {
+  name?: string
   className?: string
-};
+}
 
 
 /* 定义一个函数组件 */
 const WelcomeFunc = ({
-  name = "Alvin",
-  className = ""
-}: WelcomeProp): React.JSX.Element => (
+  name = 'Alvin',
+  className = ''
+}: WelcomeProp): JSX.Element => (
   <h1 className={className}>Hello, {name}</h1>
 );
 
 
 /* 定义一个类组件 */
 class WelcomeCls extends Component<WelcomeProp> {
-  render(): React.JSX.Element {
+  render(): JSX.Element {
     const {
-      name = "Alvin",
-      className = ""
+      name = 'Alvin',
+      className = ''
     } = this.props;
 
     return (
@@ -33,7 +33,7 @@ class WelcomeCls extends Component<WelcomeProp> {
 }
 
 
-const BasicComponent = (): React.JSX.Element => (
+const BasicComponent = (): JSX.Element => (
   <div>
     <WelcomeFunc
       name="Alvin"
