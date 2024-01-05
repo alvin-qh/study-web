@@ -95,7 +95,6 @@
 </template>
 
 <script setup lang="ts">
-import { cloneDeep } from 'lodash-es';
 import { reactive, ref } from 'vue';
 
 import { type Values } from '@/libs/types';
@@ -171,7 +170,7 @@ function reactiveAdd() {
  */
 function copy() {
   // 通过 `value` 属性为响应式对象重新赋值
-  refValues.value = cloneDeep(reactiveValues);
+  refValues.value = structuredClone(reactiveValues);
 }
 </script>
 
