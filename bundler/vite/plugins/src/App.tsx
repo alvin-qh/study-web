@@ -1,22 +1,15 @@
-import { Router, useRoutes } from '@solidjs/router';
+import { type RouteSectionProps } from '@solidjs/router';
 import { type JSX } from 'solid-js';
 
 import Nav from '@/components/Nav.tsx';
-import routes from '~solid-pages';
 
-const App = (): JSX.Element => {
-  const Routes = useRoutes(routes);
-
-  return (
-    <>
-      <Router>
-        <Nav />
-        <div>
-          <Routes />
-        </div>
-      </Router>
-    </>
-  );
-};
+const App = (props: RouteSectionProps): JSX.Element => (
+  <>
+    <Nav />
+    <div>
+      {props.children}
+    </div>
+  </>
+);
 
 export default App;
