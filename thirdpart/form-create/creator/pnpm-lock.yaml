@@ -5,9 +5,15 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@form-create/ant-design-vue':
+    specifier: ^3.1.27
+    version: 3.1.27(vue@3.4.5)
   ant-design-vue:
     specifier: ^4.0.8
     version: 4.1.0(vue@3.4.5)
+  highlight.js:
+    specifier: ^11.9.0
+    version: 11.9.0
   vue:
     specifier: ^3.4.4
     version: 3.4.5(typescript@5.3.3)
@@ -375,6 +381,55 @@ packages:
     resolution: {integrity: sha512-gMsVel9D7f2HLkBma9VbtzZRehRogVRfbr++f06nL2vnCGCNlzOD+/MUov/F4p8myyAHspEhVobgjpX64q5m6A==, tarball: https://registry.npmmirror.com/@eslint/js/-/js-8.56.0.tgz}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
+
+  /@form-create/ant-design-vue@3.1.27(vue@3.4.5):
+    resolution: {integrity: sha512-CrNqWrrCfr/7ZXf0A04rh90fJGqQpfCBj89pPwtPK3HOYHOh4iKA+4gAwL+lcTisic2H70LSTzuhVmRVQ+D0KQ==, tarball: https://registry.npmmirror.com/@form-create/ant-design-vue/-/ant-design-vue-3.1.27.tgz}
+    peerDependencies:
+      vue: ^3.1.0
+    dependencies:
+      '@form-create/component-antdv-frame': 3.1.26
+      '@form-create/component-antdv-group': 3.1.27
+      '@form-create/component-antdv-upload': 3.1.26
+      '@form-create/component-subform': 3.1.5
+      '@form-create/core': 3.1.27(vue@3.4.5)
+      '@form-create/utils': 3.1.23
+      vue: 3.4.5(typescript@5.3.3)
+    dev: false
+
+  /@form-create/component-antdv-frame@3.1.26:
+    resolution: {integrity: sha512-PxuA50GazmwJNG1AM7Y5wzrBIGfRvsGyjXWbiIt/zeCYhr2YhVBhWJoQP9UsBulO481yGQF/wWnzZOW47RiMSA==, tarball: https://registry.npmmirror.com/@form-create/component-antdv-frame/-/component-antdv-frame-3.1.26.tgz}
+    dependencies:
+      '@form-create/utils': 3.1.23
+    dev: false
+
+  /@form-create/component-antdv-group@3.1.27:
+    resolution: {integrity: sha512-wRY69pzbvTNSn4AlLSzfBY5f1Mgw6xd8T5kvS/g29HpXpwhUsKiNQneKPcyVN+c6C0dRKMrHudWagx92vgjKLQ==, tarball: https://registry.npmmirror.com/@form-create/component-antdv-group/-/component-antdv-group-3.1.27.tgz}
+    dependencies:
+      '@form-create/utils': 3.1.23
+    dev: false
+
+  /@form-create/component-antdv-upload@3.1.26:
+    resolution: {integrity: sha512-KtwY9YPROa4sgcbGFifk2NfTLQEONVluvEgKzlC6E5Gz6SlVoGunyqGApePwQ1GaZVeV7hBBEhvTD5ZQ5wsiGw==, tarball: https://registry.npmmirror.com/@form-create/component-antdv-upload/-/component-antdv-upload-3.1.26.tgz}
+    dependencies:
+      '@form-create/utils': 3.1.23
+    dev: false
+
+  /@form-create/component-subform@3.1.5:
+    resolution: {integrity: sha512-JHNEFGuwpnjGvCJ0I0GCqPL5al0qXoN4ymnRBpm+oL+6MMo5bz1kUyoqMX1MutuC96gHTqpeqc67hssi8g2mIw==, tarball: https://registry.npmmirror.com/@form-create/component-subform/-/component-subform-3.1.5.tgz}
+    dev: false
+
+  /@form-create/core@3.1.27(vue@3.4.5):
+    resolution: {integrity: sha512-oupou9o8ScZAbnuMdo3vHYP1moYLaz8JiY+qEhumoAgAoGrmfE9O+hQWdYY0dnfvTDUL0A3o4h7JbE0GKT8KBQ==, tarball: https://registry.npmmirror.com/@form-create/core/-/core-3.1.27.tgz}
+    peerDependencies:
+      vue: ^3.1.0
+    dependencies:
+      '@form-create/utils': 3.1.23
+      vue: 3.4.5(typescript@5.3.3)
+    dev: false
+
+  /@form-create/utils@3.1.23:
+    resolution: {integrity: sha512-MmzCbWi1CuzB8oqpbHgPV/8152iUWdxzVKSuwrcl8nsVqMlSzxhydVLN5Au7uWDqCHhe/xzHBeIOxOtar8qjkw==, tarball: https://registry.npmmirror.com/@form-create/utils/-/utils-3.1.23.tgz}
+    dev: false
 
   /@humanwhocodes/config-array@0.11.13:
     resolution: {integrity: sha512-JSBDMiDKSzQVngfRjOdFXgFfklaXI4K9nLF49Auh21lmBWRLIK3+xTErTWD4KU54pb6coM6ESE7Awz/FNU3zgQ==, tarball: https://registry.npmmirror.com/@humanwhocodes/config-array/-/config-array-0.11.13.tgz}
@@ -1939,6 +1994,11 @@ packages:
     resolution: {integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==, tarball: https://registry.npmmirror.com/he/-/he-1.2.0.tgz}
     hasBin: true
     dev: true
+
+  /highlight.js@11.9.0:
+    resolution: {integrity: sha512-fJ7cW7fQGCYAkgv4CPfwFHrfd/cLS4Hau96JuJ+ZTOWhjnhoeN1ub1tFmALm/+lW5z4WCAuAV9bm05AP0mS6Gw==, tarball: https://registry.npmmirror.com/highlight.js/-/highlight.js-11.9.0.tgz}
+    engines: {node: '>=12.0.0'}
+    dev: false
 
   /ignore@5.3.0:
     resolution: {integrity: sha512-g7dmpshy+gD7mh88OC9NwSGTKoc3kyLAZQRU1mt53Aw/vnvfXnbC+F/7F7QoYVKbV+KNvJx8wArewKy1vXMtlg==, tarball: https://registry.npmmirror.com/ignore/-/ignore-5.3.0.tgz}

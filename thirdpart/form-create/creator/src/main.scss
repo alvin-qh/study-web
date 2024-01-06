@@ -1,12 +1,36 @@
 :root {
-  color: rgba(255, 255, 255, 0.85);
+  background-color: #000;
 }
 
-html,body {
+html,
+body {
   margin: 0;
   height: 100%;
 }
 
 #app {
-  height: 100%;
+  .wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-start;
+
+    &.horizontal {
+      flex-direction: row;
+    }
+  }
+}
+
+*::-webkit-scrollbar {
+  width: 5px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #7474743b;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #7474743b;
+  border-radius: 20px;
+  border: 3px solid #7474743b;
 }

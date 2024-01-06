@@ -1,8 +1,8 @@
 <template>
-  <a-config-provider :theme="{algorithm: theme.darkAlgorithm,}">
+  <a-config-provider :theme="{ algorithm: theme.darkAlgorithm, }">
     <a-layout class="layout">
       <a-layout-sider width="200">
-        <a-menu mode="inline" class="side-menu" @click="onMenuClicked">
+        <a-menu v-model:selectedKeys="selectedKeys" mode="inline" class="side-menu">
           <a-menu-item key="1">
             <home-outlined />
             <router-link to="/">
@@ -35,10 +35,10 @@
 <script setup lang="ts">
 import { AppstoreOutlined, HomeOutlined } from '@ant-design/icons-vue';
 import { theme } from 'ant-design-vue';
+import { ref } from 'vue';
 
-const onMenuClicked = (e: Event): void => {
-  console.log(e);
-};
+const selectedKeys = ref<string[]>(['1']);
+
 </script>
 
 <style scoped>
@@ -47,11 +47,10 @@ const onMenuClicked = (e: Event): void => {
 }
 
 .layout {
-  height: 100%;
+  min-height: 100vh;
 }
 
 .main {
-  height: 100%;
-  padding: 1.5vh;
+  padding: 1vh;
 }
 </style>

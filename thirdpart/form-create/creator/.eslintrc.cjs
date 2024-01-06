@@ -81,14 +81,8 @@ module.exports = {
     'import/no-unresolved': 'off',
     'import/extensions': 'off',
     'import/no-absolute-path': 'off',
-    'vue/max-attributes-per-line': ['error', {
-      singleline: {
-        max: 6
-      },
-      multiline: {
-        max: 1
-      }
-    }],
-    'vue/multi-word-component-names': 'off'
+    'vue/max-attributes-per-line': 'off',
+    'vue/multi-word-component-names': 'off',
+    'vue/no-v-html': 'off'
   }
 };
