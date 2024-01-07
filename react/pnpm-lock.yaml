@@ -10,16 +10,16 @@ dependencies:
     version: registry.npmmirror.com/@babel/plugin-proposal-private-property-in-object@7.21.11(@babel/core@7.23.7)
   '@blueprintjs/core':
     specifier: ^5.7.2
-    version: 5.7.2(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0)
+    version: 5.7.2(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
   '@blueprintjs/icons':
     specifier: ^5.5.0
-    version: 5.5.0(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0)
+    version: 5.5.0(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
   '@blueprintjs/select':
     specifier: ^5.0.20
-    version: 5.0.20(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0)
+    version: 5.0.20(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
   '@blueprintjs/table':
     specifier: ^5.0.20
-    version: 5.0.20(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0)
+    version: 5.0.20(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
   '@reduxjs/toolkit':
     specifier: ^2.0.1
     version: 2.0.1(react-redux@9.0.4)(react@18.2.0)
@@ -45,8 +45,8 @@ dependencies:
     specifier: ^20.10.6
     version: 20.10.6
   '@types/react':
-    specifier: ^18.2.46
-    version: 18.2.46
+    specifier: ^18.2.47
+    version: 18.2.47
   '@types/react-dom':
     specifier: ^18.2.18
     version: 18.2.18
@@ -76,7 +76,7 @@ dependencies:
     version: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
   react-redux:
     specifier: ^9.0.4
-    version: 9.0.4(@types/react@18.2.46)(react@18.2.0)(redux@5.0.1)
+    version: 9.0.4(@types/react@18.2.47)(react@18.2.0)(redux@5.0.1)
   react-router-dom:
     specifier: ^6.21.1
     version: 6.21.1(react-dom@18.2.0)(react@18.2.0)
@@ -105,8 +105,8 @@ dependencies:
     specifier: ^7.6.7
     version: 7.6.7
   tailwindcss:
-    specifier: ^3.4.0
-    version: 3.4.0
+    specifier: ^3.4.1
+    version: 3.4.1
   typescript:
     specifier: ^5.3.3
     version: 5.3.3
@@ -1694,7 +1694,7 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@blueprintjs/core@5.7.2(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0):
+  /@blueprintjs/core@5.7.2(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-wzYSog3RGsNq95F0stYZ+C6/PBjPidFRzVRnQPeUO/M0tZCL4QEbKC4qNz1flGlXaQH5sD6rjaoRoFaJfouXVg==, tarball: https://registry.npmmirror.com/@blueprintjs/core/-/core-5.7.2.tgz}
     hasBin: true
     peerDependencies:
@@ -1706,9 +1706,9 @@ packages:
         optional: true
     dependencies:
       '@blueprintjs/colors': 5.0.8
-      '@blueprintjs/icons': 5.5.0(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0)
+      '@blueprintjs/icons': 5.5.0(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
       '@popperjs/core': 2.11.8
-      '@types/react': 18.2.46
+      '@types/react': 18.2.47
       classnames: 2.3.2
       normalize.css: 8.0.1
       react: registry.npmmirror.com/react@18.2.0
@@ -1718,7 +1718,7 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@blueprintjs/icons@5.5.0(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0):
+  /@blueprintjs/icons@5.5.0(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-XnGWYZwtYh3+Cf9e2zYweZdwhZTevgufo287hu38Jfdhb7rcbWUwU7ktAmmf21QvGFqw6Ohyu8VVkoZZlE4eMg==, tarball: https://registry.npmmirror.com/@blueprintjs/icons/-/icons-5.5.0.tgz}
     peerDependencies:
       '@types/react': ^16.14.32 || 17 || 18
@@ -1728,7 +1728,7 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@types/react': 18.2.46
+      '@types/react': 18.2.47
       change-case: 4.1.2
       classnames: 2.3.2
       react: registry.npmmirror.com/react@18.2.0
@@ -1736,7 +1736,7 @@ packages:
       tslib: 2.6.2
     dev: false
 
-  /@blueprintjs/select@5.0.20(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0):
+  /@blueprintjs/select@5.0.20(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-t9T8mAXP5enMrieVOVv86J8OOv/+JiGIapiswgmt1MYpSO3mmF+yo3SGw/tOEqHla0Nk/tVxLbxdkwGGY2NYvA==, tarball: https://registry.npmmirror.com/@blueprintjs/select/-/select-5.0.20.tgz}
     peerDependencies:
       '@types/react': ^16.14.32 || 17 || 18
@@ -1746,16 +1746,16 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@blueprintjs/core': 5.7.2(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0)
-      '@blueprintjs/icons': 5.5.0(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0)
-      '@types/react': 18.2.46
+      '@blueprintjs/core': 5.7.2(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
+      '@blueprintjs/icons': 5.5.0(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
+      '@types/react': 18.2.47
       classnames: 2.3.2
       react: registry.npmmirror.com/react@18.2.0
       react-dom: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
       tslib: 2.6.2
     dev: false
 
-  /@blueprintjs/table@5.0.20(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0):
+  /@blueprintjs/table@5.0.20(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0):
     resolution: {integrity: sha512-jDII2LXlscNhYv3TUxEWrAP9neg2CI6u13fvGCrlxyT1A3WRjLJ2MnPRFuL5+x7LCEdKYYvLRn9lcMKu1u2faw==, tarball: https://registry.npmmirror.com/@blueprintjs/table/-/table-5.0.20.tgz}
     peerDependencies:
       '@types/react': ^16.14.32 || 17 || 18
@@ -1765,12 +1765,12 @@ packages:
       '@types/react':
         optional: true
     dependencies:
-      '@blueprintjs/core': 5.7.2(@types/react@18.2.46)(react-dom@18.2.0)(react@18.2.0)
-      '@types/react': 18.2.46
+      '@blueprintjs/core': 5.7.2(@types/react@18.2.47)(react-dom@18.2.0)(react@18.2.0)
+      '@types/react': 18.2.47
       classnames: 2.3.2
       react: registry.npmmirror.com/react@18.2.0
       react-dom: registry.npmmirror.com/react-dom@18.2.0(react@18.2.0)
-      react-innertext: 1.1.5(@types/react@18.2.46)(react@18.2.0)
+      react-innertext: 1.1.5(@types/react@18.2.47)(react@18.2.0)
       tslib: 2.6.2
     dev: false
 
@@ -2210,7 +2210,7 @@ packages:
     dependencies:
       immer: 10.0.3
       react: registry.npmmirror.com/react@18.2.0
-      react-redux: 9.0.4(@types/react@18.2.46)(react@18.2.0)(redux@5.0.1)
+      react-redux: 9.0.4(@types/react@18.2.47)(react@18.2.0)(redux@5.0.1)
       redux: 5.0.1
       redux-thunk: 3.1.0(redux@5.0.1)
       reselect: 5.1.0
@@ -2864,11 +2864,11 @@ packages:
   /@types/react-dom@18.2.18:
     resolution: {integrity: sha512-TJxDm6OfAX2KJWJdMEVTwWke5Sc/E/RlnPGvGfS0W7+6ocy2xhDVQVh/KvC2Uf7kACs+gDytdusDSdWfWkaNzw==, tarball: https://registry.npmmirror.com/@types/react-dom/-/react-dom-18.2.18.tgz}
     dependencies:
-      '@types/react': 18.2.46
+      '@types/react': 18.2.47
     dev: false
 
-  /@types/react@18.2.46:
-    resolution: {integrity: sha512-nNCvVBcZlvX4NU1nRRNV/mFl1nNRuTuslAJglQsq+8ldXe5Xv0Wd2f7WTE3jOxhLH2BFfiZGC6GCp+kHQbgG+w==, tarball: https://registry.npmmirror.com/@types/react/-/react-18.2.46.tgz}
+  /@types/react@18.2.47:
+    resolution: {integrity: sha512-xquNkkOirwyCgoClNk85BjP+aqnIS+ckAJ8i37gAbDs14jfW/J23f2GItAf33oiUPQnqNMALiFeoM9Y5mbjpVQ==, tarball: https://registry.npmmirror.com/@types/react/-/react-18.2.47.tgz}
     dependencies:
       '@types/prop-types': 15.7.5
       '@types/scheduler': 0.16.3
@@ -3860,6 +3860,11 @@ packages:
   /commander@6.2.1:
     resolution: {integrity: sha512-U7VdrJFnJgo4xjrHpTzu0yrHPGImdsmD95ZlgYSEajAn2JKzDhDTPG9kBTefmObL2w/ngeZnilk+OV9CG3d7UA==, tarball: https://registry.npmmirror.com/commander/-/commander-6.2.1.tgz}
     engines: {node: '>= 6'}
+    dev: false
+
+  /commander@7.2.0:
+    resolution: {integrity: sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==, tarball: https://registry.npmmirror.com/commander/-/commander-7.2.0.tgz}
+    engines: {node: '>= 10'}
     dev: false
 
   /commondir@1.0.1:
@@ -6826,13 +6831,13 @@ packages:
     resolution: {integrity: sha512-nsO+KSNgo1SbJqJEYRE9ERzo7YtYbou/OqjSQKxV7jcKox7+usiUVZOAC+XnDOABXggQTno0Y1CpVnuWEc1boQ==, tarball: https://registry.npmmirror.com/react-fast-compare/-/react-fast-compare-3.2.2.tgz}
     dev: false
 
-  /react-innertext@1.1.5(@types/react@18.2.46)(react@18.2.0):
+  /react-innertext@1.1.5(@types/react@18.2.47)(react@18.2.0):
     resolution: {integrity: sha512-PWAqdqhxhHIv80dT9znP2KvS+hfkbRovFp4zFYHFFlOoQLRiawIic81gKb3U1wEyJZgMwgs3JoLtwryASRWP3Q==, tarball: https://registry.npmmirror.com/react-innertext/-/react-innertext-1.1.5.tgz}
     peerDependencies:
       '@types/react': '>=0.0.0 <=99'
       react: '>=0.0.0 <=99'
     dependencies:
-      '@types/react': 18.2.46
+      '@types/react': 18.2.47
       react: registry.npmmirror.com/react@18.2.0
     dev: false
 
@@ -6866,7 +6871,7 @@ packages:
       warning: 4.0.3
     dev: false
 
-  /react-redux@9.0.4(@types/react@18.2.46)(react@18.2.0)(redux@5.0.1):
+  /react-redux@9.0.4(@types/react@18.2.47)(react@18.2.0)(redux@5.0.1):
     resolution: {integrity: sha512-9J1xh8sWO0vYq2sCxK2My/QO7MzUMRi3rpiILP/+tDr8krBHixC6JMM17fMK88+Oh3e4Ae6/sHIhNBgkUivwFA==, tarball: https://registry.npmmirror.com/react-redux/-/react-redux-9.0.4.tgz}
     peerDependencies:
       '@types/react': ^18.2.25
@@ -6881,7 +6886,7 @@ packages:
       redux:
         optional: true
     dependencies:
-      '@types/react': 18.2.46
+      '@types/react': 18.2.47
       '@types/use-sync-external-store': 0.0.3
       react: registry.npmmirror.com/react@18.2.0
       redux: 5.0.1
@@ -7497,8 +7502,8 @@ packages:
     resolution: {integrity: sha512-AsS729u2RHUfEra9xJrE39peJcc2stq2+poBXX8bcM08Y6g9j/i/PUzwNQqkaJde7Ntg1TO7bSREbR5sdosQ+g==, tarball: https://registry.npmmirror.com/synchronous-promise/-/synchronous-promise-2.0.17.tgz}
     dev: false
 
-  /tailwindcss@3.4.0:
-    resolution: {integrity: sha512-VigzymniH77knD1dryXbyxR+ePHihHociZbXnLZHUyzf2MMs2ZVqlUrZ3FvpXP8pno9JzmILt1sZPD19M3IxtA==, tarball: https://registry.npmmirror.com/tailwindcss/-/tailwindcss-3.4.0.tgz}
+  /tailwindcss@3.4.1:
+    resolution: {integrity: sha512-qAYmXRfk3ENzuPBakNK0SRrUDipP8NQnEY6772uDhflcQz5EhRdD7JNZxyrFHVQNCwULPBn6FNPp9brpO7ctcA==, tarball: https://registry.npmmirror.com/tailwindcss/-/tailwindcss-3.4.1.tgz}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
@@ -11243,7 +11248,7 @@ packages:
     name: '@types/react-test-renderer'
     version: 18.0.0
     dependencies:
-      '@types/react': 18.2.46
+      '@types/react': 18.2.47
     dev: false
 
   registry.npmmirror.com/@types/resolve@1.17.1:
@@ -12810,13 +12815,6 @@ packages:
     version: 2.20.3
     dev: false
 
-  registry.npmmirror.com/commander@7.2.0:
-    resolution: {integrity: sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/commander/-/commander-7.2.0.tgz}
-    name: commander
-    version: 7.2.0
-    engines: {node: '>= 10'}
-    dev: false
-
   registry.npmmirror.com/commander@8.3.0:
     resolution: {integrity: sha512-OkTL9umf+He2DZkUq8f8J9of7yL6RJKI24dVITBmNfZBmri9zYZQrKkuXiKhyfPSu8tUhnVBB1iKXevvnlR4Ww==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/commander/-/commander-8.3.0.tgz}
     name: commander
@@ -13207,14 +13205,6 @@ packages:
     version: 7.7.1
     dev: false
 
-  registry.npmmirror.com/cssesc@3.0.0:
-    resolution: {integrity: sha512-/Tb/JcjK111nNScGob5MNtsntNM1aCNUDipB/TkwZFhyDrrE47SOx/18wF2bbjgc3ZzCSKW1T5nt5EbFoAz/Vg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/cssesc/-/cssesc-3.0.0.tgz}
-    name: cssesc
-    version: 3.0.0
-    engines: {node: '>=4'}
-    hasBin: true
-    dev: false
-
   registry.npmmirror.com/cssnano-preset-default@5.2.14(postcss@8.4.28):
     resolution: {integrity: sha512-t0SFesj/ZV2OTylqQVOrFgEh5uanxbO6ZAdeCrNsUQ6fVuXwYTxJPNAGvGTxHbD68ldIJNec7PyYZDBrfDQ+6A==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/cssnano-preset-default/-/cssnano-preset-default-5.2.14.tgz}
     id: registry.npmmirror.com/cssnano-preset-default/5.2.14
@@ -13311,12 +13301,6 @@ packages:
     engines: {node: '>=8'}
     dependencies:
       cssom: registry.npmmirror.com/cssom@0.3.8
-    dev: false
-
-  registry.npmmirror.com/csstype@3.1.2:
-    resolution: {integrity: sha512-I7K1Uu0MBPzaFKg4nI5Q7Vs2t+3gWWW648spaF+Rg7pI9ds18Ugn+lvg4SHczUdKlHI5LWBXyqfS8+DufyBsgQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/csstype/-/csstype-3.1.2.tgz}
-    name: csstype
-    version: 3.1.2
     dev: false
 
   registry.npmmirror.com/damerau-levenshtein@1.0.8:
@@ -13767,7 +13751,7 @@ packages:
     engines: {node: '>= 0.4'}
     dependencies:
       get-intrinsic: registry.npmmirror.com/get-intrinsic@1.2.1
-      has: registry.npmmirror.com/has@1.0.3
+      has: 1.0.3
       has-tostringtag: registry.npmmirror.com/has-tostringtag@1.0.0
     dev: false
 
@@ -13776,7 +13760,7 @@ packages:
     name: es-shim-unscopables
     version: 1.0.0
     dependencies:
-      has: registry.npmmirror.com/has@1.0.3
+      has: 1.0.3
     dev: false
 
   registry.npmmirror.com/es6-object-assign@1.1.0:
@@ -14711,7 +14695,7 @@ packages:
     version: 1.2.1
     dependencies:
       function-bind: registry.npmmirror.com/function-bind@1.1.1
-      has: registry.npmmirror.com/has@1.0.3
+      has: 1.0.3
       has-proto: registry.npmmirror.com/has-proto@1.0.1
       has-symbols: registry.npmmirror.com/has-symbols@1.0.3
     dev: false
@@ -15291,7 +15275,7 @@ packages:
     engines: {node: '>= 0.4'}
     dependencies:
       get-intrinsic: registry.npmmirror.com/get-intrinsic@1.2.1
-      has: registry.npmmirror.com/has@1.0.3
+      has: 1.0.3
       side-channel: registry.npmmirror.com/side-channel@1.0.4
     dev: false
 
@@ -16573,7 +16557,7 @@ packages:
     version: 10.10.0
     dependencies:
       '@babel/runtime': registry.npmmirror.com/@babel/runtime@7.22.10
-      csstype: registry.npmmirror.com/csstype@3.1.2
+      csstype: 3.1.2
       is-in-browser: registry.npmmirror.com/is-in-browser@1.1.3
       tiny-warning: registry.npmmirror.com/tiny-warning@1.0.3
     dev: false
@@ -17676,7 +17660,7 @@ packages:
     dependencies:
       postcss: registry.npmmirror.com/postcss@8.4.28
       postcss-selector-parser: 6.0.13
-      postcss-value-parser: registry.npmmirror.com/postcss-value-parser@4.2.0
+      postcss-value-parser: 4.2.0
     dev: false
 
   registry.npmmirror.com/postcss-clamp@4.1.0(postcss@8.4.28):
@@ -17744,7 +17728,7 @@ packages:
       caniuse-api: registry.npmmirror.com/caniuse-api@3.0.0
       colord: registry.npmmirror.com/colord@2.9.3
       postcss: registry.npmmirror.com/postcss@8.4.28
-      postcss-value-parser: registry.npmmirror.com/postcss-value-parser@4.2.0
+      postcss-value-parser: 4.2.0
     dev: false
 
   registry.npmmirror.com/postcss-convert-values@5.1.3(postcss@8.4.28):
@@ -17758,7 +17742,7 @@ packages:
     dependencies:
       browserslist: registry.npmmirror.com/browserslist@4.21.10
       postcss: registry.npmmirror.com/postcss@8.4.28
-      postcss-value-parser: registry.npmmirror.com/postcss-value-parser@4.2.0
+      postcss-value-parser: 4.2.0
     dev: false
 
   registry.npmmirror.com/postcss-custom-media@8.0.2(postcss@8.4.28):
@@ -18037,7 +18021,7 @@ packages:
       postcss: ^8.2.15
     dependencies:
       postcss: registry.npmmirror.com/postcss@8.4.28
-      postcss-value-parser: registry.npmmirror.com/postcss-value-parser@4.2.0
+      postcss-value-parser: 4.2.0
       stylehacks: registry.npmmirror.com/stylehacks@5.1.1(postcss@8.4.28)
     dev: false
 
@@ -18067,7 +18051,7 @@ packages:
       postcss: ^8.2.15
     dependencies:
       postcss: registry.npmmirror.com/postcss@8.4.28
-      postcss-value-parser: registry.npmmirror.com/postcss-value-parser@4.2.0
+      postcss-value-parser: 4.2.0
     dev: false
 
   registry.npmmirror.com/postcss-minify-gradients@5.1.1(postcss@8.4.28):
@@ -18082,7 +18066,7 @@ packages:
       colord: registry.npmmirror.com/colord@2.9.3
       cssnano-utils: registry.npmmirror.com/cssnano-utils@3.1.0(postcss@8.4.28)
       postcss: registry.npmmirror.com/postcss@8.4.28
-      postcss-value-parser: registry.npmmirror.com/postcss-value-parser@4.2.0
+      postcss-value-parser: 4.2.0
     dev: false
 
   registry.npmmirror.com/postcss-minify-params@5.1.4(postcss@8.4.28):
@@ -18097,7 +18081,7 @@ packages:
       browserslist: registry.npmmirror.com/browserslist@4.21.10
       cssnano-utils: registry.npmmirror.com/cssnano-utils@3.1.0(postcss@8.4.28)
       postcss: registry.npmmirror.com/postcss@8.4.28
-      postcss-value-parser: registry.npmmirror.com/postcss-value-parser@4.2.0
+      postcss-value-parser: 4.2.0
     dev: false
 
   registry.npmmirror.com/postcss-minify-selectors@5.2.1(postcss@8.4.28):
@@ -18202,7 +18186,7 @@ packages:
       postcss: ^8.2.15
     dependencies:
       postcss: registry.npmmirror.com/postcss@8.4.28
-      postcss-value-parser: registry.npmmirror.com/postcss-value-parser@4.2.0
+      postcss-value-parser: 4.2.0
     dev: false
 
   registry.npmmirror.com/postcss-normalize-positions@5.1.1(postcss@8.4.28):
@@ -18215,7 +18199,7 @@ packages:
       postcss: ^8.2.15
     dependencies:
       postcss: registry.npmmirror.com/postcss@8.4.28
-      postcss-value-parser: registry.npmmirror.com/postcss-value-parser@4.2.0
+      postcss-value-parser: 4.2.0
     dev: false
 
   registry.npmmirror.com/postcss-normalize-repeat-style@5.1.1(postcss@8.4.28):
@@ -18228,7 +18212,7 @@ packages:
       postcss: ^8.2.15
     dependencies:
       postcss: registry.npmmirror.com/postcss@8.4.28
-      postcss-value-parser: registry.npmmirror.com/postcss-value-parser@4.2.0
+      postcss-value-parser: 4.2.0
     dev: false
 
   registry.npmmirror.com/postcss-normalize-string@5.1.0(postcss@8.4.28):
@@ -18241,7 +18225,7 @@ packages:
       postcss: ^8.2.15
     dependencies:
       postcss: registry.npmmirror.com/postcss@8.4.28
-      postcss-value-parser: registry.npmmirror.com/postcss-value-parser@4.2.0
+      postcss-value-parser: 4.2.0
     dev: false
 
   registry.npmmirror.com/postcss-normalize-timing-functions@5.1.0(postcss@8.4.28):
@@ -18254,7 +18238,7 @@ packages:
       postcss: ^8.2.15
     dependencies:
       postcss: registry.npmmirror.com/postcss@8.4.28
-      postcss-value-parser: registry.npmmirror.com/postcss-value-parser@4.2.0
+      postcss-value-parser: 4.2.0
     dev: false
 
   registry.npmmirror.com/postcss-normalize-unicode@5.1.1(postcss@8.4.28):
@@ -18268,7 +18252,7 @@ packages:
     dependencies:
       browserslist: registry.npmmirror.com/browserslist@4.21.10
       postcss: registry.npmmirror.com/postcss@8.4.28
-      postcss-value-parser: registry.npmmirror.com/postcss-value-parser@4.2.0
+      postcss-value-parser: 4.2.0
     dev: false
 
   registry.npmmirror.com/postcss-normalize-url@5.1.0(postcss@8.4.28):
@@ -18282,7 +18266,7 @@ packages:
     dependencies:
       normalize-url: registry.npmmirror.com/normalize-url@6.1.0
       postcss: registry.npmmirror.com/postcss@8.4.28
-      postcss-value-parser: registry.npmmirror.com/postcss-value-parser@4.2.0
+      postcss-value-parser: 4.2.0
     dev: false
 
   registry.npmmirror.com/postcss-normalize-whitespace@5.1.1(postcss@8.4.28):
@@ -18295,7 +18279,7 @@ packages:
       postcss: ^8.2.15
     dependencies:
       postcss: registry.npmmirror.com/postcss@8.4.28
-      postcss-value-parser: registry.npmmirror.com/postcss-value-parser@4.2.0
+      postcss-value-parser: 4.2.0
     dev: false
 
   registry.npmmirror.com/postcss-normalize@10.0.1(browserslist@4.21.10)(postcss@8.4.28):
@@ -18338,7 +18322,7 @@ packages:
     dependencies:
       cssnano-utils: registry.npmmirror.com/cssnano-utils@3.1.0(postcss@8.4.28)
       postcss: registry.npmmirror.com/postcss@8.4.28
-      postcss-value-parser: registry.npmmirror.com/postcss-value-parser@4.2.0
+      postcss-value-parser: 4.2.0
     dev: false
 
   registry.npmmirror.com/postcss-overflow-shorthand@3.0.4(postcss@8.4.28):
@@ -18476,7 +18460,7 @@ packages:
       postcss: ^8.2.15
     dependencies:
       postcss: registry.npmmirror.com/postcss@8.4.28
-      postcss-value-parser: registry.npmmirror.com/postcss-value-parser@4.2.0
+      postcss-value-parser: 4.2.0
     dev: false
 
   registry.npmmirror.com/postcss-replace-overflow-wrap@4.0.0(postcss@8.4.28):
@@ -18509,7 +18493,7 @@ packages:
     version: 6.0.13
     engines: {node: '>=4'}
     dependencies:
-      cssesc: registry.npmmirror.com/cssesc@3.0.0
+      cssesc: 3.0.0
       util-deprecate: 1.0.2
     dev: false
 
@@ -18523,7 +18507,7 @@ packages:
       postcss: ^8.2.15
     dependencies:
       postcss: registry.npmmirror.com/postcss@8.4.28
-      postcss-value-parser: registry.npmmirror.com/postcss-value-parser@4.2.0
+      postcss-value-parser: 4.2.0
       svgo: registry.npmmirror.com/svgo@2.8.0
     dev: false
 
@@ -19004,7 +18988,7 @@ packages:
       semver: registry.npmmirror.com/semver@7.5.4
       source-map-loader: registry.npmmirror.com/source-map-loader@3.0.2(webpack@5.88.2)
       style-loader: registry.npmmirror.com/style-loader@3.3.3(webpack@5.88.2)
-      tailwindcss: 3.4.0
+      tailwindcss: 3.4.1
       terser-webpack-plugin: registry.npmmirror.com/terser-webpack-plugin@5.3.9(esbuild@0.18.20)(webpack@5.88.2)
       typescript: 5.3.3
       webpack: registry.npmmirror.com/webpack@5.88.2(esbuild@0.18.20)
@@ -20310,7 +20294,7 @@ packages:
     hasBin: true
     dependencies:
       '@trysound/sax': registry.npmmirror.com/@trysound/sax@0.2.0
-      commander: registry.npmmirror.com/commander@7.2.0
+      commander: 7.2.0
       css-select: registry.npmmirror.com/css-select@4.3.0
       css-tree: registry.npmmirror.com/css-tree@1.1.3
       csso: registry.npmmirror.com/csso@4.2.0

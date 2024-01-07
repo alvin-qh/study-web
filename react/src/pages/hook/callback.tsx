@@ -32,7 +32,6 @@ const Setting = ({ onChange, howManyFuncs = 0 }: SettingProps): JSX.Element => (
   </Card>
 );
 
-
 /**
  * 计数器组件属性类型
  */
@@ -100,6 +99,7 @@ const HookCallback = (): JSX.Element => {
   const onChangeCallback = toUseCallback ? onChangeCallback2 : onChangeCallback1;
 
   // 定义保存 callback 函数产生次数的 Set 集合的 state
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const [funSet, setFunSet] = useState<Set<any>>(new Set<any>());
 
   // 当 toUseCallback 发生改变时，清理一次 Set 集合
@@ -108,7 +108,7 @@ const HookCallback = (): JSX.Element => {
       fs.clear();
       return fs;
     });
-  }, [toUseCallback]);  // eslint-disable-line
+  }, [toUseCallback]);
 
   // 当 onChangeCallback 函数发生变化时，记录一次函数的变化
   useEffect(() => {
@@ -116,7 +116,7 @@ const HookCallback = (): JSX.Element => {
       fs.add(onChangeCallback);
       return fs;
     });
-  }, [onChangeCallback]);  // eslint-disable-line
+  }, [onChangeCallback]);
 
   /**
    * 渲染表格第一列单元格
@@ -126,7 +126,7 @@ const HookCallback = (): JSX.Element => {
       <ProgressBar
         intent={Intent.PRIMARY}
         value={rows[rowIndex]}
-        stripes={false}
+        stripes={true}
       />
     </Cell>
   );

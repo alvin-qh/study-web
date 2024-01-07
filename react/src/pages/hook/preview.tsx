@@ -14,7 +14,7 @@ const CountState = (): JSX.Element => {
       <h1 className="font-bold text-lg px-2 py-1 bg-gradient-to-r from-yellow-100 to-yellow-50">useState:</h1>
       <div className="space-y-4 flex flex-col justify-center mt-4">
         <p className="text-center text-lg font-bold">You clicked
-          <b className="text-blue-600 text-2xl">{count}</b> times
+          <b className="text-blue-600 text-2xl px-1">{count}</b> times
         </p>
         <Button
           className="focus:outline-none place-self-center font-medium"
@@ -32,6 +32,7 @@ const CountEffect = (): JSX.Element => {
   const [count, setCount] = useState<number>(0);
 
   // 通过 useEffect 处理 state 变量变换后执行的方法
+  // 假设 count 变化后，需要更新页面标题，并且在组件销毁时恢复页面标题
   useEffect(() => {
     const oldTitle = document.title;
     document.title = `You clicked ${count} times`;
@@ -44,6 +45,9 @@ const CountEffect = (): JSX.Element => {
     <>
       <h1 className="font-bold text-lg px-2 py-1 bg-gradient-to-r from-yellow-100 to-yellow-50">useEffect: </h1>
       <div className="space-y-4 flex flex-col justify-center mt-4">
+        <p className="text-center text-lg font-bold">You clicked
+          <b className="text-blue-600 text-2xl px-1">{count}</b> times
+        </p>
         <Button
           className="focus:outline-none place-self-center font-medium"
           onClick={() => { setCount((c) => c + 1); }}

@@ -53,13 +53,18 @@ const Nav = (): JSX.Element => {
 const Body = (): JSX.Element => {
   const Home = lazy(async () => await import(/* webpackChunkName: "home" */ './pages/home'));
   const BasicHello = lazy(async () => await import(/* webpackChunkName: "basic-hello" */ './pages/basic/hello'));
-  const Basicelement = lazy(async () => await import(/* webpackChunkName: "basic-element" */ './pages/basic/component'));
+  const BasicElement = lazy(
+    async () => await import(/* webpackChunkName: "basic-element" */ './pages/basic/component')
+  );
   const BasicState = lazy(async () => await import(/* webpackChunkName: "basic-state" */ './pages/basic/state'));
   const BasicEvent = lazy(async () => await import(/* webpackChunkName: "basic-event" */ './pages/basic/event'));
-  const BasicCondition = lazy(async () => await import(/* webpackChunkName: "basic-condition" */ './pages/basic/condition'));
+  const BasicCondition = lazy(
+    async () => await import(/* webpackChunkName: "basic-condition" */ './pages/basic/condition')
+  );
   const BasicLoop = lazy(async () => await import(/* webpackChunkName: "basic-loop" */ './pages/basic/loop'));
-  const BasicStateUp = lazy(async () => await import(/* webpackChunkName: "basic-state-up" */ './pages/basic/state-up'));
-
+  const BasicStateUp = lazy(
+    async () => await import(/* webpackChunkName: "basic-state-up" */ './pages/basic/state-up')
+  );
   const HookPreview = lazy(async () => await import(/* webpackChunkName: "hook-preview" */ './pages/hook/preview'));
   const HookState = lazy(async () => await import(/* webpackChunkName: "hook-state" */ './pages/hook/state'));
   const HookEffect = lazy(async () => await import(/* webpackChunkName: "hook-effect" */ './pages/hook/effect'));
@@ -68,23 +73,36 @@ const Body = (): JSX.Element => {
   const HookCallback = lazy(async () => await import(/* webpackChunkName: "hook-callback" */ './pages/hook/callback'));
   const HookMemo = lazy(async () => await import(/* webpackChunkName: "hook-memo" */ './pages/hook/memo'));
   const HookRef = lazy(async () => await import(/* webpackChunkName: "hook-ref" */ './pages/hook/ref'));
-  const HookImperativeHandle = lazy(async () => await import(/* webpackChunkName: "hook-imperative-handle" */ './pages/hook/imperative-handle'));
-  const HookLayoutEffect = lazy(async () => await import(/* webpackChunkName: "hook-layout-effect" */ './pages/hook/layout-effect'));
+  const HookImperativeHandle = lazy(
+    async () => await import(/* webpackChunkName: "hook-imperative-handle" */ './pages/hook/imperative-handle')
+  );
+  const HookLayoutEffect = lazy(
+    async () => await import(/* webpackChunkName: "hook-layout-effect" */ './pages/hook/layout-effect')
+  );
   const HookCustom = lazy(async () => await import(/* webpackChunkName: "hook-custom" */ './pages/hook/custom'));
 
   const ReduxBasic = lazy(async () => await import(/* webpackChunkName: "redux-basic" */ './pages/redux/basic'));
   const ReduxToolkit = lazy(async () => await import(/* webpackChunkName: "redux-toolkit" */ './pages/redux/toolkit'));
-  const Middleware = lazy(async () => await import(/* webpackChunkName: "redux-middleware" */ './pages/redux/middleware'));
+  const Middleware = lazy(
+    async () => await import(/* webpackChunkName: "redux-middleware" */ './pages/redux/middleware')
+  );
 
   return (
     <div
-      className="container mx-auto bg-gradient-to-b from-gray-100 to-gray-150 px-4 py-14 border-gray-600 shadow-lg min-h-screen">
+      className="container
+                 mx-auto
+                 bg-gradient-to-b
+                 from-gray-100
+                 to-gray-150
+                 px-4 py-14
+                 border-gray-600
+                 shadow-lg min-h-screen">
       <Suspense fallback={Loading}>
         <Routes>
           <Route path="/" element={<Home />} />
 
           <Route path="/basic/hello" element={<BasicHello />} />
-          <Route path="/basic/component" element={<Basicelement />} />
+          <Route path="/basic/component" element={<BasicElement />} />
           <Route path="/basic/state" element={<BasicState />} />
           <Route path="/basic/event" element={<BasicEvent />} />
           <Route path="/basic/condition" element={<BasicCondition />} />

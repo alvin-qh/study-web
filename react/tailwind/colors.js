@@ -8,7 +8,7 @@ const colors = Object.assign(
         const newKey = key.replace(/[A-Z]/, c => `-${c.toLowerCase()}`);
         return {
           [newKey]: tailwindColors[key]
-        }
+        };
       })
   ))
 );

@@ -21,10 +21,13 @@
     "downlevelIteration": true,
     "jsx": "react-jsx"
   },
+  "exclude": [
+    "./tailwind/**/*.js"
+  ],
   "include": [
     "./.eslintrc.cjs",
     "./tailwind.config.js",
     "./src/**/*.ts",
-    "./src/**/*.tsx",
+    "./src/**/*.tsx"
   ]
 }

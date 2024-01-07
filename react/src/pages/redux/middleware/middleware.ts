@@ -1,9 +1,11 @@
-import { type Dispatch, type Middleware, type MiddlewareAPI, type UnknownAction } from '@reduxjs/toolkit';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
+import { type Middleware } from '@reduxjs/toolkit';
 
 /**
  * 定义 Redux Middleware，用于记录每次 dispatch 的日志
  */
-const simpleLogger: Middleware<{}, MiddlewareAPI<Dispatch<UnknownAction>, any>> = (store) => (next) => (action) => {
+const simpleLogger: Middleware = (store) => (next) => (action) => {
   console.group(`Simple Logger: ${(action as any).type}`);
   try {
     console.info('dispatching', action);

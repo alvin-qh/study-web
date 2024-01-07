@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { configureStore, type EnhancedStore } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 
@@ -66,9 +68,11 @@ const todoAppReducer = combineReducers({
 });
 
 
-export default function configStore(preloadedState?: any): EnhancedStore<any, TodoAction, > {
-  return configureStore({
+export default function configStore(preloadedState?: any): EnhancedStore<any, TodoAction, any> {
+  const store = configureStore({
     reducer: todoAppReducer,
     preloadedState
   });
+
+  return store as any;
 }

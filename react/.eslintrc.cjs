@@ -53,10 +53,10 @@ module.exports = {
     'simple-import-sort'
   ],
   rules: {
+    '@typescript-eslint/ban-ts-comment': 'error',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/ban-ts-comment': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
-    '@typescript-eslint/no-explicit-any': 'off',
+    // '@typescript-eslint/no-explicit-any': 'off',
     '@typescript-eslint/no-non-null-assertion': 'off',
     '@typescript-eslint/no-var-requires': 'off',
     '@typescript-eslint/indent': ['warn', 2, { SwitchCase: 0 }],
@@ -69,6 +69,7 @@ module.exports = {
     'import/extensions': 'off',
     'import/no-extraneous-dependencies': 'off',
     'import/no-unresolved': 'off',
+    'import/prefer-default-export': 'off',
     indent: 'off',
     'linebreak-style': ['error', 'unix'],
     'max-classes-per-file': 'off',

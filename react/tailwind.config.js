@@ -1,8 +1,6 @@
 const colors = require('./tailwind/colors');
 const { pluginStripes } = require('./tailwind/plugins');
 
-require('./tailwind/colors');
-
 module.exports = {
   purge: [
     './src/**/*.ts',
@@ -64,5 +62,14 @@ module.exports = {
   },
   plugins: [
     pluginStripes
+  ],
+  safelist: [
+    {
+      pattern: /bg-(blue|green|yellow|rose|purple)-(100|200|400|)/,
+      variants: []
+    },
+    {
+      pattern: /text-(blue|green|yellow|rose|purple)-(100|200|400|)/
+    }
   ]
 };

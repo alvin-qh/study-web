@@ -20,7 +20,7 @@ const slice = createSlice({
   /**
    * 定义初始的 State 对象值
    */
-  initialState: { filter: VisibilityFilter.SHOW_ALL, items: [] } as TodoState,
+  initialState: { filter: VisibilityFilter.SHOW_ALL, items: [] },
 
   /**
    * 定义 reducer 方法

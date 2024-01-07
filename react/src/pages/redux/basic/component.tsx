@@ -1,5 +1,5 @@
 import { Button, InputGroup, Intent } from '@blueprintjs/core';
-import { type Dispatch, useState } from 'react';
+import { type ComponentType, type Dispatch, useState } from 'react';
 import { connect } from 'react-redux';
 
 import { addTodo, setVisibilityFilter, toggleTodo } from './action';
@@ -54,8 +54,10 @@ const _AddTodo = ({ dispatch }: AddTodoProps): JSX.Element => {
   );
 };
 
+const connector = connect();
+
 // 通过 connection 定义 AddTodo 组件，从而获取组件的 dispatch 属性
-export const AddTodo = connect(_AddTodo);
+export const AddTodo = connector(_AddTodo as ComponentType);
 
 
 /**

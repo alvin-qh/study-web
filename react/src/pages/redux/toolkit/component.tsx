@@ -56,7 +56,13 @@ interface TodoItemProps {
 
 const TodoItem = ({ completed, text, onClick }: TodoItemProps): JSX.Element => (
   <li
-    className={`${completed ? 'line-through bg-sky-100' : 'no-underline bg-green-100 font-medium'} px-4 py-2 border-b border-gray-300`}
+    className={
+      `${completed ? 'line-through bg-sky-100' : 'no-underline bg-green-100 font-medium'}
+      px-4
+      py-2
+      border-b
+      border-gray-300`
+    }
     onClick={onClick}
   >
     {text}

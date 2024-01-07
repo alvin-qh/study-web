@@ -60,7 +60,7 @@ class EffectWithClass extends PureComponent<EffectProp, EffectState> {
     return (
       <div className="px-2 space-y-2 mt-2 flex flex-col items-start">
         <p className="text-lg">The count value is:
-          <b className="text-2xl font-medium text-red-500">{this.state.count}</b>
+          <b className="text-2xl font-medium text-red-500 px-1">{this.state.count}</b>
         </p>
       </div>
     );
@@ -99,7 +99,7 @@ const EffectHookWithFunc = ({ ...props }: EffectProp): JSX.Element => {
 
   return (
     <div className="px-2 space-y-2 mt-2 flex flex-col items-start">
-      <p className="text-lg">The count value is: <b className="text-2xl font-medium text-blue-500">{count}</b></p>
+      <p className="text-lg">The count value is: <b className="text-2xl font-medium text-blue-500 px-1">{count}</b></p>
     </div>
   );
 };

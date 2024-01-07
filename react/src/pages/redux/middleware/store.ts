@@ -1,5 +1,4 @@
-import { combineReducers, configureStore, Middleware, Tuple } from '@reduxjs/toolkit';
-import { type GetDefaultMiddleware } from '@reduxjs/toolkit/dist/getDefaultMiddleware';
+import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import { logger } from 'redux-logger';
 import { thunk } from 'redux-thunk';
 
@@ -26,14 +25,14 @@ const rootReducer = combineReducers({
 //   return (getDefaultMiddlewares: GetMiddlewareFunction) => [...getDefaultMiddlewares(), ...middlewares];
 // }
 
-
 /**
  * 创建根 Store
  */
 export default configureStore({
   reducer: rootReducer,
   // 设置 Middleware
-  middleware(get: GetDefaultMiddleware) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  middleware(get: any) {
     return get().concat(thunk, logger, simpleLogger);
   },
   devTools: (process.env.NODE_ENV !== 'production')
