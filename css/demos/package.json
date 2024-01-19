@@ -21,7 +21,7 @@
     "eslint-plugin-simple-import-sort": "^10.0.0",
     "eslint-webpack-plugin": "^4.0.1",
     "typescript": "^5.3.3",
-    "vite": "^5.0.10"
+    "vite": "^5.0.12"
   },
   "dependencies": {
     "font-awesome": "^4.7.0"
