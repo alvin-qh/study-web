@@ -2,7 +2,7 @@
   "form": {
     "labelPosition": "right",
     "size": "default",
-    "labelWidth": "125px",
+    "labelWidth": "150px",
     "hideRequiredAsterisk": false,
     "showMessage": true,
     "inlineMessage": false

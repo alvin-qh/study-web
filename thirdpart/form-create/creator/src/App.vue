@@ -51,6 +51,6 @@ const selectedKeys = ref<string[]>(['1']);
 }
 
 .main {
-  padding: 1vh;
+  padding: 1vw;
 }
 </style>

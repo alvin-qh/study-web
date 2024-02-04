@@ -50,7 +50,7 @@ function onSubmit(formData: object, api: Api): void {
 }
 
 .form {
-  width: 50vh;
-  padding: 2vh;
+  width: 40vw;
+  padding: 2vw;
 }
 </style>
