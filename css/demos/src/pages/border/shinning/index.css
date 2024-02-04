@@ -2,8 +2,8 @@
   display: grid;
   padding: 30px;
   grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 30vh);
-  grid-gap: 1vh;
+  grid-template-rows: repeat(2, 20vw);
+  grid-gap: 1vw;
 }
 
 .shinning-border-cards .card {

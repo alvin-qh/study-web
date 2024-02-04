@@ -29,7 +29,7 @@
 .bezier-movement .ball {
   width: 5vh;
   height: 5vh;
-  top: 20vh;
+  top: 30vh;
   left: 50%;
   position: absolute;
   background: rgba(232, 64, 64, 0.7);
