@@ -70,7 +70,7 @@ button:focus-visible {
 
 #app {
   display: grid;
-  grid-template-columns: 18vh auto;
+  grid-template-columns: 8vw auto;
   height: 100%;
 }
 
@@ -80,7 +80,7 @@ button:focus-visible {
 }
 
 .app-left .nav {
-  padding-top: 1.25vh;
+  padding-top: 1.25vw;
   border-radius: 0 20px 20px 0;
 }
 

@@ -2,6 +2,11 @@ import './route.css';
 
 import { type Component, type ErrorPage } from './base';
 
+export interface RouteGroup {
+  title: string
+  items: RouteItem[]
+}
+
 export interface RouteItem {
   title: string
   href: string
@@ -13,13 +18,13 @@ export interface RouteItem {
 export class Route implements Component {
   private readonly _$root: HTMLElement;
   private readonly _$title: HTMLTitleElement | null;
-  private readonly _items: RouteItem[] = [];
+  private readonly _routeGroups: RouteGroup[] = [];
   private readonly _errorModule?: () => Promise<{ default: new () => ErrorPage }>;
 
-  constructor($root: HTMLElement, items: RouteItem[], errorModule?: () => Promise<{ default: new () => ErrorPage }>) {
+  constructor($root: HTMLElement, routeGroups: RouteGroup[], errorModule?: () => Promise<{ default: new () => ErrorPage }>) {
     this._$root = $root;
     this._$title = document.querySelector<HTMLTitleElement>('html>head>title');
-    this._items = items;
+    this._routeGroups = routeGroups;
     this._errorModule = errorModule;
   }
 
@@ -48,11 +53,13 @@ export class Route implements Component {
     const pathname = window.location.pathname || '/';
 
     let found = false;
-    for (const item of this._items) {
-      if (item.href.startsWith(pathname)) {
-        this.jumpTo(item);
-        found = true;
-        break;
+    for (const group of this._routeGroups) {
+      for (const item of group.items) {
+        if (item.href.startsWith(pathname)) {
+          this.jumpTo(item);
+          found = true;
+          break;
+        }
       }
     }
 
@@ -71,25 +78,34 @@ export class Route implements Component {
     const $nav = document.createElement('nav');
     $nav.className = 'menu';
 
-    const $ul = document.createElement('ul');
-    $nav.appendChild($ul);
+    const $outerUl = document.createElement('ul');
+    $nav.appendChild($outerUl);
 
-    this._items.forEach(item => {
-      const $a = document.createElement('a');
-      $a.href = '#';
-      $a.textContent = item.title;
+    this._routeGroups.forEach(group => {
+      const $groupLi = document.createElement('li');
+      $groupLi.textContent = group.title;
+      $outerUl.appendChild($groupLi);
 
-      item.$element = $a;
+      const $innerUl = document.createElement('ul');
+      $groupLi.appendChild($innerUl);
 
-      $a.addEventListener('click', e => {
-        e.preventDefault();
-        $ul.querySelector('a.active')?.classList.remove('active');
-        this.jumpTo(item);
+      group.items.forEach(item => {
+        const $a = document.createElement('a');
+        $a.href = item.href;
+        $a.textContent = item.title;
+
+        item.$element = $a;
+
+        $a.addEventListener('click', e => {
+          e.preventDefault();
+          $outerUl.querySelector('a.active')?.classList.remove('active');
+          this.jumpTo(item);
+        });
+
+        const $itemLi = document.createElement('li');
+        $itemLi.appendChild($a);
+        $innerUl.appendChild($itemLi);
       });
-
-      const $li = document.createElement('li');
-      $li.appendChild($a);
-      $ul.appendChild($li);
     });
 
     $h.innerHTML = '';
