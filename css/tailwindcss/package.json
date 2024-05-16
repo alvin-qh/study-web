@@ -1,0 +1,41 @@
+{
+  "name": "study-tailwindcss",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "lint": "eslint src/**/*.ts --fix",
+    "dev": "webpack serve --stats-error-details",
+    "build": "webpack"
+  },
+  "devDependencies": {
+    "@types/showdown": "^2.0.4",
+    "@typescript-eslint/eslint-plugin": "^6.11.0",
+    "@typescript-eslint/parser": "^6.11.0",
+    "autoprefixer": "^10.4.16",
+    "css-loader": "^6.8.1",
+    "eslint": "^8.54.0",
+    "eslint-config-standard-with-typescript": "^40.0.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-webpack-plugin": "^4.0.1",
+    "glob": "^10.3.10",
+    "html-webpack-plugin": "^5.5.3",
+    "mini-css-extract-plugin": "^2.7.6",
+    "postcss": "^8.4.31",
+    "postcss-fixes": "^3.0.0",
+    "postcss-loader": "^7.3.3",
+    "style-loader": "^3.3.3",
+    "stylus": "^0.62.0",
+    "stylus-loader": "^7.1.3",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.2.2",
+    "webpack": "^5.89.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "dependencies": {
+    "highlight.js": "^11.9.0",
+    "showdown": "^2.1.0",
+    "tailwindcss": "^3.3.5"
+  }
+}

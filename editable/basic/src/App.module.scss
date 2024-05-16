@@ -1,0 +1,27 @@
+.container {
+  min-height: 500px;
+  width: 100%;
+
+  .left-part {
+    float: left;
+    width: calc(100%/8);
+  }
+
+  .right-part {
+    float: left;
+
+    .right-part-wrapper {
+      padding: 20px 10px;
+      width: 100%;
+    }
+  }
+
+  &::after {
+    content: "";
+    width: 0;
+    height: 0;
+    display: block;
+    clear: both;
+    visibility: hidden;
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "form": {
+    "labelPosition": "right",
+    "size": "default",
+    "labelWidth": "150px",
+    "hideRequiredAsterisk": false,
+    "showMessage": true,
+    "inlineMessage": false
+  },
+  "submitBtn": true,
+  "resetBtn": true
+}

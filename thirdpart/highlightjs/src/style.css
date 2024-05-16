@@ -1,0 +1,79 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  box-sizing: border-box;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.code-area .code-tools {
+  padding: 1rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px dotted #ededed;
+}
+
+.code-area .code-tools .buttons button {
+  height: 100%;
+  margin: 0;
+}
+
+.code-area.mode-view .code-tools .buttons button.view {
+  display: none;
+}
+
+.code-area.mode-edit .code-tools .buttons button.edit {
+  display: none;
+}
+
+.code-content {
+  padding: 1rem 0;
+}
+
+.code-content pre {
+  margin: 0;
+}
+
+.code-content .code-editor textarea {
+  height: fit-content;
+  resize: none;
+  min-height: 15rem;
+  padding: .5rem;
+  width: calc(100% - 1rem);
+}
+
+.code-area.mode-view .code-content .code-editor {
+  display: none;
+}
+
+.code-area.mode-edit .code-content pre {
+  display: none;
+}

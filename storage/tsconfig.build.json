@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "./tsconfig.json"
+  ],
+  "compilerOptions": {
+    "allowJs": true,
+  },
+  "exclude": [
+    ".eslintrc.cjs",
+    "vite.d.ts",
+    "vite.config.ts",
+    "src/**/*.spec.ts"
+  ]
+}

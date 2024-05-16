@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, Tahoma, Arial, 'Hiragino Sans GB', 'Microsoft YaHei', 'WenQuanYi Micro Hei', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+}
+
+#rollup-app .text-center {
+  text-align: center;
+  margin: 20px auto;
+  color: #fdfdfd;
+}
+
+#rollup-app .logo {
+  display: block;
+  width: 100px;
+  margin: 15px auto;
+}
+
+#rollup-app .logo:hover {
+  filter: drop-shadow(0 0 2em #fa7b7baa);
+}

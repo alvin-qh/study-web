@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    "target": "ESNext",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "ESNext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "downlevelIteration": true,
+    "jsx": "react-jsx"
+  },
+  "exclude": [
+    "./tailwind/**/*.js"
+  ],
+  "include": [
+    "./.eslintrc.cjs",
+    "./tailwind.config.js",
+    "./src/**/*.ts",
+    "./src/**/*.tsx"
+  ]
+}

@@ -1,0 +1,60 @@
+@import '~@fortawesome/fontawesome-free/css/all.css';
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font: 14px/1.5 Tahoma, Helvetica, Arial, '宋体', sans-serif;
+}
+
+.row {
+  outline: none;
+}
+
+.row::after {
+  content: '';
+  clear: both;
+  display: block;
+  width: 0;
+  height: 0;
+  visibility: hidden;
+}
+
+.row>div {
+  float: left;
+}
+
+.text-box {
+  padding: 10px 8px;
+  margin: 10px 20px;
+}
+
+.icon-box {
+  padding: 10px 8px;
+  margin: 10px 20px;
+}
+
+.icon-box i.fas {
+  font-size: 30px;
+}
+
+.image-box1 {
+  padding: 10px 8px;
+  margin: 10px 20px;
+  width: 600px;
+}
+
+.image-box1 img {
+  width: 100%;
+}
+
+.image-box2 {
+  padding: 10px 8px;
+  margin: 10px 20px;
+
+  width: 600px;
+  height: 238px;
+  background-image: url(../image/webpack.png);
+  background-size: cover;
+}

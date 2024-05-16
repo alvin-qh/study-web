@@ -1,0 +1,46 @@
+.parallax {
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.parallax .scroll-container {
+  width: 800px;
+  height: 450px;
+  overflow: hidden;
+}
+
+.parallax .scroll-container .item {
+  width: 800px;
+  height: 450px;
+  transition: linear .3s;
+  overflow: hidden;
+}
+
+.parallax .scroll-container .item.cur {
+  height: 100%;
+}
+
+.parallax .scroll-container .item.prev,
+.parallax .scroll-container .item.next {
+  height: 0%;
+  margin-top: 0;
+}
+
+.parallax .scroll-container.scroll-up .item.prev,
+.parallax .scroll-container.scroll-up .item.cur {
+  height: 0%;
+}
+
+.parallax .scroll-container.scroll-up .item.next {
+  height: 100%;
+}
+
+.parallax .scroll-container.scroll-down .item.prev,
+.parallax .scroll-container.scroll-down .item.cur {
+  height: 0%;
+}
+
+.parallax .scroll-container.scroll-down .item.prev {
+  height: 100%;
+}

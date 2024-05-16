@@ -1,0 +1,177 @@
+/* 根元素样式 */
+.slide-card {
+  font-family: 'Open Sans', sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #212121;
+}
+
+/* 卡片外轮廓样式 */
+.slide-card .card {
+  position: absolute;
+  height: 350px;
+  width: 100%;
+  max-width: 850px;
+  margin: auto;
+  background-color: #fff;
+  border-radius: 25px;
+  box-shadow: 10px 0 50px rgba(0, 0, 0, 0.5);
+}
+
+/* 隐藏卡片中的 radio 和 checkbox */
+.slide-card input {
+  display: none;
+}
+
+/* 滑块样式, 位置放在卡片下方 */
+.slide-card .slider {
+  position: absolute;
+  bottom: 25px;
+  left: 55%;
+  transform: translateX(-50%);
+  z-index: 1000;
+}
+
+/* 当 checkbox 选中时隐藏滑块 */
+.slide-card #slide-image:checked~.slider {
+  display: none;
+}
+
+/* 当 checkbox 选中时隐藏卡片内容 */
+.slide-card #slide-image:checked~.inner-part .content {
+  display: none;
+}
+
+/* 滑块中每个小方块样式 */
+.slide-card .slider .slide {
+  position: relative;
+  height: 10px;
+  width: 50px;
+  background-color: #d9d9d9;
+  border-radius: 5px;
+  display: inline-flex;
+  margin: 0 3px;
+  cursor: pointer;
+}
+
+/* 滑块中每个小方块取消选中时的动画样式 */
+.slide-card .slider .slide::before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #000;
+  border-radius: 10px;
+  transform: scaleX(0);
+  transition: .6s;
+  transform-origin: left;
+}
+
+/* 当 radio 选中时, 滑块中对应小方块的动画样式 */
+.slide-card #slide-1:checked~.slider .slide-1::before,
+.slide-card #slide-2:checked~.slider .slide-2::before,
+.slide-card #slide-3:checked~.slider .slide-3::before {
+  transform: scaleX(1);
+  width: 100%;
+}
+
+/* 卡片内容样式, flex 布局, 所有卡片居中 */
+.slide-card .inner-part {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 0 30px;
+  height: 350px;
+  position: absolute;
+}
+
+.slide-card #slide-image:checked~.inner-part {
+  padding: 0;
+  transition: .1s ease-in;
+}
+
+.slide-card #slide-image:checked~.inner-part .img {
+  height: 350px;
+  width: 850px;
+  z-index: 99;
+  transition: .3s .2s ease-in;
+}
+
+.slide-card .inner-part .img {
+  width: 260px;
+  height: 260px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border-radius: 20px;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, .2);
+}
+
+.slide-card .inner-part .img img {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  opacity: 0;
+  transition: .6s;
+}
+
+.slide-card #slide-1:checked~.inner-part .img-1,
+.slide-card #slide-2:checked~.inner-part .img-2,
+.slide-card #slide-3:checked~.inner-part .img-3 {
+  opacity: 1;
+  transition-delay: .2s;
+}
+
+.slide-card .content {
+  padding: 0 20px 0 18px;
+  width: 530px;
+  margin-left: 50px;
+  opacity: 0;
+  transition: .6s;
+}
+
+.slide-card .content .title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #0d0925;
+  margin: 0 0 20px 0;
+}
+
+.slide-card .content .text {
+  font-size: 19px;
+  color: #4e4a67;
+  margin: 0 auto 30px auto;
+  line-height: 1.5em;
+  text-align: justify;
+}
+
+.slide-card .content button {
+  padding: 15px 20px;
+  border: none;
+  font-size: 16px;
+  color: #fff0e6;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-radius: 50px;
+  cursor: pointer;
+  background-color: #000;
+  float: right;
+}
+
+.slide-card .content button:hover {
+  background-color: #cecece;
+  color: #000;
+}
+
+/* radio 选中后, 对应卡片内容显式的动画样式 */
+.slide-card #slide-1:checked~.inner-part .content-1,
+.slide-card #slide-2:checked~.inner-part .content-2,
+.slide-card #slide-3:checked~.inner-part .content-3 {
+  opacity: 1;
+  margin-left: 0;
+  z-index: 100;
+  transition-delay: .3s;
+}
