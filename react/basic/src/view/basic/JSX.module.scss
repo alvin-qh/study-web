@@ -1,0 +1,34 @@
+.basic-jsx {
+  display: flex;
+  flex-direction: column;
+  gap: 20px 0;
+
+  .function-component {
+    display: flex;
+    width: fit-content;
+    padding: 20px 3cqw;
+    border: 1px solid #8282825b;
+    background-color: #3131315b;
+  }
+
+  .variable-element {
+    display: flex;
+    width: fit-content;
+    padding: 20px 3cqw;
+    border: 1px solid #8282825b;
+    background-color: #0a36452f;
+  }
+
+  .condition {
+    &>label {
+      display: flex;
+      flex-direction: row;
+      align-items: baseline;
+      gap: 0 5px;
+    }
+
+    input[type=checkbox] {
+      transform: scale(1.2);
+    }
+  }
+}

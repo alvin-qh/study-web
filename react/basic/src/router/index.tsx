@@ -19,7 +19,7 @@ export const router: Router = createBrowserRouter([
       {
         path: '/basic/jsx',
         async lazy() {
-          const { JSXView } = await import('@/view/jsx/JSXView.tsx');
+          const { JSXView } = await import('@/view/basic/JSXView.tsx');
           return { Component: JSXView };
         }
       }
@@ -32,6 +32,14 @@ export const menuItems: MenuItem[] = [
     label: 'Basic',
     children: [
       { label: 'JSX', link: '/basic/jsx' }
+    ]
+  },
+  {
+    label: 'Component',
+    children: [
+      { label: 'Properties', link: '/component/props' },
+      { label: 'Event', link: '/component/event' },
+      { label: 'Children', link: '/component/children' }
     ]
   }
 ];
