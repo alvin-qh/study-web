@@ -1,0 +1,47 @@
+/* 定义表单元素样式 */
+.form-field {
+  .label {
+    display: flex;
+    font-size: 14px;
+    align-items: center;
+    gap: 0 5px;
+
+    &>div:first-child {
+      width: 4em;
+      text-align: right;
+
+      &::after {
+        content: ":";
+      }
+    }
+
+    &>div:last-child {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      flex: 1;
+      align-items: baseline;
+    }
+  }
+
+  input[type=text],
+  input[type=number] {
+    padding: 5px 8px;
+    width: 100%;
+  }
+
+  textarea {
+    padding: 5px 8px;
+    height: 5em;
+    resize: none;
+    width: 100%;
+  }
+
+  .form-group {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    gap: 0 3px;
+    align-items: baseline;
+  }
+}

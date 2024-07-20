@@ -1,0 +1,19 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 20px;
+
+  img {
+    width: 10vw;
+    margin-top: 5vh;
+  }
+
+  .links {
+    margin: 30px auto;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    gap: 0 10px;
+  }
+}

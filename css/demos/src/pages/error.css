@@ -1,0 +1,11 @@
+.error-info {
+  padding: 20px 30px;
+}
+
+.error-info .error-name {
+  font-size: 32px;
+}
+
+.error-info .error-message {
+  font-size: large;
+}

@@ -1,0 +1,72 @@
+[
+  {
+    "type": "input",
+    "field": "form-name",
+    "title": "姓名",
+    "info": "用户名",
+    "props": {
+      "maxlength": 20,
+      "minlength": 2,
+      "placeholder": "请输入用户名",
+      "clearable": true,
+      "prefixIcon": "",
+      "suffixIcon": "",
+      "autofocus": true,
+      "disabled": false
+    },
+    "hidden": false,
+    "display": true,
+    "$required": ""
+  },
+  {
+    "type": "radio",
+    "field": "form-gender",
+    "title": "性别",
+    "info": "用户性别",
+    "props": {
+      "_optionType": 2,
+      "disabled": false,
+      "type": "button"
+    },
+    "options": [
+      {
+        "value": "M",
+        "label": "男"
+      },
+      {
+        "value": "F",
+        "label": "女"
+      }
+    ],
+    "hidden": false,
+    "display": true,
+    "$required": ""
+  },
+  {
+    "type": "datePicker",
+    "field": "form-birthday",
+    "title": "生日",
+    "info": "用户生日",
+    "props": {
+      "type": "date",
+      "align": "right",
+      "editable": false
+    },
+    "hidden": false,
+    "display": true,
+    "$required": ""
+  },
+  {
+    "type": "input",
+    "field": "form-remark",
+    "title": "备注",
+    "info": "备注信息",
+    "props": {
+      "type": "textarea",
+      "resize": "vertical",
+      "rows": 6
+    },
+    "hidden": false,
+    "display": true
+  }
+]

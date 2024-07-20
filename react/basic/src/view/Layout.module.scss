@@ -1,0 +1,104 @@
+.layout-nav-bar {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 10px 0;
+
+  .logo {
+    width: 45px;
+    height: 40px;
+    justify-self: start;
+    margin: 5px;
+
+    background: url(/logo.svg) no-repeat;
+    background-size: cover;
+
+    transition: filter 300ms;
+
+    :hover {
+      filter: drop-shadow(0 0 2em #37afd7aa);
+    }
+  }
+
+  .title {
+    font-size: 30px;
+    flex: 1;
+  }
+
+  .status {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    gap: 10px;
+
+    .avatar {
+      img {
+        width: 50px;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+.wrapper {
+  display: flex;
+
+  .container {
+    flex: 1;
+    margin: _vars.$commonMargin;
+    border: 1px solid #565555;
+    padding: 1vh 0.5vw;
+    min-height: 10vh;
+  }
+}
+
+.layout-left-pane {
+  width: 10vw;
+
+  .menu {
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: _vars.$commonMargin;
+      display: flex;
+      flex-direction: column;
+      gap: 10px 0;
+
+      li {
+        flex: 1;
+        border: 1px solid #7372724a;
+        padding: 0;
+
+        a {
+          display: block;
+          padding: 5px 5px;
+          color: #68696a;
+          font-size: smaller;
+
+          &:hover {
+            background-color: #202020;
+            color: #8d8d8d;
+          }
+
+          // 定义 <router-link> 组件和当前页面地址匹配 (链接被激活) 时的样式
+          &.active {
+            color: #d8d8d8dc;
+            background-color: #44434398;
+            cursor: default;
+            // 取消鼠标一切行为
+            pointer-events: none;
+          }
+        }
+
+        .menu-group {
+          text-align: center;
+          font-weight: bold;
+          padding-top: 5px;
+          font-size: large;
+          color: #9b9b9bbb;
+          font-size: small;
+        }
+      }
+    }
+  }
+}

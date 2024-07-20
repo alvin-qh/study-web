@@ -1,0 +1,5 @@
+*.svg
+vite-env.d.ts
+
+dist
+node_modules

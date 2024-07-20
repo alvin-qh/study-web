@@ -1,0 +1,27 @@
+.image-border .border-frame {
+  width: 70rem;
+  height: 55rem;
+  margin: 1vw auto;
+  /* 定义边框宽度 */
+  border: 60px solid #fff;
+  /*
+    定义边框图片, `border-image` 为一个符合属性, 包括:
+    - `border-image-source`, 表示边框图片源;
+    - `border-image-slice`, 表示边框图片四个角的切割尺寸, 本例为 `165`;
+    - `border-image-repeat`, 表示边框除四个角外, 其他部分的重复方式, 本例为 `round`;
+   */
+  border-image: url(/border.svg) 165 round;
+  /* 应用定义的字体 */
+  font-family: 'Jellyka BeesAntique Handwriting';
+  font-size: 3rem;
+  font-weight: 800;
+  line-height: 1.2em;
+  color: rgba(241, 189, 45, 0.726);
+  text-align: center;
+}
+
+/* 定义字体 */
+@font-face {
+  font-family: 'Jellyka BeesAntique Handwriting';
+  src: url('/Jellyka Bees Antique Handwriting.woff') format('woff');
+}

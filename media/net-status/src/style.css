@@ -1,0 +1,63 @@
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html,
+body {
+  margin: 0;
+  height: 100%;
+}
+
+#app {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+}
+
+.net-status {
+  width: 320px;
+  margin: 2vh auto;
+  background-color: rgba(94, 170, 172, 0.689);
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+.net-status.offline {
+  background-color: rgba(212, 15, 15, 0.728);
+}
+
+.net-status .row {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+}
+
+.net-status .row .label {
+  width: 5em;
+  text-align: right;
+  padding: 0.2rem;
+}
+
+.net-status .row .value {
+  margin-right: 1em;
+  padding: 0.2rem;
+  font-weight: 700;
+}
