@@ -38,6 +38,14 @@ export function JSXView(): React.JSX.Element {
           </div>
         </label>
       </div>
+
+      <hr />
+
+      <div className={css.list}>
+        <ul>
+          <li></li>
+        </ul>
+      </div>
     </div>
   );
 }
