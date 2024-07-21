@@ -1,0 +1,19 @@
+.style {
+  display: flex;
+  flex-direction: column;
+  gap: 10px 0;
+
+  .boxed {
+    background-color: #3636364d;
+    width: fit-content;
+    padding: 8px 10px;
+
+    &.pointer {
+      cursor: pointer;
+    }
+
+    &.focus {
+      outline: 1px solid #54545491;
+    }
+  }
+}

@@ -8,25 +8,23 @@ import { type MenuItem as MenuItemType } from '@/types/menu-item';
 import css from './Layout.module.scss';
 
 // 顶部导航栏
-function NavBar(): React.JSX.Element {
-  return (
-    <nav className={css['layout-nav-bar']}>
-      <Link className={css.logo} to="/" />
+const NavBar = (): React.JSX.Element => (
+  <nav className={css['layout-nav-bar']}>
+    <Link className={css.logo} to="/" />
 
-      <div className={css.title}>React 18</div>
+    <div className={css.title}>React 18</div>
 
-      <div className={css.status}>
-        <div className={css.avatar}>
-          <img src={avatar} />
-        </div>
-        <div>Alvin</div>
+    <div className={css.status}>
+      <div className={css.avatar}>
+        <img src={avatar} />
       </div>
-    </nav>
-  );
-}
+      <div>Alvin</div>
+    </div>
+  </nav>
+);
 
 // 菜单链接组件
-export function MenuLink(props: LinkProps): React.JSX.Element {
+const MenuLink = (props: LinkProps): React.JSX.Element => {
   const { children, to, ...more } = props;
 
   const resolved = useResolvedPath(to);
@@ -37,11 +35,10 @@ export function MenuLink(props: LinkProps): React.JSX.Element {
       {children}
     </Link>
   );
-}
-
+};
 
 // 菜单项
-function MenuItem(props: { item: MenuItemType, key: Key }): React.JSX.Element {
+const MenuItem = (props: { item: MenuItemType, key: Key }): React.JSX.Element => {
   const { item } = props;
 
   return item.children
@@ -58,10 +55,10 @@ function MenuItem(props: { item: MenuItemType, key: Key }): React.JSX.Element {
         </MenuLink>
       </>
     );
-}
+};
 
 // 菜单
-function Menu(props: { items: MenuItemType[] }): React.JSX.Element {
+const Menu = (props: { items: MenuItemType[] }): React.JSX.Element => {
   const { items } = props;
 
   return (
@@ -77,7 +74,7 @@ function Menu(props: { items: MenuItemType[] }): React.JSX.Element {
       </ul>
     </div>
   );
-}
+};
 
 // 左侧导航面板
 function LeftPane(): React.JSX.Element {
@@ -89,22 +86,20 @@ function LeftPane(): React.JSX.Element {
 }
 
 // 整体布局组件
-export function Layout(): React.JSX.Element {
-  return (
-    <>
-      {/* 顶部导航栏 */}
-      <NavBar />
+export const Layout = (): React.JSX.Element => (
+  <>
+    {/* 顶部导航栏 */}
+    <NavBar />
 
-      <div className={css.wrapper}>
+    <div className={css.wrapper}>
 
-        {/* 左侧导航模板 */}
-        <LeftPane />
+      {/* 左侧导航模板 */}
+      <LeftPane />
 
-        <div className={css.container}>
-          {/* 路由更换后内容渲染区域 */}
-          <Outlet />
-        </div>
+      <div className={css.container}>
+        {/* 路由更换后内容渲染区域 */}
+        <Outlet />
       </div>
-    </>
-  );
-}
+    </div>
+  </>
+);

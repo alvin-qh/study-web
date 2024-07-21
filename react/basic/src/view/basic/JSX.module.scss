@@ -20,15 +20,56 @@
   }
 
   .condition {
-    &>label {
+    & > label {
       display: flex;
       flex-direction: row;
       align-items: baseline;
       gap: 0 5px;
     }
 
-    input[type=checkbox] {
+    input[type="checkbox"] {
       transform: scale(1.2);
+    }
+  }
+
+  .list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px 0;
+
+    label {
+      display: flex;
+      flex-direction: row;
+      align-items: baseline;
+
+      input[type=text],
+      button {
+        padding: 10px 8px;
+      }
+
+      input[type=text] {
+        outline: none;
+      }
+
+      button {
+        margin-left: -1px;
+      }
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 5px;
+
+      li {
+        display: block;
+        padding: 5px 8px;
+        background-color: #48484849;
+      }
     }
   }
 }

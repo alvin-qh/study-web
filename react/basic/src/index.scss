@@ -42,6 +42,20 @@ hr {
   }
 }
 
+.boxed {
+  background-color: #3636364d;
+  width: fit-content;
+  padding: 8px 10px;
+
+  &.pointer {
+    cursor: pointer;
+  }
+
+  &.focus {
+    outline: 1px solid #54545491;
+  }
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;

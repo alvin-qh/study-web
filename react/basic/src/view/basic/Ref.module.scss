@@ -1,0 +1,63 @@
+.ref {
+  display: flex;
+  flex-direction: row;
+  gap: 0 3vw;
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0;
+
+    &>.label {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      gap: 0 5px;
+
+      &>div:first-child {
+        width: 4em;
+        text-align: right;
+
+        &::after {
+          content: ":";
+        }
+      }
+
+      &>label {
+        display: flex;
+        flex-direction: row;
+        align-items: baseline;
+        gap: 0 3px;
+        flex-wrap: wrap;
+      }
+    }
+
+    input[type=text],
+    input[type=number],
+    button,
+    textarea {
+      padding: 5px 10px;
+    }
+
+    textarea {
+      width: 14.3em;
+      height: 5em;
+      resize: none;
+    }
+
+    .submit {
+      margin-top: 10px;
+      margin-left: 4.3em;
+    }
+  }
+
+  pre {
+    flex: 1;
+    font-size: large;
+    margin: 0;
+
+    code {
+      width: 30vw
+    }
+  }
+}
