@@ -51,6 +51,13 @@ export const router: Router = createBrowserRouter([
           const { RefView } = await import('@/view/basic/RefView.tsx');
           return { Component: RefView };
         }
+      },
+      {
+        path: '/component/props',
+        async lazy() {
+          const { PropsView } = await import('@/view/component/PropsView.tsx');
+          return { Component: PropsView };
+        }
       }
     ]
   }
