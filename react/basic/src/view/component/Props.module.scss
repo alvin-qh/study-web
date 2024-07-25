@@ -22,12 +22,13 @@
   .form {
     display: flex;
     flex-direction: column;
-    gap: 15px 0;
+    gap: 20px 0;
 
     .form-field {
       &>.label {
         display: flex;
         flex-direction: row;
+        align-items: center;
         gap: 0 4px;
         font-size: smaller;
 
@@ -39,12 +40,36 @@
             content: ":";
           }
         }
-      }
 
-      .radio-group {
-        display: flex;
-        flex-direction: row;
-        align-items: baseline;
+        .radio-group,
+        .checkbox-group {
+          display: flex;
+          flex-direction: row;
+          align-items: baseline;
+          flex-wrap: wrap;
+          gap: 0px 3px;
+        }
+
+        input[type=text],
+        input[type=number],
+        select {
+          padding: 8px 10px;
+          outline: none;
+          width: 20em;
+        }
+
+        input[type=radio],
+        input[type=checkbox] {
+          scale: 1.2;
+          outline: none;
+        }
+
+        textarea {
+          resize: none;
+          padding: 8px 10px;
+          width: 20em;
+          height: 10em;
+        }
       }
     }
   }

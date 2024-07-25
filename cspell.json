@@ -59,6 +59,7 @@
     "treeshaking",
     "unitless",
     "unocss",
+    "vals",
     "Vite",
     "vueuse",
     "vuex"
