@@ -6,7 +6,7 @@ import css from './Props.module.scss';
 type FormFieldType = 'text' | 'number' | 'select' | 'radio' | 'checkbox' | 'textarea';
 
 // 定义表单字段值类型
-type FormFieldDataType = number | string | number[] | string[];
+type FormFieldDataType = number | string | number[] | string[] | null;
 
 // 定义表单字段
 interface FormField {
@@ -29,26 +29,17 @@ type FormData = Record<string, FormFieldDataType>;
 // 对于 JSX, 可以使用函数类型的 Key 作为属性, 即表示该组件的一个"事件"
 interface FormProps {
   // 表单定义
-  definition: FormDefinition
+  readonly definition: FormDefinition
   // 表单值
-  data?: FormData
+  readonly data?: FormData
   // 表单内容改变事件函数
-  onChange: (data: FormData) => void
+  readonly onChange: (data: FormData) => void
 }
 
 // 定义 `<Form>` 组件, 并为组件传递 `FormProps` 属性
-const Form = ({ definition, data, onChange }: FormProps): React.JSX.Element => {
+const Form = ({ definition, data = {}, onChange }: FormProps): React.JSX.Element => {
   // 定义响应式状态值, 表示表单各个字段的 JSX 集合
   const [fields, setFields] = useState<React.JSX.Element[]>([]);
-
-  // 定义响应式状态值, 表示表单值
-  const [formData, setFormData] = useState<FormData>(data ?? {});
-
-  // 当表单值属性发生变化后, 将该属性值保存到响应式状态中
-  useEffect(() => { setFormData(data ?? {}); }, [data]);
-
-  // 当表单值发生变化后, 调用 `onChange` 事件, 将表单值发送到父组件
-  useEffect(() => { onChange(formData); }, [formData, onChange]);
 
   // 当表单值属性或表单定义属性发生变化后, 重新渲染表单
   useEffect(() => {
@@ -60,6 +51,9 @@ const Form = ({ definition, data, onChange }: FormProps): React.JSX.Element => {
         const def = definition[name];
 
         // 根据表单字段类型生成表单字段 JSX
+        // 通过表单输入元素的 `onChange` 及 `value` 组合, 可以模拟"双向绑定", 即:
+        // 1. 通过 `value` 属性接收一个状态, 让表单输入元素的内容随之变化
+        // 2. 通过 `onChange` 事件发出一个事件, 改变 `value` 属性对应的状态值, 从而完成双向绑定
         switch (def.type) {
         case 'text':
           elem = (
@@ -68,8 +62,8 @@ const Form = ({ definition, data, onChange }: FormProps): React.JSX.Element => {
               <input
                 name={name}
                 type={def.type}
-                value={(formData[name] ?? '') as string}
-                onChange={(e) => { setFormData({ ...formData, [name]: e.target.value }); }}
+                value={(data[name] ?? '') as string}
+                onChange={(e) => { onChange({ ...data, [name]: e.target.value }); }}
               />
             </label>
           );
@@ -81,8 +75,14 @@ const Form = ({ definition, data, onChange }: FormProps): React.JSX.Element => {
               <input
                 name={name}
                 type={def.type}
-                value={(formData[name] ?? '') as string}
-                onChange={(e) => { setFormData({ ...formData, [name]: e.target.value }); }}
+                value={(data[name] ?? '') as string}
+                onChange={(e) => {
+                  let n: number | null = parseFloat(e.target.value);
+                  if (Number.isNaN(n)) {
+                    n = null;
+                  }
+                  onChange({ ...data, [name]: n });
+                }}
               />
             </label>
           );
@@ -93,8 +93,8 @@ const Form = ({ definition, data, onChange }: FormProps): React.JSX.Element => {
               <div>{def.label}</div>
               <select
                 name={name}
-                value={(formData[name] ?? '') as string}
-                onChange={(e) => { setFormData({ ...formData, [name]: e.target.value }); }}
+                value={(data[name] ?? '') as string}
+                onChange={(e) => { onChange({ ...data, [name]: e.target.value }); }}
               >
                 {
                   (def.choose ?? []).map((item) => (
@@ -116,8 +116,8 @@ const Form = ({ definition, data, onChange }: FormProps): React.JSX.Element => {
                       name={name}
                       type="radio"
                       value={item}
-                      checked={formData[name] === item}
-                      onChange={(e) => { setFormData({ ...formData, [name]: e.target.value }); }}
+                      checked={data[name] === item}
+                      onChange={(e) => { onChange({ ...data, [name]: e.target.value }); }}
                     />
                     <div>{item}</div>
                   </label>
@@ -137,13 +137,13 @@ const Form = ({ definition, data, onChange }: FormProps): React.JSX.Element => {
                       name={name}
                       type='checkbox'
                       value={item}
-                      checked={(formData[name] as unknown[]).includes(item)}
+                      checked={((data[name] ?? []) as unknown[]).includes(item)}
                       onChange={(e) => {
-                        const vals = (formData[name] as unknown[]).filter((it) => it !== e.target.value);
+                        const vals = (data[name] as unknown[]).filter((it) => it !== e.target.value);
                         if (e.target.checked) {
                           vals.push(e.target.value);
                         }
-                        setFormData({ ...formData, [name]: vals as unknown as FormFieldType });
+                        onChange({ ...data, [name]: vals as unknown as FormFieldType });
                       }}
                     />
                     <div>{item}</div>
@@ -158,8 +158,8 @@ const Form = ({ definition, data, onChange }: FormProps): React.JSX.Element => {
             <label className={css.label}>
               <div>{def.label}</div>
               <textarea
-                value={formData[name] as string}
-                onChange={(e) => { setFormData({ ...formData, [name]: e.target.value }); }}
+                value={data[name] as string}
+                onChange={(e) => { onChange({ ...data, [name]: e.target.value }); }}
               ></textarea>
             </label>
           );
@@ -176,7 +176,7 @@ const Form = ({ definition, data, onChange }: FormProps): React.JSX.Element => {
         );
       })
     );
-  }, [definition, formData]);
+  }, [definition, data, onChange]);
 
   // 生成表单 JSX
   return (
@@ -229,28 +229,52 @@ export const PropsView = (): React.JSX.Element => {
     remark: 'Hello'
   });
 
+  // 定义状态值用于接收文本域中对表单定义 JSON 的改变
+  const [definitionJson, setDefinitionJson] = useState<string>(JSON.stringify(definition, null, 2));
+
+  // 监控 `definitionJson` 状态值的变化, 并改变 `definition` 状态值
+  // `definition` 状态值的改变会导致 `<Form>` 组件重新渲染
+  useEffect(() => {
+    try {
+      setDefinition(JSON.parse(definitionJson) as FormDefinition);
+    } catch (_) {
+    }
+  }, [definitionJson]);
+
+  // 定义状态值用于接收文本域中对表单值 JSON 的改变
+  const [dataJson, setDataJson] = useState<string>(JSON.stringify(data, null, 2));
+
+  // 监控 `dataJson` 状态值的变化, 并改变 `data` 状态值
+  // `data` 状态值的改变会导致 `<Form>` 组件重新渲染
+  useEffect(() => {
+    try {
+      setData(JSON.parse(dataJson) as FormData);
+    } catch (_) {
+    }
+  }, [dataJson]);
+
+  // 监控 `data` 状态值的变化
+  // `data` 状态值通过 `<Form>` 组件的 `onChange` 事件改变, 表示 `<Form>` 组件产生的表单值变化
+  // 当 `data` 状态值变化后, 更改 `dataJson` 状态值, 导致文本域中内容的改变
+  useEffect(() => {
+    setDataJson(JSON.stringify(data, null, 2));
+  }, [data]);
+
   return (
     <div className={css.props}>
       <div>
         {/* 文本框, 用于展示表单定义 JSON, 当文本框内容变化后, 根据文本框 JSON 内容重新渲染表单组件 */}
         <textarea
-          onChange={(e) => {
-            try {
-              setDefinition(JSON.parse(e.target.value) as FormDefinition);
-            } catch (er) {
-              setDefinition({});
-            }
-          }} value={JSON.stringify(definition, null, 2)}></textarea>
+          onChange={(e) => { setDefinitionJson(e.target.value); }}
+          value={definitionJson}
+        ></textarea>
       </div>
       <div className={css.arrow}>
         <span>→</span>
       </div>
       <div>
-        {/* 渲染表单组件 */}
-        <Form definition={definition} data={data} onChange={(d) => {
-          setData(d);
-          console.log(data);
-        }} />
+        {/* 渲染表单组件, 采用"双向绑定"方式, 通过 `data` 状态值, 将 `data` 属性和 `onChange` 事件关联  */}
+        <Form definition={definition} data={data} onChange={setData} />
       </div>
       <div className={css.arrow}>
         <span>←</span>
@@ -258,13 +282,9 @@ export const PropsView = (): React.JSX.Element => {
       <div>
         {/* 文本框, 用于展示表单值 JSON, 当文本框内容变化后, 根据文本框 JSON 内容重新渲染表单组件 */}
         <textarea
-          onChange={(e) => {
-            try {
-              setData(JSON.parse(e.target.value) as FormData);
-            } catch (er) {
-              setData({});
-            }
-          }} value={JSON.stringify(data, null, 2)}></textarea>
+          onChange={(e) => { setDataJson(e.target.value); }}
+          value={dataJson}
+        ></textarea>
       </div>
     </div>
   );
