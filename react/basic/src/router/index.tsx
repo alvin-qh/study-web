@@ -58,6 +58,13 @@ export const router: Router = createBrowserRouter([
           const { PropsView } = await import('@/view/component/PropsView.tsx');
           return { Component: PropsView };
         }
+      },
+      {
+        path: '/component/form',
+        async lazy() {
+          const { FormView } = await import('@/view/component/FormView.tsx');
+          return { Component: FormView };
+        }
       }
     ]
   }
@@ -77,7 +84,7 @@ export const menuItems: MenuItem[] = [
     label: 'Component',
     children: [
       { label: 'Properties', link: '/component/props' },
-      { label: 'Event', link: '/component/event' },
+      { label: 'Form', link: '/component/form' },
       { label: 'Children', link: '/component/children' }
     ]
   }

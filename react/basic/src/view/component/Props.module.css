@@ -1,0 +1,19 @@
+.event {
+  .button {
+    padding: 15px 20px;
+    border: 1px solid #62626285;
+    width: fit-content;
+    border-radius: 5px;
+    user-select: none;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #40404031;
+      border: 1px solid #74747485;
+    }
+
+    &.clicked {
+      background-color: #65656531;
+    }
+  }
+}

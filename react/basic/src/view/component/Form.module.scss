@@ -8,7 +8,8 @@
     &>textarea {
       resize: none;
       width: 30em;
-      height: 20em;
+      height: 30em;
+      overflow-y: auto;
     }
 
     &.arrow {
