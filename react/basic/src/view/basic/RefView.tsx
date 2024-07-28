@@ -7,23 +7,55 @@ import css from './Ref.module.scss';
 
 type Hobby = 'Sing' | 'Dance' | 'Rap' | 'Basketball';
 
-// 定义表单数据类型
+/**
+ * 表单数据类型
+ */
 interface FormType {
-  name: string
-  age: number
-  gender: 'Male' | 'Female'
-  hobbies?: Hobby[]
-  remark?: string
+  /**
+   * 姓名字段
+   */
+  readonly name: string
+
+  /**
+   * 年龄字段
+   */
+  readonly age: number
+
+  /**
+   * 性别字段
+   */
+  readonly gender: 'Male' | 'Female'
+
+  /**
+   * 兴趣爱好字段
+   */
+  readonly hobbies?: Hobby[]
+
+  /**
+   * 备注字段
+   */
+  readonly remark?: string
 }
 
-// 定义表单组件熟悉类型
+/**
+ * 表单组件属性类型
+ */
 interface FormProps {
-  value: FormType
-  onSubmit: (value: FormType) => void
+  /**
+   * 要传递给表单组件的表单值
+   */
+  readonly value: FormType
+
+  /**
+   * 表单组件提交表单事件
+   */
+  readonly onSubmit: (value: FormType) => void
 }
 
-// 定义表单组件
-const Form = ({ value, onSubmit }: FormProps): React.JSX.Element => {
+/**
+ * 定义表单组件
+ */
+const Form = ({ value, onSubmit }: FormProps): React.ReactNode => {
   // 通过 `useRef` 函数, 定义一组引用变量, 并在 JSX 中设置其引用
   const nameRef = useRef<HTMLInputElement>(null);
   const ageRef = useRef<HTMLInputElement>(null);
@@ -136,8 +168,10 @@ const Form = ({ value, onSubmit }: FormProps): React.JSX.Element => {
   );
 };
 
-// 渲染页面
-export const RefView = (): React.JSX.Element => {
+/**
+ * 导出页面组件
+ */
+export const RefView = (): React.ReactNode => {
   // 定义状态值表示表单数据
   const [form, setForm] = useState<FormType>({
     name: 'Alvin',

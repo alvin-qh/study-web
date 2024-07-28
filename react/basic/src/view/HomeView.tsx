@@ -1,9 +1,11 @@
-import React from 'react';
+import type React from 'react';
 
 import css from './Home.module.scss';
 
-// Home 页组件
-export const HomeView = (): React.JSX.Element => (
+/**
+ * 首页组件
+ */
+export const HomeView = (): React.ReactNode => (
   <div className={css.home}>
     <img src='/logo.svg' alt='logo' />
     <div className={css.links}>

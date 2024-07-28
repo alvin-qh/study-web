@@ -88,5 +88,6 @@ module.exports = {
     'sort-imports': 'off',
     'simple-import-sort/imports': 'error',
     'simple-import-sort/exports': 'error',
+    'react/display-name': 'off',
   },
 };

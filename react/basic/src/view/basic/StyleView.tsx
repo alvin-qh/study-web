@@ -1,9 +1,14 @@
 import classnames from 'classnames';
-import React, { useState } from 'react';
+import type React from 'react';
+import { useState } from 'react';
 
 import css from './Style.module.scss';
 
-// 定义一个内联样式对象
+/**
+ * 内联样式对象
+ *
+ * 用于组件元素的 `style` 属性值
+ */
 const styles: React.CSSProperties = {
   color: 'red',
   fontSize: '20px',
@@ -15,13 +20,18 @@ const styles: React.CSSProperties = {
   cursor: 'pointer'
 };
 
-// 使用内联样式的组件
-const InlineStyleComponent = (): React.JSX.Element => {
+/**
+ * 使用内联样式的组件
+ */
+const InlineStyleComponent = (): React.ReactNode => {
+  // 定义状态值, 表示元素的背景色
   const [background, setBackground] = useState<string>('#3131315b');
 
   return (
     <div className="inline-styles">
+      {/* 将 `style` 对象用于元素样式, 且背景色样式从状态值中获取 */}
       <div style={{ ...styles, backgroundColor: background }}
+        // 通过鼠标移入移出事件, 改变背景色状态值
         onMouseEnter={() => { setBackground('#5858585b'); }}
         onMouseLeave={() => { setBackground('#3131315b'); }}
       >
@@ -31,12 +41,13 @@ const InlineStyleComponent = (): React.JSX.Element => {
   );
 };
 
-// 通过 css 类选择器指定组件样式
-//
-// 本例的类选择器来源于 `@/index.scss` 文件, 在 `@/main.tsx` 中通过 `import './index.scss'` 引入
-//
-// React 未提供组合多个类选择器的具体方法, 本例中借助 `classnames` 库完成多个类选择器的组合
-const CssStyleComponent = (): React.JSX.Element => {
+/**
+ * 定义组件, 通过 css 类选择器指定组件样式
+ *
+ * 本例的类选择器来源于 `@/index.scss` 文件, 在 `@/main.tsx` 中通过 `import './index.scss'` 引入,
+ * React 未提供组合多个类选择器的具体方法, 本例中借助 `classnames` 库完成多个类选择器的组合
+ */
+const CssStyleComponent = (): React.ReactNode => {
   // 定义状态值表示一个 Key 为类选择器名称, Value 为 boolean 值的对象, 通过 `classnames` 库可以将
   // Value 为 `true` 的类选择器组合起来
   // 默认情况下, 类选择器为 `boxed pointer`
@@ -59,23 +70,27 @@ const CssStyleComponent = (): React.JSX.Element => {
   );
 };
 
-// CSS Module 是一种将 CSS 模块化的方法, 当一个 CSS (或 Less, SCSS 等) 文件被命名为 `xxx.module.css`
-// (或 `xxxx.module.scss`, `xxxx.module.less` 等), 当 import 这些文件时, 就意味着将以 CSS Module
-// 方式引入, 例如:
-//
-// ```typescript
-// import css from './JSX.module.scss`;
-// ```
-//
-// 引入 CSS Module 后, 即可通过引入的模块访问定义的类选择器, 例如:
-//
-// ```typescript
-// <div className={css['boxed-container']}>...</div>
-// <div className={css.highlight}>...</div>
-// ```
-//
-// 除了方便引入类选择器外, CSS Module 还为类选择器进行了唯一化命名, 以用于样式的隔离
-const CSSModuleComponent = (): React.JSX.Element => {
+/**
+ * 定义组件, 组件样式通过 CSS Module 形式引入
+ *
+ * CSS Module 是一种将 CSS 模块化的方法, 当一个 CSS (或 Less, SCSS 等) 文件被命名为 `xxx.module.css`
+ * (或 `xxxx.module.scss`, `xxxx.module.less` 等), 当 import 这些文件时, 就意味着将以 CSS Module
+ * 方式引入, 例如:
+ *
+ * ```typescript
+ * import css from './JSX.module.scss`;
+ * ```
+ *
+ * 引入 CSS Module 后, 即可通过引入的模块访问定义的类选择器, 例如:
+ *
+ * ```typescript
+ * <div className={css['boxed-container']}>...</div>
+ * <div className={css.highlight}>...</div>
+ * ```
+ *
+ * 除了方便引入类选择器外, CSS Module 还为类选择器进行了唯一化命名, 以用于样式的隔离
+ */
+const CSSModuleComponent = (): React.ReactNode => {
   // 定义状态值表示一个 Key 为类选择器名称, Value 为 boolean 值的对象, 通过 `classnames` 库可以将
   // Value 为 `true` 的类选择器组合起来
   // 默认情况下, 类选择器为 `boxed pointer`
@@ -98,8 +113,10 @@ const CSSModuleComponent = (): React.JSX.Element => {
   );
 };
 
-// 在 React 中使用样式的方式包括: inline style, css, css module 等
-export const StyleView = (): React.JSX.Element => (
+/**
+ * 导出页面组件
+ */
+export const StyleView = (): React.ReactNode => (
   <div className={css.style}>
     <InlineStyleComponent />
 

@@ -1,52 +1,90 @@
-import React, { useEffect, useState } from 'react';
+import type React from 'react';
+import { useEffect, useState } from 'react';
 
 import css from './Form.module.scss';
 
-// 定义表单字段类型
+/**
+ * 表单字段元素类型
+ */
 type FormFieldType = 'text' | 'number' | 'select' | 'radio' | 'checkbox' | 'textarea';
 
-// 定义表单字段值类型
+/**
+ * 表单字段值类型
+ */
 type FormFieldDataType = number | string | number[] | string[] | null;
 
-// 定义表单字段
+/**
+ * 表单字段类型
+ */
 interface FormField {
+  /**
+   * 表单字段的标签
+   */
   label: string
+
+  /**
+   * 表单字段元素类型
+   */
   type: FormFieldType
+
+  /**
+   * 表单字段值候选项
+   */
   choose?: number[] | string[]
 }
 
-// 定义表单
+/**
+ * 表单定义
+ */
 type FormDefinition = Record<string, FormField>;
 
-// 定义表单值
+/**
+ * 表单值类型
+ */
 type FormData = Record<string, FormFieldDataType>;
 
-// 定义表单组件属性
-//
-// 在 JSX 语法中, 一个组件的属性即为传递给表示该组件函数的参数, 参数类型为一个包含 Key/Value 对象,
-// 每个 Key 表示组件的一个属性
-//
-// 对于 JSX, 可以使用函数类型的 Key 作为属性, 即表示该组件的一个"事件"
+/**
+ * 表单组件属性类型
+ *
+ * 在 JSX 语法中, 一个组件的属性即为传递给表示该组件函数的参数, 参数类型为一个包含 Key/Value 对象,
+ * 每个 Key 表示组件的一个属性
+ *
+ * 对于 JSX, 可以使用函数类型的 Key 作为属性, 即表示该组件的一个"事件"
+ */
 interface FormProps {
-  // 表单定义
+  /**
+   * 表单定义
+   */
   readonly definition: FormDefinition
-  // 表单值
+
+  /**
+   * 表单值
+   */
   readonly data?: FormData
-  // 表单内容改变事件函数
+
+  /**
+   * 表单值改变事件
+   */
   readonly onChange: (data: FormData) => void
 }
 
-// 定义 `<Form>` 组件, 并为组件传递 `FormProps` 属性
-const Form = ({ definition, data = {}, onChange }: FormProps): React.JSX.Element => {
+/**
+ * 表单组件
+ *
+ * 通过函数定义组件, 函数名即为组件名, 函数参数即为组件属性
+ *
+ * 可以通过参数解构语法, 将参数对象中的各个属性解构, 方便函数内部访问, 解构过程中可以为属性设定默认值 (即 `data` 属性值默认为 `{}`)
+ */
+const Form = ({ definition, data = {}, onChange }: FormProps): React.ReactNode => {
   // 定义响应式状态值, 表示表单各个字段的 JSX 集合
-  const [fields, setFields] = useState<React.JSX.Element[]>([]);
+  const [fields, setFields] = useState<React.ReactNode[]>([]);
 
   // 当表单值属性或表单定义属性发生变化后, 重新渲染表单
   useEffect(() => {
     // 将各个表单字段存储为 JSX 集合
     setFields(
       Object.keys(definition).map((name) => {
-        let elem: React.JSX.Element;
+        let elem: React.ReactNode;
 
         const def = definition[name];
 
@@ -178,7 +216,7 @@ const Form = ({ definition, data = {}, onChange }: FormProps): React.JSX.Element
     );
   }, [definition, data, onChange]);
 
-  // 生成表单 JSX
+  // 渲染对象
   return (
     <form className={css.form}>
       {fields}
@@ -186,8 +224,10 @@ const Form = ({ definition, data = {}, onChange }: FormProps): React.JSX.Element
   );
 };
 
-// 定义页面组件
-export const FormView = (): React.JSX.Element => {
+/**
+ * 导出页面组件
+ */
+export const FormView = (): React.ReactNode => {
   // 表单定义, 存储到响应式状态中
   const [definition, setDefinition] = useState<FormDefinition>({
     name: {

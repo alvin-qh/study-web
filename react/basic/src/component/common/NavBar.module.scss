@@ -1,0 +1,41 @@
+.nav-bar {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 10px 0;
+
+  .logo {
+    width: 45px;
+    height: 40px;
+    justify-self: start;
+    margin: 5px;
+
+    background: url(/logo.svg) no-repeat;
+    background-size: cover;
+
+    transition: filter 300ms;
+
+    :hover {
+      filter: drop-shadow(0 0 2em #37afd7aa);
+    }
+  }
+
+  .title {
+    font-size: 30px;
+    flex: 1;
+  }
+
+  .status {
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    gap: 10px;
+
+    .avatar {
+      img {
+        width: 50px;
+        border-radius: 50%;
+      }
+    }
+  }
+}

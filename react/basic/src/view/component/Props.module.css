@@ -12,8 +12,15 @@
       border: 1px solid #74747485;
     }
 
-    &.clicked {
+    &.mouse-down {
       background-color: #65656531;
     }
+  }
+
+  .adv-button {
+    display: flex;
+    flex-direction: row;
+    gap: 0 20px;
+    padding: 20px 0;
   }
 }

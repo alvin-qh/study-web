@@ -7,16 +7,17 @@ import { type MenuItem } from '@/types/menu-item';
 import { HomeView } from '@/view/HomeView.tsx';
 import { Layout } from '@/view/Layout.tsx';
 
-// 定义路由对象
-//
-// 通过 `react-router-dom` 的 `createBrowserRouter` 函数来创建一个路由对象
-//
-// React 的路由必须从根开始, 通过一个树结构组织, 每个路由节点都可以包含下一级子路由节点, 形如:
-//
-// '/':      ['index', '/page1', '/page2', ...]
-// '/page1': ['index', '/page1/one', '/page2/two', ...]
-//
-// 子路由指定的内容, 将会渲染到父路由页面的 `<Outlet/>` 元素内
+/**
+ * 路由对象
+ *
+ * 通过 `react-router-dom` 的 `createBrowserRouter` 函数来创建一个路由对象
+ *
+ * React 的路由必须从根开始, 通过一个树结构组织, 每个路由节点都可以包含下一级子路由节点, 形如:
+ * - `'/'`:      `['index', '/page1', '/page2', ...]`
+ * - `'/page1'`: `['index', '/page1/one', '/page2/two', ...]`
+ *
+ * 子路由指定的内容, 将会渲染到父路由页面的 `<Outlet/>` 元素内
+ */
 export const router: Router = createBrowserRouter([
   {
     // 指定根路由信息, 根路由将对应 `<Layout/>` 组件
@@ -70,7 +71,9 @@ export const router: Router = createBrowserRouter([
   }
 ]);
 
-// 定义菜单项
+/**
+ * 菜单项数组
+ */
 export const menuItems: MenuItem[] = [
   {
     label: 'Basic',
