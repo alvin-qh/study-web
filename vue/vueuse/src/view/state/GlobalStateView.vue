@@ -27,11 +27,11 @@ const useGlobalState = createGlobalState((initialValue: string = '') => {
   <div class="global-state-view">
     <div>
       <!--引入组件, 向全局状态发送数据-->
-      <global-state-sender />
+      <GlobalStateSender />
     </div>
     <div>
       <!--引入组件, 从全局状态接收变化的数据-->
-      <global-state-receiver />
+      <GlobalStateReceiver />
     </div>
   </div>
 </template>

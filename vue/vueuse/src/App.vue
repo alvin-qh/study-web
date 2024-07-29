@@ -2,24 +2,22 @@
 
 <template>
   <!--放置顶部导航栏-->
-  <common-nav-top>
-    VueUse 范例
-  </common-nav-top>
+  <CommonNavTop>VueUse 范例</CommonNavTop>
 
   <!--放置页面主体-->
   <div class="wrapper">
 
     <!--在页面主题左侧放置导航面板-->
-    <common-left-pane :items="items"></common-left-pane>
+    <CommonLeftPane :items="items"></CommonLeftPane>
 
     <!--放置子页面容器, 子页面容器通过路由指定其渲染内容-->
     <div class="container">
-      <router-view v-slot="{ Component }">
-        <keep-alive v-if="$route.meta.keepAlive">
+      <RouterView v-slot="{ Component }">
+        <KeepAlive v-if="$route.meta.keepAlive">
           <component :is="Component" />
-        </keep-alive>
+        </KeepAlive>
         <component v-else :is="Component" />
-      </router-view>
+      </RouterView>
     </div>
   </div>
 </template>

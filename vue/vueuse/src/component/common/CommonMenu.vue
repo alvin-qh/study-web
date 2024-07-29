@@ -28,11 +28,11 @@
         -->
         <template v-if="item.children && item.children.length > 0">
           <div class="menu-group">{{ item.label }}</div>
-          <common-menu :items="item.children" />
+          <CommonMenu :items="item.children" />
         </template>
-        <router-link v-else :to="item.link">
+        <RouterLink v-else :to="item.link ?? '/'">
           {{ item.label }}
-        </router-link>
+        </RouterLink>
       </li>
     </ul>
   </div>

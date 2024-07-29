@@ -56,7 +56,7 @@ function useInjectionState(): Exclude<ReturnType<typeof _useInjectionState>, und
       </div>
     </div>
     <div class="state-injection">
-      <injection-state-receiver />
+      <InjectionStateReceiver />
     </div>
   </div>
 </template>
