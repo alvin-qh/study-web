@@ -1,6 +1,6 @@
 <template>
   <div class="common-left-pane">
-    <common-menu :items="items" />
+    <CommonMenu :items="items" />
   </div>
 </template>
 

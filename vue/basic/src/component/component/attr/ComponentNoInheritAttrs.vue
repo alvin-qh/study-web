@@ -6,8 +6,8 @@
 -->
 <template>
   <div class="component-attr" ref="elem">
-    <common-attributes title="Inherit Attrs" :attrs="inheritAttrs" />
-    <common-attributes title="InUse Attrs" :attrs="usedAttrs" />
+    <CommonAttributes title="Inherit Attrs" :attrs="inheritAttrs" />
+    <CommonAttributes title="InUse Attrs" :attrs="usedAttrs" />
   </div>
 </template>
 
@@ -26,6 +26,7 @@ const inheritAttrs = useAttrs() as Record<string, string | number>;
 
 // 获取组件的 HTML 根元素
 const elem = ref<HTMLDivElement>();
+
 // 获取组件根元素上实际应用的属性值
 const usedAttrs = useElementAttrs(elem, ['class', 'id']);
 </script>

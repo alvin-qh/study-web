@@ -69,9 +69,9 @@ function handleClick(e: Event) {
       <div>Ctrl + Enter</div>
     </div>
     <div class="action">
-      <common-attributes title="Focus Event" :attrs="focusAction" />
-      <common-attributes title="Mouse Event" :attrs="mouseAction" />
-      <common-attributes title="Key Event" :attrs="keyboardAction" />
+      <CommonAttributes title="Focus Event" :attrs="focusAction" />
+      <CommonAttributes title="Mouse Event" :attrs="mouseAction" />
+      <CommonAttributes title="Key Event" :attrs="keyboardAction" />
     </div>
   </div>
 </template>

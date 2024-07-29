@@ -17,12 +17,12 @@
       </div>
       <div>
         <!--当 `keepAlive` 响应式变量为 `true`, `CompLifecycle` 组件通过 `KeepAlive` 组件缓存-->
-        <keep-alive :max="1" v-if="keepAlive">
-          <lifecycle-reporter v-if="showComponent" @lifecycle="onLifecycleChanged" />
-        </keep-alive>
+        <KeepAlive :max="1" v-if="keepAlive">
+          <LifecycleReporter v-if="showComponent" @lifecycle="onLifecycleChanged" />
+        </KeepAlive>
         <!--当 `keepAlive` 响应式变量为 `false`, `CompLifecycle` 组件直接被父组件加载渲染-->
         <div v-else>
-          <lifecycle-reporter v-if="showComponent" @lifecycle="onLifecycleChanged" />
+          <LifecycleReporter v-if="showComponent" @lifecycle="onLifecycleChanged" />
         </div>
       </div>
     </div>

@@ -20,10 +20,12 @@
         <img :src="avatar">
       </div>
     </header>
+
     <!--如果默认插槽被传递, 才会渲染 main 及其子元素-->
     <main v-if="$slots.default">
       <slot>Body</slot>
     </main>
+
     <!--如果 footer 插槽被传递, 才会渲染 main 及其子元素-->
     <footer v-if="$slots.footer">
       <slot name="footer">Footer</slot>

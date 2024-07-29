@@ -14,7 +14,7 @@ VUE 组件默认会开启所谓"属性继承", 即父组件设置到子组件的
 
 ```html
 <template>
-  <demo-button :id="id" @click="handleClick" />
+  <DemoButton :id="id" @click="handleClick" />
 </template>
 ```
 
@@ -33,9 +33,10 @@ VUE 支持属性继承是为了让 VUE 组件更符合 HTML 元素的特性, 可
 <template>
   <div class="component-attr" ref="elem">
     <!--展示组件继承的属性值-->
-    <common-attributes title="Inherit Attrs" :attrs="inheritAttrs" />
+    <CommonAttributes title="Inherit Attrs" :attrs="inheritAttrs" />
+
     <!--展示实际应用在组件根 HTML 元素之上的属性值-->
-    <common-attributes title="InUse Attrs" :attrs="usedAttrs" />
+    <CommonAttributes title="InUse Attrs" :attrs="usedAttrs" />
   </div>
 </template>
 
@@ -54,6 +55,7 @@ const inheritAttrs = useAttrs() as Record<string, string | number>;
 
 // 获取组件的 HTML 根元素
 const elem = ref<HTMLDivElement>();
+
 // 获取组件根元素上实际应用的属性值
 const usedAttrs = useElementAttrs(elem, ['class', 'id']);
 </script>

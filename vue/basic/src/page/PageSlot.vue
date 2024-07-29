@@ -7,35 +7,35 @@
   <div class="slot">
     <div>
       <!--使用组件, 并为子组件设置插槽内容-->
-      <simple-slot>
+      <SimpleSlot>
         Hello Slot
-      </simple-slot>
+      </SimpleSlot>
     </div>
 
     <hr>
 
     <div>
       <!--插槽中可以包含任意 HTML 元素以及 Vue 组件-->
-      <simple-slot>
+      <SimpleSlot>
         <p>Hello Slot1</p>
-        <simple-slot>Hello Slot2</simple-slot>
-      </simple-slot>
+        <SimpleSlot>Hello Slot2</SimpleSlot>
+      </SimpleSlot>
     </div>
 
     <hr>
 
     <div>
       <!--插槽可以在子组件中使用父组件的作用域-->
-      <simple-slot>
+      <SimpleSlot>
         <div>{{ now }}</div>
-      </simple-slot>
+      </SimpleSlot>
     </div>
 
     <hr>
 
     <div>
       <!--为组件定义的多个插槽设置内容-->
-      <named-slot :avatar="avatar">
+      <NamedSlot :avatar="avatar">
         <!--为组件的匿名插槽设置内容, 该匿名插槽用于定义组件的 Body 内容-->
         <div class="body">
           Named Slot Demo
@@ -50,14 +50,14 @@
             Powered by Vue 3.x
           </div>
         </template>
-      </named-slot>
+      </NamedSlot>
     </div>
 
     <hr>
 
     <div>
       <!--通过条件插槽渲染所需的插槽内容-->
-      <condition-slot :avatar="avatar">
+      <ConditionSlot :avatar="avatar">
         <!--设置默认插槽, 此时子组件的 `<main>` 元素会被渲染-->
         <div class="body">
           Condition Slot Demo
@@ -67,13 +67,13 @@
           <strong>Condition Slot</strong>
         </template>
         <!--未设置 footer 插槽, 故子组件的 `<footer>` 元素不被渲染-->
-      </condition-slot>
+      </ConditionSlot>
     </div>
 
     <hr>
 
     <div>
-      <condition-slot :avatar="avatar">
+      <ConditionSlot :avatar="avatar">
         <div class="body">
           Dynamic Slot Demo
         </div>
@@ -81,7 +81,7 @@
         <template #[slotName]>
           <strong>Dynamic Slot</strong>
         </template>
-      </condition-slot>
+      </ConditionSlot>
     </div>
 
     <hr>
@@ -93,9 +93,9 @@
 
         对于匿名插槽上定义的属性对象, 可以通过子组件的 `v-slot="属性对象名称"` 指令获取
         -->
-        <scooped-slot v-slot="slotProps">
+        <ScoopedSlot v-slot="slotProps">
           Now: {{ slotProps.date }}
-        </scooped-slot>
+        </ScoopedSlot>
       </div>
       <div>
         <!--可以通过 JS 的对象解构语法, 直接获取插槽属性对象的各个属性值, 即 `v-slot="{ 属性1, 属性2, ... }"`,
@@ -105,7 +105,7 @@
         且一旦设置了命名插槽的 `<template>`, 则默认插槽也必须通过 `<template>` 标签上的 `v-slot` 指令获取插槽属性,
         即: 一旦为组件设置了"命名插槽", 则组件本身的 `v-slot` 指令不在生效
         -->
-        <scooped-slot>
+        <ScoopedSlot>
           <!--为匿名插槽指定内容, 并获取该插槽的 `data` 属性值-->
           <template v-slot="{ date }">
             <span>Now: {{ date }}</span>
@@ -117,14 +117,14 @@
               <div :class="{ blink: !ticktock }"></div>
             </div>
           </template>
-        </scooped-slot>
+        </ScoopedSlot>
       </div>
     </div>
 
     <hr>
 
     <div class="slot-list">
-      <list-slot>
+      <ListSlot>
         <!--获取插槽的属性值, 该属性值是子组件在循环渲染时, 为每一个列表项传递的插槽属性
         对于匿名插槽, 也可以通过 `<slot-list v-slot="{ item, index }">` 语法
         -->
@@ -134,14 +134,14 @@
             <div>{{ item }}</div>
           </div>
         </template>
-      </list-slot>
+      </ListSlot>
     </div>
 
     <hr>
 
     <div class="slot-no-render">
       <!--该组件自身不进行任何渲染, 只是将 `pointX` 和 `pointY` 两个属性值传递给父组件-->
-      <no-render-component v-slot="{ pointX, pointY }">
+      <NoRenderComponent v-slot="{ pointX, pointY }">
         <div class="row">
           <div>X</div>
           <div>{{ pointX }}</div>
@@ -150,7 +150,7 @@
           <div>Y</div>
           <div>{{ pointY }}</div>
         </div>
-      </no-render-component>
+      </NoRenderComponent>
     </div>
   </div>
 </template>

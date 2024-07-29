@@ -3,7 +3,7 @@
 <template>
   <nav class="common-nav-top">
     <!-- Logo 图标 -->
-    <router-link class="logo" to="/" />
+    <RouterLink class="logo" to="/" />
 
     <!-- 标题 -->
     <div class="title">

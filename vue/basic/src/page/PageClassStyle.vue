@@ -61,7 +61,6 @@ const dones = reactive<Record<string, boolean>>({
 // 为 B checkbox 计算键值对形式的内联样式
 const styleObj = computed<StyleValue>(() => {
   const done = dones['B'];
-  console.log('???');
   return {
     fontWeight: done ? '400px' : '800px',
     color: done ? '#7b7b7b' : '#f92727',

@@ -7,7 +7,6 @@
 - 在模板中可以直接使用计算变量;
 - 在 JS 中需要通过计算变量的 `value` 属性访问其值;
 -->
-
 <template>
   <div class="template">
     <div class="timer">

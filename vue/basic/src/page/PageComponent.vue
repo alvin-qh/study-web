@@ -2,7 +2,7 @@
   <div class="component">
     <div class="simple">
       <!--使用简单组件, 该组件通过 `import` 关键字引入, 在模板中, 可以写为 `<SimpleComponent>` 或 `<simple-component>`-->
-      <component-simple ref="simpleComponent" />
+      <ComponentSimple ref="simpleComponent" />
       <div>
         <a href="#" @click.prevent="showComponentDialog">Call Component showDialog function</a>
       </div>
@@ -13,7 +13,7 @@
     <div>
       <div>
         <!--使用组件, 并传递属性值到组件内部-->
-        <component-props :color="color" :size="size" />
+        <ComponentProps :color="color" :size="size" />
       </div>
       <fieldset class="props-value">
         <legend>Outside Component</legend>
@@ -33,7 +33,7 @@
     <div class="calculate">
       <div>
         <!--使用组件, 并通过 `change` 事件接收子组件发出的计算结果-->
-        <component-event :number1="number1" :number2="number2" :opt="opt" @change="handleResultChange" />
+        <ComponentEvent :number1="number1" :number2="number2" :opt="opt" @change="handleResultChange" />
         <div class="result">
           {{ `${number1} ${opt} ${number2} = ${result}` }}
         </div>
@@ -41,7 +41,7 @@
 
       <div>
         <!--使用组件, 通过子组件的 `modelValue` 属性和 `update:modelValue` 事件实现 `v-model` 指令-->
-        <component-event v-model="calModel" />
+        <ComponentEvent v-model="calModel" />
         <div class="result">
           {{ `${calModel.number1} ${calModel.operator} ${calModel.number2} = ${calModel.result || 0}` }}
         </div>
@@ -53,7 +53,7 @@
     <div class="typewriter">
       <div>
         <!--使用组件, 组件输出的字符通过 `v-model` 传递给父组件-->
-        <component-v-model v-model="letter" />
+        <ComponentVModel v-model="letter" />
       </div>
       <div>
         <!--绑定文本域-->
@@ -69,7 +69,7 @@
       </div>
       <div>
         <!--使用动态组件, 可以根据传入的 `formDefinition` 定义, 动态渲染组件内容-->
-        <component-dynamic :definition="formDefinition" v-model="formDataJson" />
+        <ComponentDynamic :definition="formDefinition" v-model="formDataJson" />
       </div>
       <div>
         <!--显示 JSON 字符串-->
@@ -82,11 +82,11 @@
     <div class="attrs">
       <div>
         <!--使用组件, 展示组件获得的属性继承-->
-        <component-inherit-attrs class="inherit-attr-class" :id="100" @click="handleAttrClick" />
+        <ComponentInheritAttrs class="inherit-attr-class" :id="100" @click="handleAttrClick" />
       </div>
       <div>
         <!--使用组件, 展示禁用属性继承时的情况-->
-        <component-no-inherit-attrs class="inherit-attr-class" :id="100" @click="handleAttrClick" />
+        <ComponentNoInheritAttrs class="inherit-attr-class" :id="100" @click="handleAttrClick" />
       </div>
     </div>
 
@@ -94,7 +94,7 @@
 
     <div class="component-options">
       <div>
-        <component-option-style ref="compOptStyle" :color1="color1" :color2="color2" />
+        <ComponentOptionStyle ref="compOptStyle" :color1="color1" :color2="color2" />
       </div>
       <div class="label">
         <input type="checkbox" checked @change="toggleAnimate" />
