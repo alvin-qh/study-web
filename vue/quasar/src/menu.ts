@@ -1,10 +1,10 @@
 export declare interface MenuData {
-  label: string;
-  path?: string;
-  icon?: string;
-  iconColor?: string;
-  separator: boolean;
-  children?: MenuData[];
+  label: string
+  path?: string
+  icon?: string
+  iconColor?: string
+  separator: boolean
+  children?: MenuData[]
 }
 
 export const menuData: MenuData[] = [

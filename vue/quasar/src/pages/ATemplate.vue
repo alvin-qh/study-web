@@ -1,27 +1,47 @@
 <template>
   <div>
-    <q-breadcrumbs>
-      <q-breadcrumbs-el icon="home" to="/" />
-      <q-breadcrumbs-el label="基础" />
-      <q-breadcrumbs-el label="模板" />
-    </q-breadcrumbs>
+    <QBreadcrumbs>
+      <QBreadcrumbsEl icon="home" to="/" />
+      <QBreadcrumbsEl label="基础" />
+      <QBreadcrumbsEl label="模板" />
+    </QBreadcrumbs>
   </div>
 
   <div class="q-pa-md">
-    <q-card class="q-pa-md card-md">
-      <q-card-section>
+    <QCard class="q-pa-md card-md">
+      <QCardSection>
         <div class="text-subtitle1">
           分支
         </div>
-      </q-card-section>
-      <q-card-section class="q-gutter-sm">
+      </QCardSection>
+      <QCardSection class="q-gutter-sm">
         <!-- 一组单选框, 被选中的值存储在 `color` 变量中 -->
-        <q-radio v-model="color" val="teal" label="Teal" color="teal" />
-        <q-radio v-model="color" val="orange" label="Orange" color="orange" />
-        <q-radio v-model="color" val="red" label="Red" color="red" />
-        <q-radio v-model="color" val="cyan" label="Cyan" color="cyan" />
-      </q-card-section>
-      <q-card-section class="q-gutter-sm color-result">
+        <QRadio
+          v-model="color"
+          val="teal"
+          label="Teal"
+          color="teal"
+        />
+        <QRadio
+          v-model="color"
+          val="orange"
+          label="Orange"
+          color="orange"
+        />
+        <QRadio
+          v-model="color"
+          val="red"
+          label="Red"
+          color="red"
+        />
+        <QRadio
+          v-model="color"
+          val="cyan"
+          label="Cyan"
+          color="cyan"
+        />
+      </QCardSection>
+      <QCardSection class="q-gutter-sm color-result">
         <div :class="[`text-${color}-9`]">
           Selected Color is:
         </div>
@@ -41,43 +61,43 @@
         <div v-else>
           None
         </div>
-      </q-card-section>
-    </q-card>
+      </QCardSection>
+    </QCard>
 
-    <q-card class="q-pa-md q-mt-md card-md">
-      <q-card-section>
+    <QCard class="q-pa-md q-mt-md card-md">
+      <QCardSection>
         <div class="text-subtitle1">
           循环
         </div>
-      </q-card-section>
-      <q-card-section>
+      </QCardSection>
+      <QCardSection>
         <!-- 内容输入文本框, 将输入内容存储到 `inputContent` 变量中 -->
-        <q-input v-model="inputContent" dense>
+        <QInput v-model="inputContent" dense>
           <template #append>
             <!-- 将文本框输入内容存储到 `items` 集合中的按钮 -->
-            <q-btn color="primary" icon="add" @click="addItem">
+            <QBtn color="primary" icon="add" @click="addItem">
               添加内容
-            </q-btn>
+            </QBtn>
           </template>
-        </q-input>
-      </q-card-section>
-      <q-card-section>
-        <q-list class="q-pa-md">
+        </QInput>
+      </QCardSection>
+      <QCardSection>
+        <QList class="q-pa-md">
           <!-- FOR 循环 -->
           <template v-for="(item, index) in items" :key="index">
-            <q-item clickable>
-              <q-item-section>
+            <QItem clickable>
+              <QItemSection>
                 {{ item }}
-              </q-item-section>
-              <q-item-section side>
-                <q-icon name="delete_forever" @click="deleteItem(index)" />
-              </q-item-section>
-            </q-item>
-            <q-separator inset />
+              </QItemSection>
+              <QItemSection side>
+                <QIcon name="delete_forever" @click="deleteItem(index)" />
+              </QItemSection>
+            </QItem>
+            <QSeparator inset />
           </template>
-        </q-list>
-      </q-card-section>
-    </q-card>
+        </QList>
+      </QCardSection>
+    </QCard>
   </div>
 </template>
 
@@ -91,25 +111,21 @@ const color = ref<string>('teal');
 const inputContent = ref<string>('');
 
 // 用于存储列表项目的数组集合
-const items = ref<Array<string>>([]);
+const items = ref<string[]>([]);
 
-/**
- * 将 `inputContent` 的内容加入到 `items` 数组中, 会引发模板中的 `v-for` 进行列表渲染
- */
-function addItem() {
+// 将 `inputContent` 的内容加入到 `items` 数组中, 会引发模板中的 `v-for` 进行列表渲染
+const addItem = (): void => {
   const s = inputContent.value.trim();
   if (s) {
     items.value.push(s);
     inputContent.value = '';
   }
-}
+};
 
-/**
- * 从 `item` 数组中删除指定索引项, 会引发模板中的 `v-for` 进行列表渲染
- */
-function deleteItem(index: number) {
+// 从 `item` 数组中删除指定索引项, 会引发模板中的 `v-for` 进行列表渲染
+const deleteItem = (index: number): void => {
   items.value.splice(index, 1);
-}
+};
 </script>
 
 <style lang="scss" scoped>

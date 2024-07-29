@@ -1,13 +1,13 @@
 <template>
-  <q-layout view="hHh Lpr lff" container class="container">
-    <top-header @menu-toggled="onMenuToggled()" />
-    <left-drawer ref="leftDrawer" />
-    <q-page-container>
-      <q-page padding>
-        <router-view />
-      </q-page>
-    </q-page-container>
-  </q-layout>
+  <QLayout view="hHh Lpr lff" container class="container">
+    <TopHeader @menu-toggled="onMenuToggled()" />
+    <LeftDrawer ref="leftDrawer" />
+    <QPageContainer>
+      <QPage padding>
+        <RouterView />
+      </QPage>
+    </QPageContainer>
+  </QLayout>
 </template>
 
 <script setup lang="ts">
@@ -18,9 +18,9 @@ import TopHeader from '@/components/TopHeader.vue';
 
 const leftDrawer = ref<ComponentPublicInstance<typeof LeftDrawer> | null>(null);
 
-function onMenuToggled() {
+const onMenuToggled = (): void => {
   leftDrawer.value?.toggleMenuState();
-}
+};
 </script>
 
 <style lang="scss" scoped>

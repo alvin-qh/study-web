@@ -3,7 +3,7 @@ import '@quasar/extras/fontawesome-v6/fontawesome-v6.css';
 import 'quasar/src/css/index.sass';
 
 import { Quasar } from 'quasar';
-import { createApp } from 'vue';
+import { type Component, createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
 import App from '@/App.vue';
@@ -15,4 +15,4 @@ const router = createRouter({
   routes
 });
 
-createApp(App).use(router).use(Quasar, QuasarConfig).mount('#app');
+createApp(App as Component).use(router).use(Quasar, QuasarConfig).mount('#app');

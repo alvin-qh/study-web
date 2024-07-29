@@ -1,17 +1,17 @@
 <template>
-  <q-drawer
+  <QDrawer
     v-model="drawer"
     :mini="mini"
     :width="200"
     bordered
     class="bg-grey-2"
   >
-    <q-scroll-area class="fit">
-      <q-list>
-        <menu-items :items="menuData" />
-      </q-list>
-    </q-scroll-area>
-  </q-drawer>
+    <QScrollArea class="fit">
+      <QList>
+        <MenuItems :items="menuData" />
+      </QList>
+    </QScrollArea>
+  </QDrawer>
 </template>
 
 <script setup lang="tsx">
@@ -26,14 +26,14 @@ class Status {
 
   index: number = 1;
 
-  next() {
+  next(): void {
     if (++this.index >= Status.ALL.length) {
       this.index = 0;
     }
     console.log(`Menu status is "${this.value}"`);
   }
 
-  get value() {
+  get value(): string {
     return Status.ALL[this.index];
   }
 }

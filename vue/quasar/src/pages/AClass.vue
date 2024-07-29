@@ -1,17 +1,21 @@
 <template>
   <div>
-    <q-breadcrumbs>
-      <q-breadcrumbs-el icon="home" to="/" />
-      <q-breadcrumbs-el label="基础" />
-      <q-breadcrumbs-el label="类与样式" />
-    </q-breadcrumbs>
+    <QBreadcrumbs>
+      <QBreadcrumbsEl icon="home" to="/" />
+      <QBreadcrumbsEl label="基础" />
+      <QBreadcrumbsEl label="类与样式" />
+    </QBreadcrumbs>
   </div>
 
   <div class="q-pa-md">
     <div class="row style-choose">
-      <q-checkbox v-model="classes['with-color']" label="with-color" class="col-2" />
-      <q-checkbox v-model="classes['with-radius']" label="with-radius" class="col-2" />
-      <q-checkbox v-model="classes['with-moving']" label="with-moving" class="col-2" />
+      <QCheckbox
+        v-model="classes['with-color']"
+        label="with-color"
+        class="col-2"
+      />
+      <QCheckbox v-model="classes['with-radius']" label="with-radius" class="col-2" />
+      <QCheckbox v-model="classes['with-moving']" label="with-moving" class="col-2" />
     </div>
     <div class="row q-mt-md">
       <!-- 定义样式类, 展开 `classes` 变量内容, 并追加固定样式 -->
@@ -23,9 +27,24 @@
 
   <div class="q-pa-md q-mt-md">
     <div class="row style-choose">
-      <q-select v-model="styles.borderColor" :options="['#1976d2', '#1565c0', '#0d47a1']" label="边框颜色" class="col-2 q-px-sm" />
-      <q-select v-model="styles.borderRadius" :options="['5px', '10px', '20px']" label="圆角边框" class="col-2 q-px-sm" />
-      <q-select v-model="styles.backgroundColor" :options="['#1976d2', '#1565c0', '#0d47a1']" label="背景颜色" class="col-2 q-px-sm" />
+      <QSelect
+        v-model="styles.borderColor"
+        :options="['#1976d2', '#1565c0', '#0d47a1']"
+        label="边框颜色"
+        class="col-2 q-px-sm"
+      />
+      <QSelect
+        v-model="styles.borderRadius"
+        :options="['5px', '10px', '20px']"
+        label="圆角边框"
+        class="col-2 q-px-sm"
+      />
+      <QSelect
+        v-model="styles.backgroundColor"
+        :options="['#1976d2', '#1565c0', '#0d47a1']"
+        label="背景颜色"
+        class="col-2 q-px-sm"
+      />
     </div>
     <div class="row q-mt-md">
       <!-- 定义样式属性 -->

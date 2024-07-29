@@ -28,6 +28,7 @@ export default defineConfig({
     }),
     jsx(),
     quasar({
+      autoImportComponentCase: 'pascal', // 使用驼峰命名自动导入组件
       sassVariables: 'src/quasar-variables.sass'
     }),
     eslint({
