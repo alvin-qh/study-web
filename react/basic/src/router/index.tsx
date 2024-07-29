@@ -66,6 +66,20 @@ export const router: Router = createBrowserRouter([
           const { FormView } = await import('@/view/component/FormView.tsx');
           return { Component: FormView };
         }
+      },
+      {
+        path: '/hooks/state',
+        async lazy() {
+          const { FormView } = await import('@/view/component/FormView.tsx');
+          return { Component: FormView };
+        }
+      },
+      {
+        path: '/hooks/effect',
+        async lazy() {
+          const { FormView } = await import('@/view/component/FormView.tsx');
+          return { Component: FormView };
+        }
       }
     ]
   }
@@ -87,8 +101,14 @@ export const menuItems: MenuItem[] = [
     label: 'Component',
     children: [
       { label: 'Properties', link: '/component/props' },
-      { label: 'Form', link: '/component/form' },
-      { label: 'Children', link: '/component/children' }
+      { label: 'Form', link: '/component/form' }
+    ]
+  },
+  {
+    label: 'Hooks',
+    children: [
+      { label: 'useState', link: '/hooks/state' },
+      { label: 'useEffect', link: '/hooks/effect' }
     ]
   }
 ];
