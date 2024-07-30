@@ -21,7 +21,7 @@
       <div class="name-input">
         Press full name:
         <!--将文本输入框绑定到一个响应式变量上-->
-        <input type="text" class="full-name" v-model="refFullName">
+        <input v-model="refFullName" type="text" class="full-name">
       </div>
       <div class="name-display">
         <!--当 `refFullName` 变量变化后, `roNameObj` 计算变量的值随之变化-->
@@ -131,10 +131,10 @@ const watchFullName = computed<string>({
 });
 
 // 用于处理文本框输入变化事件的函数, 函数内用输入框的值改变了计算变量的值
-function onFullNameInput(evt: Event): void {
+const onFullNameInput = (evt: Event): void => {
   // 为计算变量赋值需要通过其 `value` 属性
   watchFullName.value = (evt.target as HTMLInputElement).value;
-}
+};
 
 
 // 定义一个响应式变量用于接收输入框内容
@@ -156,7 +156,6 @@ const letters = computed<string[]>(() => [...words.value]);
   }
 
   .name {
-
     .name-input,
     .name-display {
       padding: 5px 0;

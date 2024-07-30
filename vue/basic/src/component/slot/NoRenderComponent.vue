@@ -5,7 +5,7 @@
 -->
 <template>
   <!--组件中只包含一个插槽, 并不渲染任何 HTML 元素, 插槽向父组件传递两个属性值-->
-  <slot :pointX="point.x" :pointY="point.y" />
+  <slot :point-x="point.x" :point-y="point.y" />
 </template>
 
 <script setup lang="ts">
@@ -15,14 +15,14 @@ import { onMounted, onUnmounted, reactive } from 'vue';
 const point = reactive<{ x: number, y: number }>({ x: 0, y: 0 });
 
 // 更新鼠标基于页面的坐标位置
-function update(e: MouseEvent) {
+const update = (e: MouseEvent): void => {
   point.x = e.pageX;
   point.y = e.pageY;
-}
+};
 
 // 在组件被加载时, 启动事件监听获取鼠标在页面的位置
-onMounted(() => window.addEventListener('mousemove', update));
+onMounted(() => { window.addEventListener('mousemove', update); });
 
 // 在组件被卸载后, 停止监听鼠标事件
-onUnmounted(() => window.removeEventListener('mousemove', update));
+onUnmounted(() => { window.removeEventListener('mousemove', update); });
 </script>

@@ -2,7 +2,9 @@
 
 <template>
   <div class="home">
-    <div class="title">Welcome to Vue Demos</div>
+    <div class="title">
+      Welcome to Vue Demos
+    </div>
     <div class="logo">
       <img :src="logo">
     </div>
@@ -15,17 +17,25 @@
     <hr>
 
     <div class="code">
-      <div class="code-title">Create Vue Project</div>
+      <div class="code-title">
+        Create Vue Project
+      </div>
       <pre><code class="language-bash">{{ createProject }}</code></pre>
       <pre><code class="language">{{ codeCreateOutput }}</code></pre>
 
-      <div class="code-title">Initialize Project</div>
+      <div class="code-title">
+        Initialize Project
+      </div>
       <pre><code class="language-bash">{{ codeInitProject }}</code></pre>
 
-      <div class="code-title">Start Development Server</div>
+      <div class="code-title">
+        Start Development Server
+      </div>
       <pre><code class="language-bash">{{ codeStartDevServer }}</code></pre>
 
-      <div class="code-title">Build Project</div>
+      <div class="code-title">
+        Build Project
+      </div>
       <pre><code class="language-bash">{{ codeBuild }}</code></pre>
     </div>
   </div>
@@ -35,7 +45,7 @@
 import logo from '/vue.svg';
 import { useHighlight } from '@/lib/highlight';
 
-const createProject = `$ npm create vue@latest`;
+const createProject = '$ npm create vue@latest';
 
 const codeCreateOutput = `✔ Project name: … <your-project-name>
 ✔ Add TypeScript? … No / Yes
@@ -49,14 +59,14 @@ const codeCreateOutput = `✔ Project name: … <your-project-name>
 ✔ Add Vue DevTools 7 extension for debugging? (experimental) … No / Yes
 
 Scaffolding project in ./<your-project-name>...
-Done.`
+Done.`;
 
 const codeInitProject = `$ cd <your-project-name>
 $ pnpm install`;
 
-const codeStartDevServer = `$ pnpm run dev`;
+const codeStartDevServer = '$ pnpm run dev';
 
-const codeBuild = `$ pnpm run build`;
+const codeBuild = '$ pnpm run build';
 
 useHighlight();
 </script>

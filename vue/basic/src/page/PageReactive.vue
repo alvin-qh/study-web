@@ -16,7 +16,9 @@
     <div>
       <!--文本框绑定 `refCount` 变量, 通过按钮改变 `refCount` 变量-->
       <input type="text" readonly :value="refCount">
-      <button @click="refCount++">Click</button>
+      <button @click="refCount++">
+        Click
+      </button>
     </div>
 
     <hr>
@@ -31,7 +33,9 @@
     <div class="obj">
       <!--对于复杂类型的响应式变量, 可以使用其某个变量, 某个数组或某个数组元素值, 即整个复杂对象的各个部分都支持响应式-->
       <ul :class="refObj.className">
-        <li v-for="item in refObj.items" :key="item">{{ item }}</li>
+        <li v-for="item in refObj.items" :key="item">
+          {{ item }}
+        </li>
       </ul>
       <span :class="refObj.className">{{ refObj.items[refObj.items.length - 1] }}</span>
     </div>
@@ -41,7 +45,9 @@
     <div>
       <!--文本框绑定 `reactiveCount` 变量, 通过按钮改变 `reactiveCount` 变量-->
       <input type="text" readonly :value="reactiveCount.count">
-      <button @click="reactiveCount.count++">Click</button>
+      <button @click="reactiveCount.count++">
+        Click
+      </button>
     </div>
 
     <hr>
@@ -56,7 +62,9 @@
     <div class="obj">
       <!--对于复杂类型的响应式变量, 可以使用其某个变量, 某个数组或某个数组元素值, 即整个复杂对象的各个部分都支持响应式-->
       <ul :class="reactiveObj.className">
-        <li v-for="item in reactiveObj.items" :key="item">{{ item }}</li>
+        <li v-for="item in reactiveObj.items" :key="item">
+          {{ item }}
+        </li>
       </ul>
       <span :class="reactiveObj.className">{{ reactiveObj.items[reactiveObj.items.length - 1] }}</span>
     </div>
@@ -80,13 +88,13 @@ const refNow = ref<string>(formatDate());
 setInterval(() => { refNow.value = formatDate(); }, 500);
 
 // 可以定义复杂对象处理响应式
-const refObj = ref<{ className: string; items: number[] }>({
+const refObj = ref<{ className: string, items: number[] }>({
   className: '',
   items: []
 });
 
 // 记录上一次的时间信息
-let refLastDate = {
+const refLastDate = {
   mins: 0,
   seconds: 0
 };
@@ -126,13 +134,13 @@ const reactiveNow = reactive<{ now: string }>({ now: formatDate() });
 setInterval(() => { reactiveNow.now = formatDate(); }, 500);
 
 // 代理一个复杂对象为响应式对象
-const reactiveObj = reactive<{ className: string; items: number[] }>({
+const reactiveObj = reactive<{ className: string, items: number[] }>({
   className: '',
   items: []
 });
 
 // 记录上一次的时间信息
-let reactiveLastDate = {
+const reactiveLastDate = {
   mins: 0,
   seconds: 0
 };

@@ -4,27 +4,28 @@ Vue 支持动态的类选择器和样式表, 可以动态的改变元素的样�
    可以为元素设置其中 Value 为 `true` 的类选择器或样式;
 2. 数组: 通过一个包含类选择器名称或样式名称的数组, 可以指定元素所使用的全部类选择器或样式
 -->
-
 <template>
   <div class="class-style">
     <!--通过 Key/Value 对指定元素的内联样式表-->
     <div>
-      <input type="checkbox" v-model="dones['A']">
+      <input v-model="dones['A']" type="checkbox">
       <!--根据响应式变量的值动态设置内联样式表-->
-      <span :style="{
-        fontWeight: dones['A'] ? '400px' : '800px',
-        color: dones['A'] ? '#7b7b7b' : '#f92727',
-        textDecoration: dones['A'] ? 'line-through' : 'none'
-      }">A</span>
+      <span
+        :style="{
+          fontWeight: dones['A'] ? '400px' : '800px',
+          color: dones['A'] ? '#7b7b7b' : '#f92727',
+          textDecoration: dones['A'] ? 'line-through' : 'none'
+        }"
+      >A</span>
     </div>
     <!--通过响应式对象对指定元素的内联样式表-->
     <div>
-      <input type="checkbox" v-model="dones['B']">
+      <input v-model="dones['B']" type="checkbox">
       <span :style="styleObj">B</span>
     </div>
     <!--通过数组指定元素的内联样式表-->
     <div>
-      <input type="checkbox" v-model="dones['C']">
+      <input v-model="dones['C']" type="checkbox">
       <span :style="styleArray">C</span>
     </div>
 
@@ -32,35 +33,35 @@ Vue 支持动态的类选择器和样式表, 可以动态的改变元素的样�
 
     <!--通过 Key/Value 对指定元素的类选择器-->
     <div>
-      <input type="checkbox" v-model="dones['A']">
+      <input v-model="dones['A']" type="checkbox">
       <span :class="{ active: !dones['A'], done: dones['A'] }">A</span>
     </div>
     <!--通过响应式对象对指定元素的类选择器-->
     <div>
-      <input type="checkbox" v-model="dones['B']">
+      <input v-model="dones['B']" type="checkbox">
       <span :class="classObj">B</span>
     </div>
     <!--通过响应式数组指定元素的类选择器-->
     <div>
-      <input type="checkbox" v-model="dones['C']">
+      <input v-model="dones['C']" type="checkbox">
       <span :class="classesArray">C</span>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, StyleValue } from 'vue';
+import { computed, reactive, type StyleValue } from 'vue';
 
 // 记录三个 checkbox 是否选中的键值对
 const dones = reactive<Record<string, boolean>>({
   A: false,
   B: false,
-  C: false,
+  C: false
 });
 
 // 为 B checkbox 计算键值对形式的内联样式
 const styleObj = computed<StyleValue>(() => {
-  const done = dones['B'];
+  const done = dones.B;
   return {
     fontWeight: done ? '400px' : '800px',
     color: done ? '#7b7b7b' : '#f92727',
@@ -71,7 +72,7 @@ const styleObj = computed<StyleValue>(() => {
 // 为 C checkbox 计算数组形式的内联样式
 // 最终元素会使用数组中所有样式对象合并的结果
 const styleArray = computed<StyleValue[]>(() => {
-  const done = dones['C'];
+  const done = dones.C;
 
   // 定义两个内联样式对象
   let activeStyle = {};
@@ -81,12 +82,12 @@ const styleArray = computed<StyleValue[]>(() => {
   if (done) {
     doneStyle = {
       textDecoration: 'line-through',
-      color: '#7b7b7b',
+      color: '#7b7b7b'
     };
   } else {
     activeStyle = {
       fontWeight: '800px',
-      color: '#f92727',
+      color: '#f92727'
     };
   }
 
@@ -96,14 +97,12 @@ const styleArray = computed<StyleValue[]>(() => {
 
 
 // 为 B checkbox 计算键值对形式的类选择器对象
-const classObj = computed<{ active: boolean, done: boolean }>(() => {
-  return { active: !dones['B'], done: dones['B'] };
-});
+const classObj = computed<{ active: boolean, done: boolean }>(() => ({ active: !dones.B, done: dones.B }));
 
 // 为 C checkbox 计算数组形式的类选择器集合
 const classesArray = computed<string[]>(() => {
   const classes: string[] = [];
-  if (dones['C']) {
+  if (dones.C) {
     classes.push('done');
   } else {
     classes.push('active');

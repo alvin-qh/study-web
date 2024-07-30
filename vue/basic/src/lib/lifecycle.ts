@@ -1,4 +1,4 @@
-export const allLifecycle = <const>[
+export const allLifecycle = [
   // 组件挂载前
   'BeforeMount',
   // 组件已经挂载
@@ -20,7 +20,7 @@ export const allLifecycle = <const>[
   // 当组件位于 `<KeepAlive>` 组件中, 已被缓存且重新被激活 (重新加载到父组件的 DOM 树中)
   'Activated',
   // 当组件位于 `<KeepAlive>` 组件中, 已被缓存且从父组件移出 (从父组件的 DOM 树中移除)
-  'Deactivated',
+  'Deactivated'
   // 组件在服务器上即将被渲染
   // 'ServerPrefetch',
-];
+] as const;

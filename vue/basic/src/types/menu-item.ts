@@ -3,11 +3,11 @@
  */
 export interface MenuItem {
   // 菜单项文本
-  label: string;
+  label: string
   // 菜单项链接
-  link?: string;
+  link?: string
   // 菜单项图标
-  icon?: string;
+  icon?: string
   // 子菜单项
-  children?: MenuItem[];
+  children?: MenuItem[]
 }

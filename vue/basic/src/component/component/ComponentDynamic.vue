@@ -10,23 +10,24 @@
         <!--根据各表单项定义的 `type` 属性, 动态渲染对应表单组件, 组件类型由 `dispatchComponent` 函数返回;
         根据各表单项的 `key`, 将组件传出的值绑定到表单值对象对应的 `key` 上
         -->
-        <component :is="dispatchComponent(field.type)" :field="field" v-model="formData[key]" />
+        <component :is="dispatchComponent(field.type)" v-model="formData[key]" :field="field" />
       </div>
     </form>
   </div>
 </template>
 
 <script setup lang="ts">
-import { watch, ref } from 'vue';
+import { ref, watch } from 'vue';
+
 import {
+  FormCheckbox,
   type FormData,
   type FormDefinition,
-  FormText,
+  type FormFieldComponent,
   FormNumber,
   FormRadio,
-  FormFieldComponent,
-  FormCheckbox,
-  FormTextArea,
+  FormText,
+  FormTextArea
 } from './form';
 
 // 定义组件的属性, 传入表单定义对象和表单值对象
@@ -37,31 +38,31 @@ defineProps<{ definition: FormDefinition }>();
 const model = defineModel<string>({ required: true });
 
 // 定义响应式变量, 用于存储表单值
-const formData = ref<FormData>(JSON.parse(model.value));
+const formData = ref<FormData>(JSON.parse(model.value) as FormData);
 
 // 根据表单项类型, 返回对应表单项组件类型
-function dispatchComponent(type: string): FormFieldComponent {
+const dispatchComponent = (type: string): FormFieldComponent => {
   switch (type) {
-    case 'text':
-      return FormText;
-    case 'number':
-      return FormNumber;
-    case 'radio':
-      return FormRadio;
-    case 'checkbox':
-      return FormCheckbox;
-    case 'textarea':
-      return FormTextArea;
-    default:
-      throw new Error('Invalid component type');
+  case 'text':
+    return FormText;
+  case 'number':
+    return FormNumber;
+  case 'radio':
+    return FormRadio;
+  case 'checkbox':
+    return FormCheckbox;
+  case 'textarea':
+    return FormTextArea;
+  default:
+    throw new Error('Invalid component type');
   }
-}
+};
 
 // 监控 `v-model` 变量, 将接收到的 JSON 字符串转为对象
-watch(model, val => formData.value = JSON.parse(val));
+watch(model, (val) => { formData.value = JSON.parse(val); });
 
 // 监控响应式变量, 当表单值发生变化后, 将表单对象转为 JSON 字符串赋予 `v-model` 变量
-watch(formData, val => model.value = JSON.stringify(val, null, 2), { deep: true });
+watch(formData, (val) => { model.value = JSON.stringify(val, null, 2); }, { deep: true });
 </script>
 
 <style scoped lang="scss">

@@ -19,11 +19,11 @@
         <legend>Outside Component</legend>
         <label>
           <div>Color</div>
-          <input type="text" v-model="color">
+          <input v-model="color" type="text">
         </label>
         <label>
           <div>Size</div>
-          <input type="text" v-model="size">
+          <input v-model="size" type="text">
         </label>
       </fieldset>
     </div>
@@ -33,7 +33,12 @@
     <div class="calculate">
       <div>
         <!--使用组件, 并通过 `change` 事件接收子组件发出的计算结果-->
-        <ComponentEvent :number1="number1" :number2="number2" :opt="opt" @change="handleResultChange" />
+        <ComponentEvent
+          :number1="number1"
+          :number2="number2"
+          :opt="opt"
+          @change="handleResultChange"
+        />
         <div class="result">
           {{ `${number1} ${opt} ${number2} = ${result}` }}
         </div>
@@ -57,7 +62,7 @@
       </div>
       <div>
         <!--绑定文本域-->
-        <textarea v-model="text"></textarea>
+        <textarea v-model="text" />
       </div>
     </div>
 
@@ -65,15 +70,15 @@
 
     <div class="dynamic-form">
       <div>
-        <textarea v-model="formDefinitionJson"></textarea>
+        <textarea v-model="formDefinitionJson" />
       </div>
       <div>
         <!--使用动态组件, 可以根据传入的 `formDefinition` 定义, 动态渲染组件内容-->
-        <ComponentDynamic :definition="formDefinition" v-model="formDataJson" />
+        <ComponentDynamic v-model="formDataJson" :definition="formDefinition" />
       </div>
       <div>
         <!--显示 JSON 字符串-->
-        <textarea v-model="formDataJson"></textarea>
+        <textarea v-model="formDataJson" />
       </div>
     </div>
 
@@ -82,11 +87,11 @@
     <div class="attrs">
       <div>
         <!--使用组件, 展示组件获得的属性继承-->
-        <ComponentInheritAttrs class="inherit-attr-class" :id="100" @click="handleAttrClick" />
+        <ComponentInheritAttrs :id="100" class="inherit-attr-class" @click="handleAttrClick" />
       </div>
       <div>
         <!--使用组件, 展示禁用属性继承时的情况-->
-        <ComponentNoInheritAttrs class="inherit-attr-class" :id="100" @click="handleAttrClick" />
+        <ComponentNoInheritAttrs :id="100" class="inherit-attr-class" @click="handleAttrClick" />
       </div>
     </div>
 
@@ -97,17 +102,17 @@
         <ComponentOptionStyle ref="compOptStyle" :color1="color1" :color2="color2" />
       </div>
       <div class="label">
-        <input type="checkbox" checked @change="toggleAnimate" />
+        <input type="checkbox" checked @change="toggleAnimate">
         <div>Animate</div>
       </div>
       <div class="color">
         <label>
           <div>Color1</div>
-          <input name="color1" type="text" @keydown.enter="changeColor" />
+          <input name="color1" type="text" @keydown.enter="changeColor">
         </label>
         <label>
           <div>Color2</div>
-          <input name="color2" type="text" @keydown.enter="changeColor" />
+          <input name="color2" type="text" @keydown.enter="changeColor">
         </label>
       </div>
     </div>
@@ -115,30 +120,30 @@
 </template>
 
 <script setup lang="ts">
-import { ref, reactive, watch, computed, WatchStopHandle } from 'vue';
+import { computed, reactive, ref, watch, type WatchStopHandle } from 'vue';
 
-// 导入组件, 该组件只能在当前文件内部使用
-import ComponentSimple from '@/component/component/ComponentSimple.vue';
-import ComponentProps from '@/component/component/ComponentProps.vue';
+import { ComponentInheritAttrs, ComponentNoInheritAttrs } from '@/component/component/attr';
+import ComponentDynamic from '@/component/component/ComponentDynamic.vue';
 import ComponentEvent, {
   type CalculateEvent,
-  type Operator,
-  type ModelType
+  type ModelType,
+  type Operator
 } from '@/component/component/ComponentEvent';
-import ComponentVModel from '@/component/component/ComponentVModel.vue';
-import { FormDefinition } from '@/component/component/form';
-import ComponentDynamic from '@/component/component/ComponentDynamic.vue';
-import { ComponentInheritAttrs, ComponentNoInheritAttrs } from '@/component/component/attr';
 import ComponentOptionStyle from '@/component/component/ComponentOptionStyle.vue';
+import ComponentProps from '@/component/component/ComponentProps.vue';
+// 导入组件, 该组件只能在当前文件内部使用
+import ComponentSimple from '@/component/component/ComponentSimple.vue';
+import ComponentVModel from '@/component/component/ComponentVModel.vue';
+import { type FormDefinition } from '@/component/component/form';
 
 // 获取 `ComponentSimple` 组件的引用
 const simpleComponent = ref<typeof ComponentSimple>();
 
 // 定义方法, 通过访问 `SimpleComponent` 内部的函数显示 `SimpleComponent` 组件内部定义的对话框
-function showComponentDialog() {
+const showComponentDialog = (): void => {
   // `showDialog` 函数通过 `SimpleComponent` 组件内部的 `defineExpose` 导出, 故可在父组件中访问
   simpleComponent.value?.showDialog('Show Component Dialog', 'Notify');
-}
+};
 
 
 // 定义两个响应式变量, 作为 `ComponentProps` 组件的输入属性
@@ -153,7 +158,7 @@ const opt = ref<Operator>('+');
 const result = ref<number>(0);
 
 // 处理 `ComponentEvent` 组件的 `change` 事件
-function handleResultChange(e: CalculateEvent) {
+const handleResultChange = (e: CalculateEvent): void => {
   number1.value = e.number1;
   number2.value = e.number2;
   opt.value = e.operator;
@@ -161,14 +166,14 @@ function handleResultChange(e: CalculateEvent) {
   if (e.result !== undefined) {
     result.value = e.result;
   }
-}
+};
 
 // 定义响应式对象, 作为 `ComponentEvent` 组件的 `modelValue` 属性值和 `update:modelValue` 事件参数值,
 // 从而实现 `v-model` 指令
 const calModel = reactive<ModelType>({
   number1: 1,
   number2: 2,
-  operator: '+',
+  operator: '+'
 });
 
 
@@ -179,8 +184,8 @@ const letter = ref<string>('');
 const text = ref<string>('');
 
 // 监听组件的 `v-model` 变量, 组合后显示在文本域中
-function beginLetterWatch(): WatchStopHandle {
-  return watch(letter, val => {
+const beginLetterWatch = (): WatchStopHandle => (
+  watch(letter, (val) => {
     if (val) {
       // 停止监听文本域响应变量
       stopWatchHandle.stopTextWatch();
@@ -195,22 +200,23 @@ function beginLetterWatch(): WatchStopHandle {
       // 开启文本框响应变量监听
       stopWatchHandle.stopTextWatch = beginTextWatch();
     }
-  });
-}
+  })
+);
 
 // 监听文本域内容, 将最后一个字符传递给组件的 `v-model` 变量
-function beginTextWatch(): WatchStopHandle {
-  return watch(text, (nv, ov) => {
+const beginTextWatch = (): WatchStopHandle => (
+  watch(text, (nv, ov) => {
     // 判断文本是否为追加
     if (nv.length > ov.length) {
       // 获取文本追加的部分
       const diff = nv.substring(ov.length);
+
       if (diff.length > 0) {
         // 停止 `letter` 变量的监控
         stopWatchHandle.stopLetterWatch();
 
         // 为 letter 响应式变量赋值
-        diff.split('').forEach(l => {
+        diff.split('').forEach((l) => {
           letter.value = l;
         });
 
@@ -218,14 +224,14 @@ function beginTextWatch(): WatchStopHandle {
         stopWatchHandle.stopLetterWatch = beginLetterWatch();
       }
     }
-  });
-}
+  })
+);
 
 // 定义对象, 用于存储关闭监听器的函数
 const stopWatchHandle = {
   stopLetterWatch: beginLetterWatch(),
   stopTextWatch: beginTextWatch()
-}
+};
 
 
 // 表单定义对象 JSON 字符串, 和 textarea 元素绑定
@@ -236,7 +242,7 @@ const formDefinitionJson = ref<string>(JSON.stringify({
   },
   age: {
     label: 'Age',
-    type: 'number',
+    type: 'number'
   },
   gender: {
     label: 'Gender',
@@ -252,7 +258,7 @@ const formDefinitionJson = ref<string>(JSON.stringify({
   },
   remark: {
     label: 'Remark',
-    type: 'textarea',
+    type: 'textarea'
   }
 }, null, 2));
 
@@ -269,16 +275,17 @@ const formDataJson = ref<string>(JSON.stringify({
 
 
 // 测试属性继承的事件处理函数
-function handleAttrClick() {
+const handleAttrClick = (): void => {
+  // eslint-disable-next-line no-alert
   window.alert('Hello');
-}
+};
 
 
 // 通过响应式变量引用 `ComponentOptionStyle` 组件
 const compOptStyle = ref<typeof ComponentOptionStyle>();
 
 // 复选框事件处理, 用于切换 `ComponentOptionStyle` 组件是否启用动画
-function toggleAnimate(e: Event): void {
+const toggleAnimate = (e: Event): void => {
   const target = e.target as HTMLInputElement;
 
   // 根据复选框是否选中, 调用 `ComponentOptionStyle` 提供的方法开启和停用动画
@@ -287,7 +294,7 @@ function toggleAnimate(e: Event): void {
   } else {
     compOptStyle.value?.stopAnimate();
   }
-}
+};
 
 
 // 定义响应式变量作为组件的颜色属性
@@ -295,17 +302,19 @@ const color1 = ref<string>('#7a5456ab');
 const color2 = ref<string>('#547a5aab');
 
 // 响应文本框事件, 修改颜色
-function changeColor(e: Event) {
+const changeColor = (e: Event): void => {
   const target = e.target as HTMLInputElement;
   switch (target.name) {
-    case 'color1':
-      color1.value = target.value;
-      break;
-    case 'color2':
-      color2.value = target.value;
-      break;
+  case 'color1':
+    color1.value = target.value;
+    break;
+  case 'color2':
+    color2.value = target.value;
+    break;
+  default:
+    throw new Error('invalid color value');
   }
-}
+};
 </script>
 
 <style scoped lang="scss">

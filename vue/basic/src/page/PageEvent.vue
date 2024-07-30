@@ -17,7 +17,7 @@ Vue 通过模板元素上的 `v-on` 指令进行元素的事件处理, 例如: `
   ```
 
   ```typescript
-  function handleClick(e: Event) {
+  const handleClick = (e: Event): void => {
     // ...
   }
   ```
@@ -31,7 +31,7 @@ Vue 通过模板元素上的 `v-on` 指令进行元素的事件处理, 例如: `
 ```
 
 ```typescript
-function handleClick(e: Event) {
+const handleClick = (e: Event): void => {
 // ...
 }
 ```
@@ -62,10 +62,21 @@ function handleClick(e: Event) {
 
     DIV 元素如果要捕获键盘事件, 则需要指定 `tabindex="0"` 属性值, 否则 DIV 元素无法获取输入焦点;
     -->
-    <div :class="{ 'view': true, 'with-border': focusAction['Focus'], 'with-background': enterKeyDown }" tabindex="0"
-      @focus="handleFocus" @blur="handleBlur" @mouseenter="handleMouseEnter" @mouseout="handleMouseOut"
-      @mousemove="handleMouseMove" @click.prevent="handleClick" @keydown="handleKeyDown" @keyup.prevent="handleKeyUp"
-      @keypress.prevent="handleKeyPress" @keydown.ctrl.enter="handleEnterKeyDown" @keyup.enter="handleEnterKeyUp">
+    <div
+      :class="{ 'view': true, 'with-border': focusAction['Focus'], 'with-background': enterKeyDown }"
+      tabindex="0"
+      @focus="handleFocus"
+      @blur="handleBlur"
+      @mouseenter="handleMouseEnter"
+      @mouseout="handleMouseOut"
+      @mousemove="handleMouseMove"
+      @click.prevent="handleClick"
+      @keydown.exact="handleKeyDown"
+      @keyup.prevent="handleKeyUp"
+      @keypress.prevent="handleKeyPress"
+      @keydown.ctrl.enter="handleEnterKeyDown"
+      @keyup.enter="handleEnterKeyUp"
+    >
       <div>Ctrl + Enter</div>
     </div>
     <div class="action">
@@ -78,13 +89,14 @@ function handleClick(e: Event) {
 
 <script setup lang="ts">
 import { reactive, ref } from 'vue';
+
 import CommonAttributes from '@/component/common/CommonAttributes.vue';
 
 const mouseAction = reactive<{
-  Enter: boolean,
-  ClientX: number,
-  ClientY: number,
-  Click: number,
+  Enter: boolean
+  ClientX: number
+  ClientY: number
+  Click: number
 }>({
   Enter: false,
   ClientX: 0,
@@ -93,18 +105,18 @@ const mouseAction = reactive<{
 });
 
 const focusAction = reactive<{
-  Focus: boolean,
+  Focus: boolean
 }>({
-  Focus: false,
+  Focus: false
 });
 
 const keyboardAction = reactive<{
-  KeyDown: string,
-  KeyUp: string,
-  KeyPress: string,
-  Shift: boolean,
-  Alt: boolean,
-  Control: boolean,
+  KeyDown: string
+  KeyUp: string
+  KeyPress: string
+  Shift: boolean
+  Alt: boolean
+  Control: boolean
 }>({
   KeyDown: '',
   KeyUp: '',
@@ -114,68 +126,48 @@ const keyboardAction = reactive<{
   Control: false
 });
 
-function handleMouseEnter(): void {
-  mouseAction['Enter'] = true;
-}
+const handleMouseEnter = (): void => { mouseAction.Enter = true; };
 
-function handleMouseOut(): void {
-  mouseAction['Enter'] = false;
-}
+const handleMouseOut = (): void => { mouseAction.Enter = false; };
 
-function handleMouseMove(e: Event): void {
+const handleMouseMove = (e: Event): void => {
   const me = e as MouseEvent;
-  mouseAction['ClientX'] = me.clientX;
-  mouseAction['ClientY'] = me.clientY;
-}
+  mouseAction.ClientX = me.clientX;
+  mouseAction.ClientY = me.clientY;
+};
 
-function handleClick() {
-  mouseAction['Click']++;
-}
+const handleClick = (): void => { mouseAction.Click++; };
 
-function handleFocus() {
-  focusAction['Focus'] = true;
-}
+const handleFocus = (): void => { focusAction.Focus = true; };
 
-function handleBlur() {
-  focusAction['Focus'] = false;
-}
+const handleBlur = (): void => { focusAction.Focus = false; };
 
-function keyEvent(name: 'KeyDown' | 'KeyUp' | 'KeyPress', e: Event): void {
+const keyEvent = (name: 'KeyDown' | 'KeyUp' | 'KeyPress', e: Event): void => {
   const ke = e as KeyboardEvent;
   switch (ke.key) {
-    case 'Shift':
-    case 'Alt':
-    case 'Control':
-      break;
-    default:
-      keyboardAction[name] = ke.key;
+  case 'Shift':
+  case 'Alt':
+  case 'Control':
+    break;
+  default:
+    keyboardAction[name] = ke.key;
   }
-  keyboardAction['Shift'] = ke.shiftKey;
-  keyboardAction['Alt'] = ke.altKey;
-  keyboardAction['Control'] = ke.ctrlKey;
-}
+  keyboardAction.Shift = ke.shiftKey;
+  keyboardAction.Alt = ke.altKey;
+  keyboardAction.Control = ke.ctrlKey;
+};
 
-function handleKeyDown(e: Event): void {
-  keyEvent('KeyDown', e);
-}
+const handleKeyDown = (e: Event): void => { keyEvent('KeyDown', e); };
 
-function handleKeyUp(e: Event) {
-  keyEvent('KeyUp', e);
-}
+const handleKeyUp = (e: Event): void => { keyEvent('KeyUp', e); };
 
-function handleKeyPress(e: Event) {
-  keyEvent('KeyPress', e);
-}
+const handleKeyPress = (e: Event): void => { keyEvent('KeyPress', e); };
 
 const enterKeyDown = ref<boolean>(false);
 
-function handleEnterKeyDown() {
-  enterKeyDown.value = true;
-}
+const handleEnterKeyDown = (): void => { enterKeyDown.value = true; };
 
-function handleEnterKeyUp() {
-  enterKeyDown.value = false;
-}
+const handleEnterKeyUp = (): void => { enterKeyDown.value = false; };
 </script>
 
 <style scoped lang="scss">

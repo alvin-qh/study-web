@@ -18,7 +18,7 @@
         </KeepAlive>
         <component v-else :is="Component" />
       </RouterView>
-    </div>
+    </div> 
   </div>
 </template>
 
@@ -52,8 +52,9 @@ const items = ref<MenuItem[]>([
       { label: 'Lifecycle', link: '/lifecycle' },
       { label: 'Component', link: '/component' },
       { label: 'Slot', link: '/slot' },
-    ]
-  },
+    ] 
+  },   
+  { label: 'Playground', link: '/playground' }
 ]);
 </script>
 

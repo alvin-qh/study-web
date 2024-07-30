@@ -9,7 +9,7 @@ Vue 框架都提供了响应的钩子函数进行回调
 
 <template>
   <!--用于测试 Vue 生命周期钩子调用情况的组件-->
-  <div class="comp-lifecycle" ref="elem">
+  <div ref="elem" class="comp-lifecycle">
     Lifecycle Component, {{ now }}
   </div>
 </template>
@@ -26,11 +26,11 @@ import {
   onRenderTriggered,
   onUnmounted,
   onUpdated,
-  ref,
+  ref
 } from 'vue';
 
 import { formatDate } from '@/lib/time';
-import { Lifecycle, LifecycleEvent } from '@/types/event';
+import { type Lifecycle, type LifecycleEvent } from '@/types/event';
 
 // 记录钩子函数调用情况的上下文对象
 const context = {
@@ -52,15 +52,15 @@ const elem = ref<HTMLDivElement>();
 const now = ref<string>(formatDate());
 
 // 一秒钟后, 修改 `now` 响应式变量, 该操作会导致组件因依赖的响应式变量变更而重新渲染
-setTimeout(() => now.value = formatDate(), 1000);
+setTimeout(() => { now.value = formatDate(); }, 1000);
 
 // 发出一个事件, 父组件会接收到事件调用并触发事件响应
-function emitLifecycleEvent(lifecycle: Lifecycle) {
+const emitLifecycleEvent = (lifecycle: Lifecycle): void => {
   emit('lifecycle', {
     index: context.index++,
-    lifecycle: lifecycle,
+    lifecycle
   });
-}
+};
 
 // 响应 Vue 生命周期的各个钩子函数, 并发出事件调用
 onBeforeMount(() => { emitLifecycleEvent('BeforeMount'); });

@@ -17,6 +17,7 @@ const routes: RouteRecordRaw[] = [
   { path: '/event', component: () => import('./page/PageEvent.vue'), meta: { keepAlive: true } },
   { path: '/component', component: () => import('./page/PageComponent.vue'), meta: { keepAlive: true } },
   { path: '/slot', component: () => import('./page/PageSlot.vue'), meta: { keepAlive: true } },
+  { path: '/play', component: () => import('./page/PageSlot.vue'), meta: { keepAlive: true } },
 ];
 
 // 创建路由对象并导出

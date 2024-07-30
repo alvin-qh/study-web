@@ -5,29 +5,48 @@
   2. 通过 `@keydown` 事件捕获键盘按键
   3. 通过 `@focus` / `@blur` 事件捕获 DIV 获得焦点和失去焦点, 从而改变元素样式
   -->
-  <div tabindex="0" :class="{ 'component-v-model': true, focus: focus }" @focus="focus = true" @blur="focus = false"
-    @keydown.prevent="handleKeyDown">
+  <div
+    tabindex="0"
+    :class="{ 'component-v-model': true, focus: focus }"
+    @focus="focus = true"
+    @blur="focus = false"
+    @keydown.prevent="handleKeyDown"
+  >
     <!--标点符号区-->
     <div class="symbols">
-      <div v-for="s in symbols" :class="{ selected: s === letter }">{{ s }}</div>
-      <div :class="{ selected: letter === 'Backspace' }">⬅</div>
-      <div :class="{ selected: letter === '\n' }">↵</div>
+      <div v-for="s in symbols" :key="s" :class="{ selected: s === letter }">
+        {{ s }}
+      </div>
+      <div :class="{ selected: letter === 'Backspace' }">
+        ⬅
+      </div>
+      <div :class="{ selected: letter === '\n' }">
+        ↵
+      </div>
     </div>
     <!--数字区-->
     <div class="numbers">
-      <div v-for="n in 10" :class="{ selected: `${n - 1}` === letter }">{{ n - 1 }}</div>
+      <div v-for="n in 10" :key="n" :class="{ selected: `${n - 1}` === letter }">
+        {{ n - 1 }}
+      </div>
     </div>
     <!--小写字母区-->
     <div class="letters">
-      <div v-for="l in letters" :class="{ selected: l.toLowerCase() === letter }">{{ l.toLowerCase() }}</div>
+      <div v-for="l in letters" :key="l" :class="{ selected: l.toLowerCase() === letter }">
+        {{ l.toLowerCase() }}
+      </div>
     </div>
     <!--大写字母区-->
     <div class="letters">
-      <div v-for="l in letters" :class="{ selected: l === letter }">{{ l }}</div>
+      <div v-for="l in letters" :key="l" :class="{ selected: l === letter }">
+        {{ l }}
+      </div>
     </div>
     <!--空格键区-->
     <div class="whitespace">
-      <div :class="{ selected: letter === ' ' }">{{ '________' }}</div>
+      <div :class="{ selected: letter === ' ' }">
+        {{ '________' }}
+      </div>
     </div>
   </div>
 </template>
@@ -45,20 +64,20 @@ const letters = (() => {
 })();
 
 // 标点符号集合
-const symbols = `,<.>/?;:'"~-_=+[{}]\|`;
+const symbols = ',<.>/?;:\'"~-_=+[{}]\\|';
 
 // 定义 `v-model` 变量
 const letter = defineModel<string>();
 
 // 处理按键按下事件
-function handleKeyDown(e: Event) {
+const handleKeyDown = (e: Event): void => {
   const ke = e as KeyboardEvent;
   if (ke.key.length === 1 || ke.key === 'Backspace') {
     letter.value = ke.key;
   } else if (ke.key === 'Enter') {
     letter.value = '\n';
   }
-}
+};
 
 // 定义响应式变量, 保存 DIV 是否获取输入焦点
 const focus = ref<boolean>(false);

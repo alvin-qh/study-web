@@ -107,14 +107,14 @@
         -->
         <ScoopedSlot>
           <!--为匿名插槽指定内容, 并获取该插槽的 `data` 属性值-->
-          <template v-slot="{ date }">
+          <template #default="{ date }">
             <span>Now: {{ date }}</span>
           </template>
           <!--为 extra 命名插槽指定内容, 并获取该插槽的 `ticktock` 属性值-->
           <template #extra="{ ticktock }">
             <div class="ticktock">
-              <div :class="{ blink: ticktock }"></div>
-              <div :class="{ blink: !ticktock }"></div>
+              <div :class="{ blink: ticktock }" />
+              <div :class="{ blink: !ticktock }" />
             </div>
           </template>
         </ScoopedSlot>
@@ -128,7 +128,7 @@
         <!--获取插槽的属性值, 该属性值是子组件在循环渲染时, 为每一个列表项传递的插槽属性
         对于匿名插槽, 也可以通过 `<slot-list v-slot="{ item, index }">` 语法
         -->
-        <template v-slot="{ item, index }">
+        <template #default="{ item, index }">
           <div class="slot-list-item">
             <div>{{ index }}</div>
             <div>{{ item }}</div>
@@ -169,7 +169,7 @@ import { formatDate } from '@/lib/time';
 
 // 定义响应式变量, 并设置到插槽中, 即子组件的插槽可以引用父组件的上下文
 const now = ref<string>(formatDate());
-setInterval(() => now.value = formatDate(), 500);
+setInterval(() => { now.value = formatDate(); }, 500);
 
 // 表示动态插槽名称的响应式变量
 const slotName = ref<string>('title');

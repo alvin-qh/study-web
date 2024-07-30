@@ -6,15 +6,21 @@
 -->
 <template>
   <div class="simple-component">
-    <button @click="showDialog('Hello, Vue Component', 'Hello')">按钮</button>
+    <button @click="showDialog('Hello, Vue Component', 'Hello')">
+      按钮
+    </button>
 
     <dialog ref="dialog">
-      <header v-if="dialogTitle">{{ dialogTitle }}</header>
+      <header v-if="dialogTitle">
+        {{ dialogTitle }}
+      </header>
       <main>
         {{ dialogMsg }}
       </main>
       <footer>
-        <button @click="closeDialog()">Close</button>
+        <button @click="closeDialog()">
+          Close
+        </button>
       </footer>
     </dialog>
   </div>
@@ -31,21 +37,21 @@ const dialogTitle = ref<string>('');
 const dialogMsg = ref<string>('');
 
 // 显示组件中的对话框元素
-function showDialog(msg: string, title: string = '') {
+const showDialog = (msg: string, title: string = ''): void => {
   if (dialog.value) {
     dialogMsg.value = msg;
     dialogTitle.value = title;
 
     dialog.value.showModal();
   }
-}
+};
 
 // 关闭已经显示的对话框
-function closeDialog() {
+const closeDialog = (): void => {
   if (dialog.value) {
     dialog.value.close();
   }
-}
+};
 
 // 导出
 defineExpose({
