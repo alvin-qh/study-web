@@ -25,7 +25,7 @@
 defineProps<{
   title: string // 组件的标题
   attrs: Record<string, string | number | boolean | null> // 组件要显示的 Key/Value 值
-}>()
+}>();
 </script>
 
 <style scoped lang="scss">

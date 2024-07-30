@@ -28,32 +28,31 @@ import CommonLeftPane from './component/common/CommonLeftPane.vue';
 import CommonNavTop from './component/common/CommonNavTop.vue';
 import { type MenuItem } from './types/menu-item';
 
-// 设定路由变量, 绑定到组件上
+// 设定菜单项变量, 绑定到组件上
 const items = ref<MenuItem[]>([
   {
     label: 'Template',
     children: [
-      { label: 'Template', link: '/template' },
+      { label: 'Template', link: '/template/basic' },
       { label: 'Event', link: '/template/event' }
     ]
   },
   {
     label: 'Reactive',
     children: [
-      { label: 'Reactive', link: '/reactive' },
-      { label: 'Computed', link: '/computed' },
-      { label: 'ClassStyle', link: '/class-style' }
+      { label: 'Reactive', link: '/reactive/basic' },
+      { label: 'Computed', link: '/reactive/computed' },
+      { label: 'ClassStyle', link: '/reactive/class-style' }
     ]
   },
   {
     label: 'Component',
     children: [
-      { label: 'Lifecycle', link: '/lifecycle' },
-      { label: 'Component', link: '/component' },
-      { label: 'Slot', link: '/slot' }
+      { label: 'Lifecycle', link: '/component/lifecycle' },
+      { label: 'Component', link: '/component/component' },
+      { label: 'Slot', link: '/component/slot' }
     ]
-  },
-  { label: 'Playground', link: '/playground' }
+  }
 ]);
 </script>
 

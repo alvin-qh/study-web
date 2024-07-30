@@ -8,16 +8,52 @@ import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 // 定义路由集合
 // `defineAsyncComponent` 表示异步 (懒) 加载
 const routes: RouteRecordRaw[] = [
-  { path: '/', component: async () => await import('./page/PageHome.vue'), meta: { keepAlive: false } },
-  { path: '/template', component: async () => await import('./page/PageTemplate.vue'), meta: { keepAlive: true } },
-  { path: '/reactive', component: async () => await import('./page/PageReactive.vue'), meta: { keepAlive: true } },
-  { path: '/computed', component: async () => await import('./page/PageComputed.vue'), meta: { keepAlive: true } },
-  { path: '/class-style', component: async () => await import('./page/PageClassStyle.vue'), meta: { keepAlive: true } },
-  { path: '/lifecycle', component: async () => await import('./page/PageLifecycle.vue'), meta: { keepAlive: true } },
-  { path: '/event', component: async () => await import('./page/PageEvent.vue'), meta: { keepAlive: true } },
-  { path: '/component', component: async () => await import('./page/PageComponent.vue'), meta: { keepAlive: true } },
-  { path: '/slot', component: async () => await import('./page/PageSlot.vue'), meta: { keepAlive: true } },
-  { path: '/playground', component: async () => await import('./page/PageSlot.vue'), meta: { keepAlive: true } }
+  {
+    path: '/',
+    component: async () => await import('./page/PageHome.vue'),
+    meta: { keepAlive: false }
+  },
+  {
+    path: '/template/basic',
+    component: async () => await import('./page/template/PageTemplate.vue'),
+    meta: { keepAlive: true }
+  },
+  {
+    path: '/template/event',
+    component: async () => await import('./page/template/PageEvent.vue'),
+    meta: { keepAlive: true }
+  },
+
+  {
+    path: '/reactive/basic',
+    component: async () => await import('./page/reactive/PageReactive.vue'),
+    meta: { keepAlive: true }
+  },
+  {
+    path: '/reactive/computed',
+    component: async () => await import('./page/reactive/PageComputed.vue'),
+    meta: { keepAlive: true }
+  },
+  {
+    path: '/reactive/class-style',
+    component: async () => await import('./page/reactive/PageClassStyle.vue'),
+    meta: { keepAlive: true }
+  },
+  {
+    path: '/component/lifecycle',
+    component: async () => await import('./page/component/PageLifecycle.vue'),
+    meta: { keepAlive: true }
+  },
+  {
+    path: '/component/component',
+    component: async () => await import('./page/component/PageComponent.vue'),
+    meta: { keepAlive: true }
+  },
+  {
+    path: '/component/slot',
+    component: async () => await import('./page/component/PageSlot.vue'),
+    meta: { keepAlive: true }
+  }
 ];
 
 // 创建路由对象并导出
