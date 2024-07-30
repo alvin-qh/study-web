@@ -6,7 +6,6 @@
 
   <!--放置页面主体-->
   <div class="wrapper">
-
     <!--在页面主题左侧放置导航面板-->
     <CommonLeftPane :items="items" />
 
@@ -16,9 +15,9 @@
         <KeepAlive v-if="$route.meta.keepAlive">
           <component :is="Component" />
         </KeepAlive>
-        <component v-else :is="Component" />
+        <component :is="Component" v-else />
       </RouterView>
-    </div> 
+    </div>
   </div>
 </template>
 
@@ -27,7 +26,7 @@ import { ref } from 'vue';
 
 import CommonLeftPane from './component/common/CommonLeftPane.vue';
 import CommonNavTop from './component/common/CommonNavTop.vue';
-import { MenuItem } from './types/menu-item';
+import { type MenuItem } from './types/menu-item';
 
 // 设定路由变量, 绑定到组件上
 const items = ref<MenuItem[]>([
@@ -35,7 +34,7 @@ const items = ref<MenuItem[]>([
     label: 'Template',
     children: [
       { label: 'Template', link: '/template' },
-      { label: 'Event', link: '/event' },
+      { label: 'Event', link: '/template/event' }
     ]
   },
   {
@@ -43,7 +42,7 @@ const items = ref<MenuItem[]>([
     children: [
       { label: 'Reactive', link: '/reactive' },
       { label: 'Computed', link: '/computed' },
-      { label: 'ClassStyle', link: '/class-style' },
+      { label: 'ClassStyle', link: '/class-style' }
     ]
   },
   {
@@ -51,9 +50,9 @@ const items = ref<MenuItem[]>([
     children: [
       { label: 'Lifecycle', link: '/lifecycle' },
       { label: 'Component', link: '/component' },
-      { label: 'Slot', link: '/slot' },
-    ] 
-  },   
+      { label: 'Slot', link: '/slot' }
+    ]
+  },
   { label: 'Playground', link: '/playground' }
 ]);
 </script>
