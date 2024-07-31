@@ -46,11 +46,19 @@ Vue 支持动态的类选择器和样式表, 可以动态的改变元素的样�
       <input v-model="dones['C']" type="checkbox">
       <span :class="classesArray">C</span>
     </div>
+
+    <hr>
+
+    <div>
+      <ReactiveColorPicker />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, reactive, type StyleValue } from 'vue';
+
+import ReactiveColorPicker from '@/component/reactive/ReactiveColorPicker.vue';
 
 // 记录三个 checkbox 是否选中的键值对
 const dones = reactive<Record<string, boolean>>({
