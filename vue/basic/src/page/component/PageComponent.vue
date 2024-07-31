@@ -1,5 +1,6 @@
 <template>
   <div class="component">
+    <!--简单组件-->
     <div class="simple">
       <!--使用简单组件, 该组件通过 `import` 关键字引入, 在模板中, 可以写为 `<SimpleComponent>` 或 `<simple-component>`-->
       <ComponentSimple ref="simpleComponent" />
@@ -10,11 +11,10 @@
 
     <hr>
 
+    <!--传递组件属性-->
     <div>
-      <div>
-        <!--使用组件, 并传递属性值到组件内部-->
-        <ComponentProps :color="color" :size="size" />
-      </div>
+      <!--使用组件, 并传递属性值到组件内部-->
+      <ComponentProps :color="color" :size="size" />
       <fieldset class="props-value">
         <legend>Outside Component</legend>
         <label>
@@ -30,6 +30,7 @@
 
     <hr>
 
+    <!--处理组件事件-->
     <div class="calculate">
       <div>
         <!--使用组件, 并通过 `change` 事件接收子组件发出的计算结果-->
@@ -55,6 +56,7 @@
 
     <hr>
 
+    <!--组件的 `v-model` 指令-->
     <div class="typewriter">
       <div>
         <!--使用组件, 组件输出的字符通过 `v-model` 传递给父组件-->
@@ -68,6 +70,7 @@
 
     <hr>
 
+    <!--通过 `v-model` 对组件数据进行双向绑定-->
     <div class="dynamic-form">
       <div>
         <textarea v-model="formDefinitionJson" />
@@ -84,19 +87,21 @@
 
     <hr>
 
+    <!--组件属性透传-->
     <div class="attrs">
       <div>
-        <!--使用组件, 展示组件获得的属性继承-->
-        <ComponentInheritAttrs :id="100" class="inherit-attr-class" @click="handleAttrClick" />
+        <!--展示组件获得的透传属性继承-->
+        <ComponentFallthroughAttr :id="100" class="inherit-attr-class" @click="handleAttrClick" />
       </div>
       <div>
-        <!--使用组件, 展示禁用属性继承时的情况-->
-        <ComponentNoInheritAttrs :id="100" class="inherit-attr-class" @click="handleAttrClick" />
+        <!--展示禁用属性透传时的情况-->
+        <ComponentDisableFallthroughAttrs :id="100" class="inherit-attr-class" @click="handleAttrClick" />
       </div>
     </div>
 
     <hr>
 
+    <!--选项式风格组件-->
     <div class="component-options">
       <div>
         <ComponentOptionStyle ref="compOptStyle" :color1="color1" :color2="color2" />
@@ -116,19 +121,26 @@
         </label>
       </div>
     </div>
+
+    <hr>
+
+    <div>
+      <ComponentInjection />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { computed, reactive, ref, watch, type WatchStopHandle } from 'vue';
 
-import { ComponentInheritAttrs, ComponentNoInheritAttrs } from '@/component/component/attr';
+import { ComponentDisableFallthroughAttrs, ComponentFallthroughAttr } from '@/component/component/attr';
 import ComponentDynamic from '@/component/component/ComponentDynamic.vue';
 import ComponentEvent, {
   type CalculateEvent,
   type ModelType,
   type Operator
 } from '@/component/component/ComponentEvent';
+import ComponentInjection from '@/component/component/ComponentInjection.vue';
 import ComponentOptionStyle from '@/component/component/ComponentOptionStyle.vue';
 import ComponentProps from '@/component/component/ComponentProps.vue';
 // 导入组件, 该组件只能在当前文件内部使用

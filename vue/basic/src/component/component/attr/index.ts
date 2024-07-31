@@ -1,2 +1,2 @@
-export { default as ComponentInheritAttrs } from './ComponentInheritAttrs.vue'
-export { default as ComponentNoInheritAttrs } from './ComponentNoInheritAttrs.vue'
+export { default as ComponentDisableFallthroughAttrs } from './ComponentDisableFallthroughAttrs.vue';
+export { default as ComponentFallthroughAttr } from './ComponentFallthroughAttr.vue';

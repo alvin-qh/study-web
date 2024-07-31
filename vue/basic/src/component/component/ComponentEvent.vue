@@ -155,7 +155,7 @@ watch(result, (val) => { emitEvents(val); }, { immediate: true });
         margin: 0;
       }
 
-      font-family: 'Courier New' Courier monospace;
+      font-family: 'Courier New', Courier, monospace;
 
       option {
         font-size: 18px;

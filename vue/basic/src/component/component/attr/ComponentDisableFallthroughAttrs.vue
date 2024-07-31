@@ -5,15 +5,17 @@
 所谓禁用组件继承, 指的是 Vue 不会将继承的属性作用在组件的 HTML 根元素上
 -->
 <template>
-  <div class="component-attr" ref="elem">
+  <div ref="elem" class="component-attr">
     <CommonAttributes title="Inherit Attrs" :attrs="inheritAttrs" />
     <CommonAttributes title="InUse Attrs" :attrs="usedAttrs" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { useAttrs, ref } from 'vue';
+import { ref, useAttrs } from 'vue';
+
 import CommonAttributes from '@/component/common/CommonAttributes.vue';
+
 import { useElementAttrs } from './composable';
 
 // 定义组件选项, 禁用属性继承

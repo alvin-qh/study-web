@@ -31,7 +31,7 @@ VUE 支持属性继承是为了让 VUE 组件更符合 HTML 元素的特性, 可
 另外, 对于一个组件具备多个根 HTML 元素的情况, 属性继承也不起作用
 -->
 <template>
-  <div class="component-attr" ref="elem">
+  <div ref="elem" class="component-attr">
     <!--展示组件继承的属性值-->
     <CommonAttributes title="Inherit Attrs" :attrs="inheritAttrs" />
 
@@ -41,8 +41,10 @@ VUE 支持属性继承是为了让 VUE 组件更符合 HTML 元素的特性, 可
 </template>
 
 <script setup lang="ts">
-import { useAttrs, ref } from 'vue';
+import { ref, useAttrs } from 'vue';
+
 import CommonAttributes from '@/component/common/CommonAttributes.vue';
+
 import { useElementAttrs } from './composable';
 
 // 定义组件选项, 启用属性继承 (默认)

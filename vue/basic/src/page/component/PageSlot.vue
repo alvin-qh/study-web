@@ -5,6 +5,7 @@
 -->
 <template>
   <div class="slot">
+    <!--简单插槽-->
     <div>
       <!--使用组件, 并为子组件设置插槽内容-->
       <SimpleSlot>
@@ -14,6 +15,7 @@
 
     <hr>
 
+    <!--插槽嵌套-->
     <div>
       <!--插槽中可以包含任意 HTML 元素以及 Vue 组件-->
       <SimpleSlot>
@@ -24,6 +26,7 @@
 
     <hr>
 
+    <!--插槽作用域-->
     <div>
       <!--插槽可以在子组件中使用父组件的作用域-->
       <SimpleSlot>
@@ -33,6 +36,7 @@
 
     <hr>
 
+    <!--命名插槽-->
     <div>
       <!--为组件定义的多个插槽设置内容-->
       <NamedSlot :avatar="avatar">
@@ -55,42 +59,42 @@
 
     <hr>
 
+    <!--条件插槽-->
     <div>
-      <!--通过条件插槽渲染所需的插槽内容-->
-      <ConditionSlot :avatar="avatar">
-        <!--设置默认插槽, 此时子组件的 `<main>` 元素会被渲染-->
-        <div class="body">
-          Condition Slot Demo
-        </div>
-        <!--设置 title 插槽, 此时子组件的 `<header>` 元素会被渲染-->
-        <template #title>
-          <strong>Condition Slot</strong>
-        </template>
+      <div>
+        <!--通过条件插槽渲染所需的插槽内容-->
+        <ConditionSlot :avatar="avatar">
+          <!--设置默认插槽, 此时子组件的 `<main>` 元素会被渲染-->
+          <div class="body">
+            Condition Slot Demo
+          </div>
+          <!--设置 title 插槽, 此时子组件的 `<header>` 元素会被渲染-->
+          <template #title>
+            <strong>Condition Slot</strong>
+          </template>
         <!--未设置 footer 插槽, 故子组件的 `<footer>` 元素不被渲染-->
-      </ConditionSlot>
+        </ConditionSlot>
+      </div>
+      <div>
+        <ConditionSlot :avatar="avatar">
+          <div class="body">
+            Dynamic Slot Demo
+          </div>
+          <!--动态插槽, 可以通过 `v-slot:[插槽名称]` 或 `#[插槽名称]` 语法动态设置插槽名称-->
+          <template #[slotName]>
+            <strong>Dynamic Slot</strong>
+          </template>
+        </ConditionSlot>
+      </div>
     </div>
 
     <hr>
 
-    <div>
-      <ConditionSlot :avatar="avatar">
-        <div class="body">
-          Dynamic Slot Demo
-        </div>
-        <!--动态插槽, 可以通过 `v-slot:[插槽名称]` 或 `#[插槽名称]` 语法动态设置插槽名称-->
-        <template #[slotName]>
-          <strong>Dynamic Slot</strong>
-        </template>
-      </ConditionSlot>
-    </div>
-
-    <hr>
-
+    <!--作用域插槽, 从插槽内部返回值-->
     <div class="slot-scooped">
       <!--通过作用域插槽获取子组件为插槽定义的属性值-->
       <div>
         <!--获取子组件插槽上定义的属性对象, 之后通过该属性对象, 可以获取插槽上定义的属性值
-
         对于匿名插槽上定义的属性对象, 可以通过子组件的 `v-slot="属性对象名称"` 指令获取
         -->
         <ScoopedSlot v-slot="slotProps">
@@ -123,6 +127,7 @@
 
     <hr>
 
+    <!--作用域插槽应用, 循环插槽内容-->
     <div class="slot-list">
       <ListSlot>
         <!--获取插槽的属性值, 该属性值是子组件在循环渲染时, 为每一个列表项传递的插槽属性
@@ -139,6 +144,7 @@
 
     <hr>
 
+    <!--作用域插槽应用, 无渲染插槽, 仅用于从插槽内部返回值-->
     <div class="slot-no-render">
       <!--该组件自身不进行任何渲染, 只是将 `pointX` 和 `pointY` 两个属性值传递给父组件-->
       <NoRenderComponent v-slot="{ pointX, pointY }">
