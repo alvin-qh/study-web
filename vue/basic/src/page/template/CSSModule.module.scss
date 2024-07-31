@@ -1,0 +1,17 @@
+.css-module {
+  display: flex;
+  flex-direction: column;
+  gap: 10px 0;
+  padding: 20px 0;
+
+  .file-module {
+    background-color: #7a06068c;
+    width: 100px;
+    height: 100px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: #7a0606c2
+    }
+  }
+}

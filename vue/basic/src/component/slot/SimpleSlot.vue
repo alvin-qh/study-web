@@ -23,11 +23,9 @@
   0% {
     color: #a8a7a731
   }
-
   50% {
     color: #a8a7a7
   }
-
   100% {
     color: #a8a7a731
   }

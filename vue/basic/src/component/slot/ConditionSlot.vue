@@ -14,7 +14,9 @@
         <img :src="logo">
       </a>
       <div class="title">
-        <slot name="title">Title</slot>
+        <slot name="title">
+          Title
+        </slot>
       </div>
       <div class="avatar">
         <img :src="avatar">
@@ -28,7 +30,9 @@
 
     <!--如果 footer 插槽被传递, 才会渲染 main 及其子元素-->
     <footer v-if="$slots.footer">
-      <slot name="footer">Footer</slot>
+      <slot name="footer">
+        Footer
+      </slot>
     </footer>
   </div>
 </template>
@@ -39,8 +43,8 @@ import defaultImg from '/vue.svg';
 // 定义两个组件属性, 用于定义 Logo 和 Avatar 内容
 withDefaults(
   defineProps<{
-    logo?: string,
-    avatar?: string,
+    logo?: string
+    avatar?: string
   }>(),
   {
     logo: defaultImg,

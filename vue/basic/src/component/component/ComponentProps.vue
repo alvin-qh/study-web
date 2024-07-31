@@ -16,11 +16,11 @@
       <legend>Inside Component</legend>
       <label>
         <div>Color</div>
-        <input type="text" v-model="rColor">
+        <input v-model="rColor" type="text">
       </label>
       <label>
         <div>Size</div>
-        <input type="text" v-model="rSize">
+        <input v-model="rSize" type="text">
       </label>
     </fieldset>
     <div class="view">
@@ -116,7 +116,7 @@ const rColor = ref<string>(props.color);
 const rSize = ref<string>(props.size);
 
 // 监控属性对象变化
-watch(props, val => {
+watch(props, (val) => {
   rColor.value = val.color;
   rSize.value = val.size;
 });

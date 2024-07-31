@@ -1,12 +1,14 @@
-import { ElementType } from '@/types/common';
+import { type ElementType } from '@/types/common';
+
+export { default } from './ComponentEvent.vue';
 
 // 导出运算符集合
-export const operators = <const>[
+export const operators = [
   '+',
   '-',
   '*',
   '/'
-];
+] as const;
 
 // 通过运算符集合设置 Operator 类型
 export type Operator = ElementType<typeof operators>;
@@ -21,5 +23,3 @@ export interface ModelType {
 
 // 定义事件类型
 export type CalculateEvent = ModelType;
-
-export { default } from './ComponentEvent.vue';

@@ -83,6 +83,7 @@ module.exports = {
     'no-trailing-spaces': 'warn',
     'no-plusplus': 'off',
     'no-underscore-dangle': 'off',
+    'no-restricted-exports': 'off',
     'quote-props': ['error', 'as-needed'],
     'quotes': ['warn', 'single'],
     'semi': ['error', 'always'],

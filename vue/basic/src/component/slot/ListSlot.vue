@@ -8,7 +8,7 @@
     <ul>
       <li v-for="(item, index) in items" :key="item">
         <!--循环列表项, 每次循环产生一个插槽, 并将循环每一项相关属性通过插槽属性传递给父组件-->
-        <slot :item="item" :index="index + 1"></slot>
+        <slot :item="item" :index="index + 1" />
       </li>
     </ul>
   </div>

@@ -14,8 +14,8 @@
       <div>
         <!--下拉选项框, 用于选择运算符, 绑定 `opt` 响应式变量-->
         <select v-model="opt">
-          <option v-for="opt in operators" :key="opt">
-            {{ opt }}
+          <option v-for="o in operators" :key="o">
+            {{ o }}
           </option>
         </select>
       </div>

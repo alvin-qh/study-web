@@ -23,7 +23,11 @@ const routes: RouteRecordRaw[] = [
     component: async () => await import('./page/template/PageEvent.vue'),
     meta: { keepAlive: true }
   },
-
+  {
+    path: '/template/css-module',
+    component: async () => await import('./page/template/PageCssModule.vue'),
+    meta: { keepAlive: true }
+  },
   {
     path: '/reactive/basic',
     component: async () => await import('./page/reactive/PageReactive.vue'),

@@ -34,7 +34,8 @@ const items = ref<MenuItem[]>([
     label: 'Template',
     children: [
       { label: 'Template', link: '/template/basic' },
-      { label: 'Event', link: '/template/event' }
+      { label: 'Event', link: '/template/event' },
+      { label: 'CSSModule', link: '/template/css-module' }
     ]
   },
   {

@@ -5,12 +5,14 @@ VUE3 除了推荐的 “组合式“ (Composables) 组件外, 仍支持传统的
 <template>
   <div class="component-option">
     <div :class="{ time: true, 'with-color': withColor }" :style="{ '--color1': color1, '--color2': color2 }">
-      <div class="date">{{ now }}</div>
-      <slot></slot>
+      <div class="date">
+        {{ now }}
+      </div>
+      <slot />
     </div>
     <div>
       <ul>
-        <li v-for="h in history" :style="{ backgroundColor: h }"></li>
+        <li v-for="h in history" :key="h" :style="{ backgroundColor: h }" />
       </ul>
     </div>
   </div>
@@ -39,27 +41,7 @@ export default {
       now: formatDate(),
       animate: true,
       history: [] as string[]
-    }
-  },
-  // 定义组件方法, 这些方法可以在组件内通过 `this` 关键字调用, 也可以被父组件通过子组件引用来调用
-  methods: {
-    // 改变 `now` 响应式变量值
-    changeDate(): void {
-      this.now = formatDate()
-    },
-    // 停止动画
-    stopAnimate(): void {
-      this.animate = false;
-    },
-    // 启用动画
-    startAnimate(): void {
-      this.animate = true;
-    }
-  },
-  // 组件生命周期钩子, 包括: `beforeCreate`, `created`, `beforeMount`, `mounted`, `beforeUpdate`, `update`, `beforeUnmount` 和 `unmounted`
-  created() {
-    // 定时调用当前组件的 `changeDate` 方法
-    setInterval(() => this.changeDate(), 500);
+    };
   },
   // 定义计算变量, 计算变量为一组函数, 以函数名为变量名, 函数返回值为变量值
   computed: {
@@ -67,7 +49,7 @@ export default {
       if (!this.animate) {
         return false;
       }
-      const n = parseInt(this.now.substring(this.now.length - 2));
+      const n = parseInt(this.now.substring(this.now.length - 2) as string, 10);
       return n % 2 === 0;
     }
   },
@@ -90,8 +72,28 @@ export default {
       },
       immediate: true // 组件加载后立即执行一次
     }
+  },
+  // 组件生命周期钩子, 包括: `beforeCreate`, `created`, `beforeMount`, `mounted`, `beforeUpdate`, `update`, `beforeUnmount` 和 `unmounted`
+  created() {
+    // 定时调用当前组件的 `changeDate` 方法
+    setInterval(() => this.changeDate(), 500);
+  },
+  // 定义组件方法, 这些方法可以在组件内通过 `this` 关键字调用, 也可以被父组件通过子组件引用来调用
+  methods: {
+    // 改变 `now` 响应式变量值
+    changeDate(): void {
+      this.now = formatDate();
+    },
+    // 停止动画
+    stopAnimate(): void {
+      this.animate = false;
+    },
+    // 启用动画
+    startAnimate(): void {
+      this.animate = true;
+    }
   }
-}
+};
 </script>
 
 <style scoped lang="scss">

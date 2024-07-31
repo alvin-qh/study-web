@@ -30,7 +30,7 @@ import { formatDate } from '@/lib/time';
 
 // 定义响应式变量并定时改变其值
 const now = ref<Date>(new Date());
-setInterval(() => now.value = new Date(), 500);
+setInterval(() => { now.value = new Date(); }, 500);
 
 // 根据 now 响应式变量计算 date 属性值
 const date = computed<string>(() => formatDate(now.value));
