@@ -14,37 +14,37 @@
   >
     <!--标点符号区-->
     <div class="symbols">
-      <div v-for="s in symbols" :key="s" :class="{ selected: s === letter }">
+      <div v-for="s in symbols" :key="s" :class="{ selected: s === letter?.key }">
         {{ s }}
       </div>
-      <div :class="{ selected: letter === 'Backspace' }">
+      <div :class="{ selected: letter?.key === 'Backspace' }">
         ⬅
       </div>
-      <div :class="{ selected: letter === '\n' }">
+      <div :class="{ selected: letter?.key === '\n' }">
         ↵
       </div>
     </div>
     <!--数字区-->
     <div class="numbers">
-      <div v-for="n in 10" :key="n" :class="{ selected: `${n - 1}` === letter }">
+      <div v-for="n in 10" :key="n" :class="{ selected: `${n - 1}` === letter?.key }">
         {{ n - 1 }}
       </div>
     </div>
     <!--小写字母区-->
     <div class="letters">
-      <div v-for="l in letters" :key="l" :class="{ selected: l.toLowerCase() === letter }">
+      <div v-for="l in letters" :key="l" :class="{ selected: l.toLowerCase() === letter?.key }">
         {{ l.toLowerCase() }}
       </div>
     </div>
     <!--大写字母区-->
     <div class="letters">
-      <div v-for="l in letters" :key="l" :class="{ selected: l === letter }">
+      <div v-for="l in letters" :key="l" :class="{ selected: l === letter?.key }">
         {{ l }}
       </div>
     </div>
     <!--空格键区-->
     <div class="whitespace">
-      <div :class="{ selected: letter === ' ' }">
+      <div :class="{ selected: letter?.key === ' ' }">
         {{ '________' }}
       </div>
     </div>
@@ -64,18 +64,22 @@ const letters = (() => {
 })();
 
 // 标点符号集合
-const symbols = ',<.>/?;:\'"~-_=+[{}]\\|';
+const symbols = '`,<.>/?;:\'"~-_=+[{}]\\|';
 
 // 定义 `v-model` 变量
-const letter = defineModel<string>();
+// 注意, 这里之所以定义为对象, 是为了保证每次传递给父组件的值都不同, 否则父组件的 `watch` 将不起作用
+// 如果使用 string 类型, 当父组件接收到则重复按键产生的值后, 会认为接收到的值未发生变化
+const letter = defineModel<{ key: string }>({ required: true });
 
 // 处理按键按下事件
 const handleKeyDown = (e: Event): void => {
   const ke = e as KeyboardEvent;
-  if (ke.key.length === 1 || ke.key === 'Backspace') {
-    letter.value = ke.key;
-  } else if (ke.key === 'Enter') {
-    letter.value = '\n';
+  if (letter.value) {
+    if (ke.key.length === 1 || ke.key === 'Backspace') {
+      letter.value = { key: ke.key };
+    } else if (ke.key === 'Enter') {
+      letter.value = { key: '\n' };
+    }
   }
 };
 

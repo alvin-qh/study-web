@@ -124,6 +124,7 @@
 
     <hr>
 
+    <!--为子组件传递属性值-->
     <div>
       <ComponentInjection />
     </div>
@@ -131,7 +132,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, ref, watch, type WatchStopHandle } from 'vue';
+import { computed, provide, reactive, type Ref, ref, watch, type WatchStopHandle } from 'vue';
 
 import { ComponentDisableFallthroughAttrs, ComponentFallthroughAttr } from '@/component/component/attr';
 import ComponentDynamic from '@/component/component/ComponentDynamic.vue';
@@ -147,6 +148,7 @@ import ComponentProps from '@/component/component/ComponentProps.vue';
 import ComponentSimple from '@/component/component/ComponentSimple.vue';
 import ComponentVModel from '@/component/component/ComponentVModel.vue';
 import { type FormDefinition } from '@/component/component/form';
+import { formatDate } from '@/lib/time';
 
 // 获取 `ComponentSimple` 组件的引用
 const simpleComponent = ref<typeof ComponentSimple>();
@@ -190,7 +192,7 @@ const calModel = reactive<ModelType>({
 
 
 // 定义响应式变量, 接收 `ComponentVModel` 组件发送的字符
-const letter = ref<string>('');
+const letter = ref<{ key: string }>({ key: '' });
 
 // 定义响应式变量, 显示
 const text = ref<string>('');
@@ -199,15 +201,14 @@ const text = ref<string>('');
 const beginLetterWatch = (): WatchStopHandle => (
   watch(letter, (val) => {
     if (val) {
-      // 停止监听文本域响应变量
       stopWatchHandle.stopTextWatch();
 
-      if (val === 'Backspace') {
+      if (val.key === 'Backspace') {
         // 处理 Backspace 按键
         text.value = text.value.substring(0, text.value.length - 1);
       } else {
         // 将组件返回的按键加入到文本框
-        text.value += val;
+        text.value += val.key;
       }
       // 开启文本框响应变量监听
       stopWatchHandle.stopTextWatch = beginTextWatch();
@@ -229,7 +230,7 @@ const beginTextWatch = (): WatchStopHandle => (
 
         // 为 letter 响应式变量赋值
         diff.split('').forEach((l) => {
-          letter.value = l;
+          letter.value = { key: l };
         });
 
         // 开启 `letter` 变量监控
@@ -327,6 +328,34 @@ const changeColor = (e: Event): void => {
     throw new Error('invalid color value');
   }
 };
+
+
+// 向子组件注入静态值
+provide<string>('static-local', 'Local static value');
+
+// 定义响应式变量
+const reactiveLocal = ref<string>(formatDate());
+setInterval(() => { reactiveLocal.value = formatDate(); }, 500);
+
+// 将响应式变量注入子组件, 子组件可以获取响应式变量
+provide<Ref<string>>('reactive-local', reactiveLocal);
+
+// 定义响应式变量和修改响应式变量的函数
+const clientPoint = ref<{ x: number, y: number }>({ x: 0, y: 0 });
+const changeClientPoint = (x: number, y: number): void => {
+  clientPoint.value = { x, y };
+};
+
+// 将响应式变量和修改函数组成的对象注入子组件
+provide<{
+  clientPoint: typeof clientPoint
+  changeClientPoint: typeof changeClientPoint
+}>(
+  'reactive-object',
+  {
+    clientPoint, changeClientPoint
+  }
+);
 </script>
 
 <style scoped lang="scss">
@@ -435,6 +464,12 @@ const changeColor = (e: Event): void => {
       margin: 0;
       color: #ceccccdf;
     }
+  }
+
+  .attrs {
+    display: flex;
+    flex-direction: row;
+    gap: 0 50px;
   }
 
   .component-options {

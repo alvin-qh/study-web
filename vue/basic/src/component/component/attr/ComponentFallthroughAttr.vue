@@ -61,3 +61,11 @@ const elem = ref<HTMLDivElement>();
 // 获取组件根元素上实际应用的属性值
 const usedAttrs = useElementAttrs(elem, ['class', 'id']);
 </script>
+
+<style scoped lang="scss">
+.component-attr {
+  display: flex;
+  flex-direction: column;
+  gap: 10px 0;
+}
+</style>
