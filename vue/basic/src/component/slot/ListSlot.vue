@@ -23,8 +23,6 @@ const items = ref<string[]>(['A', 'B', 'C', 'D', 'E', 'F', 'G']);
 
 <style scoped lang="scss">
 .list-slots {
-  padding: 0 20px;
-
   ul {
     padding: 0;
     margin: 0;

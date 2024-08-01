@@ -60,11 +60,18 @@ const items = ref<MenuItem[]>([
       { label: 'Event', link: '/component/event' },
       { label: 'v-model', link: '/component/v-model' },
       { label: 'Integrate', link: '/component/integrate' },
-      { label: 'Component', link: '/component/component' },
       { label: 'Fallthrough', link: '/component/fallthrough' },
       { label: 'Options', link: '/component/options' },
-      { label: 'Injection', link: '/component/injection' },
-      { label: 'Slot', link: '/component/slot' }
+      { label: 'Injection', link: '/component/injection' }
+    ]
+  },
+  {
+    label: 'Slot',
+    children: [
+      { label: 'Simple', link: '/slot/simple' },
+      { label: 'Named', link: '/slot/named' },
+      { label: 'Condition', link: '/slot/condition' },
+      { label: 'Scooped', link: '/slot/scooped' }
     ]
   }
 ]);

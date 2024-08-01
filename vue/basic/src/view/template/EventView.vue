@@ -57,7 +57,7 @@ const handleClick = (e: Event): void => {
 - `.right`
 -->
 <template>
-  <div class="event">
+  <div class="template">
     <!--定义一个 DIV 元素, 捕获相关事件并进行处理
     DIV 元素如果要捕获键盘事件, 则需要指定 `tabindex="0"` 属性值, 否则 DIV 元素无法获取输入焦点;
     -->
@@ -170,7 +170,7 @@ const handleEnterKeyUp = (): void => { enterKeyDown.value = false; };
 </script>
 
 <style scoped lang="scss">
-.event {
+.template {
   display: flex;
   flex-direction: column;
   padding: 10px 20px;

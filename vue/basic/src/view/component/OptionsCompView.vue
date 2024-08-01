@@ -29,14 +29,14 @@ import { ref } from 'vue';
 
 import OptionsComp from '@/component/component/OptionsComp.vue';
 
-// 通过响应式变量引用 `ComponentOptionStyle` 组件
+// 通过响应式变量引用 `OptionsComp` 组件
 const compOptStyle = ref<typeof OptionsComp>();
 
-// 复选框事件处理, 用于切换 `ComponentOptionStyle` 组件是否启用动画
+// 复选框事件处理, 用于切换 `OptionsComp` 组件是否启用动画
 const toggleAnimate = (e: Event): void => {
   const target = e.target as HTMLInputElement;
 
-  // 根据复选框是否选中, 调用 `ComponentOptionStyle` 提供的方法开启和停用动画
+  // 根据复选框是否选中, 调用 `OptionsComp` 提供的方法开启和停用动画
   if (target.checked) {
     compOptStyle.value?.startAnimate();
   } else {

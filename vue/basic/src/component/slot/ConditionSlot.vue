@@ -57,7 +57,7 @@ withDefaults(
 .condition-slot {
   color: #c1c1c1be;
   border-collapse: collapse;
-  width: 20vw;
+  width: 60vw;
   font-size: small;
 
   header {

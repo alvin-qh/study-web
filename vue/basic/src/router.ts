@@ -112,12 +112,27 @@ const routes: RouteRecordRaw[] = [
     path: '/component/injection',
     component: async () => await import('@/view/component/InjectionView.vue'),
     meta: { keepAlive: true }
+  },
+  {
+    path: '/slot/simple',
+    component: async () => await import('@/view/slot/SimpleView.vue'),
+    meta: { keepAlive: true }
+  },
+  {
+    path: '/slot/named',
+    component: async () => await import('@/view/slot/NamedView.vue'),
+    meta: { keepAlive: true }
+  },
+  {
+    path: '/slot/condition',
+    component: async () => await import('@/view/slot/ConditionView.vue'),
+    meta: { keepAlive: true }
+  },
+  {
+    path: '/slot/scooped',
+    component: async () => await import('@/view/slot/ScoopedView.vue'),
+    meta: { keepAlive: true }
   }
-  // {
-  //   path: '/component/slot',
-  //   component: async () => await import('./page/component/PageSlot.vue'),
-  //   meta: { keepAlive: true }
-  // }
 ];
 
 // 创建路由对象并导出

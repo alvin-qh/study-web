@@ -29,13 +29,13 @@ import { ref } from 'vue';
 
 import { type CalculateEvent, EventComp, type ModelType, type Operator } from '@/component/component/EventComp';
 
-// 定义用于接收组件事件的响应式变量, 并作为 `ComponentEvent` 组件的属性
+// 定义用于接收组件事件的响应式变量, 并作为 `EventComp` 组件的属性
 const number1 = ref<number>(1);
 const number2 = ref<number>(2);
 const opt = ref<Operator>('+');
 const result = ref<number>(0);
 
-// 处理 `ComponentEvent` 组件的 `change` 事件
+// 处理 `EventComp` 组件的 `change` 事件
 const handleResultChange = (e: CalculateEvent): void => {
   number1.value = e.number1;
   number2.value = e.number2;
@@ -46,7 +46,7 @@ const handleResultChange = (e: CalculateEvent): void => {
   }
 };
 
-// 定义响应式对象, 作为 `ComponentEvent` 组件的 `modelValue` 属性值和 `update:modelValue` 事件参数值,
+// 定义响应式对象, 作为 `EventComp` 组件的 `modelValue` 属性值和 `update:modelValue` 事件参数值,
 // 从而实现 `v-model` 指令
 const calModel = ref<ModelType>({
   number1: 1,

@@ -19,12 +19,12 @@ import { ref } from 'vue';
 
 import SimpleComp from '@/component/component/SimpleComp.vue';
 
-// 获取 `ComponentSimple` 组件的引用
+// 获取 `SimpleComp` 组件的引用
 const component = ref<typeof SimpleComp>();
 
-// 定义方法, 通过访问 `SimpleComponent` 内部的函数显示 `SimpleComponent` 组件内部定义的对话框
+// 定义方法, 通过访问 `SimpleComp` 内部的函数显示 `SimpleComp` 组件内部定义的对话框
 const showComponentDialog = (): void => {
-  // `showDialog` 函数通过 `SimpleComponent` 组件内部的 `defineExpose` 导出, 故可在父组件中访问
+  // `showDialog` 函数通过 `SimpleComp` 组件内部的 `defineExpose` 导出, 故可在父组件中访问
   component.value?.showDialog('Show Component Dialog', 'Notify');
 };
 </script>

@@ -14,9 +14,11 @@ VUE 中可以通过两种方式使用 CSS Module:
   在 VUE 文件的 `<template>` 标签中通过模块名称使用 CSS 类选择器;
 -->
 <template>
-  <div :class="cssFile['css-module']">
-    <div :class="cssFile['file-module']" />
-    <div :class="cssInline['inline-module']" />
+  <div class="template">
+    <div :class="cssFile['css-module']">
+      <div :class="cssFile['file-module']" />
+      <div :class="cssInline['inline-module']" />
+    </div>
   </div>
 </template>
 
