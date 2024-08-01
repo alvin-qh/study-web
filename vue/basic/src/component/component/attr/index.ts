@@ -1,2 +1,2 @@
-export { default as ComponentDisableFallthroughAttrs } from './ComponentDisableFallthroughAttrs.vue';
-export { default as ComponentFallthroughAttr } from './ComponentFallthroughAttr.vue';
+export { default as DisableFallthroughAttrs } from './DisableFallthroughAttrs.vue';
+export { default as FallthroughAttr } from './FallthroughAttr.vue';

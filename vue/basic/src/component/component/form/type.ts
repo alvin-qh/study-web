@@ -6,10 +6,10 @@ export type FormFieldDataType = string | number | boolean | string[] | number[] 
 
 // 定义一个表单字段数据结构并导出
 export interface FormField {
-  label: string,
-  type: FormFieldType,
-  choice?: string[],
-  default?: FormFieldDataType,
+  label: string
+  type: FormFieldType
+  choice?: string[]
+  default?: FormFieldDataType
 }
 
 // 定义表单定义数据结构并导出

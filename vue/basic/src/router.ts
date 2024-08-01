@@ -10,54 +10,114 @@ import { createRouter, createWebHistory, type RouteRecordRaw } from 'vue-router'
 const routes: RouteRecordRaw[] = [
   {
     path: '/',
-    component: async () => await import('./page/PageHome.vue'),
+    component: async () => await import('@/view/HomeView.vue'),
     meta: { keepAlive: false }
   },
   {
-    path: '/template/basic',
-    component: async () => await import('./page/template/PageTemplate.vue'),
+    path: '/template/simple',
+    component: async () => await import('@/view/template/SimpleView.vue'),
+    meta: { keepAlive: true }
+  },
+  {
+    path: '/template/v-html',
+    component: async () => await import('@/view/template/VHtmlView.vue'),
+    meta: { keepAlive: true }
+  },
+  {
+    path: '/template/v-bind',
+    component: async () => await import('@/view/template/VBindView.vue'),
+    meta: { keepAlive: true }
+  },
+  {
+    path: '/template/list',
+    component: async () => await import('@/view/template/ListView.vue'),
+    meta: { keepAlive: true }
+  },
+  {
+    path: '/template/condition',
+    component: async () => await import('@/view/template/ConditionView.vue'),
     meta: { keepAlive: true }
   },
   {
     path: '/template/event',
-    component: async () => await import('./page/template/PageEvent.vue'),
+    component: async () => await import('@/view/template/EventView.vue'),
     meta: { keepAlive: true }
   },
   {
     path: '/template/css-module',
-    component: async () => await import('./page/template/PageCssModule.vue'),
+    component: async () => await import('@/view/template/CSSModuleView.vue'),
     meta: { keepAlive: true }
   },
   {
-    path: '/reactive/basic',
-    component: async () => await import('./page/reactive/PageReactive.vue'),
+    path: '/reactive/ref',
+    component: async () => await import('@/view/reactive/RefView.vue'),
+    meta: { keepAlive: true }
+  },
+  {
+    path: '/reactive/reactive',
+    component: async () => await import('@/view/reactive/ReactiveView.vue'),
     meta: { keepAlive: true }
   },
   {
     path: '/reactive/computed',
-    component: async () => await import('./page/reactive/PageComputed.vue'),
+    component: async () => await import('@/view/reactive/ComputedView.vue'),
     meta: { keepAlive: true }
   },
   {
     path: '/reactive/class-style',
-    component: async () => await import('./page/reactive/PageClassStyle.vue'),
+    component: async () => await import('@/view/reactive/ClassStyleView.vue'),
     meta: { keepAlive: true }
   },
   {
     path: '/component/lifecycle',
-    component: async () => await import('./page/component/PageLifecycle.vue'),
+    component: async () => await import('@/view/component/LifecycleView.vue'),
     meta: { keepAlive: true }
   },
   {
-    path: '/component/component',
-    component: async () => await import('./page/component/PageComponent.vue'),
+    path: '/component/simple',
+    component: async () => await import('@/view/component/SimpleView.vue'),
     meta: { keepAlive: true }
   },
   {
-    path: '/component/slot',
-    component: async () => await import('./page/component/PageSlot.vue'),
+    path: '/component/props',
+    component: async () => await import('@/view/component/PropsView.vue'),
+    meta: { keepAlive: true }
+  },
+  {
+    path: '/component/event',
+    component: async () => await import('@/view/component/EventView.vue'),
+    meta: { keepAlive: true }
+  },
+  {
+    path: '/component/v-model',
+    component: async () => await import('@/view/component/VModelView.vue'),
+    meta: { keepAlive: true }
+  },
+  {
+    path: '/component/integrate',
+    component: async () => await import('@/view/component/IntegrateView.vue'),
+    meta: { keepAlive: true }
+  },
+  {
+    path: '/component/fallthrough',
+    component: async () => await import('@/view/component/FallthroughAttrView.vue'),
+    meta: { keepAlive: true }
+  },
+  {
+    path: '/component/options',
+    component: async () => await import('@/view/component/OptionsCompView.vue'),
+    meta: { keepAlive: true }
+  },
+  {
+    path: '/component/injection',
+    component: async () => await import('@/view/component/InjectionView.vue'),
     meta: { keepAlive: true }
   }
+  // {
+  //   path: '/component/slot',
+  //   component: async () => await import('./page/component/PageSlot.vue'),
+  //   meta: { keepAlive: true }
+  // }
 ];
 
 // 创建路由对象并导出

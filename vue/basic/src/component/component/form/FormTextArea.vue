@@ -6,16 +6,18 @@
       <div>{{ field.label }}</div>
       <div>
         <!--文本域控件, 绑定 `value` 变量-->
-        <textarea v-model="value"></textarea>
+        <textarea v-model="value" />
       </div>
     </label>
   </div>
 </template>
 
 <script setup lang="ts">
-import { FormField } from './type';
-import { onMounted } from 'vue';
 import './form.scss';
+
+import { onMounted } from 'vue';
+
+import { type FormField } from './type';
 
 // 定义组件属性, 传入文本域组件定义
 const props = defineProps<{ field: FormField }>();
@@ -28,6 +30,6 @@ onMounted(() => {
   if (value.value) {
     return;
   }
-  value.value = props.field.default as string
+  value.value = props.field.default as string;
 });
 </script>

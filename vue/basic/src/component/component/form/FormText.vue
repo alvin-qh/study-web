@@ -6,16 +6,18 @@
       <div>{{ field.label }}</div>
       <div>
         <!--输入框控件, 绑定 `value` 变量-->
-        <input type="text" v-model="value">
+        <input v-model="value" type="text">
       </div>
     </label>
   </div>
 </template>
 
 <script setup lang="ts">
-import { FormField, FormFieldDataType } from './type';
-import { onMounted } from 'vue';
 import './form.scss';
+
+import { onMounted } from 'vue';
+
+import { type FormField, type FormFieldDataType } from './type';
 
 // 定义组件属性, 传入输入框组件定义
 const props = defineProps<{ field: FormField }>();
@@ -28,6 +30,6 @@ onMounted(() => {
   if (value.value) {
     return;
   }
-  value.value = props.field.default
+  value.value = props.field.default;
 });
 </script>

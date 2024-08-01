@@ -5,9 +5,14 @@
       <!--复选框文本标签-->
       <div>{{ field.label }}</div>
       <div>
-        <label class="form-group" v-for="c in (field.choice || [])">
+        <label v-for="c in (field.choice || [])" :key="c" class="form-group">
           <!--每个复选框组中包含一个单选框组件和一个文本标签, 所有的单选框都绑定到 `value` 变量-->
-          <input type="radio" :name="field.label" :value="c" v-model="value">
+          <input
+            v-model="value"
+            type="radio"
+            :name="field.label"
+            :value="c"
+          >
           <div>{{ c }}</div>
         </label>
       </div>
@@ -16,9 +21,11 @@
 </template>
 
 <script setup lang="ts">
-import { FormField, FormFieldDataType } from './type';
-import { onMounted } from 'vue';
 import './form.scss';
+
+import { onMounted } from 'vue';
+
+import { type FormField, type FormFieldDataType } from './type';
 
 // 定义组件属性, 传入单选框框组件定义
 const props = defineProps<{ field: FormField }>();
@@ -31,6 +38,6 @@ onMounted(() => {
   if (value.value) {
     return;
   }
-  value.value = props.field.default as (string | number)
+  value.value = props.field.default as (string | number);
 });
 </script>

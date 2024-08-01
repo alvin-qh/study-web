@@ -6,9 +6,14 @@
       <div>{{ field.label }}</div>
       <div>
         <!--循环产生复选框组-->
-        <label class="form-group" v-for="c in (field.choice || [])">
+        <label v-for="c in (field.choice || [])" :key="c" class="form-group">
           <!--每个复选框组中包含一个复选框组件和一个文本标签, 所有的复选框都绑定到 `value` 变量-->
-          <input type="checkbox" :name="field.label" :value="c" v-model="value">
+          <input
+            v-model="value"
+            type="checkbox"
+            :name="field.label"
+            :value="c"
+          >
           <div>{{ c }}</div>
         </label>
       </div>
@@ -17,9 +22,11 @@
 </template>
 
 <script setup lang="ts">
-import { FormField, FormFieldDataType } from './type';
-import { onMounted } from 'vue';
 import './form.scss';
+
+import { onMounted } from 'vue';
+
+import { type FormField, type FormFieldDataType } from './type';
 
 // 定义组件属性, 传入复选框组件定义
 const props = defineProps<{ field: FormField }>();
@@ -33,20 +40,20 @@ onMounted(() => {
     return;
   }
 
-  const field = props.field;
+  const { field } = props;
 
   if (Array.isArray(field.default)) {
-    value.value = field.default as (string[] | number[]);
+    value.value = field.default;
   } else if (field.default) {
     switch (typeof field.default) {
-      case 'string':
-        value.value = [field.default];
-        break;
-      case 'number':
-        value.value = [field.default];
-        break;
-      default:
-        value.value = [`${field.default}`]
+    case 'string':
+      value.value = [field.default];
+      break;
+    case 'number':
+      value.value = [field.default];
+      break;
+    default:
+      value.value = [`${field.default}`];
     }
   } else {
     value.value = [];

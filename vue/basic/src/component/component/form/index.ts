@@ -1,17 +1,17 @@
-import FormNumber from "./FormNumber.vue";
-import FormText from "./FormText.vue";
-import FormRadio from "./FormRadio.vue";
-import FormCheckbox from "./FormCheckbox.vue";
-import FormTextArea from "./FormTextArea.vue";
+import FormCheckbox from './FormCheckbox.vue';
+import FormNumber from './FormNumber.vue';
+import FormRadio from './FormRadio.vue';
+import FormText from './FormText.vue';
+import FormTextArea from './FormTextArea.vue';
 
 // 导出所有表单组件
 export {
-  FormNumber,
-  FormText,
-  FormRadio,
   FormCheckbox,
-  FormTextArea,
-}
+  FormNumber,
+  FormRadio,
+  FormText,
+  FormTextArea
+};
 
 // 导出表单组件类型
 export type FormFieldComponent =
@@ -23,6 +23,6 @@ export type FormFieldComponent =
 
 // 导出表单定义和表单数据类型
 export {
-  type FormDefinition,
-  type FormData
+  type FormData,
+  type FormDefinition
 } from './type';

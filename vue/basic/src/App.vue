@@ -2,12 +2,12 @@
 
 <template>
   <!--放置顶部导航栏-->
-  <CommonNavTop>VUE 基础</CommonNavTop>
+  <NavBar>VUE 基础</NavBar>
 
   <!--放置页面主体-->
   <div class="wrapper">
     <!--在页面主题左侧放置导航面板-->
-    <CommonLeftPane :items="items" />
+    <LeftPane :items="items" />
 
     <!--放置子页面容器, 子页面容器通过路由指定其渲染内容-->
     <div class="container">
@@ -24,8 +24,8 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-import CommonLeftPane from './component/common/CommonLeftPane.vue';
-import CommonNavTop from './component/common/CommonNavTop.vue';
+import LeftPane from './component/common/LeftPane.vue';
+import NavBar from './component/common/NavBar.vue';
 import { type MenuItem } from './types/menu-item';
 
 // 设定菜单项变量, 绑定到组件上
@@ -33,7 +33,11 @@ const items = ref<MenuItem[]>([
   {
     label: 'Template',
     children: [
-      { label: 'Template', link: '/template/basic' },
+      { label: 'Simple', link: '/template/simple' },
+      { label: 'v-html', link: '/template/v-html' },
+      { label: 'v-bind', link: '/template/v-bind' },
+      { label: 'List', link: '/template/list' },
+      { label: 'Condition', link: '/template/condition' },
       { label: 'Event', link: '/template/event' },
       { label: 'CSSModule', link: '/template/css-module' }
     ]
@@ -41,7 +45,8 @@ const items = ref<MenuItem[]>([
   {
     label: 'Reactive',
     children: [
-      { label: 'Reactive', link: '/reactive/basic' },
+      { label: 'Ref', link: '/reactive/ref' },
+      { label: 'Reactive', link: '/reactive/reactive' },
       { label: 'Computed', link: '/reactive/computed' },
       { label: 'ClassStyle', link: '/reactive/class-style' }
     ]
@@ -50,7 +55,15 @@ const items = ref<MenuItem[]>([
     label: 'Component',
     children: [
       { label: 'Lifecycle', link: '/component/lifecycle' },
+      { label: 'Simple', link: '/component/simple' },
+      { label: 'Props', link: '/component/props' },
+      { label: 'Event', link: '/component/event' },
+      { label: 'v-model', link: '/component/v-model' },
+      { label: 'Integrate', link: '/component/integrate' },
       { label: 'Component', link: '/component/component' },
+      { label: 'Fallthrough', link: '/component/fallthrough' },
+      { label: 'Options', link: '/component/options' },
+      { label: 'Injection', link: '/component/injection' },
       { label: 'Slot', link: '/component/slot' }
     ]
   }
