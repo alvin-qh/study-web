@@ -145,13 +145,13 @@ watch(result, (val) => { emitEvents(val); }, { immediate: true });
       -moz-appearance: textfield;
       appearance: textfield;
 
+      font-family: 'Courier New', Courier, monospace;
+
       &::-webkit-outer-spin-button,
       &::-webkit-inner-spin-button {
         -webkit-appearance: none;
         margin: 0;
       }
-
-      font-family: 'Courier New', Courier, monospace;
 
       option {
         font-size: 18px;
