@@ -61,6 +61,7 @@ const items = ref<MenuItem[]>([
       { label: 'v-model', link: '/component/v-model' },
       { label: 'Integrate', link: '/component/integrate' },
       { label: 'Fallthrough', link: '/component/fallthrough' },
+      { label: 'Async', link: '/component/async' },
       { label: 'Options', link: '/component/options' },
       { label: 'Injection', link: '/component/injection' }
     ]

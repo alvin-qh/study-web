@@ -133,6 +133,7 @@ watch(props, (val) => {
     display: flex;
     flex-direction: column;
     gap: 10px 0;
+    border: 1px solid #a5a5a542;
 
     label {
       display: flex;

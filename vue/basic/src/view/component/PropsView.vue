@@ -40,6 +40,7 @@ const size = ref<string>('15px');
     flex-direction: column;
     gap: 10px 0;
     height: fit-content;
+    border: 1px solid #a5a5a542;
 
     legend {
       font-size: 12px;

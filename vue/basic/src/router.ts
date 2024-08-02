@@ -49,6 +49,11 @@ const routes: RouteRecordRaw[] = [
     meta: { keepAlive: true }
   },
   {
+    path: '/template/async',
+    component: async () => await import('@/view/template/CSSModuleView.vue'),
+    meta: { keepAlive: true }
+  },
+  {
     path: '/reactive/ref',
     component: async () => await import('@/view/reactive/RefView.vue'),
     meta: { keepAlive: true }
@@ -101,6 +106,11 @@ const routes: RouteRecordRaw[] = [
   {
     path: '/component/fallthrough',
     component: async () => await import('@/view/component/FallthroughAttrView.vue'),
+    meta: { keepAlive: true }
+  },
+  {
+    path: '/component/async',
+    component: async () => await import('@/view/component/AsyncView.vue'),
     meta: { keepAlive: true }
   },
   {
