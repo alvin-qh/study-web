@@ -48,7 +48,8 @@ const items = ref<MenuItem[]>([
       { label: 'Ref', link: '/reactive/ref' },
       { label: 'Reactive', link: '/reactive/reactive' },
       { label: 'Computed', link: '/reactive/computed' },
-      { label: 'ClassStyle', link: '/reactive/class-style' }
+      { label: 'ClassStyle', link: '/reactive/class-style' },
+      { label: 'Watch', link: '/reactive/watch' }
     ]
   },
   {

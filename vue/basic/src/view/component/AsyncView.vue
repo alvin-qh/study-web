@@ -1,7 +1,14 @@
+<!--异步组件-->
 <template>
   <div class="component">
-    <div>
-      <input v-model.number="userId" type="text" name="id">
+    <!--演示在组件中使用异步调用-->
+    <div class="user">
+      <input
+        v-model.number="userId"
+        type="text"
+        name="id"
+        placeholder="Please input user id"
+      >
       <AsyncUser :user-id="userId" />
     </div>
   </div>
@@ -10,13 +17,28 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-import { AsyncUser } from '@/component/component/AsyncUser';
+import AsyncUser from '@/component/component/AsyncUser.vue';
 
-const userId = ref<number>(1);
+// 定义响应式变量, 表示用户 ID
+const userId = ref<number>();
 </script>
 
 <style lang="scss" scoped>
 .component {
+  display: flex;
+  flex-direction: column;
+  gap: 20px 0;
+  padding: 10px 0;
 
+  .user {
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0;
+
+    input[type=text] {
+      padding: 8px 10px;
+      width: 10em;
+    }
+  }
 }
 </style>

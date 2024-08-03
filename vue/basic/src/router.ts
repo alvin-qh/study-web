@@ -74,6 +74,11 @@ const routes: RouteRecordRaw[] = [
     meta: { keepAlive: true }
   },
   {
+    path: '/reactive/watch',
+    component: async () => await import('@/view/reactive/WatchView.vue'),
+    meta: { keepAlive: true }
+  },
+  {
     path: '/component/lifecycle',
     component: async () => await import('@/view/component/LifecycleView.vue'),
     meta: { keepAlive: true }
