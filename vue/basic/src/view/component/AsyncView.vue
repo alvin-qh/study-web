@@ -3,12 +3,13 @@
   <div class="component">
     <!--演示在组件中使用异步调用-->
     <div class="user">
-      <input
-        v-model.number="userId"
-        type="text"
+      <!--使用防抖输入组件-->
+      <DebounceInput
+        v-model.debounce.number="userId"
         name="id"
+        type="text"
         placeholder="Please input user id"
-      >
+      />
       <AsyncUser :user-id="userId" />
     </div>
   </div>
@@ -17,6 +18,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
+import DebounceInput from '@/component/common/DebounceInput.vue';
 import AsyncUser from '@/component/component/AsyncUser.vue';
 
 // 定义响应式变量, 表示用户 ID

@@ -38,7 +38,7 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-import { map } from '@/lib/execute';
+import { objectMap } from '@/lib/execute';
 import { formatDate } from '@/lib/time';
 
 // 定义一个响应式变量, 并通过其 `value` 属性改变值, 同时模板对应元素的值也会跟随改变
@@ -73,7 +73,7 @@ const record = {
 // 定时器, 定时根据时间改变 `refObj` 响应对象
 setInterval(() => {
   // 获取当前时间的分钟和秒
-  const [mins, secs] = map(new Date(), (val): [number, number] => [
+  const [mins, secs] = objectMap(new Date(), (val): [number, number] => [
     val.getMinutes(),
     val.getSeconds()
   ]);

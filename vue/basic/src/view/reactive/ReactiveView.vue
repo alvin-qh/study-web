@@ -36,7 +36,7 @@
 <script setup lang="ts">
 import { reactive } from 'vue';
 
-import { map } from '@/lib/execute';
+import { objectMap } from '@/lib/execute';
 import { formatDate } from '@/lib/time';
 
 // 定义一个响应式变量, 代理一个对象, 其中的 `count` 属性表示一个计数值
@@ -70,7 +70,7 @@ const record = {
 // 定时器, 定时根据时间改变 `obj` 响应对象
 setInterval(() => {
   // 获取当前时间的分钟和秒
-  const [mins, secs] = map(new Date(), (val): [number, number] => [
+  const [mins, secs] = objectMap(new Date(), (val): [number, number] => [
     val.getMinutes(),
     val.getSeconds()
   ]);
