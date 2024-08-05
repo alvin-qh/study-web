@@ -30,7 +30,7 @@ const userId = ref<number>();
   display: flex;
   flex-direction: column;
   gap: 20px 0;
-  padding: 10px 0;
+  padding: 10px 5px;
 
   .user {
     display: flex;
