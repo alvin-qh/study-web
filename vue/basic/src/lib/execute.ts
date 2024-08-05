@@ -20,7 +20,7 @@ export const exec = (fn: () => void): void => { fn(); };
  * @param fn 转换函数
  * @returns 目标对象
  */
-export const objectMap = <T, R>(obj: T, fn: (val: T) => R): R => fn(obj);
+export const objectMap = <R, T = any>(obj: T, fn: (val: T) => R): R => fn(obj);
 
 /**
  * 创建防抖函数

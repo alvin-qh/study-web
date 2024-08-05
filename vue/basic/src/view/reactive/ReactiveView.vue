@@ -70,7 +70,7 @@ const record = {
 // 定时器, 定时根据时间改变 `obj` 响应对象
 setInterval(() => {
   // 获取当前时间的分钟和秒
-  const [mins, secs] = objectMap(new Date(), (val): [number, number] => [
+  const [mins, secs] = objectMap<[number, number], Date>(new Date(), (val) => [
     val.getMinutes(),
     val.getSeconds()
   ]);

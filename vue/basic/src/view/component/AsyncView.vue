@@ -12,6 +12,12 @@
       />
       <AsyncUser :user-id="userId" />
     </div>
+
+    <div>
+      <Suspense>
+        <AsyncComp />
+      </Suspense>
+    </div>
   </div>
 </template>
 
@@ -19,6 +25,7 @@
 import { ref } from 'vue';
 
 import DebounceInput from '@/component/common/DebounceInput.vue';
+import AsyncComp from '@/component/component/AsyncComp.vue';
 import AsyncUser from '@/component/component/AsyncUser.vue';
 
 // 定义响应式变量, 表示用户 ID
