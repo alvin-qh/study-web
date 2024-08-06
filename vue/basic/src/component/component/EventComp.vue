@@ -9,7 +9,12 @@
     <form>
       <div>
         <!--输入框, 绑定 `number1` 响应式变量-->
-        <input v-model="number1" type="number" placeholder="0">
+        <input
+          v-model="number1"
+          type="number"
+          placeholder="0"
+          class="number-no-spin"
+        >
       </div>
       <div>
         <!--下拉选项框, 用于选择运算符, 绑定 `opt` 响应式变量-->
@@ -21,7 +26,12 @@
       </div>
       <div>
         <!--输入框, 绑定 `number2` 响应式变量-->
-        <input v-model="number2" type="number" placeholder="0">
+        <input
+          v-model="number2"
+          type="number"
+          placeholder="0"
+          class="number-no-spin"
+        >
       </div>
       <div>=</div>
       <div>
@@ -142,16 +152,7 @@ watch(result, (val) => { emitEvents(val); }, { immediate: true });
       padding: 5px 3px;
       text-align: center;
 
-      -moz-appearance: textfield;
-      appearance: textfield;
-
       font-family: 'Courier New', Courier, monospace;
-
-      &::-webkit-outer-spin-button,
-      &::-webkit-inner-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-      }
 
       option {
         font-size: 18px;

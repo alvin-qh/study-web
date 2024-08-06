@@ -15,8 +15,13 @@ export interface CarData {
   data: Array<Record<string, string | number | null>>
 }
 
-export const fetchData = async (): Promise<CarData> => {
-  const resp = await fetch('https://reqres.in/api/cars');
+export interface Query {
+  page: number
+  perPage: number
+}
+
+export const fetchData = async (pageNo: number, perPage: number = 10): Promise<CarData> => {
+  const resp = await fetch(`https://reqres.in/api/cars?page=${pageNo}&per_page=${perPage}`);
   const obj = await resp.json();
 
   return factory<CarData>(() => {
