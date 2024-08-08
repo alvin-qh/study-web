@@ -36,14 +36,14 @@ a {
 // 去掉 input[type=number] 类型文本框的上下箭头
 .number-no-spin {
 
+  -moz-appearance: textfield;
+  appearance: textfield;
+
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button {
     -webkit-appearance: none !important;
     margin: 0;
   }
-
-  -moz-appearance: textfield;
-  appearance: textfield;
 }
 
 hr {
