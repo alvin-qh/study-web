@@ -5,7 +5,7 @@ import { type Component } from './component';
 /**
  * the root html element, new elements must be appended into it
  */
-// eslint-disable-next-line no-underscore-dangle
+
 let _$root: HTMLElement | null = null;
 
 /**
@@ -44,7 +44,7 @@ function _jumpTo(r: Route | string, message?: string): void {
   if (typeof r === 'string') {
     const page = new ErrorPage({
       code: r,
-      message
+      message,
     });
     render(page);
     return;
@@ -126,7 +126,7 @@ export function route($root: HTMLElement, $nav: HTMLElement, routes: Record<stri
         $a.target = routeItem.target;
         $a.href = routeItem.href;
       } else {
-        // eslint-disable-next-line no-script-url
+
         $a.href = 'javascript:;';
 
         // add "click" event handler, to jump to the target view

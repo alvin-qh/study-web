@@ -17,8 +17,8 @@ export default class BasicPage implements Component {
         color: new THREE.Color(
           Math.random(),
           Math.random(),
-          Math.random()
-        )
+          Math.random(),
+        ),
       });
       const cube = new THREE.Mesh(geometry, material);
       cube.position.x = -4 + i * 2;

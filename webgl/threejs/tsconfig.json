@@ -1,35 +1,44 @@
 {
   "compilerOptions": {
-    "allowImportingTsExtensions": true,
     "allowJs": true,
-    "isolatedModules": true,
-    "jsx": "preserve",
+    "emitDecoratorMetadata": true,
+    "esModuleInterop": true,
+    "experimentalDecorators": true,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": false,
     "lib": [
       "DOM",
       "DOM.Iterable",
-      "ES2020"
+      "DOM.AsyncIterable",
+      "ESNext"
     ],
-    "paths": {
-      "@/*": ["./src/*"]
-    },
     "module": "ESNext",
     "moduleResolution": "Bundler",
     "noEmit": true,
+    "noEmitOnError": false,
     "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noImplicitAny": false,
+    "paths": {
+      "@/*": [
+        "./src/*"
+      ]
+    },
+    "removeComments": true,
     "resolveJsonModule": true,
-    "esModuleInterop": true,
+    "rootDir": "src",
     "skipLibCheck": true,
-    "strict": true,
-    "target": "ES2020",
-    "useDefineForClassFields": true
+    "target": "ESNext",
+    "types": [
+      "jest",
+      "three",
+      "node",
+      "web"
+    ],
+    "useUnknownInCatchVariables": false
   },
   "include": [
-    ".eslintrc.cjs",
-    "vite.config.ts",
     "src/**/*.d.ts",
-    "src/**/*.ts",
-    "src/**/*.tsx"
+    "src/**/*.spec.ts",
+    "src/**/*.ts"
   ]
 }

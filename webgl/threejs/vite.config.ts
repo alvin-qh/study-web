@@ -6,17 +6,9 @@ import path from 'path';
  * @type {import('vite').UserConfig}
  */
 export default defineConfig({
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src')
-    }
-  },
-  css: {
-    preprocessorOptions: {
-      scss: ''
-    }
-  },
+  resolve: {alias: {'@': path.resolve(__dirname, 'src')}},
+  css: {preprocessorOptions: {scss: {}}},
   plugins: [
-    eslint()
-  ]
+    eslint(),
+  ],
 });

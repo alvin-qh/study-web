@@ -7,7 +7,7 @@ import { route } from '@/lib/router';
 const $app = document.querySelector('#app')!;
 
 function render(): void {
-  if (!WebGL.isWebGLAvailable()) {
+  if (!WebGL.isWebGL2Available()) {
     $app.innerHTML = `
     <div class="error-not-support">
       Your browser does not support WebGL.
@@ -34,8 +34,8 @@ function render(): void {
     home: {
       title: 'Basic',
       href: '/',
-      module: async () => await import('./pages/basic')
-    }
+      module: async () => await import('./pages/basic'),
+    },
   });
 }
 
