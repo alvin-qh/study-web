@@ -20,14 +20,14 @@ window.onload = () => {
           {
             title: '水波进度条',
             href: '/progress/wave',
-            module: async () => await import('./pages/progress/wave')
+            module: async () => import('./pages/progress/wave'),
           },
           {
             title: '贝塞尔运动',
             href: '/animate/bezier',
-            module: async () => await import('./pages/animate/bezier')
-          }
-        ]
+            module: async () => import('./pages/animate/bezier'),
+          },
+        ],
       },
       {
         title: '边框',
@@ -35,14 +35,14 @@ window.onload = () => {
           {
             title: '闪光边框',
             href: '/border/shine',
-            module: async () => await import('./pages/border/shinning')
+            module: async () => import('./pages/border/shinning'),
           },
           {
             title: '图片边框',
             href: '/border/image',
-            module: async () => await import('./pages/border/image')
-          }
-        ]
+            module: async () => import('./pages/border/image'),
+          },
+        ],
       },
       {
         title: '布局',
@@ -50,27 +50,27 @@ window.onload = () => {
           {
             title: '无缝轮播',
             href: '/scroll/carousel',
-            module: async () => await import('./pages/scroll/carousel')
+            module: async () => import('./pages/scroll/carousel'),
           },
           {
             title: '视差滚动',
             href: '/scroll/parallax',
-            module: async () => await import('./pages/scroll/parallax')
+            module: async () => import('./pages/scroll/parallax'),
           },
           {
             title: '3D 菜单',
             href: '/layout/3d-menu',
-            module: async () => await import('./pages/layout/3d-menu')
+            module: async () => import('./pages/layout/3d-menu'),
           },
           {
             title: '滑动卡片',
             href: '/layout/slide-card',
-            module: async () => await import('./pages/layout/slide-card')
-          }
-        ]
-      }
+            module: async () => import('./pages/layout/slide-card'),
+          },
+        ],
+      },
     ],
-    async () => await import('./pages/error')
+    async () => import('./pages/error'),
   );
 
   route.render($app.querySelector<HTMLDivElement>('.app-left .nav')!);

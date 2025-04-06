@@ -5,7 +5,7 @@ import { type Component } from '@/component/base';
 const images = [
   'bg-01.jpg',
   'bg-02.jpg',
-  'bg-03.jpg'
+  'bg-03.jpg',
 ];
 
 
