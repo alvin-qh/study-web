@@ -54,6 +54,7 @@
     "subdir",
     "tailwindcss",
     "textbox",
+    "threejs",
     "tinycolor",
     "todos",
     "treeshake",
@@ -63,7 +64,8 @@
     "vals",
     "Vite",
     "vueuse",
-    "vuex"
+    "vuex",
+    "webgl"
   ],
   "flagWords": [],
   "enabled": true
