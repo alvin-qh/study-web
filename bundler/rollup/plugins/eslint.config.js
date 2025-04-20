@@ -1,11 +1,13 @@
 import globals from 'globals';
 import js from '@eslint/js';
+import stylisticPlugin from '@stylistic/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import tseslint from 'typescript-eslint';
 
 /** @type {import('eslint').Linter.Config[]} */
 export default [
   js.configs.recommended,
+  stylisticPlugin.configs.customize(),
   ...tseslint.configs.recommended,
   {
     files: [
@@ -79,9 +81,12 @@ export default [
       }],
       'prefer-object-spread': 'error',
       'quote-props': ['error', 'as-needed'],
+      '@stylistic/quote-props': ['error', 'as-needed'],
       quotes: ['warn', 'single', { avoidEscape: true }],
+      '@stylistic/quotes': ['warn', 'single', { avoidEscape: true }],
       'require-await': 'off',
       semi: ['error', 'always'],
+      '@stylistic/semi': ['error', 'always'],
       'sort-imports': ['warn', {
         allowSeparatedGroups: true,
         ignoreCase: false,
