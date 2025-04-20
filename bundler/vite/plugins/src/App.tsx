@@ -1,5 +1,5 @@
-import { type RouteSectionProps } from '@solidjs/router';
 import { type JSX } from 'solid-js';
+import { type RouteSectionProps } from '@solidjs/router';
 
 import Nav from '@/components/Nav.tsx';
 

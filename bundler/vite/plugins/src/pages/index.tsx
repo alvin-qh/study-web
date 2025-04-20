@@ -1,4 +1,4 @@
-import { createSignal, type JSX } from 'solid-js';
+import { type JSX, createSignal } from 'solid-js';
 
 /* eslint-disable import/no-absolute-path */
 import viteLogo from '/vite.svg';
@@ -21,11 +21,17 @@ const Home = (): JSX.Element => {
       </div>
       <h1>Vite + Solid</h1>
       <div class={css.card}>
-        <button onClick={() => setCount((c) => c + 1)}>
-          count is {count()}
+        <button onClick={() => setCount(c => c + 1)}>
+          count is
+          {' '}
+          {count()}
         </button>
         <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+          Edit
+          {' '}
+          <code>src/App.tsx</code>
+          {' '}
+          and save to test HMR
         </p>
       </div>
       <p class={css.readTheDocs}>
