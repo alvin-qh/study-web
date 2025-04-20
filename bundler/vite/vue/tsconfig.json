@@ -22,11 +22,7 @@
     "useDefineForClassFields": true
   },
   "include": [
-    ".eslintrc.cjs",
-    "src/**/*.d.ts",
-    "src/**/*.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "vite.config.ts"
+    "**/*.js",
+    "**/*.ts",
   ]
 }

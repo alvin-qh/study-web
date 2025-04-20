@@ -1,18 +1,16 @@
-import vue from '@vitejs/plugin-vue';
 import { defineConfig } from 'vite';
+
+// @ts-expect-error no-types
 import eslint from 'vite-plugin-eslint';
+import vue from '@vitejs/plugin-vue';
 
 /**
  * @type {import('vite').UserConfig}
  */
 export default defineConfig({
-  css: {
-    preprocessorOptions: {
-      scss: ''
-    }
-  },
+  css: { preprocessorOptions: {} },
   plugins: [
     eslint(),
-    vue()
-  ]
+    vue(),
+  ],
 });
