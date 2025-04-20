@@ -1,24 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@layer base {
-  a {
-    @apply text-blue-500
-  }
-
-  .text-transparent {
-    @apply text-white text-opacity-0
-  }
-
-  .btn {
-    @apply py-2 px-4 font-semibold rounded-lg shadow-md;
-  }
-
-  .btn-green {
-    @apply text-white bg-green-500 hover: bg-green-700;
-  }
-}
+@import "tailwindcss";
 
 @font-face {
   font-family: Inter var;

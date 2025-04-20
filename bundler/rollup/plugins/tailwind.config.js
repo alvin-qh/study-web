@@ -1,17 +1,13 @@
-const colors = require('./tailwind/colors');
-const { pluginStripes } = require('./tailwind/plugins');
+import colors from './tailwind/colors';
+import { pluginStripes } from './tailwind/plugins';
 
-require('./tailwind/colors');
-
-module.exports = {
+export default {
   content: [
-    './src/**/*.ts'
+    './src/**/*.ts',
   ],
   media: false, // or 'media' or 'class'
   theme: {
-    container: {
-      center: true
-    },
+    container: {center: true},
     colors,
     extend: {
       fontFamily: {
@@ -30,7 +26,7 @@ module.exports = {
           'Apple Color Emoji',
           'Segoe UI Emoji',
           'Segoe UI Symbol',
-          'Noto Color Emoji'
+          'Noto Color Emoji',
         ],
         'ubuntu-mono': [
           'Ubuntu Mono',
@@ -41,16 +37,14 @@ module.exports = {
           'Consolas',
           'Liberation Mono',
           'Courier New',
-          'monospace'
+          'monospace',
         ],
         flow: [
-          'Flow'
-        ]
+          'Flow',
+        ],
       },
-      backgroundSize: {
-        6: '6rem'
-      }
-    }
+      backgroundSize: {6: '6rem'},
+    },
   },
   variants: {
     extend: {
@@ -58,9 +52,9 @@ module.exports = {
       boxShadow: ['active', 'hover'],
       transitionProperty: ['responsive', 'motion-safe', 'motion-reduce'],
       animation: ['hover', 'focus'],
-    }
+    },
   },
   plugins: [
-    pluginStripes
-  ]
+    pluginStripes,
+  ],
 };

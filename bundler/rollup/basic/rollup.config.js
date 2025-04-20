@@ -1,19 +1,24 @@
-const path = require('path');
-const node = require('@rollup/plugin-node-resolve');
-const babel = require('@rollup/plugin-babel');
+import babel from '@rollup/plugin-babel';
+import nodeResolve from '@rollup/plugin-node-resolve';
 
-module.exports = {
+import { fileURLToPath } from 'node:url';
+import path from 'node:path';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+export default {
   input: path.resolve(__dirname, 'src/script/index.js'),
   output: {
     file: path.resolve(__dirname, 'dist/asset/index.min.js'),
     format: 'cjs',   // format: "umd"
-    sourcemap: true
+    sourcemap: true,
   },
   plugins: [
-    node(),
+    nodeResolve(),
     babel({
       babelHelpers: 'bundled',
-      exclude: 'node_modules/**'
-    })
-  ]
+      exclude: 'node_modules/**',
+    }),
+  ],
 };

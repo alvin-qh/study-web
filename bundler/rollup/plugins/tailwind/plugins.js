@@ -1,5 +1,5 @@
 const toRgba = (hexCode, opacity = 50) => {
-  let hex = hexCode.replace("#", "");
+  let hex = hexCode.replace('#', '');
   if (hex.length === 3) {
     hex = `${hex[0]}${hex[0]}${hex[1]}${hex[1]}${hex[2]}${hex[2]}`;
   }
@@ -11,20 +11,20 @@ const toRgba = (hexCode, opacity = 50) => {
   return `rgba(${r},${g},${b},${opacity / 100})`;
 };
 
-const flattenColorPalette = (obj, sep = "-") => Object.assign(
+const flattenColorPalette = (obj, sep = '-') => Object.assign(
   {},
-  ...(function _flatten(o, p = "") {
+  ...(function _flatten(o, p = '') {
     return [].concat(
       ...Object.keys(o).map(k =>
-        typeof o[k] === "object" ? _flatten(o[k], k + sep) : ({ [p + k]: o[k] })
-      )
+        typeof o[k] === 'object' ? _flatten(o[k], k + sep) : ({ [p + k]: o[k] }),
+      ),
     );
-  })(obj)
+  })(obj),
 );
 
 const pluginStripes = ({ addUtilities, theme }) => {
   const utilities = {
-    ".bg-stripes": {
+    '.bg-stripes': {
       backgroundImage: `
         linear-gradient(
           45deg, 
@@ -37,13 +37,13 @@ const pluginStripes = ({ addUtilities, theme }) => {
           transparent 100%
         )
       `,
-      backgroundSize: "5.66px 5.66px",
-    }
+      backgroundSize: '5.66px 5.66px',
+    },
   };
 
-  const addColor = (name, color) => (utilities[`.bg-stripes-${name}`] = { "--stripes-color": color });
+  const addColor = (name, color) => (utilities[`.bg-stripes-${name}`] = { '--stripes-color': color });
 
-  const colors = flattenColorPalette(theme("backgroundColor"));
+  const colors = flattenColorPalette(theme('backgroundColor'));
   for (let name in colors) {
     try {
       const [r, g, b, a] = toRgba(colors[name]);
@@ -59,6 +59,4 @@ const pluginStripes = ({ addUtilities, theme }) => {
   addUtilities(utilities);
 };
 
-module.exports = {
-  pluginStripes
-};
+module.exports = {pluginStripes};
