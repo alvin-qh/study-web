@@ -29,6 +29,10 @@ export default [
         ...globals.browser,
       },
       parser: tsParser,
+      parserOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+      },
       sourceType: 'module',
     },
     rules: {
