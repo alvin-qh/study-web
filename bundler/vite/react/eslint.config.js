@@ -1,16 +1,27 @@
-import { defineConfig } from 'eslint/config';
-
 import globals from 'globals';
 
-import js from '@eslint/js';
-import ts from 'typescript-eslint';
+import jslint from '@eslint/js';
+import tseslint from 'typescript-eslint';
 
-import vueParser from 'vue-eslint-parser';
+import reactHooksPlugin from 'eslint-plugin-react-hooks';
+import reactPlugin from 'eslint-plugin-react';
+import stylisticPlugin from '@stylistic/eslint-plugin';
 
-import pluginStylistic from '@stylistic/eslint-plugin';
-import pluginVue from 'eslint-plugin-vue';
+import tsParser from '@typescript-eslint/parser';
 
-export default defineConfig([
+/** @type {import('eslint').Linter.Config[]} */
+export default [
+  jslint.configs.recommended,
+  stylisticPlugin.configs.customize(),
+  ...tseslint.configs.recommended,
+  {
+    files: [
+      '**/*.ts',
+      '**/*.js',
+      '**/*.mjs',
+      '**/*.cjs',
+    ],
+  },
   {
     ignores: [
       '.history',
@@ -19,44 +30,29 @@ export default defineConfig([
     ],
   },
   {
-    files: [
-      '**/*.{js,mjs,cjs,ts,vue}',
-    ],
-    plugins: {
-      js,
-      ts,
-      vue: pluginVue,
-      stylistic: pluginStylistic,
-    },
-    extends: [
-      'js/recommended',
-      'ts/recommended',
-      'vue/flat/essential',
-      'stylistic/recommended',
-    ],
     languageOptions: {
       globals: {
-        ...globals.browser,
         ...globals.node,
         ...globals.es2025,
+        ...globals.browser,
+        ...globals.jest,
       },
-    },
-  },
-  {
-    files: [
-      '**/*.vue',
-    ],
-    languageOptions: {
-      parser: vueParser,
+      parser: tsParser,
       parserOptions: {
-        parser: ts.parser,
+        ...reactPlugin.configs['jsx-runtime'].parserOptions,
         ecmaVersion: 'latest',
         sourceType: 'module',
+        ecmaFeatures: { jsx: true },
       },
+      sourceType: 'module',
     },
-  },
-  {
+    plugins: {
+      react: reactPlugin,
+      'react-hooks': reactHooksPlugin,
+    },
     rules: {
+      ...reactPlugin.configs['jsx-runtime'].rules,
+      ...reactHooksPlugin.configs.recommended.rules,
       'no-console': 'off',
       'no-debugger': 'off',
       '@typescript-eslint/no-unused-vars': ['error', {
@@ -102,7 +98,6 @@ export default defineConfig([
       }],
       'prefer-object-spread': 'error',
       'quote-props': ['error', 'as-needed'],
-      '@stylistic/generator-star-spacing': 'off',
       '@stylistic/quote-props': ['error', 'as-needed'],
       quotes: ['warn', 'single', { avoidEscape: true }],
       '@stylistic/quotes': ['warn', 'single', { avoidEscape: true }],
@@ -118,4 +113,4 @@ export default defineConfig([
       }],
     },
   },
-]);
+];

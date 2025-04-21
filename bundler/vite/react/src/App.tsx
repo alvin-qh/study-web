@@ -2,9 +2,7 @@ import './App.scss';
 
 import { type JSX, useState } from 'react';
 
-// eslint-disable-next-line import/no-absolute-path, import/no-unresolved
 import viteLogo from '/vite.svg';
-
 import reactLogo from './assets/react.svg';
 
 function App(): JSX.Element {
@@ -22,11 +20,17 @@ function App(): JSX.Element {
       </div>
       <h1>Vite + React</h1>
       <div className="card">
-        <button type='button' onClick={() => { setCount(c => c + 1); }}>
-          count is {count}
+        <button type="button" onClick={() => { setCount(c => c + 1); }}>
+          count is
+          {' '}
+          {count}
         </button>
         <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
+          Edit
+          {' '}
+          <code>src/App.tsx</code>
+          {' '}
+          and save to test HMR
         </p>
       </div>
       <p className="read-the-docs">
