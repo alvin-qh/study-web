@@ -1,17 +1,17 @@
-import babelParser from '@babel/eslint-parser';
+import { defineConfig } from 'eslint/config';
+
 import globals from 'globals';
+
 import js from '@eslint/js';
 
+import stylisticPlugin from '@stylistic/eslint-plugin';
+
+import babelParser from '@babel/eslint-parser';
+
 /** @type {import('eslint').Linter.Config[]} */
-export default [
+export default defineConfig([
   js.configs.recommended,
-  {
-    files: [
-      '**/*.js',
-      '**/*.cjs',
-      '**/*.mjs',
-    ],
-  },
+  stylisticPlugin.configs.customize(),
   {
     ignores: [
       '.history',
@@ -20,14 +20,29 @@ export default [
     ],
   },
   {
+    files: [
+      '**/*.{js,mjs,cjs}',
+    ],
+    plugins: { js },
+    extends: [
+      'js/recommended',
+    ],
     languageOptions: {
       globals: {
         ...globals.node,
         ...globals.browser,
+        ...globals.es2025,
       },
       parser: babelParser,
+      parserOptions: {
+        parser: js.parser,
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+      },
       sourceType: 'module',
     },
+  },
+  {
     rules: {
       'comma-dangle': ['error', {
         arrays: 'always-multiline',
@@ -67,9 +82,12 @@ export default [
       }],
       'prefer-object-spread': 'error',
       'quote-props': ['error', 'as-needed'],
+      '@stylistic/quote-props': ['error', 'as-needed'],
       quotes: ['warn', 'single', { avoidEscape: true }],
+      '@stylistic/quotes': ['warn', 'single', { avoidEscape: true }],
       'require-await': 'off',
       semi: ['error', 'always'],
+      '@stylistic/semi': ['error', 'always'],
       'sort-imports': ['warn', {
         allowSeparatedGroups: true,
         ignoreCase: false,
@@ -79,4 +97,4 @@ export default [
       }],
     },
   },
-];
+]);

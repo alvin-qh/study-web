@@ -11,7 +11,7 @@ export default {
   input: path.resolve(__dirname, 'src/script/index.js'),
   output: {
     file: path.resolve(__dirname, 'dist/asset/index.min.js'),
-    format: 'cjs',   // format: "umd"
+    format: 'cjs', // format: "umd"
     sourcemap: true,
   },
   plugins: [
