@@ -1,20 +1,20 @@
+import { defineConfig } from 'eslint/config';
+
 import globals from 'globals';
+
 import js from '@eslint/js';
+import ts from 'typescript-eslint';
+
 import stylisticPlugin from '@stylistic/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
-import tseslint from 'typescript-eslint';
 
 /** @type {import('eslint').Linter.Config[]} */
-export default [
+export default defineConfig([
   js.configs.recommended,
+  ...ts.configs.recommended,
   stylisticPlugin.configs.customize(),
-  ...tseslint.configs.recommended,
   {
     files: [
-      '**/*.ts',
-      '**/*.js',
-      '**/*.cjs',
-      '**/*.mjs',
+      '**/*.{js,mjs,cjs,ts}',
     ],
   },
   {
@@ -29,14 +29,18 @@ export default [
       globals: {
         ...globals.node,
         ...globals.browser,
+        ...globals.es2025,
       },
-      parser: tsParser,
+      parser: ts.parser,
       parserOptions: {
+        parser: js.parser,
         ecmaVersion: 'latest',
         sourceType: 'module',
       },
       sourceType: 'module',
     },
+  },
+  {
     rules: {
       '@typescript-eslint/no-unused-vars': ['error', {
         args: 'none',
@@ -96,4 +100,4 @@ export default [
       }],
     },
   },
-];
+]);
