@@ -1,27 +1,20 @@
 import globals from 'globals';
 
+import { defineConfig } from 'eslint/config';
+
 import js from '@eslint/js';
 import ts from 'typescript-eslint';
 
-import stylisticPlugin from '@stylistic/eslint-plugin';
-import vuePlugin from 'eslint-plugin-vue';
-
 import vueParser from 'vue-eslint-parser';
 
-/** @type {import('eslint').Linter.Config[]} */
-export default [
-  js.configs.recommended,
-  stylisticPlugin.configs.customize(),
+import pluginVue from 'eslint-plugin-vue';
+import stylisticPlugin from '@stylistic/eslint-plugin';
+
+export default defineConfig([
+  ts.configs.recommended,
   ...ts.configs.recommended,
-  ...vuePlugin.configs['flat/recommended'],
-  {
-    files: [
-      '**/*.ts',
-      '**/*.js',
-      '**/*.mjs',
-      '**/*.cjs',
-    ],
-  },
+  stylisticPlugin.configs.customize(),
+  pluginVue.configs['flat/essential'],
   {
     ignores: [
       '.history',
@@ -30,21 +23,41 @@ export default [
     ],
   },
   {
+    files: [
+      '**/*.{js,mjs,cjs,ts,vue}',
+    ],
+    plugins: { js },
+    extends: [
+      'js/recommended',
+    ],
+  },
+  {
+    files: [
+      '**/*.{js,mjs,cjs,ts,vue}',
+    ],
     languageOptions: {
       globals: {
         ...globals.browser,
         ...globals.node,
         ...globals.es2025,
       },
+    },
+  },
+  {
+    files: [
+      '**/*.vue',
+    ],
+    languageOptions: {
       parser: vueParser,
       parserOptions: {
-        parser: '@typescript-eslint/parser',
+        parser: ts.parser,
         ecmaVersion: 'latest',
         sourceType: 'module',
       },
       sourceType: 'module',
     },
-    plugins: { vue: vuePlugin },
+  },
+  {
     rules: {
       'no-console': 'off',
       'no-debugger': 'off',
@@ -106,4 +119,4 @@ export default [
       }],
     },
   },
-];
+]);
